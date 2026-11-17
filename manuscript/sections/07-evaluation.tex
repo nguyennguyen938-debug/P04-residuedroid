@@ -1,0 +1,44 @@
+\section{Evaluation}
+\label{sec:eval}
+\input{sections/07a-setup}
+
+\subsection{Stream-wrapper authorization-order evidence}
+The stream-wrapper \nTrialsValid{} trials compared nine variants over seven lifecycle schedules.
+The pre-write event called \texttt{COMMIT} orders authorization, not socket handoff.
+Under that estimand, the conventional combination admits the mechanism-specific cases in Table~\ref{tab:mechanisms}; the stream-wrapper \sys gate admits none on mediated paths. These rates depend on the fixture mix. T1's summary retained source data under a different declared scope;
+T5 required epochs to distinguish old records after re-grant. Network-loss retries
+exposed gaps after job-start checks. Raw-socket T9 remained uncovered. These observations
+motivate lineage and late placement but cannot quantify physical handoffs in the log-to-write
+gap. The matched channel variants below share metadata to isolate placement.
+
+Permitted-flow controls distinguish suppression from non-delivery: stream-wrapper \sys logged
+\rdFpBlocks{} policy blocks for the controls, while \deficitRdPct{}\% of permitted items
+were undelivered on AVD~A (AVD~B: \deficitRdbPct{}\%). JobScheduler stopping uploads after reboot contributed
+to that deficit. The synthetic contract-unaware policy lost \deficitTaintPct{}\%; this
+is a policy ablation, not a comparison against a complete taint-tracking system.
+\input{generated/followup_mechanisms}
+\input{generated/followup_support}
+
+\subsection{Socket acceptance and withdrawal acknowledgement}
+\label{sec:revision}
+\input{generated/revision_results.tex}
+\input{generated/followup_transport.tex}
+
+\subsection{ACRA integration and settings contract}
+\label{sec:eval-acra}
+The preference-only ACRA~5.14.2 embedding queued a crash report offline, disabled reporting,
+and restored connectivity. Stock ACRA sent in \acraStockLeak{} trials; the preference-aware
+sender sent in \acraFenceLeak{}. Controls delivered under both variants. Reboot discarded
+the scheduled job, after which startup rechecked the preference. These are observations
+of the configured SDK test app, not findings about every app bundling ACRA.
+
+ACRA supplies library preference keys, not one universal stock toggle wording. The preference-only fixture displayed only ``AcraLab''; its harness changed \texttt{acra.enable}. We classify its 30/30 receipt result under a collection-only opt-out with no queued-deletion promise (Table~\ref{tab:contracts}). It is not evidence of violating the stronger contract below.
+
+The explicit-contract embedding provides a visible setting that promises to invalidate queued reports,
+a transactional policy store, a source epoch in each report's custom data, and the shared
+HTTP adapter in ACRA's separate sender process. Disabling shows pending status until the
+policy transaction and preference update complete. Re-grant permits new-epoch reports
+without reviving old ones. The artifact maps the UI, collector, persisted report, service
+registration, sender, retry, and retirement paths. Missing-label reports are retired rather
+than relabelled; this deliberately sacrifices otherwise permitted legacy reports.
+\input{generated/revision_acra.tex}

@@ -1,0 +1,20 @@
+{
+  "source": "local anonymous ZIP dry run",
+  "commands": [
+    "make all",
+    "five matched fixture variants",
+    "ACRA",
+    "Matomo",
+    "WorkManager",
+    "live TCP transport lock regression",
+    "five independent oracle tests"
+  ],
+  "external_requirements": [
+    "JDK 17",
+    "Android SDK platform 33 build-tools 34.0.0",
+    "TeX Live"
+  ],
+  "result": "passed",
+  "log_sha256": "7dfce6dc150007919e1d1fda1223d59530a7f36c145d5a09283e782ab8437e41",
+  "limitation": "Final experiment results were not complete; this checks build inputs, not final numerical identity."
+}

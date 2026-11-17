@@ -1,0 +1,17 @@
+{
+ "serial": "emulator-5642",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "variants": [
+  "menqueue",
+  "mstart",
+  "mlayer",
+  "mfence",
+  "mboth"
+ ],
+ "schedules": "pending,kill,forcestop,reboot,revoke,netloss,inflight",
+ "trials": 1,
+ "seed": "revision-20261115",
+ "sink_delay_ms": 300,
+ "substrate": "job",
+ "start": 1794737070.581172
+}

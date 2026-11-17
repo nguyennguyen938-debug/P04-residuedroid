@@ -1,0 +1,167 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "nadkarni2016weir",
+    "author": "Adwait Nadkarni and Benjamin Andow and William Enck and Somesh Jha",
+    "title": "Practical {DIFC} Enforcement on {Android}",
+    "booktitle": "Proceedings of the 25th USENIX Security Symposium",
+    "pages": "1119--1136",
+    "year": "2016"
+  },
+  "checked": 1794759756.281539,
+  "candidates": [
+    {
+      "title": "Practical, Formal Synthesis and Automatic Enforcement of Security Policies for Android",
+      "match": 0.5573770491803278,
+      "DOI": "10.1109/dsn.2016.53",
+      "URL": "https://doi.org/10.1109/dsn.2016.53",
+      "author": [
+        {
+          "given": "Hamid",
+          "family": "Bagheri",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Alireza",
+          "family": "Sadeghi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Reyhaneh",
+          "family": "Jabbarvand",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sam",
+          "family": "Malek",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2016 46th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016,
+            6
+          ]
+        ]
+      },
+      "page": "514-525",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "The Enforcement of Foreign Judgments in the uae and difc Courts",
+      "match": 0.42,
+      "DOI": "10.1163/15730255-12341279",
+      "URL": "https://doi.org/10.1163/15730255-12341279",
+      "author": [
+        {
+          "given": "Saloni",
+          "family": "Kantaria",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "1 Herbert Smith Freehills, Dubai UAE saloni.kantaria@hsf.com"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Arab Law Quarterly"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2014,
+            7,
+            10
+          ]
+        ]
+      },
+      "page": "193-204",
+      "type": "journal-article"
+    },
+    {
+      "title": "Noninterference for a Practical DIFC-Based Operating System",
+      "match": 0.4166666666666667,
+      "DOI": "10.1109/sp.2009.23",
+      "URL": "https://doi.org/10.1109/sp.2009.23",
+      "author": [
+        {
+          "given": "Maxwell",
+          "family": "Krohn",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Eran",
+          "family": "Tromer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2009 30th IEEE Symposium on Security and Privacy"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2009,
+            5
+          ]
+        ]
+      },
+      "page": "61-76",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

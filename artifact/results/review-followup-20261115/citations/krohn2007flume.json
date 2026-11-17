@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "krohn2007flume",
+    "author": "Maxwell Krohn and Alexander Yip and Micah Brodsky and Natan Cliffer and M. Frans Kaashoek and Eddie Kohler and Robert Morris",
+    "title": "Information Flow Control for Standard {OS} Abstractions",
+    "booktitle": "Proceedings of the 21st ACM Symposium on Operating Systems Principles (SOSP)",
+    "year": "2007"
+  },
+  "checked": 1794759761.270081,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

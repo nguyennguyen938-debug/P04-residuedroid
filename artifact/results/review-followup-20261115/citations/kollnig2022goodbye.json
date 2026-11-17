@@ -1,0 +1,275 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "kollnig2022goodbye",
+    "author": "Konrad Kollnig and Anastasia Shuba and Max Van Kleek and Reuben Binns and Nigel Shadbolt",
+    "title": "Goodbye Tracking? Impact of {iOS} App Tracking Transparency and Privacy Labels",
+    "booktitle": "Proceedings of the ACM Conference on Fairness, Accountability, and Transparency (FAccT)",
+    "year": "2022"
+  },
+  "checked": 1794759762.449093,
+  "candidates": [
+    {
+      "title": "Goodbye Tracking? Impact of iOS App Tracking Transparency and Privacy Labels",
+      "match": 1.0,
+      "DOI": "10.1145/3531146.3533116",
+      "URL": "https://doi.org/10.1145/3531146.3533116",
+      "author": [
+        {
+          "given": "Konrad",
+          "family": "Kollnig",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of Oxford, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Anastasia",
+          "family": "Shuba",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Independent Researcher, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Max",
+          "family": "Van Kleek",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Oxford, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Reuben",
+          "family": "Binns",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Oxford, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nigel",
+          "family": "Shadbolt",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Oxford, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2022 ACM Conference on Fairness Accountability and Transparency"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            6,
+            20
+          ]
+        ]
+      },
+      "page": "508-520",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Exploring User Motivations Behind iOS App Tracking Transparency Decisions",
+      "match": 0.5675675675675675,
+      "DOI": "10.1145/3544548.3580654",
+      "URL": "https://doi.org/10.1145/3544548.3580654",
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-1895-0798",
+          "authenticated-orcid": false,
+          "given": "Hannah J",
+          "family": "Hutton",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "School of Management, University of Bath, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-6172-3323",
+          "authenticated-orcid": false,
+          "given": "David A",
+          "family": "Ellis",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Management, University of Bath, United Kingdom"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2023,
+            4,
+            19
+          ]
+        ]
+      },
+      "page": "1-12",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "How Usable Are iOS App Privacy Labels?",
+      "match": 0.5,
+      "DOI": "10.56553/popets-2022-0106",
+      "URL": "https://doi.org/10.56553/popets-2022-0106",
+      "author": [
+        {
+          "given": "Shikun",
+          "family": "Zhang",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Carnegie Mellon University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yuanyuan",
+          "family": "Feng",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Vermont"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yaxing",
+          "family": "Yao",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Maryland, Baltimore County"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Lorrie Faith",
+          "family": "Cranor",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Carnegie Mellon University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Norman",
+          "family": "Sadeh",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Carnegie Mellon University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings on Privacy Enhancing Technologies"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            10
+          ]
+        ]
+      },
+      "page": "204-228",
+      "type": "journal-article"
+    }
+  ],
+  "status": "metadata match"
+}

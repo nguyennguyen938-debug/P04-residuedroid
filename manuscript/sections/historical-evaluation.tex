@@ -1,0 +1,166 @@
+\section{Stream-Wrapper Evaluation Details}
+\input{generated/tab_matrix.tex}
+
+The stream wrapper measures \emph{authorization order} violations among delivered
+items. Its event called \texttt{COMMIT} precedes the stream write. Accordingly, ``authorized''
+in these stream-wrapper results does not establish a socket-handoff boundary. The channel tests
+reported separately use accepted byte counts. We ask four questions.
+\textbf{RQ1:} Which enforcement points let data that a withdrawal invalidated leave the device, under which lifecycle schedules?
+\textbf{RQ2:} Do measured race windows match Theorem~\ref{thm:race}?
+\textbf{RQ3:} Does \sys withhold permitted data, and what do its ablations lose?
+\textbf{RQ4:} What does \sys cost, do its labels survive \texttt{SIGKILL}, and does it carry over to a real library?
+
+
+
+\subsection{RQ1: Which check points leak?}
+\label{sec:eval-matrix}
+
+
+\input{generated/fig_bars.tex}
+
+Table~\ref{tab:matrix} gives the violation rate per variant and schedule over the five tenants whose contracts cover pending
+data, and Figure~\ref{fig:bars} gives the number of prohibited items. Across \nTrialsValid{} valid trials and
+\nSubmissions{} logged submissions, four patterns stand out.
+
+\emph{Enqueue-time checks are defeated by persistence.} \vname{none} and \vname{enqueue} authorized prohibited data in
+\noneLifePct{}\% and \enqueueLifePct{}\% of tenant-trials under \textsf{pen}, \textsf{kill}, \textsf{reb} and \textsf{rev}.
+The job had been queued before the withdrawal, and the system restored and ran it after process death or reboot.
+Figure~\ref{fig:windows} shows how long the window stays open: a median of \winPendingMed{}\,s when pending and
+\winRebootMed{}\,s across a reboot, because JobScheduler batching and boot time add to the job's own latency. Force-stop is
+the exception. It removed the jobs, and the startup path that re-enqueued them re-ran the enqueue check, so \vname{enqueue}
+leaked in only \enqueueFstopPct{}\% of \textsf{fstop} tenant-trials. The platform's lifecycle thus decides whether an
+early check happens to be re-run.
+
+\emph{Cancellation and job-start checks miss lineage and epochs.} \vname{conv} (cancel + enqueue + job start) leaked in
+\convViolPct{}\% of tenant-trials overall. In the lifecycle schedules almost all of it came from T1, whose summary was
+filed under \textit{diagnostics} (\convTOneLifePct{}\% of T1 tenant-trials, against \convOtherLifeK{} of \convOtherLifeN{}
+for the other four tenants). Cancellation and checks keyed on the job's declared
+scope never look at that job. \vname{job-start} and the serialized \vname{egress} check additionally leaked T5's
+pre-withdrawal records after the re-grant (\vname{egress}: \egressTFivePct{}\% of T5 tenant-trials), because a boolean
+flag cannot tell old data from new (Proposition~\ref{prop:nec}). \vname{egress} serializes its stream-wrapper gate but still admits data
+whenever lineage or epochs matter.
+
+\emph{Late authorizations defeat every check before the socket.} In the race schedules, the tenants without a lineage or epoch
+problem (T8, T2, T5, T4) still leaked under \vname{conv} in \convRacePct{}\% of tenant-trials. In \textsf{net}, the job had
+passed its job-start check and prepared its batch before the withdrawal. It then retried that batch after connectivity
+returned (\vname{job-start} \jobstartNetPct{}\%, \vname{conv} \convNetPct{}\%). Cancellation stopped the job only between
+batches, so the batch being retried still went out (\vname{cancel} \cancelNetPct{}\%).
+
+\emph{\sys authorized no prohibited item.} Over \rdTenantTrials{} tenant-trials on mediated paths, across both AVDs and all
+seven schedules, \sys authorized \rdItems{} prohibited items. The second AVD reproduces this (row ``\sys (AVD B)''). The
+\vname{volatile} ablation illustrates the consequence of losing labels and then failing open. It was clean while the process lived (\textsf{pen}:
+\volatilePenPct{}\%), but after \texttt{kill}, reboot or force-stop its in-memory labels were gone and it failed open in
+\volatileLifePct{}\% of tenant-trials.
+
+\paragraph{Other deferred-work substrates.}
+\label{sec:eval-substrate}
+The main campaign uses JobScheduler. We reran \vname{none}, \vname{conv} and \sys with the same tenants on two other
+substrates under \textsf{pen}, \textsf{kill}, \textsf{fstop} and \textsf{reb} (Table~\ref{tab:substrate}; at least
+\subWorkManagerMinPerSched{} and \subAlarmManagerMinPerSched{} valid trials per schedule). WorkManager~2.9.1 keeps its own
+database and reschedules work itself; for these builds we disabled the fixture's startup re-enqueue path, so every upload
+after a lifecycle event comes from WorkManager. It behaved like JobScheduler, and its work also survived force-stop
+(\vname{none} leaked in \subWorkManagerNoneForcestop{}\% of \textsf{fstop} tenant-trials). \vname{conv} again leaked only
+T1's misfiled summary. With AlarmManager, the app arms one alarm per job and re-arms lost alarms from its outbox when its
+process starts. Alarms do not survive force-stop or reboot. After force-stop the startup path re-armed some alarms but not
+others. After a reboot no alarm app logged a process start within the observation window in any trial (in one manual
+reboot outside the campaign its \texttt{BOOT\_COMPLETED} receiver did run, so this is timing we did not control), and nothing
+re-armed the alarms. \vname{none} therefore leaked in \textsf{pen} and \textsf{kill}, in \subAlarmManagerNoneForcestop{}\%
+of \textsf{fstop} and in no \textsf{reb} tenant-trials, and lost \subAlarmManagerNoneDefPct{}\% of the FP tenants' permitted
+items to lost alarms, an availability loss rather than enforcement. \vname{conv} leaked T1's summary whenever its alarm fired. On both substrates \sys authorized no prohibited item
+(\subWorkManagerRdItems{} over \subWorkManagerRdTT{} and \subAlarmManagerRdItems{} over \subAlarmManagerRdTT{} tenant-trials),
+while the unmediated T9 leaked under \sys whenever its upload ran (\subWorkManagerRdTNinePct{}\% and
+\subAlarmManagerRdTNinePct{}\% of its tenant-trials). The substrate decides whether deferred work survives a lifecycle
+event, not which gate sees authorization.
+
+\input{generated/tab_substrate.tex}
+
+\subsection{RQ2: Race windows follow Theorem~\ref{thm:race}}
+\label{sec:eval-race}
+
+\input{generated/fig_inflight.tex}
+\input{generated/fig_windows.tex}
+
+In \textsf{infl}, the withdrawal lands at a uniform offset after the upload job starts. Theorem~\ref{thm:race} predicts that a
+job-start check leaks exactly when the offset is below the job's last authorization offset $c_k$. We measured $c_k$ directly from the
+\vname{job-start} variant's authorization log ($n{=}\nCmax{}$ jobs, median \cmaxMedianMs{}\,ms: three 4-record batches against a
+300\,ms server). Per tenant-trial, the rule ``violation iff the offset is below that trial's own $c_k$'' predicted the observed outcome in
+\predAgree{} of \predN{} cases, and the aggregate prediction $\Pr[c_k>u]$ matches the curve (Figure~\ref{fig:inflight}).
+\vname{cancel} and \vname{conv} almost never leaked here (Table~\ref{tab:matrix}). Each batch is authorized at its start, and
+cancellation stops the loop at the next batch boundary, so the only window left is the few milliseconds between the stop
+check and the next authorization. Under \textsf{net} the same variants leaked in every tenant-trial, because the batch being
+retried was authorized again \emph{after} the withdrawal. Where the window sits depends on the code path: cancellation
+narrows one window and leaves another. \sys
+stays at zero at every offset. We also count \emph{outstanding} submissions: authorized before the withdrawal, but with the HTTP exchange completing only
+after the withdrawal was acknowledged. There were \outstandingRd{} such submissions for \sys and \outstandingSubs{} across all
+variants in the race schedules. These stream-wrapper counts indicate authorization/response overlap, not confirmed outstanding bytes.
+The sequence log and fixed response delay cannot establish receipt relative to acknowledgement.
+
+To isolate serialization (A3), we ran a micro-benchmark. A submitter thread loops on single-item submissions while a
+withdrawal lands at a random 0--40\,ms offset (\S\ref{sec:eval-cost}, Table~\ref{tab:cost}). With the check and authorization in one
+critical section, no round produced an authorization ordered after the withdrawal. With the check outside it (\vname{noser}),
+\noserZeroPct{}\% of rounds did so with no added delay and \noserFivePct{}\% with a 5\,ms gap inserted between check and authorization.
+In our wrapper the unserialized check runs before the connection is opened, so even without an added gap its window includes
+connection setup to the host, a few milliseconds per submission. Submissions run back to back, so the withdrawal often lands
+in such a window. Placing a check ``at egress'' is therefore not enough. It has to share the withdrawal's critical section.
+
+\subsection{RQ3: Permitted flows and ablations}
+\label{sec:eval-fp}
+\label{sec:eval-boundary}
+
+\input{generated/tab_fp.tex}
+
+Table~\ref{tab:fp} counts permitted items that were never delivered for the four FP-control tenants. These are the
+flush-allowed opt-out (T3), the backup purpose of the restriction tenant (T4), the no-withdrawal control (T6), and
+pre-revocation location history after \texttt{pm revoke} (T7). \vname{none} lost \deficitNonePct{}\% of these items and \sys
+\deficitRdPct{}\% (AVD~B: \deficitRdbPct{}\%); \sys's fence logged \rdFpBlocks{} blocks for these tenants. The other non-\vname{taint} variants lost at most \deficitConvPct{}\%
+(\vname{conv}). None of these losses is a blocked flow. All \defOtherTT{} affected tenant-trials were \textsf{reb} trials in
+which JobScheduler stopped a running upload because connectivity dropped after boot (stop reason \emph{connectivity}). The fixture's jobs stop at
+the next batch boundary without rescheduling, so the rest was still unsent when the window closed. They include T6, which has no
+withdrawal and therefore cannot be blocked by any check. The contract-unaware \vname{taint} rule
+blocked the flush, the backup and the OS-revocation history alike (\deficitTaintPct{}\%). This is the false-positive cost of
+treating every withdrawal or revocation as ``block all uses of this source''. It is also why we refuse to count the
+revocation residue in T7 as a violation.
+
+\paragraph{Boundary.} T9 uploads through a raw socket that bypasses the wrapper. It leaked under every variant that lacks an
+early check, \sys included (\rdUnmedPct{}\% of \sys tenant-trials). Variants with cancellation or job-start checks caught it
+when the job had not yet started, so on an uncovered path an early check is better than nothing. This is exactly the
+supported-path limit of Theorem~\ref{thm:sound}. T10 encrypts its body. Under \vname{none} and \vname{enqueue} the sink saw
+\opaqueUnknownSubs{} post-withdrawal submissions it could not attribute to any record in \opaqueTrials{} tenant-trials. We
+count these as \emph{unknown}, not clean. \sys authorized \rdOpaqueUnknown{} of them, because its decision is made before
+encryption, on the device.
+
+\subsection{RQ4: Cost, durability and a real library}
+\label{sec:eval-cost}
+
+\input{generated/tab_cost.tex}
+
+Table~\ref{tab:cost} reports on-device costs on the same emulator, measured with an otherwise idle host sink (medians with bootstrap intervals~\cite{efron1979bootstrap}). Persisting a
+label in the same row adds \insDeltaUs{}\,\textmu{}s to a single-row insert (median, \insNoUs{} vs.\ \insLabUs{}\,\textmu{}s).
+The fence's critical section (one grant lookup per scope, the authorization log write, no network) takes \fenceRdUs{}\,\textmu{}s
+for a four-item batch, against \fenceNoneUs{}\,\textmu{}s for logging alone. End to end, a fenced submission takes
+\eeRdMs{}\,ms against \eeNoneMs{}\,ms unfenced (medians, against a zero-delay local sink). The bootstrap intervals overlap
+(Table~\ref{tab:cost}), so on this path the fence is within measurement noise of connection and HTTP costs. The label adds \extrasDelta{} bytes to a summary job's persisted
+extras.
+
+\paragraph{Durability.} Theorem~\ref{thm:sound} needs labels written atomically with data (A2). We killed a writer process
+with \texttt{SIGKILL} \crashKills{} times at random moments. Writing the label in the same row left \crashOrphA{} unlabelled
+rows. Writing the data row first and the label to \texttt{SharedPreferences} afterwards left \crashOrphB{} unlabelled rows,
+i.e., at least one orphan in \crashOrphBPct{}\% of kills. Each orphan forces the fence to choose between failing open,
+which is unsound, and failing closed, which blocks permitted data.
+
+\subsection{Case study: ACRA}
+\label{sec:eval-acra-historical}
+
+In the preference-only ACRA~5.14.2 embedding~\cite{acra}, the startup processor
+checked reporting preferences at enqueue, while an already scheduled sender service
+sent approved reports without another preference check. We queued a crash offline, disabled
+reporting, restored connectivity and observed for 45\,s. Stock ACRA delivered
+\acraStockLeak{} reports (median \acraLatencyMed{}\,s after reconnection); the former fenced
+sender delivered \acraFenceLeak{} and logged \acraFenceBlockLogged{} blocks. Allowed controls
+delivered \acraStockCtl{} and \acraFenceCtl{} reports.
+
+The scheduled job disappeared in all \acraJobGoneReb{} reboot trials. Reopening the app
+at least 70\,s after the crash satisfied ACRA's report-age requirement and exercised its
+startup preference check. Disabled stock/fenced reports delivered in \acraStockReb{} and
+\acraFenceReb{} cases; enabled controls delivered in \acraStockRebCtl{} and
+\acraFenceRebCtl{}.

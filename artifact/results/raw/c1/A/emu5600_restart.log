@@ -1,0 +1,1670 @@
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+ERROR        | Unknown AVD name [P04AvdA], use -list-avds to see valid list.
+ERROR        | HOME is defined but there is no file P04AvdA.ini in $HOME/.android/avd
+ERROR        | (Note: Directories are searched in the order $ANDROID_AVD_HOME, $ANDROID_SDK_HOME/avd and $HOME/.android/avd)
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 59811
+INFO         | No consent for crashreport d145a14b-97c2-4b7a-8c45-57eef6aa0022, deleting.
+INFO         | No consent for crashreport fdba8c91-6031-49c5-b1cf-0173590d2c29, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_59811.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 11872 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell logcat -G 2M ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xac0fa9908
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xac0fa9908
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xac0fa9908
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xac0fa9908
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16164 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xac0fa9908
+ERROR        | Failed to restore previous context: 12297
+[59814:953499:20261108,031641.840326:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 68111
+INFO         | No consent for crashreport ea01deef-8789-420e-b73c-b061e2be6665, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_68111.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 18846 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc960acf08
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc960acf08
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc960acf08
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc960acf08
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11154 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc960acf08
+ERROR        | Failed to restore previous context: 12297
+[68114:1005675:20261108,032828.178550:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 76285
+INFO         | No consent for crashreport 25612fb9-a7bb-4178-a012-46366dfff15e, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_76285.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 17007 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system accelerometer_rotation 1 ' failed: 'adb: device offline'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10978 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell logcat -G 2M ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10883 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10795 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10947 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+INFO         | Boot completed in 10953 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 15894 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xaaae77988
+ERROR        | Failed to restore previous context: 12297
+[76289:1049714:20261108,041626.454482:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 6829
+INFO         | No consent for crashreport 59aefbb9-fc3f-4d50-88e8-26084a643b9b, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_6829.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 16862 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10891 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10876 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell logcat -G 2M ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell logcat -G 2M ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11030 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16122 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16030 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16122 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10832 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11006 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10793 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10719 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10795 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10973 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 15908 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb5ac26ee8
+ERROR        | Failed to restore previous context: 12297
+[6832:1232579:20261108,055651.654092:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 57971
+INFO         | No consent for crashreport d58f523e-7c6d-4eb5-a835-b0e5d2ca90c2, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_57971.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 11731 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10717 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa2fe994a8
+ERROR        | Failed to restore previous context: 12297
+[57977:1552305:20261108,060658.618043:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 63347
+INFO         | No consent for crashreport b8520a7b-1ad1-4c41-9036-e9419da03b62, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_63347.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 11521 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system accelerometer_rotation 1 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10783 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10703 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xa7c6e1548
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10758 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+[63350:1586062:20261108,063005.492802:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 75616
+INFO         | No consent for crashreport ba78280c-0741-4573-b4ad-2560ea3d6318, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_75616.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 11542 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xab6a0eda8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10711 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xab6a0eda8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xab6a0eda8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10788 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10852 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xab6a0eda8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10778 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+[75619:1663358:20261108,065932.414916:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 86707
+INFO         | No consent for crashreport 9da8bbb9-e27c-4ec7-9fbb-5bd200e3fc28, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_86707.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 11658 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system accelerometer_rotation 1 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10814 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10793 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xc80c259a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10941 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+INFO         | Wait for emulator (pid 86707) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+
+USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+INFO         | Saving snapshot 'default_boot' took 0 ms
+INFO         | removeAll
+WARNING      | Netsim Wifi dns:///localhost:62637 is gone due to Stream removed (CANCELLED)
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 20665
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_20665.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 12043 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: ''
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10849 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16098 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16065 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 21696 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10814 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16093 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16002 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16089 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 15954 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16417 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb8a900288
+ERROR        | Failed to restore previous context: 12297
+[20668:2642654:20261108,192034.439240:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 48406
+INFO         | No consent for crashreport 19e745e1-068d-41b7-909f-7b051e9b756b, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_48406.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 17530 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb56c452c8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16034 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb56c452c8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb56c452c8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xb56c452c8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10961 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+[48409:2872694:20261108,193828.749156:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 58114
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_58114.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 30617 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x95082dae8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x95082dae8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 16916 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x95082dae8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x95082dae8
+ERROR        | Failed to restore previous context: 12297
+[58117:2930029:20261108,195054.135330:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 72982
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_72982.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 17046 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 11004 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10978 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10963 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: ''
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+INFO         | Boot completed in 16064 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0xbff3d8468
+ERROR        | Failed to restore previous context: 12297
+[72987:3053540:20261108,205619.957020:WARNING in_range_cast.h:38] value -143893734 out of range
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/system-images/android-33/google_apis/arm64-v8a/
+INFO         | Guest GLES Driver: Auto (ext controls)
+WARNING      | Your AVD has been configured with an in-guest renderer, but the system image does not support guest rendering.Falling back to 'lavapipe' mode.
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:swangle
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `P04AvdA` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `P04AvdA` are met
+INFO         | Storing crashdata in: /tmp/android-xuanbachle/emu-crash-37.2.13.db, detection is enabled for process: 79064
+INFO         | No consent for crashreport b046540e-783e-414a-831e-fc25fa6af93c, deleting.
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+INFO         | initIcdPaths: ICD set to 'lavapipe', using Lavapipe ICD
+INFO         | Setting ICD filenames for the loader = /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib64/vulkan/lvp_icd.json
+INFO         | SharedLibrary::open for [/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+INFO         | Added library: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+INFO         | Selecting Vulkan device: llvmpipe (LLVM 21.1.4, 128 bits), Version: 1.4.330
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=512m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAF3TEEsL5+Za3IkIzfSx7/4GE4uBuBgvESSGycya/wCqngd3/P/AiJpugGkEmXIxBim5DxIoe0Xxc6k50h9GLDFVFiKzCfRzxmbIRV9anvIGgSexIpdaP2mZ2y8vT52EgpCMpIr2AiR5T0f+5Ex7yv59v2uNeFqSdtw0TF6TO8EjEDN4Ke3hTj3J92mu3yN8JytwOBMe9Hwb2iLGk1EL0PlND6oOUvISt8vjUQjASop7HBB7cyhQEZUmeF2cU+mKC+AH1I7K4R5kAEdUwCYfjXhRcu3X0Pkwvej7yYWajwMj7tcdFw/ey4UOXqp89qBFXXwz+4ntukKC5rChd4dPRejOOLiV0CL16CIMW6w4+uBssiCmjGhcc+FCQXzoLOnCQpIYU2/El7UzcI9JyYHz4ZKCKbp/7ajplCa/tsyaHIv3Psfj06ppxgPIEbhbZYIpBGtmPmk6luNKmQ1fQVDJOw9QXYWAhy0tVHYcmF1ydMdBsvEoLPp9isue6vHV52Y30iSFPqUrYllFwLml/YWRL35lmknxFnBfh8HxvdHV/Gn4yPA1dY5967Ja2DhXL3GaCWADwGCB1hrToXKVVSFHwKhqYMEaWe4sBseK7ijnJk1WvFNAdFsr7oOI0e0IYcfqTspNSqgOFvyPRJXfv0h0e3YYRVHFLfPKlAiL+T6bbrvHrhltdQEAAQA= xuanbachle@unknown
+INFO         |   androidboot.qemu.avd_name=P04AvdA
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4202496
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=adf8628e8323788ef86179836a2969780b70d1e6d8e16532ea68df5084a123b6
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6592
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Monitoring duration of emulator setup.
+WARNING      | Requested adb port (5601) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+INFO         | Using security allow list from: /Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/emulator/lib/emulator_access.json
+WARNING      | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO         | Started GRPC server at [::]:8600, security: Insecure, auth: none
+INFO         | Advertising in: /Users/xuanbachle/Library/Caches/TemporaryItems/avd/running/pid_79064.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Boot completed in 17224 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 15804 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 15979 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 11027 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell logcat -G 2M ' failed: 'adb: device 'emulator-5600' not found'
+INFO         | Boot completed in 10999 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11002 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device offline'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11047 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 11017 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10801 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10780 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10809 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10860 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10803 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10908 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10801 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10684 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10723 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10711 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10697 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10731 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10916 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10755 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 10730 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10756 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10746 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+ERROR        | DisplaySurfaceGlContextHelper context was preempted by others, current=0x3, needed=0x3, thread=0x8fec068a8
+ERROR        | Failed to restore previous context: 12297
+INFO         | Boot completed in 10723 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | Boot completed in 11094 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+WARNING      | adb command '/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb -s emulator-5600 shell settings put system screen_off_timeout 2147483647 ' failed: 'adb: device 'emulator-5600' not found'
+INFO         | Boot completed in 10739 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+[79070:3109743:20261108,233444.740405:WARNING in_range_cast.h:38] value -143893734 out of range

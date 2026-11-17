@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "acra",
+    "author": "{ACRA contributors}",
+    "title": "{ACRA}: Application Crash Reports for {Android}, release 5.14.2",
+    "howpublished": "\\url{https://github.com/ACRA/acra}",
+    "year": "2026"
+  },
+  "checked": 1794759769.664653,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

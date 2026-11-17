@@ -1,0 +1,23 @@
+{
+  "serial": "emulator-5642",
+  "boot_id": "5be5e2f5-45b8-4e79-83fc-9a7f9d58bd3b",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "stopped_fixture_packages": [
+    "org.residuelab.mstart",
+    "org.residuelab.mboth",
+    "org.residuelab.acrafence",
+    "org.residuelab.mlayer",
+    "org.residuelab.none",
+    "org.residuelab.alrd",
+    "org.residuelab.alconv",
+    "org.residuelab.noser",
+    "org.residuelab.egress",
+    "org.residuelab.mfence",
+    "org.residuelab.alnone",
+    "org.residuelab.rd",
+    "org.residuelab.acra",
+    "org.residuelab.volatile",
+    "org.residuelab.menqueue",
+    "org.residuelab.taint"
+  ]
+}

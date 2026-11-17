@@ -1,0 +1,5640 @@
+[
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "du2024mowchecker",
+      "author": "Xiaolin Du and Zhemin Yang and Jiapeng Lin and Yinzhi Cao and Min Yang",
+      "title": "Withdrawing is Believing? Detecting Inconsistencies between Withdrawal Choices and Third-party Data Collections in Mobile Apps",
+      "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+      "year": "2024"
+    },
+    "checked": 1794759756.281076,
+    "candidates": [
+      {
+        "title": "Withdrawing is believing? Detecting Inconsistencies between Withdrawal Choices and Third-party Data Collections in Mobile Apps",
+        "match": 1.0,
+        "DOI": "10.1109/sp54263.2024.00014",
+        "URL": "https://doi.org/10.1109/sp54263.2024.00014",
+        "author": [
+          {
+            "given": "Xiaolin",
+            "family": "Du",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Fudan University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zhemin",
+            "family": "Yang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Fudan University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jiapeng",
+            "family": "Lin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Fudan University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yinzhi",
+            "family": "Cao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Johns Hopkins University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Min",
+            "family": "Yang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Fudan University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2024 IEEE Symposium on Security and Privacy (SP)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              5,
+              19
+            ]
+          ]
+        },
+        "page": "735-751",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Detecting Inconsistent Privacy Statements Between Mobile Vehicle Apps and\u00a0Their Third-Party Integrations",
+        "match": 0.5414847161572053,
+        "DOI": "10.1007/978-981-95-3480-7_32",
+        "URL": "https://doi.org/10.1007/978-981-95-3480-7_32",
+        "author": [
+          {
+            "given": "Jiaying",
+            "family": "Huang",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Luwa",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Jiayue",
+            "family": "Lian",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Jiawei",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Yuhong",
+            "family": "Nan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Communications in Computer and Information Science",
+          "Blockchain and Trustworthy Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026
+            ]
+          ]
+        },
+        "page": "439-451",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Detecting inconsistencies in multi-platform mobile apps",
+        "match": 0.4444444444444444,
+        "DOI": "10.1109/issre.2015.7381838",
+        "URL": "https://doi.org/10.1109/issre.2015.7381838",
+        "author": [
+          {
+            "given": "Mona Erfani",
+            "family": "Joorabchi",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Mohamed",
+            "family": "Ali",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Ali",
+            "family": "Mesbah",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              11
+            ]
+          ]
+        },
+        "page": "450-460",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "tang2012cleanos",
+      "author": "Yang Tang and Phillip Ames and Sravan Bhamidipati and Ashish Bijlani and Roxana Geambasu and Nikhil Sarda",
+      "title": "{CleanOS}: Limiting Mobile Data Exposure with Idle Eviction",
+      "booktitle": "Proceedings of the 10th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+      "pages": "77--91",
+      "year": "2012"
+    },
+    "checked": 1794759756.281313,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "spahn2014pebbles",
+      "author": "Riley Spahn and Jonathan Bell and Michael Z. Lee and Sravan Bhamidipati and Roxana Geambasu and Gail E. Kaiser",
+      "title": "Pebbles: Fine-Grained Data Management Abstractions for Modern Operating Systems",
+      "booktitle": "Proceedings of the 11th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+      "pages": "113--129",
+      "year": "2014"
+    },
+    "checked": 1794759756.2814138,
+    "candidates": [
+      {
+        "title": "POSIX abstractions in modern operating systems",
+        "match": 0.6774193548387096,
+        "DOI": "10.1145/2901318.2901350",
+        "URL": "https://doi.org/10.1145/2901318.2901350",
+        "author": [
+          {
+            "given": "Vaggelis",
+            "family": "Atlidakis",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Columbia University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jeremy",
+            "family": "Andrus",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Columbia University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Roxana",
+            "family": "Geambasu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Columbia University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Dimitris",
+            "family": "Mitropoulos",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Columbia University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jason",
+            "family": "Nieh",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Columbia University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the Eleventh European Conference on Computer Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016,
+              4,
+              18
+            ]
+          ]
+        },
+        "page": "1-17",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Fine-grained, dynamic user customization of operating systems",
+        "match": 0.6521739130434783,
+        "DOI": "10.1109/iwooos.1996.557867",
+        "URL": "https://doi.org/10.1109/iwooos.1996.557867",
+        "author": [
+          {
+            "given": "W.S.",
+            "family": "Liao",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "family": "See-Mong Tan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "R.H.",
+            "family": "Campbell",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the Fifth International Workshop on Object-Orientation in Operation Systems"
+        ],
+        "published": null,
+        "page": "62-66",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Model-checking in finite state-space systems with fine-grained abstractions using SPIN",
+        "match": 0.43902439024390244,
+        "DOI": "10.1007/3-540-45139-0_3",
+        "URL": "https://doi.org/10.1007/3-540-45139-0_3",
+        "author": [
+          {
+            "given": "Marsha",
+            "family": "Chechik",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Benet",
+            "family": "Devereux",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Arie",
+            "family": "Gurfinkel",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Lecture Notes in Computer Science",
+          "Model Checking Software"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2001
+            ]
+          ]
+        },
+        "page": "16-36",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "nadkarni2016weir",
+      "author": "Adwait Nadkarni and Benjamin Andow and William Enck and Somesh Jha",
+      "title": "Practical {DIFC} Enforcement on {Android}",
+      "booktitle": "Proceedings of the 25th USENIX Security Symposium",
+      "pages": "1119--1136",
+      "year": "2016"
+    },
+    "checked": 1794759756.281539,
+    "candidates": [
+      {
+        "title": "Practical, Formal Synthesis and Automatic Enforcement of Security Policies for Android",
+        "match": 0.5573770491803278,
+        "DOI": "10.1109/dsn.2016.53",
+        "URL": "https://doi.org/10.1109/dsn.2016.53",
+        "author": [
+          {
+            "given": "Hamid",
+            "family": "Bagheri",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Alireza",
+            "family": "Sadeghi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Reyhaneh",
+            "family": "Jabbarvand",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sam",
+            "family": "Malek",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2016 46th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016,
+              6
+            ]
+          ]
+        },
+        "page": "514-525",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "The Enforcement of Foreign Judgments in the uae and difc Courts",
+        "match": 0.42,
+        "DOI": "10.1163/15730255-12341279",
+        "URL": "https://doi.org/10.1163/15730255-12341279",
+        "author": [
+          {
+            "given": "Saloni",
+            "family": "Kantaria",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "1 Herbert Smith Freehills, Dubai UAE saloni.kantaria@hsf.com"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Arab Law Quarterly"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2014,
+              7,
+              10
+            ]
+          ]
+        },
+        "page": "193-204",
+        "type": "journal-article"
+      },
+      {
+        "title": "Noninterference for a Practical DIFC-Based Operating System",
+        "match": 0.4166666666666667,
+        "DOI": "10.1109/sp.2009.23",
+        "URL": "https://doi.org/10.1109/sp.2009.23",
+        "author": [
+          {
+            "given": "Maxwell",
+            "family": "Krohn",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Eran",
+            "family": "Tromer",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2009 30th IEEE Symposium on Security and Privacy"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2009,
+              5
+            ]
+          ]
+        },
+        "page": "61-76",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "wang2022aper",
+      "author": "Sinan Wang and Yibo Wang and Xian Zhan and Ying Wang and Yepang Liu and Xiapu Luo and Shing-Chi Cheung",
+      "title": "Aper: Evolution-Aware Runtime Permission Misuse Detection for {Android} Apps",
+      "booktitle": "Proceedings of the 44th International Conference on Software Engineering (ICSE)",
+      "year": "2022"
+    },
+    "checked": 1794759757.2023602,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "enck2010taintdroid",
+      "author": "William Enck and Peter Gilbert and Byung-Gon Chun and Landon P. Cox and Jaeyeon Jung and Patrick McDaniel and Anmol N. Sheth",
+      "title": "{TaintDroid}: An Information-Flow Tracking System for Realtime Privacy Monitoring on Smartphones",
+      "booktitle": "Proceedings of the 9th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+      "year": "2010"
+    },
+    "checked": 1794759757.4364748,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "arzt2014flowdroid",
+      "author": "Steven Arzt and Siegfried Rasthofer and Christian Fritz and Eric Bodden and Alexandre Bartel and Jacques Klein and Yves Le Traon and Damien Octeau and Patrick McDaniel",
+      "title": "{FlowDroid}: Precise Context, Flow, Field, Object-sensitive and Lifecycle-aware Taint Analysis for {Android} Apps",
+      "booktitle": "Proceedings of the 35th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)",
+      "year": "2014"
+    },
+    "checked": 1794759757.4398139,
+    "candidates": [
+      {
+        "title": "A scalable, flow-and-context-sensitive taint analysis of android applications",
+        "match": 0.585635359116022,
+        "DOI": "10.1016/j.jvlc.2018.10.005",
+        "URL": "https://doi.org/10.1016/j.jvlc.2018.10.005",
+        "author": [
+          {
+            "given": "Wontae",
+            "family": "Choi",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jayanthkumar",
+            "family": "Kannan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Domagoj",
+            "family": "Babic",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of Computer Languages"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              4
+            ]
+          ]
+        },
+        "page": "1-14",
+        "type": "journal-article"
+      },
+      {
+        "title": "Analyzing Android Taint Analysis Tools: FlowDroid, Amandroid, and DroidSafe",
+        "match": 0.384180790960452,
+        "DOI": "10.1109/tse.2021.3109563",
+        "URL": "https://doi.org/10.1109/tse.2021.3109563",
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-3645-2733",
+            "authenticated-orcid": false,
+            "given": "Junbin",
+            "family": "Zhang",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yingying",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lina",
+            "family": "Qiu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-7280-1614",
+            "authenticated-orcid": false,
+            "given": "Julia",
+            "family": "Rubin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "IEEE Transactions on Software Engineering"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              10,
+              1
+            ]
+          ]
+        },
+        "page": "4014-4040",
+        "type": "journal-article"
+      },
+      {
+        "title": "Leveraging historical versions of Android apps for efficient and precise taint analysis",
+        "match": 0.3125,
+        "DOI": "10.1145/3196398.3196433",
+        "URL": "https://doi.org/10.1145/3196398.3196433",
+        "author": [
+          {
+            "given": "Haipeng",
+            "family": "Cai",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Washington State University, Pullman"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "John",
+            "family": "Jenkins",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Washington State University, Pullman"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the 15th International Conference on Mining Software Repositories"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018,
+              5,
+              28
+            ]
+          ]
+        },
+        "page": "265-269",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "hornyack2011appfence",
+      "author": "Peter Hornyack and Seungyeop Han and Jaeyeon Jung and Stuart Schechter and David Wetherall",
+      "title": "These Aren't the Droids You're Looking For: Retrofitting {Android} to Protect Data from Imperious Applications",
+      "booktitle": "Proceedings of the 18th ACM Conference on Computer and Communications Security (CCS)",
+      "year": "2011"
+    },
+    "checked": 1794759757.442699,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "wei2014amandroid",
+      "author": "Fengguo Wei and Sankardas Roy and Xinming Ou and Robby",
+      "title": "Amandroid: A Precise and General Inter-component Data Flow Analysis Framework for Security Vetting of {Android} Apps",
+      "booktitle": "Proceedings of the 21st ACM Conference on Computer and Communications Security (CCS)",
+      "year": "2014"
+    },
+    "checked": 1794759757.9728372,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "li2015iccta",
+      "author": "Li Li and Alexandre Bartel and Tegawend{\\'e} F. Bissyand{\\'e} and Jacques Klein and Yves Le Traon and Steven Arzt and Siegfried Rasthofer and Eric Bodden and Damien Octeau and Patrick McDaniel",
+      "title": "{IccTA}: Detecting Inter-Component Privacy Leaks in {Android} Apps",
+      "booktitle": "Proceedings of the 37th International Conference on Software Engineering (ICSE)",
+      "year": "2015"
+    },
+    "checked": 1794759758.2507598,
+    "candidates": [
+      {
+        "title": "IccTA: Detecting Inter-Component Privacy Leaks in Android Apps",
+        "match": 1.0,
+        "DOI": "10.1109/icse.2015.48",
+        "URL": "https://doi.org/10.1109/icse.2015.48",
+        "author": [
+          {
+            "given": "Li",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Alexandre",
+            "family": "Bartel",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Tegawende F.",
+            "family": "Bissyande",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jacques",
+            "family": "Klein",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yves",
+            "family": "Le Traon",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Steven",
+            "family": "Arzt",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Siegfried",
+            "family": "Rasthofer",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Eric",
+            "family": "Bodden",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Damien",
+            "family": "Octeau",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Patrick",
+            "family": "McDaniel",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2015 IEEE/ACM 37th IEEE International Conference on Software Engineering"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              5
+            ]
+          ]
+        },
+        "page": "280-291",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Contextual approach for identifying malicious Inter-Component privacy leaks in Android apps",
+        "match": 0.6973684210526315,
+        "DOI": "10.1109/iscc.2017.8024534",
+        "URL": "https://doi.org/10.1109/iscc.2017.8024534",
+        "author": [
+          {
+            "given": "Daojuan",
+            "family": "Zhang",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Yuanfang",
+            "family": "Guo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Dianjie",
+            "family": "Guo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Rui",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Guangming",
+            "family": "Yu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2017 IEEE Symposium on Computers and Communications (ISCC)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              7
+            ]
+          ]
+        },
+        "page": "228-235",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Detecting Privacy Leaks in Android Apps using Inter-Component Information Flow Control Analysis",
+        "match": 0.5,
+        "DOI": "10.1109/iscisc.2018.8546876",
+        "URL": "https://doi.org/10.1109/iscisc.2018.8546876",
+        "author": [
+          {
+            "given": "Zohreh",
+            "family": "Bohluli",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Hamid Reza",
+            "family": "Shahriari",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2018 15th International ISC (Iranian Society of Cryptology) Conference on Information Security and Cryptology (ISCISC)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018,
+              8
+            ]
+          ]
+        },
+        "page": "1-6",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "gordon2015droidsafe",
+      "author": "Michael I. Gordon and Deokhwan Kim and Jeff Perkins and Limei Gilham and Nguyen Nguyen and Martin Rinard",
+      "title": "Information-Flow Analysis of {Android} Applications in {DroidSafe}",
+      "booktitle": "Proceedings of the Network and Distributed System Security Symposium (NDSS)",
+      "year": "2015"
+    },
+    "checked": 1794759758.252286,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "li2017staticsurvey",
+      "author": "Li Li and Tegawend{\\'e} F. Bissyand{\\'e} and Mike Papadakis and Siegfried Rasthofer and Alexandre Bartel and Damien Octeau and Jacques Klein and Yves Le Traon",
+      "title": "Static Analysis of {Android} Apps: A Systematic Literature Review",
+      "journal": "Information and Software Technology",
+      "volume": "88",
+      "pages": "67--95",
+      "year": "2017"
+    },
+    "checked": 1794759758.537904,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "felt2011demystified",
+      "author": "Adrienne Porter Felt and Erika Chin and Steve Hanna and Dawn Song and David Wagner",
+      "title": "Android Permissions Demystified",
+      "booktitle": "Proceedings of the 18th ACM Conference on Computer and Communications Security (CCS)",
+      "year": "2011"
+    },
+    "checked": 1794759758.773741,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "felt2012attention",
+      "author": "Adrienne Porter Felt and Elizabeth Ha and Serge Egelman and Ariel Haney and Erika Chin and David Wagner",
+      "title": "Android Permissions: User Attention, Comprehension, and Behavior",
+      "booktitle": "Proceedings of the Eighth Symposium on Usable Privacy and Security (SOUPS)",
+      "year": "2012"
+    },
+    "checked": 1794759759.0179179,
+    "candidates": [
+      {
+        "title": "Users Comprehension and Behaviour Study on Android Permissions",
+        "match": 0.5040650406504065,
+        "DOI": "10.31436/ijpcc.v2i2.29",
+        "URL": "https://doi.org/10.31436/ijpcc.v2i2.29",
+        "author": [
+          {
+            "given": "NORMI SHAM",
+            "family": "AWANG ABU BAKAR",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "International Journal on Perceptive and Cognitive Computing"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016,
+              10,
+              27
+            ]
+          ]
+        },
+        "page": null,
+        "type": "journal-article"
+      },
+      {
+        "title": "Understanding and granting android permissions: A user survey",
+        "match": 0.4462809917355372,
+        "DOI": "10.1109/ccst.2017.8167834",
+        "URL": "https://doi.org/10.1109/ccst.2017.8167834",
+        "author": [
+          {
+            "given": "Selvakumar",
+            "family": "Ramachandran",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Andrea",
+            "family": "Dimitri",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Maulahikmah",
+            "family": "Galinium",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Muhammad",
+            "family": "Tahir",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Indirajith Viji",
+            "family": "Ananth",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Christian H.",
+            "family": "Schunck",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Maurizio",
+            "family": "Talamo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2017 International Carnahan Conference on Security Technology (ICCST)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              10
+            ]
+          ]
+        },
+        "page": "1-6",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "User-Centric Android Flexible Permissions",
+        "match": 0.37254901960784315,
+        "DOI": "10.1109/icse-c.2017.84",
+        "URL": "https://doi.org/10.1109/icse-c.2017.84",
+        "author": [
+          {
+            "given": "Gian Luca",
+            "family": "Scoccia",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Ivano",
+            "family": "Malavolta",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Marco",
+            "family": "Autili",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Amleto",
+            "family": "Di Salle",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Paola",
+            "family": "Inverardi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2017 IEEE/ACM 39th International Conference on Software Engineering Companion (ICSE-C)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              5
+            ]
+          ]
+        },
+        "page": "365-367",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "au2012pscout",
+      "author": "Kathy Wain Yee Au and Yi Fan Zhou and Zhen Huang and David Lie",
+      "title": "{PScout}: Analyzing the {Android} Permission Specification",
+      "booktitle": "Proceedings of the 19th ACM Conference on Computer and Communications Security (CCS)",
+      "year": "2012"
+    },
+    "checked": 1794759759.308791,
+    "candidates": [
+      {
+        "title": "Cross-language Android permission specification",
+        "match": 0.8,
+        "DOI": "10.1145/3540250.3549142",
+        "URL": "https://doi.org/10.1145/3540250.3549142",
+        "author": [
+          {
+            "given": "Chaoran",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Swinburne University of Technology, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xiao",
+            "family": "Chen",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Monash University, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ruoxi",
+            "family": "Sun",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Adelaide, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Minhui",
+            "family": "Xue",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "CSIRO\u2019s Data61, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sheng",
+            "family": "Wen",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Swinburne University of Technology, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Muhammad Ejaz",
+            "family": "Ahmed",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "CSIRO\u2019s Data61, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Seyit",
+            "family": "Camtepe",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "CSIRO\u2019s Data61, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yang",
+            "family": "Xiang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Swinburne University of Technology, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the 30th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              11,
+              7
+            ]
+          ]
+        },
+        "page": "772-783",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Permlyzer: Analyzing permission usage in Android applications",
+        "match": 0.584070796460177,
+        "DOI": "10.1109/issre.2013.6698893",
+        "URL": "https://doi.org/10.1109/issre.2013.6698893",
+        "author": [
+          {
+            "given": "Wei",
+            "family": "Xu",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Fangfang",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sencun",
+            "family": "Zhu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2013 IEEE 24th International Symposium on Software Reliability Engineering (ISSRE)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2013,
+              11
+            ]
+          ]
+        },
+        "page": "400-410",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Finding the Missing Piece: Permission Specification Analysis for Android NDK",
+        "match": 0.546875,
+        "DOI": "10.1109/ase51524.2021.9678843",
+        "URL": "https://doi.org/10.1109/ase51524.2021.9678843",
+        "author": [
+          {
+            "given": "Hao",
+            "family": "Zhou",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Haoyu",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Shuohan",
+            "family": "Wu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xiapu",
+            "family": "Luo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yajin",
+            "family": "Zhou",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ting",
+            "family": "Chen",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ting",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              11
+            ]
+          ]
+        },
+        "page": "505-516",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "xu2012aurasium",
+      "author": "Rubin Xu and Hassen Sa{\\\"\\i}di and Ross Anderson",
+      "title": "Aurasium: Practical Policy Enforcement for {Android} Applications",
+      "booktitle": "Proceedings of the 21st USENIX Security Symposium",
+      "year": "2012"
+    },
+    "checked": 1794759759.324256,
+    "candidates": [
+      {
+        "title": "AppGuard \u2013 Fine-Grained Policy Enforcement for Untrusted Android Applications",
+        "match": 0.7153284671532847,
+        "DOI": "10.1007/978-3-642-54568-9_14",
+        "URL": "https://doi.org/10.1007/978-3-642-54568-9_14",
+        "author": [
+          {
+            "given": "Michael",
+            "family": "Backes",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sebastian",
+            "family": "Gerling",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Christian",
+            "family": "Hammer",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Matteo",
+            "family": "Maffei",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Philipp",
+            "family": "von Styp-Rekowsky",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Lecture Notes in Computer Science",
+          "Data Privacy Management and Autonomous Spontaneous Security"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2014
+            ]
+          ]
+        },
+        "page": "213-231",
+        "type": "book-chapter"
+      },
+      {
+        "title": "CAPEF: Context-Aware Policy Enforcement Framework for Android Applications",
+        "match": 0.6814814814814815,
+        "DOI": "10.55708/js0201002",
+        "URL": "https://doi.org/10.55708/js0201002",
+        "author": [
+          {
+            "given": "Saad",
+            "family": "Inshi",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Mahdi",
+            "family": "Elarbi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Rasel",
+            "family": "Chowdhury",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Hakima",
+            "family": "Ould-Slimane",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Chamseddine",
+            "family": "Talhi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of Engineering Research and Sciences"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              1
+            ]
+          ]
+        },
+        "page": "13-23",
+        "type": "journal-article"
+      },
+      {
+        "title": "$$\\mathbb {K}$$ Semantics for Security Policy Enforcement on Android Applications with Practical Cases",
+        "match": 0.5987261146496815,
+        "DOI": "10.1007/978-3-031-19523-5_8",
+        "URL": "https://doi.org/10.1007/978-3-031-19523-5_8",
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-8563-4736",
+            "authenticated-orcid": false,
+            "given": "Marwa",
+            "family": "Ziadia",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-4820-3176",
+            "authenticated-orcid": false,
+            "given": "Mohamed",
+            "family": "Mejri",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-3905-9099",
+            "authenticated-orcid": false,
+            "given": "Jaouhar",
+            "family": "Fattahi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "EAI/Springer Innovations in Communication and Computing",
+          "Advances in Computational Intelligence and Communication"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              9,
+              30
+            ]
+          ]
+        },
+        "page": "115-133",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "backes2015boxify",
+      "author": "Michael Backes and Sven Bugiel and Christian Hammer and Oliver Schranz and Philipp von Styp-Rekowsky",
+      "title": "Boxify: Full-fledged App Sandboxing for Stock {Android}",
+      "booktitle": "Proceedings of the 24th USENIX Security Symposium",
+      "year": "2015"
+    },
+    "checked": 1794759759.555866,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "fernandes2016flowfence",
+      "author": "Earlence Fernandes and Justin Paupore and Amir Rahmati and Daniel Simionato and Mauro Conti and Atul Prakash",
+      "title": "{FlowFence}: Practical Data Protection for Emerging {IoT} Application Frameworks",
+      "booktitle": "Proceedings of the 25th USENIX Security Symposium",
+      "pages": "531--548",
+      "year": "2016"
+    },
+    "checked": 1794759759.8460648,
+    "candidates": [
+      {
+        "title": "Data Protection in India: Legal Frameworks and Emerging Trends",
+        "match": 0.47058823529411764,
+        "DOI": "10.59646/dataprotectionc19/125",
+        "URL": "https://doi.org/10.59646/dataprotectionc19/125",
+        "author": [
+          {
+            "name": "Assistant Professor, Modern Law College, Pune, Maharashtra 411016, India.",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Anita",
+            "family": "Jadhav",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Personal Data Protection In Digital Age: Issues And Challenges"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              2,
+              18
+            ]
+          ]
+        },
+        "page": null,
+        "type": "book-chapter"
+      },
+      {
+        "title": "PERSONAL DATA PROTECTION \u2013 FRAMEWORKS, PRACTICAL EXPERIENCES AND CHALLENGES",
+        "match": 0.4217687074829932,
+        "DOI": "10.70995/xdnx2648",
+        "URL": "https://doi.org/10.70995/xdnx2648",
+        "author": [
+          {
+            "name": "Energoprojekt Entel plc, Belgrade, Bulevar Mihajla Pupina 12, Belgrade, Republic of  Serbia",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-8067-6582",
+            "authenticated-orcid": false,
+            "given": "Radoslav",
+            "family": "Rakovic",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "9th INTERNATIONAL FORUM \u201cSAFETY FOR THE FUTURE 2023\u201d"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023
+            ]
+          ]
+        },
+        "page": null,
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Scalable Frameworks for Application Security and Data Protection",
+        "match": 0.2733812949640288,
+        "DOI": "10.1007/978-3-319-51064-4_7",
+        "URL": "https://doi.org/10.1007/978-3-319-51064-4_7",
+        "author": [
+          {
+            "given": "Ilya",
+            "family": "Kabanov",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Communications in Computer and Information Science",
+          "Global Security, Safety and Sustainability - The Security Challenges of the Connected World"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "page": "82-95",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "zeldovich2006histar",
+      "author": "Nickolai Zeldovich and Silas Boyd-Wickizer and Eddie Kohler and David Mazi{\\`e}res",
+      "title": "Making Information Flow Explicit in {HiStar}",
+      "booktitle": "Proceedings of the 7th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+      "year": "2006"
+    },
+    "checked": 1794759760.673457,
+    "candidates": [
+      {
+        "title": "Making information flow explicit in HiStar",
+        "match": 1.0,
+        "DOI": "10.1145/2018396.2018419",
+        "URL": "https://doi.org/10.1145/2018396.2018419",
+        "author": [
+          {
+            "given": "Nickolai",
+            "family": "Zeldovich",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Massachusetts Institute of Technology, CSAIL, Cambridge, MA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Silas",
+            "family": "Boyd-Wickizer",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Massachusetts Institute of Technology, CSAIL, Cambridge, MA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Eddie",
+            "family": "Kohler",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of California, Los Angeles, CA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "David",
+            "family": "Mazi\u00e8res",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Stanford University, Stanford, CA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Communications of the ACM"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2011,
+              11
+            ]
+          ]
+        },
+        "page": "93-101",
+        "type": "journal-article"
+      },
+      {
+        "title": "Analyzing Explicit Information Flow",
+        "match": 0.5454545454545454,
+        "DOI": "10.1007/978-3-642-17714-9_1",
+        "URL": "https://doi.org/10.1007/978-3-642-17714-9_1",
+        "author": [
+          {
+            "given": "Sriram K.",
+            "family": "Rajamani",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Lecture Notes in Computer Science",
+          "Information Systems Security"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2010
+            ]
+          ]
+        },
+        "page": "1-2",
+        "type": "book-chapter"
+      },
+      {
+        "title": "HISTAR 355",
+        "match": 0.23076923076923078,
+        "DOI": "10.31399/asm.ad.sa0731",
+        "URL": "https://doi.org/10.31399/asm.ad.sa0731",
+        "author": null,
+        "container-title": [
+          "Alloy Digest"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              9,
+              1
+            ]
+          ]
+        },
+        "page": null,
+        "type": "journal-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "krohn2007flume",
+      "author": "Maxwell Krohn and Alexander Yip and Micah Brodsky and Natan Cliffer and M. Frans Kaashoek and Eddie Kohler and Robert Morris",
+      "title": "Information Flow Control for Standard {OS} Abstractions",
+      "booktitle": "Proceedings of the 21st ACM Symposium on Operating Systems Principles (SOSP)",
+      "year": "2007"
+    },
+    "checked": 1794759761.270081,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "efstathopoulos2005asbestos",
+      "author": "Petros Efstathopoulos and Maxwell Krohn and Steve VanDeBogart and Cliff Frey and David Ziegler and Eddie Kohler and David Mazi{\\`e}res and M. Frans Kaashoek and Robert Morris",
+      "title": "Labels and Event Processes in the {Asbestos} Operating System",
+      "booktitle": "Proceedings of the 20th ACM Symposium on Operating Systems Principles (SOSP)",
+      "year": "2005"
+    },
+    "checked": 1794759761.635988,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "myers1997difc",
+      "author": "Andrew C. Myers and Barbara Liskov",
+      "title": "A Decentralized Model for Information Flow Control",
+      "booktitle": "Proceedings of the 16th ACM Symposium on Operating Systems Principles (SOSP)",
+      "year": "1997"
+    },
+    "checked": 1794759761.675411,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "matte2020cookie",
+      "author": "C{\\'e}lestin Matte and Nataliia Bielova and Cristiana Santos",
+      "title": "Do Cookie Banners Respect my Choice? Measuring Legal Compliance of Banners from {IAB} {Europe}'s Transparency and Consent Framework",
+      "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+      "year": "2020"
+    },
+    "checked": 1794759761.984056,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "kollnig2021faitaccompli",
+      "author": "Konrad Kollnig and Reuben Binns and Pierre Dewitte and Max Van Kleek and Ge Wang and Daniel Omeiza and Helena Webb and Nigel Shadbolt",
+      "title": "A Fait Accompli? An Empirical Study into the Absence of Consent to Third-Party Tracking in {Android} Apps",
+      "booktitle": "Proceedings of the Seventeenth Symposium on Usable Privacy and Security (SOUPS)",
+      "year": "2021"
+    },
+    "checked": 1794759762.1612082,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "kollnig2022goodbye",
+      "author": "Konrad Kollnig and Anastasia Shuba and Max Van Kleek and Reuben Binns and Nigel Shadbolt",
+      "title": "Goodbye Tracking? Impact of {iOS} App Tracking Transparency and Privacy Labels",
+      "booktitle": "Proceedings of the ACM Conference on Fairness, Accountability, and Transparency (FAccT)",
+      "year": "2022"
+    },
+    "checked": 1794759762.449093,
+    "candidates": [
+      {
+        "title": "Goodbye Tracking? Impact of iOS App Tracking Transparency and Privacy Labels",
+        "match": 1.0,
+        "DOI": "10.1145/3531146.3533116",
+        "URL": "https://doi.org/10.1145/3531146.3533116",
+        "author": [
+          {
+            "given": "Konrad",
+            "family": "Kollnig",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of Oxford, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Anastasia",
+            "family": "Shuba",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Independent Researcher, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Max",
+            "family": "Van Kleek",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Oxford, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Reuben",
+            "family": "Binns",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Oxford, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nigel",
+            "family": "Shadbolt",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Oxford, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2022 ACM Conference on Fairness Accountability and Transparency"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              6,
+              20
+            ]
+          ]
+        },
+        "page": "508-520",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Exploring User Motivations Behind iOS App Tracking Transparency Decisions",
+        "match": 0.5675675675675675,
+        "DOI": "10.1145/3544548.3580654",
+        "URL": "https://doi.org/10.1145/3544548.3580654",
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-1895-0798",
+            "authenticated-orcid": false,
+            "given": "Hannah J",
+            "family": "Hutton",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "School of Management, University of Bath, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-6172-3323",
+            "authenticated-orcid": false,
+            "given": "David A",
+            "family": "Ellis",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Management, University of Bath, United Kingdom"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              4,
+              19
+            ]
+          ]
+        },
+        "page": "1-12",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "How Usable Are iOS App Privacy Labels?",
+        "match": 0.5,
+        "DOI": "10.56553/popets-2022-0106",
+        "URL": "https://doi.org/10.56553/popets-2022-0106",
+        "author": [
+          {
+            "given": "Shikun",
+            "family": "Zhang",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Carnegie Mellon University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yuanyuan",
+            "family": "Feng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Vermont"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yaxing",
+            "family": "Yao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Maryland, Baltimore County"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lorrie Faith",
+            "family": "Cranor",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Carnegie Mellon University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Norman",
+            "family": "Sadeh",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Carnegie Mellon University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings on Privacy Enhancing Technologies"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              10
+            ]
+          ]
+        },
+        "page": "204-228",
+        "type": "journal-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "nguyen2021sharefirst",
+      "author": "Trung Tin Nguyen and Michael Backes and Ninja Marnau and Ben Stock",
+      "title": "Share First, Ask Later (or Never?) Studying Violations of {GDPR}'s Explicit Consent in {Android} Apps",
+      "booktitle": "Proceedings of the 30th USENIX Security Symposium",
+      "year": "2021"
+    },
+    "checked": 1794759762.4494982,
+    "candidates": [
+      {
+        "title": "Studying TLS Usage in Android Apps",
+        "match": 0.47244094488188976,
+        "DOI": "10.1145/3232755.3232779",
+        "URL": "https://doi.org/10.1145/3232755.3232779",
+        "author": [
+          {
+            "given": "Abbas",
+            "family": "Razaghpanah",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Stony Brook University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Arian Akhavan",
+            "family": "Niaki",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "UMass-Amherst"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Narseo",
+            "family": "Vallina-Rodriguez",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "IMDEA Networks Institute/ICSI"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Srikanth",
+            "family": "Sundaresan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Facebook"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Johanna",
+            "family": "Amann",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "ICSI/Corelight"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Philippa",
+            "family": "Gill",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "UMass-Amherst"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the Applied Networking Research Workshop"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018,
+              7,
+              16
+            ]
+          ]
+        },
+        "page": "5-5",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "An Empirical Evaluation of GDPR Compliance Violations in Android mHealth Apps",
+        "match": 0.47058823529411764,
+        "DOI": "10.1109/issre5003.2020.00032",
+        "URL": "https://doi.org/10.1109/issre5003.2020.00032",
+        "author": [
+          {
+            "given": "Ming",
+            "family": "Fan",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Le",
+            "family": "Yu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sen",
+            "family": "Chen",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hao",
+            "family": "Zhou",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xiapu",
+            "family": "Luo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Shuyue",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yang",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jun",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ting",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2020 IEEE 31st International Symposium on Software Reliability Engineering (ISSRE)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              10
+            ]
+          ]
+        },
+        "page": "253-264",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Breaking the Illusion: Automated Reasoning of GDPR Consent Violations",
+        "match": 0.2236024844720497,
+        "DOI": "10.1109/sp63933.2026.00040",
+        "URL": "https://doi.org/10.1109/sp63933.2026.00040",
+        "author": [
+          {
+            "given": "Ying",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of California,Los Angeles"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Wenjun",
+            "family": "Qiu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Toronto"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Faysal Hossain",
+            "family": "Shezan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at Arlington"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kunlin",
+            "family": "Cai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of California,Los Angeles"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Michelangelo",
+            "family": "Van Dam",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "in2it"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lisa",
+            "family": "Austin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at Arlington"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "David",
+            "family": "Lie",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at Arlington"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yuan",
+            "family": "Tian",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of California,Los Angeles"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2026 IEEE Symposium on Security and Privacy (SP)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              5,
+              18
+            ]
+          ]
+        },
+        "page": "905-923",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "nguyen2022freely",
+      "author": "Trung Tin Nguyen and Michael Backes and Ben Stock",
+      "title": "Freely Given Consent? Studying Consent Notice of Third-Party Tracking and Its Violations of {GDPR} in {Android} Apps",
+      "booktitle": "Proceedings of the ACM SIGSAC Conference on Computer and Communications Security (CCS)",
+      "pages": "2369--2383",
+      "year": "2022"
+    },
+    "checked": 1794759762.7128582,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "reardon2019fiftyways",
+      "author": "Joel Reardon and {\\'A}lvaro Feal and Primal Wijesekera and Amit Elazari Bar On and Narseo Vallina-Rodriguez and Serge Egelman",
+      "title": "50 Ways to Leak Your Data: An Exploration of Apps' Circumvention of the {Android} Permissions System",
+      "booktitle": "Proceedings of the 28th USENIX Security Symposium",
+      "year": "2019"
+    },
+    "checked": 1794759763.1941,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "razaghpanah2018trackers",
+      "author": "Abbas Razaghpanah and Rishab Nithyanand and Narseo Vallina-Rodriguez and Srikanth Sundaresan and Mark Allman and Christian Kreibich and Phillipa Gill",
+      "title": "Apps, Trackers, Privacy, and Regulators: A Global Study of the Mobile Tracking Ecosystem",
+      "booktitle": "Proceedings of the Network and Distributed System Security Symposium (NDSS)",
+      "year": "2018"
+    },
+    "checked": 1794759763.6420019,
+    "candidates": [
+      {
+        "title": "Apps, Trackers, Privacy, and Regulators: A Global Study of the Mobile Tracking Ecosystem",
+        "match": 1.0,
+        "DOI": "10.14722/ndss.2018.23353",
+        "URL": "https://doi.org/10.14722/ndss.2018.23353",
+        "author": [
+          {
+            "given": "Abbas",
+            "family": "Razaghpanah",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Rishab",
+            "family": "Nithyanand",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Narseo",
+            "family": "Vallina-Rodriguez",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Srikanth",
+            "family": "Sundaresan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mark",
+            "family": "Allman",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Christian",
+            "family": "Kreibich",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Phillipa",
+            "family": "Gill",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings 2018 Network and Distributed System Security Symposium"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018
+            ]
+          ]
+        },
+        "page": null,
+        "type": "proceedings-article"
+      },
+      {
+        "title": "No Salvation from\u00a0Trackers: Privacy Analysis of\u00a0Religious Websites and\u00a0Mobile Apps",
+        "match": 0.4727272727272727,
+        "DOI": "10.1007/978-3-031-25734-6_10",
+        "URL": "https://doi.org/10.1007/978-3-031-25734-6_10",
+        "author": [
+          {
+            "given": "Nayanamana",
+            "family": "Samarasinghe",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Pranay",
+            "family": "Kapoor",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mohammad",
+            "family": "Mannan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Amr",
+            "family": "Youssef",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Lecture Notes in Computer Science",
+          "Data Privacy Management, Cryptocurrencies and Blockchain Technology"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023
+            ]
+          ]
+        },
+        "page": "151-166",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Privacy of Default Apps in Apple\u2019s Mobile Ecosystem",
+        "match": 0.42962962962962964,
+        "DOI": "10.1145/3613904.3642831",
+        "URL": "https://doi.org/10.1145/3613904.3642831",
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-7253-1121",
+            "authenticated-orcid": false,
+            "given": "Amel",
+            "family": "Bourdoucen",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Aalto University, Finland"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-8659-2283",
+            "authenticated-orcid": false,
+            "given": "Janne",
+            "family": "Lindqvist",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Aalto University, Finland"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the CHI Conference on Human Factors in Computing Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              5,
+              11
+            ]
+          ]
+        },
+        "page": "1-32",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "ren2016recon",
+      "author": "Jingjing Ren and Ashwin Rao and Martina Lindorfer and Arnaud Legout and David Choffnes",
+      "title": "{ReCon}: Revealing and Controlling {PII} Leaks in Mobile Network Traffic",
+      "booktitle": "Proceedings of the 14th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys)",
+      "year": "2016"
+    },
+    "checked": 1794759763.7583191,
+    "candidates": [
+      {
+        "title": "Investigating and Revealing Privacy Leaks in Mobile Application Traffic",
+        "match": 0.5942028985507246,
+        "DOI": "10.1109/wd.2019.8734246",
+        "URL": "https://doi.org/10.1109/wd.2019.8734246",
+        "author": [
+          {
+            "given": "Shuhui",
+            "family": "Chen",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Shuang",
+            "family": "Zhao",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Biao",
+            "family": "Han",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Xiaoyan",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2019 Wireless Days (WD)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              4
+            ]
+          ]
+        },
+        "page": "1-4",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Controlling Network Traffic",
+        "match": 0.574468085106383,
+        "DOI": "10.1007/978-1-4302-2773-1_5",
+        "URL": "https://doi.org/10.1007/978-1-4302-2773-1_5",
+        "author": [
+          {
+            "suffix": "Jr",
+            "given": "Charles S.",
+            "family": "Edge",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Chris",
+            "family": "Barker",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ehren",
+            "family": "Schwiebert",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Beginning Mac OS X Snow Leopard Server"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2010
+            ]
+          ]
+        },
+        "page": "149-172",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Smart Recon: Network Traffic Fingerprinting for IoT Device Identification",
+        "match": 0.302158273381295,
+        "DOI": "10.1109/ccwc54503.2022.9720739",
+        "URL": "https://doi.org/10.1109/ccwc54503.2022.9720739",
+        "author": [
+          {
+            "given": "Jay",
+            "family": "Thom",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nathan",
+            "family": "Thom",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Shamik",
+            "family": "Sengupta",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Emily",
+            "family": "Hand",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2022 IEEE 12th Annual Computing and Communication Workshop and Conference (CCWC)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              1,
+              26
+            ]
+          ]
+        },
+        "page": "0072-0079",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "reardon2013deletion",
+      "author": "Joel Reardon and David Basin and Srdjan Capkun",
+      "title": "{SoK}: Secure Data Deletion",
+      "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+      "year": "2013"
+    },
+    "checked": 1794759764.542737,
+    "candidates": [
+      {
+        "title": "SoK: Secure Data Deletion",
+        "match": 1.0,
+        "DOI": "10.1109/sp.2013.28",
+        "URL": "https://doi.org/10.1109/sp.2013.28",
+        "author": [
+          {
+            "given": "J.",
+            "family": "Reardon",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "D.",
+            "family": "Basin",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "S.",
+            "family": "Capkun",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2013 IEEE Symposium on Security and Privacy"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2013,
+              5
+            ]
+          ]
+        },
+        "page": "301-315",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Secure Data Deletion",
+        "match": 0.9090909090909091,
+        "DOI": "10.1007/978-3-319-28778-2",
+        "URL": "https://doi.org/10.1007/978-3-319-28778-2",
+        "author": [
+          {
+            "given": "Joel",
+            "family": "Reardon",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Information Security and Cryptography"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016
+            ]
+          ]
+        },
+        "page": null,
+        "type": "book"
+      },
+      {
+        "title": "SoK: Secure Messaging",
+        "match": 0.6363636363636364,
+        "DOI": "10.1109/sp.2015.22",
+        "URL": "https://doi.org/10.1109/sp.2015.22",
+        "author": [
+          {
+            "given": "Nik",
+            "family": "Unger",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sergej",
+            "family": "Dechand",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Joseph",
+            "family": "Bonneau",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sascha",
+            "family": "Fahl",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Henning",
+            "family": "Perl",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ian",
+            "family": "Goldberg",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Matthew",
+            "family": "Smith",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2015 IEEE Symposium on Security and Privacy"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              5
+            ]
+          ]
+        },
+        "page": "232-249",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "garg2020deletion",
+      "author": "Sanjam Garg and Shafi Goldwasser and Prashant Nalini Vasudevan",
+      "title": "Formalizing Data Deletion in the Context of the Right to Be Forgotten",
+      "booktitle": "Advances in Cryptology -- EUROCRYPT 2020",
+      "year": "2020"
+    },
+    "checked": 1794759764.776712,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "shastri2020gdprbench",
+      "author": "Supreeth Shastri and Vinay Banakar and Melissa Wasserman and Arun Kumar and Vijay Chidambaram",
+      "title": "Understanding and Benchmarking the Impact of {GDPR} on Database Systems",
+      "journal": "Proceedings of the VLDB Endowment",
+      "volume": "13",
+      "number": "7",
+      "pages": "1064--1077",
+      "year": "2020"
+    },
+    "checked": 1794759764.811279,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "andow2019policylint",
+      "author": "Benjamin Andow and Samin Yaseer Mahmud and Wenyu Wang and Justin Whitaker and William Enck and Bradley Reaves and Kapil Singh and Tao Xie",
+      "title": "{PolicyLint}: Investigating Internal Privacy Policy Contradictions on {Google Play}",
+      "booktitle": "Proceedings of the 28th USENIX Security Symposium",
+      "year": "2019"
+    },
+    "checked": 1794759764.9211142,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "andow2020policheck",
+      "author": "Benjamin Andow and Samin Yaseer Mahmud and Justin Whitaker and William Enck and Bradley Reaves and Kapil Singh and Serge Egelman",
+      "title": "Actions Speak Louder than Words: Entity-Sensitive Privacy Policy and Data Flow Analysis with {PoliCheck}",
+      "booktitle": "Proceedings of the 29th USENIX Security Symposium",
+      "year": "2020"
+    },
+    "checked": 1794759765.591008,
+    "candidates": [
+      {
+        "title": "\u201cActions speak louder than words\u201d",
+        "match": 0.4696969696969697,
+        "DOI": "10.51952/9781447372011.ch008",
+        "URL": "https://doi.org/10.51952/9781447372011.ch008",
+        "author": [
+          {
+            "given": "Anton",
+            "family": "McLean",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Educational Collateral Damage"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              4,
+              11
+            ]
+          ]
+        },
+        "page": "146-150",
+        "type": "book-chapter"
+      },
+      {
+        "title": "\u201cActions Speak Louder than Words\u201d",
+        "match": 0.4696969696969697,
+        "DOI": "10.1017/s0031819100061465",
+        "URL": "https://doi.org/10.1017/s0031819100061465",
+        "author": [
+          {
+            "given": "Austin",
+            "family": "Duncan-Jones",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Philosophy"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1960,
+              10
+            ]
+          ]
+        },
+        "page": "306-313",
+        "type": "journal-article"
+      },
+      {
+        "title": "Actions Speak Louder than Words",
+        "match": 0.4696969696969697,
+        "DOI": "10.4324/9780203805084",
+        "URL": "https://doi.org/10.4324/9780203805084",
+        "author": [
+          {
+            "given": "Celia",
+            "family": "Oyler",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": null,
+        "published": {
+          "date-parts": [
+            [
+              2012,
+              3,
+              22
+            ]
+          ]
+        },
+        "page": null,
+        "type": "book"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "slavin2016policy",
+      "author": "Rocky Slavin and Xiaoyin Wang and Mitra Bokaei Hosseini and James Hester and Ram Krishnan and Jaspreet Bhatia and Travis D. Breaux and Jianwei Niu",
+      "title": "Toward a Framework for Detecting Privacy Policy Violations in {Android} Application Code",
+      "booktitle": "Proceedings of the 38th International Conference on Software Engineering (ICSE)",
+      "year": "2016"
+    },
+    "checked": 1794759765.656102,
+    "candidates": [
+      {
+        "title": "Toward a framework for detecting privacy policy violations in android application code",
+        "match": 1.0,
+        "DOI": "10.1145/2884781.2884855",
+        "URL": "https://doi.org/10.1145/2884781.2884855",
+        "author": [
+          {
+            "given": "Rocky",
+            "family": "Slavin",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of Texas at San Antonio, San Antonio, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xiaoyin",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at San Antonio, San Antonio, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mitra Bokaei",
+            "family": "Hosseini",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at San Antonio, San Antonio, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "James",
+            "family": "Hester",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at Dallas, Dallas, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ram",
+            "family": "Krishnan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at San Antonio, San Antonio, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jaspreet",
+            "family": "Bhatia",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Carnegie Mellon University, Pittsburgh, PA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Travis D.",
+            "family": "Breaux",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Carnegie Mellon University, Pittsburgh, PA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jianwei",
+            "family": "Niu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Texas at San Antonio, San Antonio, TX"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the 38th International Conference on Software Engineering"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2016,
+              5,
+              14
+            ]
+          ]
+        },
+        "page": "25-36",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "LLM-PrivCheck : Detecting Privacy Policy Violations in Android Applications with LLMs",
+        "match": 0.7455621301775148,
+        "DOI": "10.54254/2755-2721/2025.23103",
+        "URL": "https://doi.org/10.54254/2755-2721/2025.23103",
+        "author": [
+          {
+            "given": "Zexiong",
+            "family": "Xiang",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "School of Information Science and Engineering, University of Jinan, Jinan, China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Shanshan",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Information Science and Engineering, University of Jinan, Jinan, China; Quan Cheng Laboratory, Jinan, China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Applied and Computational Engineering"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              5,
+              19
+            ]
+          ]
+        },
+        "page": "169-176",
+        "type": "journal-article"
+      },
+      {
+        "title": "Toward Automatically Generating Privacy Policy for Android Apps",
+        "match": 0.5906040268456376,
+        "DOI": "10.1109/tifs.2016.2639339",
+        "URL": "https://doi.org/10.1109/tifs.2016.2639339",
+        "author": [
+          {
+            "given": "Le",
+            "family": "Yu",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Tao",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-9082-3208",
+            "authenticated-orcid": false,
+            "given": "Xiapu",
+            "family": "Luo",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lei",
+            "family": "Xue",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Henry",
+            "family": "Chang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "IEEE Transactions on Information Forensics and Security"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              4
+            ]
+          ]
+        },
+        "page": "865-880",
+        "type": "journal-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "zimmeck2019maps",
+      "author": "Sebastian Zimmeck and Peter Story and Daniel Smullen and Abhilasha Ravichander and Ziqi Wang and Joel Reidenberg and N. Cameron Russell and Norman Sadeh",
+      "title": "{MAPS}: Scaling Privacy Compliance Analysis to a Million Apps",
+      "journal": "Proceedings on Privacy Enhancing Technologies",
+      "volume": "2019",
+      "number": "3",
+      "pages": "66--86",
+      "year": "2019"
+    },
+    "checked": 1794759765.876906,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "liu2016wakelock",
+      "author": "Yepang Liu and Chang Xu and Shing-Chi Cheung and Valerio Terragni",
+      "title": "Understanding and Detecting Wake Lock Misuses for {Android} Applications",
+      "booktitle": "Proceedings of the 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+      "pages": "396--409",
+      "year": "2016"
+    },
+    "checked": 1794759766.6375942,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "bartel2012dexpler",
+      "author": "Alexandre Bartel and Jacques Klein and Yves Le Traon and Martin Monperrus",
+      "title": "Dexpler: Converting {Android} {Dalvik} Bytecode to {Jimple} for Static Analysis with {Soot}",
+      "booktitle": "Proceedings of the ACM SIGPLAN International Workshop on State of the Art in Java Program Analysis (SOAP)",
+      "year": "2012"
+    },
+    "checked": 1794759766.6395142,
+    "candidates": [
+      {
+        "title": "Towards bridging the gap between Dalvik bytecode and native code during static analysis of Android applications",
+        "match": 0.5181347150259067,
+        "DOI": "10.1109/iwcmc.2015.7289149",
+        "URL": "https://doi.org/10.1109/iwcmc.2015.7289149",
+        "author": [
+          {
+            "given": "Patrik",
+            "family": "Lantz",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Bjorn",
+            "family": "Johansson",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2015 International Wireless Communications and Mobile Computing Conference (IWCMC)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              8
+            ]
+          ]
+        },
+        "page": "587-593",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Static Dalvik Bytecode Optimization for Android Applications",
+        "match": 0.43661971830985913,
+        "DOI": "10.4218/etrij.15.0114.0036",
+        "URL": "https://doi.org/10.4218/etrij.15.0114.0036",
+        "author": [
+          {
+            "given": "Jeehong",
+            "family": "Kim",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Inhyeok",
+            "family": "Kim",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Changwoo",
+            "family": "Min",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Hyung Kook",
+            "family": "Jun",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Soo Hyung",
+            "family": "Lee",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Won-Tae",
+            "family": "Kim",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Young Ik",
+            "family": "Eom",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "ETRI Journal"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              10,
+              1
+            ]
+          ]
+        },
+        "page": "1001-1011",
+        "type": "journal-article"
+      },
+      {
+        "title": "Android Malware Detection: Looking beyond Dalvik Bytecode",
+        "match": 0.3333333333333333,
+        "DOI": "10.1109/asew52652.2021.00019",
+        "URL": "https://doi.org/10.1109/asew52652.2021.00019",
+        "author": [
+          {
+            "given": "Tiezhu",
+            "family": "Sun",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "SnT University of Luxembourg,Luxembourg"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nadia",
+            "family": "Daoudi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "SnT University of Luxembourg,Luxembourg"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kevin",
+            "family": "Allix",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "SnT University of Luxembourg,Luxembourg"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Tegawende F.",
+            "family": "Bissyande",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "SnT University of Luxembourg,Luxembourg"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "2021 36th IEEE/ACM International Conference on Automated Software Engineering Workshops (ASEW)"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              11
+            ]
+          ]
+        },
+        "page": "34-39",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "herlihy1990linearizability",
+      "author": "Maurice P. Herlihy and Jeannette M. Wing",
+      "title": "Linearizability: A Correctness Condition for Concurrent Objects",
+      "journal": "ACM Transactions on Programming Languages and Systems",
+      "volume": "12",
+      "number": "3",
+      "pages": "463--492",
+      "year": "1990"
+    },
+    "checked": 1794759766.8883252,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "lamport1978time",
+      "author": "Leslie Lamport",
+      "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+      "journal": "Communications of the ACM",
+      "volume": "21",
+      "number": "7",
+      "pages": "558--565",
+      "year": "1978"
+    },
+    "checked": 1794759767.409962,
+    "candidates": [
+      {
+        "title": "Time, clocks, and the ordering of events in a distributed system",
+        "match": 1.0,
+        "DOI": "10.1145/359545.359563",
+        "URL": "https://doi.org/10.1145/359545.359563",
+        "author": [
+          {
+            "given": "Leslie",
+            "family": "Lamport",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Massachusetts Computer Associates, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Communications of the ACM"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1978,
+              7
+            ]
+          ]
+        },
+        "page": "558-565",
+        "type": "journal-article"
+      },
+      {
+        "title": "Time, clocks, and the ordering of events in a distributed system",
+        "match": 1.0,
+        "DOI": "10.1145/3335772.3335934",
+        "URL": "https://doi.org/10.1145/3335772.3335934",
+        "author": [
+          {
+            "name": "Massachusetts Computer Associates, Inc.",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Leslie",
+            "family": "Lamport",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Concurrency: the Works of Leslie Lamport"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              10,
+              9
+            ]
+          ]
+        },
+        "page": null,
+        "type": "book-chapter"
+      },
+      {
+        "title": "Time, Clocks, and the Ordering of My Ideas About Distributed Systems",
+        "match": 0.859375,
+        "DOI": "10.1007/11864219_51",
+        "URL": "https://doi.org/10.1007/11864219_51",
+        "author": [
+          {
+            "given": "Leslie",
+            "family": "Lamport",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Lecture Notes in Computer Science",
+          "Distributed Computing"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2006
+            ]
+          ]
+        },
+        "page": "578-578",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "inproceedings",
+      "key": "gray1989leases",
+      "author": "Cary G. Gray and David R. Cheriton",
+      "title": "Leases: An Efficient Fault-Tolerant Mechanism for Distributed File Cache Consistency",
+      "booktitle": "Proceedings of the 12th ACM Symposium on Operating Systems Principles (SOSP)",
+      "year": "1989"
+    },
+    "checked": 1794759767.695563,
+    "candidates": [
+      {
+        "title": "Leases: an efficient fault-tolerant mechanism for distributed file cache consistency",
+        "match": 1.0,
+        "DOI": "10.1145/74851.74870",
+        "URL": "https://doi.org/10.1145/74851.74870",
+        "author": [
+          {
+            "given": "C.",
+            "family": "Gray",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Computer Science Department, Stanford University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "D.",
+            "family": "Cheriton",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Computer Science Department, Stanford University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "ACM SIGOPS Operating Systems Review"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1989,
+              11
+            ]
+          ]
+        },
+        "page": "202-210",
+        "type": "journal-article"
+      },
+      {
+        "title": "Leases: an efficient fault-tolerant mechanism for distributed file cache consistency",
+        "match": 1.0,
+        "DOI": "10.1145/74850.74870",
+        "URL": "https://doi.org/10.1145/74850.74870",
+        "author": [
+          {
+            "given": "C.",
+            "family": "Gray",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Computer Science Department, Stanford University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "D.",
+            "family": "Cheriton",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Computer Science Department, Stanford University"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the twelfth ACM symposium on Operating systems principles"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1989,
+              11
+            ]
+          ]
+        },
+        "page": "202-210",
+        "type": "proceedings-article"
+      },
+      {
+        "title": "Distributed File System Multilevel Fault-Tolerant High Availability Mechanism",
+        "match": 0.2875,
+        "DOI": "10.1145/3444370.3444609",
+        "URL": "https://doi.org/10.1145/3444370.3444609",
+        "author": [
+          {
+            "given": "Yufeng",
+            "family": "Shi",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Jinxin",
+            "family": "Zuo",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Yihong",
+            "family": "Guo",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Nanjing University of Science &amp; Technology, Nanjing Jiangsu China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Yueming",
+            "family": "Lu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Proceedings of the 2020 International Conference on Cyberspace Innovation of Advanced Technologies"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              12,
+              4
+            ]
+          ]
+        },
+        "page": "431-438",
+        "type": "proceedings-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "bishop1996races",
+      "author": "Matt Bishop and Michael Dilger",
+      "title": "Checking for Race Conditions in File Accesses",
+      "journal": "Computing Systems",
+      "volume": "9",
+      "number": "2",
+      "pages": "131--152",
+      "year": "1996"
+    },
+    "checked": 1794759767.783843,
+    "candidates": [
+      {
+        "title": "File-based race conditions in UNIX: TOCTOU",
+        "match": 0.5581395348837209,
+        "DOI": "10.26754/jjii3a.4897",
+        "URL": "https://doi.org/10.26754/jjii3a.4897",
+        "author": [
+          {
+            "given": "Razvan",
+            "family": "Raducu",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Ricardo J",
+            "family": "Rodr\u00edguez",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Pedro J",
+            "family": "\u00c1lvarez",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Jornada de J\u00f3venes Investigadores del I3A"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              12,
+              22
+            ]
+          ]
+        },
+        "page": null,
+        "type": "journal-article"
+      },
+      {
+        "title": "Detection of file-based race conditions",
+        "match": 0.5238095238095238,
+        "DOI": "10.1007/s10207-004-0068-2",
+        "URL": "https://doi.org/10.1007/s10207-004-0068-2",
+        "author": [
+          {
+            "given": "Kyung-suk",
+            "family": "Lhee",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Steve J.",
+            "family": "Chapin",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "International Journal of Information Security"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2005,
+              2
+            ]
+          ]
+        },
+        "page": "105-119",
+        "type": "journal-article"
+      },
+      {
+        "title": "Estimating accesses in partitioned signature file organizations",
+        "match": 0.24074074074074073,
+        "DOI": "10.1145/130226.145014",
+        "URL": "https://doi.org/10.1145/130226.145014",
+        "author": [
+          {
+            "given": "Paulo",
+            "family": "Ciaccia",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Univ. of Bologna, Bologna, Italy"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          },
+          {
+            "given": "Pavel",
+            "family": "Zezula",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Technical Univ. of Brno, Brno, Czech Republic"
+              }
+            ],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "ACM Transactions on Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1993,
+              4
+            ]
+          ]
+        },
+        "page": "133-142",
+        "type": "journal-article"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "wilson1927",
+      "author": "Edwin B. Wilson",
+      "title": "Probable Inference, the Law of Succession, and Statistical Inference",
+      "journal": "Journal of the American Statistical Association",
+      "volume": "22",
+      "number": "158",
+      "pages": "209--212",
+      "year": "1927"
+    },
+    "checked": 1794759768.228655,
+    "candidates": [
+      {
+        "title": "Probable Inference, the Law of Succession, and Statistical Inference",
+        "match": 1.0,
+        "DOI": "10.1080/01621459.1927.10502953",
+        "URL": "https://doi.org/10.1080/01621459.1927.10502953",
+        "author": [
+          {
+            "given": "Edwin B.",
+            "family": "Wilson",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of the American Statistical Association"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1927,
+              6
+            ]
+          ]
+        },
+        "page": "209-212",
+        "type": "journal-article"
+      },
+      {
+        "title": "Probable inference.",
+        "match": 0.42857142857142855,
+        "DOI": "10.1037/14099-018",
+        "URL": "https://doi.org/10.1037/14099-018",
+        "author": [
+          {
+            "given": "Edward John",
+            "family": "Hamilton",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "The modalist: or, The laws of rational conviction, a text-book in formal or general logic."
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1891
+            ]
+          ]
+        },
+        "page": "162-173",
+        "type": "book-chapter"
+      },
+      {
+        "title": "On probable Inference",
+        "match": 0.41379310344827586,
+        "DOI": "10.1017/cbo9781107280991.011",
+        "URL": "https://doi.org/10.1017/cbo9781107280991.011",
+        "author": null,
+        "container-title": [
+          "Formal Logic"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2014,
+              8,
+              21
+            ]
+          ]
+        },
+        "page": "191-210",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "article",
+      "key": "efron1979bootstrap",
+      "author": "Bradley Efron",
+      "title": "Bootstrap Methods: Another Look at the Jackknife",
+      "journal": "The Annals of Statistics",
+      "volume": "7",
+      "number": "1",
+      "pages": "1--26",
+      "year": "1979"
+    },
+    "checked": 1794759768.743191,
+    "candidates": [
+      {
+        "title": "Bootstrap Methods: Another Look at the Jackknife",
+        "match": 1.0,
+        "DOI": "10.1007/978-1-4612-4380-9_41",
+        "URL": "https://doi.org/10.1007/978-1-4612-4380-9_41",
+        "author": [
+          {
+            "given": "Bradley",
+            "family": "Efron",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Springer Series in Statistics",
+          "Breakthroughs in Statistics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1992
+            ]
+          ]
+        },
+        "page": "569-593",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Bootstrap Methods: Another Look at the Jackknife",
+        "match": 1.0,
+        "DOI": "10.1007/978-0-387-75692-9_9",
+        "URL": "https://doi.org/10.1007/978-0-387-75692-9_9",
+        "author": [
+          {
+            "given": "David",
+            "family": "Hinkley",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Springer Series in Statistics",
+          "The Science of Bradley Efron"
+        ],
+        "published": null,
+        "page": "178-206",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Bootstrap Methods: Another Look at the Jackknife",
+        "match": 1.0,
+        "DOI": "10.1214/aos/1176344552",
+        "URL": "https://doi.org/10.1214/aos/1176344552",
+        "author": [
+          {
+            "given": "B.",
+            "family": "Efron",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "The Annals of Statistics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1979,
+              1,
+              1
+            ]
+          ]
+        },
+        "page": "1-26",
+        "type": "journal-article"
+      }
+    ],
+    "status": "metadata match"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "gdpr2016",
+      "author": "{European Parliament and Council of the European Union}",
+      "title": "Regulation ({EU}) 2016/679 (General Data Protection Regulation)",
+      "howpublished": "Official Journal of the European Union, L 119",
+      "year": "2016"
+    },
+    "checked": 1794759768.744441,
+    "candidates": [
+      {
+        "title": "An Analysis of the General Data Protection Regulation (EU) 2016/679",
+        "match": 0.6557377049180327,
+        "DOI": "10.2139/ssrn.2966210",
+        "URL": "https://doi.org/10.2139/ssrn.2966210",
+        "author": [
+          {
+            "given": "Emmanuel Akintunde",
+            "family": "Salami",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "role": "author",
+                "vocabulary": "crossref"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "SSRN Electronic Journal"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017
+            ]
+          ]
+        },
+        "page": null,
+        "type": "journal-article"
+      },
+      {
+        "title": "Data Breaches in Hotel Sector According to General Data Protection Regulation (EU 2016/679)",
+        "match": 0.589041095890411,
+        "DOI": "10.1108/978-1-80117-708-520221009",
+        "URL": "https://doi.org/10.1108/978-1-80117-708-520221009",
+        "author": [
+          {
+            "given": "Anastasios",
+            "family": "Thomaidis",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Aristotle\u2019s University of Thessaloniki, Greece"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Tourism Risk"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              3,
+              31
+            ]
+          ]
+        },
+        "page": "129-140",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Regulation EU 2016/679",
+        "match": 0.5569620253164557,
+        "DOI": "10.1007/978-3-030-71522-9_300800",
+        "URL": "https://doi.org/10.1007/978-3-030-71522-9_300800",
+        "author": null,
+        "container-title": [
+          "Encyclopedia of Cryptography, Security and Privacy"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025
+            ]
+          ]
+        },
+        "page": "2086-2086",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "android_workmanager",
+      "author": "{Android Developers}",
+      "title": "Task scheduling ({WorkManager})",
+      "howpublished": "\\url{https://developer.android.com/develop/background-work/background-tasks/persistent}",
+      "note": "Accessed 2026-11-08",
+      "year": "2026"
+    },
+    "checked": 1794759768.744711,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "android_jobscheduler",
+      "author": "{Android Developers}",
+      "title": "{JobInfo.Builder} -- {setPersisted}",
+      "howpublished": "\\url{https://developer.android.com/reference/android/app/job/JobInfo.Builder}",
+      "note": "Accessed 2026-11-08",
+      "year": "2026"
+    },
+    "checked": 1794759769.5081432,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "acra",
+      "author": "{ACRA contributors}",
+      "title": "{ACRA}: Application Crash Reports for {Android}, release 5.14.2",
+      "howpublished": "\\url{https://github.com/ACRA/acra}",
+      "year": "2026"
+    },
+    "checked": 1794759769.664653,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "fdroid",
+      "author": "{F-Droid}",
+      "title": "{F-Droid} repository index v2",
+      "howpublished": "\\url{https://f-droid.org/repo/index-v2.json}",
+      "note": "Fetched 2026-11-08",
+      "year": "2026"
+    },
+    "checked": 1794759770.379483,
+    "error": "<HTTPError 429: 'Too Many Requests'>",
+    "status": "retrieval failed"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "matomo",
+      "author": "{Matomo contributors}",
+      "title": "Matomo {SDK} for {Android}, release 4.4",
+      "howpublished": "\\url{https://github.com/matomo-org/matomo-sdk-android}",
+      "note": "Release 4.4, 2025-09-04; accessed 2026-11-08",
+      "year": "2025"
+    },
+    "checked": 1794759771.129431,
+    "candidates": [
+      {
+        "title": "Navigating the Android SDK",
+        "match": 0.43333333333333335,
+        "DOI": "10.1007/978-1-4302-3570-5_3",
+        "URL": "https://doi.org/10.1007/978-1-4302-3570-5_3",
+        "author": [
+          {
+            "given": "Paul",
+            "family": "Ferrill",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Pro Android Python with SL4A"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2011
+            ]
+          ]
+        },
+        "page": "57-82",
+        "type": "book-chapter"
+      },
+      {
+        "title": "Android SDK",
+        "match": 0.4,
+        "DOI": "10.1002/9781119051091.ch4",
+        "URL": "https://doi.org/10.1002/9781119051091.ch4",
+        "author": null,
+        "container-title": [
+          "Wearable Android\u2122"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              8,
+              7
+            ]
+          ]
+        },
+        "page": "87-109",
+        "type": "other"
+      },
+      {
+        "title": "Android Wear Platform and SDK",
+        "match": 0.38095238095238093,
+        "DOI": "10.1002/9781119051091.part3",
+        "URL": "https://doi.org/10.1002/9781119051091.part3",
+        "author": null,
+        "container-title": [
+          "Wearable Android\u2122"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              8,
+              7
+            ]
+          ]
+        },
+        "page": "119-119",
+        "type": "other"
+      }
+    ],
+    "status": "needs primary verification"
+  },
+  {
+    "entry": {
+      "type": "misc",
+      "key": "android_socketchannel",
+      "author": "{Android Developers}",
+      "title": "{SocketChannel} API Reference",
+      "year": "2026",
+      "url": "https://developer.android.com/reference/java/nio/channels/SocketChannel",
+      "note": "Accessed 2026-11-15"
+    },
+    "checked": 1794759771.249269,
+    "candidates": [
+      {
+        "title": "API Reference",
+        "match": 0.65,
+        "DOI": "10.1007/978-1-4302-0071-0_23",
+        "URL": "https://doi.org/10.1007/978-1-4302-0071-0_23",
+        "author": null,
+        "container-title": [
+          "The Definitive Guide to MySQL5"
+        ],
+        "published": null,
+        "page": "693-720",
+        "type": "book-chapter"
+      },
+      {
+        "title": "API Reference",
+        "match": 0.65,
+        "DOI": "10.1002/9781119057871.ch29",
+        "URL": "https://doi.org/10.1002/9781119057871.ch29",
+        "author": [
+          {
+            "family": "The WebSim Team",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Finding Alphas"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              9,
+              4
+            ]
+          ]
+        },
+        "page": "179-185",
+        "type": "other"
+      },
+      {
+        "title": "API Reference",
+        "match": 0.65,
+        "DOI": "10.1007/978-1-4302-0669-9_20",
+        "URL": "https://doi.org/10.1007/978-1-4302-0669-9_20",
+        "author": [
+          {
+            "given": "Michael",
+            "family": "Kofler",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "The Definitive Guide to MySQL"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2004
+            ]
+          ]
+        },
+        "page": "733-758",
+        "type": "book-chapter"
+      }
+    ],
+    "status": "needs primary verification"
+  }
+]

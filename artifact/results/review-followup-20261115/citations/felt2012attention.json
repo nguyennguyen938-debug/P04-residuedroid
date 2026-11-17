@@ -1,0 +1,234 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "felt2012attention",
+    "author": "Adrienne Porter Felt and Elizabeth Ha and Serge Egelman and Ariel Haney and Erika Chin and David Wagner",
+    "title": "Android Permissions: User Attention, Comprehension, and Behavior",
+    "booktitle": "Proceedings of the Eighth Symposium on Usable Privacy and Security (SOUPS)",
+    "year": "2012"
+  },
+  "checked": 1794759759.0179179,
+  "candidates": [
+    {
+      "title": "Users Comprehension and Behaviour Study on Android Permissions",
+      "match": 0.5040650406504065,
+      "DOI": "10.31436/ijpcc.v2i2.29",
+      "URL": "https://doi.org/10.31436/ijpcc.v2i2.29",
+      "author": [
+        {
+          "given": "NORMI SHAM",
+          "family": "AWANG ABU BAKAR",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "International Journal on Perceptive and Cognitive Computing"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016,
+            10,
+            27
+          ]
+        ]
+      },
+      "page": null,
+      "type": "journal-article"
+    },
+    {
+      "title": "Understanding and granting android permissions: A user survey",
+      "match": 0.4462809917355372,
+      "DOI": "10.1109/ccst.2017.8167834",
+      "URL": "https://doi.org/10.1109/ccst.2017.8167834",
+      "author": [
+        {
+          "given": "Selvakumar",
+          "family": "Ramachandran",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Andrea",
+          "family": "Dimitri",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Maulahikmah",
+          "family": "Galinium",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Muhammad",
+          "family": "Tahir",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Indirajith Viji",
+          "family": "Ananth",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Christian H.",
+          "family": "Schunck",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Maurizio",
+          "family": "Talamo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2017 International Carnahan Conference on Security Technology (ICCST)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            10
+          ]
+        ]
+      },
+      "page": "1-6",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "User-Centric Android Flexible Permissions",
+      "match": 0.37254901960784315,
+      "DOI": "10.1109/icse-c.2017.84",
+      "URL": "https://doi.org/10.1109/icse-c.2017.84",
+      "author": [
+        {
+          "given": "Gian Luca",
+          "family": "Scoccia",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Ivano",
+          "family": "Malavolta",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Marco",
+          "family": "Autili",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Amleto",
+          "family": "Di Salle",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Paola",
+          "family": "Inverardi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2017 IEEE/ACM 39th International Conference on Software Engineering Companion (ICSE-C)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            5
+          ]
+        ]
+      },
+      "page": "365-367",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

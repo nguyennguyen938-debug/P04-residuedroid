@@ -1,0 +1,32 @@
+{
+  "emulator_pid": 13240,
+  "campaign_pid": 13422,
+  "command": [
+    "python3",
+    "-u",
+    "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py",
+    "--serial",
+    "emulator-5680",
+    "--avd",
+    "P04AvdA",
+    "--port",
+    "8801",
+    "--variants",
+    "menqueue,mstart,mlayer,mfence,mboth",
+    "--trials",
+    "5",
+    "--start",
+    "5",
+    "--out",
+    "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/results/review-followup-20261115/matched-A-s1",
+    "--apkdir",
+    "fixture/build/revision-apk",
+    "--timeout",
+    "90",
+    "--seed",
+    "followup-20261115"
+  ],
+  "started": 1794760433.393791,
+  "renderer": "host; Vulkan disabled",
+  "readonly": true
+}

@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "scope": "P04 approved revision plan",
+  "experiments_complete": true,
+  "owned_emulators_stopped": true,
+  "pdf": "manuscript/main.pdf",
+  "main_body_pages": 11,
+  "total_pages": 17,
+  "execution_report": "review/revision-execution-report.md",
+  "artifact_audit": "review/artifact-revision-audit.md",
+  "package": "output/review-package/P04-residuedroid-review.zip",
+  "validation": "artifact/results/revision-20261115/final-extraction-validation.json",
+  "remaining_empirical_limits": [
+    "No handset/current Android runtime",
+    "HTTPS and arbitrary collectors unsupported",
+    "Matomo disk-cache crash recovery not tested"
+  ],
+  "updated_utc": "2026-11-15T11:49:37.198051+00:00"
+}

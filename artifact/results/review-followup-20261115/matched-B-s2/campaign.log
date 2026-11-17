@@ -1,0 +1,53 @@
+23:34:58 emulator-5686 pen010 48s
+23:35:49 emulator-5686 kil010 51s
+23:36:18 emulator-5686 for010 29s
+23:37:07 emulator-5686 reb010 50s
+23:37:57 emulator-5686 rev010 50s
+23:40:12 emulator-5686 net010 135s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 288, in run_trial
+    time.sleep(3)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+23:42:22 emulator-5686 inf010 58s
+23:43:15 emulator-5686 pen011 54s
+23:43:59 emulator-5686 kil011 43s
+23:44:29 emulator-5686 for011 30s
+23:46:09 emulator-5686 reb011 100s
+23:46:42 emulator-5686 rev011 33s
+23:47:57 emulator-5686 net011 76s
+23:48:34 emulator-5686 inf011 37s
+23:49:34 emulator-5686 pen012 60s
+23:50:18 emulator-5686 kil012 44s
+23:50:47 emulator-5686 for012 29s
+23:52:25 emulator-5686 reb012 98s
+23:52:57 emulator-5686 rev012 32s
+23:55:11 emulator-5686 net012 134s
+23:56:02 emulator-5686 inf012 51s
+23:56:57 emulator-5686 pen013 55s
+23:57:47 emulator-5686 kil013 50s
+23:58:16 emulator-5686 for013 29s
+23:58:58 emulator-5686 reb013 42s
+23:59:25 emulator-5686 rev013 28s
+00:01:37 emulator-5686 net013 132s
+00:02:19 emulator-5686 inf013 42s
+00:03:15 emulator-5686 pen014 56s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 369, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 341, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 288, in run_trial
+    limit = args.timeout if args.substrate == "job" else 240
+        ^^^^^^^^^^^^^
+KeyboardInterrupt
+00:04:21 emulator-5686 kil014 44s
+00:04:50 emulator-5686 for014 29s
+00:06:29 emulator-5686 reb014 99s
+00:07:01 emulator-5686 rev014 31s
+00:09:16 emulator-5686 net014 135s
+00:10:10 emulator-5686 inf014 54s

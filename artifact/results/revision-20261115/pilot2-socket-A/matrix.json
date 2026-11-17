@@ -1,0 +1,432 @@
+{
+  "cases": [
+    {
+      "group": "ordering",
+      "mode": "early",
+      "fault": "barrier",
+      "withdraw": true,
+      "remote": true
+    },
+    {
+      "group": "ordering",
+      "mode": "fence",
+      "fault": "barrier",
+      "withdraw": true,
+      "remote": true
+    },
+    {
+      "group": "crash",
+      "fault": "afterlog",
+      "barrier": "AUTHORIZATION_LOGGED",
+      "withdraw": true,
+      "remote": true,
+      "retry": true,
+      "regrant": true
+    },
+    {
+      "group": "crash",
+      "fault": "partial",
+      "barrier": "BYTES_ACCEPTED",
+      "withdraw": true,
+      "remote": true,
+      "retry": true,
+      "regrant": true
+    },
+    {
+      "group": "crash",
+      "fault": "response",
+      "barrier": "REQUEST_HANDED_OFF",
+      "withdraw": true,
+      "remote": true,
+      "retry": true,
+      "regrant": true
+    },
+    {
+      "group": "labels",
+      "label": "missing",
+      "barrier": "EARLY_BLOCK"
+    },
+    {
+      "group": "labels",
+      "label": "analytics:bad",
+      "barrier": "EARLY_BLOCK"
+    },
+    {
+      "group": "labels",
+      "label": "analytics:9",
+      "barrier": "EARLY_BLOCK"
+    },
+    {
+      "group": "labels",
+      "label": "other:0",
+      "barrier": "EARLY_BLOCK"
+    },
+    {
+      "group": "labels",
+      "label": "analytics:0",
+      "barrier": "AUTHORIZATION_LOGGED"
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": false,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": false,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": false,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": false,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": true,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": true,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": true,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "normal",
+      "remote": true,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": false,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": false,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": false,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": false,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": true,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": true,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": true,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "slow",
+      "remote": true,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": false,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": false,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": false,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": false,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": true,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": true,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": true,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "stalled",
+      "remote": true,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 8388608
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": false,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": false,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": false,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": false,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": true,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": true,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": true,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "response",
+      "remote": true,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 16384
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": false,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": false,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": false,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": false,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": true,
+      "tenant": 1,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": true,
+      "tenant": 1,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": true,
+      "tenant": 6,
+      "mode": "whole",
+      "withdraw": true,
+      "size": 1048576
+    },
+    {
+      "group": "backpressure",
+      "load": "long",
+      "remote": true,
+      "tenant": 6,
+      "mode": "fence",
+      "withdraw": true,
+      "size": 1048576
+    }
+  ],
+  "blocks": 1,
+  "deadline": 1794738737.522024
+}

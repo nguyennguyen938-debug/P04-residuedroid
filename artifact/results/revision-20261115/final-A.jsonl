@@ -1,0 +1,4 @@
+{"stage": "socket-A", "exit": 0, "time": 1794741930.566682}
+{"stage": "acra-conformance-final", "exit": 1, "time": 1794741930.769044}
+{"stage": "acra-conformance-final", "exit": 0, "time": 1794742059.410052, "recovery": "removed old inherited test signing keys"}
+{"stage": "acra-final-A", "exit": 0, "time": 1794742138.8979251, "recovery": "removed old inherited test signing keys"}

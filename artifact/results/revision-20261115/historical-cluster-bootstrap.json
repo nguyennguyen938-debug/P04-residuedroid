@@ -1,0 +1,123 @@
+{
+  "resamples": 10000,
+  "seed": 20261115,
+  "estimand": "historical pre-write authorization; not socket handoff",
+  "rows": [
+    {
+      "run": "A",
+      "variant": "cancel",
+      "trials": 350,
+      "estimate": 0.2588571428571429,
+      "percentile95": [
+        0.257142857142858,
+        0.26114285714285795
+      ]
+    },
+    {
+      "run": "A",
+      "variant": "conv",
+      "trials": 350,
+      "estimate": 0.26,
+      "percentile95": [
+        0.25771428571428656,
+        0.2628571428571437
+      ]
+    },
+    {
+      "run": "A",
+      "variant": "enqueue",
+      "trials": 350,
+      "estimate": 0.8051428571428572,
+      "percentile95": [
+        0.7959999999999996,
+        0.8148571428571426
+      ]
+    },
+    {
+      "run": "A",
+      "variant": "jobstart",
+      "trials": 350,
+      "estimate": 0.46057142857142863,
+      "percentile95": [
+        0.4508571428571447,
+        0.4702857142857161
+      ]
+    },
+    {
+      "run": "A",
+      "variant": "none",
+      "trials": 350,
+      "estimate": 0.864,
+      "percentile95": [
+        0.854285714285715,
+        0.8737142857142866
+      ]
+    },
+    {
+      "run": "A",
+      "variant": "rd",
+      "trials": 350,
+      "estimate": 0.0,
+      "percentile95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "run": "A",
+      "comparison": "conv-rd",
+      "paired_percentile95": [
+        0.25771428571428656,
+        0.2628571428571437
+      ]
+    },
+    {
+      "run": "B",
+      "variant": "egress",
+      "trials": 350,
+      "estimate": 0.3142857142857143,
+      "percentile95": [
+        0.31428571428571617,
+        0.31428571428571617
+      ]
+    },
+    {
+      "run": "B",
+      "variant": "rd",
+      "trials": 350,
+      "estimate": 0.0,
+      "percentile95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "run": "B",
+      "variant": "taint",
+      "trials": 350,
+      "estimate": 0.0,
+      "percentile95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "run": "B",
+      "variant": "volatile",
+      "trials": 350,
+      "estimate": 0.5428571428571428,
+      "percentile95": [
+        0.5428571428571428,
+        0.5428571428571428
+      ]
+    },
+    {
+      "run": "B",
+      "comparison": "egress-rd",
+      "paired_percentile95": [
+        0.31428571428571617,
+        0.31428571428571617
+      ]
+    }
+  ]
+}

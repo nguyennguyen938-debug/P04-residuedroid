@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Permitted items \emph{not} delivered per tenant-trial (FP controls; T7 in \textsf{rev} only). Last column: share of all permitted items. \vname{none} enforces nothing, so its deficit is availability loss common to every variant.}
+\label{tab:fp}
+\mtab\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\mhead Variant & T3 flush & T4 backup & T6 none & T7 OS & \% total \\
+\midrule
+none & 0.00 & 0.01 & 0.00 & 0.00 & 0.0 \\
+cancel & 0.02 & 0.00 & 0.01 & 0.00 & 0.1 \\
+enqueue & 0.00 & 0.00 & 0.00 & 0.00 & 0.0 \\
+job-start & 0.02 & 0.08 & 0.00 & 0.00 & 0.3 \\
+conv & 0.13 & 0.15 & 0.15 & 0.00 & 1.1 \\
+egress (decl.) & 0.00 & 0.00 & 0.00 & 0.00 & 0.0 \\
+\sys & 0.00 & 0.00 & 0.00 & 0.00 & 0.0 \\
+\sys (AVD B) & 0.00 & 0.02 & 0.00 & 0.00 & 0.1 \\
+volatile labels & 0.11 & 0.09 & 0.05 & 0.00 & 0.6 \\
+taint rule & 9.54 & 10.61 & 0.22 & 12.00 & 55.6 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,60 @@
+The channel protocol records authorization, each write attempt, its returned byte count,
+complete receiver requests, and response receipt separately. A five-second operation deadline
+bounds intended waits; a thirty-second harness watchdog detects stuck commands. It is not a
+hard Android scheduling or storage bound. Controlled barriers test authorization-before-withdrawal
+followed by writing, and process death after logging, after a positive prefix, after a native
+write but before its count is logged, and before response receipt. Retries retain source epochs.
+Pilots with a serialized broadcast queue or an incorrectly broad comparator lock are excluded.
+The comparator in the final runs holds the same coordinator only over the write phase; both
+variants connect and wait for responses outside it.
+
+The forced ordering test produced confirmed post-acknowledgement byte acceptance in 20/20 early-check attempts, versus 0/20 fenced attempts. The authorization marker preceded acknowledgement in these early-check races, exposing handoffs that the stream-wrapper authorization-marker estimand would miss. This forced schedule does not estimate its natural frequency.
+
+There were 80 crash-point attempts. In the 20 native-return-before-log cases, 20 retained unknown handoff counts; absence of a count was never converted to zero. Receiver prefix logs, restart ordering, collection-epoch retry and re-grant outcomes are preserved separately.
+
+\begin{table}[t]\centering
+\caption{Device-policy acknowledgement under backpressure, ms: median / observed maximum (acknowledged samples). W: whole-write lock; C: per-chunk fence. Both include same/unrelated scopes and same/cross-process cases. Timeouts remain separate.}
+\label{tab:revision-latency}\mtab
+\begin{tabular}{@{}lrrr@{}}\toprule\mhead Load & W & C & Ack./attempts\\\midrule
+
+normal & 0.7 / 1.2 & 0.7 / 1.3 & 160/160 \\
+
+slow & 4896.4 / 4937.1 & 0.7 / 2.1 & 160/160 \\
+
+stalled & 4896.6 / 4929.4 & 0.7 / 1.2 & 160/160 \\
+
+response & 0.7 / 1.3 & 0.7 / 1.7 & 160/160 \\
+
+long & 0.7 / 20.2 & 0.8 / 3.5 & 160/160 \\
+
+\bottomrule\end{tabular}\end{table}
+
+Table~\ref{tab:revision-latency} summarizes 800 backpressure attempts. Slow and stalled receivers use 8 MiB requests; the long-batch case uses 1 MiB. The largest observed unrelated-scope delay with chunk fencing was 2.2 ms. There were 400 sender deadline expirations and 0 attempts without withdrawal acknowledgement. Another 108 attempts retain ambiguous acceptance ordering within the request-to-acknowledgement interval; they are not counted as clean outcomes. The separate ADB command round-trip includes process startup and IPC; it is recorded on one host clock, not mixed with guest timestamps. Per-cell empirical tails and all failures are in the artifact. Fast requests may finish writing before withdrawal; phase-coverage counts accompany the raw observations. Timing includes in-lock instrumentation. The fixed cell order, shared host and different renderer phases limit generalization. Small cell counts do not establish a population p99; any unacknowledged operation is reported as such rather than omitted from the denominator.
+
+\paragraph{Matched metadata.} Five variants share durable lineage, epochs, copied job extras
+and the same HTTP transport. Each of seven schedules has 20 valid trials per AVD configuration (140 per configuration), with all five variants paired in each trial. Four read-only instances per configuration run disjoint seeded trial ranges on the same host; these are not independent devices. Table~\ref{tab:matched}
+reports confirmed violations and ambiguous requests separately; neither unknowns nor delivery deficits
+are counted as successful suppression. Tenants within each trial remain paired in uncertainty analysis.
+\begin{table}[t]\centering\caption{Matched-metadata results. TT: affected tenant-trials; V: confirmed violating TT; U: requests with unknown handoff/content evidence. Counts aggregate two AVD configurations; uncertainty resamples complete paired trials within configuration, schedule and instance. All instances use the host renderer with Vulkan disabled.}
+\label{tab:matched}\mtab
+\begin{tabular}{@{}lrrr@{}}\toprule\mhead Variant & TT & V & U\\\midrule
+
+enqueue & 1400 & \mbad{1038} & 3 \\
+
+job start & 1400 & \mbad{236} & 3 \\
+
+layered early & 1400 & \mgood{0} & 6 \\
+
+chunk fence & 1400 & \mgood{0} & 2 \\
+
+layered + fence & 1400 & \mgood{0} & 1 \\
+
+\bottomrule\end{tabular}\end{table}
+
+The analysis excludes 8 failed paired trials and retains their diagnostics. Among the fixed permitted-flow controls (T3, T4 backup, T6, T7), layered early leaves 168/14000 permitted items undelivered, chunk fence leaves 96/14000 permitted items undelivered, layered + fence leaves 60/14000 permitted items undelivered. Per-trial availability diagnostics remain in the artifact. In the separate 35-trial-per-AVD cohort, all 56 fence and 52 layered-plus-fence control-item deficits follow reboot stop callbacks and cooperative exits; no policy-block or send-failure event occurs in those affected traces. Those counts describe that cohort, not the enlarged campaign. The matched layered-early versus fence contrast and trial-level intervals are reported below.
+
+AVD A: paired confirmed-violation difference (layered early minus fence) 0.00 percentage points, percentile interval [0.00, 0.00], across 140 complete paired trials.
+
+AVD B: paired confirmed-violation difference (layered early minus fence) 0.00 percentage points, percentile interval [0.00, 0.00], across 140 complete paired trials.
+
+Layered early checks also have no confirmed violations in these schedules; the enlarged campaign does not demonstrate a natural-schedule advantage for final placement. A zero-event percentile interval is descriptive, not a population zero-risk bound. The forced HTTP and TLS barriers isolate the narrower residual race. Unknowns remain separate from confirmed violations.

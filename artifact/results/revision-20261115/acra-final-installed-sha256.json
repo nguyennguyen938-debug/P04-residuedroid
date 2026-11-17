@@ -1,0 +1,10 @@
+[
+  {
+    "package": "org.residuelab.acra",
+    "sha256": "e785da1b4b201e06edd3daa24e6b07a4a8fe9b6a7ca8515c9654edfaead646d3"
+  },
+  {
+    "package": "org.residuelab.acrafence",
+    "sha256": "48a778f2c61f95f8b5db48fe6153a8abaa3a74b68130c0846ef8e64bc70bdc7f"
+  }
+]

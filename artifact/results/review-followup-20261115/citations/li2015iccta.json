@@ -1,0 +1,281 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "li2015iccta",
+    "author": "Li Li and Alexandre Bartel and Tegawend{\\'e} F. Bissyand{\\'e} and Jacques Klein and Yves Le Traon and Steven Arzt and Siegfried Rasthofer and Eric Bodden and Damien Octeau and Patrick McDaniel",
+    "title": "{IccTA}: Detecting Inter-Component Privacy Leaks in {Android} Apps",
+    "booktitle": "Proceedings of the 37th International Conference on Software Engineering (ICSE)",
+    "year": "2015"
+  },
+  "checked": 1794759758.2507598,
+  "candidates": [
+    {
+      "title": "IccTA: Detecting Inter-Component Privacy Leaks in Android Apps",
+      "match": 1.0,
+      "DOI": "10.1109/icse.2015.48",
+      "URL": "https://doi.org/10.1109/icse.2015.48",
+      "author": [
+        {
+          "given": "Li",
+          "family": "Li",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Alexandre",
+          "family": "Bartel",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Tegawende F.",
+          "family": "Bissyande",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jacques",
+          "family": "Klein",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yves",
+          "family": "Le Traon",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Steven",
+          "family": "Arzt",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Siegfried",
+          "family": "Rasthofer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Eric",
+          "family": "Bodden",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Damien",
+          "family": "Octeau",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Patrick",
+          "family": "McDaniel",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2015 IEEE/ACM 37th IEEE International Conference on Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            5
+          ]
+        ]
+      },
+      "page": "280-291",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Contextual approach for identifying malicious Inter-Component privacy leaks in Android apps",
+      "match": 0.6973684210526315,
+      "DOI": "10.1109/iscc.2017.8024534",
+      "URL": "https://doi.org/10.1109/iscc.2017.8024534",
+      "author": [
+        {
+          "given": "Daojuan",
+          "family": "Zhang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Yuanfang",
+          "family": "Guo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Dianjie",
+          "family": "Guo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Rui",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Guangming",
+          "family": "Yu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2017 IEEE Symposium on Computers and Communications (ISCC)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            7
+          ]
+        ]
+      },
+      "page": "228-235",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Detecting Privacy Leaks in Android Apps using Inter-Component Information Flow Control Analysis",
+      "match": 0.5,
+      "DOI": "10.1109/iscisc.2018.8546876",
+      "URL": "https://doi.org/10.1109/iscisc.2018.8546876",
+      "author": [
+        {
+          "given": "Zohreh",
+          "family": "Bohluli",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Hamid Reza",
+          "family": "Shahriari",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2018 15th International ISC (Iranian Society of Cryptology) Conference on Information Security and Cryptology (ISCISC)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018,
+            8
+          ]
+        ]
+      },
+      "page": "1-6",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "metadata match"
+}

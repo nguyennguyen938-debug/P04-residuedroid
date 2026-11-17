@@ -1,0 +1,73 @@
+\subsection{Setup}
+\label{sec:setup}
+
+\paragraph{Platform.} Lifecycle and SDK runs use the stock Android~13 emulator image
+(android-33 google\_apis arm64-v8a rev.~17, build TE1A.240213.009), emulator 37.2.13, on an 18-core Apple-silicon host. The stream-wrapper campaign uses two AVDs side by side; the enlarged matched campaign uses four read-only instances of each of those two configurations. HTTP/TLS cost and label-error tests use a separate Android~15 emulator on the same host; exact fingerprints and host load are archived.
+AVD~A runs \vname{none}, \vname{cancel}, \vname{enqueue}, \vname{jobstart}, \vname{conv} and \vname{rd}. AVD~B runs
+\vname{egress}, \vname{rd}, \vname{volatile} and \vname{taint}. Repeating \vname{rd} on both AVDs does not remove variant--AVD confounding: cross-AVD comparisons are descriptive. Matched channel variants run within each AVD. Before every trial each package is cleared with \texttt{pm clear}, granted location, opened once,
+and placed in the \texttt{active} standby bucket. Without that last step JobScheduler never ran our jobs: a never-opened app
+sits in the \texttt{NEVER} bucket.
+
+\begin{table}[t]
+\centering
+\caption{\lab tenants. Every tenant has 12 tagged records; ``sum.'' tenants also derive a summary (declared scope in brackets).}
+\label{tab:tenants}
+\mtab\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{1.85cm}>{\raggedright\arraybackslash}p{1.75cm}>{\raggedright\arraybackslash}p{2.9cm}@{}}
+\toprule
+\mhead Tenant & Contract & Withdrawal & What it tests \\
+\midrule
+T1 & opt-out, discard & in-app & summary filed as \textit{diagnostics} (lineage) \\
+T8 & opt-out, discard & in-app & same, summary correctly declared \\
+T2 & deletion request & in-app + delete rows & summary copy in job extras \\
+T5 & opt-out, discard & withdraw, re-grant & epoch vs.\ boolean (+4 new records) \\
+T9 & opt-out, discard & in-app & raw-socket upload (uncovered path) \\
+T10 & opt-out, discard & in-app & encrypted body (unattributable) \\
+\midrule
+T3 & opt-out, flush allowed & in-app & FP control: queued data may go \\
+T4 & restriction & personalisation & FP control: backup must go \\
+T6 & none & none & FP control: everything must go \\
+T7 & OS permission & \texttt{pm revoke} (in \textsf{rev}) & FP control: prior fixes may sync \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Schedules.} Each trial sets up all ten tenants in every package, injects one schedule, waits until no job of
+ours remains registered (polling \texttt{dumpsys jobscheduler}), and then reads each app's event log with \texttt{sqlite3}
+as root, which does not start the app. The seven schedules are:
+\begin{itemize}[leftmargin=*,nosep]
+\item \textsf{pen}: withdraw while the jobs are pending.
+\item \textsf{kill}: withdraw, then \texttt{kill -9}.
+\item \textsf{fstop}: withdraw, force-stop, reopen the app 3\,s later.
+\item \textsf{reb}: withdraw, then reboot.
+\item \textsf{rev}: withdraw, then \texttt{pm revoke} location, which kills the app.
+\item \textsf{net}: connectivity cut as the jobs start and restored 6\,s later; withdrawal 1.5--1.8\,s after job start.
+\item \textsf{infl}: withdrawal at a seeded uniform offset in $[0,1.6]$\,s after the upload job starts.
+\end{itemize}
+In \textsf{net} and \textsf{infl}, jobs are started with \texttt{cmd jobscheduler run -f}, and the withdrawal is injected
+inside the app relative to the job's own start, so its timing is precise. In \textsf{net}, each app gets its own 6\,s outage in
+turn, during which only the trigger uploads of T8, T2, T5 and T4 are started. The outage is a guest firewall rule rejecting traffic to the
+server. We first tried \texttt{svc wifi/data disable}, but it did not cut the apps' traffic reliably, and starting all apps' jobs
+at once let JobScheduler's concurrency limit decide which variant saw the outage. The configuration trials using those two methods are excluded. Schedule parameters are derived from a seed per
+(schedule, trial), so both AVDs replay identical schedules.
+
+\paragraph{Oracle and metrics.} Ground truth comes from the sink. Tags are visible in plaintext payloads, and a summary's
+content lists its source tags. The stream-wrapper device sequence orders withdrawals and pre-write authorization logs,
+not actual byte acceptance. Baselines can therefore undercount forbidden handoffs in the
+log-to-write gap. Missing sequence evidence is ambiguous; host receipt time alone cannot
+reconstruct a socket-handoff order. We preserve the authorization-order estimand explicitly.
+The channel oracle uses paired write-attempt/accepted-count events and the withdrawal
+transaction order; interrupted or overlapping observations remain unknown. We report:
+\begin{itemize}[leftmargin=*,nosep]
+\item \emph{Violation rate}: the fraction of tenant-trials with at least one prohibited item, with trial-cluster uncertainty, keeping all tenants and paired variants together.
+\item \emph{Prohibited items} per tenant-trial.
+\item \emph{Legit deficit}: permitted items that a variant had not delivered when the observation window closed (\vname{none}'s deficit is the availability loss that enforcement does not cause).
+\item \emph{Unattributable} submissions: post-withdrawal bodies the sink cannot read.
+\item \emph{Outstanding} submissions: accepted before withdrawal, possibly received afterwards; stream-wrapper logs identify only authorization/response overlap.
+\end{itemize}
+A trial is excluded if the host slept during it (any gap between harness actions over 200\,s), if the emulator restarted,
+or if any device log could not be read (\S\ref{sec:threats}). Of \nTrialsTotal{} logged trials, \nInvalid{} were excluded.
+We analyze the first 50 valid trials per schedule and AVD (\nTrialsValid{} trials); the \nValidUnused{} further valid trials,
+run as replacements while exclusions were still being counted, are kept in the artifact but not used.
+
+\input{generated/revision_uncertainty.tex}

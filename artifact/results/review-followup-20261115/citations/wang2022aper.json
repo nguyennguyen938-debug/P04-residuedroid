@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "wang2022aper",
+    "author": "Sinan Wang and Yibo Wang and Xian Zhan and Ying Wang and Yepang Liu and Xiapu Luo and Shing-Chi Cheung",
+    "title": "Aper: Evolution-Aware Runtime Permission Misuse Detection for {Android} Apps",
+    "booktitle": "Proceedings of the 44th International Conference on Software Engineering (ICSE)",
+    "year": "2022"
+  },
+  "checked": 1794759757.2023602,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

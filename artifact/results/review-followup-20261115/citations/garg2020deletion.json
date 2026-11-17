@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "garg2020deletion",
+    "author": "Sanjam Garg and Shafi Goldwasser and Prashant Nalini Vasudevan",
+    "title": "Formalizing Data Deletion in the Context of the Right to Be Forgotten",
+    "booktitle": "Advances in Cryptology -- EUROCRYPT 2020",
+    "year": "2020"
+  },
+  "checked": 1794759764.776712,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

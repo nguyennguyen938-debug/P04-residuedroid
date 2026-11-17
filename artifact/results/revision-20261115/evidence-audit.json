@@ -1,0 +1,2044 @@
+{
+  "socket_attempts": 1020,
+  "unique_socket_ids": 1020,
+  "socket_blocks": {
+    "emulator-5640": {
+      "1": 51,
+      "2": 51,
+      "3": 51,
+      "4": 51,
+      "5": 51,
+      "6": 51,
+      "7": 51,
+      "8": 51,
+      "9": 51,
+      "0": 51
+    },
+    "emulator-5642": {
+      "1": 51,
+      "2": 51,
+      "3": 51,
+      "4": 51,
+      "5": 51,
+      "6": 51,
+      "7": 51,
+      "8": 51,
+      "9": 51,
+      "0": 51
+    }
+  },
+  "socket_harness_errors": [],
+  "socket_barrier_failures": [],
+  "process_cases": 800,
+  "process_mismatches": [],
+  "crashes": [
+    {
+      "trial": "emulator-5640-1-e123a509db",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-1-63dbd3158c",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-1-7de4991e1f",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-1-6185036bc1",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-2-63b15d96fe",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-2-0ac2db09da",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-2-05f248c8e6",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-2-2f5192bd32",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-3-08b6f5decf",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-3-5bc2fde5cf",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-3-6bff74834f",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-3-ba6764fbcf",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-4-f6c637d5d5",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-4-a9ef407c89",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-4-2b855c8948",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-4-9d6bbaf30e",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-5-ea37cb6ac8",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-5-42b87bbca7",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-5-c1d18a3d85",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-5-5f08466f57",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-6-a312c69b00",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-6-d6a95dbcf5",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-6-6600dca3b8",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-6-ec3f968935",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-7-5a566b139f",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-7-98919be3bb",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-7-58a6773926",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-7-b98daa69bc",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-8-60307bf73f",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-8-41edda3b72",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-8-bf03899c69",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-8-86ae347200",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-9-b97d800b1f",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-9-5a9d19251e",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-9-d0e0e5c65d",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-9-1edb348487",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-0-0201cfb67c",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-0-7f6ee16ee0",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-0-f131e81918",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5640-0-9deea6a3a7",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-1-92fd8b1491",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-1-39a31a57f0",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-1-750e9c0137",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-1-734646902d",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-2-61d1a74c9d",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-2-6632048873",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-2-568c12f2ee",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-2-40fc93ceed",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-3-05ab9f8c22",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-3-8368df8cd6",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-3-20b39ecd48",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-3-6b83c4ed94",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-4-b0d3747791",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-4-ffdc6c6466",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-4-5970589a2a",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-4-806da2d1ae",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-5-009be0ca1e",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-5-6830cedf67",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-5-ba3cf3bb36",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-5-ddf4c07c17",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-6-491bd384e0",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-6-74de5048d2",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-6-5117253177",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-6-0a32f3ea15",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-7-e840a2a0ba",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-7-abb2f4a465",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-7-bbf73ab5ba",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-7-7d3dc907ff",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-8-73e7e87e26",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-8-95b819e5bb",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-8-db6647606f",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-8-88371ba37b",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-9-d2033909b1",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-9-7ff2b3e321",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-9-6ced05145e",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-9-68fe49a936",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-0-944fff2fd6",
+      "fault": "afterlog",
+      "barrier": true,
+      "receiver_prefix": 0,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-0-9a4939bd0f",
+      "fault": "partial",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-0-a09317bffa",
+      "fault": "unlogged",
+      "barrier": true,
+      "receiver_prefix": 3924,
+      "receiver_complete": false,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    },
+    {
+      "trial": "emulator-5642-0-daf5204c5e",
+      "fault": "response",
+      "barrier": true,
+      "receiver_prefix": 16452,
+      "receiver_complete": true,
+      "retry_blocked": true,
+      "old_epoch_blocked": true,
+      "new_epoch_send_ok": true,
+      "new_epoch_received": true
+    }
+  ],
+  "labels": [
+    {
+      "trial": "emulator-5640-1-8390716ebd",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-1-6da7756d1e",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-1-14838f005b",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-1-8753ae27f1",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-1-cb76d544ae",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-2-a47d8b8be2",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-2-342e09d8a5",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-2-674d39ed74",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-2-43bbb68d0e",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-2-6d928e81d6",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-3-e667c995fe",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-3-a4533b29e7",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-3-c926e6cfd1",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-3-0b182ad225",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-3-10c97ac8c0",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-4-3d8a576f47",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-4-f9c5ccf5c5",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-4-5439821fac",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-4-a1031ffd18",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-4-e0520ce24f",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-5-21492fd54c",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-5-5d0fcfc14d",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-5-a44160ee60",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-5-0a9a2e871a",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-5-d6a3cadabd",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-6-ad33966282",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-6-a36bf60837",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-6-4599f41e0a",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-6-1e5846ac55",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-6-43ef0aa7dc",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-7-0fc809b1a9",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-7-f85a4c5fd9",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-7-2468d2b1ed",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-7-d5a0f34dcd",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-7-091dfa13a0",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-8-7cda5a36c6",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-8-276b12f64b",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-8-ebf33ec5fd",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-8-a98d4e0ae7",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-8-f8da3b6888",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-9-10f6975c41",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-9-7189ee8460",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-9-667cd81c5b",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-9-5bb1c81e7b",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-9-543b291fc2",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5640-0-930809798b",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-0-633849a48f",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-0-e829ffae0d",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-0-0108da891a",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5640-0-3bc7e69f45",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-1-6b24c6b263",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-1-ca78ad641d",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-1-df66789163",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-1-636397d640",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-1-342de06e1c",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-2-690c778833",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-2-00f4ac28af",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-2-c34a2ed4a2",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-2-404063f626",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-2-b1f4703030",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-3-aaf45abfc7",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-3-fbc06cffa1",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-3-045d849eb4",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-3-6239100fd1",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-3-3acec1288a",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-4-29d73b6a83",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-4-ef05ef1e33",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-4-b474693a37",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-4-d17fd2cc93",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-4-e92a3c39ce",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-5-81c0995c7d",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-5-c1a5c91aba",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-5-e9ba06ffdf",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-5-e513c065b8",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-5-27182d36e4",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-6-ce989e2a72",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-6-8f11a4a57f",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-6-e5379228e0",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-6-45f4aae65e",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-6-5067728b08",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-7-b6cb71d8cf",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-7-706998578b",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-7-7e75a34c2c",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-7-1f7bc24f6d",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-7-3dfc1e7d8a",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-8-633da2d0b8",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-8-3a60ce3548",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-8-8253842675",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-8-6511511f82",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-8-e651cfe602",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-9-a42585012d",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-9-7c574e4c0f",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-9-e8097df191",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-9-da2413ee12",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-9-d7139991b2",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    },
+    {
+      "trial": "emulator-5642-0-d820df1043",
+      "label": "missing",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-0-12db7ddc4a",
+      "label": "analytics:bad",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-0-342aef92b9",
+      "label": "analytics:9",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-0-7f02e5f734",
+      "label": "other:0",
+      "blocked": true,
+      "send_ok": false,
+      "receiver_complete": false
+    },
+    {
+      "trial": "emulator-5642-0-e97f3b55a5",
+      "label": "analytics:0",
+      "blocked": false,
+      "send_ok": true,
+      "receiver_complete": true
+    }
+  ],
+  "matched_invalid": [
+    {
+      "run": "A",
+      "trial": "for000",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "reb000",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "for005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "reb005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "rev005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "net005",
+      "reason": "harness/device"
+    }
+  ],
+  "matched_incomplete_tenant_groups": [],
+  "acra_lifecycle": [
+    {
+      "variant": "acra",
+      "schedule": "control",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acra",
+      "schedule": "disable",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acra",
+      "schedule": "reboot",
+      "n": 3,
+      "delivered": 0,
+      "retired": 0,
+      "queued_before": 3
+    },
+    {
+      "variant": "acra",
+      "schedule": "rebootctl",
+      "n": 3,
+      "delivered": 3,
+      "retired": 2,
+      "queued_before": 3
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "control",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "disable",
+      "n": 10,
+      "delivered": 0,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "reboot",
+      "n": 3,
+      "delivered": 0,
+      "retired": 0,
+      "queued_before": 3
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "rebootctl",
+      "n": 3,
+      "delivered": 3,
+      "retired": 1,
+      "queued_before": 3
+    }
+  ],
+  "acra_final_smoke": [
+    {
+      "variant": "acra",
+      "schedule": "disable",
+      "k": 0,
+      "tag": "RD-v4-acra-acra-disable-000",
+      "t0": 1794742060.630283,
+      "serial": "emulator-5640",
+      "protocol": "revision-v4",
+      "net_off": true,
+      "t_crash": 1794742061.788987,
+      "crash": "Broadcast completed: result=0, data=\"crashing\"",
+      "state_after_crash": "approved=1;unapproved=0;pending_jobs=1",
+      "jobs_after_crash": "waiting",
+      "disable": "disabled",
+      "t_disable": 1794742065.956579,
+      "net_on": true,
+      "t_net_on": 1794742068.357795,
+      "delivered": true,
+      "latency_s": 0.03601503372192383,
+      "state_end": "approved=0;unapproved=0;pending_jobs=0",
+      "fence_log": "1794742061795 mono=1626350791649 pid=29490 CRASH tag=RD-v4-acra-acra-disable-000 epoch=0\n1794742065935 mono=1630490797860 pid=29658 WITHDRAW_REQUEST\n1794742065940 mono=1630495661068 pid=29658 WITHDRAW_DURABLE\n1794742065941 mono=1630496771151 pid=29658 WITHDRAW_ACK\n"
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "disable",
+      "k": 0,
+      "tag": "RD-v4-acra-acrafence-disable-000",
+      "t0": 1794742069.410291,
+      "serial": "emulator-5640",
+      "protocol": "revision-v4",
+      "net_off": true,
+      "t_crash": 1794742069.7883022,
+      "crash": "Broadcast completed: result=0, data=\"crashing\"",
+      "state_after_crash": "approved=1;unapproved=0;pending_jobs=1",
+      "jobs_after_crash": "waiting",
+      "disable": "disabled",
+      "t_disable": 1794742073.953973,
+      "net_on": true,
+      "t_net_on": 1794742076.363957,
+      "delivered": false,
+      "latency_s": null,
+      "state_end": "approved=0;unapproved=0;pending_jobs=0",
+      "fence_log": "1794742069794 mono=1634349843945 pid=29824 CRASH tag=RD-v4-acra-acrafence-disable-000 epoch=0\n1794742073933 mono=1638488883947 pid=29902 WITHDRAW_REQUEST\n1794742073937 mono=1638492779197 pid=29902 WITHDRAW_DURABLE\n1794742073938 mono=1638493914280 pid=29902 WITHDRAW_ACK\n1794742076630 mono=1641186008948 pid=29983 AUTHORIZATION_LOGGED tag=RD-v4-acra-acrafence-disable-000 label=crash:0 v=2;request=e2251a35-2736-4d79-8797-d7ff268b0e61;attempt=1;fenced=true\n1794742076633 mono=1641188407656 pid=29983 BLOCK tag=RD-v4-acra-acrafence-disable-000 label=crash:0 v=2;request=e2251a35-2736-4d79-8797-d7ff268b0e61;attempt=1;offset=0\n1794742076633 mono=1641188559656 pid=29983 SEND_FAILED tag=RD-v4-acra-acrafence-disable-000 label=crash:0 v=2;request=e2251a35-2736-4d79-8797-d7ff268b0e61;attempt=1;error=Denied\n1794742076633 mono=1641188583281 pid=29983 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "variant": "acra",
+      "schedule": "control",
+      "k": 0,
+      "tag": "RD-v4-acra-acra-control-000",
+      "t0": 1794742121.6340349,
+      "serial": "emulator-5640",
+      "protocol": "revision-v4",
+      "net_off": true,
+      "t_crash": 1794742123.1974258,
+      "crash": "Broadcast completed: result=0, data=\"crashing\"",
+      "state_after_crash": "approved=1;unapproved=0;pending_jobs=1",
+      "jobs_after_crash": "waiting",
+      "net_on": true,
+      "t_net_on": 1794742129.774267,
+      "delivered": true,
+      "latency_s": 0.093048095703125,
+      "state_end": "approved=0;unapproved=0;pending_jobs=0",
+      "fence_log": "1794742123202 mono=1687758234762 pid=30118 CRASH tag=RD-v4-acra-acra-control-000 epoch=0\n"
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "control",
+      "k": 0,
+      "tag": "RD-v4-acra-acrafence-control-000",
+      "t0": 1794742130.825401,
+      "serial": "emulator-5640",
+      "protocol": "revision-v4",
+      "net_off": true,
+      "t_crash": 1794742131.212954,
+      "crash": "Broadcast completed: result=0, data=\"crashing\"",
+      "state_after_crash": "approved=1;unapproved=0;pending_jobs=1",
+      "jobs_after_crash": "waiting",
+      "net_on": true,
+      "t_net_on": 1794742137.7902741,
+      "delivered": true,
+      "latency_s": 0.05811667442321777,
+      "state_end": "approved=0;unapproved=0;pending_jobs=0",
+      "fence_log": "1794742131220 mono=1695776114891 pid=30471 CRASH tag=RD-v4-acra-acrafence-control-000 epoch=0\n1794742137832 mono=1702387712602 pid=30616 AUTHORIZATION_LOGGED tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;fenced=true\n1794742137834 mono=1702389586269 pid=30616 WRITE_ATTEMPT tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;offset=0;requested=660\n1794742137834 mono=1702389678144 pid=30616 WRITE_RETURN_BOUNDARY tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;offset=0\n1794742137834 mono=1702389705311 pid=30616 BYTES_ACCEPTED tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;offset=0;n=660\n1794742137834 mono=1702389749186 pid=30616 REQUEST_HANDED_OFF tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;wire_bytes=660\n1794742137834 mono=1702390228102 pid=30616 RESPONSE_RECEIVED tag=RD-v4-acra-acrafence-control-000 label=crash:0 v=2;request=2cfaccd8-3e0a-4895-8ea2-3e2147665823;attempt=1;status=HTTP/1.1 200 OK\n"
+    }
+  ],
+  "acra_conformance": [
+    {
+      "case": "valid",
+      "label": "crash:0",
+      "operations": [],
+      "expected_delivery": true,
+      "delivered": true,
+      "pass_": true,
+      "explicit_denial": false,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742039407 mono=1603963026847 pid=28262 AUTHORIZATION_LOGGED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;fenced=true\n1794742039408 mono=1603963636014 pid=28262 WRITE_ATTEMPT tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0;requested=245\n1794742039408 mono=1603963720972 pid=28262 WRITE_RETURN_BOUNDARY tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0\n1794742039408 mono=1603963750264 pid=28262 BYTES_ACCEPTED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0;n=245\n1794742039408 mono=1603963796680 pid=28262 REQUEST_HANDED_OFF tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;wire_bytes=245\n1794742039908 mono=1604463943556 pid=28262 RESPONSE_RECEIVED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;status=HTTP/1.1 200 OK\n"
+    },
+    {
+      "case": "missing",
+      "label": "missing",
+      "operations": [],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742040655 mono=1605210894723 pid=28327 BLOCK reason=missing_or_malformed_label tag=RD-conformance-missing\n"
+    },
+    {
+      "case": "malformed",
+      "label": "crash:oops",
+      "operations": [],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742041382 mono=1605937945265 pid=28383 BLOCK reason=missing_or_malformed_label tag=RD-conformance-malformed\n"
+    },
+    {
+      "case": "future",
+      "label": "crash:9",
+      "operations": [],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742042102 mono=1606657509515 pid=28438 AUTHORIZATION_LOGGED tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;fenced=true\n1794742042102 mono=1606658141348 pid=28438 BLOCK tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;offset=0\n1794742042103 mono=1606658262348 pid=28438 SEND_FAILED tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;error=Denied\n1794742042103 mono=1606658287390 pid=28438 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "withdrawn",
+      "label": "crash:0",
+      "operations": [
+        "disable"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n"
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742042812 mono=1607367661182 pid=28493 WITHDRAW_REQUEST\n1794742042814 mono=1607369737307 pid=28493 WITHDRAW_DURABLE\n1794742042815 mono=1607370627974 pid=28493 WITHDRAW_ACK\n1794742042838 mono=1607393767599 pid=28493 AUTHORIZATION_LOGGED tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;fenced=true\n1794742042839 mono=1607394918974 pid=28493 BLOCK tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;offset=0\n1794742042839 mono=1607395075557 pid=28493 SEND_FAILED tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;error=Denied\n1794742042839 mono=1607395109765 pid=28493 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "old_after_regrant",
+      "label": "crash:0",
+      "operations": [
+        "disable",
+        "enable"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n",
+        "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"enabled\"\n"
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742043559 mono=1608114639599 pid=28553 WITHDRAW_REQUEST\n1794742043562 mono=1608117537224 pid=28553 WITHDRAW_DURABLE\n1794742043563 mono=1608118656849 pid=28553 WITHDRAW_ACK\n1794742043582 mono=1608138012141 pid=28553 REGRANT_REQUEST\n1794742043585 mono=1608140392807 pid=28553 REGRANT_DURABLE\n1794742043586 mono=1608141329974 pid=28553 REGRANT_ACK\n1794742043608 mono=1608163308807 pid=28553 AUTHORIZATION_LOGGED tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;fenced=true\n1794742043608 mono=1608163851641 pid=28553 BLOCK tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;offset=0\n1794742043608 mono=1608163970766 pid=28553 SEND_FAILED tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;error=Denied\n1794742043608 mono=1608163993849 pid=28553 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "new_after_regrant",
+      "label": "crash:1",
+      "operations": [
+        "disable",
+        "enable"
+      ],
+      "expected_delivery": true,
+      "delivered": true,
+      "pass_": true,
+      "explicit_denial": false,
+      "sender_returned": true,
+      "actions": [
+        "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n",
+        "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"enabled\"\n"
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742044348 mono=1608903583183 pid=28618 WITHDRAW_REQUEST\n1794742044351 mono=1608906402849 pid=28618 WITHDRAW_DURABLE\n1794742044352 mono=1608907459641 pid=28618 WITHDRAW_ACK\n1794742044373 mono=1608929168808 pid=28618 REGRANT_REQUEST\n1794742044376 mono=1608931782766 pid=28618 REGRANT_DURABLE\n1794742044377 mono=1608933121433 pid=28618 REGRANT_ACK\n1794742044400 mono=1608956233641 pid=28618 AUTHORIZATION_LOGGED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;fenced=true\n1794742044401 mono=1608956761058 pid=28618 WRITE_ATTEMPT tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0;requested=257\n1794742044401 mono=1608956853641 pid=28618 WRITE_RETURN_BOUNDARY tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0\n1794742044401 mono=1608956878266 pid=28618 BYTES_ACCEPTED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0;n=257\n1794742044401 mono=1608956921308 pid=28618 REQUEST_HANDED_OFF tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;wire_bytes=257\n1794742044902 mono=1609457785850 pid=28618 RESPONSE_RECEIVED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;status=HTTP/1.1 200 OK\n"
+    },
+    {
+      "case": "missing_store",
+      "label": "crash:0",
+      "operations": [
+        "missing_store"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        ""
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742045632 mono=1610187747392 pid=28684 AUTHORIZATION_LOGGED tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;fenced=true\n1794742045633 mono=1610188613725 pid=28684 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742045633 mono=1610188648183 pid=28684 BLOCK tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;offset=0\n1794742045634 mono=1610189864725 pid=28684 SEND_FAILED tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;error=Denied\n1794742045634 mono=1610189893975 pid=28684 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "corrupt_store",
+      "label": "crash:0",
+      "operations": [
+        "corrupt_store"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        ""
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742046379 mono=1610934568725 pid=28740 AUTHORIZATION_LOGGED tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;fenced=true\n1794742046383 mono=1610938702225 pid=28740 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742046383 mono=1610938735892 pid=28740 BLOCK tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;offset=0\n1794742046383 mono=1610938905684 pid=28740 SEND_FAILED tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;error=Denied\n1794742046383 mono=1610938934225 pid=28740 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "legacy_invalid",
+      "label": "crash:0",
+      "operations": [
+        "legacy_invalid"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742047257 mono=1611812325351 pid=28844 MIGRATION_FAIL_CLOSED\n1794742047257 mono=1611812408517 pid=28844 INITIALIZE_FAILED java.io.IOException: untrusted legacy policy requires explicit repair\n1794742047284 mono=1611839330809 pid=28844 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742047361 mono=1611916296309 pid=28844 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;fenced=true\n1794742047361 mono=1611916933142 pid=28844 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742047361 mono=1611916963142 pid=28844 BLOCK tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;offset=0\n1794742047361 mono=1611917072309 pid=28844 SEND_FAILED tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;error=Denied\n1794742047361 mono=1611917097059 pid=28844 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "legacy_withdrawn",
+      "label": "crash:0",
+      "operations": [
+        "legacy_withdrawn"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742048343 mono=1612898658101 pid=28946 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;fenced=true\n1794742048343 mono=1612899238560 pid=28946 BLOCK tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;offset=0\n1794742048344 mono=1612899346185 pid=28946 SEND_FAILED tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;error=Denied\n1794742048344 mono=1612899370935 pid=28946 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "legacy_allowed",
+      "label": "crash:0",
+      "operations": [
+        "legacy_allowed"
+      ],
+      "expected_delivery": true,
+      "delivered": true,
+      "pass_": true,
+      "explicit_denial": false,
+      "sender_returned": true,
+      "actions": [],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742049343 mono=1613898818060 pid=29047 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;fenced=true\n1794742049344 mono=1613899436352 pid=29047 WRITE_ATTEMPT tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0;requested=254\n1794742049344 mono=1613899512602 pid=29047 WRITE_RETURN_BOUNDARY tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0\n1794742049344 mono=1613899537018 pid=29047 BYTES_ACCEPTED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0;n=254\n1794742049344 mono=1613899580477 pid=29047 REQUEST_HANDED_OFF tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;wire_bytes=254\n1794742049844 mono=1614400206352 pid=29047 RESPONSE_RECEIVED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;status=HTTP/1.1 200 OK\n"
+    },
+    {
+      "case": "invalid_migration_regrant",
+      "label": "crash:0",
+      "operations": [
+        "legacy_invalid",
+        "enable"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"error java.io.IOException: policy unavailable\"\n"
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742050694 mono=1615249807852 pid=29146 MIGRATION_FAIL_CLOSED\n1794742050694 mono=1615249872269 pid=29146 INITIALIZE_FAILED java.io.IOException: untrusted legacy policy requires explicit repair\n1794742050720 mono=1615275636686 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050790 mono=1615345421519 pid=29146 REGRANT_REQUEST\n1794742050791 mono=1615346283477 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050814 mono=1615370181936 pid=29146 AUTHORIZATION_LOGGED tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;fenced=true\n1794742050815 mono=1615370726727 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050815 mono=1615370754394 pid=29146 BLOCK tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;offset=0\n1794742050815 mono=1615370862936 pid=29146 SEND_FAILED tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;error=Denied\n1794742050815 mono=1615370882352 pid=29146 REPORT_RETIRED policy_denied\n"
+    },
+    {
+      "case": "missing_store_regrant",
+      "label": "crash:0",
+      "operations": [
+        "missing_store",
+        "enable"
+      ],
+      "expected_delivery": false,
+      "delivered": false,
+      "pass_": true,
+      "explicit_denial": true,
+      "sender_returned": true,
+      "actions": [
+        "",
+        "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"error java.io.IOException: policy unavailable\"\n"
+      ],
+      "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+      "log": "1794742051553 mono=1616108669061 pid=29206 REGRANT_REQUEST\n1794742051554 mono=1616109422769 pid=29206 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742051577 mono=1616132460978 pid=29206 AUTHORIZATION_LOGGED tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;fenced=true\n1794742051577 mono=1616133021811 pid=29206 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742051577 mono=1616133051103 pid=29206 BLOCK tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;offset=0\n1794742051577 mono=1616133216228 pid=29206 SEND_FAILED tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;error=Denied\n1794742051577 mono=1616133247644 pid=29206 REPORT_RETIRED policy_denied\n"
+    }
+  ],
+  "acra_ui_trace": [
+    {
+      "tap": "Disable and withdraw queued reports",
+      "expected": "Withdrawal acknowledged",
+      "observed": true,
+      "events": "1794742054475 mono=1619030758062 pid=29268 WITHDRAW_REQUEST\n1794742054481 mono=1619036289104 pid=29268 WITHDRAW_DURABLE\n1794742054483 mono=1619038273937 pid=29268 WITHDRAW_ACK\n"
+    },
+    {
+      "tap": "Enable new reports",
+      "expected": "Enabled; old reports remain invalid",
+      "observed": true,
+      "events": "1794742054475 mono=1619030758062 pid=29268 WITHDRAW_REQUEST\n1794742054481 mono=1619036289104 pid=29268 WITHDRAW_DURABLE\n1794742054483 mono=1619038273937 pid=29268 WITHDRAW_ACK\n1794742056957 mono=1621512359980 pid=29268 REGRANT_REQUEST\n1794742056960 mono=1621515653897 pid=29268 REGRANT_DURABLE\n1794742056961 mono=1621516714439 pid=29268 REGRANT_ACK\n"
+    }
+  ],
+  "matomo_attempts": 20,
+  "matomo_failures": []
+}

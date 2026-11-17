@@ -1,0 +1,89 @@
+{
+  "limitations": [
+    "direct DEX calls only",
+    "no native, reflection, dynamic loading or IPC proof",
+    "method overloads merged by inherited parser",
+    "SDK dead code remains flagged"
+  ],
+  "apks": [
+    {
+      "apk": "acra/build/apk/acrafence.apk",
+      "sha256": "48a778f2c61f95f8b5db48fe6153a8abaa3a74b68130c0846ef8e64bc70bdc7f",
+      "sites": [
+        {
+          "caller": "Lkotlin/io/TextStreamsKt;->readBytes",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->lambda$postMode$0",
+          "target": "Ljava/nio/channels/SocketChannel;->write",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->postMode",
+          "target": "Ljava/nio/channels/SocketChannel;->connect",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/acra/http/BaseHttpRequest;->createConnection",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/acra/http/BaseHttpRequest;->writeContent",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/acra/http/BaseHttpRequest;->writeContent",
+          "target": "Ljava/net/HttpURLConnection;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/acra/http/BaseHttpRequest;->writeContent",
+          "target": "Ljava/net/HttpURLConnection;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        }
+      ],
+      "potential_bypass_sites": 5
+    },
+    {
+      "apk": "matomo/build/matomo.apk",
+      "sha256": "8a9c3998400ed45dbf8a468d0e4ebe4084cdc1cb39316e617ceac4e328b68552",
+      "sites": [
+        {
+          "caller": "Lkotlin/io/TextStreamsKt;->readBytes",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->lambda$post$0",
+          "target": "Ljava/nio/channels/SocketChannel;->write",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->post",
+          "target": "Ljava/nio/channels/SocketChannel;->connect",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send",
+          "target": "Ljava/net/HttpURLConnection;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send",
+          "target": "Ljava/net/HttpURLConnection;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        }
+      ],
+      "potential_bypass_sites": 4
+    }
+  ]
+}

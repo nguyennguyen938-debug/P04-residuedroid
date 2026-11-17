@@ -1,0 +1,59 @@
+\section{Artifact and Reproduction}
+\label{app:artifact}
+
+The artifact contains the fixture and library sources (\texttt{fixture/src}, framework-only Java), the ACRA case-study app
+built from the unmodified ACRA 5.14.2 AARs, the harnesses (\texttt{harness/}), the oracle and aggregation scripts
+(\texttt{scripts/}), the static scanner and corpus list (\texttt{static/}), all raw logs (sink JSON lines, device event logs
+read with \texttt{sqlite3}, and per-trial schedule logs with host timestamps), and the authorization-order and socket-acceptance renderers, which write the
+empirical tables, plots and evaluation macros. \texttt{make all} regenerates the paper from the raw data.
+\texttt{make campaign}, \texttt{make micro} and \texttt{make acra} re-run the emulator experiments. Pinned dependencies and corpus inputs carry SHA-256 manifests. The archive excludes the corpus APK
+cache, SDK and AVDs; scan outputs support numeric regeneration, while new scans require APK retrieval.
+Experiment protocols, source freezes and exclusions are in \texttt{revision/}. The local package
+is not a claim of public hosting or third-party reproduction.
+
+\section{Fixture Details}
+\label{app:fixture}
+
+\paragraph{Jobs.} For tenant $t$, upload, summary, backup and personalisation jobs use IDs $10t{+}1$, $10t{+}3$, $10t{+}4$ and
+$10t{+}5$. All are persisted, with a 15\,s minimum latency, a 30\,s deadline override and a network constraint. In the manual
+schedules (\textsf{net}, \textsf{infl}) setup-time jobs get a 600\,s latency and are started with \texttt{cmd jobscheduler run -f}.
+Jobs enqueued later, by a re-grant or at startup, keep their natural latency. After 60\,s, the harness force-runs any job
+still registered, which bounds the observation window.
+
+\paragraph{Variant semantics.} \vname{cancel} cancels the jobs whose declared scope is the withdrawn scope and whose
+purpose the contract revokes. For contracts covering pending data, it also deletes the tenant's unsent outbox rows (T4 instead marks them
+unsendable for personalisation) and derived rows whose declared scope matches. \vname{enqueue} checks at every
+\texttt{schedule()} call, including the startup path. \vname{job-start} checks at the start of \texttt{onStartJob}'s worker
+thread. The conventional check is ``withdrawn scope = declared scope, purpose revoked, pending covered, flag cleared''. \vname{egress}
+evaluates the same check inside the fence's critical section.
+
+\paragraph{Oracle.} Let $W_t$ be the sequence numbers of tenant $t$'s withdrawals in the device log, and $q$ the pre-write authorization
+sequence carried in a submission's body. A source tag of epoch $e$ in an item sent for purpose $p$ is prohibited if and only if
+$p$ is revoked by $t$'s contract, the contract covers pending data, and $e < |\{w\in W_t: w<q\}|$. A derived item is
+prohibited if any of its listed sources is. For the raw-socket tenant, $q$ is joined from the device log by submission id.
+Host-time fallback cannot establish socket order. The socket-acceptance oracle classifies missing or overlapping evidence as unknown; authorization-marker results certify only the logged authorization order.
+
+\section{Uncovered Paths}
+\label{app:uncovered}
+
+\sys mediates submissions made through its wrapper by code that stores data in its labelled stores. Not mediated:
+(i) JNI/native sockets; (ii) bundled HTTP clients (OkHttp, Ktor, Cronet) called directly; (iii) WebView, Custom Tabs and
+\texttt{DownloadManager}, where the system process performs the I/O; (iv) IPC to other apps or to SDK processes that do not
+link the library; (v) SyncAdapters whose I/O runs in system-initiated contexts that the app does not route; (vi) data
+copied to unlabelled files or caches. Path (ii) requires auditing buffering, retries and the actual transport boundary; an application
+interceptor alone does not establish per-write serialization. Paths (i) and (iii) need platform support. T9 in our campaign
+represents (i)/(ii).
+
+\section{Static Scanner}
+\label{app:scanner}
+
+The scanner parses each \texttt{classes*.dex} (string, type, method and class tables, \texttt{class\_data}, code items) and
+walks Dalvik instructions using the opcode width table, including the switch and array payload pseudo-instructions. Edges
+are \texttt{invoke-*} targets, class-hierarchy resolution below app-defined types (capped at 50 targets), and allocation edges
+to callback methods (\texttt{run}, \texttt{call}, \texttt{invoke}, \texttt{invokeSuspend}, \dots) of allocated classes. Inner
+classes of an entry class, such as Kotlin coroutine state machines, are added as roots. Search is breadth-first with an 8{,}000-node
+budget per entry and records the minimum hop count to a sink. It is written for this paper rather than built on
+Soot/Dexpler~\cite{bartel2012dexpler} so that it runs with the Python standard library alone. The validation sample
+(\S\ref{sec:measure}) and all per-app outputs are in the artifact.
+
+\input{sections/historical-evaluation}

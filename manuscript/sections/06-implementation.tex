@@ -1,0 +1,53 @@
+\section{Implementation}
+\label{sec:impl}
+
+\paragraph{Library and integration.} The implementation uses a shared Java
+\texttt{SocketChannel}~\cite{android_socketchannel} HTTP/1.1 sender and a TLS~1.2 adapter built on \texttt{SSLEngine}~\cite{java_sslengine}. The latter verifies the peer certificate and host, encrypts at most 4\,KiB of plaintext per wrap, and rechecks policy before each at-most-4\,KiB ciphertext write. Proxies, redirects, pooled writers, early data and renegotiation are excluded. Its positive write return is socket acceptance, not server delivery. A local
+mutex plus file lock coordinates threads and processes. ACRA's former epoch text file is
+migrated into transactional SQLite state; malformed state fails closed. Initialization is
+explicit and an interrupted initialization cannot silently recreate an allowed policy.
+The stream-based implementation and APK inputs are archived separately.
+
+The ACRA adapter changes application initialization, crash-time custom-data labels,
+\texttt{ReportSender}, and the settings callback. The setting explicitly invalidates queued
+reports, shows pending acknowledgement, and preserves old epochs on re-grant. A normal blocked
+sender return retires the report; network errors retain it for ACRA retry. Persisted report
+labels survive both paths. The artifact inventories changed call sites, schema, service-loader
+registration, and bypasses. This is an SDK test embedding, not a deployed production app.
+
+The ACRA embedding comprises six Java files (202 nonblank lines), touching initialization/collectors, report labels, sender/factory registration and settings acknowledgement. Matomo uses two embedding files (56 lines), touching tracker setup, packet labels and the dispatcher connection callback. The shared coordinator and HTTP/TLS transports comprise three files (196 lines). These are maintained embedding-source sizes, not SDK diff sizes or estimates of production integration effort.
+
+\paragraph{Fixture app (\lab).} To compare enforcement points on identical schedules, we built a fixture app with ten
+\emph{tenants}. Each is an independent workload with its own scope, stated contract and persisted jobs (Table~\ref{tab:tenants}).
+Every tenant collects 12 records tagged with synthetic tracer strings such as \texttt{RD-pen007-T1-e0-03} into a SQLite
+outbox. Tenants with a summary also derive one daily summary row whose content lists its source tags, and copy it into a
+persisted summary job. All uploads use persisted \texttt{JobScheduler} jobs with a network constraint, in batches of four
+records with up to five in-job attempts and exponential backoff. They stop cooperatively between batches on
+\texttt{onStopJob}. The app's startup path re-enqueues an upload whenever its outbox holds unsent rows and no job is
+scheduled, as analytics SDKs commonly do. One package is installed per enforcement variant, all from the same code:
+\begin{itemize}[leftmargin=*,nosep]
+\item \vname{none}: stops collection only.
+\item \vname{cancel}: additionally cancels the withdrawn scope's jobs and purges its unsent outbox.
+\item \vname{enqueue}: checks consent at every enqueue, including the startup path.
+\item \vname{jobstart}: checks consent at job start.
+\item \vname{conv}: cancel + enqueue + job-start checks, the strongest conventional combination.
+\item \vname{egress}: a serialized egress check on the job's declared scope, without lineage or epochs.
+\item \vname{rd}: \sys.
+\end{itemize}
+Two ablations change one \sys mechanism each. \vname{volatile} keeps labels in memory and fails open on unknown
+provenance. \vname{taint} uses durable lineage but a contract-unaware rule, so any withdrawal or revocation of a source
+blocks all its uses, as a deliberately over-broad synthetic policy would. It is not an implementation of TaintDroid or a comparison with a complete taint system. A tenth package, \vname{noser}, drops serialization and is
+used only in the race micro-benchmark.
+
+Five matched variants share durable lineage, epochs, and the same chunk transport:
+\vname{menqueue}, \vname{mstart}, \vname{mlayer} (cancellation plus enqueue, job-start and retry checks),
+\vname{mfence}, and \vname{mboth} (layered checks plus final fencing). All retain source labels
+in copied job inputs. Their comparisons isolate final placement more closely than the boolean-only baselines.
+
+\paragraph{Harness and oracle.} A host sink, reached via \texttt{10.0.2.2}, logs every request and waits 300\,ms before
+responding, emulating a wide-area server. The oracle (\S\ref{sec:setup}) is a separate Python reimplementation of the
+contract table. It never reads the app's labels or decisions.
+
+\paragraph{Static scanner.} For the measurement (\S\ref{sec:measure}) we wrote a standard-library-only DEX parser. It
+reads string, type, method and class tables, decodes Dalvik code items, and builds an over-approximate call graph:
+class-hierarchy resolution below app-defined types, and allocation edges to callback methods of allocated classes.

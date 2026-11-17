@@ -1,0 +1,12 @@
+[
+  {
+    "package": "acra",
+    "sha256": "3936212f7a615b5bbf4ac5e7a00cb43374306364b83650d0ba9f1a261fa5cc4b",
+    "size": 910203
+  },
+  {
+    "package": "acrafence",
+    "sha256": "f5a2108a2ebdbfe7d066f7e29734c0ffe2458e9cc21bd72ad8f0c8d41c8445fd",
+    "size": 910203
+  }
+]

@@ -1,0 +1,42 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Withdrawal and consent on mobile.} MowChecker~\cite{du2024mowchecker} is the closest work. It statically
+checks whether a withdrawal choice control- or data-flow-dominates third-party collection, and it found many
+inconsistencies. Its question is whether the toggle is wired to the collection at all. Ours starts where a correct wiring
+ends: data collected and queued \emph{before} the toggle, carried by persisted work across lifecycle events, and the
+enforcement point that still sees it. The two are complementary. Studies of consent notices and explicit-consent
+violations~\cite{nguyen2021sharefirst,nguyen2022freely,kollnig2021faitaccompli,matte2020cookie} and of tracking
+ecosystems~\cite{razaghpanah2018trackers,kollnig2022goodbye} measure whether apps ask and whether they send before asking.
+Policy--code consistency work~\cite{slavin2016policy,andow2019policylint,andow2020policheck,zimmeck2019maps} compares stated
+policies with data flows. Our oracle similarly judges submissions against a stated contract, but it does so at a stated observation boundary
+and in time.
+
+\paragraph{Permissions and asynchronous use.} Android's permission model and its pitfalls are well
+studied~\cite{felt2011demystified,felt2012attention,au2012pscout}. Aper~\cite{wang2022aper} finds dangerous APIs used
+asynchronously after permission checks, a crash- and misuse-oriented cousin of our check-to-commit race. Reardon et
+al.~\cite{reardon2019fiftyways} show apps circumventing permissions through side channels. That is why we restrict our
+claims to cooperative apps and mediated paths.
+
+\paragraph{Data management and information flow.} TaintDroid~\cite{enck2010taintdroid} tracks data to the network at
+runtime. AppFence~\cite{hornyack2011appfence} blocks or shadows sensitive flows. Static analyzers such as
+FlowDroid~\cite{arzt2014flowdroid}, IccTA~\cite{li2015iccta}, Amandroid~\cite{wei2014amandroid} and
+DroidSafe~\cite{gordon2015droidsafe} find source-to-sink paths (see~\cite{li2017staticsurvey}). CleanOS~\cite{tang2012cleanos}
+evicts idle sensitive data, and Pebbles~\cite{spahn2014pebbles} recovers logical data objects so that they can be managed,
+including deleted. Weir~\cite{nadkarni2016weir} brings decentralized information-flow control~\cite{myers1997difc,efstathopoulos2005asbestos,zeldovich2006histar,krohn2007flume}
+to Android, and FlowFence~\cite{fernandes2016flowfence} confines sensitive computation in IoT frameworks. Aurasium and
+Boxify~\cite{xu2012aurasium,backes2015boxify} interpose on app behavior without platform changes. \sys borrows the label idea
+but differs in three ways. Its labels carry an \emph{epoch} that a withdrawal invalidates. They are persisted together with
+\emph{job inputs}, so they survive reboot and force-stop. And the decision is contract-aware: it is purpose- and
+pending-data-sensitive. The \vname{taint} ablation shows why that matters, since our synthetic over-broad rule blocks
+permitted flows.
+
+\paragraph{Deletion, revocation and concurrency.} Secure deletion~\cite{reardon2013deletion}, formal deletion
+definitions~\cite{garg2020deletion} and GDPR-oriented storage benchmarks~\cite{shastri2020gdprbench} address erasing data,
+not stopping its later use by already-queued work. Our soundness argument is a linearizability-style
+argument~\cite{herlihy1990linearizability}: a policy check and each bounded write are serialized against withdrawals, in the
+spirit of TOCTOU defenses~\cite{bishop1996races}. Leases~\cite{gray1989leases} bound how stale a cached grant can be, but they do
+not close the race on one device, and we do not need them. Background-work misuse has been studied for energy (wake
+locks~\cite{liu2016wakelock}). We study it for privacy contracts.
+
+\paragraph{SDK isolation and downstream policy.} Android's Privacy Sandbox SDK Runtime separates compatible SDKs into a restricted process~\cite{android_sdkruntime}; isolation alone does not supply the source epochs or queued-data contract assumed here. Riverbed enforces user-defined data policies inside attested server runtimes~\cite{wang2019riverbed}, complementing a device boundary that cannot recall delivered data. SDK consent APIs also expose distinct contracts: Matomo's JavaScript tracker separates tracking consent from cookie consent~\cite{matomo_consent}. Those web APIs are related design context, not evidence about the Android SDK's persisted dispatcher tested here.

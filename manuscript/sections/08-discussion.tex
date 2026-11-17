@@ -1,0 +1,42 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+\label{sec:threats}
+
+\paragraph{What is and is not covered.} \sys's guarantee holds for supported paths only. It does not cover:
+\begin{itemize}[leftmargin=*,nosep]
+\item native code that opens sockets (\pctNativeAll{}\% of the corpus ships native libraries);
+\item embedded HTTP stacks or raw sockets that bypass the wrapper (tenant T9 leaked under \sys and every variant without an early check);
+\item WebViews, Custom Tabs and IPC to other apps or SDK processes that do not link the library;
+\item SyncAdapters and push-triggered work whose network I/O goes through system services;
+\item any flow the developer did not route through the wrapper.
+\end{itemize}
+Lineage is tracked at the granularity of rows and job inputs, not of program variables. Data copied into an unlabelled
+cache and later re-read loses its label, and the wrapper then sees an unlabelled item. The stream-wrapper prototype let unknown labels through; its zero observed unknowns do not
+justify assuming complete labels in deployments. The channel wrapper fails closed on missing, malformed,
+future-epoch or unknown-scope labels and unavailable policy. Only trusted collection-time metadata
+can support migration; re-grant never relabels old data. This can lose permitted flows, which the
+conformance tests report. A direct-call mediation checker reuses the DEX parser. It flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code. These require reachability/configuration review; the checker does not prove complete mediation or handle native code, reflection and IPC. FlowDroid~\cite{arzt2014flowdroid} provides richer flow analysis. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
+such as ReCon~\cite{ren2016recon} complement but cannot replace a device-side fence. Our sink counts them as
+\emph{unknown}, never as clean.
+
+\paragraph{Contracts are inputs.} The oracle and the fence both need the app's stated contract: which purposes a withdrawal
+revokes and whether it covers pending data. We encode it per tenant. For a real app, it must come from the app's settings
+text or privacy policy~\cite{andow2019policylint,zimmeck2019maps}. Getting it wrong changes what counts as a violation: the
+\vname{taint} ablation shows the cost of an over-broad contract.
+We make no legal determination (cf.~GDPR Art.~7(3) and Art.~17~\cite{gdpr2016}).
+
+\paragraph{Cost and transport limits.} The audited adapters use HTTP and TLS~1.2 with nonblocking chunks. Buffering in other clients, TLS early data, redirects and unwrapped senders are outside this transport guarantee. The app-wide lock can delay unrelated scopes. Deadlines are best effort,
+and neither storage latency nor Android scheduling has a hard real-time bound. A timeout cannot
+be converted into a successful withdrawal acknowledgement.
+
+\paragraph{Threats to validity.}
+\emph{Internal.} The fixture's enforcement variants encode common patterns, not any specific app's code. Their behavior
+after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The corpus does not validate the fixture's between-batch cancellation behavior. Host sleep and emulator crashes interrupted early
+trials. Early net-loss trials used a connectivity cut that did not reach the app
+(\S\ref{sec:setup}). We excluded every trial with a harness gap over 200\,s, an emulator restart, an unreadable device log
+or an unverified cut (\nInvalid{} of \nTrialsTotal{}), and ran replacement trials. Shared exclusions preserve within-trial pairing but can still select easier schedules.
+\emph{Construct.} Stream-wrapper ordering uses a pre-write log and can undercount baseline handoffs. The channel tests separate authorization, attempts, acceptance and receipt; missing return evidence is unknown. The tags are synthetic tracers, so we test data provenance, not semantic
+sensitivity.
+\emph{External.} We used Android~13 emulators for lifecycle and SDK tests and an Android~15 emulator for HTTP/TLS transport tests. The main campaign uses
+JobScheduler. The WorkManager and AlarmManager runs are smaller (three variants, four
+schedules) and use our fixture's workloads, not third-party apps. No handset was available. Physical devices, OEM scheduling and production integrations remain unvalidated.

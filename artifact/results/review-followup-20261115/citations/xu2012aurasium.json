@@ -1,0 +1,241 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "xu2012aurasium",
+    "author": "Rubin Xu and Hassen Sa{\\\"\\i}di and Ross Anderson",
+    "title": "Aurasium: Practical Policy Enforcement for {Android} Applications",
+    "booktitle": "Proceedings of the 21st USENIX Security Symposium",
+    "year": "2012"
+  },
+  "checked": 1794759759.324256,
+  "candidates": [
+    {
+      "title": "AppGuard \u2013 Fine-Grained Policy Enforcement for Untrusted Android Applications",
+      "match": 0.7153284671532847,
+      "DOI": "10.1007/978-3-642-54568-9_14",
+      "URL": "https://doi.org/10.1007/978-3-642-54568-9_14",
+      "author": [
+        {
+          "given": "Michael",
+          "family": "Backes",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sebastian",
+          "family": "Gerling",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Christian",
+          "family": "Hammer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Matteo",
+          "family": "Maffei",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Philipp",
+          "family": "von Styp-Rekowsky",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Data Privacy Management and Autonomous Spontaneous Security"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2014
+          ]
+        ]
+      },
+      "page": "213-231",
+      "type": "book-chapter"
+    },
+    {
+      "title": "CAPEF: Context-Aware Policy Enforcement Framework for Android Applications",
+      "match": 0.6814814814814815,
+      "DOI": "10.55708/js0201002",
+      "URL": "https://doi.org/10.55708/js0201002",
+      "author": [
+        {
+          "given": "Saad",
+          "family": "Inshi",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mahdi",
+          "family": "Elarbi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Rasel",
+          "family": "Chowdhury",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Hakima",
+          "family": "Ould-Slimane",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Chamseddine",
+          "family": "Talhi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Journal of Engineering Research and Sciences"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            1
+          ]
+        ]
+      },
+      "page": "13-23",
+      "type": "journal-article"
+    },
+    {
+      "title": "$$\\mathbb {K}$$ Semantics for Security Policy Enforcement on Android Applications with Practical Cases",
+      "match": 0.5987261146496815,
+      "DOI": "10.1007/978-3-031-19523-5_8",
+      "URL": "https://doi.org/10.1007/978-3-031-19523-5_8",
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-8563-4736",
+          "authenticated-orcid": false,
+          "given": "Marwa",
+          "family": "Ziadia",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-4820-3176",
+          "authenticated-orcid": false,
+          "given": "Mohamed",
+          "family": "Mejri",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-3905-9099",
+          "authenticated-orcid": false,
+          "given": "Jaouhar",
+          "family": "Fattahi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "EAI/Springer Innovations in Communication and Computing",
+        "Advances in Computational Intelligence and Communication"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            9,
+            30
+          ]
+        ]
+      },
+      "page": "115-133",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "needs primary verification"
+}

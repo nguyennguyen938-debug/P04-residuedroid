@@ -1,0 +1,242 @@
+[
+  {
+    "port": 5640,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5642,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5680,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5682,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5684,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5686,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5688,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  },
+  {
+    "port": 5690,
+    "apks": [
+      {
+        "variant": "menqueue",
+        "sha256": "a08870101e4f7df3668eb0a471af9f0473166a52e44c2556b53a7c4be8bb15bf",
+        "match": true
+      },
+      {
+        "variant": "mstart",
+        "sha256": "876879d09a28a4e88cddff535915cc9effdfed93b5360684bfcea17453646d81",
+        "match": true
+      },
+      {
+        "variant": "mlayer",
+        "sha256": "0e02138cfa838d3ddff3f7d225574fff612a6dd42bba4d6414c454a87b3a7aa1",
+        "match": true
+      },
+      {
+        "variant": "mfence",
+        "sha256": "92f407e6d79f177fba933b41a1918763747dae7b66bc2d33b6a520bd36980575",
+        "match": true
+      },
+      {
+        "variant": "mboth",
+        "sha256": "acc5ae8ad12f5004ca413fe67721f9970d1c3885d3fc2f9613c431b2663facdf",
+        "match": true
+      }
+    ]
+  }
+]

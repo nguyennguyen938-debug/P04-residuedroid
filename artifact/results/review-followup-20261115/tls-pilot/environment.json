@@ -1,0 +1,11 @@
+{
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+  "serial": "emulator-5644",
+  "apk_sha256": "897ad5639bb0417a32e2ffa43cab1e8f5f0cbdac74362fe26d931139eb2a55ac",
+  "started": 1794759605.215508,
+  "host_load": [
+    3.6611328125,
+    3.173828125,
+    2.74267578125
+  ]
+}

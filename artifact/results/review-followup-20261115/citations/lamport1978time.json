@@ -1,0 +1,132 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "lamport1978time",
+    "author": "Leslie Lamport",
+    "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+    "journal": "Communications of the ACM",
+    "volume": "21",
+    "number": "7",
+    "pages": "558--565",
+    "year": "1978"
+  },
+  "checked": 1794759767.409962,
+  "candidates": [
+    {
+      "title": "Time, clocks, and the ordering of events in a distributed system",
+      "match": 1.0,
+      "DOI": "10.1145/359545.359563",
+      "URL": "https://doi.org/10.1145/359545.359563",
+      "author": [
+        {
+          "given": "Leslie",
+          "family": "Lamport",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Massachusetts Computer Associates, Inc."
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1978,
+            7
+          ]
+        ]
+      },
+      "page": "558-565",
+      "type": "journal-article"
+    },
+    {
+      "title": "Time, clocks, and the ordering of events in a distributed system",
+      "match": 1.0,
+      "DOI": "10.1145/3335772.3335934",
+      "URL": "https://doi.org/10.1145/3335772.3335934",
+      "author": [
+        {
+          "name": "Massachusetts Computer Associates, Inc.",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Leslie",
+          "family": "Lamport",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Concurrency: the Works of Leslie Lamport"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2019,
+            10,
+            9
+          ]
+        ]
+      },
+      "page": null,
+      "type": "book-chapter"
+    },
+    {
+      "title": "Time, Clocks, and the Ordering of My Ideas About Distributed Systems",
+      "match": 0.859375,
+      "DOI": "10.1007/11864219_51",
+      "URL": "https://doi.org/10.1007/11864219_51",
+      "author": [
+        {
+          "given": "Leslie",
+          "family": "Lamport",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Distributed Computing"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2006
+          ]
+        ]
+      },
+      "page": "578-578",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "metadata match"
+}

@@ -1,0 +1,2208 @@
+{
+  "checked_at": 1794737451.823437,
+  "remote_sampling": "seed 20261115, two of smallest twenty APKs per stratum; not all remote APKs",
+  "records": [
+    {
+      "kind": "local_apk",
+      "file": "app.prav.client_4217819.apk",
+      "expected": "b9958b92aa8e4f5ce72d2d59432c0bae67b3c22d4182076811cea6ab76185206",
+      "observed": "b9958b92aa8e4f5ce72d2d59432c0bae67b3c22d4182076811cea6ab76185206"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.tvviewer.player_1443.apk",
+      "expected": "f551adea575c7f3f0a62997fe3ec4922696752b5e7f77136168d9f558cb3cc06",
+      "observed": "f551adea575c7f3f0a62997fe3ec4922696752b5e7f77136168d9f558cb3cc06"
+    },
+    {
+      "kind": "local_apk",
+      "file": "be.casperverswijvelt.unifiedinternetqs_3010200.apk",
+      "expected": "fe44614e43c660cdaef2d5d8fd7f3fd99a0026a0e12e6770bd0aa338467f65d6",
+      "observed": "fe44614e43c660cdaef2d5d8fd7f3fd99a0026a0e12e6770bd0aa338467f65d6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "bim.app_1700.apk",
+      "expected": "711e03303f5702a01ff372dd0d04611cd62544ba424290dc509f2eb0197e577c",
+      "observed": "711e03303f5702a01ff372dd0d04611cd62544ba424290dc509f2eb0197e577c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ch.protonvpn.android_605209800.apk",
+      "expected": "a9fbcaa5f31527dfcc10ff8821093f39fac13be3042190c04b2dc5c7449b5174",
+      "observed": "a9fbcaa5f31527dfcc10ff8821093f39fac13be3042190c04b2dc5c7449b5174"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ch.protonvpn.android.reproducible_605209800.apk",
+      "expected": "a0aa2adc8d93f7f47a971c886b50ceb7ec77539b1ecc265ee350dce5da8bff27",
+      "observed": "a0aa2adc8d93f7f47a971c886b50ceb7ec77539b1ecc265ee350dce5da8bff27"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.aurora.store_76.apk",
+      "expected": "fd9c75d90d0f4a7c132b9b4a5a2cf1992a45e03b8d8ff988b7dcfbc0db2c4d11",
+      "observed": "fd9c75d90d0f4a7c132b9b4a5a2cf1992a45e03b8d8ff988b7dcfbc0db2c4d11"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.aw.huda_543.apk",
+      "expected": "5a6fd1894a4ab0b28c9a6b53f253bc3c839b57f02ab5514f55283fb10350f0a8",
+      "observed": "5a6fd1894a4ab0b28c9a6b53f253bc3c839b57f02ab5514f55283fb10350f0a8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bald.uriah.baldphone_102.apk",
+      "expected": "f604fb17965025bc0940c2b312ed4ead952e8993236e9a406731439fd15b3745",
+      "observed": "f604fb17965025bc0940c2b312ed4ead952e8993236e9a406731439fd15b3745"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.biglybt.android.client_1030403.apk",
+      "expected": "527cee469d0730bd37e65b7fccabbb619ef736a2ee0b0378497ca56ffdb03090",
+      "observed": "527cee469d0730bd37e65b7fccabbb619ef736a2ee0b0378497ca56ffdb03090"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.carriez.flutter_hbb_104090003.apk",
+      "expected": "f0b7f22294cff8598251e18245d6d6ff169199e9534dca4f263ad71ab4565463",
+      "observed": "f0b7f22294cff8598251e18245d6d6ff169199e9534dca4f263ad71ab4565463"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.chenyifaer.fafarunner_397.apk",
+      "expected": "6180946aa79d2d3b5aebccdcf0ba5884add918439a52322beebb63bc0e43abd4",
+      "observed": "6180946aa79d2d3b5aebccdcf0ba5884add918439a52322beebb63bc0e43abd4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.dailybeat.app_43.apk",
+      "expected": "51ea74e3122fdfb1c91633e40c93a430630a5ce38bb68f56229ec237ab54eaf4",
+      "observed": "51ea74e3122fdfb1c91633e40c93a430630a5ce38bb68f56229ec237ab54eaf4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.andremiras.qrscan_721202812.apk",
+      "expected": "48283176ccb9ed322305cddf80ba4aea0f076db2ec4faefb5cc8a65e39b8c6cc",
+      "observed": "48283176ccb9ed322305cddf80ba4aea0f076db2ec4faefb5cc8a65e39b8c6cc"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.andreyasadchy.xtra_365.apk",
+      "expected": "b2a7075b8e7e993fddbdf5b01b4d8f031d53c6935a93dc0e67992e84b7b85398",
+      "observed": "b2a7075b8e7e993fddbdf5b01b4d8f031d53c6935a93dc0e67992e84b7b85398"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.livingwithhippos.unchained_62.apk",
+      "expected": "acff85449ca6c5d101a81128e5b19c22ee16215692a999f400aae47dd25729af",
+      "observed": "acff85449ca6c5d101a81128e5b19c22ee16215692a999f400aae47dd25729af"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.infomaniak.euria_100400501.apk",
+      "expected": "acf2d696b1dbd23fb6be21bf81d633fde388e642b9308fe0957a0002f0359979",
+      "observed": "acf2d696b1dbd23fb6be21bf81d633fde388e642b9308fe0957a0002f0359979"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.infomaniak.mail_13100002.apk",
+      "expected": "8bca3f0bc5e533f188077118a18f40624f42370536622616288cc231d7bcbe0c",
+      "observed": "8bca3f0bc5e533f188077118a18f40624f42370536622616288cc231d7bcbe0c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.kjxbyz.picguard_481.apk",
+      "expected": "66eeea857f36c2fa930d5274f4228469cbad43b4488893bbe6462b93116d14b5",
+      "observed": "66eeea857f36c2fa930d5274f4228469cbad43b4488893bbe6462b93116d14b5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.lloydtorres.stately_51.apk",
+      "expected": "2e27a21f2397cfb0849fc5e7080e20a2898596e2e5535a7eb5693dcdc312ae22",
+      "observed": "2e27a21f2397cfb0849fc5e7080e20a2898596e2e5535a7eb5693dcdc312ae22"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.meteocool_36.apk",
+      "expected": "8a2c380c0d1ab5980bd3fbc5e566b97d90c89d83f630b0f4f053792769093ff1",
+      "observed": "8a2c380c0d1ab5980bd3fbc5e566b97d90c89d83f630b0f4f053792769093ff1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.odysee.floss_137.apk",
+      "expected": "76ccb7194336af9b2e902e3161ca1cc2e1c516f254331525c3f90923c393a999",
+      "observed": "76ccb7194336af9b2e902e3161ca1cc2e1c516f254331525c3f90923c393a999"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.orpheusdroid.screenrecorder_33.apk",
+      "expected": "e8acdda4e5290559df6315e641bc033f0e51b542fb5239352a6af18fc1d2404e",
+      "observed": "e8acdda4e5290559df6315e641bc033f0e51b542fb5239352a6af18fc1d2404e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.orpheusdroid.sqliteviewer_1.apk",
+      "expected": "a3f71af0a85489987e7ee00b14a4bf739d20b3405060b9c50bb983d96ac277ce",
+      "observed": "a3f71af0a85489987e7ee00b14a4bf739d20b3405060b9c50bb983d96ac277ce"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.resolvecommunity.awaydoomscrollin_10.apk",
+      "expected": "ca9c056803ea49567709e5c3f30167aa16b2774b5d154212be6828110356b922",
+      "observed": "ca9c056803ea49567709e5c3f30167aa16b2774b5d154212be6828110356b922"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.searchlauncher.app_289.apk",
+      "expected": "a6010296dd5ef137e6167992fe6ceaec6c39dcbaf2ab4004413c47c4fa4dfd1d",
+      "observed": "a6010296dd5ef137e6167992fe6ceaec6c39dcbaf2ab4004413c47c4fa4dfd1d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.spisoft.quicknote_251.apk",
+      "expected": "ec822bbf23e6da1211a196496b85c1b38a5d7faa29b11d1fc026f455c3199c44",
+      "observed": "ec822bbf23e6da1211a196496b85c1b38a5d7faa29b11d1fc026f455c3199c44"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.team242.robozzle_61.apk",
+      "expected": "8292c97ef9dc9ad33da6c97c3598d863ff5467fff90acea42e5ba7af54b8c37e",
+      "observed": "8292c97ef9dc9ad33da6c97c3598d863ff5467fff90acea42e5ba7af54b8c37e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.twoeightnine.root.xvii_194.apk",
+      "expected": "9de4f06abf6e3a037dcaa3ae657e054bf8a3b3b10c3fb23a230044ffa580edad",
+      "observed": "9de4f06abf6e3a037dcaa3ae657e054bf8a3b3b10c3fb23a230044ffa580edad"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.xrcbapp_22.apk",
+      "expected": "a377280af0b1fdb5a310f049c5dd6f27272b2471d8553f80b687162b7a9981f4",
+      "observed": "a377280af0b1fdb5a310f049c5dd6f27272b2471d8553f80b687162b7a9981f4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.radiozeit.freiesradio.fdroid_233.apk",
+      "expected": "2c7e940e1ec8b25964e476617791de847cb7506e5baf0d91c1adab16fdacff0d",
+      "observed": "2c7e940e1ec8b25964e476617791de847cb7506e5baf0d91c1adab16fdacff0d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.seemoo.at_tracking_detection_69.apk",
+      "expected": "13d78bf688ccf3c79846608417fb6a74153a4e9e1d02552ccc8133168681f545",
+      "observed": "13d78bf688ccf3c79846608417fb6a74153a4e9e1d02552ccc8133168681f545"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.srlabs.snoopsnitch_50.apk",
+      "expected": "b30615c1cce441b16c23a18cc7d9b5f440f7de8d3e02892fedbc607547bc4d1c",
+      "observed": "b30615c1cce441b16c23a18cc7d9b5f440f7de8d3e02892fedbc607547bc4d1c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.stephanlindauer.criticalmaps_105.apk",
+      "expected": "0e9f0b591857c41f26bfb64f1594a807205f7f61b5bdb10d08f50fe9ae237a92",
+      "observed": "0e9f0b591857c41f26bfb64f1594a807205f7f61b5bdb10d08f50fe9ae237a92"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.marchello.sharik_13.apk",
+      "expected": "484ad9a910faea33cc5bc6c06881a51ef47b0614db4898985983791f442742a9",
+      "observed": "484ad9a910faea33cc5bc6c06881a51ef47b0614db4898985983791f442742a9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dk.kjeldsen.carwingsflutter_224.apk",
+      "expected": "09f3de20d5afa87ef42d01745db065bb5695b6d5e02303ade9cbdad56ae2c8a4",
+      "observed": "09f3de20d5afa87ef42d01745db065bb5695b6d5e02303ade9cbdad56ae2c8a4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.pretix.pretixprint_85.apk",
+      "expected": "4df9eb94d35966221b6de4b7e9eb51db4c291efaee5533604d25be18e9466653",
+      "observed": "4df9eb94d35966221b6de4b7e9eb51db4c291efaee5533604d25be18e9466653"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.pretix.pretixscan.droid_103.apk",
+      "expected": "45a5ae09f65dc1239ccc455d61437d357bcdf6dfade705a135f1fdfcb473faa7",
+      "observed": "45a5ae09f65dc1239ccc455d61437d357bcdf6dfade705a135f1fdfcb473faa7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.quelltext.mundraub_237.apk",
+      "expected": "3af7c0137c852c879c0d81e7f1aa6ebf3c12a167a2dfa6fa7a552aa886dc4bf9",
+      "observed": "3af7c0137c852c879c0d81e7f1aa6ebf3c12a167a2dfa6fa7a552aa886dc4bf9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "info.dvkr.screenstream_44002.apk",
+      "expected": "900de047c912d2659d00ec8c38bf6de2effadcc77787486ec4481b73e4a4f218",
+      "observed": "900de047c912d2659d00ec8c38bf6de2effadcc77787486ec4481b73e4a4f218"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.gresse.hugo.anecdote_23.apk",
+      "expected": "7ce6030b81be649452107bd7cbfa6f3b1f2402a3e1bf3c366b03c7d8f54eb17a",
+      "observed": "7ce6030b81be649452107bd7cbfa6f3b1f2402a3e1bf3c366b03c7d8f54eb17a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.mkg20001.arubanetworkslogin_5000.apk",
+      "expected": "9d13f3aa67a1e00a1216979e1c8474a316cac6f7cf431f1e500810f6b26fb700",
+      "observed": "9d13f3aa67a1e00a1216979e1c8474a316cac6f7cf431f1e500810f6b26fb700"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.treehouses.remote_6098.apk",
+      "expected": "8bf05f19687c69d1fadc74306d2174c9fce1715aebd851ab343cc0391906ccd5",
+      "observed": "8bf05f19687c69d1fadc74306d2174c9fce1715aebd851ab343cc0391906ccd5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.feio.android.omninotes.foss_336.apk",
+      "expected": "394cb0dc5ea11d5913ffab9ed39a99fb76ed1c785610d044128bc7d7b14c5cda",
+      "observed": "394cb0dc5ea11d5913ffab9ed39a99fb76ed1c785610d044128bc7d7b14c5cda"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.zitzusoft.lyrics_2_27.apk",
+      "expected": "f3301e1567c9e2b39f22dc7de5ded4936513e465cdb70add96d6227b12207f6f",
+      "observed": "f3301e1567c9e2b39f22dc7de5ded4936513e465cdb70add96d6227b12207f6f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.sujanpoudel.playdeals_33.apk",
+      "expected": "c1fad443f12c626092eb6b6e7f61f7362fb578a15f7a57ba388630a174a46cb9",
+      "observed": "c1fad443f12c626092eb6b6e7f61f7362fb578a15f7a57ba388630a174a46cb9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.testcase.ognarviewer_25.apk",
+      "expected": "deab8845ad8520b0e4c60d569b4701b350703ad02da28686a61846e8e68bdd89",
+      "observed": "deab8845ad8520b0e4c60d569b4701b350703ad02da28686a61846e8e68bdd89"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.timschneeberger.shizustore_150.apk",
+      "expected": "c22751c125b600e24289df2085e5ebb151be948b7e69fe9621b1756a98f87c5f",
+      "observed": "c22751c125b600e24289df2085e5ebb151be948b7e69fe9621b1756a98f87c5f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.satka.bleManager_19.apk",
+      "expected": "5531f942dd583cadf7fad0ee90be616943f23592975e53f79bc6caf0704d98c9",
+      "observed": "5531f942dd583cadf7fad0ee90be616943f23592975e53f79bc6caf0704d98c9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ooo.akito.webmon_14.apk",
+      "expected": "de9abbe85392b21261cf896bd807bac4ec6619d77f47f06a0bbdb1cf68a6ae1c",
+      "observed": "de9abbe85392b21261cf896bd807bac4ec6619d77f47f06a0bbdb1cf68a6ae1c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.dkf.jmule_39.apk",
+      "expected": "936a40a3f8b8b1c3f7509eb3bb4f8a8671d2eb3d3f67b41fa92fbf3c263a7493",
+      "observed": "936a40a3f8b8b1c3f7509eb3bb4f8a8671d2eb3d3f67b41fa92fbf3c263a7493"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.exarhteam.iitc_mobile_1793192989.apk",
+      "expected": "33b4a4eb0652d9bdda07ee8e3a87bb31cd016fc264be5b70499a4a950e2f8b48",
+      "observed": "33b4a4eb0652d9bdda07ee8e3a87bb31cd016fc264be5b70499a4a950e2f8b48"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.grakovne.lissen_11216.apk",
+      "expected": "04d934ac26afa811e61cd8813404a22592132e3c7661c41f7eed67714c3fe9ee",
+      "observed": "04d934ac26afa811e61cd8813404a22592132e3c7661c41f7eed67714c3fe9ee"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.microg.nlp.backend.apple_20043.apk",
+      "expected": "96dee89f24c4af43653a8d760dbfa23087a0544512c35661d052ccb6b1a4231e",
+      "observed": "96dee89f24c4af43653a8d760dbfa23087a0544512c35661d052ccb6b1a4231e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.noise_planet.noisecapture_66.apk",
+      "expected": "77b5481037a071ae83dbb0ef86f69c56349fbcba67a6b9f06d55cb22a4732f01",
+      "observed": "77b5481037a071ae83dbb0ef86f69c56349fbcba67a6b9f06d55cb22a4732f01"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.playhex.twa_2026091900.apk",
+      "expected": "c48a27ad312a5e20953dd325f6ee8982a18e3959a8197079eb06154ef60e7ccb",
+      "observed": "c48a27ad312a5e20953dd325f6ee8982a18e3959a8197079eb06154ef60e7ccb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.simlar_213013.apk",
+      "expected": "e1f8e6f9178c7410e82ecb53657e21203becf04342494766c6a1a0e6fcdc0183",
+      "observed": "e1f8e6f9178c7410e82ecb53657e21203becf04342494766c6a1a0e6fcdc0183"
+    },
+    {
+      "kind": "local_apk",
+      "file": "pw.thedrhax.mosmetro_77.apk",
+      "expected": "f7d7e87c3c151be8c8d9c9bdfa02e0528c54e9da55719a452b23bc506ff6669e",
+      "observed": "f7d7e87c3c151be8c8d9c9bdfa02e0528c54e9da55719a452b23bc506ff6669e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "tech.dongdongbh.mindwtr_159.apk",
+      "expected": "279a51370d5913e5868510e1d520395fd013ab2629c5d8c27297e88066ea7bed",
+      "observed": "279a51370d5913e5868510e1d520395fd013ab2629c5d8c27297e88066ea7bed"
+    },
+    {
+      "kind": "local_apk",
+      "file": "whl.trending.ai_11000.apk",
+      "expected": "1392beb3271f13c5f9fc681b24d6d451f5e8ebfd3118e346f775a4c62f490f9f",
+      "observed": "1392beb3271f13c5f9fc681b24d6d451f5e8ebfd3118e346f775a4c62f490f9f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ac.amalfi.cloudsound_9.apk",
+      "expected": "6c385b7d8737311b084da88787ab93a79e6760548df2e8185a7f24e32527e65d",
+      "observed": "6c385b7d8737311b084da88787ab93a79e6760548df2e8185a7f24e32527e65d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ai.agent1c.hitomi.open_6.apk",
+      "expected": "75d17d267d4d58e2dd1b8cfc2ce54b43bd4ce3244ae50db8480c5ec1bd8f05fd",
+      "observed": "75d17d267d4d58e2dd1b8cfc2ce54b43bd4ce3244ae50db8480c5ec1bd8f05fd"
+    },
+    {
+      "kind": "local_apk",
+      "file": "allen.town.focus.mastodon_1630.apk",
+      "expected": "03893d063f7b4a1aa137826391f31ae6c18ee85395a7f35649cfe2c75008a7a5",
+      "observed": "03893d063f7b4a1aa137826391f31ae6c18ee85395a7f35649cfe2c75008a7a5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.chompass_114.apk",
+      "expected": "203af3fac65f9e63f6fd328bec0c12eceb31cf817646a3ec216b6bfddc805ca3",
+      "observed": "203af3fac65f9e63f6fd328bec0c12eceb31cf817646a3ec216b6bfddc805ca3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.crossword.yourealwaysbe.forkyzscanner_8.apk",
+      "expected": "6ed0278fe0c0fb6ba34115597be2e87fbe81c6415dc181f33c111cc91721d071",
+      "observed": "6ed0278fe0c0fb6ba34115597be2e87fbe81c6415dc181f33c111cc91721d071"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.marmalade.stt_10020032.apk",
+      "expected": "1d8194c36dabfdd30259ca5d99158aa4e3c1e21a0022e7d28d6c582276b305d3",
+      "observed": "1d8194c36dabfdd30259ca5d99158aa4e3c1e21a0022e7d28d6c582276b305d3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.onloc.android_130.apk",
+      "expected": "da2be532bfab855f3fc106a1c64addd730a9b35aeedea27599465aecc1d2f331",
+      "observed": "da2be532bfab855f3fc106a1c64addd730a9b35aeedea27599465aecc1d2f331"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.organicmaps_26092932.apk",
+      "expected": "654a736d43317084f13560281fe7013f869800610e9d6036b6789d9c9e07f8bc",
+      "observed": "654a736d43317084f13560281fe7013f869800610e9d6036b6789d9c9e07f8bc"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.podiumpodcasts.podium_1000009.apk",
+      "expected": "2b68985e34afd1f1e4cdee239a9b9387f3f69a36c243249e5cb1c519976cbe7e",
+      "observed": "2b68985e34afd1f1e4cdee239a9b9387f3f69a36c243249e5cb1c519976cbe7e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.solyto_10101.apk",
+      "expected": "dd2aa2a0a4dacec21d111700a34c24864f503d779121c9e95c47e3f0244820e7",
+      "observed": "dd2aa2a0a4dacec21d111700a34c24864f503d779121c9e95c47e3f0244820e7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.soundcenter.player_63.apk",
+      "expected": "bbf704ec9f2c364ac8c6e91c45fbd431c9c5659df410c509d992f069c49f805a",
+      "observed": "bbf704ec9f2c364ac8c6e91c45fbd431c9c5659df410c509d992f069c49f805a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "app.sterna_186.apk",
+      "expected": "d06d887d8c565d98a6e2e96782647a471e988d47531302737612813148a6b426",
+      "observed": "d06d887d8c565d98a6e2e96782647a471e988d47531302737612813148a6b426"
+    },
+    {
+      "kind": "local_apk",
+      "file": "arrowloop.halleluja.design_20404.apk",
+      "expected": "08696c1ae1ed255b61f2bb94a4c68f98996d9ddeaa09008adbbf12a485ec07e7",
+      "observed": "08696c1ae1ed255b61f2bb94a4c68f98996d9ddeaa09008adbbf12a485ec07e7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "at.manuelbichler.octalsuntime_6.apk",
+      "expected": "fe47baf787900a84028e78100aa37699597ae7e555c5c17a2979df42ced7137b",
+      "observed": "fe47baf787900a84028e78100aa37699597ae7e555c5c17a2979df42ced7137b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "bus.chio.wishmaster_1003.apk",
+      "expected": "39f811f07c238862f100e045154a6f20d99575fe1160c5c61286cee36e5fc9c7",
+      "observed": "39f811f07c238862f100e045154a6f20d99575fe1160c5c61286cee36e5fc9c7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "cc.skysparkle.matewave_5.apk",
+      "expected": "9823ff2692ccf0029be66f31ec95409b4fd7be21d5e72f56c5574f6046e15840",
+      "observed": "9823ff2692ccf0029be66f31ec95409b4fd7be21d5e72f56c5574f6046e15840"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ch.joshuah.bibleverseapp_16.apk",
+      "expected": "984af346fe9a30152e749feeeb6a462870ec8d512559a6fe535057625b390a99",
+      "observed": "984af346fe9a30152e749feeeb6a462870ec8d512559a6fe535057625b390a99"
+    },
+    {
+      "kind": "local_apk",
+      "file": "chromahub.rhythm.app_554991302.apk",
+      "expected": "860e8adedf833b2719a9ad65b1bc1586a644380f8e0b41e47b7604337ee5af69",
+      "observed": "860e8adedf833b2719a9ad65b1bc1586a644380f8e0b41e47b7604337ee5af69"
+    },
+    {
+      "kind": "local_apk",
+      "file": "co.prestosole.clima_203.apk",
+      "expected": "f6ee6f60409802d27eda302e20c4fc7ef512b6a477fda32ff809fcb7510b9178",
+      "observed": "f6ee6f60409802d27eda302e20c4fc7ef512b6a477fda32ff809fcb7510b9178"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.MarcosDiez.shareviahttp_39.apk",
+      "expected": "7da2d823d94525399d46d8c59908414c22fe445c9010da57a17703e5ca419966",
+      "observed": "7da2d823d94525399d46d8c59908414c22fe445c9010da57a17703e5ca419966"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.Sommerlichter.social_3300.apk",
+      "expected": "eb669949e7c916a0927bdc8d3ceb9f187f9594f2048a591b4ad39f6a3d537ffa",
+      "observed": "eb669949e7c916a0927bdc8d3ceb9f187f9594f2048a591b4ad39f6a3d537ffa"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.aditya1875.pokeverse_21.apk",
+      "expected": "fbbd68a3326bc1b7c41d69220c2bd125fe3038d841e485687deb56357573417b",
+      "observed": "fbbd68a3326bc1b7c41d69220c2bd125fe3038d841e485687deb56357573417b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.agatamessina.quandointv_7.apk",
+      "expected": "aceb1e950c9984af95ce720d3ccba2df6da5ee4b28eccfdd8de516eb7def4b5b",
+      "observed": "aceb1e950c9984af95ce720d3ccba2df6da5ee4b28eccfdd8de516eb7def4b5b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.agepony.app_18.apk",
+      "expected": "db9c8473083d6f2caa88258997d76e99c504401b27f5a214eff5c74decb3cf34",
+      "observed": "db9c8473083d6f2caa88258997d76e99c504401b27f5a214eff5c74decb3cf34"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.andsi.airlyrics_19.apk",
+      "expected": "9d8220f5d2c284c73beaaffcbaf522ca4197a24ef89f7469d01a8c6d35228124",
+      "observed": "9d8220f5d2c284c73beaaffcbaf522ca4197a24ef89f7469d01a8c6d35228124"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.app.equran_1093.apk",
+      "expected": "10ab753cceb6869e658834f0c6cb51bf5d809582e369c8956efbb3e680587081",
+      "observed": "10ab753cceb6869e658834f0c6cb51bf5d809582e369c8956efbb3e680587081"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.atelieryl.wonderdroid_51.apk",
+      "expected": "e2fc977044e282cf67c27c9a5ab8440e8f0f0a376afa74e35a903a3c453a4796",
+      "observed": "e2fc977044e282cf67c27c9a5ab8440e8f0f0a376afa74e35a903a3c453a4796"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.atharok.barcodescanner_52.apk",
+      "expected": "f76c033c47bf2d79aa1b40aa8869e2d659b82d4ce41048e0a6b1c70c48309cb6",
+      "observed": "f76c033c47bf2d79aa1b40aa8869e2d659b82d4ce41048e0a6b1c70c48309cb6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.atop_1.apk",
+      "expected": "ee497fe52a73097be62e92a89cd6beb1609e821895203ebe53a6dfe62e5a9dd4",
+      "observed": "ee497fe52a73097be62e92a89cd6beb1609e821895203ebe53a6dfe62e5a9dd4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.axiel7.anihyou_134.apk",
+      "expected": "6578c6c43289350ba6d1fe7e80880c503cfedfed1f1cab7a08184a5e590443de",
+      "observed": "6578c6c43289350ba6d1fe7e80880c503cfedfed1f1cab7a08184a5e590443de"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bagaturchess_138.apk",
+      "expected": "9b3685e58c0f57cc310ac61261a286ec9385a3f8ac18b059fb8c74ac1fb8b460",
+      "observed": "9b3685e58c0f57cc310ac61261a286ec9385a3f8ac18b059fb8c74ac1fb8b460"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bmco.cratesiounofficial_12.apk",
+      "expected": "88c53a5dc1aa442c348ff025eb04939f3178bd11d561f0211b937be4ff30bb30",
+      "observed": "88c53a5dc1aa442c348ff025eb04939f3178bd11d561f0211b937be4ff30bb30"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bnyro.wallpaper_43.apk",
+      "expected": "b9d7bbb8f5ec60a5668779b29c24665232518b09bbed28ddeecb259a5f7f9453",
+      "observed": "b9d7bbb8f5ec60a5668779b29c24665232518b09bbed28ddeecb259a5f7f9453"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bookorbit_600.apk",
+      "expected": "4e0cda69ef93df532134dc8ab5897687dd5e98ae78f12e0af704ef86c17efcb8",
+      "observed": "4e0cda69ef93df532134dc8ab5897687dd5e98ae78f12e0af704ef86c17efcb8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.bote.app_23.apk",
+      "expected": "af3d0b37ab5799d6f13d8e0049fa1e64dc1188e400d4714c1a2dc133ba8acb85",
+      "observed": "af3d0b37ab5799d6f13d8e0049fa1e64dc1188e400d4714c1a2dc133ba8acb85"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.brahmadeo.supertonic.tts_25000004.apk",
+      "expected": "4b4d83031d575a8c101ea9bf468744ae2cc7f2f73a359bf30fe83c6e53a6a2d1",
+      "observed": "4b4d83031d575a8c101ea9bf468744ae2cc7f2f73a359bf30fe83c6e53a6a2d1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.calmyjane.spacebeam_13.apk",
+      "expected": "c594989961d450eb73377c623e769f6a25e530a3969c4c0a9e39476b6b8ea65c",
+      "observed": "c594989961d450eb73377c623e769f6a25e530a3969c4c0a9e39476b6b8ea65c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.cappielloantonio.notquitemy.tempo_25.apk",
+      "expected": "0974a480585d4528f65e5242fed1c83a4c493171792ce28e86c7b68dc9542bc3",
+      "observed": "0974a480585d4528f65e5242fed1c83a4c493171792ce28e86c7b68dc9542bc3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.chaser.paintballnotificator_10201.apk",
+      "expected": "da9928e2c408c5d1544bf162ad938087d6fc749b39cafd22b1387e8bce1e2075",
+      "observed": "da9928e2c408c5d1544bf162ad938087d6fc749b39cafd22b1387e8bce1e2075"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.chiller3.basicsync_203524.apk",
+      "expected": "4d8de92620fb1f2e727c8611e133ff309330cfac8ab51d6b6f2c0364c03408bf",
+      "observed": "4d8de92620fb1f2e727c8611e133ff309330cfac8ab51d6b6f2c0364c03408bf"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.chiller3.rsaf_266244.apk",
+      "expected": "a945d0653802eb78a8f6cd16a32f812b4e81264210a3605927f286086a7196aa",
+      "observed": "a945d0653802eb78a8f6cd16a32f812b4e81264210a3605927f286086a7196aa"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.coinerella.peercoin_160.apk",
+      "expected": "fd1c5c94e5fc1e72ba947774b72454332aafb79a7b691e833d51c3820cd35550",
+      "observed": "fd1c5c94e5fc1e72ba947774b72454332aafb79a7b691e833d51c3820cd35550"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.controlloid_11.apk",
+      "expected": "919c4501a73515d31cb8c4a0c372746d2608c469d748c65c9f6f4dafc9f23e1c",
+      "observed": "919c4501a73515d31cb8c4a0c372746d2608c469d748c65c9f6f4dafc9f23e1c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.cosmos.unreddit_23.apk",
+      "expected": "3853bb060c7294301f60d8fca0c96511d4acdd757a79f276288d7ce90910a6db",
+      "observed": "3853bb060c7294301f60d8fca0c96511d4acdd757a79f276288d7ce90910a6db"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.cweb.messenger_4208104.apk",
+      "expected": "63bd912be22edcf1aa2304546e995819690e00fac8cb861e9c7a279d19e35c88",
+      "observed": "63bd912be22edcf1aa2304546e995819690e00fac8cb861e9c7a279d19e35c88"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.daemon.ssh_66.apk",
+      "expected": "4ecb5f636fdfa290121ed75b94b6e62dbd19b1eca2bcdb1bf0e41395bbe04e26",
+      "observed": "4ecb5f636fdfa290121ed75b94b6e62dbd19b1eca2bcdb1bf0e41395bbe04e26"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.decred.decredaddressscanner_10.apk",
+      "expected": "a71287d3526ae60cf542b326b74ada7cc8ed83c58316f87ff9c51df3917871ef",
+      "observed": "a71287d3526ae60cf542b326b74ada7cc8ed83c58316f87ff9c51df3917871ef"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.desarrollodroide.pagekeeper_58.apk",
+      "expected": "003c5c2d376dd126c445c07ba14b484cda1a25789ef82255a44689202f102873",
+      "observed": "003c5c2d376dd126c445c07ba14b484cda1a25789ef82255a44689202f102873"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.designlife.justdo_2.apk",
+      "expected": "9df82dcfb066d58c6ccdebf26cdbccadc2dc59bd755ac4b2542b6b6722e2a1d6",
+      "observed": "9df82dcfb066d58c6ccdebf26cdbccadc2dc59bd755ac4b2542b6b6722e2a1d6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.drnoob.datamonitor_29.apk",
+      "expected": "2687ae4a89e05497851e3bd306b91c7fce1936899e5ebb5c84628ef21058bbe6",
+      "observed": "2687ae4a89e05497851e3bd306b91c7fce1936899e5ebb5c84628ef21058bbe6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.dx.anonymousmessenger_54.apk",
+      "expected": "e2c02e72682974f4c047905e7e2d93fef63ea27b282558dbddfa2d8eaa12f752",
+      "observed": "e2c02e72682974f4c047905e7e2d93fef63ea27b282558dbddfa2d8eaa12f752"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.enclavd.app_2253.apk",
+      "expected": "f98d2503dc92e3b9e06e79fba661bb97d5fadaaf46f791fc8d3b48769060c918",
+      "observed": "f98d2503dc92e3b9e06e79fba661bb97d5fadaaf46f791fc8d3b48769060c918"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.etesync.syncadapter_20700.apk",
+      "expected": "1ba72af98c30a790a5925f4e59493922efd7109e3b2bffe6510fb6b6671d7be8",
+      "observed": "1ba72af98c30a790a5925f4e59493922efd7109e3b2bffe6510fb6b6671d7be8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.evanh.qlc_controller_5.apk",
+      "expected": "6d4c95a0a3efd4f188e6fae2519b899de9192c343a71c770b9c3db4653acd6f7",
+      "observed": "6d4c95a0a3efd4f188e6fae2519b899de9192c343a71c770b9c3db4653acd6f7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.example.controldecolonias_2.apk",
+      "expected": "0f5ebf8d3f6f607f9aa96c2e420bb4b511c45e2367e3eef7383e5795ad9abc13",
+      "observed": "0f5ebf8d3f6f607f9aa96c2e420bb4b511c45e2367e3eef7383e5795ad9abc13"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.example.harisont.librery_4.apk",
+      "expected": "df62ca5d856778a91c90869c7acdb4976be93b8430e68504038fc0c273bd8d97",
+      "observed": "df62ca5d856778a91c90869c7acdb4976be93b8430e68504038fc0c273bd8d97"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.example.hochi.nextcompanion_9.apk",
+      "expected": "9565dd73f4bc7896f066eda3f1f9b78c7f894a75b5c6c4bcea6e27a032018ad4",
+      "observed": "9565dd73f4bc7896f066eda3f1f9b78c7f894a75b5c6c4bcea6e27a032018ad4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.example.regis_cat_1.apk",
+      "expected": "d0ea53e8f72ac0eac3c5a06957f126cc54413b0d16c7d190275d199c41b2431c",
+      "observed": "d0ea53e8f72ac0eac3c5a06957f126cc54413b0d16c7d190275d199c41b2431c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.example.research_13.apk",
+      "expected": "42487c72683a7c65020ddd7a631a8650e9b791c40f526fc9faae0b281e39d489",
+      "observed": "42487c72683a7c65020ddd7a631a8650e9b791c40f526fc9faae0b281e39d489"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.exner.tools.immichuploader_24.apk",
+      "expected": "5578eaa81e71fe3cd4f2fe7374df3f32e94c747c2bcbb3c1602581595d41860a",
+      "observed": "5578eaa81e71fe3cd4f2fe7374df3f32e94c747c2bcbb3c1602581595d41860a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.fadcam_31.apk",
+      "expected": "b3a0cd1685d530ea1f0cfc77b0446fab87cb8d3740359eae2f1c6f129c477b70",
+      "observed": "b3a0cd1685d530ea1f0cfc77b0446fab87cb8d3740359eae2f1c6f129c477b70"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.faltenreich.diaguard_68.apk",
+      "expected": "1355f824abc85e7601b050008fbeb5330fa8c0034a4c012c2b8189d2de6c222e",
+      "observed": "1355f824abc85e7601b050008fbeb5330fa8c0034a4c012c2b8189d2de6c222e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.flashbyte_33.apk",
+      "expected": "4fd11fdc6c65904ca929e6815a5c9d251ed0be96618f8443e2b7e48b33f6a78c",
+      "observed": "4fd11fdc6c65904ca929e6815a5c9d251ed0be96618f8443e2b7e48b33f6a78c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.fm619.paperphoneplus_26002.apk",
+      "expected": "d1c4ae63d83b9b31b43929c1597e208415e55ccf9bdf5ccb2718318121a9f8a4",
+      "observed": "d1c4ae63d83b9b31b43929c1597e208415e55ccf9bdf5ccb2718318121a9f8a4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.fmsys.snapdrop_45.apk",
+      "expected": "4c221d7a0c66c36680bf1fcfbf4cba9f737806e497943f3120545f3bad0d923c",
+      "observed": "4c221d7a0c66c36680bf1fcfbf4cba9f737806e497943f3120545f3bad0d923c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.fsck.k9_39046.apk",
+      "expected": "0f9dd57fbd06dddfd8bcf7de6106d27fa0f0297793193828c4eac904518b1e05",
+      "observed": "0f9dd57fbd06dddfd8bcf7de6106d27fa0f0297793193828c4eac904518b1e05"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.furthersecrets.chemsearch_11605.apk",
+      "expected": "2574cc664627e8ab7b9219747ca2c6f90af55574345f74e78e029c2834f21d08",
+      "observed": "2574cc664627e8ab7b9219747ca2c6f90af55574345f74e78e029c2834f21d08"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.gaurav.avnc_53.apk",
+      "expected": "9f06fbf28707f6dfdb8e02e49549a727720930e8cd83df54d0baee2f8e894972",
+      "observed": "9f06fbf28707f6dfdb8e02e49549a727720930e8cd83df54d0baee2f8e894972"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.gemwallet.android_888.apk",
+      "expected": "7449be938cbe114d12351b95f9a33a2ab28cdf97d5498363da2a2403946d409a",
+      "observed": "7449be938cbe114d12351b95f9a33a2ab28cdf97d5498363da2a2403946d409a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.gh4a_78.apk",
+      "expected": "66711fd47c0c0e651bbe67c06f5c6f8864f1470cfa49fdc9a7f423e288e30e93",
+      "observed": "66711fd47c0c0e651bbe67c06f5c6f8864f1470cfa49fdc9a7f423e288e30e93"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.giacomomensio.ricevapp_29.apk",
+      "expected": "9b66c599780adddf671a676f6d7f28783ae18414d4e815fca26ecd08fc552cbb",
+      "observed": "9b66c599780adddf671a676f6d7f28783ae18414d4e815fca26ecd08fc552cbb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.enteraname74.soulsearching_42.apk",
+      "expected": "e4744fc9a32590380557933cbfbe6b066a7d35564cdde981c5312adb3883b946",
+      "observed": "e4744fc9a32590380557933cbfbe6b066a7d35564cdde981c5312adb3883b946"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.librerandonaut.librerandonaut_2.apk",
+      "expected": "f8d6db25c65a9a1dab51c03ef7a165853b64a7dab2950707068d944fb776480d",
+      "observed": "f8d6db25c65a9a1dab51c03ef7a165853b64a7dab2950707068d944fb776480d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.libretube_72.apk",
+      "expected": "792b1e37e7bd6a26d8da1c826a68677465c333633cb2198224cc96c84257d615",
+      "observed": "792b1e37e7bd6a26d8da1c826a68677465c333633cb2198224cc96c84257d615"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.muelli.kabelwacht_135.apk",
+      "expected": "16220e6ccf96c9b445971553bf46e72e9e8fee20e8eb9d3e18d131bab138557a",
+      "observed": "16220e6ccf96c9b445971553bf46e72e9e8fee20e8eb9d3e18d131bab138557a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.olga_yakovleva.rhvoice.android_118040.apk",
+      "expected": "fdb0f7d6f3ec455477a84aa8cc86d1f2d580cb180d69a0c780240975c2efd288",
+      "observed": "fdb0f7d6f3ec455477a84aa8cc86d1f2d580cb180d69a0c780240975c2efd288"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.github.shadowsocks_5030550.apk",
+      "expected": "037fef062735bd0298221b7b29a7ef7ccd24dc3449fc0fbc2bfccdd8ae13b4ea",
+      "observed": "037fef062735bd0298221b7b29a7ef7ccd24dc3449fc0fbc2bfccdd8ae13b4ea"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.gitlab.terrakok.gitfox_609.apk",
+      "expected": "11d586a3d02e992bf42ddc33f4281d51911e569af0d800a9d019402624212e8e",
+      "observed": "11d586a3d02e992bf42ddc33f4281d51911e569af0d800a9d019402624212e8e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.google.android.stardroid_1771.apk",
+      "expected": "78baab24a1e3a59e5cf2ba7061d6003e4c329f3de5729698556664961c674719",
+      "observed": "78baab24a1e3a59e5cf2ba7061d6003e4c329f3de5729698556664961c674719"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.grappim.wallosmobile.fdroid_6.apk",
+      "expected": "fce5846b8ab7be669edb682489097f199e4fb77ec45a8bb9b1e2f9792169baca",
+      "observed": "fce5846b8ab7be669edb682489097f199e4fb77ec45a8bb9b1e2f9792169baca"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.guiforge.bati_21304.apk",
+      "expected": "35a2f703ccbfc4d9a5c06ebd848632a94567255878be212d2c040b0e1ae42b20",
+      "observed": "35a2f703ccbfc4d9a5c06ebd848632a94567255878be212d2c040b0e1ae42b20"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.gwitko.conduit_393.apk",
+      "expected": "0bff6b31036b982b936051007859a804bb0c7d5913f05ae88a365188b3fbb46f",
+      "observed": "0bff6b31036b982b936051007859a804bb0c7d5913f05ae88a365188b3fbb46f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.hfut.schedule_2784.apk",
+      "expected": "53becd5256ee4e79f6a98dd3d53470fb008a4231ecb3787694ffdc43f7bda988",
+      "observed": "53becd5256ee4e79f6a98dd3d53470fb008a4231ecb3787694ffdc43f7bda988"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.io7m.exfilac.main_1104.apk",
+      "expected": "5cca213c90f70c83d1f62895bafb400ed35bd6084478eadebc6d6b2d5bb135c1",
+      "observed": "5cca213c90f70c83d1f62895bafb400ed35bd6084478eadebc6d6b2d5bb135c1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.iyox.wormhole_5013.apk",
+      "expected": "2e3755921af4b327e281f6fecd2690c4b98f2ac78d9348277ae6bab33e78c7ce",
+      "observed": "2e3755921af4b327e281f6fecd2690c4b98f2ac78d9348277ae6bab33e78c7ce"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.jairaj.janglegmail.motioneye_106.apk",
+      "expected": "2f4bab321a39a7695104121ff4e4b8b5e8010a7d138e2b6790473eecf3c7d671",
+      "observed": "2f4bab321a39a7695104121ff4e4b8b5e8010a7d138e2b6790473eecf3c7d671"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.jerameeldelosreyes.bacon_13.apk",
+      "expected": "3590f8b2ae4aa9d0f225387ef2234715c0ad518c5923ed0321e218689292e1ba",
+      "observed": "3590f8b2ae4aa9d0f225387ef2234715c0ad518c5923ed0321e218689292e1ba"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.kanedias.archforums_160000.apk",
+      "expected": "513bc911a1e3904cf3a54fa04fbf630f1ab69bcbc7e188529f1e420460a5c9f6",
+      "observed": "513bc911a1e3904cf3a54fa04fbf630f1ab69bcbc7e188529f1e420460a5c9f6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.languageapp.gendie_18.apk",
+      "expected": "3ab0b373fc3e69b10064574ad21c78dbcf73e7f0690aa57fb9d40fc3955fa994",
+      "observed": "3ab0b373fc3e69b10064574ad21c78dbcf73e7f0690aa57fb9d40fc3955fa994"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.leanbitlab.leantype_4300.apk",
+      "expected": "e28a449c2e14a93dfb7c4df944df7dfcfd258e17ce1721cf30e58a49b61f3ee9",
+      "observed": "e28a449c2e14a93dfb7c4df944df7dfcfd258e17ce1721cf30e58a49b61f3ee9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.lindevhard.android.raspfinder_3.apk",
+      "expected": "fe3ff838ec928e7c55fa3d14cb5de84b6472c10f2be5523288f8b04805332c91",
+      "observed": "fe3ff838ec928e7c55fa3d14cb5de84b6472c10f2be5523288f8b04805332c91"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.listen1.app_1.apk",
+      "expected": "f8f2ce22d3dbdc6da66ddd73a571825b3f5b893834c3f36a1d19a6d4ba200820",
+      "observed": "f8f2ce22d3dbdc6da66ddd73a571825b3f5b893834c3f36a1d19a6d4ba200820"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.livefast.eattrash.raccoonforlemmy.android_151.apk",
+      "expected": "8dc96d06072b5da2ab3a3b76ed0d64b0e1c403fe28d8c0c30673e03cb0daa14d",
+      "observed": "8dc96d06072b5da2ab3a3b76ed0d64b0e1c403fe28d8c0c30673e03cb0daa14d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.logseq.app_90.apk",
+      "expected": "9cb9834d1da46447dc69f9517fb9cbcad06d5f67852c0a217274d40f862d7be1",
+      "observed": "9cb9834d1da46447dc69f9517fb9cbcad06d5f67852c0a217274d40f862d7be1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.luc4n3x.levyra_3000700.apk",
+      "expected": "93c9b3142e05b739926d7647581bb64811063714f83a07961d3176915910e038",
+      "observed": "93c9b3142e05b739926d7647581bb64811063714f83a07961d3176915910e038"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.luminaapps.cairn_103.apk",
+      "expected": "e2e2059ffd450ef645170af62bdd5f427675dab839896e31b00895d9e99549ee",
+      "observed": "e2e2059ffd450ef645170af62bdd5f427675dab839896e31b00895d9e99549ee"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.manimarank.websitemonitor_11.apk",
+      "expected": "4dcca8f216980978d275124af6fc5827256b04692750feb3ef361c195cf4d6e8",
+      "observed": "4dcca8f216980978d275124af6fc5827256b04692750feb3ef361c195cf4d6e8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.mardous.booming_1420300.apk",
+      "expected": "6fe48fda97111301904f2a32b91175642a49cc9740aca8af4dc63e5f506c8c8b",
+      "observed": "6fe48fda97111301904f2a32b91175642a49cc9740aca8af4dc63e5f506c8c8b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.matrix.synapse.manager_11.apk",
+      "expected": "7b0da6a4e4f84d08bef7a03e11a76279f23d92e8dd6fe0cd8fec0e116d776587",
+      "observed": "7b0da6a4e4f84d08bef7a03e11a76279f23d92e8dd6fe0cd8fec0e116d776587"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.mde.potdroid_94.apk",
+      "expected": "e03f93a5934b403c051a82143560fa9671fe1d696a0d344b801d06a91d682eeb",
+      "observed": "e03f93a5934b403c051a82143560fa9671fe1d696a0d344b801d06a91d682eeb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.mirfatif.permissionmanagerx_130.apk",
+      "expected": "59f0f881ab03a82a9c3d97fef6a20ba08657089d4a3f134143b8a10374bca2e3",
+      "observed": "59f0f881ab03a82a9c3d97fef6a20ba08657089d4a3f134143b8a10374bca2e3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.mrl.pixiv_20600.apk",
+      "expected": "d7f523cb2b16ce9e0efb0e5722ad23e31967be14513cf1b6b31bb3a36c35337f",
+      "observed": "d7f523cb2b16ce9e0efb0e5722ad23e31967be14513cf1b6b31bb3a36c35337f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.mubarak.mbcompass_20.apk",
+      "expected": "95ad7a3ec211fe6c48dd09b2e03555c2562eed4884cf402ce250cb142e17c8cb",
+      "observed": "95ad7a3ec211fe6c48dd09b2e03555c2562eed4884cf402ce250cb142e17c8cb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.networkscanner.app_16.apk",
+      "expected": "af0c83ab7a6595a1abb59b513aaa99bbee5d8045aab4fd51d0a3fb3a30f35bb3",
+      "observed": "af0c83ab7a6595a1abb59b513aaa99bbee5d8045aab4fd51d0a3fb3a30f35bb3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.newsblur_300.apk",
+      "expected": "e29243435e38b1b216b2b764c0e82dcff42d4ec8490e763c1864dfa917dba6f8",
+      "observed": "e29243435e38b1b216b2b764c0e82dcff42d4ec8490e763c1864dfa917dba6f8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.oF2pks.jquarks_24.apk",
+      "expected": "17eda55e538b1c45203833611719ae2930c7a6a4b150cce1db96cccf3ccb84f1",
+      "observed": "17eda55e538b1c45203833611719ae2930c7a6a4b150cce1db96cccf3ccb84f1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.paddlesandbugs.dahdidahdit_1190001.apk",
+      "expected": "1ba200f9b11e19a65a3f6aa14f2e136f4c21291049ebc4299e1287b7d315873a",
+      "observed": "1ba200f9b11e19a65a3f6aa14f2e136f4c21291049ebc4299e1287b7d315873a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.pearlnode_1.apk",
+      "expected": "d7c7e6e2b12b983b4003097c9b442f6673f2870343110270b848b090049a6641",
+      "observed": "d7c7e6e2b12b983b4003097c9b442f6673f2870343110270b848b090049a6641"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.pebblentn.app_81.apk",
+      "expected": "8c1403e0f12b01004fb817013997a20ce670add40daed906d0018b48638c1089",
+      "observed": "8c1403e0f12b01004fb817013997a20ce670add40daed906d0018b48638c1089"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.phnem.vetro_348.apk",
+      "expected": "0e71938db5d27a53d060743e8da38aa19b595ac49e5afff130c4ba9ea9ffd984",
+      "observed": "0e71938db5d27a53d060743e8da38aa19b595ac49e5afff130c4ba9ea9ffd984"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.planes.android_41.apk",
+      "expected": "09968d2d6b28f3dcc622e57004cc356a3d25e3c9c6a3fa38a011398dd5616432",
+      "observed": "09968d2d6b28f3dcc622e57004cc356a3d25e3c9c6a3fa38a011398dd5616432"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.podverse.fdroid_105004.apk",
+      "expected": "35ae9665a999512c8176beffe093090d8d5e885460482a7e56d6809269169852",
+      "observed": "35ae9665a999512c8176beffe093090d8d5e885460482a7e56d6809269169852"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.prayer_times_294.apk",
+      "expected": "e775752c38437a8fd52ae75b8993193dc40329ee0e2e38e0a1922704219250b7",
+      "observed": "e775752c38437a8fd52ae75b8993193dc40329ee0e2e38e0a1922704219250b7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.rafapps.earthviewformuzei_4.apk",
+      "expected": "ed382668a4efc89e6c97768f28156ed019af8f7eabf67ef33d71ddbd6091c1a0",
+      "observed": "ed382668a4efc89e6c97768f28156ed019af8f7eabf67ef33d71ddbd6091c1a0"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.rareventure.gps2_91.apk",
+      "expected": "ee8248593fbe1db31b15459f68ebe31d656732382bd4b77990d2cb24bf155357",
+      "observed": "ee8248593fbe1db31b15459f68ebe31d656732382bd4b77990d2cb24bf155357"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.ritesh.cashiro_94.apk",
+      "expected": "f55cfad874a188e3fcb5a4418278b95b98fca5b22f89adf3bebd1d280db007c9",
+      "observed": "f55cfad874a188e3fcb5a4418278b95b98fca5b22f89adf3bebd1d280db007c9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.ruizlenato.karabau_9.apk",
+      "expected": "06190656900e5ac9a8f0c8f05d0108baba3ce344b435476b0778457628318494",
+      "observed": "06190656900e5ac9a8f0c8f05d0108baba3ce344b435476b0778457628318494"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.sadellie.unitto_76.apk",
+      "expected": "84867d992141704758dd24f6a89e1b9642aa4655c82ada5613ed562426fa936c",
+      "observed": "84867d992141704758dd24f6a89e1b9642aa4655c82ada5613ed562426fa936c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.sakethh.otic_2.apk",
+      "expected": "59402a7aa465f9c0392c03e6d3f0f00eb46a83df0f1e90cf90a6f4a606ec715c",
+      "observed": "59402a7aa465f9c0392c03e6d3f0f00eb46a83df0f1e90cf90a6f4a606ec715c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.sjapps.jsonlist_1000.apk",
+      "expected": "b04f769a470924dfe2baa0e767280af17d749f35ed448d38842bb81fe87c7c2b",
+      "observed": "b04f769a470924dfe2baa0e767280af17d749f35ed448d38842bb81fe87c7c2b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.sobuumedia.sobuu_16.apk",
+      "expected": "99e6b374cb96fa573bcfa84037f00c66b730ae93e250a7d45f370955b6944726",
+      "observed": "99e6b374cb96fa573bcfa84037f00c66b730ae93e250a7d45f370955b6944726"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.sphericalkat.rushhour_14002.apk",
+      "expected": "80c520896ec95fb4470bb66e1605902eb28d36b0d410f231aaf5c02e6f076647",
+      "observed": "80c520896ec95fb4470bb66e1605902eb28d36b0d410f231aaf5c02e6f076647"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.streamatico.polymarketviewer_44.apk",
+      "expected": "6e695f083f24adabdb36eba6c9a926fe7a8e31fc5d83f10ae36e8522d95a8201",
+      "observed": "6e695f083f24adabdb36eba6c9a926fe7a8e31fc5d83f10ae36e8522d95a8201"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.streamplayer.app_3.apk",
+      "expected": "f4847b1e2dcf01e50a0db467bf5bc976739be2e5a6e914c054457c10e389e63f",
+      "observed": "f4847b1e2dcf01e50a0db467bf5bc976739be2e5a6e914c054457c10e389e63f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.streetwriters.notesnook_15594.apk",
+      "expected": "0acb74d62d09a53507a06f75bbf009c2799b3fdd3bf945bae66d5fcbedce2cc5",
+      "observed": "0acb74d62d09a53507a06f75bbf009c2799b3fdd3bf945bae66d5fcbedce2cc5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.termux.nix_188037.apk",
+      "expected": "0f6ba82d69296c33c66ee5d10aa18463e4953c2a6c3fd10e7e778c2cdae03303",
+      "observed": "0f6ba82d69296c33c66ee5d10aa18463e4953c2a6c3fd10e7e778c2cdae03303"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.therealbluepandabear.pixapencil_26.apk",
+      "expected": "834f098ffc290a9230ec3ef60c0e2d4a4c6ee4aaa354824c12cff5a340a3b3dc",
+      "observed": "834f098ffc290a9230ec3ef60c0e2d4a4c6ee4aaa354824c12cff5a340a3b3dc"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.theripper.cb_app_1.apk",
+      "expected": "3dff084f973d290fc7060987c494ea3360bf6a79e33e0fbd204771a43db987fa",
+      "observed": "3dff084f973d290fc7060987c494ea3360bf6a79e33e0fbd204771a43db987fa"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.thomaspeoples.wraithodysseus_700.apk",
+      "expected": "9d1d931b8e0bfb81096f64e59d70096f8a656d96ab9c347b7c6a59dccefb9bef",
+      "observed": "9d1d931b8e0bfb81096f64e59d70096f8a656d96ab9c347b7c6a59dccefb9bef"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.torrents_csv_android_22.apk",
+      "expected": "6c025d69aa002e2d182fcf55ea4392ce85f18165bb9e3a0a217f281f60445f2f",
+      "observed": "6c025d69aa002e2d182fcf55ea4392ce85f18165bb9e3a0a217f281f60445f2f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.trapplab.update_checker_104.apk",
+      "expected": "908b6a045803b322d2f85229f31dd9d428a5c82d5a3d191f5aade256564acb0f",
+      "observed": "908b6a045803b322d2f85229f31dd9d428a5c82d5a3d191f5aade256564acb0f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.trikset.gamepad2_210248.apk",
+      "expected": "07bcddfbdc974c6b985a1954c0147285d61f4389f47a416564527bb209bd0b49",
+      "observed": "07bcddfbdc974c6b985a1954c0147285d61f4389f47a416564527bb209bd0b49"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.tvlauncher_10602.apk",
+      "expected": "7afde83f96ccf30d1bc69ca06692d385800d2d9a14dd5f7d85fb4ad4f3c5c210",
+      "observed": "7afde83f96ccf30d1bc69ca06692d385800d2d9a14dd5f7d85fb4ad4f3c5c210"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.unciv.app_1281.apk",
+      "expected": "b6668bb4e30419584552c6573fcb93a335094c06cdd2a7aff915e958a744c574",
+      "observed": "b6668bb4e30419584552c6573fcb93a335094c06cdd2a7aff915e958a744c574"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.unicornsonlsd.finamp_52.apk",
+      "expected": "0da71f5d5531ca7a6d0094eefb27b5cc897c3b2c27de3b75c835481b0cfa41ae",
+      "observed": "0da71f5d5531ca7a6d0094eefb27b5cc897c3b2c27de3b75c835481b0cfa41ae"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.unitstool_9090.apk",
+      "expected": "01e22fe2ab45c31718881657645bbd236fe04d9da8bb757223953a9d3336ae64",
+      "observed": "01e22fe2ab45c31718881657645bbd236fe04d9da8bb757223953a9d3336ae64"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.unprompted.tildefriends.fdroid_67.apk",
+      "expected": "778121a199f9f4d2d61d6c0524b3cf5b6ecd5075679285bf4e977bc4fc7434bf",
+      "observed": "778121a199f9f4d2d61d6c0524b3cf5b6ecd5075679285bf4e977bc4fc7434bf"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vagujhelyigergely.calculatorm3_13.apk",
+      "expected": "b224f071f7d34f7682ff048ce469f1fc196a4a005143e763875e27690bd9d955",
+      "observed": "b224f071f7d34f7682ff048ce469f1fc196a4a005143e763875e27690bd9d955"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vakarux.instadownload_22.apk",
+      "expected": "d6e6ccdd05340794969225c506681b1e806dbb453499ee45ba39014ed0276624",
+      "observed": "d6e6ccdd05340794969225c506681b1e806dbb453499ee45ba39014ed0276624"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vayunmathur.email_20261028.apk",
+      "expected": "825475bc5c0bdc57609229f13022982df7ede870e8d85fdac32cdbc0df2f5416",
+      "observed": "825475bc5c0bdc57609229f13022982df7ede870e8d85fdac32cdbc0df2f5416"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vayunmathur.youpipe_20261028.apk",
+      "expected": "c5e4897305a59af02d1c79e11d1e55a94aa5172f5b6e8827acb9794925fac034",
+      "observed": "c5e4897305a59af02d1c79e11d1e55a94aa5172f5b6e8827acb9794925fac034"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vladrip.drgassistant_4.apk",
+      "expected": "16c7942cee111d251e22fbb092af799b45deaa03577d9bade2cec79cf7c08404",
+      "observed": "16c7942cee111d251e22fbb092af799b45deaa03577d9bade2cec79cf7c08404"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.vonglasow.michael.satstat_30600.apk",
+      "expected": "1bef8f7b7d9c1b4c4a287c7628721c1f8999e5e02a4d154fd625671aa64f6756",
+      "observed": "1bef8f7b7d9c1b4c4a287c7628721c1f8999e5e02a4d154fd625671aa64f6756"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.voyagerfiles_22.apk",
+      "expected": "5e234a1ab728595963f510a05e750e9568936f7b1ed97765ce6394be8294ba48",
+      "observed": "5e234a1ab728595963f510a05e750e9568936f7b1ed97765ce6394be8294ba48"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.weenas.castbay_131.apk",
+      "expected": "cb136b0882d2c8e6bf061a0386642317358f1e46d6451f0981f32cd7673505c4",
+      "observed": "cb136b0882d2c8e6bf061a0386642317358f1e46d6451f0981f32cd7673505c4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.xayah.databackup.foss_3501194.apk",
+      "expected": "3a7b9ab820ea33d02a84ee5403d99dc8e35c73b7c3705615bfa371c958f57b4e",
+      "observed": "3a7b9ab820ea33d02a84ee5403d99dc8e35c73b7c3705615bfa371c958f57b4e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.xmrchat.xmrpod_25.apk",
+      "expected": "c625906c6af5747598546f2eb9ca6ee2b8ea4e86fed3c99c7bb8a9298156e939",
+      "observed": "c625906c6af5747598546f2eb9ca6ee2b8ea4e86fed3c99c7bb8a9298156e939"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.xtreak.notificationdictionary_24.apk",
+      "expected": "8b0f5469708b6ebc71779d862a3cca2641256e680761f42f2026ece5e74af3fa",
+      "observed": "8b0f5469708b6ebc71779d862a3cca2641256e680761f42f2026ece5e74af3fa"
+    },
+    {
+      "kind": "local_apk",
+      "file": "com.zulipmobile_275.apk",
+      "expected": "3d4e3b9cf5745be51da0f9dd7c56a297e590c11b9ab67cb9441aefc9b214f132",
+      "observed": "3d4e3b9cf5745be51da0f9dd7c56a297e590c11b9ab67cb9441aefc9b214f132"
+    },
+    {
+      "kind": "local_apk",
+      "file": "cz.lastaapps.menza_1040800.apk",
+      "expected": "7bde97ca171e56dffc129a19dce422c1f1e17f2ab68519efacfb8b8aa6990b6c",
+      "observed": "7bde97ca171e56dffc129a19dce422c1f1e17f2ab68519efacfb8b8aa6990b6c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.beowulf.libretranslater_5.apk",
+      "expected": "a72f300462d3106e969a43cd3a5d637e95153eedb73cca1ab2a5661224b89feb",
+      "observed": "a72f300462d3106e969a43cd3a5d637e95153eedb73cca1ab2a5661224b89feb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.blau.android_3504.apk",
+      "expected": "d120847f809961c867ff2f42b0611fbeb4d3084caa858e407f08d619794a1163",
+      "observed": "d120847f809961c867ff2f42b0611fbeb4d3084caa858e407f08d619794a1163"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.blinkt.openvpn_225.apk",
+      "expected": "6d2d6dc8b84bd3c6628427d8dee5139eb48bd729d4a97442b441187e9899f698",
+      "observed": "6d2d6dc8b84bd3c6628427d8dee5139eb48bd729d4a97442b441187e9899f698"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.clio.audiobook_10006.apk",
+      "expected": "57ce10009530a63bab5363e44bae73d47ea230cd01c782335c3b0b4f23662584",
+      "observed": "57ce10009530a63bab5363e44bae73d47ea230cd01c782335c3b0b4f23662584"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.deftk.openww.android_8.apk",
+      "expected": "046e270540b175b14908f03d2b3e0496c136627ddb460026fb13e401997f263e",
+      "observed": "046e270540b175b14908f03d2b3e0496c136627ddb460026fb13e401997f263e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.dennysubke.oniondrop.standalone_10002.apk",
+      "expected": "27cb060259a159e9977be7ed2ae8e964e46dcb3b77765c0802f6793f589d7c2b",
+      "observed": "27cb060259a159e9977be7ed2ae8e964e46dcb3b77765c0802f6793f589d7c2b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.doen1el.calibreWebCompanion_2513.apk",
+      "expected": "53f3436915448a4532984df5121dff6f24490b2f12f8dd6baf9ecbcfe45e8cd9",
+      "observed": "53f3436915448a4532984df5121dff6f24490b2f12f8dd6baf9ecbcfe45e8cd9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.hohnepeople.keepadb_244.apk",
+      "expected": "3c481aff6d5aaa2dc5a1fdd4f0f32bd22b48659caa9e1d0aa32a0fbdf74130b7",
+      "observed": "3c481aff6d5aaa2dc5a1fdd4f0f32bd22b48659caa9e1d0aa32a0fbdf74130b7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.jkliemann.parkendd_33.apk",
+      "expected": "acdbf0b21f7806fa68a2fa0b3ec5579caeefc9eb06c1b5c31b59e68c8a11f51e",
+      "observed": "acdbf0b21f7806fa68a2fa0b3ec5579caeefc9eb06c1b5c31b59e68c8a11f51e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.jugendhacker.xmppadmin_1.apk",
+      "expected": "e9d9d8bfa7ccd2dc410fdef3e39dfe26326825c3b9fe5bfa0bb2356f382cc844",
+      "observed": "e9d9d8bfa7ccd2dc410fdef3e39dfe26326825c3b9fe5bfa0bb2356f382cc844"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.k3b.android.geo2articlesmap_6.apk",
+      "expected": "baa467a4aa1caf73b72c2902a0d85bbfd98d44146e365efa4d4e04b6f7ed449f",
+      "observed": "baa467a4aa1caf73b72c2902a0d85bbfd98d44146e365efa4d4e04b6f7ed449f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.kewl.fullscreendy_25.apk",
+      "expected": "2cf860567c91353ab2c20629eb9b970d60c08feb5845eed79cb50bdf38831291",
+      "observed": "2cf860567c91353ab2c20629eb9b970d60c08feb5845eed79cb50bdf38831291"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.marmaro.krt.ffupdater_179.apk",
+      "expected": "3cafb450642c0b01c02dfeca7ff444a5b0cf76759452e7a51c0867caae991267",
+      "observed": "3cafb450642c0b01c02dfeca7ff444a5b0cf76759452e7a51c0867caae991267"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.nielstron.simplenextcloud_8.apk",
+      "expected": "514223b015a0b6a75fe78c88a812503fb46020c9ee651db28a50050aca2601d6",
+      "observed": "514223b015a0b6a75fe78c88a812503fb46020c9ee651db28a50050aca2601d6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.niendo.ImapNotes3_10407.apk",
+      "expected": "86da9849485fe43ae82ac95218accbdc0826039b3e02586845fc5fc7855b74b8",
+      "observed": "86da9849485fe43ae82ac95218accbdc0826039b3e02586845fc5fc7855b74b8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.schildbach.oeffi_140009.apk",
+      "expected": "0f0d9dc7167a7b1fe17e05bc1fba6f29823b9b30dd4ef779af45a2cc9bab6224",
+      "observed": "0f0d9dc7167a7b1fe17e05bc1fba6f29823b9b30dd4ef779af45a2cc9bab6224"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.tnmgl.ntodotxt_433.apk",
+      "expected": "22d6afd63a97f06081dd85f150924b10d369934a3d72dc686e64a4103de232c0",
+      "observed": "22d6afd63a97f06081dd85f150924b10d369934a3d72dc686e64a4103de232c0"
+    },
+    {
+      "kind": "local_apk",
+      "file": "de.wellenvogel.bonjourbrowser_115.apk",
+      "expected": "765d3842220c067300384ecd9533a8cc2a1845c6e833e4b219dfc0a23952a075",
+      "observed": "765d3842220c067300384ecd9533a8cc2a1845c6e833e4b219dfc0a23952a075"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.acamol.qbit_18.apk",
+      "expected": "557d1cdaa8b25ef43bdc73694f6ce53703fbac4b4ce48f7c0982c344a2843d2d",
+      "observed": "557d1cdaa8b25ef43bdc73694f6ce53703fbac4b4ce48f7c0982c344a2843d2d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.appstract.iconpack_7.apk",
+      "expected": "dfdae011e8057f3473818beb1d79f001766ca101b7aaab548083f1f880840541",
+      "observed": "dfdae011e8057f3473818beb1d79f001766ca101b7aaab548083f1f880840541"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.debene.gopher_4.apk",
+      "expected": "5d8dbca2b9a169b45aa53955780b183e7fb37e1a91302bf53ee130a71a6bc0e7",
+      "observed": "5d8dbca2b9a169b45aa53955780b183e7fb37e1a91302bf53ee130a71a6bc0e7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.dettmer.simplenotes_69.apk",
+      "expected": "5b1fe3a7532c44385929df0a9a5320919b7671310c2cf9fbba7463e8f9d4f202",
+      "observed": "5b1fe3a7532c44385929df0a9a5320919b7671310c2cf9fbba7463e8f9d4f202"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.inkcast.aos_1.apk",
+      "expected": "ec81ed40ff2b5b0d9fd527ee758e86318742d1016d4e9e6dc76f42231ba759f7",
+      "observed": "ec81ed40ff2b5b0d9fd527ee758e86318742d1016d4e9e6dc76f42231ba759f7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.kokoro.tts_1.apk",
+      "expected": "7c211a36195af5ec5727ee3623db76a626956c75d3b3c9d129879148ee0b9835",
+      "observed": "7c211a36195af5ec5727ee3623db76a626956c75d3b3c9d129879148ee0b9835"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.kyu.karasu_1000926.apk",
+      "expected": "e77789a27f72cfa29a6938e52c908003818796906e5375cb212a1a452d8a420a",
+      "observed": "e77789a27f72cfa29a6938e52c908003818796906e5375cb212a1a452d8a420a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.labplus.app_2.apk",
+      "expected": "ba116d6608dd0d49d13f958990541e7b758d7cf4e88dd915a307ee3ffb7d6f1d",
+      "observed": "ba116d6608dd0d49d13f958990541e7b758d7cf4e88dd915a307ee3ffb7d6f1d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.mlzzen.androidnga_1000201.apk",
+      "expected": "9226c46a90487051de95897a70ff23c6f887614e4b2b15b127ba349cd40dfd87",
+      "observed": "9226c46a90487051de95897a70ff23c6f887614e4b2b15b127ba349cd40dfd87"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.otaj.zelp_73.apk",
+      "expected": "c838ac0d580903bec41b347af18e3e9f347d1f6d0642c84bbefb6b45c93abb96",
+      "observed": "c838ac0d580903bec41b347af18e3e9f347d1f6d0642c84bbefb6b45c93abb96"
+    },
+    {
+      "kind": "local_apk",
+      "file": "dev.yashgarg.qbit_17.apk",
+      "expected": "a97158e51c6099f9a85df0a265c969fad2210b7c815559f9afa24d38e500b230",
+      "observed": "a97158e51c6099f9a85df0a265c969fad2210b7c815559f9afa24d38e500b230"
+    },
+    {
+      "kind": "local_apk",
+      "file": "digital.ventral.ips_3.apk",
+      "expected": "22dd0227762c663de3b3483ab5a1f6e449e92ccfb71d2f3ca0f25bd8d30ee9f8",
+      "observed": "22dd0227762c663de3b3483ab5a1f6e449e92ccfb71d2f3ca0f25bd8d30ee9f8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "edu.rit.csh.devin_5.apk",
+      "expected": "0430c77bdb558ebd0c8fc4eb86fea660fb293598422d01755e323e96632dc118",
+      "observed": "0430c77bdb558ebd0c8fc4eb86fea660fb293598422d01755e323e96632dc118"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.dfdx.jslab_1.apk",
+      "expected": "3db5f2165cb77ade6ac8c21f371613906215c437b74517ef9c02ac2fc0aaf7cd",
+      "observed": "3db5f2165cb77ade6ac8c21f371613906215c437b74517ef9c02ac2fc0aaf7cd"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.radio_science_institute.smart_radio_telescope_2.apk",
+      "expected": "68faf4c64ccc1e352d252fd70145cec9c26ace46cae3099863a93b8c29109255",
+      "observed": "68faf4c64ccc1e352d252fd70145cec9c26ace46cae3099863a93b8c29109255"
+    },
+    {
+      "kind": "local_apk",
+      "file": "eu.veldsoft.house.of.cards_1.apk",
+      "expected": "233a7dec588c473c316ac27ed194b745b75b9b49a4e23438a247cfff25fc24e9",
+      "observed": "233a7dec588c473c316ac27ed194b745b75b9b49a4e23438a247cfff25fc24e9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fi.kroon.vadret_29.apk",
+      "expected": "b26ce0112ce22818296dbe19d2e83ae83155b2675a1ac4fe07cdbdf040b383bf",
+      "observed": "b26ce0112ce22818296dbe19d2e83ae83155b2675a1ac4fe07cdbdf040b383bf"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.gouv.etalab.mastodon_572.apk",
+      "expected": "dd67c834cb9946d30058855805ee80e44369b62dbc08c39f0e24909366ea1ae5",
+      "observed": "dd67c834cb9946d30058855805ee80e44369b62dbc08c39f0e24909366ea1ae5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.guillaumevillena.opendnsupdater_224.apk",
+      "expected": "87351c9015a7f749190af8847dbb6a2fedca4d783d4d2c5d8799fb3a9438d3ef",
+      "observed": "87351c9015a7f749190af8847dbb6a2fedca4d783d4d2c5d8799fb3a9438d3ef"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.luteal.app_13.apk",
+      "expected": "7e95f6cc91df7278aba80ad99b57d28b0b6476e2d63c298bdbe1a110196faa70",
+      "observed": "7e95f6cc91df7278aba80ad99b57d28b0b6476e2d63c298bdbe1a110196faa70"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.nuage.souvenirs_45.apk",
+      "expected": "fb6a5bf9191e662fb1ae803d719b07bcc165e8d8bd4686e97f0abd46339af044",
+      "observed": "fb6a5bf9191e662fb1ae803d719b07bcc165e8d8bd4686e97f0abd46339af044"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.s2009.shutapp_1.apk",
+      "expected": "f63b01c174ca8e7968580602f0addf231e964aeb8cfbf83dfd5d9d4f248fcccc",
+      "observed": "f63b01c174ca8e7968580602f0addf231e964aeb8cfbf83dfd5d9d4f248fcccc"
+    },
+    {
+      "kind": "local_apk",
+      "file": "fr.shiningcat.binclockwidget_8.apk",
+      "expected": "8d65fd1dde79d02e6ea368ccc69b4581d7d567750cae8d7a656b381f915d5a3e",
+      "observed": "8d65fd1dde79d02e6ea368ccc69b4581d7d567750cae8d7a656b381f915d5a3e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "free.rm.skytube.legacy.oss_59.apk",
+      "expected": "325af27b71db3f7784f732f72b51ee79c02dfb4b8627cf5a94a648560c85ee19",
+      "observed": "325af27b71db3f7784f732f72b51ee79c02dfb4b8627cf5a94a648560c85ee19"
+    },
+    {
+      "kind": "local_apk",
+      "file": "github.rikodot.kardi_notes_28.apk",
+      "expected": "97571a5911e1a1428cb11c0af93cb1bfcfe3ded70550888e5ae845b202bd1642",
+      "observed": "97571a5911e1a1428cb11c0af93cb1bfcfe3ded70550888e5ae845b202bd1642"
+    },
+    {
+      "kind": "local_apk",
+      "file": "godau.fynn.moodledirect_10.apk",
+      "expected": "df6eb4fb1a28356261e48b3fea425daac89f39c54bd1318e9f92dff1a1e497e0",
+      "observed": "df6eb4fb1a28356261e48b3fea425daac89f39c54bd1318e9f92dff1a1e497e0"
+    },
+    {
+      "kind": "local_apk",
+      "file": "gov.anzong.androidnga_5002.apk",
+      "expected": "2342f2d4dcb8b3680eb86fbe0dae42c1f62a2e8cf37a336b09e66448903ee8f5",
+      "observed": "2342f2d4dcb8b3680eb86fbe0dae42c1f62a2e8cf37a336b09e66448903ee8f5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "horse.amazin.my.stratum0.statuswidget_28.apk",
+      "expected": "205786cc5e4654e51cd0ecb85021187b75323707c1dbebb297b9e9e5c34ffcb2",
+      "observed": "205786cc5e4654e51cd0ecb85021187b75323707c1dbebb297b9e9e5c34ffcb2"
+    },
+    {
+      "kind": "local_apk",
+      "file": "info.metadude.android.datenspuren.schedule_121.apk",
+      "expected": "840b6dd19f722c715a29db3fdeca3c9367eb0bb16a4618b0043086bac2aa089b",
+      "observed": "840b6dd19f722c715a29db3fdeca3c9367eb0bb16a4618b0043086bac2aa089b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "info.metadude.android.foss4g.schedule_109.apk",
+      "expected": "3dda265cf2e641f746cf63ca782bb21221839672911f439f7957508d66357908",
+      "observed": "3dda265cf2e641f746cf63ca782bb21221839672911f439f7957508d66357908"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.anuke.mindustry_1115.apk",
+      "expected": "64bf33842d8f5495656c44868ea3d11ca5998bf6e36bbb428064dcc58c2e9f44",
+      "observed": "64bf33842d8f5495656c44868ea3d11ca5998bf6e36bbb428064dcc58c2e9f44"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.aiya000.webbyimagesdownloader_2.apk",
+      "expected": "e92dbc906cb6d93e84fee1525d14c88264b2b0d37a4a7b11e13f525160bc9b4a",
+      "observed": "e92dbc906cb6d93e84fee1525d14c88264b2b0d37a4a7b11e13f525160bc9b4a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.an_dr_eas_k.ncphotowidget_3.apk",
+      "expected": "3344526f45a9a24b8792f88447cb97dfa5f8115ec67719d8e21e3bf5a258eb0e",
+      "observed": "3344526f45a9a24b8792f88447cb97dfa5f8115ec67719d8e21e3bf5a258eb0e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.antonkulaga.glucowatch_19.apk",
+      "expected": "9f23832b5983f81cb100214c38b371aaac74029d63abc795dfa9549294029cdc",
+      "observed": "9f23832b5983f81cb100214c38b371aaac74029d63abc795dfa9549294029cdc"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.austriancanvassociety.firehoseremote_4.apk",
+      "expected": "3b1c61c55a8d72b41e9582909e873c8553edc603fda524426de8fb31e7851506",
+      "observed": "3b1c61c55a8d72b41e9582909e873c8553edc603fda524426de8fb31e7851506"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.derweh.bayesianbahn_8.apk",
+      "expected": "60fd9dfc577670401e40b260647779a31e96fd975b075ec5a02ed957f5490134",
+      "observed": "60fd9dfc577670401e40b260647779a31e96fd975b075ec5a02ed957f5490134"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.digitalvalut.logos_72.apk",
+      "expected": "4c7593b17cac97380a05785dca9416e0809396236382e679f70f2fb5f8a36aff",
+      "observed": "4c7593b17cac97380a05785dca9416e0809396236382e679f70f2fb5f8a36aff"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.evokelektrique.tunnelforge_2043.apk",
+      "expected": "63028720b2af9941f4128160bd1e94e55eca2510587b6031f4cc7120aea4fa3d",
+      "observed": "63028720b2af9941f4128160bd1e94e55eca2510587b6031f4cc7120aea4fa3d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.jtrv.quickword_4.apk",
+      "expected": "ba7192cb91c14ba755517be45412434efb70f5efed98df6ca53b331a75dca85b",
+      "observed": "ba7192cb91c14ba755517be45412434efb70f5efed98df6ca53b331a75dca85b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.nofuturekid.nova_118.apk",
+      "expected": "e97a0d6439e202735eaf7899cb3e6cfbc2f97546e795c5bb80679a29b595c8bb",
+      "observed": "e97a0d6439e202735eaf7899cb3e6cfbc2f97546e795c5bb80679a29b595c8bb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.pedrolcl.vmpk_151.apk",
+      "expected": "5eaf49ba136b7dece2eb970904c8358f5ce9e76e0e621be9ef4b0954b2ea90f2",
+      "observed": "5eaf49ba136b7dece2eb970904c8358f5ce9e76e0e621be9ef4b0954b2ea90f2"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.github.rumcajs.offlinewebsearch_40.apk",
+      "expected": "47aa4c5af5a0a46dbbbc1896671418cacf8362ddbbc78c3a4d3ee7c951f0d5e4",
+      "observed": "47aa4c5af5a0a46dbbbc1896671418cacf8362ddbbc78c3a4d3ee7c951f0d5e4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.open_biking_24.apk",
+      "expected": "c9c27e605891184e2efded2ef486cf76c991eab533ec9432cfe6a478ffd62395",
+      "observed": "c9c27e605891184e2efded2ef486cf76c991eab533ec9432cfe6a478ffd62395"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.privkey.keep_314.apk",
+      "expected": "c4f54b276bc267cef08e9e87ba1ecb985b0f0829326766367d7f76916ee436ab",
+      "observed": "c4f54b276bc267cef08e9e87ba1ecb985b0f0829326766367d7f76916ee436ab"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.simplelogin.android.fdroid_12200.apk",
+      "expected": "2910e300a29f655377a3c2b06b8fa2e49b2b18a2470968dec8e5b0c5c71daa7e",
+      "observed": "2910e300a29f655377a3c2b06b8fa2e49b2b18a2470968dec8e5b0c5c71daa7e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "io.timelimit.android.aosp.direct_232.apk",
+      "expected": "b97424440c63f6ea03fe95016178b07bb3728e22a59699af5c961487a3a2baa1",
+      "observed": "b97424440c63f6ea03fe95016178b07bb3728e22a59699af5c961487a3a2baa1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "is.xyz.vcmi_17502.apk",
+      "expected": "9317a14a16023a19d983a2caf4248fdec8aea96e28d2548b891033cec22cf4ba",
+      "observed": "9317a14a16023a19d983a2caf4248fdec8aea96e28d2548b891033cec22cf4ba"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.belloworld.mercurygram.plugin.tor_7183028.apk",
+      "expected": "2e4314da8939648cbf250d676fb345423c7c2c3c6ce896fafdc5b0e4c01abb4f",
+      "observed": "2e4314da8939648cbf250d676fb345423c7c2c3c6ce896fafdc5b0e4c01abb4f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.fast4x.riplay_104.apk",
+      "expected": "1d7f385d38c22537809323da0a8c84506424bb8c9a2431bbd4c180f76274175a",
+      "observed": "1d7f385d38c22537809323da0a8c84506424bb8c9a2431bbd4c180f76274175a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.niedermann.nextcloud.deck_1026003.apk",
+      "expected": "e7152b3062658082f5abdf7bdfdbb90c170155f557f598a799d0c9967dfaa6d5",
+      "observed": "e7152b3062658082f5abdf7bdfdbb90c170155f557f598a799d0c9967dfaa6d5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "it.niedermann.nextcloud.tables_2002006.apk",
+      "expected": "8a6cbd75047486fee3d43f4990f2d5a21081a741c5cc20290f445ddb60ad2368",
+      "observed": "8a6cbd75047486fee3d43f4990f2d5a21081a741c5cc20290f445ddb60ad2368"
+    },
+    {
+      "kind": "local_apk",
+      "file": "jp.nonbili.meron_46.apk",
+      "expected": "ed9e557c01429fd04cc69eac1b9b20e4b39e7f2faa867113920e9b4795f88bb3",
+      "observed": "ed9e557c01429fd04cc69eac1b9b20e4b39e7f2faa867113920e9b4795f88bb3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "jp.nonbili.nora_10203.apk",
+      "expected": "c7d4948c335dd8c4018269a14636f576d6d4c5a5dc88c1ee74971b828ec38872",
+      "observed": "c7d4948c335dd8c4018269a14636f576d6d4c5a5dc88c1ee74971b828ec38872"
+    },
+    {
+      "kind": "local_apk",
+      "file": "jp.nonbili.noutube_8404.apk",
+      "expected": "20567eaea39851c847505831d8b0e034a55fc00e46b4ae68f204178546a34bff",
+      "observed": "20567eaea39851c847505831d8b0e034a55fc00e46b4ae68f204178546a34bff"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.diamondforge.tokn_23.apk",
+      "expected": "1eda6c7d4f3bb82644ed31f1a4e8b2e418e94d33db7a459f382cdaeb8786915e",
+      "observed": "1eda6c7d4f3bb82644ed31f1a4e8b2e418e94d33db7a459f382cdaeb8786915e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.echeung.moemoekyun.fdroid_221.apk",
+      "expected": "469031e952c7410f277382ea046aef5f362c183fed7ba033a66f69aa36b7ac5c",
+      "observed": "469031e952c7410f277382ea046aef5f362c183fed7ba033a66f69aa36b7ac5c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.iacn.mbestyle_27.apk",
+      "expected": "4dc1d85dea7f28bfc3671b4bce492e72dd8f91edeefc7f2dc73b8b598f05650e",
+      "observed": "4dc1d85dea7f28bfc3671b4bce492e72dd8f91edeefc7f2dc73b8b598f05650e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.impa.knockonports_370012200.apk",
+      "expected": "687c38eae29852e1544269be2816050aac8398ed08e8e08dc6a705f35df2592c",
+      "observed": "687c38eae29852e1544269be2816050aac8398ed08e8e08dc6a705f35df2592c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.mudkip.moememos_51.apk",
+      "expected": "a5f53b3afd4a69f9ee19567bc3bd13ea45fa12c35267f1139ae2f3bc49275a9d",
+      "observed": "a5f53b3afd4a69f9ee19567bc3bd13ea45fa12c35267f1139ae2f3bc49275a9d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "me.timeto.app_626.apk",
+      "expected": "cd9b731b257eb4f7eba3e2fb7672ef07ed82298812e103010535d1935cfaf684",
+      "observed": "cd9b731b257eb4f7eba3e2fb7672ef07ed82298812e103010535d1935cfaf684"
+    },
+    {
+      "kind": "local_apk",
+      "file": "moe.dic1911.urlsanitizer_34.apk",
+      "expected": "9569caaa1f648c8349883137d27229e7d14cde896c5e17f31d6bfded10b4c781",
+      "observed": "9569caaa1f648c8349883137d27229e7d14cde896c5e17f31d6bfded10b4c781"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.alexbarry.alexgames_2.apk",
+      "expected": "4f0ab17dae880bf7ab8d599f28f89619b676d63263c98efd2983652e1dd15601",
+      "observed": "4f0ab17dae880bf7ab8d599f28f89619b676d63263c98efd2983652e1dd15601"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.curiana.recipes_12.apk",
+      "expected": "eabb07188474697249998ff52fb36c76c7a76db8b13178e214ecbcf2b0395e49",
+      "observed": "eabb07188474697249998ff52fb36c76c7a76db8b13178e214ecbcf2b0395e49"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.eneiluj.moneybuster_40.apk",
+      "expected": "9b04b3daaa6a1ee3b0fb280fec1a3052ab31e866ca36893d527631b42e740412",
+      "observed": "9b04b3daaa6a1ee3b0fb280fec1a3052ab31e866ca36893d527631b42e740412"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.glsk.dreeve.upload_100.apk",
+      "expected": "35fdc581d4e437f1aee1ac4f5f544e55c8b8e0afab542dcdc4810ff737ca395a",
+      "observed": "35fdc581d4e437f1aee1ac4f5f544e55c8b8e0afab542dcdc4810ff737ca395a"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.justdave.nwsweatheralertswidget_30.apk",
+      "expected": "d9deda9cada797f5ac91d4bd89b8f7a1e1b2a5abd7f1e5985b97b4ea135015bb",
+      "observed": "d9deda9cada797f5ac91d4bd89b8f7a1e1b2a5abd7f1e5985b97b4ea135015bb"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.megaproxy487_27004.apk",
+      "expected": "e27b8a844ac377d3aaf43d4e3e3e2d1c6996313e01d6c2b09ca645009af8dfc1",
+      "observed": "e27b8a844ac377d3aaf43d4e3e3e2d1c6996313e01d6c2b09ca645009af8dfc1"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.nhiroki.bluelineconsole_45.apk",
+      "expected": "502e1f9c26c3da265121ca5e8b6b46ac4a636f7c53628faa4d53d67c2b978a88",
+      "observed": "502e1f9c26c3da265121ca5e8b6b46ac4a636f7c53628faa4d53d67c2b978a88"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.nurik.roman.muzei_370015.apk",
+      "expected": "a8967583126c8fbc5e69e3578ef9114b1aa1f7cef863078b857c4823d3b5afe6",
+      "observed": "a8967583126c8fbc5e69e3578ef9114b1aa1f7cef863078b857c4823d3b5afe6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.phbwt.paperwork_1003007.apk",
+      "expected": "87b9c4af1190c5dc91802527b5910c0cc61e3d406965522110199846cd2426fd",
+      "observed": "87b9c4af1190c5dc91802527b5910c0cc61e3d406965522110199846cd2426fd"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.redsolver.noteless_146.apk",
+      "expected": "e3c940175801e47e9bf7daad6ab4daf728d5df9fcdfb6a874304c3c0d8e6c7e2",
+      "observed": "e3c940175801e47e9bf7daad6ab4daf728d5df9fcdfb6a874304c3c0d8e6c7e2"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.toload.main.hd_760.apk",
+      "expected": "770cb76a817959286e495947794e9cfc75b49487756708723832b0ad5dc6a823",
+      "observed": "770cb76a817959286e495947794e9cfc75b49487756708723832b0ad5dc6a823"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.turtton.ytalarm_10019.apk",
+      "expected": "6e2d8f2a48edc4a5e2ed8d44c843c649c79ea2748c9efd668ab3b70ab3e9770f",
+      "observed": "6e2d8f2a48edc4a5e2ed8d44c843c649c79ea2748c9efd668ab3b70ab3e9770f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.usikkert.kouchat.android_16.apk",
+      "expected": "7b1a0abc134b35ae3a74c03c3109c56f5dbf35262b8bd04877be090652c4c29f",
+      "observed": "7b1a0abc134b35ae3a74c03c3109c56f5dbf35262b8bd04877be090652c4c29f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "net.yumicoradio.android_164.apk",
+      "expected": "04d3f7a566ba522932b4caf4a4c4ab257a319d8898eb9af68bcf92e37dd04167",
+      "observed": "04d3f7a566ba522932b4caf4a4c4ab257a319d8898eb9af68bcf92e37dd04167"
+    },
+    {
+      "kind": "local_apk",
+      "file": "nl.asymmetrics.droidshows_71110.apk",
+      "expected": "e96f88670d39ea5faee21613d516c5a63a782e69e18403219beef52ca3886523",
+      "observed": "e96f88670d39ea5faee21613d516c5a63a782e69e18403219beef52ca3886523"
+    },
+    {
+      "kind": "local_apk",
+      "file": "nl.eventinfra.wifisetup_20231222.apk",
+      "expected": "aa0ca052e9e48ad7945f9aa535f5fd691018a5356a8ff95b0e5bf94662a54a10",
+      "observed": "aa0ca052e9e48ad7945f9aa535f5fd691018a5356a8ff95b0e5bf94662a54a10"
+    },
+    {
+      "kind": "local_apk",
+      "file": "nl.privacydragon.bookwyrm_16.apk",
+      "expected": "041c1fe9a5e24766dc0a7244d077f4794175ca4144cb227a77c14cd0be98ceea",
+      "observed": "041c1fe9a5e24766dc0a7244d077f4794175ca4144cb227a77c14cd0be98ceea"
+    },
+    {
+      "kind": "local_apk",
+      "file": "nodomain.freeyourgadget.internethelper_10.apk",
+      "expected": "8f766c6d60b2e2975e5e5bb0f110a487f03ab28f3e16dca794419e94ffde767c",
+      "observed": "8f766c6d60b2e2975e5e5bb0f110a487f03ab28f3e16dca794419e94ffde767c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.asdtm.fas_3.apk",
+      "expected": "1a8fd8e6ebe4b8e3db408ff5bae32c75616fa338bd3d82b8acdc94c2c30160e6",
+      "observed": "1a8fd8e6ebe4b8e3db408ff5bae32c75616fa338bd3d82b8acdc94c2c30160e6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.bienvenidoainternet.app_13.apk",
+      "expected": "59f868acb1204722e8b8b1d37121b249e672ae328933c17dfd49eb21beeb3849",
+      "observed": "59f868acb1204722e8b8b1d37121b249e672ae328933c17dfd49eb21beeb3849"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.billthefarmer.buses_112.apk",
+      "expected": "d103a034ec2ba9ca4217265a105d575732341c3ab2cf0427745bf155a5ce33d5",
+      "observed": "d103a034ec2ba9ca4217265a105d575732341c3ab2cf0427745bf155a5ce33d5"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.billthefarmer.print_108.apk",
+      "expected": "4f9290bf74d8e3c83bb11c9f7050fe5c8dc1f7336b7145bc2910a366f926da17",
+      "observed": "4f9290bf74d8e3c83bb11c9f7050fe5c8dc1f7336b7145bc2910a366f926da17"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.bitbucket.watashi564.combapp_4.apk",
+      "expected": "03dc29f931e0dbe9041a07f61e5c1fee786903209f45b2932e77b9db797aac2d",
+      "observed": "03dc29f931e0dbe9041a07f61e5c1fee786903209f45b2932e77b9db797aac2d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.breezyweather_60202.apk",
+      "expected": "1369d817d426498715f8ccb6750baff19dadd78e85f707088e9bca43977570c0",
+      "observed": "1369d817d426498715f8ccb6750baff19dadd78e85f707088e9bca43977570c0"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.codeberg.quecomet.oshi_5000.apk",
+      "expected": "03b29b630be4bd8b6f9c597034333f4fb136ad20272849b9b621d785115b73e2",
+      "observed": "03b29b630be4bd8b6f9c597034333f4fb136ad20272849b9b621d785115b73e2"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.ddosolitary.okcagent_6.apk",
+      "expected": "4cafc5adb7794c9a96b370c54a8e4ac43d9e1488ebe14d2ec452aff0cdb53fd6",
+      "observed": "4cafc5adb7794c9a96b370c54a8e4ac43d9e1488ebe14d2ec452aff0cdb53fd6"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.decsync.sparss.floss_99.apk",
+      "expected": "75d8cb7f43f0f2c2651ac1181d2c021b95b2b14bd573a9ca71e6aaf4577acdbe",
+      "observed": "75d8cb7f43f0f2c2651ac1181d2c021b95b2b14bd573a9ca71e6aaf4577acdbe"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.docspell.docspellshare_40.apk",
+      "expected": "aff4bdd83fffd79d9716f780f2f4cacaaa21910ff93f97193d246a4086003de8",
+      "observed": "aff4bdd83fffd79d9716f780f2f4cacaaa21910ff93f97193d246a4086003de8"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.fdroid.fdroid_2000053.apk",
+      "expected": "dac55a0d17b1edf7e7286b48cfbd70c7c52fbb32a00af062c68830a437c47959",
+      "observed": "dac55a0d17b1edf7e7286b48cfbd70c7c52fbb32a00af062c68830a437c47959"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.gameoftrees.gotweb_authenticator_43.apk",
+      "expected": "a23b3a7fa36ec54afaadabfdee9937ccb0a83fa3b4d3c5f4c3f2d666b0ccbbea",
+      "observed": "a23b3a7fa36ec54afaadabfdee9937ccb0a83fa3b4d3c5f4c3f2d666b0ccbbea"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.jimvixx.smsecure_10401.apk",
+      "expected": "551a6cb4fe320c9fd74326247459d2971622c632fca8d055c2431cf6da5bca59",
+      "observed": "551a6cb4fe320c9fd74326247459d2971622c632fca8d055c2431cf6da5bca59"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.joinmastodon.android.moshinda_110.apk",
+      "expected": "1651df0d655e26dc19bcbf2ed09424976f5c0bb9bcef28fb1d352b3eea379667",
+      "observed": "1651df0d655e26dc19bcbf2ed09424976f5c0bb9bcef28fb1d352b3eea379667"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.ligi.passandroid_373.apk",
+      "expected": "1b2f35f99dff9c26812c3650b6c2754dabd85b024dcd692e6f2c3aea698b8bda",
+      "observed": "1b2f35f99dff9c26812c3650b6c2754dabd85b024dcd692e6f2c3aea698b8bda"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.lyrion.squeezelite_1001.apk",
+      "expected": "1868f3507eef89b0f96e130167fdb785cb64ca439cf86caa1df21f437a6ea55b",
+      "observed": "1868f3507eef89b0f96e130167fdb785cb64ca439cf86caa1df21f437a6ea55b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.navitproject.navit_2026020887.apk",
+      "expected": "ff5a825b532ebb7d89f5d2d7128b5ed6fac96bf4dc3b3e0c38052832152919ba",
+      "observed": "ff5a825b532ebb7d89f5d2d7128b5ed6fac96bf4dc3b3e0c38052832152919ba"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.onedroid.radiowave_1.apk",
+      "expected": "291d7439fad23d2efec716c35a3d71f67c4592eb8d2e43f38e8bc21486365026",
+      "observed": "291d7439fad23d2efec716c35a3d71f67c4592eb8d2e43f38e8bc21486365026"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.opendataensemble.formulus_111.apk",
+      "expected": "b7d460e0cdb4f61b103d8fbd19e3558ce19ef348548bd3006a8e723abcb1a538",
+      "observed": "b7d460e0cdb4f61b103d8fbd19e3558ce19ef348548bd3006a8e723abcb1a538"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.openttd.fdroid_1410128.apk",
+      "expected": "355cc302a892fa8c62459b6ae6d0f2940868b9fea5221f784f36f90677b34610",
+      "observed": "355cc302a892fa8c62459b6ae6d0f2940868b9fea5221f784f36f90677b34610"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.ostrya.presencepublisher_61.apk",
+      "expected": "d20bbc21b27d7602471c8962352808cf1bed9181f5a40166d7665b34c35b6370",
+      "observed": "d20bbc21b27d7602471c8962352808cf1bed9181f5a40166d7665b34c35b6370"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.pacien.tincapp_47.apk",
+      "expected": "be2b66884fac5adef5069f2bc25bf5399b789706015df583ae5298bbcca43d5c",
+      "observed": "be2b66884fac5adef5069f2bc25bf5399b789706015df583ae5298bbcca43d5c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.primftpd_71.apk",
+      "expected": "d36566e774e2d0446dcbb41438d22e62d198688aac2711ba7afaa6ea2fdd577d",
+      "observed": "d36566e774e2d0446dcbb41438d22e62d198688aac2711ba7afaa6ea2fdd577d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.qownnotes.mobile_25.apk",
+      "expected": "934f4813f9ad4ffd86aebdbf2b60ad8d7b541792f79855cdf2d70322b77d6a64",
+      "observed": "934f4813f9ad4ffd86aebdbf2b60ad8d7b541792f79855cdf2d70322b77d6a64"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.schabi.kiba_2.apk",
+      "expected": "6c26431f8a4ca5c939c3b7ab9deb18fed2e342939238eb171882192793ce42d7",
+      "observed": "6c26431f8a4ca5c939c3b7ab9deb18fed2e342939238eb171882192793ce42d7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.strongswan.android_100.apk",
+      "expected": "205c60cf9d1f9591e757ff96d7a7d63207fe29a3d92041012c864bb10ab781c9",
+      "observed": "205c60cf9d1f9591e757ff96d7a7d63207fe29a3d92041012c864bb10ab781c9"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.surrel.facebooknotifications_18.apk",
+      "expected": "145d8d1825396bfb38195d77f3556f4529ee1659c5502b0a818f3260bc7a7c67",
+      "observed": "145d8d1825396bfb38195d77f3556f4529ee1659c5502b0a818f3260bc7a7c67"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.thunderdog.challegram_1800202.apk",
+      "expected": "5a6f13f790ce889b2984f0303ee6f605f7ae7106fed55879dc7b6c2bf9104ede",
+      "observed": "5a6f13f790ce889b2984f0303ee6f605f7ae7106fed55879dc7b6c2bf9104ede"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.wesnoth.Wesnoth_1192900002.apk",
+      "expected": "d03ce7bcc7180f1705753bb700b7aa174a002439f97cf87c688998e7f88129de",
+      "observed": "d03ce7bcc7180f1705753bb700b7aa174a002439f97cf87c688998e7f88129de"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.woheller69.whisper_38.apk",
+      "expected": "f97d8087dc7a81a1175a08f8858d808815b3554f031ffaa982a6fd04ac861e7c",
+      "observed": "f97d8087dc7a81a1175a08f8858d808815b3554f031ffaa982a6fd04ac861e7c"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.worldlabourvalues.wlv_panel_53.apk",
+      "expected": "91acbfa48c89b6c3be917267c1d24ce35d82e6264a1f639224be913ea34c5f83",
+      "observed": "91acbfa48c89b6c3be917267c1d24ce35d82e6264a1f639224be913ea34c5f83"
+    },
+    {
+      "kind": "local_apk",
+      "file": "org.zephyrsoft.sdbviewer_13.apk",
+      "expected": "8235ce85c593906cc533e6f341398b992b37347e32788fbd39fa6c13f5c17d09",
+      "observed": "8235ce85c593906cc533e6f341398b992b37347e32788fbd39fa6c13f5c17d09"
+    },
+    {
+      "kind": "local_apk",
+      "file": "page.codeberg.terratactician_expandoria_41.apk",
+      "expected": "866ceffbd0bcc5888a8c1f6720dff54c4cf7bbbc9d12bebe2c3e5a380d2b1d0b",
+      "observed": "866ceffbd0bcc5888a8c1f6720dff54c4cf7bbbc9d12bebe2c3e5a380d2b1d0b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "pl.telenczuk.counterapp_11.apk",
+      "expected": "c684a662b0a87d6a1ba7d693ed033e775bf30ec67ced551ad644a716df120bc7",
+      "observed": "c684a662b0a87d6a1ba7d693ed033e775bf30ec67ced551ad644a716df120bc7"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ro.radioromaniaactualitati.podcasts_65.apk",
+      "expected": "c1a6c7ffea2a4c2e8f6114ec603e9bb0faa8c1468164bea1e05e509f152d39b4",
+      "observed": "c1a6c7ffea2a4c2e8f6114ec603e9bb0faa8c1468164bea1e05e509f152d39b4"
+    },
+    {
+      "kind": "local_apk",
+      "file": "rs.in.dbase.downloader_223.apk",
+      "expected": "821b75ffc4592bc5f2e3384dfe0aea925cde3c03342f968dae6e519b4ee31626",
+      "observed": "821b75ffc4592bc5f2e3384dfe0aea925cde3c03342f968dae6e519b4ee31626"
+    },
+    {
+      "kind": "local_apk",
+      "file": "rs.ltt.android_19.apk",
+      "expected": "9c9060f3e26873147f6251b0c8325158c003199a1b0b710b5014b26937026e7b",
+      "observed": "9c9060f3e26873147f6251b0c8325158c003199a1b0b710b5014b26937026e7b"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ru.evgeniy.dpitunnel_13.apk",
+      "expected": "901bba301479c15f6e509bff3cfe0ec2e2d26bfa5ee17dc5cf74da1e604c6206",
+      "observed": "901bba301479c15f6e509bff3cfe0ec2e2d26bfa5ee17dc5cf74da1e604c6206"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ru.natsuru.websdr_1.apk",
+      "expected": "bd3bf8704e2c079ec6cfef605c69552612f2c289dd5903985202de7856be2614",
+      "observed": "bd3bf8704e2c079ec6cfef605c69552612f2c289dd5903985202de7856be2614"
+    },
+    {
+      "kind": "local_apk",
+      "file": "se.lublin.mumla_3070300.apk",
+      "expected": "d6c650a96897709cdacc2c71dbcf81d57d8d4ada1799466606fda72cda2595f0",
+      "observed": "d6c650a96897709cdacc2c71dbcf81d57d8d4ada1799466606fda72cda2595f0"
+    },
+    {
+      "kind": "local_apk",
+      "file": "software.mdev.bookstracker_59.apk",
+      "expected": "fe84634a230858910b660fd460773444bdb081719f22426bef6d0886cef4ed7d",
+      "observed": "fe84634a230858910b660fd460773444bdb081719f22426bef6d0886cef4ed7d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "systems.sieber.vscreensaver_6.apk",
+      "expected": "9bdac10b9b3f2da8b042b134f043c2b8bf2d2b4fecb32c8131c79dd8fdb77784",
+      "observed": "9bdac10b9b3f2da8b042b134f043c2b8bf2d2b4fecb32c8131c79dd8fdb77784"
+    },
+    {
+      "kind": "local_apk",
+      "file": "takagi.ru.monica.fdroid_31.apk",
+      "expected": "a3a1d027c3516d789e7de7736cf21b7cb7492626fa428393f6e001eee0fd0cab",
+      "observed": "a3a1d027c3516d789e7de7736cf21b7cb7492626fa428393f6e001eee0fd0cab"
+    },
+    {
+      "kind": "local_apk",
+      "file": "threads.thor_200.apk",
+      "expected": "fa8fead74770c9aafe4b8a3792f58bfe36de944515928b7f0335401c8eb7a461",
+      "observed": "fa8fead74770c9aafe4b8a3792f58bfe36de944515928b7f0335401c8eb7a461"
+    },
+    {
+      "kind": "local_apk",
+      "file": "tkj.android.homecontrol.mythmote_3014.apk",
+      "expected": "d065798344c08202e634d412b6a9e6537068fa31087354f5a3def888a8f39c1d",
+      "observed": "d065798344c08202e634d412b6a9e6537068fa31087354f5a3def888a8f39c1d"
+    },
+    {
+      "kind": "local_apk",
+      "file": "town.robin.toadua_10.apk",
+      "expected": "61649637e0db7a503da48c4cc886fd8db9df0636a3df21c3017cf0b395e42237",
+      "observed": "61649637e0db7a503da48c4cc886fd8db9df0636a3df21c3017cf0b395e42237"
+    },
+    {
+      "kind": "local_apk",
+      "file": "truewatcher.tower_82.apk",
+      "expected": "ccb791327fcc77caec376007bd4d2679e5f42908d00755c782ec8c0c7cbb32b3",
+      "observed": "ccb791327fcc77caec376007bd4d2679e5f42908d00755c782ec8c0c7cbb32b3"
+    },
+    {
+      "kind": "local_apk",
+      "file": "ua.syt0r.kanji.fdroid_2210.apk",
+      "expected": "60e83831865cc1a7cc97ce9fe78324cfed22cb145debc486a8fb129545876684",
+      "observed": "60e83831865cc1a7cc97ce9fe78324cfed22cb145debc486a8fb129545876684"
+    },
+    {
+      "kind": "local_apk",
+      "file": "uk.me.amugofjava.anytime_206.apk",
+      "expected": "7bb4d28556b820f45e7a1683da473d0225dc81e3d6dcae3060b657820efd713e",
+      "observed": "7bb4d28556b820f45e7a1683da473d0225dc81e3d6dcae3060b657820efd713e"
+    },
+    {
+      "kind": "local_apk",
+      "file": "uscartools.USTravelConverter_3.apk",
+      "expected": "0c28d471a1ee273a03f761e373e98250f60e37a99c2ccadfef5036ececce6516",
+      "observed": "0c28d471a1ee273a03f761e373e98250f60e37a99c2ccadfef5036ececce6516"
+    },
+    {
+      "kind": "local_apk",
+      "file": "wtf.chihuahua.huallet_10304.apk",
+      "expected": "61eb32c8fcc09f1d78397122034a2c182071ce94bb0c58246a79b3ca40160f9f",
+      "observed": "61eb32c8fcc09f1d78397122034a2c182071ce94bb0c58246a79b3ca40160f9f"
+    },
+    {
+      "kind": "local_apk",
+      "file": "wtf.technodisaster.tldr_10.apk",
+      "expected": "7bb0ff3a8c5a1820cb57df9fd7ed4a70569fb5ed74ac37c9108ca2bcd75651bf",
+      "observed": "7bb0ff3a8c5a1820cb57df9fd7ed4a70569fb5ed74ac37c9108ca2bcd75651bf"
+    },
+    {
+      "kind": "local_apk",
+      "file": "xyz.pisoj.og.nettools_1.apk",
+      "expected": "7d419443cfe94a507d194c7c94704088f43decf7f8cbf053fd07840d887dee8e",
+      "observed": "7d419443cfe94a507d194c7c94704088f43decf7f8cbf053fd07840d887dee8e"
+    },
+    {
+      "kind": "remote_apk",
+      "url": "https://f-droid.org/repo/com.resolvecommunity.awaydoomscrollin_10.apk",
+      "expected": "ca9c056803ea49567709e5c3f30167aa16b2774b5d154212be6828110356b922",
+      "observed": "ca9c056803ea49567709e5c3f30167aa16b2774b5d154212be6828110356b922"
+    },
+    {
+      "kind": "remote_apk",
+      "url": "https://f-droid.org/repo/org.microg.nlp.backend.apple_20043.apk",
+      "expected": "96dee89f24c4af43653a8d760dbfa23087a0544512c35661d052ccb6b1a4231e",
+      "observed": "96dee89f24c4af43653a8d760dbfa23087a0544512c35661d052ccb6b1a4231e"
+    },
+    {
+      "kind": "remote_apk",
+      "url": "https://f-droid.org/repo/net.nhiroki.bluelineconsole_45.apk",
+      "expected": "502e1f9c26c3da265121ca5e8b6b46ac4a636f7c53628faa4d53d67c2b978a88",
+      "observed": "502e1f9c26c3da265121ca5e8b6b46ac4a636f7c53628faa4d53d67c2b978a88"
+    },
+    {
+      "kind": "remote_apk",
+      "url": "https://f-droid.org/repo/xyz.pisoj.og.nettools_1.apk",
+      "expected": "7d419443cfe94a507d194c7c94704088f43decf7f8cbf053fd07840d887dee8e",
+      "observed": "7d419443cfe94a507d194c7c94704088f43decf7f8cbf053fd07840d887dee8e"
+    },
+    {
+      "kind": "remote_acra",
+      "url": "https://repo.maven.apache.org/maven2/ch/acra/acra-core/5.14.2/acra-core-5.14.2.aar",
+      "expected": "4872372440206e1b3041264709808915e11f0c5680038334f612d351f7df361a",
+      "observed": "4872372440206e1b3041264709808915e11f0c5680038334f612d351f7df361a"
+    },
+    {
+      "kind": "remote_acra",
+      "url": "https://repo.maven.apache.org/maven2/ch/acra/acra-http/5.14.2/acra-http-5.14.2.aar",
+      "expected": "2e7eddba5267894ef137bdad5139c9637d94534ac16f4bc2c9807bd5ca6c7dc3",
+      "observed": "2e7eddba5267894ef137bdad5139c9637d94534ac16f4bc2c9807bd5ca6c7dc3"
+    },
+    {
+      "kind": "remote_acra",
+      "url": "https://repo.maven.apache.org/maven2/ch/acra/acra-advanced-scheduler/5.14.2/acra-advanced-scheduler-5.14.2.aar",
+      "expected": "9043bb72942f362891c0f3d91c40449de678561e3a249f81acaab54262a7f2bc",
+      "observed": "9043bb72942f362891c0f3d91c40449de678561e3a249f81acaab54262a7f2bc"
+    }
+  ]
+}

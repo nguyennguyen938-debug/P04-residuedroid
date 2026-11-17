@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "shastri2020gdprbench",
+    "author": "Supreeth Shastri and Vinay Banakar and Melissa Wasserman and Arun Kumar and Vijay Chidambaram",
+    "title": "Understanding and Benchmarking the Impact of {GDPR} on Database Systems",
+    "journal": "Proceedings of the VLDB Endowment",
+    "volume": "13",
+    "number": "7",
+    "pages": "1064--1077",
+    "year": "2020"
+  },
+  "checked": 1794759764.811279,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

@@ -1,0 +1,81 @@
+\section{What the Fence Guarantees}
+\label{sec:theory}
+
+The durable state $\sigma$ contains scope epochs, grant flags and labelled copies.
+An authorization log is an observation of intent, not a send. A \emph{handoff} $c$
+is acceptance of a positive byte prefix by the audited socket transport; a write may
+accept fewer bytes than requested or none. Request receipt and response receipt are
+later, separate events. The guarantee concerns each accepted prefix, including a
+prefix of a request that never completes.
+
+\begin{assumption}[Supported path]\label{as:sp}
+(A1) Every supported byte is sent through Algorithm~\ref{alg:fence}, with one writer
+per socket and no unmediated asynchronous sender below its check. For TLS, the checked bytes are application-record ciphertext: the request's conservative source union remains attached to every encrypted record and partial-record remainder. Encryption may precede checking; each subsequent socket write must recheck policy. Handshake traffic contains no request data. TLS early data, renegotiation and external writers are excluded.
+(A2) Every persisted copy carries atomically stored, over-approximate source labels;
+missing or invalid labels fail closed. Labels on retries retain the collection epochs.
+(A3) Each bounded, nonblocking write and its policy check share a process/cross-process
+lock with withdrawal and re-grant. A withdrawal commits its policy transaction before
+acknowledgement. Policy state survives process failure; an unreadable store fails closed.
+The model assumes working durable storage, not recovery from arbitrary power loss.
+\end{assumption}
+
+\begin{theorem}[Soundness of accepted prefixes]\label{thm:sound}
+Under A1--A3, every source label of a supported prefix accepted at $c$ satisfies
+$\neg\mathit{forbid}_{\sigma(c)}(s,e,p)$. Thus no prefix accepted after an acknowledged
+withdrawal carries a source that remains invalid under the stated contract.
+\end{theorem}
+\begin{proof}
+Consider one write and its preceding check in the same critical section. A3 excludes
+policy changes between the check and every byte acceptance during that write. A2
+includes every source in the checked label union, and the check rejects any forbidden
+source. Hence every accepted prefix satisfies the rule. A crash after logging but
+before writing accepts no bytes through that attempt. A crash during a write can leave
+an accepted prefix: the same check still covers that prefix, even if no return value
+is logged. A crash after handoff but before response receipt leaves outstanding bytes.
+After restart, the next attempt reacquires the lock and reads durable policy; it cannot
+reuse an earlier authorization. A missing completion log therefore limits measurement,
+but does not justify assuming that the interrupted write accepted nothing.
+\end{proof}
+
+Exact labels avoid policy-induced false positives only when labels and policy are
+available and valid. Over-approximation, fail-closed migration, timeouts and network
+failure can still prevent permitted delivery. Soundness is not an availability claim.
+
+\begin{theorem}[Race for earlier checks]\label{thm:race}
+Suppose a check $q$ admits a source that a later withdrawal would invalidate for the
+submission's purpose, and the path can still hand off that source at $c>q$ without
+another effective check or cancellation. Then a withdrawal in $(q,c)$ yields a forbidden
+handoff. If a single such withdrawal $W$ is independent of fixed handoff offsets
+$c_1<\cdots<c_k$, all carrying sources invalidated by $W$, with no intervening re-grant and $n_i>0$ newly handed-off source items,
+\begin{equation}
+\begin{aligned}
+\Pr[\text{violation}]&=\Pr[q<W<c_k],\\
+\mathbb E[\#\text{forbidden item handoffs}]&=\sum_i n_i\Pr[q<W<c_i].
+\end{aligned}\label{eq:race}
+\end{equation}
+These equations concern that schedule model; cancellations or retries that depend on
+$W$ require a different model.
+\end{theorem}
+\begin{proof}
+Place the applicable withdrawal between the passing check and the unprotected write.
+The path still sends, by hypothesis. Summing the corresponding indicator variables
+gives the expectation; the last interval contains the earlier intervals.
+\end{proof}
+
+\begin{proposition}[Information needed by the check]\label{prop:nec}
+A declared-scope check can admit an invalid source when a withdrawal invalidates the
+actual source scope while the declared scope still passes. A current boolean alone
+cannot distinguish old and new data after withdrawal and re-grant when the contract
+invalidates pending old data. Source lineage and retained epochs supply these distinctions;
+equivalent representations are possible.
+\end{proposition}
+
+\begin{proposition}[No recall]\label{prop:recall}
+A prefix accepted before withdrawal may arrive after acknowledgement. A device-side
+fence cannot guarantee recall of bytes already accepted by the transport.
+\end{proposition}
+
+A retry after a lost response may duplicate a previously received request. Each attempt
+is checked afresh, but this mechanism provides neither server-side deletion nor exactly-once
+delivery. The stream-wrapper evaluation's pre-write sequence markers cannot establish which
+prefixes were outstanding; the channel wrapper records acceptance and receipt separately.

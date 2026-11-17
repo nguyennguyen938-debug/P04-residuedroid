@@ -1,0 +1,91 @@
+\documentclass[sigconf,review,10pt,acmthm=false]{acmart}
+% MobiSys 2027 submission: single-blind, 12-page body limit (references + appendix excluded).
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath,amsthm}   % acmart: do NOT load amssymb (clashes with newtx \Bbbk)
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xspace}
+\xspaceaddexceptions{\% \,}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.misc,decorations.pathreplacing,backgrounds,fit}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17} % ship 1.18 on TeX Live >= 2021
+\usepackage{url}
+\usepackage{enumitem}
+\input{matured-style} % shared muted palette, compact tables, pgfplots styles
+\emergencystretch=1.5em
+
+% ---- names and notation ------------------------------------------------------
+\newcommand{\sys}{\textsc{ResidueDroid}\xspace}
+\newcommand{\lab}{\textsc{ResidueLab}\xspace}
+\newcommand{\icon}[2][1.0em]{\raisebox{-0.2em}{\includegraphics[height=#1]{figures/icons/#2}}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\vname}[1]{\textsf{#1}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+
+\input{generated/macros.tex}
+
+\settopmatter{printacmref=false}
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\acmConference[MobiSys '27]{The 25th Annual International Conference on Mobile Systems, Applications and Services}{June 2027}{}
+\acmYear{2027}
+
+\begin{document}
+
+\title{ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress}
+
+\author{Xuan-Bach Le}
+\affiliation{\department{Faculty of Computer Science and Engineering}\institution{Ho Chi Minh City University of Technology, VNU-HCM}\city{Ho Chi Minh City}\country{Vietnam}}
+\email{lexuanbach@hcmut.edu.vn}
+
+\input{sections/00-abstract}
+
+\begin{CCSXML}
+<ccs2012>
+<concept><concept_id>10002978.10003022.10003465</concept_id><concept_desc>Security and privacy~Software security engineering</concept_desc><concept_significance>500</concept_significance></concept>
+<concept><concept_id>10002978.10003029.10011150</concept_id><concept_desc>Security and privacy~Privacy protections</concept_desc><concept_significance>500</concept_significance></concept>
+<concept><concept_id>10003120.10003138</concept_id><concept_desc>Human-centered computing~Ubiquitous and mobile computing</concept_desc><concept_significance>300</concept_significance></concept>
+</ccs2012>
+\end{CCSXML}
+\ccsdesc[500]{Security and privacy~Software security engineering}
+\ccsdesc[500]{Security and privacy~Privacy protections}
+\ccsdesc[300]{Human-centered computing~Ubiquitous and mobile computing}
+\keywords{Android, consent withdrawal, deferred work, JobScheduler, data lineage, egress control}
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-measurement}
+\input{sections/04-design}
+\input{sections/05-theory}
+\input{sections/06-implementation}
+\input{sections/07-evaluation}
+\input{sections/08-discussion}
+\input{sections/09-related-work}
+\input{sections/10-conclusion}
+
+\begin{acks}
+An LLM assisted with manuscript drafting and editing. The author is responsible for the final text, analyses and claims.
+\end{acks}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

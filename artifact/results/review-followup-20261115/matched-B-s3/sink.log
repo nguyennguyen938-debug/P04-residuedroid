@@ -1,0 +1,3 @@
+sink on :8806 -> /Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/results/review-followup-20261115/matched-B-s3/sink delay=300ms
+sink on :8806 -> /Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/results/review-followup-20261115/matched-B-s3/sink delay=300ms
+sink on :8806 -> /Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/results/review-followup-20261115/matched-B-s3/sink delay=300ms

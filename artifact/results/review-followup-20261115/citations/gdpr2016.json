@@ -1,0 +1,103 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "gdpr2016",
+    "author": "{European Parliament and Council of the European Union}",
+    "title": "Regulation ({EU}) 2016/679 (General Data Protection Regulation)",
+    "howpublished": "Official Journal of the European Union, L 119",
+    "year": "2016"
+  },
+  "checked": 1794759768.744441,
+  "candidates": [
+    {
+      "title": "An Analysis of the General Data Protection Regulation (EU) 2016/679",
+      "match": 0.6557377049180327,
+      "DOI": "10.2139/ssrn.2966210",
+      "URL": "https://doi.org/10.2139/ssrn.2966210",
+      "author": [
+        {
+          "given": "Emmanuel Akintunde",
+          "family": "Salami",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "page": null,
+      "type": "journal-article"
+    },
+    {
+      "title": "Data Breaches in Hotel Sector According to General Data Protection Regulation (EU 2016/679)",
+      "match": 0.589041095890411,
+      "DOI": "10.1108/978-1-80117-708-520221009",
+      "URL": "https://doi.org/10.1108/978-1-80117-708-520221009",
+      "author": [
+        {
+          "given": "Anastasios",
+          "family": "Thomaidis",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Aristotle\u2019s University of Thessaloniki, Greece"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Tourism Risk"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            3,
+            31
+          ]
+        ]
+      },
+      "page": "129-140",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Regulation EU 2016/679",
+      "match": 0.5569620253164557,
+      "DOI": "10.1007/978-3-030-71522-9_300800",
+      "URL": "https://doi.org/10.1007/978-3-030-71522-9_300800",
+      "author": null,
+      "container-title": [
+        "Encyclopedia of Cryptography, Security and Privacy"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025
+          ]
+        ]
+      },
+      "page": "2086-2086",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "needs primary verification"
+}

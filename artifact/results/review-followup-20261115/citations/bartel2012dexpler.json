@@ -1,0 +1,250 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "bartel2012dexpler",
+    "author": "Alexandre Bartel and Jacques Klein and Yves Le Traon and Martin Monperrus",
+    "title": "Dexpler: Converting {Android} {Dalvik} Bytecode to {Jimple} for Static Analysis with {Soot}",
+    "booktitle": "Proceedings of the ACM SIGPLAN International Workshop on State of the Art in Java Program Analysis (SOAP)",
+    "year": "2012"
+  },
+  "checked": 1794759766.6395142,
+  "candidates": [
+    {
+      "title": "Towards bridging the gap between Dalvik bytecode and native code during static analysis of Android applications",
+      "match": 0.5181347150259067,
+      "DOI": "10.1109/iwcmc.2015.7289149",
+      "URL": "https://doi.org/10.1109/iwcmc.2015.7289149",
+      "author": [
+        {
+          "given": "Patrik",
+          "family": "Lantz",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Bjorn",
+          "family": "Johansson",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2015 International Wireless Communications and Mobile Computing Conference (IWCMC)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            8
+          ]
+        ]
+      },
+      "page": "587-593",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Static Dalvik Bytecode Optimization for Android Applications",
+      "match": 0.43661971830985913,
+      "DOI": "10.4218/etrij.15.0114.0036",
+      "URL": "https://doi.org/10.4218/etrij.15.0114.0036",
+      "author": [
+        {
+          "given": "Jeehong",
+          "family": "Kim",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Inhyeok",
+          "family": "Kim",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Changwoo",
+          "family": "Min",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Hyung Kook",
+          "family": "Jun",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Soo Hyung",
+          "family": "Lee",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Won-Tae",
+          "family": "Kim",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Young Ik",
+          "family": "Eom",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "ETRI Journal"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            10,
+            1
+          ]
+        ]
+      },
+      "page": "1001-1011",
+      "type": "journal-article"
+    },
+    {
+      "title": "Android Malware Detection: Looking beyond Dalvik Bytecode",
+      "match": 0.3333333333333333,
+      "DOI": "10.1109/asew52652.2021.00019",
+      "URL": "https://doi.org/10.1109/asew52652.2021.00019",
+      "author": [
+        {
+          "given": "Tiezhu",
+          "family": "Sun",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "SnT University of Luxembourg,Luxembourg"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nadia",
+          "family": "Daoudi",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "SnT University of Luxembourg,Luxembourg"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Kevin",
+          "family": "Allix",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "SnT University of Luxembourg,Luxembourg"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Tegawende F.",
+          "family": "Bissyande",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "SnT University of Luxembourg,Luxembourg"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2021 36th IEEE/ACM International Conference on Automated Software Engineering Workshops (ASEW)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2021,
+            11
+          ]
+        ]
+      },
+      "page": "34-39",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

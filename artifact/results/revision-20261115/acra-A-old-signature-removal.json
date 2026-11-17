@@ -1,0 +1,12 @@
+[
+  {
+    "package": "org.residuelab.acra",
+    "old_sha256": "eee9a706335551b820afcbfde66b3cc6b3655455e06ff0ea6e4c6e6b277f6acc",
+    "uninstall": "Success\n"
+  },
+  {
+    "package": "org.residuelab.acrafence",
+    "old_sha256": "8d1dfc0c4989a6bf092c9b12f67774474c3cfef211876fde25857711d375eb6a",
+    "uninstall": "Success\n"
+  }
+]

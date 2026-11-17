@@ -1,0 +1,50 @@
+RUN ['python3', 'artifact/revision/verify_package.py', '/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid', '--forbid', 'xuanbachle']
+{
+  "files": 1151,
+  "frozen_manifests": 19,
+  "errors": []
+}
+RUN ['make', '-C', 'artifact', 'all']
+cd static && python3 -I static_summary.py >/dev/null
+python3 scripts/summarize.py >/dev/null
+python3 scripts/render.py
+macros: 232 defined; missing: []
+python3 revision/historical_uncertainty.py > results/revision-20261115/bootstrap.log
+python3 revision/oracle_v2.py results/revision-20261115
+socket trials 1020
+python3 revision/matched_oracle.py
+matched 2800 tenant rows; 6 invalid paired trials
+python3 revision/render_revision.py
+revision rendered 1020 socket, 10 matched groups, 52 ACRA, 20 Matomo
+python3 revision/audit_results.py > results/revision-20261115/evidence-audit.log
+../manuscript/build.sh
+pages: 17
+overfull: 0
+RUN ['python3', '-m', 'unittest', 'discover', '-s', 'artifact/revision', '-p', 'test_*.py']
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+RUN ['bash', 'artifact/fixture/build.sh']
+Note: src/org/residuelab/Sched.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+BUILT 5 APKs in build/rebuilt-revision-apk
+RUN ['bash', 'artifact/acra/build.sh']
+a42426a6adbda68ac723f1c3e8cbf03ba53fc1ee618b136c2f8b156174c8ead0  acra.apk
+82d7a1e179ec5b96c7c210ae6edf88a7b21a3246d5087f64f839f2309cd83ed2  acrafence.apk
+RUN ['bash', 'artifact/matomo/build.sh']
+e0f4b38a4b3b95f81349353ca9b2b8d1190d08aba5c3db368281dc76ec66e11d  build/matomo.apk
+RUN ['bash', 'artifact/workmanager/build.sh']
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+3369307b3fb9997d8a1ba5ad17db2cffc0d02b17d9f65cb2dd7cd4be6536677a  rl-wmconv.apk
+ab42175dd197bdb55edf881ae87b9aba53be5e9c20a51b5ddfbda87836376c51  rl-wmnone.apk
+ef36e58bce353ca12e91f704011177ead2ca883e345683f8d9dca46550d0fa2d  rl-wmrd.apk
+RUN ['/opt/homebrew/opt/openjdk@17/bin/javac', '-d', '/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/rd-transport-check-ie7zh4ey', '/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/src/org/residuelab/transport/Coordinator.java', '/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/src/org/residuelab/transport/HttpTransport.java', '/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/tests/TestTransport.java']
+RUN ['/opt/homebrew/opt/openjdk@17/bin/java', '-cp', '/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/rd-transport-check-ie7zh4ey', 'TestTransport']
+PASS chunk and whole-write comparator release lock before response

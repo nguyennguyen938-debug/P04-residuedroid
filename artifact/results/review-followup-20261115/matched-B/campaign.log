@@ -1,0 +1,44 @@
+23:17:29 emulator-5642 pen000 36s
+23:18:21 emulator-5642 kil000 52s
+23:19:13 emulator-5642 for000 52s
+23:20:18 emulator-5642 reb000 65s
+23:20:52 emulator-5642 rev000 33s
+23:23:06 emulator-5642 net000 134s
+23:24:18 emulator-5642 inf000 72s
+23:25:12 emulator-5642 pen001 54s
+23:25:58 emulator-5642 kil001 45s
+23:26:26 emulator-5642 for001 28s
+23:27:04 emulator-5642 reb001 38s
+23:27:34 emulator-5642 rev001 30s
+23:29:48 emulator-5642 net001 134s
+23:30:27 emulator-5642 inf001 39s
+23:31:24 emulator-5642 pen002 58s
+23:32:07 emulator-5642 kil002 43s
+23:32:56 emulator-5642 for002 49s
+23:33:34 emulator-5642 reb002 38s
+23:34:06 emulator-5642 rev002 32s
+23:35:24 emulator-5642 net002 77s
+23:36:18 emulator-5642 inf002 55s
+23:37:06 emulator-5642 pen003 48s
+23:38:02 emulator-5642 kil003 56s
+23:38:30 emulator-5642 for003 28s
+23:40:08 emulator-5642 reb003 97s
+23:40:41 emulator-5642 rev003 34s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 279, in run_trial
+    time.sleep(4.0)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+23:42:41 emulator-5642 net003 77s
+23:43:31 emulator-5642 inf003 50s
+23:44:26 emulator-5642 pen004 55s
+23:45:10 emulator-5642 kil004 44s
+23:45:38 emulator-5642 for004 28s
+23:47:18 emulator-5642 reb004 100s
+23:47:51 emulator-5642 rev004 33s
+23:50:04 emulator-5642 net004 133s
+23:51:01 emulator-5642 inf004 57s

@@ -1,0 +1,215 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "arzt2014flowdroid",
+    "author": "Steven Arzt and Siegfried Rasthofer and Christian Fritz and Eric Bodden and Alexandre Bartel and Jacques Klein and Yves Le Traon and Damien Octeau and Patrick McDaniel",
+    "title": "{FlowDroid}: Precise Context, Flow, Field, Object-sensitive and Lifecycle-aware Taint Analysis for {Android} Apps",
+    "booktitle": "Proceedings of the 35th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)",
+    "year": "2014"
+  },
+  "checked": 1794759757.4398139,
+  "candidates": [
+    {
+      "title": "A scalable, flow-and-context-sensitive taint analysis of android applications",
+      "match": 0.585635359116022,
+      "DOI": "10.1016/j.jvlc.2018.10.005",
+      "URL": "https://doi.org/10.1016/j.jvlc.2018.10.005",
+      "author": [
+        {
+          "given": "Wontae",
+          "family": "Choi",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jayanthkumar",
+          "family": "Kannan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Domagoj",
+          "family": "Babic",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Journal of Computer Languages"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2019,
+            4
+          ]
+        ]
+      },
+      "page": "1-14",
+      "type": "journal-article"
+    },
+    {
+      "title": "Analyzing Android Taint Analysis Tools: FlowDroid, Amandroid, and DroidSafe",
+      "match": 0.384180790960452,
+      "DOI": "10.1109/tse.2021.3109563",
+      "URL": "https://doi.org/10.1109/tse.2021.3109563",
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-3645-2733",
+          "authenticated-orcid": false,
+          "given": "Junbin",
+          "family": "Zhang",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yingying",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Lina",
+          "family": "Qiu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-7280-1614",
+          "authenticated-orcid": false,
+          "given": "Julia",
+          "family": "Rubin",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Electrical and Computer Engineering, University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            10,
+            1
+          ]
+        ]
+      },
+      "page": "4014-4040",
+      "type": "journal-article"
+    },
+    {
+      "title": "Leveraging historical versions of Android apps for efficient and precise taint analysis",
+      "match": 0.3125,
+      "DOI": "10.1145/3196398.3196433",
+      "URL": "https://doi.org/10.1145/3196398.3196433",
+      "author": [
+        {
+          "given": "Haipeng",
+          "family": "Cai",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Washington State University, Pullman"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "John",
+          "family": "Jenkins",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Washington State University, Pullman"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 15th International Conference on Mining Software Repositories"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018,
+            5,
+            28
+          ]
+        ]
+      },
+      "page": "265-269",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

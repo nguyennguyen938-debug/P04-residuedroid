@@ -1,0 +1,225 @@
+[
+  {
+    "case": "valid",
+    "label": "crash:0",
+    "operations": [],
+    "expected_delivery": true,
+    "delivered": true,
+    "pass_": true,
+    "explicit_denial": false,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742039407 mono=1603963026847 pid=28262 AUTHORIZATION_LOGGED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;fenced=true\n1794742039408 mono=1603963636014 pid=28262 WRITE_ATTEMPT tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0;requested=245\n1794742039408 mono=1603963720972 pid=28262 WRITE_RETURN_BOUNDARY tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0\n1794742039408 mono=1603963750264 pid=28262 BYTES_ACCEPTED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;offset=0;n=245\n1794742039408 mono=1603963796680 pid=28262 REQUEST_HANDED_OFF tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;wire_bytes=245\n1794742039908 mono=1604463943556 pid=28262 RESPONSE_RECEIVED tag=RD-conformance-valid label=crash:0 v=2;request=1750d65a-f865-465f-ae58-cdaac0b678f2;attempt=1;status=HTTP/1.1 200 OK\n"
+  },
+  {
+    "case": "missing",
+    "label": "missing",
+    "operations": [],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742040655 mono=1605210894723 pid=28327 BLOCK reason=missing_or_malformed_label tag=RD-conformance-missing\n"
+  },
+  {
+    "case": "malformed",
+    "label": "crash:oops",
+    "operations": [],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742041382 mono=1605937945265 pid=28383 BLOCK reason=missing_or_malformed_label tag=RD-conformance-malformed\n"
+  },
+  {
+    "case": "future",
+    "label": "crash:9",
+    "operations": [],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742042102 mono=1606657509515 pid=28438 AUTHORIZATION_LOGGED tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;fenced=true\n1794742042102 mono=1606658141348 pid=28438 BLOCK tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;offset=0\n1794742042103 mono=1606658262348 pid=28438 SEND_FAILED tag=RD-conformance-future label=crash:9 v=2;request=021ac7c6-8fc0-40f0-afc2-bb2dd62c9c98;attempt=1;error=Denied\n1794742042103 mono=1606658287390 pid=28438 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "withdrawn",
+    "label": "crash:0",
+    "operations": [
+      "disable"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n"
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742042812 mono=1607367661182 pid=28493 WITHDRAW_REQUEST\n1794742042814 mono=1607369737307 pid=28493 WITHDRAW_DURABLE\n1794742042815 mono=1607370627974 pid=28493 WITHDRAW_ACK\n1794742042838 mono=1607393767599 pid=28493 AUTHORIZATION_LOGGED tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;fenced=true\n1794742042839 mono=1607394918974 pid=28493 BLOCK tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;offset=0\n1794742042839 mono=1607395075557 pid=28493 SEND_FAILED tag=RD-conformance-withdrawn label=crash:0 v=2;request=c10e4bfd-8e9b-47f8-b68b-bbbbe4ebcbc0;attempt=1;error=Denied\n1794742042839 mono=1607395109765 pid=28493 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "old_after_regrant",
+    "label": "crash:0",
+    "operations": [
+      "disable",
+      "enable"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n",
+      "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"enabled\"\n"
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742043559 mono=1608114639599 pid=28553 WITHDRAW_REQUEST\n1794742043562 mono=1608117537224 pid=28553 WITHDRAW_DURABLE\n1794742043563 mono=1608118656849 pid=28553 WITHDRAW_ACK\n1794742043582 mono=1608138012141 pid=28553 REGRANT_REQUEST\n1794742043585 mono=1608140392807 pid=28553 REGRANT_DURABLE\n1794742043586 mono=1608141329974 pid=28553 REGRANT_ACK\n1794742043608 mono=1608163308807 pid=28553 AUTHORIZATION_LOGGED tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;fenced=true\n1794742043608 mono=1608163851641 pid=28553 BLOCK tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;offset=0\n1794742043608 mono=1608163970766 pid=28553 SEND_FAILED tag=RD-conformance-old_after_regrant label=crash:0 v=2;request=651631fe-87bc-481b-87a8-8fd2d010258d;attempt=1;error=Denied\n1794742043608 mono=1608163993849 pid=28553 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "new_after_regrant",
+    "label": "crash:1",
+    "operations": [
+      "disable",
+      "enable"
+    ],
+    "expected_delivery": true,
+    "delivered": true,
+    "pass_": true,
+    "explicit_denial": false,
+    "sender_returned": true,
+    "actions": [
+      "Broadcasting: Intent { act=rl.DISABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"disabled\"\n",
+      "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"enabled\"\n"
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742044348 mono=1608903583183 pid=28618 WITHDRAW_REQUEST\n1794742044351 mono=1608906402849 pid=28618 WITHDRAW_DURABLE\n1794742044352 mono=1608907459641 pid=28618 WITHDRAW_ACK\n1794742044373 mono=1608929168808 pid=28618 REGRANT_REQUEST\n1794742044376 mono=1608931782766 pid=28618 REGRANT_DURABLE\n1794742044377 mono=1608933121433 pid=28618 REGRANT_ACK\n1794742044400 mono=1608956233641 pid=28618 AUTHORIZATION_LOGGED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;fenced=true\n1794742044401 mono=1608956761058 pid=28618 WRITE_ATTEMPT tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0;requested=257\n1794742044401 mono=1608956853641 pid=28618 WRITE_RETURN_BOUNDARY tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0\n1794742044401 mono=1608956878266 pid=28618 BYTES_ACCEPTED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;offset=0;n=257\n1794742044401 mono=1608956921308 pid=28618 REQUEST_HANDED_OFF tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;wire_bytes=257\n1794742044902 mono=1609457785850 pid=28618 RESPONSE_RECEIVED tag=RD-conformance-new_after_regrant label=crash:1 v=2;request=af9dbd0d-aa95-4809-a218-fba31612b455;attempt=1;status=HTTP/1.1 200 OK\n"
+  },
+  {
+    "case": "missing_store",
+    "label": "crash:0",
+    "operations": [
+      "missing_store"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      ""
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742045632 mono=1610187747392 pid=28684 AUTHORIZATION_LOGGED tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;fenced=true\n1794742045633 mono=1610188613725 pid=28684 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742045633 mono=1610188648183 pid=28684 BLOCK tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;offset=0\n1794742045634 mono=1610189864725 pid=28684 SEND_FAILED tag=RD-conformance-missing_store label=crash:0 v=2;request=507e3a93-03e2-406d-8efb-cbb914cb4490;attempt=1;error=Denied\n1794742045634 mono=1610189893975 pid=28684 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "corrupt_store",
+    "label": "crash:0",
+    "operations": [
+      "corrupt_store"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      ""
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742046379 mono=1610934568725 pid=28740 AUTHORIZATION_LOGGED tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;fenced=true\n1794742046383 mono=1610938702225 pid=28740 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742046383 mono=1610938735892 pid=28740 BLOCK tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;offset=0\n1794742046383 mono=1610938905684 pid=28740 SEND_FAILED tag=RD-conformance-corrupt_store label=crash:0 v=2;request=c543d4c9-f9f4-49d3-b35d-3fe017c5b73a;attempt=1;error=Denied\n1794742046383 mono=1610938934225 pid=28740 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "legacy_invalid",
+    "label": "crash:0",
+    "operations": [
+      "legacy_invalid"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742047257 mono=1611812325351 pid=28844 MIGRATION_FAIL_CLOSED\n1794742047257 mono=1611812408517 pid=28844 INITIALIZE_FAILED java.io.IOException: untrusted legacy policy requires explicit repair\n1794742047284 mono=1611839330809 pid=28844 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742047361 mono=1611916296309 pid=28844 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;fenced=true\n1794742047361 mono=1611916933142 pid=28844 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742047361 mono=1611916963142 pid=28844 BLOCK tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;offset=0\n1794742047361 mono=1611917072309 pid=28844 SEND_FAILED tag=RD-conformance-legacy_invalid label=crash:0 v=2;request=04c56e58-810a-45c8-8c6f-ab105a571471;attempt=1;error=Denied\n1794742047361 mono=1611917097059 pid=28844 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "legacy_withdrawn",
+    "label": "crash:0",
+    "operations": [
+      "legacy_withdrawn"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742048343 mono=1612898658101 pid=28946 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;fenced=true\n1794742048343 mono=1612899238560 pid=28946 BLOCK tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;offset=0\n1794742048344 mono=1612899346185 pid=28946 SEND_FAILED tag=RD-conformance-legacy_withdrawn label=crash:0 v=2;request=2e565b28-f419-4295-93d8-0283a1efa941;attempt=1;error=Denied\n1794742048344 mono=1612899370935 pid=28946 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "legacy_allowed",
+    "label": "crash:0",
+    "operations": [
+      "legacy_allowed"
+    ],
+    "expected_delivery": true,
+    "delivered": true,
+    "pass_": true,
+    "explicit_denial": false,
+    "sender_returned": true,
+    "actions": [],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742049343 mono=1613898818060 pid=29047 AUTHORIZATION_LOGGED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;fenced=true\n1794742049344 mono=1613899436352 pid=29047 WRITE_ATTEMPT tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0;requested=254\n1794742049344 mono=1613899512602 pid=29047 WRITE_RETURN_BOUNDARY tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0\n1794742049344 mono=1613899537018 pid=29047 BYTES_ACCEPTED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;offset=0;n=254\n1794742049344 mono=1613899580477 pid=29047 REQUEST_HANDED_OFF tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;wire_bytes=254\n1794742049844 mono=1614400206352 pid=29047 RESPONSE_RECEIVED tag=RD-conformance-legacy_allowed label=crash:0 v=2;request=5afdb87f-84e7-424c-b5d8-4de792c38466;attempt=1;status=HTTP/1.1 200 OK\n"
+  },
+  {
+    "case": "invalid_migration_regrant",
+    "label": "crash:0",
+    "operations": [
+      "legacy_invalid",
+      "enable"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"error java.io.IOException: policy unavailable\"\n"
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742050694 mono=1615249807852 pid=29146 MIGRATION_FAIL_CLOSED\n1794742050694 mono=1615249872269 pid=29146 INITIALIZE_FAILED java.io.IOException: untrusted legacy policy requires explicit repair\n1794742050720 mono=1615275636686 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050790 mono=1615345421519 pid=29146 REGRANT_REQUEST\n1794742050791 mono=1615346283477 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050814 mono=1615370181936 pid=29146 AUTHORIZATION_LOGGED tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;fenced=true\n1794742050815 mono=1615370726727 pid=29146 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742050815 mono=1615370754394 pid=29146 BLOCK tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;offset=0\n1794742050815 mono=1615370862936 pid=29146 SEND_FAILED tag=RD-conformance-invalid_migration_regrant label=crash:0 v=2;request=7b2e5258-c451-4fee-988f-60f40286f44a;attempt=1;error=Denied\n1794742050815 mono=1615370882352 pid=29146 REPORT_RETIRED policy_denied\n"
+  },
+  {
+    "case": "missing_store_regrant",
+    "label": "crash:0",
+    "operations": [
+      "missing_store",
+      "enable"
+    ],
+    "expected_delivery": false,
+    "delivered": false,
+    "pass_": true,
+    "explicit_denial": true,
+    "sender_returned": true,
+    "actions": [
+      "",
+      "Broadcasting: Intent { act=rl.ENABLE flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd }\nBroadcast completed: result=0, data=\"error java.io.IOException: policy unavailable\"\n"
+    ],
+    "result": "Broadcasting: Intent { act=rl.TEST_SEND flg=0x400000 cmp=org.residuelab.acrafence/org.residuelab.acra.Cmd (has extras) }\nBroadcast completed: result=0, data=\"sender returned\"\n",
+    "log": "1794742051553 mono=1616108669061 pid=29206 REGRANT_REQUEST\n1794742051554 mono=1616109422769 pid=29206 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742051577 mono=1616132460978 pid=29206 AUTHORIZATION_LOGGED tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;fenced=true\n1794742051577 mono=1616133021811 pid=29206 POLICY_UNAVAILABLE error=SQLiteCantOpenDatabaseException\n1794742051577 mono=1616133051103 pid=29206 BLOCK tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;offset=0\n1794742051577 mono=1616133216228 pid=29206 SEND_FAILED tag=RD-conformance-missing_store_regrant label=crash:0 v=2;request=67be6f79-e5ad-43f9-a610-7cbabc2f70e5;attempt=1;error=Denied\n1794742051577 mono=1616133247644 pid=29206 REPORT_RETIRED policy_denied\n"
+  }
+]

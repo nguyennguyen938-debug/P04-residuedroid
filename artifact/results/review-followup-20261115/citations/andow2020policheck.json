@@ -1,0 +1,113 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "andow2020policheck",
+    "author": "Benjamin Andow and Samin Yaseer Mahmud and Justin Whitaker and William Enck and Bradley Reaves and Kapil Singh and Serge Egelman",
+    "title": "Actions Speak Louder than Words: Entity-Sensitive Privacy Policy and Data Flow Analysis with {PoliCheck}",
+    "booktitle": "Proceedings of the 29th USENIX Security Symposium",
+    "year": "2020"
+  },
+  "checked": 1794759765.591008,
+  "candidates": [
+    {
+      "title": "\u201cActions speak louder than words\u201d",
+      "match": 0.4696969696969697,
+      "DOI": "10.51952/9781447372011.ch008",
+      "URL": "https://doi.org/10.51952/9781447372011.ch008",
+      "author": [
+        {
+          "given": "Anton",
+          "family": "McLean",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Educational Collateral Damage"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            4,
+            11
+          ]
+        ]
+      },
+      "page": "146-150",
+      "type": "book-chapter"
+    },
+    {
+      "title": "\u201cActions Speak Louder than Words\u201d",
+      "match": 0.4696969696969697,
+      "DOI": "10.1017/s0031819100061465",
+      "URL": "https://doi.org/10.1017/s0031819100061465",
+      "author": [
+        {
+          "given": "Austin",
+          "family": "Duncan-Jones",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Philosophy"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1960,
+            10
+          ]
+        ]
+      },
+      "page": "306-313",
+      "type": "journal-article"
+    },
+    {
+      "title": "Actions Speak Louder than Words",
+      "match": 0.4696969696969697,
+      "DOI": "10.4324/9780203805084",
+      "URL": "https://doi.org/10.4324/9780203805084",
+      "author": [
+        {
+          "given": "Celia",
+          "family": "Oyler",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": null,
+      "published": {
+        "date-parts": [
+          [
+            2012,
+            3,
+            22
+          ]
+        ]
+      },
+      "page": null,
+      "type": "book"
+    }
+  ],
+  "status": "needs primary verification"
+}

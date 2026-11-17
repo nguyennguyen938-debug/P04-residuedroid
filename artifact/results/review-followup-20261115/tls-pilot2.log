@@ -1,0 +1,5 @@
+control 0 None [('SEND_OK', 'elapsed_ns=324098084;process_cpu_ms=220;payload_bytes=1048638')]
+buffered-fence 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=20')]
+buffered-early 0 None [('SEND_OK', 'elapsed_ns=657651583;process_cpu_ms=111;payload_bytes=16453')]
+labels-complete 0 None [('EARLY_BLOCK', 'label=analytics:0,diagnostics:0')]
+labels-incomplete 0 None [('SEND_OK', 'elapsed_ns=521175667;process_cpu_ms=92;payload_bytes=1096')]

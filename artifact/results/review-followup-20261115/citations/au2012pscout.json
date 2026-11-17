@@ -1,0 +1,326 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "au2012pscout",
+    "author": "Kathy Wain Yee Au and Yi Fan Zhou and Zhen Huang and David Lie",
+    "title": "{PScout}: Analyzing the {Android} Permission Specification",
+    "booktitle": "Proceedings of the 19th ACM Conference on Computer and Communications Security (CCS)",
+    "year": "2012"
+  },
+  "checked": 1794759759.308791,
+  "candidates": [
+    {
+      "title": "Cross-language Android permission specification",
+      "match": 0.8,
+      "DOI": "10.1145/3540250.3549142",
+      "URL": "https://doi.org/10.1145/3540250.3549142",
+      "author": [
+        {
+          "given": "Chaoran",
+          "family": "Li",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Swinburne University of Technology, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiao",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Monash University, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ruoxi",
+          "family": "Sun",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Adelaide, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Minhui",
+          "family": "Xue",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "CSIRO\u2019s Data61, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sheng",
+          "family": "Wen",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Swinburne University of Technology, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Muhammad Ejaz",
+          "family": "Ahmed",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "CSIRO\u2019s Data61, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Seyit",
+          "family": "Camtepe",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "CSIRO\u2019s Data61, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yang",
+          "family": "Xiang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Swinburne University of Technology, Australia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 30th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            11,
+            7
+          ]
+        ]
+      },
+      "page": "772-783",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Permlyzer: Analyzing permission usage in Android applications",
+      "match": 0.584070796460177,
+      "DOI": "10.1109/issre.2013.6698893",
+      "URL": "https://doi.org/10.1109/issre.2013.6698893",
+      "author": [
+        {
+          "given": "Wei",
+          "family": "Xu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fangfang",
+          "family": "Zhang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sencun",
+          "family": "Zhu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2013 IEEE 24th International Symposium on Software Reliability Engineering (ISSRE)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2013,
+            11
+          ]
+        ]
+      },
+      "page": "400-410",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Finding the Missing Piece: Permission Specification Analysis for Android NDK",
+      "match": 0.546875,
+      "DOI": "10.1109/ase51524.2021.9678843",
+      "URL": "https://doi.org/10.1109/ase51524.2021.9678843",
+      "author": [
+        {
+          "given": "Hao",
+          "family": "Zhou",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Haoyu",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shuohan",
+          "family": "Wu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiapu",
+          "family": "Luo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yajin",
+          "family": "Zhou",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ting",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ting",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2021,
+            11
+          ]
+        ]
+      },
+      "page": "505-516",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

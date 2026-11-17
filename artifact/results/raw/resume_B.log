@@ -1,0 +1,206 @@
+18:04:22 B: campaign c1 k=51.. (pending already has 50 valid)
+18:04:40 restarted emulator-5602 in 17s
+18:05:52 emulator-5602 net051 70s
+18:06:32 emulator-5602 kil051 40s
+18:07:03 emulator-5602 for051 30s
+18:08:02 emulator-5602 reb051 60s
+18:08:34 emulator-5602 rev051 32s
+18:09:23 emulator-5602 inf051 49s
+18:10:27 emulator-5602 net052 64s
+18:11:10 emulator-5602 kil052 43s
+18:11:41 emulator-5602 for052 31s
+18:12:40 emulator-5602 reb052 59s
+18:13:18 emulator-5602 rev052 38s
+18:14:11 emulator-5602 inf052 53s
+18:15:18 emulator-5602 net053 67s
+18:16:02 emulator-5602 kil053 44s
+18:16:35 emulator-5602 for053 33s
+18:17:40 emulator-5602 reb053 65s
+18:18:15 emulator-5602 rev053 35s
+18:19:05 emulator-5602 inf053 50s
+18:20:06 emulator-5602 net054 61s
+18:20:47 emulator-5602 kil054 41s
+18:21:18 emulator-5602 for054 31s
+18:22:18 emulator-5602 reb054 59s
+18:23:03 emulator-5602 rev054 46s
+18:23:55 emulator-5602 inf054 52s
+18:25:03 emulator-5602 net055 68s
+18:25:44 emulator-5602 kil055 41s
+18:26:43 emulator-5602 for055 60s
+18:27:24 emulator-5602 reb055 41s
+18:27:54 emulator-5602 rev055 30s
+18:28:50 emulator-5602 inf055 55s
+18:29:53 emulator-5602 net056 63s
+18:30:31 emulator-5602 kil056 38s
+18:31:24 emulator-5602 for056 53s
+18:32:40 emulator-5602 reb056 76s
+18:33:12 emulator-5602 rev056 32s
+18:34:02 emulator-5602 inf056 49s
+18:35:06 emulator-5602 net057 64s
+18:35:47 emulator-5602 kil057 41s
+18:36:20 emulator-5602 for057 33s
+18:37:02 emulator-5602 reb057 42s
+18:37:55 emulator-5602 rev057 53s
+18:38:41 emulator-5602 inf057 47s
+18:39:45 emulator-5602 net058 64s
+18:40:53 emulator-5602 kil058 68s
+18:41:56 emulator-5602 for058 63s
+18:42:49 emulator-5602 reb058 52s
+18:46:00 emulator-5602 rev058 191s
+18:46:19 restarted emulator-5602 in 20s
+18:47:12 emulator-5602 inf058 72s
+18:48:16 emulator-5602 net059 64s
+18:49:11 emulator-5602 kil059 55s
+18:49:42 emulator-5602 for059 31s
+18:50:37 emulator-5602 reb059 55s
+18:51:13 emulator-5602 rev059 36s
+18:52:02 emulator-5602 inf059 49s
+18:53:01 emulator-5602 net060 60s
+18:53:41 emulator-5602 kil060 39s
+18:54:13 emulator-5602 for060 32s
+18:55:04 emulator-5602 reb060 51s
+18:55:40 emulator-5602 rev060 36s
+18:56:31 emulator-5602 inf060 51s
+18:57:34 emulator-5602 net061 63s
+18:58:14 emulator-5602 kil061 40s
+19:01:30 emulator-5602 for061 195s
+19:01:49 restarted emulator-5602 in 20s
+19:02:56 emulator-5602 reb061 86s
+19:03:31 emulator-5602 rev061 35s
+19:04:22 emulator-5602 inf061 52s
+19:05:25 emulator-5602 net062 62s
+19:06:04 emulator-5602 kil062 39s
+19:06:57 emulator-5602 for062 53s
+19:08:03 emulator-5602 reb062 66s
+19:08:34 emulator-5602 rev062 31s
+19:09:24 emulator-5602 inf062 49s
+19:09:24 B: micro
+19:09:41 bench none 0 True
+19:09:52 bench egress 0 True
+19:10:09 bench rd 0 True
+19:10:26 bench none 1 True
+19:10:43 bench egress 1 True
+19:11:00 bench rd 1 True
+19:11:17 bench none 2 True
+19:11:38 bench egress 2 True
+19:11:53 bench rd 2 True
+19:12:28 stress rd 0 True
+19:13:02 stress rd 1 True
+19:13:31 stress rd 5 True
+19:14:02 stress noser 0 True
+19:14:37 stress noser 1 True
+19:15:16 stress noser 5 True
+19:18:17 crash done
+19:18:17 B: acra
+19:18:30 acra disable 0 delivered waiting
+19:19:24 acrafence disable 0 not-delivered waiting
+19:20:00 acra control 0 delivered waiting
+19:20:09 acrafence control 0 delivered waiting
+19:21:30 acra reboot 0 not-delivered waiting
+19:22:52 acrafence reboot 0 not-delivered waiting
+19:23:02 acra disable 1 delivered waiting
+19:23:56 acrafence disable 1 not-delivered waiting
+19:24:06 acra control 1 delivered waiting
+19:24:16 acrafence control 1 delivered waiting
+19:25:39 acra reboot 1 not-delivered waiting
+19:27:00 acrafence reboot 1 not-delivered waiting
+19:27:12 acra disable 2 delivered waiting
+19:28:05 acrafence disable 2 not-delivered waiting
+19:28:14 acra control 2 delivered waiting
+19:28:24 acrafence control 2 delivered waiting
+19:29:47 acra reboot 2 not-delivered waiting
+19:31:08 acrafence reboot 2 not-delivered waiting
+19:31:18 acra disable 3 delivered waiting
+19:32:11 acrafence disable 3 not-delivered waiting
+19:32:20 acra control 3 delivered waiting
+19:32:29 acrafence control 3 delivered waiting
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 122, in <module>
+    main()
+    ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 112, in main
+    r = trial(v, sched, k)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 72, in trial
+    rec["net_off"] = net(False)
+                     ~~~^^^^^^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 40, in net
+    while time.time() - t0 < 20 and reach() != on:
+                                    ~~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 33, in reach
+    return sh(f"echo x | nc -w 1 10.0.2.2 {PORT} >/dev/null 2>&1 && echo up || echo down").strip().endswith("up")
+           ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/acra_case.py", line 25, in sh
+    return subprocess.run([ADB, "-s", args.serial, "shell", c], capture_output=True, text=True, timeout=timeout).stdout
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2424, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        skip_check_and_raise=True)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1434, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulator-5602', 'shell', 'echo x | nc -w 1 10.0.2.2 8789 >/dev/null 2>&1 && echo up || echo down']' timed out after 120 seconds
+19:34:30 B: alarm substrate
+19:35:00 emulator-5602 pen000 26s
+19:35:25 emulator-5602 kil000 25s
+19:35:50 emulator-5602 for000 25s
+19:36:32 emulator-5602 reb000 42s
+19:36:58 emulator-5602 pen001 26s
+19:40:06 emulator-5602 kil001 188s
+19:40:25 restarted emulator-5602 in 19s
+19:41:05 emulator-5602 for001 59s
+19:41:52 emulator-5602 reb001 47s
+19:42:25 emulator-5602 pen002 33s
+19:45:36 emulator-5602 kil002 191s
+19:45:55 restarted emulator-5602 in 20s
+19:46:45 emulator-5602 for002 69s
+19:47:34 emulator-5602 reb002 49s
+19:48:09 emulator-5602 pen003 35s
+19:48:36 emulator-5602 kil003 27s
+19:49:04 emulator-5602 for003 29s
+19:49:58 emulator-5602 reb003 53s
+19:50:30 emulator-5602 pen004 32s
+19:50:56 emulator-5602 kil004 26s
+19:51:19 emulator-5602 for004 23s
+19:52:04 emulator-5602 reb004 45s
+19:52:30 emulator-5602 pen005 26s
+19:53:00 emulator-5602 kil005 30s
+19:53:23 emulator-5602 for005 23s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 309, in <module>
+    main()
+    ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 301, in main
+    lg = run_trial(s, k)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 225, in run_trial
+    bt = wait_boot(); act("boot_completed", boot_s=bt)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 62, in wait_boot
+    subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=limit)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2431, in _communicate
+    self.wait(timeout=_deadline_remaining(endtime))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1445, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2310, in _wait
+    if self._wait_pidfd(timeout) or self._wait_kqueue(timeout):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2286, in _wait_kqueue
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulator-5602', 'wait-for-device']' timed out after 240 seconds
+19:57:43 B: done

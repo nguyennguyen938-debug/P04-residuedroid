@@ -1,0 +1,223 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "spahn2014pebbles",
+    "author": "Riley Spahn and Jonathan Bell and Michael Z. Lee and Sravan Bhamidipati and Roxana Geambasu and Gail E. Kaiser",
+    "title": "Pebbles: Fine-Grained Data Management Abstractions for Modern Operating Systems",
+    "booktitle": "Proceedings of the 11th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+    "pages": "113--129",
+    "year": "2014"
+  },
+  "checked": 1794759756.2814138,
+  "candidates": [
+    {
+      "title": "POSIX abstractions in modern operating systems",
+      "match": 0.6774193548387096,
+      "DOI": "10.1145/2901318.2901350",
+      "URL": "https://doi.org/10.1145/2901318.2901350",
+      "author": [
+        {
+          "given": "Vaggelis",
+          "family": "Atlidakis",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Columbia University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jeremy",
+          "family": "Andrus",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Columbia University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Roxana",
+          "family": "Geambasu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Columbia University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dimitris",
+          "family": "Mitropoulos",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Columbia University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jason",
+          "family": "Nieh",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Columbia University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the Eleventh European Conference on Computer Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016,
+            4,
+            18
+          ]
+        ]
+      },
+      "page": "1-17",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Fine-grained, dynamic user customization of operating systems",
+      "match": 0.6521739130434783,
+      "DOI": "10.1109/iwooos.1996.557867",
+      "URL": "https://doi.org/10.1109/iwooos.1996.557867",
+      "author": [
+        {
+          "given": "W.S.",
+          "family": "Liao",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "family": "See-Mong Tan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "R.H.",
+          "family": "Campbell",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the Fifth International Workshop on Object-Orientation in Operation Systems"
+      ],
+      "published": null,
+      "page": "62-66",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Model-checking in finite state-space systems with fine-grained abstractions using SPIN",
+      "match": 0.43902439024390244,
+      "DOI": "10.1007/3-540-45139-0_3",
+      "URL": "https://doi.org/10.1007/3-540-45139-0_3",
+      "author": [
+        {
+          "given": "Marsha",
+          "family": "Chechik",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Benet",
+          "family": "Devereux",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Arie",
+          "family": "Gurfinkel",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Model Checking Software"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2001
+          ]
+        ]
+      },
+      "page": "16-36",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "needs primary verification"
+}

@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "herlihy1990linearizability",
+    "author": "Maurice P. Herlihy and Jeannette M. Wing",
+    "title": "Linearizability: A Correctness Condition for Concurrent Objects",
+    "journal": "ACM Transactions on Programming Languages and Systems",
+    "volume": "12",
+    "number": "3",
+    "pages": "463--492",
+    "year": "1990"
+  },
+  "checked": 1794759766.8883252,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

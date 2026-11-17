@@ -1,0 +1,226 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "ren2016recon",
+    "author": "Jingjing Ren and Ashwin Rao and Martina Lindorfer and Arnaud Legout and David Choffnes",
+    "title": "{ReCon}: Revealing and Controlling {PII} Leaks in Mobile Network Traffic",
+    "booktitle": "Proceedings of the 14th Annual International Conference on Mobile Systems, Applications, and Services (MobiSys)",
+    "year": "2016"
+  },
+  "checked": 1794759763.7583191,
+  "candidates": [
+    {
+      "title": "Investigating and Revealing Privacy Leaks in Mobile Application Traffic",
+      "match": 0.5942028985507246,
+      "DOI": "10.1109/wd.2019.8734246",
+      "URL": "https://doi.org/10.1109/wd.2019.8734246",
+      "author": [
+        {
+          "given": "Shuhui",
+          "family": "Chen",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Shuang",
+          "family": "Zhao",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Biao",
+          "family": "Han",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Xiaoyan",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2019 Wireless Days (WD)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2019,
+            4
+          ]
+        ]
+      },
+      "page": "1-4",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Controlling Network Traffic",
+      "match": 0.574468085106383,
+      "DOI": "10.1007/978-1-4302-2773-1_5",
+      "URL": "https://doi.org/10.1007/978-1-4302-2773-1_5",
+      "author": [
+        {
+          "suffix": "Jr",
+          "given": "Charles S.",
+          "family": "Edge",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Chris",
+          "family": "Barker",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ehren",
+          "family": "Schwiebert",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Beginning Mac OS X Snow Leopard Server"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "page": "149-172",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Smart Recon: Network Traffic Fingerprinting for IoT Device Identification",
+      "match": 0.302158273381295,
+      "DOI": "10.1109/ccwc54503.2022.9720739",
+      "URL": "https://doi.org/10.1109/ccwc54503.2022.9720739",
+      "author": [
+        {
+          "given": "Jay",
+          "family": "Thom",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nathan",
+          "family": "Thom",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shamik",
+          "family": "Sengupta",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Emily",
+          "family": "Hand",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Nevada,Department of Computer Science and Engineering,Reno,NV,USA,89557"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2022 IEEE 12th Annual Computing and Communication Workshop and Conference (CCWC)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2022,
+            1,
+            26
+          ]
+        ]
+      },
+      "page": "0072-0079",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

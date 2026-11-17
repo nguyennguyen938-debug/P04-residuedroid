@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "backes2015boxify",
+    "author": "Michael Backes and Sven Bugiel and Christian Hammer and Oliver Schranz and Philipp von Styp-Rekowsky",
+    "title": "Boxify: Full-fledged App Sandboxing for Stock {Android}",
+    "booktitle": "Proceedings of the 24th USENIX Security Symposium",
+    "year": "2015"
+  },
+  "checked": 1794759759.555866,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

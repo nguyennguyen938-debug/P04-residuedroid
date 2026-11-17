@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "gordon2015droidsafe",
+    "author": "Michael I. Gordon and Deokhwan Kim and Jeff Perkins and Limei Gilham and Nguyen Nguyen and Martin Rinard",
+    "title": "Information-Flow Analysis of {Android} Applications in {DroidSafe}",
+    "booktitle": "Proceedings of the Network and Distributed System Security Symposium (NDSS)",
+    "year": "2015"
+  },
+  "checked": 1794759758.252286,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

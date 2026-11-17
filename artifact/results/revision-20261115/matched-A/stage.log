@@ -1,0 +1,52 @@
+17:20:23 emulator-5640 pen001 56s
+17:21:16 emulator-5640 kil001 53s
+17:21:45 emulator-5640 for001 30s
+17:22:24 emulator-5640 reb001 38s
+17:22:55 emulator-5640 rev001 32s
+17:25:08 emulator-5640 net001 133s
+17:25:48 emulator-5640 inf001 40s
+17:26:43 emulator-5640 pen002 55s
+17:27:27 emulator-5640 kil002 44s
+17:27:54 emulator-5640 for002 27s
+17:28:34 emulator-5640 reb002 40s
+17:29:32 emulator-5640 rev002 57s
+17:31:47 emulator-5640 net002 135s
+17:32:39 emulator-5640 inf002 52s
+17:33:35 emulator-5640 pen003 56s
+17:34:27 emulator-5640 kil003 52s
+17:34:54 emulator-5640 for003 27s
+17:35:30 emulator-5640 reb003 37s
+17:36:02 emulator-5640 rev003 32s
+17:38:17 emulator-5640 net003 135s
+17:38:54 emulator-5640 inf003 37s
+17:39:50 emulator-5640 pen004 55s
+17:40:42 emulator-5640 kil004 52s
+17:41:12 emulator-5640 for004 29s
+17:42:47 emulator-5640 reb004 96s
+17:43:23 emulator-5640 rev004 35s
+17:45:35 emulator-5640 net004 132s
+17:46:05 emulator-5640 inf004 30s
+17:48:01 emulator-5640 for005 112s
+17:48:01 emulator-5640 reb005 TRIAL_ERROR RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:49:31 emulator-5640 rev005 TRIAL_ERROR RuntimeError('device not alive and no --avd given')
+17:49:31 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:50:01 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:50:31 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:51:01 emulator-5640 net005 TRIAL_ERROR RuntimeError('device not alive and no --avd given')
+17:51:01 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:51:31 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+17:52:01 cold restart of emulator-5640
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+18:00:20 emulator-5640 for007 50s
+18:01:01 emulator-5640 reb007 42s
+18:01:56 emulator-5640 rev007 55s
+18:04:11 emulator-5640 net007 135s
+18:05:05 emulator-5640 inf007 54s

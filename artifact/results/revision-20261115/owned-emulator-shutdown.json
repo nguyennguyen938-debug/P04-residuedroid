@@ -1,0 +1,14 @@
+[
+  {
+    "serial": "emulator-5640",
+    "exit": 0,
+    "stdout": "OK: killing emulator, bye bye\nOK\n",
+    "stderr": ""
+  },
+  {
+    "serial": "emulator-5642",
+    "exit": 0,
+    "stdout": "OK: killing emulator, bye bye\nOK\n",
+    "stderr": ""
+  }
+]

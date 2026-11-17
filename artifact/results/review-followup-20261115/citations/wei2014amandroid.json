@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "wei2014amandroid",
+    "author": "Fengguo Wei and Sankardas Roy and Xinming Ou and Robby",
+    "title": "Amandroid: A Precise and General Inter-component Data Flow Analysis Framework for Security Vetting of {Android} Apps",
+    "booktitle": "Proceedings of the 21st ACM Conference on Computer and Communications Security (CCS)",
+    "year": "2014"
+  },
+  "checked": 1794759757.9728372,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

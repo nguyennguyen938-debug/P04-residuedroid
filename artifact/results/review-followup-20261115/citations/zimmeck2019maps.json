@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "zimmeck2019maps",
+    "author": "Sebastian Zimmeck and Peter Story and Daniel Smullen and Abhilasha Ravichander and Ziqi Wang and Joel Reidenberg and N. Cameron Russell and Norman Sadeh",
+    "title": "{MAPS}: Scaling Privacy Compliance Analysis to a Million Apps",
+    "journal": "Proceedings on Privacy Enhancing Technologies",
+    "volume": "2019",
+    "number": "3",
+    "pages": "66--86",
+    "year": "2019"
+  },
+  "checked": 1794759765.876906,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

@@ -1,0 +1,1383 @@
+1
+2
+                          ResidueDroid: Durable Lineage for                                                                              54
+                                                                                                                                         55
+3
+4
+                          Withdrawal-Aware Deferred Egress                                                                               56
+                                                                                                                                         57
+5                                                                                                                                        58
+6                                                         Xuan-Bach Le                                                                   59
+7                                        Faculty of Computer Science and Engineering                                                     60
+8                                    Ho Chi Minh City University of Technology, VNU-HCM                                                  61
+9                                                 Ho Chi Minh City, Vietnam                                                              62
+10                                                lexuanbach@hcmut.edu.vn                                                                63
+11                                                                                                                                       64
+12   ABSTRACT                                                                                                                            65
+13   Android apps persist outboxes and jobs that can outlive                                                                             66
+14   a user’s withdrawal. The enforcement problem is not just                                                                            67
+15   when to check a toggle: derived data must retain its source                                                                         68
+16   policy, and old data must remain distinguishable after                                                                              69
+17   consent is granted again. ResidueDroid combines durable                                                                             70
+18   source epochs, labels copied with persisted data, and a                                                                             71
+19   policy check serialized with each bounded socket write. We                                                                          72
+20   separate collection-only opt-outs, restrictions and deletion                                                                        73
+21   contracts, and evaluate them with ten controlled workloads.                                                                         74
+22   A 360-app static screen identifies candidate deferred paths,                                                                        75
+23   not runtime violations. The lifecycle experiments expose                                                                            76
+24   distinct lineage, epoch and retry failures; their rates depend                                                                      77
+25   on the fixture mix. Matched layered checks with the same                                                                            78
+26   metadata show no confirmed disadvantage in the measured                                                                             79
+27   lifecycle schedules. The late fence instead closes a narrow                                                                         80
+28   residual race: in 20 HTTPS trials with withdrawal after                                                                             81
+29   TLS buffering, an early check completes every request                                                                               82
+30   whereas the fence accepts no application ciphertext after                                                                           83
+31   acknowledgement. ACRA and Matomo embeddings exercise                                                                                84
+32   persisted-report and queued-dispatcher paths. The guaran-                                                                           85
+33   tee requires complete mediation and complete labels; a valid                                                                        86
+34   but incomplete developer label bypasses it. Already accepted                                                                        87
+35   bytes can arrive later, and emulator measurements do not                                                                            88
+36   establish physical-device energy or deployment behavior.                                                                            89
+37                                                                                                                                       90
+38   CCS CONCEPTS                                                         Figure 1: (1) A saved upload job outlives an opt-out           91
+39                                                                        across a kill, a reboot or a network loss. (2) Checks          92
+     • Security and privacy → Software security engineer-
+40                                                                        made before submission let the data through. (3) With          93
+     ing; Privacy protections; • Human-centered comput-
+41                                                                        ResidueDroid the label travels with the data and the           94
+     ing → Ubiquitous and mobile computing.
+42                                                                        fence at the socket drops it, while permitted flows            95
+43                                                                        such as backup still go out. Panel 2 names the informa-        96
+     KEYWORDS
+44                                                                        tion and retry checks needed by the fixture; it reports        97
+45
+     Android, consent withdrawal, deferred work, JobScheduler,                                                                           98
+                                                                          no population failure rate. Bytes already accepted be-
+46
+     data lineage, egress control                                                                                                        99
+                                                                          fore the opt-out are not recalled. Icons: OpenMoji (CC
+47                                                                        BY-SA 4.0).                                                    100
+48   1   INTRODUCTION                                                                                                                    101
+49   Mobile apps rarely send data the moment they collect it.                                                                            102
+50   Usage events, crash reports, location history and derived            or the batch is large enough. Android makes this deferral      103
+51   summaries go into a local outbox. A deferred job uploads             durable on purpose. JobScheduler restores persisted jobs af-   104
+52   them later, when the device has connectivity, is charging,           ter reboot, WorkManager keeps its own database of pending      105
+53                                                                    1                                                                  106
+      MobiSys ’27, June 2027,                                                                                                   Xuan-Bach Le
+
+
+107   work [4, 6], and analytics SDKs flush their outboxes when                 Evidence. The evaluation separates information require-         160
+108   the app starts. Durability is what makes background uploads            ments from final placement. The 360-app static screen iden-        161
+109   reliable. It also means that the upload path can outlive the           tifies candidate deferred paths, without inferring violations      162
+110   user’s decision to stop it.                                            (§3). The ten-tenant fixture exposes source-lineage loss in        163
+111      Consider an app whose settings say “Share usage data”. It           derived summaries (T1), stale epochs after re-grant (T5), and      164
+112   has queued twelve events and a summary derived from them               unchecked retry paths (T8). These are mechanism-specific           165
+113   when the user switches the toggle off (Figure 1). The app              counterexamples whose frequencies depend on the selected           166
+114   does the usual things. It stops collecting, it may cancel the          workload mix (§7). When layered early checks receive the           167
+115   upload job, and its job checks the toggle before it starts. But        same durable metadata, they have no confirmed violations           168
+116   the summary was copied into a job filed under “diagnostics”.           in the measured lifecycle schedules; the fence’s additional        169
+117   The process is killed and the job is restored by the system.           benefit is confined to a residual check-to-write interleaving,     170
+118   Or the network drops after the job has started and its retry           demonstrated separately with a controlled HTTPS buffering          171
+119   loop resends the batch it already prepared. In each case data          barrier. The ACRA preference-only embedding uploads a              172
+120   that the app promised to stop sending leaves the device after          queued report in 30/30 trials after the harness disables re-       173
+121   the promise was made. The integration lacks a check that               porting. It has no user-facing promise to delete that queue, so    174
+122   remains effective until socket handoff.                                this observation alone is not a contract violation. A separate     175
+123      This paper is about that gap, and it is deliberately narrow.        setting explicitly invalidates queued reports and exercises        176
+124   Withdrawal inconsistency itself is not new. MowChecker [12]            the fenced integration (§7.4).                                     177
+125   statically finds withdrawal choices that do not control third-                                                                            178
+126   party collection. CleanOS [48], Pebbles [47] and Weir [37]                Contributions. (1) A contract-separated formulation of de-      179
+127   established data management and information-flow en-                   ferred egress after withdrawal, with an oracle that judges         180
+128   forcement on Android. Taint tracking [7, 15] finds flows               each submission against the stated contract at an explic-          181
+129   to the network. Two problems remain. The first is deferred             itly stated observation boundary. (2) ResidueDroid’s per-          182
+130   egress: data collected before an explicit withdrawal reaches           sistent job lineage and serialized late fence, with a sound-       183
+131   the network afterwards through persisted work, across                  ness theorem for supported paths, a race theorem for earlier       184
+132   process death, reboot and connectivity changes. The second             check points, and information requirements for lineage and         185
+133   is where a cooperative app must enforce its own contract so            epochs. (3) A static measurement of an F-Droid corpus, a           186
+134   that no lifecycle interleaving defeats it. We also refuse two          real-library case study, and a controlled emulator evaluation      187
+135   simplifications. First, a stored residue is not a violation. An        with permitted-flow controls, matched transports and ex-           188
+136   OS permission revocation, an in-app opt-out, a processing              plicit uncovered paths. The artifact includes sources, raw         189
+137   restriction and a deletion request are different contracts             logs, exclusions and deterministic generators.                     190
+138   (§2.1), and we judge each workload against the one it states.                                                                             191
+139   Second, bytes already handed to the network cannot be                  2  WITHDRAWAL CONTRACTS AND                                        192
+140   recalled. A device-side mechanism can only control what it                DEFERRED WORK                                                   193
+141   newly commits.                                                                                                                            194
+142                                                                          2.1 Four contracts, not one                                        195
+143                                                                          “The user said stop” covers several different promises. We         196
+144                                                                          separate four, following the distinctions that consent stud-       197
+145      Approach. ResidueDroid combines three small mecha-                  ies [27, 38, 39] and data-deletion work [21, 42, 45] already       198
+146   nisms. Durable per-scope epochs turn a withdrawal into a               draw, and evaluate every fixture against the contract it states    199
+147   transaction. Persistent job lineage stores a label of source           (Table 1).                                                         200
+148   scopes and epochs in the same row, or the same persisted job              An OS permission revocation (pm revoke, or the settings         201
+149   input, as every copy of the data, including derived data. A late       toggle) only stops future access to a source. Android kills        202
+150   egress fence evaluates the app’s stated contract before each           the process, but nothing in the platform contract obliges the      203
+151   bounded nonblocking socket write, inside a critical section            app to forget what it already read, so a later upload of earlier   204
+152   shared with withdrawal. Under complete mediation, durable              location fixes is residue, not a violation [18, 50]. An in-app     205
+153   labels and this serialization, no newly accepted supported             opt-out is the app’s own promise. Some wordings stop collec-       206
+154   prefix carries a source that the current policy invalidates            tion only (“we will stop collecting”); others also discard what    207
+155   (Theorem 1). An earlier check without effective later can-             is queued (“we will no longer send usage data”). A processing      208
+156   cellation admits a violating interleaving when withdrawal              restriction withdraws one purpose, such as personalisation,        209
+157   invalidates the source; its probability follows from the job’s         while storage and backup stay permitted. A deletion request        210
+158   commit timing (Theorem 2).                                             covers the data and anything derived from it. Throughout,          211
+159                                                                      2                                                                      212
+      ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                   MobiSys ’27, June 2027,
+
+
+213   Table 1: Withdrawal contracts. “Pending” says                              • Process death (kill -9, or a runtime-permission revo-             266
+214   whether data collected before the withdrawal is                              cation, which kills the app). Jobs stay scheduled, and Job-       267
+215   covered.                                                                     Scheduler restarts the process to run them.                       268
+216                                                                              • Force-stop removes the app’s scheduled jobs. When the             269
+217   Contract            Purposes      Pending Violation evidence                 user next opens the app, an outbox-driven startup path            270
+218                       revoked                                                  re-enqueues the work. A job whose only copy of the data           271
+219
+      OS permission       none (new no             none from prior data;           was in its extras is lost.                                        272
+220
+      revocation          access only)             residue is not a              • Network loss mid-job. An upload loop retries the batch            273
+221                                                violation                       it already prepared. A check made at job start ran before         274
+222   In-app opt-out      all           stated     new collection; prior           the withdrawal.                                                   275
+223   (stop collecting)                            data only if the app          Withdrawal is a user action at an arbitrary time, so it can land    276
+224                                                says “discard”                in any of these windows. Our question is which enforcement          277
+225   Processing          named         yes        use for that purpose;         point still sees it.                                                278
+226   restriction         purpose                  other purposes stay                                                                               279
+227                                                legal                                                                                             280
+      Deletion request all              yes        any later egress of the
+                                                                                 3   HOW COMMON ARE DEFERRED
+228                                                                                                                                                  281
+                                                   data or its derivatives           EGRESS PATHS?
+229                                                                                                                                                  282
+230
+                                                                                 Before building a mechanism, we asked how often apps com-           283
+231
+                                                                                 bine the three ingredients of the problem: persisted deferred       284
+      Table 2: Measured lifecycle behavior of a persisted up-
+232
+                                                                                 work, a network sink reachable from a deferred-job entry            285
+      load job (none, AVD A). Counts of trials; “by-value job”
+233
+                                                                                 point, and a user-facing telemetry or consent control. This is      286
+      is T2’s summary job, whose data exists only in its ex-
+234
+                                                                                 a candidate screen. Static analysis cannot see runtime state        287
+      tras.
+235
+                                                                                 or app wording, so it cannot establish a violation.                 288
+236                                                                                                                                                  289
+        Schedule trials job ran re-enqueued by-value job ran median s               Corpus. From the F-Droid index [17] (fetched 2026-11-
+237                                                                                                                                                  290
+        pen          50         50         0               50        43          08, SHA-256 recorded), we took the latest version of every
+238                                                                                                                                                  291
+        kill         50         50         0               50        43          app that requests INTERNET and is at most 80 MB, giving
+239     fstop        50          0        50                0        19                                                                              292
+                                                                                 2442 apps. We selected all 60 that carry F-Droid’s Tracking
+240     reb          50         50         0               50        51          anti-feature, plus a seeded random sample of 300 others. All        293
+241     rev          50         50         0               50        24                                                                              294
+                                                                                 360 APKs were downloaded from f-droid.org and verified
+242                                                                                                                                                  295
+                                                                                 against the index hashes. F-Droid apps are open source and
+243                                                                                                                                                  296
+                                                                                 often minified, so library method names may be renamed. We
+244   a submission is a prohibited submission only if its contents                                                                                   297
+                                                                                 therefore detect WorkManager through ListenableWorker
+245   contradict the contract the app states, at the time the bytes                                                                                  298
+                                                                                 subclasses, whose names are kept for reflection, as well as
+246   leave the device. Stored residue alone never counts. We make                                                                                   299
+                                                                                 through API references.
+247   no legal claims.                                                                                                                               300
+248                                                                                 Analysis. Our scanner (§6) finds deferred-job entry points:      301
+249   2.2       Deferred work survives the withdrawal                            doWork/startWork of WorkManager workers, onStartJob                 302
+250   Persisted JobScheduler jobs are written to the system’s job                of JobServices, and onPerformSync. From each, it searches           303
+251   store and restored after reboot [4]. WorkManager keeps its                 breadth-first for a network sink (HttpURLConnection,                304
+252   own SQLite database and reschedules work after app restarts                OkHttp, Retrofit, Volley, Ktor, raw sockets and similar). The       305
+253   and reboots [6]. Alarms do not survive reboot, so apps re-                 search is over-approximate. We validated it on a seeded             306
+254   arm them from their own state. SyncAdapters run on the                     sample of 20 app-code entries in apps with a consent signal,        307
+255   system’s schedule. Analytics and crash-reporting SDKs add                  judging from class names and app purpose whether network            308
+256   another layer: they keep an outbox, and many flush it when                 use is on the job’s own path. Of nine entries within three          309
+257   the app starts.                                                            hops, six were judged plausible and three unclear; of eleven        310
+258      On the Android 13 image we use (§7.1), we observed the                  deeper entries, four were plausible, one unclear and six            311
+259   following lifecycle facts directly over 250 campaign trials                implausible. These class-name/app-purpose judgments do              312
+260   (Table 2). Each one shapes which enforcement points can                    not validate runtime paths or estimate false negatives. We          313
+261   see a queued upload.                                                       report two screening thresholds (three hops and any depth),         314
+262   • Reboot. Persisted jobs are restored and run after boot. A                not lower and upper bounds on real flows. Consent signals           315
+263     check made at enqueue time is therefore arbitrarily old                  are identifier-like constants pairing a topic token (analytics,     316
+264     when the job runs.                                                       telemetry, crash, consent, ...) with a control token (enable,       317
+265                                                                          3                                                                       318
+      MobiSys ’27, June 2027,                                                                                                                         Xuan-Bach Le
+
+
+319   Table 3: F-Droid corpus screen: apps (%). Random-                                              outbox rows    restored after kill / reboot                     372
+                                                                                                       + label     persisted
+320   stratum percentages carry Wilson 95% intervals con-                               collect                                               fence                  373
+                                                                                                                      job
+                                                                                      ℓ={ (𝑠, 𝜖) }                                        check each
+321   ditional on the screen. Tracking is a census of                                                  derived      extras                                socket     374
+                                                                                                                                            chunk
+                                                                                                                    + label lock 𝐿
+322   eligible tracking apps. † persisted deferred work +                                              Ðrows
+                                                                                                                                                   read
+                                                                                                                                                                     375
+                                                                                                     ℓ= inputs
+323   entry→network + consent signal.                                                                              withdraw                                          376
+                                                                                                                                          grants 𝜖, 𝑎
+324                                                                                                                  (txn):                (durable)                 377
+                                                                                                                   𝜖++, 𝑎=0
+325      Feature                         Tracking (𝑛=60) Random (𝑛=300)                                                                                              378
+326                                                                                                                                                                  379
+         Network API                             57 (95)   277 (92) [89, 95]        Figure 2: ResidueDroid data path. Labels travel with
+327      JobScheduler                            32 (53)   183 (61) [55, 66]                                                                                         380
+                                                                                    every persisted copy. The fence reads durable epochs
+328        setPersisted                          22 (37)   114 (38) [33, 44]                                                                                         381
+                                                                                    and writes each bounded chunk while holding the
+329      WorkManager                              9 (15)    45 (15) [11, 19]                                                                                         382
+         AlarmManager                            37 (62)   188 (63) [57, 68]        lock that withdrawals also take.
+330                                                                                                                                                                  383
+         SyncAdapter                               0 (0)         3 (1) [0, 3]
+331                                                                                                                                                                  384
+         Persisted deferred work (any)           22 (37)   116 (39) [33, 44]
+332      Entry → network, ≤3 hops                  5 (8)        17 (6) [4, 9]
+                                                                                    screen shows the ingredients are not rare. It does not show                      385
+333      Entry → network, any depth              13 (22)    53 (18) [14, 22]        how often they combine into a contract violation, which                          386
+334      Persisted + entry→net, ≤3                 4 (7)        17 (6) [4, 9]       needs the contract wording and a runtime schedule. The rest                      387
+335
+         Persisted + entry→net, any              10 (17)    50 (17) [13, 21]        of the paper therefore turns to controlled, contract-aware                       388
+         Consent/telemetry signal                23 (38)    42 (14) [11, 18]        experiments.
+336                                                                                                                                                                  389
+         Candidate, ≤3 hops†                       3 (5)         5 (2) [1, 4]
+337      Candidate, any depth†                    6 (10)        12 (4) [2, 7]                                                                                        390
+338      Telemetry/crash SDK                     19 (32)        14 (5) [3, 8]       4 RESIDUEDROID DESIGN                                                            391
+339      Native libraries                        38 (63)   210 (70) [65, 75]        4.1 Scope and threat model                                                       392
+340                                                                                                                                                                  393
+                                                                                    ResidueDroid is a cooperative mechanism. The developer,
+341                                                                                                                                                                  394
+      opt, send, ...), or English toggle-like resource strings such as              or an SDK vendor, wants the app to keep its stated con-
+342                                                                                                                                                                  395
+      “Share anonymous usage statistics”.                                           tract and links ResidueDroid to do so. We do not defend
+343                                                                                                                                                                  396
+                                                                                    against a malicious app, which can always exfiltrate data
+344      Findings. Table 3 reports each sampling stratum separately.                through a path we do not mediate [43]. The adversary is the                      397
+345   The tracking stratum is a census within the eligible index;                   schedule: a withdrawal arrives at an arbitrary time relative                     398
+346   random-stratum intervals describe screening proportions                       to queued work, process death, reboot, force-stop and con-                       399
+347   among other eligible apps, conditional on classification. The                 nectivity changes. A supported path is a flow whose data is                      400
+348   oversampled mixture is descriptive, not a population esti-                    stored through ResidueDroid’s labelled stores and whose                          401
+349   mate. Validation uncertainty is separate: with only 20 judg-                  network submission goes through ResidueDroid’s egress                            402
+350   ments, the plausible fraction is 10/20 (Wilson 95% interval                   wrapper. Everything else is uncovered. That includes native                      403
+351   30–70%), and four remain unclear. Neither statistic estimates                 code (JNI), custom network stacks such as raw sockets or                         404
+352   a contract-violation prevalence. Persisted deferred work is                   embedded HTTP clients that bypass the wrapper, WebViews,                         405
+353   common: 38% of the corpus uses setPersisted, WorkMan-                         IPC to other apps, and any flow the developer did not route                      406
+354   ager or a SyncAdapter, and 62% uses AlarmManager. Be-                         through the wrapper. We claim nothing for uncovered paths.                       407
+355   tween 6% (three-hop screen) and 17% (any-depth screen) of                     The raw-socket tenant measures one directly in §7.                               408
+356   apps both persist deferred work and reach the network from                       ResidueDroid also cannot recall bytes. Data handed to the                     409
+357   a deferred-job entry point. Between 2% and 5% also carry a                    network before the withdrawal takes effect may still arrive                      410
+358   consent or telemetry signal. In absolute terms this is 8–18                   afterwards, and server-side copies are outside the device.                       411
+359   apps. The Tracking stratum has more consent signals (38%                      The guarantee orders each accepted socket prefix relative to                     412
+360   vs. 14%) and more telemetry SDKs (32% vs. 5%). At the entry-                  policy updates. A write can accept only part of a request; its                   413
+361   point level, only 20% of app-code workers poll isStopped().                   authorization log, local acceptance and remote receipt are                       414
+362   This does not establish whether cancellation interrupts up-                   distinct.                                                                        415
+363   loads: workers may use other stop callbacks or networking                                                                                                      416
+364   cancellation. Between-batch stopping is a fixture assumption,                 4.2      Three mechanisms                                                        417
+365   not a corpus finding. 69% of apps ship native libraries, and                                                                                                   418
+                                                                                    Figure 2 shows how the three mechanisms fit together.
+366   native code is a path no Java-level fence mediates.                                                                                                            419
+367      ACRA appears in 16 apps. Its acra.enable/acra.disable                         Durable epochs. For every withdrawable scope 𝑠, such as                       420
+368   preference keys are library constants, so their presence does                 analytics or profile, ResidueDroid keeps a durable epoch                         421
+369   not show that an app exposes the toggle. Bundled versions                     𝜖 (𝑠) and a flag 𝑎(𝑠). A withdrawal runs as one transaction                      422
+370   and configurations can differ; §7.4 tests it directly. The                    that increments 𝜖 (𝑠), clears 𝑎(𝑠) and, for a deletion request,                  423
+371                                                                             4                                                                                    424
+      ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                  MobiSys ’27, June 2027,
+
+
+425   deletes local rows. A re-grant sets 𝑎(𝑠) again but keeps the             Algorithm 1 Audited HTTP fence, with source labels on                478
+426   epoch. Data collected afterwards belongs to the new epoch,               every retry                                                          479
+427   and data from older epochs stays invalid. The state lives in             Require: purpose 𝑝, encoded bytes 𝐵, durable source union            480
+428   the app’s SQLite database, so it survives process death and                  ℓ                                                                481
+429   reboot.                                                                   1: Connect outside 𝐿; set operation deadline
+                                                                                                                                                    482
+430                                                                                                                                                 483
+         Persistent job lineage. Each persisted datum carries a label           2: while unsent bytes remain do
+431                                                                                                                                                 484
+      ℓ (𝑑) ⊆ {(𝑠, 𝜖)}, the scopes and epochs of the sources it was             3:     Wait for socket readiness outside 𝐿
+432                                                                                                                                                 485
+      computed from. The label is written in the same row or the                4:     Acquire 𝐿 within deadline
+433                                                                                                                                                 486
+      same job input as the data, so it is committed atomically with            5:     Read durable policy; reject unknown or forbidden
+434                                                                                                                                                 487
+      the data. Collection assigns {(𝑠, 𝜖 (𝑠))}, and derivation takes              labels
+435                                                                                                                                                 488
+      the union of its inputs’ labels. When data is copied into a               6:     Attempt nonblocking write of at most 4 KiB
+436                                                                                                                                                 489
+      job’s persisted input (a PersistableBundle or WorkMan-                    7:     Record returned accepted count; release 𝐿
+437                                                                                                                                                 490
+      ager Data), the label is copied with it. The label therefore              8: Read response outside 𝐿; retain source labels on retry
+438                                                                                                                                                 491
+439
+      survives in the job store, which a database deletion does not                                                                                 492
+440
+      reach.                                                                                                                                        493
+                                                                                  Cost and composition. One app-wide coordinator combines
+441      Late, serialized egress fence. Every supported submission             a local mutex with an exclusive file lock. This simple design        494
+442   passes through Fence.submit(purpose, items). The au-                     can briefly delay unrelated scopes, and storage or scheduling        495
+443   dited HTTP adapter connects outside the lock, encodes the                delays can exceed nominal deadlines. Five-second operation           496
+444   request with a conservative union of its source labels, and              deadlines are best-effort failure bounds, not real-time guaran-      497
+445   writes chunks of at most 4 KiB. Before each nonblocking                  tees. A failed or pending withdrawal is never acknowledged           498
+446   write it acquires the same lock as withdrawal and rechecks               as successful. Layered cancellation and early checks can re-         499
+447   those labels. A zero-byte return is no handoff; a positive re-           duce wasted work; the stated prefix-level guarantee uses a           500
+448   turn records exactly the accepted prefix. Waiting for socket             check for each final chunk. The old whole-request HTTP-              501
+449   readiness and reading the response occur outside the lock. If            stream wrapper is retained as a stream-wrapper comparison,           502
+450   policy changes after a partial send, the adapter closes the con-         not used to justify the channel handoff boundary.                    503
+451   nection and suppresses the remainder; previously accepted                                                                                     504
+452   bytes remain outstanding. The contract rule for an item with             5   WHAT THE FENCE GUARANTEES                                        505
+453   label (𝑠, 𝑒) and purpose 𝑝 is                                            The durable state 𝜎 contains scope epochs, grant flags and
+                                                                                                                                                    506
+454                                                                                                                                                507
+               forbid (𝑠, 𝑒, 𝑝) = 𝑝 ∈ 𝑅𝑠 ∧ (𝜋𝑠 ∧ 𝑒 < 𝜖 (𝑠))                    labelled copies. An authorization log is an observation of
+455                                                                                                                                                 508
+                                                                  (1)         intent, not a send. A handoff 𝑐 is acceptance of a positive byte
+456                                ∨ (𝑒 = 𝜖 (𝑠) ∧ ¬𝑎(𝑠)) ,                                                                                          509
+                                                                               prefix by the audited socket transport; a write may accept
+457                                                                                                                                                 510
+      where 𝑅𝑠 is the set of purposes the contract revokes and 𝜋𝑠              fewer bytes than requested or none. Request receipt and
+458                                                                                                                                                 511
+      says whether it covers pending data (Table 1). An item is                response receipt are later, separate events. The guarantee
+459                                                                                                                                                 512
+      forbidden if any element of its label is forbidden. For an OS-           concerns each accepted prefix, including a prefix of a request
+460                                                                                                                                                 513
+      permission tenant 𝑅𝑠 = ∅, so prior data is never blocked. For a          that never completes.
+461                                                                                                                                                 514
+      processing restriction, 𝑅𝑠 = {personalisation}, so backup con-
+462                                                                            Assumption 1 (Supported path). (A1) Every supported byte             515
+      tinues. For a “stop collecting” opt-out, 𝜋𝑠 is false, so queued
+463                                                                            is sent through Algorithm 1, with one writer per socket and          516
+      data may still flush.
+464                                                                            no unmediated asynchronous sender below its check. For               517
+465      Why this placement. An early check can leave a window                 TLS, the checked bytes are application-record ciphertext:            518
+466   when an applicable withdrawal precedes an unprotected                    the request’s conservative source union remains attached to          519
+467   send. Cancellation can miss re-enqueued or running work if               every encrypted record and partial-record remainder. En-             520
+468   it does not reach the transport. A check at enqueue misses               cryption may precede checking; each subsequent socket                521
+469   a job queued before the withdrawal. A check at job start                 write must recheck policy. Handshake traffic contains no             522
+470   misses everything the job prepared before the withdrawal                 request data. TLS early data, renegotiation and external writ-       523
+471   and submits after it, including retries. Our declared-scope              ers are excluded. (A2) Every persisted copy carries atomically       524
+472   egress baseline misses a derived source when that source                 stored, over-approximate source labels; missing or invalid la-       525
+473   is invalidated but the declared scope still passes. A boolean            bels fail closed. Labels on retries retain the collection epochs.    526
+474   consent flag without epochs lets old data through after a re-            (A3) Each bounded, nonblocking write and its policy check            527
+475   grant. §5 turns each gap into a statement, and §7 measures               share a process/cross-process lock with withdrawal and re-           528
+476   each one.                                                                grant. A withdrawal commits its policy transaction before            529
+477                                                                        5                                                                        530
+      MobiSys ’27, June 2027,                                                                                                      Xuan-Bach Le
+
+
+531   acknowledgement. Policy state survives process failure; an               Proposition 3 (Information needed by the check). A                  584
+532   unreadable store fails closed. The model assumes working                 declared-scope check can admit an invalid source when a             585
+533   durable storage, not recovery from arbitrary power loss.                 withdrawal invalidates the actual source scope while the            586
+534                                                                            declared scope still passes. A current boolean alone cannot         587
+535
+      Theorem 1 (Soundness of accepted prefixes). Under A1–A3,                 distinguish old and new data after withdrawal and re-grant          588
+536
+      every source label of a supported prefix accepted at 𝑐 satisfies         when the contract invalidates pending old data. Source lineage      589
+537
+      ¬forbid 𝜎 (𝑐) (𝑠, 𝑒, 𝑝). Thus no prefix accepted after an acknowl-       and retained epochs supply these distinctions; equivalent           590
+538
+      edged withdrawal carries a source that remains invalid under             representations are possible.                                       591
+539
+      the stated contract.                                                                                                                         592
+                                                                               Proposition 4 (No recall). A prefix accepted before with-
+540      Proof. Consider one write and its preceding check in the                                                                                  593
+                                                                               drawal may arrive after acknowledgement. A device-side fence
+541   same critical section. A3 excludes policy changes between                                                                                    594
+                                                                               cannot guarantee recall of bytes already accepted by the trans-
+542   the check and every byte acceptance during that write. A2                                                                                    595
+                                                                               port.
+543   includes every source in the checked label union, and the                                                                                    596
+544   check rejects any forbidden source. Hence every accepted                    A retry after a lost response may duplicate a previously         597
+545   prefix satisfies the rule. A crash after logging but before              received request. Each attempt is checked afresh, but this          598
+546   writing accepts no bytes through that attempt. A crash during            mechanism provides neither server-side deletion nor exactly-        599
+547   a write can leave an accepted prefix: the same check still               once delivery. The stream-wrapper evaluation’s pre-write            600
+548   covers that prefix, even if no return value is logged. A crash           sequence markers cannot establish which prefixes were out-          601
+549   after handoff but before response receipt leaves outstanding             standing; the channel wrapper records acceptance and re-            602
+550   bytes. After restart, the next attempt reacquires the lock and           ceipt separately.                                                   603
+551   reads durable policy; it cannot reuse an earlier authorization.                                                                              604
+552   A missing completion log therefore limits measurement, but
+                                                                               6   IMPLEMENTATION                                                  605
+553   does not justify assuming that the interrupted write accepted               Library and integration. The implementation uses a shared        606
+554   nothing.                                                     □           Java SocketChannel [5] HTTP/1.1 sender and a TLS 1.2                607
+555                                                                            adapter built on SSLEngine [40]. The latter verifies the peer       608
+556      Exact labels avoid policy-induced false positives only                certificate and host, encrypts at most 4 KiB of plaintext per       609
+557   when labels and policy are available and valid. Over-                    wrap, and rechecks policy before each at-most-4 KiB cipher-         610
+558   approximation, fail-closed migration, timeouts and network               text write. Proxies, redirects, pooled writers, early data and      611
+559   failure can still prevent permitted delivery. Soundness is not           renegotiation are excluded. Its positive write return is socket     612
+560   an availability claim.                                                   acceptance, not server delivery. A local mutex plus file lock       613
+561                                                                            coordinates threads and processes. ACRA’s former epoch text         614
+      Theorem 2 (Race for earlier checks). Suppose a check 𝑞
+562                                                                            file is migrated into transactional SQLite state; malformed         615
+      admits a source that a later withdrawal would invalidate for
+563                                                                            state fails closed. Initialization is explicit and an interrupted   616
+      the submission’s purpose, and the path can still hand off that
+564                                                                            initialization cannot silently recreate an allowed policy. The      617
+      source at 𝑐 > 𝑞 without another effective check or cancellation.
+565                                                                            stream-based implementation and APK inputs are archived             618
+      Then a withdrawal in (𝑞, 𝑐) yields a forbidden handoff. If a
+566                                                                            separately.                                                         619
+      single such withdrawal 𝑊 is independent of fixed handoff
+567                                                                               The ACRA adapter changes application initialization,             620
+      offsets 𝑐 1 < · · · < 𝑐𝑘 , all carrying sources invalidated by 𝑊 ,
+568                                                                            crash-time custom-data labels, ReportSender, and the                621
+      with no intervening re-grant and 𝑛𝑖 > 0 newly handed-off
+569                                                                            settings callback. The setting explicitly invalidates queued        622
+      source items,
+570                                                                            reports, shows pending acknowledgement, and preserves old           623
+571                    Pr[violation] = Pr[𝑞 < 𝑊 < 𝑐𝑘 ],                        epochs on re-grant. A normal blocked sender return retires          624
+
+                                          𝑛𝑖 Pr[𝑞 < 𝑊 < 𝑐𝑖 ]. (2)              the report; network errors retain it for ACRA retry. Persisted
+572
+                                       Õ                                                                                                           625
+        E[#forbidden item handoffs] =
+573
+                                           𝑖
+                                                                               report labels survive both paths. The artifact inventories          626
+574                                                                            changed call sites, schema, service-loader registration, and        627
+575
+      These equations concern that schedule model; cancellations or            bypasses. This is an SDK test embedding, not a deployed             628
+576
+      retries that depend on 𝑊 require a different model.                      production app.                                                     629
+577      Proof. Place the applicable withdrawal between the pass-                 The ACRA embedding comprises six Java files (202 non-            630
+578   ing check and the unprotected write. The path still sends, by            blank lines), touching initialization/collectors, report labels,    631
+579   hypothesis. Summing the corresponding indicator variables                sender/factory registration and settings acknowledgement.           632
+580   gives the expectation; the last interval contains the earlier            Matomo uses two embedding files (56 lines), touching tracker        633
+581   intervals.                                                  □            setup, packet labels and the dispatcher connection callback.        634
+582                                                                            The shared coordinator and HTTP/TLS transports comprise             635
+583                                                                        6                                                                       636
+      ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                    MobiSys ’27, June 2027,
+
+
+637   three files (196 lines). These are maintained embedding-                 Table 4: ResidueLab tenants. Every tenant has 12                       690
+638   source sizes, not SDK diff sizes or estimates of production              tagged records; “sum.” tenants also derive a summary                   691
+639   integration effort.                                                      (declared scope in brackets).                                          692
+640                                                                                                                                                   693
+641      Fixture app (ResidueLab). To compare enforcement points                 Tenant Contract         Withdrawal     What it tests                 694
+642   on identical schedules, we built a fixture app with ten ten-               T1     opt-out, discard in-app          summary filed as
+                                                                                                                                                      695
+643   ants. Each is an independent workload with its own scope,                                                          diagnostics (lineage)        696
+644   stated contract and persisted jobs (Table 4). Every tenant col-            T8     opt-out, discard in-app          same, summary correctly      697
+645   lects 12 records tagged with synthetic tracer strings such as                                                      declared                     698
+                                                                                 T2     deletion request in-app + delete summary copy in job
+646   RD-pen007-T1-e0-03 into a SQLite outbox. Tenants with a                                                                                         699
+                                                                                                         rows            extras
+647   summary also derive one daily summary row whose content                    T5     opt-out, discard withdraw,       epoch vs. boolean (+4
+                                                                                                                                                      700
+648   lists its source tags, and copy it into a persisted summary job.                                   re-grant        new records)                 701
+649   All uploads use persisted JobScheduler jobs with a network                 T9     opt-out, discard in-app          raw-socket upload            702
+650   constraint, in batches of four records with up to five in-job                                                      (uncovered path)             703
+                                                                                 T10    opt-out, discard in-app          encrypted body
+651   attempts and exponential backoff. They stop cooperatively                                                                                       704
+                                                                                                                         (unattributable)
+652   between batches on onStopJob. The app’s startup path re-                                                                                        705
+653   enqueues an upload whenever its outbox holds unsent rows                   T3     opt-out, flush   in-app          FP control: queued data      706
+                                                                                        allowed                          may go
+654   and no job is scheduled, as analytics SDKs commonly do.                    T4     restriction      personalisation FP control: backup must
+                                                                                                                                                      707
+655   One package is installed per enforcement variant, all from                                                         go                           708
+656   the same code:                                                             T6     none             none            FP control: everything       709
+657   • none: stops collection only.                                                                                     must go                      710
+658   • cancel: additionally cancels the withdrawn scope’s jobs                  T7     OS permission    pm revoke (in FP control: prior fixes        711
+                                                                                                         rev)            may sync
+659      and purges its unsent outbox.                                                                                                                712
+660   • enqueue: checks consent at every enqueue, including the                                                                                       713
+661      startup path.                                                                                                                                714
+662   • jobstart: checks consent at job start.                                    Static scanner. For the measurement (§3) we wrote a                 715
+663   • conv: cancel + enqueue + job-start checks, the strongest               standard-library-only DEX parser. It reads string, type,               716
+664      conventional combination.                                             method and class tables, decodes Dalvik code items, and                717
+665   • egress: a serialized egress check on the job’s declared scope,         builds an over-approximate call graph: class-hierarchy                 718
+666      without lineage or epochs.                                            resolution below app-defined types, and allocation edges to            719
+667   • rd: ResidueDroid.                                                      callback methods of allocated classes.                                 720
+668   Two ablations change one ResidueDroid mechanism each.                                                                                           721
+669   volatile keeps labels in memory and fails open on unknown                7 EVALUATION                                                           722
+670   provenance. taint uses durable lineage but a contract-                                                                                          723
+671   unaware rule, so any withdrawal or revocation of a source                7.1 Setup                                                              724
+672   blocks all its uses, as a deliberately over-broad synthetic                 Platform. Lifecycle and SDK runs use the stock Android 13           725
+673   policy would. It is not an implementation of TaintDroid                  emulator image (android-33 google_apis arm64-v8a rev. 17,              726
+674   or a comparison with a complete taint system. A tenth                    build TE1A.240213.009), emulator 37.2.13, on an 18-core                727
+675   package, noser, drops serialization and is used only in the              Apple-silicon host. The stream-wrapper campaign uses two               728
+676   race micro-benchmark.                                                    AVDs side by side; the enlarged matched campaign uses                  729
+677      Five matched variants share durable lineage, epochs, and              four read-only instances of each of those two configura-               730
+678   the same chunk transport: menqueue, mstart, mlayer (cancel-              tions. HTTP/TLS cost and label-error tests use a separate              731
+679   lation plus enqueue, job-start and retry checks), mfence, and            Android 15 emulator on the same host; exact fingerprints and           732
+680   mboth (layered checks plus final fencing). All retain source             host load are archived. AVD A runs none, cancel, enqueue,              733
+681   labels in copied job inputs. Their comparisons isolate final             jobstart, conv and rd. AVD B runs egress, rd, volatile and             734
+682   placement more closely than the boolean-only baselines.                  taint. Repeating rd on both AVDs does not remove variant–              735
+683                                                                            AVD confounding: cross-AVD comparisons are descriptive.                736
+684     Harness and oracle. A host sink, reached via 10.0.2.2,                 Matched channel variants run within each AVD. Before ev-               737
+685   logs every request and waits 300 ms before responding, em-               ery trial each package is cleared with pm clear, granted               738
+686   ulating a wide-area server. The oracle (§7.1) is a separate              location, opened once, and placed in the active standby                739
+687   Python reimplementation of the contract table. It never reads            bucket. Without that last step JobScheduler never ran our              740
+688   the app’s labels or decisions.                                           jobs: a never-opened app sits in the NEVER bucket.                     741
+689                                                                        7                                                                          742
+      MobiSys ’27, June 2027,                                                                                                      Xuan-Bach Le
+
+
+743      Schedules. Each trial sets up all ten tenants in every pack-           Table 5: Conventional-check failures by mechanism:                 796
+744   age, injects one schedule, waits until no job of ours remains             violating tenant-trials/total, stream-wrapper autho-               797
+745   registered (polling dumpsys jobscheduler), and then reads                 rization estimand. The selected fixture mix deter-                 798
+746   each app’s event log with sqlite3 as root, which does not                 mines these rates.                                                 799
+747   start the app. The seven schedules are:                                                                                                      800
+748   • pen: withdraw while the jobs are pending.                                     Mechanism              Tenant / schedules    Trials          801
+749   • kill: withdraw, then kill -9.                                                                                                              802
+                                                                                      Lineage                T1, all              252/350
+750   • fstop: withdraw, force-stop, reopen the app 3 s later.                        Epoch after re-grant   T5, all               51/350
+                                                                                                                                                   803
+751   • reb: withdraw, then reboot.                                                   Retry check            T8, netloss            50/50          804
+752   • rev: withdraw, then pm revoke location, which kills the                                                                                    805
+753      app.                                                                                                                                      806
+754   • net: connectivity cut as the jobs start and restored 6 s later;                                                                            807
+755      withdrawal 1.5–1.8 s after job start.                                  A trial is excluded if the host slept during it (any gap between   808
+756   • infl: withdrawal at a seeded uniform offset in [0, 1.6] s after         harness actions over 200 s), if the emulator restarted, or if      809
+757      the upload job starts.                                                 any device log could not be read (§8). Of 825 logged trials,       810
+758   In net and infl, jobs are started with cmd jobscheduler run               55 were excluded. We analyze the first 50 valid trials per         811
+759   -f, and the withdrawal is injected inside the app relative to             schedule and AVD (700 trials); the 70 further valid trials, run    812
+760   the job’s own start, so its timing is precise. In net, each app           as replacements while exclusions were still being counted,         813
+761   gets its own 6 s outage in turn, during which only the trigger            are kept in the artifact but not used.                             814
+762   uploads of T8, T2, T5 and T4 are started. The outage is a                    Trial uncertainty uses 10,000 trial-cluster bootstrap resam-    815
+763   guest firewall rule rejecting traffic to the server. We first tried       ples (seed 20261115), stratified by AVD and schedule. The 350      816
+764   svc wifi/data disable, but it did not cut the apps’ traffic               stream-wrapper AVD-A trials give a conventional-baseline           817
+765   reliably, and starting all apps’ jobs at once let JobScheduler’s          authorization rate of 26.0% (percentile interval 25.8–26.3%).      818
+766   concurrency limit decide which variant saw the outage. The                This is not a socket-handoff rate. A zero-event percentile         819
+767   configuration trials using those two methods are excluded.                interval is descriptive, not a zero-risk bound. All tenants and    820
+768   Schedule parameters are derived from a seed per (schedule,                paired variants exposed to a trial remain one resampling           821
+769   trial), so both AVDs replay identical schedules.                          unit.                                                              822
+770                                                                                                                                                823
+771      Oracle and metrics. Ground truth comes from the sink.                                                                                     824
+772   Tags are visible in plaintext payloads, and a summary’s con-
+                                                                                7.2    Stream-wrapper authorization-order                          825
+773   tent lists its source tags. The stream-wrapper device sequence                   evidence                                                    826
+774   orders withdrawals and pre-write authorization logs, not                  The stream-wrapper 700 trials compared nine variants over          827
+775   actual byte acceptance. Baselines can therefore undercount                seven lifecycle schedules. The pre-write event called COMMIT       828
+776   forbidden handoffs in the log-to-write gap. Missing sequence              orders authorization, not socket handoff. Under that esti-         829
+777   evidence is ambiguous; host receipt time alone cannot recon-              mand, the conventional combination admits the mechanism-           830
+778   struct a socket-handoff order. We preserve the authorization-             specific cases in Table 5; the stream-wrapper ResidueDroid         831
+779   order estimand explicitly. The channel oracle uses paired                 gate admits none on mediated paths. These rates depend on          832
+780   write-attempt/accepted-count events and the withdrawal                    the fixture mix. T1’s summary retained source data under a         833
+781   transaction order; interrupted or overlapping observations                different declared scope; T5 required epochs to distinguish        834
+782   remain unknown. We report:                                                old records after re-grant. Network-loss retries exposed gaps      835
+783   • Violation rate: the fraction of tenant-trials with at least one         after job-start checks. Raw-socket T9 remained uncovered.          836
+784      prohibited item, with trial-cluster uncertainty, keeping all           These observations motivate lineage and late placement but         837
+785      tenants and paired variants together.                                  cannot quantify physical handoffs in the log-to-write gap.         838
+786   • Prohibited items per tenant-trial.                                      The matched channel variants below share metadata to iso-          839
+787   • Legit deficit: permitted items that a variant had not deliv-            late placement.                                                    840
+788      ered when the observation window closed (none’s deficit                   Permitted-flow controls distinguish suppression from non-       841
+789      is the availability loss that enforcement does not cause).             delivery: stream-wrapper ResidueDroid logged 0 policy              842
+790   • Unattributable submissions: post-withdrawal bodies the                  blocks for the controls, while 0.0% of permitted items were        843
+791      sink cannot read.                                                      undelivered on AVD A (AVD B: 0.1%). JobScheduler stopping          844
+792   • Outstanding submissions: accepted before withdrawal, pos-               uploads after reboot contributed to that deficit. The synthetic    845
+793      sibly received afterwards; stream-wrapper logs identify                contract-unaware policy lost 55.6%; this is a policy ablation,     846
+794      only authorization/response overlap.                                   not a comparison against a complete taint-tracking system.         847
+795                                                                         8                                                                      848
+      ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                    MobiSys ’27, June 2027,
+
+
+849      Supporting checks. The stream-wrapper substrate tests in-             Table 6: Device-policy acknowledgement under back-                     902
+850   clude 80 WorkManager attempts (2 invalid) and 80 Alarm-                  pressure, ms: median / observed maximum (ac-                           903
+851   Manager attempts, with no prohibited authorizations for the              knowledged samples). W: whole-write lock; C: per-                      904
+852   fenced mediated paths. Across 100 process kills, atomic row              chunk fence. Both include same/unrelated scopes and                    905
+853   labels leave 0 unlabelled rows, compared with 86 when data               same/cross-process cases. Timeouts remain separate.                    906
+854   and labels are written separately. The authorization-window                                                                                     907
+855   prediction agrees in 149 of 150 cases. Stream-wrapper per-                      Load                   W         C Ack./attempts                908
+856   submit medians of 12.4 and 13.1 ms apply only to that wrap-                                                                                     909
+                                                                                      normal          0.7 / 1.2 0.7 / 1.3          160/160
+857   per; they are not the cost of the 4 KiB channel transport                       slow     4896.4 / 4937.1 0.7 / 2.1           160/160
+                                                                                                                                                      910
+858   measured below.                                                                 stalled  4896.6 / 4929.4 0.7 / 1.2           160/160            911
+859                                                                                   response        0.7 / 1.3 0.7 / 1.7          160/160            912
+860                                                                                   long           0.7 / 20.2 0.8 / 3.5          160/160            913
+861                                                                                                                                                   914
+862
+      7.3    Socket acceptance and withdrawal                                                                                                         915
+             acknowledgement                                                   Table 7: Matched-metadata results. TT: affected
+863                                                                                                                                                   916
+                                                                               tenant-trials; V: confirmed violating TT; U: requests
+864   The channel protocol records authorization, each write                                                                                          917
+                                                                               with unknown handoff/content evidence. Counts
+865   attempt, its returned byte count, complete receiver requests,                                                                                   918
+                                                                               aggregate two AVD configurations; uncertainty re-
+866   and response receipt separately. A five-second operation                                                                                        919
+                                                                               samples complete paired trials within configuration,
+867   deadline bounds intended waits; a thirty-second harness                                                                                         920
+                                                                               schedule and instance. All instances use the host
+868   watchdog detects stuck commands. It is not a hard An-                                                                                           921
+                                                                               renderer with Vulkan disabled.
+869   droid scheduling or storage bound. Controlled barriers test                                                                                     922
+870   authorization-before-withdrawal followed by writing, and                                                                                        923
+871   process death after logging, after a positive prefix, after a na-                         Variant           TT        V U                       924
+872   tive write but before its count is logged, and before response                            enqueue         1400 1038      3                      925
+873   receipt. Retries retain source epochs. Pilots with a serialized                           job start       1400 236       3                      926
+874   broadcast queue or an incorrectly broad comparator lock                                   layered early   1400    0      6                      927
+875   are excluded. The comparator in the final runs holds the                                  chunk fence     1400    0      2                      928
+876   same coordinator only over the write phase; both variants                                 layered + fence 1400    0      1                      929
+877   connect and wait for responses outside it.                                                                                                      930
+878      The forced ordering test produced confirmed post-                                                                                            931
+                                                                               Fast requests may finish writing before withdrawal; phase-
+879   acknowledgement byte acceptance in 20/20 early-check                                                                                            932
+                                                                               coverage counts accompany the raw observations. Timing
+880   attempts, versus 0/20 fenced attempts. The authoriza-                                                                                           933
+                                                                               includes in-lock instrumentation. The fixed cell order, shared
+881   tion marker preceded acknowledgement in these early-                                                                                            934
+                                                                               host and different renderer phases limit generalization. Small
+882   check races, exposing handoffs that the stream-wrapper                                                                                          935
+                                                                               cell counts do not establish a population p99; any unacknowl-
+883   authorization-marker estimand would miss. This forced                                                                                           936
+                                                                               edged operation is reported as such rather than omitted from
+884   schedule does not estimate its natural frequency.                                                                                               937
+                                                                               the denominator.
+885      There were 80 crash-point attempts. In the 20 native-                                                                                        938
+886   return-before-log cases, 20 retained unknown handoff                        Matched metadata. Five variants share durable lineage,              939
+887   counts; absence of a count was never converted to zero.                  epochs, copied job extras and the same HTTP transport.                 940
+888   Receiver prefix logs, restart ordering, collection-epoch retry           Each of seven schedules has 20 valid trials per AVD configu-           941
+889   and re-grant outcomes are preserved separately.                          ration (140 per configuration), with all five variants paired          942
+890      Table 6 summarizes 800 backpressure attempts. Slow and                in each trial. Four read-only instances per configuration run          943
+891   stalled receivers use 8 MiB requests; the long-batch case                disjoint seeded trial ranges on the same host; these are not           944
+892   uses 1 MiB. The largest observed unrelated-scope delay with              independent devices. Table 7 reports confirmed violations              945
+893   chunk fencing was 2.2 ms. There were 400 sender deadline                 and ambiguous requests separately; neither unknowns nor                946
+894   expirations and 0 attempts without withdrawal acknowledge-               delivery deficits are counted as successful suppression. Ten-          947
+895   ment. Another 108 attempts retain ambiguous acceptance                   ants within each trial remain paired in uncertainty analysis.          948
+896   ordering within the request-to-acknowledgement interval;                                                                                        949
+897   they are not counted as clean outcomes. The separate ADB                    The analysis excludes 8 failed paired trials and retains their      950
+898   command round-trip includes process startup and IPC; it is               diagnostics. Among the fixed permitted-flow controls (T3,              951
+899   recorded on one host clock, not mixed with guest timestamps.             T4 backup, T6, T7), layered early leaves 168/14000 permitted           952
+900   Per-cell empirical tails and all failures are in the artifact.           items undelivered, chunk fence leaves 96/14000 permitted               953
+901                                                                        9                                                                          954
+       MobiSys ’27, June 2027,                                                                                                        Xuan-Bach Le
+
+
+955    items undelivered, layered + fence leaves 60/14000 permitted              Table 8: Instrumented 1 MiB uploads: median elapsed                 1008
+956    items undelivered. Per-trial availability diagnostics remain              ms/MiB and process CPU ms/MiB on one Android 15                     1009
+957    in the artifact. In the separate 35-trial-per-AVD cohort, all 56          emulator. Twenty trials per cell; concurrent rows have              1010
+958    fence and 52 layered-plus-fence control-item deficits follow              two processes per trial. Handshake, logging and re-                 1011
+959    reboot stop callbacks and cooperative exits; no policy-block              sponse are included; payload allocation is excluded.                1012
+960    or send-failure event occurs in those affected traces. Those                                                                                  1013
+961    counts describe that cohort, not the enlarged campaign. The                             Transport / policy   Elapsed    CPU                   1014
+962    matched layered-early versus fence contrast and trial-level                                                                                   1015
+                                                                                               HTTP / early           503.4   212.5
+963    intervals are reported below.                                                           HTTP / fence           464.7   219.5
+                                                                                                                                                     1016
+964       AVD A: paired confirmed-violation difference (layered                                HTTP / two fences      265.7   224.5                  1017
+965    early minus fence) 0.00 percentage points, percentile interval                          TLS / early            626.9   168.5                  1018
+966    [0.00, 0.00], across 140 complete paired trials.                                        TLS / fence            642.8   214.0                  1019
+967       AVD B: paired confirmed-violation difference (layered                                TLS / two fences       321.8   265.5                  1020
+968    early minus fence) 0.00 percentage points, percentile interval                                                                                1021
+969    [0.00, 0.00], across 140 complete paired trials.                                                                                              1022
+970       Layered early checks also have no confirmed violations                    Neither setting accepts application bytes after acknowl-         1023
+971    in these schedules; the enlarged campaign does not demon-                 edgement. Accepted ciphertext can already reside at the peer        1024
+972    strate a natural-schedule advantage for final placement. A                or in TLS/TCP buffers: it is not a measurement of bytes still       1025
+973    zero-event percentile interval is descriptive, not a population           unsent by the kernel. The post-acknowledgement kernel               1026
+974    zero-risk bound. The forced HTTP and TLS barriers isolate                 snapshots are delayed observations; an exact unsent-at-ack          1027
+975    the narrower residual race. Unknowns remain separate from                 count remains unmeasured. Shrinking the send buffer re-             1028
+976    confirmed violations.                                                     duces observed accepted exposure in this schedule, but can-         1029
+977                                                                              not guarantee recall.                                               1030
+          HTTPS buffering and labels. A separate Android 15 em-
+978                                                                                                                                                  1031
+       ulator runs TLS 1.2 over SSLEngine and SocketChannel.                     7.4    ACRA integration and settings contract
+979                                                                                                                                                  1032
+       Each of eleven conditions has 20 trials. With withdrawal
+980                                                                              The preference-only ACRA 5.14.2 embedding queued a crash            1033
+       after the first encryption step but before its first socket write,
+981                                                                              report offline, disabled reporting, and restored connectivity.      1034
+       the early-check arm completes 20/20 requests; the fenced
+982                                                                              Stock ACRA sent in 30/30 trials; the preference-aware sender        1035
+       arm blocks 20/20 and accepts zero application ciphertext
+983                                                                              sent in 0/30. Controls delivered under both variants. Reboot        1036
+       after acknowledgement. The barrier isolates a possible in-
+984                                                                              discarded the scheduled job, after which startup rechecked          1037
+       terleaving; it is not a natural-schedule frequency estimate.
+985                                                                              the preference. These are observations of the configured SDK        1038
+       With a syntactically valid label that deliberately omits the
+986                                                                              test app, not findings about every app bundling ACRA.               1039
+       withdrawn source of a derived value, 20/20 requests pass;
+987                                                                                 ACRA supplies library preference keys, not one universal         1040
+       complete labels block 20/20. Malformed labels also block
+988                                                                              stock toggle wording. The preference-only fixture displayed         1041
+       20/20. Thus fail-closed validation cannot discover omitted
+989                                                                              only “AcraLab”; its harness changed acra.enable. We clas-           1042
+       provenance. A mixed-source request is blocked as a whole
+990                                                                              sify its 30/30 receipt result under a collection-only opt-out       1043
+       in 20/20 trials, suppressing its allowed contribution along
+991                                                                              with no queued-deletion promise (Table 1). It is not evidence       1044
+       with the forbidden one.
+992                                                                              of violating the stronger contract below.                           1045
+993       Cost and residue. Table 8 measures the implemented chunk                  The explicit-contract embedding provides a visible setting       1046
+994    path, with a matched early-check transport. Cells run in fixed            that promises to invalidate queued reports, a transactional         1047
+995    block order on a shared host, so lower measured latency is                policy store, a source epoch in each report’s custom data,          1048
+996    not evidence that fencing accelerates uploads. Two-process                and the shared HTTP adapter in ACRA’s separate sender pro-          1049
+997    cells include contention for the same policy lock. These CPU              cess. Disabling shows pending status until the policy trans-        1050
+998    observations are not physical energy measurements.                        action and preference update complete. Re-grant permits             1051
+999       With a stalled TLS receiver and an actual send buffer of               new-epoch reports without reviving old ones. The artifact           1052
+1000   4096 bytes, median ciphertext accepted before withdrawal ac-              maps the UI, collector, persisted report, service registration,     1053
+1001   knowledgement is 523846 bytes; acknowledgement p95/max                    sender, retry, and retirement paths. Missing-label reports are      1054
+1002   is 6.95/12.75 ms (20 trials).                                             retired rather than relabelled; this deliberately sacrifices oth-   1055
+1003      With a stalled TLS receiver and an actual send buffer                  erwise permitted legacy reports. In the restricted-collector        1056
+1004   of 262144 bytes, median ciphertext accepted before with-                  embedding, acra delivered 10/10 disable reports, acrafence          1057
+1005   drawal acknowledgement is 1022971 bytes; acknowledge-                     delivered 0/10 disable reports, acra delivered 10/10 control        1058
+1006   ment p95/max is 7.21/9.06 ms (20 trials).                                 reports, acrafence delivered 10/10 control reports. Reboot          1059
+1007                                                                        10                                                                       1060
+       ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                   MobiSys ’27, June 2027,
+
+
+1061   outcomes and report-retirement states remain in the raw log.              Lineage is tracked at the granularity of rows and job in-            1114
+1062   These runs use the policy-path build (ACRA-P); the recovery-              puts, not of program variables. Data copied into an unla-            1115
+1063   enabled build (ACRA-R) has a separate cohort.                             belled cache and later re-read loses its label, and the wrap-        1116
+1064      After reboot, 0/6 disabled reports reached the receiver,               per then sees an unlabelled item. The stream-wrapper pro-            1117
+1065   while 6/6 remained stored. Non-delivery here is not deletion.             totype let unknown labels through; its zero observed un-             1118
+1066   Reboot controls delivered 6/6 reports; storage retirement was             knowns do not justify assuming complete labels in deploy-            1119
+1067   complete at observation-window closure in 3/6 cases.                      ments. The channel wrapper fails closed on missing, mal-             1120
+1068      Build ACRA-R’s normal-path smoke run delivered 2/2                     formed, future-epoch or unknown-scope labels and unavail-            1121
+1069   allowed controls; disabled stock/fenced delivery was 1/0.                 able policy. Only trusted collection-time metadata can sup-          1122
+1070   This small smoke run does not establish lifecycle results for             port migration; re-grant never relabels old data. This can           1123
+1071   ACRA-R.                                                                   lose permitted flows, which the conformance tests report.            1124
+1072      The actual settings-button trace observed the expected                 A direct-call mediation checker reuses the DEX parser. It            1125
+1073   acknowledgement and re-grant text in 2/2 transitions; UI                  flags five potential bypass sites in the ACRA APK and four in        1126
+1074   hierarchies, pixels and policy events are included.                       Matomo, including bundled library code. These require reach-         1127
+1075      The adapter/store conformance suite passed 14/14 cases,                ability/configuration review; the checker does not prove com-        1128
+1076   covering collection labels, missing/malformed/future labels,              plete mediation or handle native code, reflection and IPC.           1129
+1077   withdrawal, re-grant and unavailable or migrated stores.                  FlowDroid [7] provides richer flow analysis. Encrypted pay-          1130
+1078   Missing labels suppress an otherwise permitted synthetic                  loads are unattributable at the network layer, which is why          1131
+1079   report; the valid-label control is delivered. This is explicit            network-side detectors such as ReCon [44] complement but             1132
+1080   availability loss, not proof that all production copies are               cannot replace a device-side fence. Our sink counts them as          1133
+1081   labelled.                                                                 unknown, never as clean.                                             1134
+1082                                                                                                                                                  1135
+1083                                                                                Contracts are inputs. The oracle and the fence both need          1136
+1084                                                                             the app’s stated contract: which purposes a withdrawal re-           1137
+1085                                                                             vokes and whether it covers pending data. We encode it per           1138
+1086                                                                             tenant. For a real app, it must come from the app’s settings         1139
+          Second SDK.. The pinned Matomo 4.4 AAR [33] was re-
+1087                                                                             text or privacy policy [2, 54]. Getting it wrong changes what        1140
+       trieved through JitPack and executed with its real cache,
+1088                                                                             counts as a violation: the taint ablation shows the cost of          1141
+       packet builder and dispatcher. stock sent 5/5 withdrawn
+1089                                                                             an over-broad contract. We make no legal determination               1142
+       batches, fenced sent 0/5 withdrawn batches, stock sent 5/5
+1090                                                                             (cf. GDPR Art. 7(3) and Art. 17 [16]).                               1143
+       control batches, fenced sent 5/5 control batches. The embed-
+1091   ding promises to invalidate queued events. Its deterministic                                                                                   1144
+                                                                                    Cost and transport limits. The audited adapters use HTTP
+1092   pre-send barrier isolates an in-flight dispatcher path; this                                                                                   1145
+                                                                                 and TLS 1.2 with nonblocking chunks. Buffering in other
+1093   does not test durable-cache recovery, HTTPS, or a produc-                                                                                      1146
+                                                                                 clients, TLS early data, redirects and unwrapped senders
+1094   tion app.                                                                                                                                      1147
+                                                                                 are outside this transport guarantee. The app-wide lock can
+1095                                                                                                                                                  1148
+                                                                                 delay unrelated scopes. Deadlines are best effort, and neither
+1096                                                                                                                                                  1149
+                                                                                 storage latency nor Android scheduling has a hard real-time
+1097                                                                                                                                                  1150
+                                                                                 bound. A timeout cannot be converted into a successful with-
+1098                                                                                                                                                  1151
+                                                                                 drawal acknowledgement.
+1099                                                                                                                                                  1152
+1100   8    DISCUSSION AND LIMITATIONS                                              Threats to validity. Internal. The fixture’s enforcement vari-    1153
+1101     What is and is not covered. ResidueDroid’s guarantee                    ants encode common patterns, not any specific app’s code.            1154
+1102   holds for supported paths only. It does not cover:                        Their behavior after a lifecycle event is measured on the            1155
+1103   • native code that opens sockets (69% of the corpus ships                 platform, but which patterns apps actually combine is a              1156
+1104     native libraries);                                                      modelling choice. The corpus does not validate the fixture’s         1157
+1105   • embedded HTTP stacks or raw sockets that bypass the                     between-batch cancellation behavior. Host sleep and emula-           1158
+1106     wrapper (tenant T9 leaked under ResidueDroid and every                  tor crashes interrupted early trials. Early net-loss trials used     1159
+1107     variant without an early check);                                        a connectivity cut that did not reach the app (§7.1). We ex-         1160
+1108   • WebViews, Custom Tabs and IPC to other apps or SDK                      cluded every trial with a harness gap over 200 s, an emulator        1161
+1109     processes that do not link the library;                                 restart, an unreadable device log or an unverified cut (55 of        1162
+1110   • SyncAdapters and push-triggered work whose network                      825), and ran replacement trials. Shared exclusions preserve         1163
+1111     I/O goes through system services;                                       within-trial pairing but can still select easier schedules. Con-     1164
+1112   • any flow the developer did not route through the wrapper.               struct. Stream-wrapper ordering uses a pre-write log and can         1165
+1113                                                                        11                                                                        1166
+       MobiSys ’27, June 2027,                                                                                                        Xuan-Bach Le
+
+
+1167   undercount baseline handoffs. The channel tests separate au-           are persisted together with job inputs, so they survive re-              1220
+1168   thorization, attempts, acceptance and receipt; missing return          boot and force-stop. And the decision is contract-aware: it              1221
+1169   evidence is unknown. The tags are synthetic tracers, so we             is purpose- and pending-data-sensitive. The taint ablation               1222
+1170   test data provenance, not semantic sensitivity. External. We           shows why that matters, since our synthetic over-broad rule              1223
+1171   used Android 13 emulators for lifecycle and SDK tests and              blocks permitted flows.                                                  1224
+1172   an Android 15 emulator for HTTP/TLS transport tests. The                                                                                        1225
+1173   main campaign uses JobScheduler. The WorkManager and                      Deletion, revocation and concurrency. Secure deletion [42],           1226
+1174   AlarmManager runs are smaller (three variants, four sched-             formal deletion definitions [21] and GDPR-oriented storage               1227
+1175   ules) and use our fixture’s workloads, not third-party apps.           benchmarks [45] address erasing data, not stopping its later             1228
+1176   No handset was available. Physical devices, OEM scheduling             use by already-queued work. Our soundness argument is a                  1229
+1177   and production integrations remain unvalidated.                        linearizability-style argument [25]: a policy check and each             1230
+1178                                                                          bounded write are serialized against withdrawals, in the                 1231
+1179                                                                          spirit of TOCTOU defenses [11]. Leases [24] bound how                    1232
+1180
+       9    RELATED WORK                                                      stale a cached grant can be, but they do not close the race              1233
+1181      Withdrawal and consent on mobile. MowChecker [12]                   on one device, and we do not need them. Background-work                  1234
+1182   is the closest work. It statically checks whether a with-              misuse has been studied for energy (wake locks [32]). We                 1235
+1183   drawal choice control- or data-flow-dominates third-party              study it for privacy contracts.                                          1236
+1184   collection, and it found many inconsistencies. Its ques-                                                                                        1237
+       tion is whether the toggle is wired to the collection at all.             SDK isolation and downstream policy. Android’s Privacy
+1185                                                                                                                                                   1238
+       Ours starts where a correct wiring ends: data collected                Sandbox SDK Runtime separates compatible SDKs into
+1186                                                                                                                                                   1239
+       and queued before the toggle, carried by persisted work                a restricted process [22]; isolation alone does not supply
+1187                                                                                                                                                   1240
+       across lifecycle events, and the enforcement point that still          the source epochs or queued-data contract assumed here.
+1188                                                                                                                                                   1241
+       sees it. The two are complementary. Studies of consent                 Riverbed enforces user-defined data policies inside attested
+1189                                                                                                                                                   1242
+       notices and explicit-consent violations [27, 35, 38, 39] and of        server runtimes [49], complementing a device boundary that
+1190                                                                                                                                                   1243
+       tracking ecosystems [28, 41] measure whether apps ask and              cannot recall delivered data. SDK consent APIs also expose
+1191                                                                                                                                                   1244
+       whether they send before asking. Policy–code consistency               distinct contracts: Matomo’s JavaScript tracker separates
+1192                                                                                                                                                   1245
+       work [2, 3, 46, 54] compares stated policies with data flows.          tracking consent from cookie consent [34]. Those web APIs
+1193                                                                                                                                                   1246
+       Our oracle similarly judges submissions against a stated               are related design context, not evidence about the Android
+1194                                                                                                                                                   1247
+       contract, but it does so at a stated observation boundary and          SDK’s persisted dispatcher tested here.
+1195                                                                                                                                                   1248
+1196   in time.                                                                                                                                        1249
+1197
+                                                                              10    CONCLUSION                                                         1250
+1198      Permissions and asynchronous use. Android’s permission              Persisted jobs and copied data can outlive withdrawal.                   1251
+1199   model and its pitfalls are well studied [8, 18, 19]. Aper [50]         Durable source lineage and epochs make the policy decision               1252
+1200   finds dangerous APIs used asynchronously after permission              meaningful across derivation and re-grant; a bounded-write               1253
+1201   checks, a crash- and misuse-oriented cousin of our check-to-           fence closes a residual race after earlier checks. The matched           1254
+1202   commit race. Reardon et al. [43] show apps circumventing               lifecycle results do not establish a general advantage over              1255
+1203   permissions through side channels. That is why we restrict             layered checks with equivalent metadata. HTTP and TLS                    1256
+1204   our claims to cooperative apps and mediated paths.                     tests distinguish encryption, socket acceptance and receipt.             1257
+1205                                                                          Complete mediation and complete labels remain assump-                    1258
+1206      Data management and information flow. TaintDroid [15]               tions, and accepted bytes cannot be recalled. ACRA and                   1259
+1207   tracks data to the network at runtime. AppFence [26] blocks            Matomo embeddings demonstrate supported paths without                    1260
+1208   or shadows sensitive flows. Static analyzers such as Flow-             establishing production-app or physical-device coverage.                 1261
+1209   Droid [7], IccTA [30], Amandroid [51] and DroidSafe [23]                                                                                        1262
+1210   find source-to-sink paths (see [31]). CleanOS [48] evicts idle         ACKNOWLEDGMENTS                                                          1263
+1211   sensitive data, and Pebbles [47] recovers logical data objects         An LLM assisted with manuscript drafting and editing. The                1264
+1212   so that they can be managed, including deleted. Weir [37]              author is responsible for the final text, analyses and claims.           1265
+1213   brings decentralized information-flow control [14, 29, 36, 53]                                                                                  1266
+1214   to Android, and FlowFence [20] confines sensitive computa-             REFERENCES                                                               1267
+1215   tion in IoT frameworks. Aurasium and Boxify [9, 52] inter-                                                                                      1268
+                                                                               [1] ACRA contributors. 2026. ACRA: Application Crash Reports for An-
+1216   pose on app behavior without platform changes. Residue-                     droid, release 5.14.2. https://github.com/ACRA/acra.
+                                                                                                                                                       1269
+1217   Droid borrows the label idea but differs in three ways. Its             [2] Benjamin Andow, Samin Yaseer Mahmud, Wenyu Wang, Justin             1270
+1218   labels carry an epoch that a withdrawal invalidates. They                   Whitaker, William Enck, Bradley Reaves, Kapil Singh, and Tao Xie.   1271
+1219                                                                     12                                                                            1272
+       ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                                    MobiSys ’27, June 2027,
+
+
+1273        2019. PolicyLint: Investigating Internal Privacy Policy Contradictions         [19] Adrienne Porter Felt, Elizabeth Ha, Serge Egelman, Ariel Haney, Erika     1326
+1274        on Google Play. In Proceedings of the 28th USENIX Security Symposium.               Chin, and David Wagner. 2012. Android Permissions: User Attention,        1327
+1275    [3] Benjamin Andow, Samin Yaseer Mahmud, Justin Whitaker, William                       Comprehension, and Behavior. In Proceedings of the Eighth Symposium       1328
+            Enck, Bradley Reaves, Kapil Singh, and Serge Egelman. 2020. Ac-                     on Usable Privacy and Security (SOUPS).
+1276                                                                                                                                                                      1329
+            tions Speak Louder than Words: Entity-Sensitive Privacy Policy and             [20] Earlence Fernandes, Justin Paupore, Amir Rahmati, Daniel Simionato,
+1277        Data Flow Analysis with PoliCheck. In Proceedings of the 29th USENIX                Mauro Conti, and Atul Prakash. 2016. FlowFence: Practical Data            1330
+1278        Security Symposium.                                                                 Protection for Emerging IoT Application Frameworks. In Proceedings        1331
+1279    [4] Android Developers. 2026. JobInfo.Builder – setPersisted. https://                  of the 25th USENIX Security Symposium. 531–548.                           1332
+1280        developer.android.com/reference/android/app/job/JobInfo.Builder. Ac-           [21] Sanjam Garg, Shafi Goldwasser, and Prashant Nalini Vasudevan. 2020.       1333
+            cessed 2026-11-08.                                                                  Formalizing Data Deletion in the Context of the Right to Be Forgotten.
+1281                                                                                                                                                                      1334
+        [5] Android Developers. 2026. SocketChannel API Reference. https://                     In Advances in Cryptology – EUROCRYPT 2020.
+1282        developer.android.com/reference/java/nio/channels/SocketChannel                [22] Google. 2026. SDK Runtime overview. https://privacysandbox.google.        1335
+1283        Accessed 2026-11-15.                                                                com/private-advertising/sdk-runtime/architecture. Accessed 2026-11-       1336
+1284    [6] Android Developers. 2026.               Task scheduling (WorkMan-                   15.                                                                       1337
+1285        ager).           https://developer.android.com/develop/background-             [23] Michael I. Gordon, Deokhwan Kim, Jeff Perkins, Limei Gilham, Nguyen       1338
+            work/background-tasks/persistent. Accessed 2026-11-08.                              Nguyen, and Martin Rinard. 2015. Information-Flow Analysis of An-
+1286                                                                                                                                                                      1339
+        [7] Steven Arzt, Siegfried Rasthofer, Christian Fritz, Eric Bodden, Alexan-             droid Applications in DroidSafe. In Proceedings of the Network and
+1287        dre Bartel, Jacques Klein, Yves Le Traon, Damien Octeau, and Patrick                Distributed System Security Symposium (NDSS).                             1340
+1288        McDaniel. 2014. FlowDroid: Precise Context, Flow, Field, Object-               [24] Cary G. Gray and David R. Cheriton. 1989. Leases: An Efficient Fault-     1341
+1289        sensitive and Lifecycle-aware Taint Analysis for Android Apps. In                   Tolerant Mechanism for Distributed File Cache Consistency. In Pro-        1342
+1290        Proceedings of the 35th ACM SIGPLAN Conference on Programming                       ceedings of the 12th ACM Symposium on Operating Systems Principles        1343
+            Language Design and Implementation (PLDI).                                          (SOSP).
+1291                                                                                                                                                                      1344
+        [8] Kathy Wain Yee Au, Yi Fan Zhou, Zhen Huang, and David Lie. 2012.               [25] Maurice P. Herlihy and Jeannette M. Wing. 1990. Linearizability: A
+1292        PScout: Analyzing the Android Permission Specification. In Proceedings              Correctness Condition for Concurrent Objects. ACM Transactions on         1345
+1293        of the 19th ACM Conference on Computer and Communications Security                  Programming Languages and Systems 12, 3 (1990), 463–492.                  1346
+1294        (CCS).                                                                         [26] Peter Hornyack, Seungyeop Han, Jaeyeon Jung, Stuart Schechter, and        1347
+1295    [9] Michael Backes, Sven Bugiel, Christian Hammer, Oliver Schranz, and                  David Wetherall. 2011. These Aren’t the Droids You’re Looking For:        1348
+            Philipp von Styp-Rekowsky. 2015. Boxify: Full-fledged App Sand-                     Retrofitting Android to Protect Data from Imperious Applications. In
+1296                                                                                                                                                                      1349
+            boxing for Stock Android. In Proceedings of the 24th USENIX Security                Proceedings of the 18th ACM Conference on Computer and Communica-
+1297        Symposium.                                                                          tions Security (CCS).                                                     1350
+1298   [10] Alexandre Bartel, Jacques Klein, Yves Le Traon, and Martin Monperrus.          [27] Konrad Kollnig, Reuben Binns, Pierre Dewitte, Max Van Kleek, Ge           1351
+1299        2012. Dexpler: Converting Android Dalvik Bytecode to Jimple for Static              Wang, Daniel Omeiza, Helena Webb, and Nigel Shadbolt. 2021. A Fait        1352
+1300        Analysis with Soot. In Proceedings of the ACM SIGPLAN International                 Accompli? An Empirical Study into the Absence of Consent to Third-        1353
+            Workshop on State of the Art in Java Program Analysis (SOAP).                       Party Tracking in Android Apps. In Proceedings of the Seventeenth
+1301                                                                                                                                                                      1354
+       [11] Matt Bishop and Michael Dilger. 1996. Checking for Race Conditions                  Symposium on Usable Privacy and Security (SOUPS).
+1302        in File Accesses. Computing Systems 9, 2 (1996), 131–152.                      [28] Konrad Kollnig, Anastasia Shuba, Max Van Kleek, Reuben Binns, and         1355
+1303   [12] Xiaolin Du, Zhemin Yang, Jiapeng Lin, Yinzhi Cao, and Min Yang.                     Nigel Shadbolt. 2022. Goodbye Tracking? Impact of iOS App Tracking        1356
+1304        2024. Withdrawing is Believing? Detecting Inconsistencies between                   Transparency and Privacy Labels. In Proceedings of the ACM Conference     1357
+1305        Withdrawal Choices and Third-party Data Collections in Mobile Apps.                 on Fairness, Accountability, and Transparency (FAccT).                    1358
+            In Proceedings of the IEEE Symposium on Security and Privacy (S&P).            [29] Maxwell Krohn, Alexander Yip, Micah Brodsky, Natan Cliffer, M. Frans
+1306                                                                                                                                                                      1359
+       [13] Bradley Efron. 1979. Bootstrap Methods: Another Look at the Jackknife.              Kaashoek, Eddie Kohler, and Robert Morris. 2007. Information Flow
+1307        The Annals of Statistics 7, 1 (1979), 1–26.                                         Control for Standard OS Abstractions. In Proceedings of the 21st ACM      1360
+1308   [14] Petros Efstathopoulos, Maxwell Krohn, Steve VanDeBogart, Cliff Frey,                Symposium on Operating Systems Principles (SOSP).                         1361
+1309        David Ziegler, Eddie Kohler, David Mazières, M. Frans Kaashoek, and            [30] Li Li, Alexandre Bartel, Tegawendé F. Bissyandé, Jacques Klein, Yves Le   1362
+1310        Robert Morris. 2005. Labels and Event Processes in the Asbestos Oper-               Traon, Steven Arzt, Siegfried Rasthofer, Eric Bodden, Damien Octeau,      1363
+            ating System. In Proceedings of the 20th ACM Symposium on Operating                 and Patrick McDaniel. 2015. IccTA: Detecting Inter-Component Pri-
+1311                                                                                                                                                                      1364
+            Systems Principles (SOSP).                                                          vacy Leaks in Android Apps. In Proceedings of the 37th International
+1312   [15] William Enck, Peter Gilbert, Byung-Gon Chun, Landon P. Cox, Jaeyeon                 Conference on Software Engineering (ICSE).                                1365
+1313        Jung, Patrick McDaniel, and Anmol N. Sheth. 2010. TaintDroid: An               [31] Li Li, Tegawendé F. Bissyandé, Mike Papadakis, Siegfried Rasthofer,       1366
+1314        Information-Flow Tracking System for Realtime Privacy Monitoring                    Alexandre Bartel, Damien Octeau, Jacques Klein, and Yves Le Traon.        1367
+1315        on Smartphones. In Proceedings of the 9th USENIX Symposium on Op-                   2017. Static Analysis of Android Apps: A Systematic Literature Review.    1368
+            erating Systems Design and Implementation (OSDI).                                   Information and Software Technology 88 (2017), 67–95.
+1316                                                                                                                                                                      1369
+       [16] European Parliament and Council of the European Union. 2016. Reg-              [32] Yepang Liu, Chang Xu, Shing-Chi Cheung, and Valerio Terragni. 2016.
+1317        ulation (EU) 2016/679 (General Data Protection Regulation). Official                Understanding and Detecting Wake Lock Misuses for Android Applica-        1370
+1318        Journal of the European Union, L 119.                                               tions. In Proceedings of the 24th ACM SIGSOFT International Symposium     1371
+1319   [17] F-Droid. 2026. F-Droid repository index v2. https://f-droid.org/repo/               on Foundations of Software Engineering (FSE). 396–409.                    1372
+1320        index-v2.json. Fetched 2026-11-08.                                             [33] Matomo contributors. 2025. Matomo SDK for Android, release 4.4.           1373
+       [18] Adrienne Porter Felt, Erika Chin, Steve Hanna, Dawn Song, and David                 https://github.com/matomo-org/matomo-sdk-android. Release 4.4,
+1321                                                                                                                                                                      1374
+            Wagner. 2011. Android Permissions Demystified. In Proceedings of                    2025-09-04; accessed 2026-11-08.
+1322        the 18th ACM Conference on Computer and Communications Security                [34] Matomo contributors. 2026. Tracking and Cookie Consent. https:            1375
+1323        (CCS).                                                                              //developer.matomo.org/guides/tracking-consent. JavaScript tracker        1376
+1324                                                                                            documentation; accessed 2026-11-15.                                       1377
+1325                                                                                  13                                                                                  1378
+       MobiSys ’27, June 2027,                                                                                                                          Xuan-Bach Le
+
+
+1379   [35] Célestin Matte, Nataliia Bielova, and Cristiana Santos. 2020. Do Cookie             conference/nsdi19/presentation/wang-frank                                 1432
+1380        Banners Respect my Choice? Measuring Legal Compliance of Ban-                  [50] Sinan Wang, Yibo Wang, Xian Zhan, Ying Wang, Yepang Liu, Xiapu            1433
+1381        ners from IAB Europe’s Transparency and Consent Framework. In                       Luo, and Shing-Chi Cheung. 2022. Aper: Evolution-Aware Runtime            1434
+            Proceedings of the IEEE Symposium on Security and Privacy (S&P).                    Permission Misuse Detection for Android Apps. In Proceedings of the
+1382                                                                                                                                                                      1435
+       [36] Andrew C. Myers and Barbara Liskov. 1997. A Decentralized Model for                 44th International Conference on Software Engineering (ICSE).
+1383        Information Flow Control. In Proceedings of the 16th ACM Symposium             [51] Fengguo Wei, Sankardas Roy, Xinming Ou, and Robby. 2014. Aman-            1436
+1384        on Operating Systems Principles (SOSP).                                             droid: A Precise and General Inter-component Data Flow Analysis           1437
+1385   [37] Adwait Nadkarni, Benjamin Andow, William Enck, and Somesh Jha.                      Framework for Security Vetting of Android Apps. In Proceedings of         1438
+1386        2016. Practical DIFC Enforcement on Android. In Proceedings of the                  the 21st ACM Conference on Computer and Communications Security           1439
+            25th USENIX Security Symposium. 1119–1136.                                          (CCS).
+1387                                                                                                                                                                      1440
+       [38] Trung Tin Nguyen, Michael Backes, Ninja Marnau, and Ben Stock.                 [52] Rubin Xu, Hassen Saïdi, and Ross Anderson. 2012. Aurasium: Practical
+1388        2021. Share First, Ask Later (or Never?) Studying Violations of GDPR’s              Policy Enforcement for Android Applications. In Proceedings of the        1441
+1389        Explicit Consent in Android Apps. In Proceedings of the 30th USENIX                 21st USENIX Security Symposium.                                           1442
+1390        Security Symposium.                                                            [53] Nickolai Zeldovich, Silas Boyd-Wickizer, Eddie Kohler, and David Maz-     1443
+1391   [39] Trung Tin Nguyen, Michael Backes, and Ben Stock. 2022. Freely                       ières. 2006. Making Information Flow Explicit in HiStar. In Proceedings   1444
+            Given Consent? Studying Consent Notice of Third-Party Tracking and                  of the 7th USENIX Symposium on Operating Systems Design and Imple-
+1392                                                                                                                                                                      1445
+            Its Violations of GDPR in Android Apps. In Proceedings of the ACM                   mentation (OSDI).
+1393        SIGSAC Conference on Computer and Communications Security (CCS).               [54] Sebastian Zimmeck, Peter Story, Daniel Smullen, Abhilasha Ravichan-       1446
+1394        2369–2383.                                                                          der, Ziqi Wang, Joel Reidenberg, N. Cameron Russell, and Norman           1447
+1395   [40] Oracle. 2026. SSLEngine: Java Platform Standard Edition 17 API Speci-               Sadeh. 2019. MAPS: Scaling Privacy Compliance Analysis to a Million       1448
+1396        fication. https://docs.oracle.com/en/java/javase/17/docs/api/java.base/             Apps. Proceedings on Privacy Enhancing Technologies 2019, 3 (2019),       1449
+            javax/net/ssl/SSLEngine.html. Accessed 2026-11-15.                                  66–86.
+1397                                                                                                                                                                      1450
+       [41] Abbas Razaghpanah, Rishab Nithyanand, Narseo Vallina-Rodriguez,
+1398        Srikanth Sundaresan, Mark Allman, Christian Kreibich, and Phillipa                                                                                            1451
+1399        Gill. 2018. Apps, Trackers, Privacy, and Regulators: A Global Study                                                                                           1452
+1400        of the Mobile Tracking Ecosystem. In Proceedings of the Network and            A     ARTIFACT AND REPRODUCTION                                                1453
+1401        Distributed System Security Symposium (NDSS).                                                                                                                 1454
+       [42] Joel Reardon, David Basin, and Srdjan Capkun. 2013. SoK: Secure Data
+                                                                                           The artifact contains the fixture and library sources
+1402                                                                                       (fixture/src, framework-only Java), the ACRA case-                             1455
+            Deletion. In Proceedings of the IEEE Symposium on Security and Privacy
+1403        (S&P).                                                                         study app built from the unmodified ACRA 5.14.2 AARs, the                      1456
+1404   [43] Joel Reardon, Álvaro Feal, Primal Wijesekera, Amit Elazari Bar On,             harnesses (harness/), the oracle and aggregation scripts                       1457
+1405        Narseo Vallina-Rodriguez, and Serge Egelman. 2019. 50 Ways to Leak             (scripts/), the static scanner and corpus list (static/),                      1458
+1406        Your Data: An Exploration of Apps’ Circumvention of the Android                                                                                               1459
+            Permissions System. In Proceedings of the 28th USENIX Security Sym-
+                                                                                           all raw logs (sink JSON lines, device event logs read with
+1407                                                                                       sqlite3, and per-trial schedule logs with host timestamps),                    1460
+            posium.
+1408   [44] Jingjing Ren, Ashwin Rao, Martina Lindorfer, Arnaud Legout, and                and the authorization-order and socket-acceptance render-                      1461
+1409        David Choffnes. 2016. ReCon: Revealing and Controlling PII Leaks in            ers, which write the empirical tables, plots and evaluation                    1462
+1410        Mobile Network Traffic. In Proceedings of the 14th Annual International        macros. make all regenerates the paper from the raw data.                      1463
+1411        Conference on Mobile Systems, Applications, and Services (MobiSys).                                                                                           1464
+       [45] Supreeth Shastri, Vinay Banakar, Melissa Wasserman, Arun Kumar,
+                                                                                           make campaign, make micro and make acra re-run the
+1412                                                                                       emulator experiments. Pinned dependencies and corpus                           1465
+            and Vijay Chidambaram. 2020. Understanding and Benchmarking
+1413        the Impact of GDPR on Database Systems. Proceedings of the VLDB                inputs carry SHA-256 manifests. The archive excludes the                       1466
+1414        Endowment 13, 7 (2020), 1064–1077.                                             corpus APK cache, SDK and AVDs; scan outputs support nu-                       1467
+1415   [46] Rocky Slavin, Xiaoyin Wang, Mitra Bokaei Hosseini, James Hester,               meric regeneration, while new scans require APK retrieval.                     1468
+1416        Ram Krishnan, Jaspreet Bhatia, Travis D. Breaux, and Jianwei Niu.                                                                                             1469
+            2016. Toward a Framework for Detecting Privacy Policy Violations
+                                                                                           Experiment protocols, source freezes and exclusions are
+1417                                                                                       in revision/. The local package is not a claim of public                       1470
+            in Android Application Code. In Proceedings of the 38th International
+1418        Conference on Software Engineering (ICSE).                                     hosting or third-party reproduction.                                           1471
+1419   [47] Riley Spahn, Jonathan Bell, Michael Z. Lee, Sravan Bhamidipati, Rox-                                                                                          1472
+1420        ana Geambasu, and Gail E. Kaiser. 2014. Pebbles: Fine-Grained Data                                                                                            1473
+1421        Management Abstractions for Modern Operating Systems. In Proceed-              B     FIXTURE DETAILS                                                          1474
+            ings of the 11th USENIX Symposium on Operating Systems Design and
+1422
+            Implementation (OSDI). 113–129.                                                   Jobs. For tenant 𝑡, upload, summary, backup and person-                     1475
+1423   [48] Yang Tang, Phillip Ames, Sravan Bhamidipati, Ashish Bijlani, Rox-              alisation jobs use IDs 10𝑡+1, 10𝑡+3, 10𝑡+4 and 10𝑡+5. All                      1476
+1424        ana Geambasu, and Nikhil Sarda. 2012. CleanOS: Limiting Mobile                 are persisted, with a 15 s minimum latency, a 30 s deadline                    1477
+1425        Data Exposure with Idle Eviction. In Proceedings of the 10th USENIX            override and a network constraint. In the manual schedules                     1478
+1426        Symposium on Operating Systems Design and Implementation (OSDI).               (net, infl) setup-time jobs get a 600 s latency and are started                1479
+            77–91.
+1427
+       [49] Frank Wang, Ronny Ko, and James Mickens. 2019. Riverbed: Enforcing             with cmd jobscheduler run -f. Jobs enqueued later, by a                        1480
+1428        User-defined Privacy Constraints in Distributed Web Services. In 16th          re-grant or at startup, keep their natural latency. After 60 s,                1481
+1429        USENIX Symposium on Networked Systems Design and Implementation                the harness force-runs any job still registered, which bounds                  1482
+1430        (NSDI 19). USENIX Association, 615–630. https://www.usenix.org/                the observation window.                                                        1483
+1431                                                                                  14                                                                                  1484
+       ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                                                                   MobiSys ’27, June 2027,
+
+
+1485      Variant semantics. cancel cancels the jobs whose declared              Table 9: Stream-wrapper authorization-order viola-                                                                      1538
+1486   scope is the withdrawn scope and whose purpose the                        tions (%), tenants T1, T8, T2, T5 and T4 (personalisa-                                                                  1539
+1487   contract revokes. For contracts covering pending data, it                 tion). Trials per schedule (AVD A): pen 50, kill 50, fstop                                                              1540
+1488   also deletes the tenant’s unsent outbox rows (T4 instead                  50, reb 50, rev 50, net 50, infl 50.                                                                                    1541
+1489   marks them unsendable for personalisation) and derived                                                                                                                                            1542
+1490   rows whose declared scope matches. enqueue checks at                                                  Variant                             pen kill fstop reb rev net infl                         1543
+1491   every schedule() call, including the startup path. job-start                                          none                                100 100           80 100 100              80       44
+                                                                                                                                                                                                         1544
+1492   checks at the start of onStartJob’s worker thread. The                                                cancel                               20 20            20 20 20                80        1   1545
+1493   conventional check is “withdrawn scope = declared scope,                                              enqueue                             100 100           40 100 100              80       44   1546
+1494   purpose revoked, pending covered, flag cleared”. egress                                               job-start                            40 40            40 40 40                79       43   1547
+                                                                                                             conv                                 20 20            20 20 20                80        2
+1495   evaluates the same check inside the fence’s critical section.                                                                                                                                     1548
+1496                                                                                                         egress (decl.)                        40      40      40       40      40     20       0    1549
+1497
+          Oracle. Let 𝑊𝑡 be the sequence numbers of tenant 𝑡’s with-                                         ResidueDroid                           0       0       0        0       0      0       0    1550
+1498
+       drawals in the device log, and 𝑞 the pre-write authorization                                          ResidueDroid (AVD B)                   0       0       0        0       0      0       0
+                                                                                                                                                                                                         1551
+1499
+       sequence carried in a submission’s body. A source tag of                                              volatile labels                        0 100          80 100 100               0       0    1552
+1500
+       epoch 𝑒 in an item sent for purpose 𝑝 is prohibited if and                                            taint rule                             0   0           0   0   0               0       0    1553
+1501
+       only if 𝑝 is revoked by 𝑡’s contract, the contract covers pend-                                                                                                                                   1554
+1502
+       ing data, and 𝑒 < |{𝑤 ∈ 𝑊𝑡 : 𝑤 < 𝑞}|. A derived item is                                                                                                                                           1555
+       prohibited if any of its listed sources is. For the raw-socket                                                              lifecycle (pen, kill, fstop, reb, rev)        race (net, infl)
+
+
+
+
+                                                                                     prohibited items / tenant-trial
+1503                                                                                                                                                                                                     1556
+1504
+       tenant, 𝑞 is joined from the device log by submission id.                                                                                                                                         1557
+1505
+       Host-time fallback cannot establish socket order. The socket-                                                   10
+                                                                                                                                                                                                         1558
+1506
+       acceptance oracle classifies missing or overlapping evidence                                                                                                                                      1559
+1507
+       as unknown; authorization-marker results certify only the                                                                                                                                         1560
+                                                                                                                        5
+1508
+       logged authorization order.                                                                                                                                                                       1561
+1509                                                                                                                                                                                                     1562
+1510
+       C    UNCOVERED PATHS                                                                                             0                                                                                1563
+       ResidueDroid mediates submissions made through its                                                                   none cancel    enq     start    conv egress          RD      volat. taint
+1511                                                                                                                                                                                                     1564
+1512   wrapper by code that stores data in its labelled stores. Not                                                                                                                                      1565
+1513   mediated: (i) JNI/native sockets; (ii) bundled HTTP clients               Figure 3: Stream-wrapper prohibited authorizations                                                                      1566
+1514   (OkHttp, Ktor, Cronet) called directly; (iii) WebView, Custom             per tenant-trial (T1, T8, T2, T5, T4), AVD A and B                                                                      1567
+1515   Tabs and DownloadManager, where the system process                        pooled. ResidueDroid (RD) authorizes none.                                                                              1568
+1516   performs the I/O; (iv) IPC to other apps or to SDK processes                                                                                                                                      1569
+1517   that do not link the library; (v) SyncAdapters whose I/O runs                                                                                                                                     1570
+1518   in system-initiated contexts that the app does not route; (vi)                                                                                                                                    1571
+                                                                                 this paper rather than built on Soot/Dexpler [10] so that it
+1519   data copied to unlabelled files or caches. Path (ii) requires                                                                                                                                     1572
+                                                                                 runs with the Python standard library alone. The validation
+1520   auditing buffering, retries and the actual transport boundary;                                                                                                                                    1573
+                                                                                 sample (§3) and all per-app outputs are in the artifact.
+1521   an application interceptor alone does not establish per-write                                                                                                                                     1574
+1522   serialization. Paths (i) and (iii) need platform support. T9 in                                                                                                                                   1575
+1523   our campaign represents (i)/(ii).                                         E                                     STREAM-WRAPPER EVALUATION                                                         1576
+1524                                                                                                                   DETAILS                                                                           1577
+1525   D    STATIC SCANNER                                                       The stream wrapper measures authorization order violations                                                              1578
+1526   The scanner parses each classes*.dex (string, type, method                among delivered items. Its event called COMMIT precedes                                                                 1579
+1527   and class tables, class_data, code items) and walks Dalvik                the stream write. Accordingly, “authorized” in these stream-                                                            1580
+1528   instructions using the opcode width table, including the                  wrapper results does not establish a socket-handoff bound-                                                              1581
+1529   switch and array payload pseudo-instructions. Edges are                   ary. The channel tests reported separately use accepted byte                                                            1582
+1530   invoke-* targets, class-hierarchy resolution below app-                   counts. We ask four questions. RQ1: Which enforcement                                                                   1583
+1531   defined types (capped at 50 targets), and allocation edges to             points let data that a withdrawal invalidated leave the de-                                                             1584
+1532   callback methods (run, call, invoke, invokeSuspend, . . . )               vice, under which lifecycle schedules? RQ2: Do measured                                                                 1585
+1533   of allocated classes. Inner classes of an entry class, such as            race windows match Theorem 2? RQ3: Does ResidueDroid                                                                    1586
+1534   Kotlin coroutine state machines, are added as roots. Search               withhold permitted data, and what do its ablations lose?                                                                1587
+1535   is breadth-first with an 8,000-node budget per entry and                  RQ4: What does ResidueDroid cost, do its labels survive                                                                 1588
+1536   records the minimum hop count to a sink. It is written for                SIGKILL, and does it carry over to a real library?                                                                      1589
+1537                                                                        15                                                                                                                           1590
+       MobiSys ’27, June 2027,                                                                                                        Xuan-Bach Le
+
+
+1591   E.1     RQ1: Which check points leak?                                    Table 10: Violation rate (%) by deferred-work substrate              1644
+1592
+       Table 9 gives the violation rate per variant and schedule                (tenants T1, T8, T2, T5, T4). WorkManager and Alar-                  1645
+1593
+       over the five tenants whose contracts cover pending data,                mManager runs use their own rescheduling; the fix-                   1646
+1594
+       and Figure 3 gives the number of prohibited items. Across                ture’s startup re-enqueue path is disabled for Work-                 1647
+1595
+       700 valid trials and 94,568 logged submissions, four patterns            Manager.                                                             1648
+1596                                                                                                                                                 1649
+       stand out.
+1597                                                                                    Substrate      Variant       pen kill fstop reb              1650
+          Enqueue-time checks are defeated by persistence. none and
+1598                                                                                                                                                 1651
+       enqueue authorized prohibited data in 100% and 100% of                           JobScheduler   none         100 100      80 100
+1599                                                                                                                                                 1652
+       tenant-trials under pen, kill, reb and rev. The job had been                     JobScheduler   conv          20 20       20 20
+1600
+       queued before the withdrawal, and the system restored and                        JobScheduler   ResidueDroid   0   0       0   0              1653
+1601                                                                                                                                                 1654
+       ran it after process death or reboot. Figure 5 shows how                         WorkManager    none         100 100     100 100
+1602                                                                                    WorkManager    conv          20 20       20 20               1655
+       long the window stays open: a median of 43 s when pending
+1603                                                                                    WorkManager    ResidueDroid   0   0       0   0              1656
+       and 51 s across a reboot, because JobScheduler batching and
+1604                                                                                                                                                 1657
+       boot time add to the job’s own latency. Force-stop is the                        AlarmManager none         100 100         4     0
+1605
+       exception. It removed the jobs, and the startup path that re-                    AlarmManager conv          20 20          5     0            1658
+1606                                                                                    AlarmManager ResidueDroid   0   0         0     0            1659
+       enqueued them re-ran the enqueue check, so enqueue leaked
+1607                                                                                                                                                 1660
+       in only 40% of fstop tenant-trials. The platform’s lifecycle
+1608                                                                                                                                                 1661
+       thus decides whether an early check happens to be re-run.
+1609                                                                            schedule). WorkManager 2.9.1 keeps its own database and              1662
+          Cancellation and job-start checks miss lineage and epochs.
+1610                                                                            reschedules work itself; for these builds we disabled the            1663
+       conv (cancel + enqueue + job start) leaked in 26% of tenant-
+1611                                                                            fixture’s startup re-enqueue path, so every upload after a           1664
+       trials overall. In the lifecycle schedules almost all of it came
+1612                                                                            lifecycle event comes from WorkManager. It behaved like              1665
+       from T1, whose summary was filed under diagnostics (100% of
+1613                                                                            JobScheduler, and its work also survived force-stop (none            1666
+       T1 tenant-trials, against 1 of 1,000 for the other four tenants).
+1614                                                                            leaked in 100% of fstop tenant-trials). conv again leaked            1667
+       Cancellation and checks keyed on the job’s declared scope
+1615                                                                            only T1’s misfiled summary. With AlarmManager, the app               1668
+       never look at that job. job-start and the serialized egress
+1616                                                                            arms one alarm per job and re-arms lost alarms from its              1669
+       check additionally leaked T5’s pre-withdrawal records af-
+1617                                                                            outbox when its process starts. Alarms do not survive force-         1670
+       ter the re-grant (egress: 86% of T5 tenant-trials), because a
+1618                                                                            stop or reboot. After force-stop the startup path re-armed           1671
+       boolean flag cannot tell old data from new (Proposition 3).
+1619                                                                            some alarms but not others. After a reboot no alarm app              1672
+       egress serializes its stream-wrapper gate but still admits data
+1620                                                                            logged a process start within the observation window in              1673
+       whenever lineage or epochs matter.
+1621                                                                            any trial (in one manual reboot outside the campaign its             1674
+          Late authorizations defeat every check before the socket. In
+1622                                                                            BOOT_COMPLETED receiver did run, so this is timing we did            1675
+       the race schedules, the tenants without a lineage or epoch
+1623                                                                            not control), and nothing re-armed the alarms. none there-           1676
+       problem (T8, T2, T5, T4) still leaked under conv in 50% of
+1624                                                                            fore leaked in pen and kill, in 4% of fstop and in no reb            1677
+       tenant-trials. In net, the job had passed its job-start check
+1625                                                                            tenant-trials, and lost 49% of the FP tenants’ permitted items       1678
+       and prepared its batch before the withdrawal. It then retried
+1626                                                                            to lost alarms, an availability loss rather than enforcement.        1679
+       that batch after connectivity returned (job-start 99%, conv
+1627                                                                            conv leaked T1’s summary whenever its alarm fired. On both           1680
+       100%). Cancellation stopped the job only between batches,
+1628                                                                            substrates ResidueDroid authorized no prohibited item (0             1681
+       so the batch being retried still went out (cancel 100%).
+1629                                                                            over 390 and 0 over 400 tenant-trials), while the unmedi-            1682
+          ResidueDroid authorized no prohibited item. Over 3500
+1630                                                                            ated T9 leaked under ResidueDroid whenever its upload                1683
+       tenant-trials on mediated paths, across both AVDs and all
+1631                                                                            ran (100% and 69% of its tenant-trials). The substrate decides       1684
+       seven schedules, ResidueDroid authorized 0 prohibited
+1632                                                                            whether deferred work survives a lifecycle event, not which          1685
+       items. The second AVD reproduces this (row “ResidueDroid
+1633                                                                            gate sees authorization.                                             1686
+       (AVD B)”). The volatile ablation illustrates the consequence
+1634                                                                                                                                                 1687
+       of losing labels and then failing open. It was clean while the
+1635                                                                            E.2    RQ2: Race windows follow Theorem 2                            1688
+       process lived (pen: 0%), but after kill, reboot or force-stop
+1636
+       its in-memory labels were gone and it failed open in 93% of              In infl, the withdrawal lands at a uniform offset after the          1689
+1637
+       tenant-trials.                                                           upload job starts. Theorem 2 predicts that a job-start check         1690
+1638                                                                            leaks exactly when the offset is below the job’s last autho-         1691
+1639      Other deferred-work substrates. The main campaign uses                rization offset 𝑐𝑘 . We measured 𝑐𝑘 directly from the job-start      1692
+1640   JobScheduler. We reran none, conv and ResidueDroid with                  variant’s authorization log (𝑛=150 jobs, median 635 ms: three        1693
+1641   the same tenants on two other substrates under pen, kill,                4-record batches against a 300 ms server). Per tenant-trial,         1694
+1642   fstop and reb (Table 10; at least 19 and 20 valid trials per             the rule “violation iff the offset is below that trial’s own 𝑐𝑘 ”    1695
+1643                                                                       16                                                                        1696
+       ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress                                                                          MobiSys ’27, June 2027,
+
+
+1697                     1
+                                                                             cancel
+                                                                                                       Table 11: Permitted items not delivered per tenant-                   1750
+1698                                                                       job-start                   trial (FP controls; T7 in rev only). Last column: share               1751
+
+
+
+         P(violation)
+1699                                                                          conv                     of all permitted items. none enforces nothing, so its                 1752
+                        0.5                                                    RD                      deficit is availability loss common to every variant.
+1700                                                                                                                                                                         1753
+                                                                     Eq. (2), measured 𝑐𝑘
+1701                                                                                                                                                                         1754
+1702                                                                                                   Variant                T3 flush T4 backup T6 none T7 OS % total       1755
+1703                     0                                                                                                                                                   1756
+                              0   0.2    0.4     0.6     0.8     1       1.2     1.4        1.6        none                      0.00       0.01     0.00    0.00      0.0
+1704                                                                                                   cancel                    0.02       0.00     0.01    0.00      0.1   1757
+                                        withdrawal offset after job start (s)
+1705                                                                                                   enqueue                   0.00       0.00     0.00    0.00      0.0   1758
+1706                                                                                                   job-start                 0.02       0.08     0.00    0.00      0.3   1759
+1707
+       Figure 4: In-flight schedule: share of tenant-trials (T8,                                       conv                      0.13       0.15     0.15    0.00      1.1   1760
+       T2, T5) with a prohibited authorization, by withdrawal                                          egress (decl.)            0.00       0.00     0.00    0.00      0.0
+1708                                                                                                                                                                         1761
+       offset (200 ms bins). The dashed line is Theorem 2’s                                            ResidueDroid              0.00       0.00     0.00    0.00      0.0
+1709                                                                                                   ResidueDroid (AVD B)      0.00       0.02     0.00    0.00      0.1   1762
+1710
+       prediction from the job-start variant’s measured last-                                          volatile labels           0.11       0.09     0.05    0.00      0.6   1763
+1711
+       authorization offsets.                                                                          taint rule                9.54      10.61     0.22   12.00     55.6   1764
+1712                                                                                                                                                                         1765
+1713                     1                                                                                                                                                   1766
+                                                                                                       With the check and authorization in one critical section,
+1714                    0.8                                                                                                                                                  1767
+                                                                                                       no round produced an authorization ordered after the with-
+1715                    0.6                                                         pen                                                                                      1768
+                                                                                                       drawal. With the check outside it (noser), 39% of rounds did
+1716       CDF                                                                      kill                                                                                     1769
+                        0.4
+                                                                                   fstop
+                                                                                                       so with no added delay and 46% with a 5 ms gap inserted
+1717                                                                                                                                                                         1770
+                        0.2                                                         reb                between check and authorization. In our wrapper the unse-
+1718                                                                                                                                                                         1771
+                         0                                                                             rialized check runs before the connection is opened, so even
+1719                          0          50             100             150                 200                                                                              1772
+                                                                                                       without an added gap its window includes connection setup
+1720                               enqueue-time check → first authorization (s)                                                                                              1773
+                                                                                                       to the host, a few milliseconds per submission. Submissions
+1721                                                                                                                                                                         1774
+                                                                                                       run back to back, so the withdrawal often lands in such a
+1722   Figure 5: Window an enqueue-time check leaves open:                                                                                                                   1775
+                                                                                                       window. Placing a check “at egress” is therefore not enough.
+1723   time from enqueue to the job’s first authorization                                                                                                                    1776
+                                                                                                       It has to share the withdrawal’s critical section.
+1724   (none, T2/T5/T6/T8 uploads), by schedule.                                                                                                                             1777
+1725                                                                                                                                                                         1778
+                                                                                                       E.3       RQ3: Permitted flows and ablations
+1726                                                                                                                                                                         1779
+                                                                                                       Table 11 counts permitted items that were never delivered for
+1727   predicted the observed outcome in 149 of 150 cases, and the                                                                                                           1780
+                                                                                                       the four FP-control tenants. These are the flush-allowed opt-
+1728   aggregate prediction Pr[𝑐𝑘 > 𝑢] matches the curve (Figure 4).                                                                                                         1781
+                                                                                                       out (T3), the backup purpose of the restriction tenant (T4), the
+1729   cancel and conv almost never leaked here (Table 9). Each                                                                                                              1782
+                                                                                                       no-withdrawal control (T6), and pre-revocation location his-
+1730   batch is authorized at its start, and cancellation stops the                                                                                                          1783
+                                                                                                       tory after pm revoke (T7). none lost 0.0% of these items and
+1731   loop at the next batch boundary, so the only window left is                                                                                                           1784
+                                                                                                       ResidueDroid 0.0% (AVD B: 0.1%); ResidueDroid’s fence
+1732   the few milliseconds between the stop check and the next                                                                                                              1785
+                                                                                                       logged 0 blocks for these tenants. The other non-taint vari-
+1733   authorization. Under net the same variants leaked in every                                                                                                            1786
+                                                                                                       ants lost at most 1.1% (conv). None of these losses is a blocked
+1734   tenant-trial, because the batch being retried was authorized                                                                                                          1787
+                                                                                                       flow. All 44 affected tenant-trials were reb trials in which
+1735   again after the withdrawal. Where the window sits depends                                                                                                             1788
+                                                                                                       JobScheduler stopped a running upload because connectivity
+1736   on the code path: cancellation narrows one window and                                                                                                                 1789
+                                                                                                       dropped after boot (stop reason connectivity). The fixture’s
+1737   leaves another. ResidueDroid stays at zero at every offset.                                                                                                           1790
+                                                                                                       jobs stop at the next batch boundary without rescheduling,
+1738   We also count outstanding submissions: authorized before                                                                                                              1791
+                                                                                                       so the rest was still unsent when the window closed. They
+1739   the withdrawal, but with the HTTP exchange completing                                                                                                                 1792
+                                                                                                       include T6, which has no withdrawal and therefore cannot
+1740   only after the withdrawal was acknowledged. There were                                                                                                                1793
+                                                                                                       be blocked by any check. The contract-unaware taint rule
+1741   500 such submissions for ResidueDroid and 2500 across all                                                                                                             1794
+                                                                                                       blocked the flush, the backup and the OS-revocation history
+1742   variants in the race schedules. These stream-wrapper counts                                                                                                           1795
+                                                                                                       alike (55.6%). This is the false-positive cost of treating every
+1743   indicate authorization/response overlap, not confirmed out-                                                                                                           1796
+                                                                                                       withdrawal or revocation as “block all uses of this source”. It
+1744   standing bytes. The sequence log and fixed response delay                                                                                                             1797
+                                                                                                       is also why we refuse to count the revocation residue in T7
+1745   cannot establish receipt relative to acknowledgement.                                                                                                                 1798
+                                                                                                       as a violation.
+1746      To isolate serialization (A3), we ran a micro-benchmark.                                                                                                           1799
+1747   A submitter thread loops on single-item submissions while a                                       Boundary. T9 uploads through a raw socket that bypasses             1800
+1748   withdrawal lands at a random 0–40 ms offset (§E.4, Table 12).                                   the wrapper. It leaked under every variant that lacks an              1801
+1749                                                                                              17                                                                         1802
+       MobiSys ’27, June 2027,                                                                                                                  Xuan-Bach Le
+
+
+1803   Table 12: Stream-wrapper cost, serialization and dura-                                   Durability. Theorem 1 needs labels written atomically           1856
+1804   bility (on-device, AVD B).                                                            with data (A2). We killed a writer process with SIGKILL            1857
+1805                                                                                         100 times at random moments. Writing the label in the same         1858
+1806   Overhead (median [bootstrap 95% CI])                                                  row left 0 unlabelled rows. Writing the data row first and the     1859
+1807   Row insert, no label / label (µs)           641 [632, 651] / 652 [643, 661]           label to SharedPreferences afterwards left 86 unlabelled           1860
+1808   Critical section: log only (µs)                              480 [476, 483]           rows, i.e., at least one orphan in 86% of kills. Each orphan       1861
+         + declared check / +                      579 [573, 584] / 583 [576, 589]
+1809
+       ResidueDroid rule (µs)
+                                                                                             forces the fence to choose between failing open, which is          1862
+1810   Submission e2e: none / egress            12.4 [11.1, 13.3] / 11.1 [10.3, 11.6]        unsound, and failing closed, which blocks permitted data.          1863
+1811   (ms)                                                                                                                                                     1864
+1812   Submission e2e: ResidueDroid                                13.1 [12.0, 14.0]         E.5    Case study: ACRA                                            1865
+1813   (ms)                                                                                                                                                     1866
+       Job extras growth (bytes)                                                  52
+                                                                                             In the preference-only ACRA 5.14.2 embedding [1], the
+1814                                                                                         startup processor checked reporting preferences at enqueue,        1867
+1815   Serialization: authorization after withdrawal                                                                                                            1868
+                                                                                             while an already scheduled sender service sent approved
+1816
+       ResidueDroid (serialized), gap                              0/300 (0% [0, 1])                                                                            1869
+       0 ms                                                                                  reports without another preference check. We queued a
+1817                                                                                         crash offline, disabled reporting, restored connectivity and       1870
+       ResidueDroid (serialized), gap                              0/300 (0% [0, 1])
+1818   1 ms                                                                                  observed for 45 s. Stock ACRA delivered 30/30 reports              1871
+1819   ResidueDroid (serialized), gap                              0/300 (0% [0, 1])         (median 0.2 s after reconnection); the former fenced sender        1872
+1820   5 ms                                                                                                                                                     1873
+                                                                                             delivered 0/30 and logged 30/30 blocks. Allowed controls
+1821
+       noser, gap 0 ms                                      117/300 (39% [34, 45])                                                                              1874
+       noser, gap 1 ms                                       98/300 (33% [28, 38])           delivered 30/30 and 30/30 reports.
+1822                                                                                            The scheduled job disappeared in all 40/40 reboot trials. Re-   1875
+       noser, gap 5 ms                                      139/300 (46% [41, 52])
+1823                                                                                         opening the app at least 70 s after the crash satisfied ACRA’s     1876
+       Durability under SIGKILL (100 kills)
+1824                                                                                         report-age requirement and exercised its startup preference        1877
+       Label in same row: unlabelled                                               0
+1825   rows                                                                                  check. Disabled stock/fenced reports delivered in 0/10 and         1878
+1826   Label in separate store:                                    86 (86% of kills)         0/10 cases; enabled controls delivered in 10/10 and 10/10.         1879
+1827   unlabelled rows                                                                                                                                          1880
+1828                                                                                                                                                            1881
+1829                                                                                                                                                            1882
+1830                                                                                                                                                            1883
+1831
+       early check, ResidueDroid included (78% of ResidueDroid                                                                                                  1884
+1832
+       tenant-trials). Variants with cancellation or job-start checks                                                                                           1885
+1833
+       caught it when the job had not yet started, so on an uncovered                                                                                           1886
+1834
+       path an early check is better than nothing. This is exactly the                                                                                          1887
+1835
+       supported-path limit of Theorem 1. T10 encrypts its body.                                                                                                1888
+1836
+       Under none and enqueue the sink saw 2808 post-withdrawal                                                                                                 1889
+1837
+       submissions it could not attribute to any record in 700 tenant-                                                                                          1890
+1838
+       trials. We count these as unknown, not clean. ResidueDroid                                                                                               1891
+1839
+       authorized 0 of them, because its decision is made before                                                                                                1892
+1840
+       encryption, on the device.                                                                                                                               1893
+1841                                                                                                                                                            1894
+1842   E.4     RQ4: Cost, durability and a real library                                                                                                         1895
+1843   Table 12 reports on-device costs on the same emulator, mea-                                                                                              1896
+1844   sured with an otherwise idle host sink (medians with boot-                                                                                               1897
+1845   strap intervals [13]). Persisting a label in the same row adds                                                                                           1898
+1846   11 µs to a single-row insert (median, 641 vs. 652 µs). The                                                                                               1899
+1847   fence’s critical section (one grant lookup per scope, the au-                                                                                            1900
+1848   thorization log write, no network) takes 583 µs for a four-                                                                                              1901
+1849   item batch, against 480 µs for logging alone. End to end, a                                                                                              1902
+1850   fenced submission takes 13.1 ms against 12.4 ms unfenced                                                                                                 1903
+1851   (medians, against a zero-delay local sink). The bootstrap in-                                                                                            1904
+1852   tervals overlap (Table 12), so on this path the fence is within                                                                                          1905
+1853   measurement noise of connection and HTTP costs. The label                                                                                                1906
+1854   adds 52 bytes to a summary job’s persisted extras.                                                                                                       1907
+1855                                                                                    18                                                                      1908
+

@@ -1,0 +1,301 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "slavin2016policy",
+    "author": "Rocky Slavin and Xiaoyin Wang and Mitra Bokaei Hosseini and James Hester and Ram Krishnan and Jaspreet Bhatia and Travis D. Breaux and Jianwei Niu",
+    "title": "Toward a Framework for Detecting Privacy Policy Violations in {Android} Application Code",
+    "booktitle": "Proceedings of the 38th International Conference on Software Engineering (ICSE)",
+    "year": "2016"
+  },
+  "checked": 1794759765.656102,
+  "candidates": [
+    {
+      "title": "Toward a framework for detecting privacy policy violations in android application code",
+      "match": 1.0,
+      "DOI": "10.1145/2884781.2884855",
+      "URL": "https://doi.org/10.1145/2884781.2884855",
+      "author": [
+        {
+          "given": "Rocky",
+          "family": "Slavin",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of Texas at San Antonio, San Antonio, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiaoyin",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at San Antonio, San Antonio, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mitra Bokaei",
+          "family": "Hosseini",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at San Antonio, San Antonio, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "James",
+          "family": "Hester",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at Dallas, Dallas, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ram",
+          "family": "Krishnan",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at San Antonio, San Antonio, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jaspreet",
+          "family": "Bhatia",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Carnegie Mellon University, Pittsburgh, PA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Travis D.",
+          "family": "Breaux",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Carnegie Mellon University, Pittsburgh, PA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jianwei",
+          "family": "Niu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at San Antonio, San Antonio, TX"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 38th International Conference on Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016,
+            5,
+            14
+          ]
+        ]
+      },
+      "page": "25-36",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "LLM-PrivCheck : Detecting Privacy Policy Violations in Android Applications with LLMs",
+      "match": 0.7455621301775148,
+      "DOI": "10.54254/2755-2721/2025.23103",
+      "URL": "https://doi.org/10.54254/2755-2721/2025.23103",
+      "author": [
+        {
+          "given": "Zexiong",
+          "family": "Xiang",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "School of Information Science and Engineering, University of Jinan, Jinan, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Shanshan",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Information Science and Engineering, University of Jinan, Jinan, China; Quan Cheng Laboratory, Jinan, China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Applied and Computational Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            5,
+            19
+          ]
+        ]
+      },
+      "page": "169-176",
+      "type": "journal-article"
+    },
+    {
+      "title": "Toward Automatically Generating Privacy Policy for Android Apps",
+      "match": 0.5906040268456376,
+      "DOI": "10.1109/tifs.2016.2639339",
+      "URL": "https://doi.org/10.1109/tifs.2016.2639339",
+      "author": [
+        {
+          "given": "Le",
+          "family": "Yu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Tao",
+          "family": "Zhang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-9082-3208",
+          "authenticated-orcid": false,
+          "given": "Xiapu",
+          "family": "Luo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Lei",
+          "family": "Xue",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Henry",
+          "family": "Chang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Information Forensics and Security"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            4
+          ]
+        ]
+      },
+      "page": "865-880",
+      "type": "journal-article"
+    }
+  ],
+  "status": "metadata match"
+}

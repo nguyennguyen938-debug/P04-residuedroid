@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "pdf_sha256": "c6c8c43d1acedd299811e4d38f9dc25929bf9102e998d6c75586eded6fecdbb8",
+  "font_option": "10pt",
+  "main_body_last_page": 11,
+  "total_pages": 17,
+  "main_body_limit": 12,
+  "overfull_boxes": 0,
+  "undefined_references_or_citations": 0,
+  "visually_inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "corrected_pages": [
+    4,
+    14,
+    15,
+    16
+  ],
+  "unchanged_other_pages_verified_by_render_hash": true,
+  "notes": [
+    "Figure 2 annotation moved clear of the fence box.",
+    "Historical figure and cost-table captions explicitly distinguish authorization observations.",
+    "Figures, tables, captions, equations, references and appendix inspected."
+  ]
+}

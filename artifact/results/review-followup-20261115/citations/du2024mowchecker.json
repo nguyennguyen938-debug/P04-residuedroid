@@ -1,0 +1,266 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "du2024mowchecker",
+    "author": "Xiaolin Du and Zhemin Yang and Jiapeng Lin and Yinzhi Cao and Min Yang",
+    "title": "Withdrawing is Believing? Detecting Inconsistencies between Withdrawal Choices and Third-party Data Collections in Mobile Apps",
+    "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+    "year": "2024"
+  },
+  "checked": 1794759756.281076,
+  "candidates": [
+    {
+      "title": "Withdrawing is believing? Detecting Inconsistencies between Withdrawal Choices and Third-party Data Collections in Mobile Apps",
+      "match": 1.0,
+      "DOI": "10.1109/sp54263.2024.00014",
+      "URL": "https://doi.org/10.1109/sp54263.2024.00014",
+      "author": [
+        {
+          "given": "Xiaolin",
+          "family": "Du",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Fudan University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Zhemin",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Fudan University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jiapeng",
+          "family": "Lin",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Fudan University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yinzhi",
+          "family": "Cao",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Johns Hopkins University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Min",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Fudan University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2024 IEEE Symposium on Security and Privacy (SP)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            5,
+            19
+          ]
+        ]
+      },
+      "page": "735-751",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Detecting Inconsistent Privacy Statements Between Mobile Vehicle Apps and\u00a0Their Third-Party Integrations",
+      "match": 0.5414847161572053,
+      "DOI": "10.1007/978-981-95-3480-7_32",
+      "URL": "https://doi.org/10.1007/978-981-95-3480-7_32",
+      "author": [
+        {
+          "given": "Jiaying",
+          "family": "Huang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Luwa",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Jiayue",
+          "family": "Lian",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Jiawei",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Yuhong",
+          "family": "Nan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Blockchain and Trustworthy Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026
+          ]
+        ]
+      },
+      "page": "439-451",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Detecting inconsistencies in multi-platform mobile apps",
+      "match": 0.4444444444444444,
+      "DOI": "10.1109/issre.2015.7381838",
+      "URL": "https://doi.org/10.1109/issre.2015.7381838",
+      "author": [
+        {
+          "given": "Mona Erfani",
+          "family": "Joorabchi",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mohamed",
+          "family": "Ali",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Ali",
+          "family": "Mesbah",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of British Columbia, Vancouver, BC, Canada"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            11
+          ]
+        ]
+      },
+      "page": "450-460",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "metadata match"
+}

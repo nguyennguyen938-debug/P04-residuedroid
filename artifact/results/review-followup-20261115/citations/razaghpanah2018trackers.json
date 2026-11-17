@@ -1,0 +1,245 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "razaghpanah2018trackers",
+    "author": "Abbas Razaghpanah and Rishab Nithyanand and Narseo Vallina-Rodriguez and Srikanth Sundaresan and Mark Allman and Christian Kreibich and Phillipa Gill",
+    "title": "Apps, Trackers, Privacy, and Regulators: A Global Study of the Mobile Tracking Ecosystem",
+    "booktitle": "Proceedings of the Network and Distributed System Security Symposium (NDSS)",
+    "year": "2018"
+  },
+  "checked": 1794759763.6420019,
+  "candidates": [
+    {
+      "title": "Apps, Trackers, Privacy, and Regulators: A Global Study of the Mobile Tracking Ecosystem",
+      "match": 1.0,
+      "DOI": "10.14722/ndss.2018.23353",
+      "URL": "https://doi.org/10.14722/ndss.2018.23353",
+      "author": [
+        {
+          "given": "Abbas",
+          "family": "Razaghpanah",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Rishab",
+          "family": "Nithyanand",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Narseo",
+          "family": "Vallina-Rodriguez",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Srikanth",
+          "family": "Sundaresan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mark",
+          "family": "Allman",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Christian",
+          "family": "Kreibich",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Phillipa",
+          "family": "Gill",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings 2018 Network and Distributed System Security Symposium"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018
+          ]
+        ]
+      },
+      "page": null,
+      "type": "proceedings-article"
+    },
+    {
+      "title": "No Salvation from\u00a0Trackers: Privacy Analysis of\u00a0Religious Websites and\u00a0Mobile Apps",
+      "match": 0.4727272727272727,
+      "DOI": "10.1007/978-3-031-25734-6_10",
+      "URL": "https://doi.org/10.1007/978-3-031-25734-6_10",
+      "author": [
+        {
+          "given": "Nayanamana",
+          "family": "Samarasinghe",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Pranay",
+          "family": "Kapoor",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mohammad",
+          "family": "Mannan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Amr",
+          "family": "Youssef",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Data Privacy Management, Cryptocurrencies and Blockchain Technology"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2023
+          ]
+        ]
+      },
+      "page": "151-166",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Privacy of Default Apps in Apple\u2019s Mobile Ecosystem",
+      "match": 0.42962962962962964,
+      "DOI": "10.1145/3613904.3642831",
+      "URL": "https://doi.org/10.1145/3613904.3642831",
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-7253-1121",
+          "authenticated-orcid": false,
+          "given": "Amel",
+          "family": "Bourdoucen",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Aalto University, Finland"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-8659-2283",
+          "authenticated-orcid": false,
+          "given": "Janne",
+          "family": "Lindqvist",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Aalto University, Finland"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the CHI Conference on Human Factors in Computing Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            5,
+            11
+          ]
+        ]
+      },
+      "page": "1-32",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "metadata match"
+}

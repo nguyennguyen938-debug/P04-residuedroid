@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "kollnig2021faitaccompli",
+    "author": "Konrad Kollnig and Reuben Binns and Pierre Dewitte and Max Van Kleek and Ge Wang and Daniel Omeiza and Helena Webb and Nigel Shadbolt",
+    "title": "A Fait Accompli? An Empirical Study into the Absence of Consent to Third-Party Tracking in {Android} Apps",
+    "booktitle": "Proceedings of the Seventeenth Symposium on Usable Privacy and Security (SOUPS)",
+    "year": "2021"
+  },
+  "checked": 1794759762.1612082,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

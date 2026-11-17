@@ -1,0 +1,284 @@
+[
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.72,
+    "percentile95": [
+      0.6971428571428571,
+      0.7428571428571429
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "menqueue",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.72,
+    "percentile95": [
+      0.6971428571428571,
+      0.7428571428571429
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "mstart",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.14857142857142858,
+    "percentile95": [
+      0.12000000000000001,
+      0.17714285714285716
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "mstart",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.14857142857142858,
+    "percentile95": [
+      0.12000000000000001,
+      0.17714285714285716
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "A",
+    "early": "mlayer",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 4,
+      "('forcestop', 'host-no-vulkan')": 1,
+      "('inflight', 'guest')": 4,
+      "('inflight', 'host-no-vulkan')": 1,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 4,
+      "('netloss', 'host-no-vulkan')": 1,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 4,
+      "('reboot', 'host-no-vulkan')": 1,
+      "('revoke', 'guest')": 4,
+      "('revoke', 'host-no-vulkan')": 1
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.7257142857142856,
+    "percentile95": [
+      0.7028571428571428,
+      0.7542857142857142
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "menqueue",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.7257142857142856,
+    "percentile95": [
+      0.7028571428571428,
+      0.7542857142857142
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "mstart",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.16,
+    "percentile95": [
+      0.13142857142857145,
+      0.18285714285714286
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "mstart",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.16,
+    "percentile95": [
+      0.13142857142857145,
+      0.18285714285714286
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 35,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "B",
+    "early": "mlayer",
+    "fenced": "mboth",
+    "paired_trials": 35,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('forcestop', 'guest')": 5,
+      "('inflight', 'guest')": 5,
+      "('kill', 'guest')": 5,
+      "('netloss', 'guest')": 5,
+      "('pending', 'guest')": 5,
+      "('reboot', 'guest')": 5,
+      "('revoke', 'guest')": 5
+    }
+  }
+]

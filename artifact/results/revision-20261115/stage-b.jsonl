@@ -1,0 +1,5 @@
+{"stage": "acra-conformance-B", "exit": 1, "time": 1794737772.2500439}
+{"stage": "acra-conformance-B", "exit": 0, "time": 1794737836.426974}
+{"stage": "acra-v4-B", "exit": 0, "time": 1794739764.960601}
+{"stage": "matched-B", "exit": 0, "time": 1794741447.4592152}
+{"stage": "socket-B", "exit": 0, "time": 1794742561.405664}

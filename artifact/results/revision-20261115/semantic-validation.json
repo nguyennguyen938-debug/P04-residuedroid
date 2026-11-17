@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "socket_attempts": 1020,
+  "unique_socket_ids": 1020,
+  "crash_controls": 80,
+  "label_cases": 100,
+  "acra_conformance": 14,
+  "ui_transitions": 2,
+  "complete_blocks": 20,
+  "failures": []
+}

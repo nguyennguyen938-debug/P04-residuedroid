@@ -1,0 +1,89 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "matomo",
+    "author": "{Matomo contributors}",
+    "title": "Matomo {SDK} for {Android}, release 4.4",
+    "howpublished": "\\url{https://github.com/matomo-org/matomo-sdk-android}",
+    "note": "Release 4.4, 2025-09-04; accessed 2026-11-08",
+    "year": "2025"
+  },
+  "checked": 1794759771.129431,
+  "candidates": [
+    {
+      "title": "Navigating the Android SDK",
+      "match": 0.43333333333333335,
+      "DOI": "10.1007/978-1-4302-3570-5_3",
+      "URL": "https://doi.org/10.1007/978-1-4302-3570-5_3",
+      "author": [
+        {
+          "given": "Paul",
+          "family": "Ferrill",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Pro Android Python with SL4A"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2011
+          ]
+        ]
+      },
+      "page": "57-82",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Android SDK",
+      "match": 0.4,
+      "DOI": "10.1002/9781119051091.ch4",
+      "URL": "https://doi.org/10.1002/9781119051091.ch4",
+      "author": null,
+      "container-title": [
+        "Wearable Android\u2122"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            8,
+            7
+          ]
+        ]
+      },
+      "page": "87-109",
+      "type": "other"
+    },
+    {
+      "title": "Android Wear Platform and SDK",
+      "match": 0.38095238095238093,
+      "DOI": "10.1002/9781119051091.part3",
+      "URL": "https://doi.org/10.1002/9781119051091.part3",
+      "author": null,
+      "container-title": [
+        "Wearable Android\u2122"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            8,
+            7
+          ]
+        ]
+      },
+      "page": "119-119",
+      "type": "other"
+    }
+  ],
+  "status": "needs primary verification"
+}

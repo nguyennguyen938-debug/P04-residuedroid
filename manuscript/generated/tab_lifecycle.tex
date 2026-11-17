@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Measured lifecycle behavior of a persisted upload job (\vname{none}, AVD~A). Counts of trials; ``by-value job'' is T2's summary job, whose data exists only in its extras.}
+\label{tab:lifecycle}
+\mtab
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\mhead Schedule & trials & job ran & re-enqueued & by-value job ran & median s \\
+\midrule
+\textsf{pen} & 50 & 50 & 0 & 50 & 43 \\
+\textsf{kill} & 50 & 50 & 0 & 50 & 43 \\
+\textsf{fstop} & 50 & 0 & 50 & 0 & 19 \\
+\textsf{reb} & 50 & 50 & 0 & 50 & 51 \\
+\textsf{rev} & 50 & 50 & 0 & 50 & 24 \\
+\bottomrule
+\end{tabular}
+\end{table}

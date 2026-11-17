@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "myers1997difc",
+    "author": "Andrew C. Myers and Barbara Liskov",
+    "title": "A Decentralized Model for Information Flow Control",
+    "booktitle": "Proceedings of the 16th ACM Symposium on Operating Systems Principles (SOSP)",
+    "year": "1997"
+  },
+  "checked": 1794759761.675411,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

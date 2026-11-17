@@ -1,0 +1,89 @@
+{
+  "started": 1794743169.711382,
+  "commands": [
+    {
+      "args": [
+        "python3",
+        "artifact/revision/verify_package.py",
+        "/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid",
+        "--forbid",
+        "xuanbachle"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "make",
+        "-C",
+        "artifact",
+        "all"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifact/revision",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "bash",
+        "artifact/fixture/build.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "bash",
+        "artifact/acra/build.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "bash",
+        "artifact/matomo/build.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "bash",
+        "artifact/workmanager/build.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "/opt/homebrew/opt/openjdk@17/bin/javac",
+        "-d",
+        "/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/rd-transport-check-ie7zh4ey",
+        "/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/src/org/residuelab/transport/Coordinator.java",
+        "/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/src/org/residuelab/transport/HttpTransport.java",
+        "/private/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/p04-final-extract-kjj1zocx/P04-residuedroid/artifact/transport/tests/TestTransport.java"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "/opt/homebrew/opt/openjdk@17/bin/java",
+        "-cp",
+        "/var/folders/hv/bzftst4x2zjfx4s7vqx912bh0000gn/T/rd-transport-check-ie7zh4ey",
+        "TestTransport"
+      ],
+      "exit": 0
+    }
+  ],
+  "numeric_outputs": 31,
+  "differences": [],
+  "status": "passed",
+  "finished": 1794743213.800739
+}

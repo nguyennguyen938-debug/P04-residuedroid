@@ -1,0 +1,142 @@
+[
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "A",
+    "variant": "mboth",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 52
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "A",
+    "variant": "menqueue",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 126,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.6971428571428571,
+      0.7428571428571429
+    ],
+    "legit_missing": 60
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "A",
+    "variant": "mfence",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 40
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "A",
+    "variant": "mlayer",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 16
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "A",
+    "variant": "mstart",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 26,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.12000000000000001,
+      0.17714285714285716
+    ],
+    "legit_missing": 140
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "B",
+    "variant": "mboth",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 32
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "B",
+    "variant": "menqueue",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 127,
+    "unknown_requests": 1,
+    "percentile95": [
+      0.7028571428571428,
+      0.7542857142857142
+    ],
+    "legit_missing": 60
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "B",
+    "variant": "mfence",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 32
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "B",
+    "variant": "mlayer",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 0,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "legit_missing": 16
+  },
+  {
+    "estimand": "confirmed violating affected-tenant fraction; unknown requests separate",
+    "run": "B",
+    "variant": "mstart",
+    "trials": 35,
+    "tenant_trials": 175,
+    "known_violations": 28,
+    "unknown_requests": 0,
+    "percentile95": [
+      0.13142857142857145,
+      0.18285714285714286
+    ],
+    "legit_missing": 140
+  }
+]

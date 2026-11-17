@@ -1,0 +1,136 @@
+receiver files ['socket-B/receiver.jsonl', 'socket-B/trials.jsonl', 'socket-A/receiver.jsonl', 'socket-A/trials.jsonl']
+{
+  "socket_attempts": 1020,
+  "unique_socket_ids": 1020,
+  "socket_blocks": {
+    "emulator-5640": {
+      "1": 51,
+      "2": 51,
+      "3": 51,
+      "4": 51,
+      "5": 51,
+      "6": 51,
+      "7": 51,
+      "8": 51,
+      "9": 51,
+      "0": 51
+    },
+    "emulator-5642": {
+      "1": 51,
+      "2": 51,
+      "3": 51,
+      "4": 51,
+      "5": 51,
+      "6": 51,
+      "7": 51,
+      "8": 51,
+      "9": 51,
+      "0": 51
+    }
+  },
+  "socket_harness_errors": [],
+  "socket_barrier_failures": [],
+  "process_cases": 800,
+  "process_mismatches": [],
+  "matched_invalid": [
+    {
+      "run": "A",
+      "trial": "for000",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "reb000",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "for005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "reb005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "rev005",
+      "reason": "harness/device"
+    },
+    {
+      "run": "A",
+      "trial": "net005",
+      "reason": "harness/device"
+    }
+  ],
+  "matched_incomplete_tenant_groups": [],
+  "acra_lifecycle": [
+    {
+      "variant": "acra",
+      "schedule": "control",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acra",
+      "schedule": "disable",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acra",
+      "schedule": "reboot",
+      "n": 3,
+      "delivered": 0,
+      "retired": 0,
+      "queued_before": 3
+    },
+    {
+      "variant": "acra",
+      "schedule": "rebootctl",
+      "n": 3,
+      "delivered": 3,
+      "retired": 2,
+      "queued_before": 3
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "control",
+      "n": 10,
+      "delivered": 10,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "disable",
+      "n": 10,
+      "delivered": 0,
+      "retired": 10,
+      "queued_before": 10
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "reboot",
+      "n": 3,
+      "delivered": 0,
+      "retired": 0,
+      "queued_before": 3
+    },
+    {
+      "variant": "acrafence",
+      "schedule": "rebootctl",
+      "n": 3,
+      "delivered": 3,
+      "retired": 1,
+      "queued_before": 3
+    }
+  ],
+  "matomo_attempts": 20,
+  "matomo_failures": []
+}

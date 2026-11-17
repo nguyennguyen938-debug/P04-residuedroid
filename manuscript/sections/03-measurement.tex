@@ -1,0 +1,46 @@
+\section{How Common Are Deferred Egress Paths?}
+\label{sec:measure}
+
+Before building a mechanism, we asked how often apps combine the three ingredients of the problem: persisted deferred
+work, a network sink reachable from a deferred-job entry point, and a user-facing telemetry or consent control. This is a
+\emph{candidate} screen. Static analysis cannot see runtime state or app wording, so it cannot establish a violation.
+
+\paragraph{Corpus.} From the F-Droid index~\cite{fdroid} (fetched 2026-11-08, SHA-256 recorded), we took the latest version
+of every app that requests \texttt{INTERNET} and is at most 80\,MB, giving \eligibleN{} apps. We selected all \trackN{} that
+carry F-Droid's \emph{Tracking} anti-feature, plus a seeded random sample of \randN{} others. All \corpusN{} APKs were
+downloaded from \texttt{f-droid.org} and verified against the index hashes. F-Droid apps are open source and often minified,
+so library method names may be renamed. We therefore detect WorkManager through \texttt{ListenableWorker} subclasses,
+whose names are kept for reflection, as well as through API references.
+
+\paragraph{Analysis.} Our scanner (\S\ref{sec:impl}) finds deferred-job entry points: \texttt{doWork}/\texttt{startWork} of
+WorkManager workers, \texttt{onStartJob} of \texttt{JobService}s, and \texttt{onPerformSync}. From each, it searches
+breadth-first for a network sink (\texttt{HttpURLConnection}, OkHttp, Retrofit, Volley, Ktor, raw sockets and similar). The
+search is over-approximate. We validated it on a seeded sample of 20 app-code entries in apps with a consent signal,
+judging from class names and app purpose whether network use is on the job's own path. Of nine entries within three hops, six were judged plausible and three unclear;
+of eleven deeper entries, four were plausible, one unclear and six implausible. These class-name/app-purpose
+judgments do not validate runtime paths or estimate false negatives. We report two screening thresholds
+(three hops and any depth), not lower and upper bounds on real flows. Consent signals are identifier-like constants pairing a topic token
+(\textit{analytics}, \textit{telemetry}, \textit{crash}, \textit{consent}, ...) with a control token (\textit{enable},
+\textit{opt}, \textit{send}, ...), or English toggle-like resource strings such as ``Share anonymous usage statistics''.
+
+\input{generated/tab_corpus.tex}
+
+\paragraph{Findings.} Table~\ref{tab:corpus} reports each sampling stratum separately.
+The tracking stratum is a census within the eligible index; random-stratum intervals describe
+screening proportions among other eligible apps, conditional on classification. The oversampled
+mixture is descriptive, not a population estimate. Validation uncertainty is separate: with only
+20 judgments, the plausible fraction is 10/20 (Wilson 95\% interval 30--70\%), and four remain
+unclear. Neither statistic estimates a contract-violation prevalence. Persisted deferred work is common: \pctPersistAll{}\% of the
+corpus uses \texttt{setPersisted}, WorkManager or a SyncAdapter, and \pctAlarmAll{}\% uses AlarmManager. Between
+\pctCandLo{}\% (three-hop screen) and \pctCandHi{}\% (any-depth screen) of apps both persist deferred work and reach the network
+from a deferred-job entry point. Between \pctCandConsentLo{}\% and \pctCandConsentHi{}\% also carry a consent or telemetry
+signal. In absolute terms this is \candConsentLoN{}--\candConsentHiN{} apps. The \emph{Tracking} stratum has more consent
+signals (\pctConsentTrack{}\% vs.\ \pctConsentRand{}\%) and more telemetry SDKs (\pctSdkTrack{}\% vs.\ \pctSdkRand{}\%).
+At the entry-point level, only \pctPollStop{}\% of app-code workers poll \texttt{isStopped()}. This does not establish whether cancellation interrupts uploads: workers may use other stop
+callbacks or networking cancellation. Between-batch stopping is a fixture assumption, not a corpus finding.
+\pctNativeAll{}\% of apps ship native libraries, and native code is a path no Java-level fence mediates.
+
+ACRA appears in \acraApps{} apps. Its \texttt{acra.enable}/\texttt{acra.disable} preference keys are library constants, so
+their presence does not show that an app exposes the toggle. Bundled versions and configurations can differ; \S\ref{sec:eval-acra} tests it directly. The screen shows the ingredients are not rare. It does not show
+how often they combine into a contract violation, which needs the contract wording and a runtime schedule. The rest of the
+paper therefore turns to controlled, contract-aware experiments.

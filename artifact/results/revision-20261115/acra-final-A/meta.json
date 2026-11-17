@@ -1,0 +1,12 @@
+{
+ "serial": "emulator-5640",
+ "avd": "P04AvdA",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "start": 0,
+ "trials": 1,
+ "reboot_trials": 0,
+ "window_s": 45,
+ "open_after_s": 70,
+ "protocol": "revision-v4",
+ "t": 1794742060.6137831
+}

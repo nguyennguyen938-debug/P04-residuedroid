@@ -1,0 +1,85 @@
+23:35:05 emulator-5680 pen005 61s
+23:35:39 emulator-5680 kil005 35s
+23:36:10 emulator-5680 for005 31s
+23:40:25 emulator-5680 reb005 TRIAL_ERROR TimeoutExpired(['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulato
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 256, in run_trial
+    bt = wait_boot(); act("boot_completed", boot_s=bt)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 65, in wait_boot
+    subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=limit)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2431, in _communicate
+    self.wait(timeout=_deadline_remaining(endtime))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1445, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2310, in _wait
+    if self._wait_pidfd(timeout) or self._wait_kqueue(timeout):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2286, in _wait_kqueue
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulator-5680', 'wait-for-device']' timed out after 240 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 355, in main
+    cold_restart()
+    ~~~~~~~~~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 112, in ensure_device
+    time.sleep(6)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+23:41:36 restarted emulator-5680 in 17s
+23:42:35 emulator-5680 rev005 52s
+23:43:50 emulator-5680 net005 75s
+23:44:21 emulator-5680 inf005 31s
+23:45:13 emulator-5680 pen006 52s
+23:46:01 emulator-5680 kil006 48s
+23:46:32 emulator-5680 for006 31s
+23:47:21 emulator-5680 reb006 49s
+23:48:03 emulator-5680 rev006 42s
+23:49:18 emulator-5680 net006 74s
+23:50:01 emulator-5680 inf006 43s
+23:50:57 emulator-5680 pen007 56s
+23:51:50 emulator-5680 kil007 53s
+23:52:21 emulator-5680 for007 31s
+23:56:37 emulator-5680 reb007 TRIAL_ERROR TimeoutExpired(['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulato
+23:56:50 restarted emulator-5680 in 13s
+23:57:11 emulator-5680 rev007 21s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 369, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 341, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 277, in run_trial
+    sh("; ".join(f"cmd jobscheduler run -f {p} {j} >/dev/null" for j in (81, 21, 51, 45)))
+    ^^^^^^^^^^^^^^^
+KeyboardInterrupt
+00:00:15 emulator-5680 net007 134s
+00:01:10 emulator-5680 inf007 55s
+00:02:05 emulator-5680 pen008 55s
+00:02:46 emulator-5680 kil008 41s
+00:03:38 emulator-5680 for008 52s
+00:05:18 emulator-5680 reb008 100s
+00:05:51 emulator-5680 rev008 33s
+00:08:06 emulator-5680 net008 135s
+00:08:50 emulator-5680 inf008 45s
+00:09:45 emulator-5680 pen009 55s
+00:10:43 emulator-5680 kil009 58s
+00:11:08 emulator-5680 for009 25s
+00:11:50 emulator-5680 reb009 42s
+00:12:43 emulator-5680 rev009 52s
+00:14:54 emulator-5680 net009 131s
+00:15:49 emulator-5680 inf009 55s

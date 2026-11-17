@@ -1,0 +1,7 @@
+17:09:57 emulator-5640 pen000 57s
+17:10:53 emulator-5640 kil000 56s
+17:12:45 emulator-5640 for000 112s
+17:12:45 emulator-5640 reb000 TRIAL_ERROR RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')
+ensure_device failed: RuntimeError('device not alive and no --avd given')

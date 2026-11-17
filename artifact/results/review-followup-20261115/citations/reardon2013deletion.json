@@ -1,0 +1,208 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "reardon2013deletion",
+    "author": "Joel Reardon and David Basin and Srdjan Capkun",
+    "title": "{SoK}: Secure Data Deletion",
+    "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+    "year": "2013"
+  },
+  "checked": 1794759764.542737,
+  "candidates": [
+    {
+      "title": "SoK: Secure Data Deletion",
+      "match": 1.0,
+      "DOI": "10.1109/sp.2013.28",
+      "URL": "https://doi.org/10.1109/sp.2013.28",
+      "author": [
+        {
+          "given": "J.",
+          "family": "Reardon",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "D.",
+          "family": "Basin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "S.",
+          "family": "Capkun",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2013 IEEE Symposium on Security and Privacy"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2013,
+            5
+          ]
+        ]
+      },
+      "page": "301-315",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Secure Data Deletion",
+      "match": 0.9090909090909091,
+      "DOI": "10.1007/978-3-319-28778-2",
+      "URL": "https://doi.org/10.1007/978-3-319-28778-2",
+      "author": [
+        {
+          "given": "Joel",
+          "family": "Reardon",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Information Security and Cryptography"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016
+          ]
+        ]
+      },
+      "page": null,
+      "type": "book"
+    },
+    {
+      "title": "SoK: Secure Messaging",
+      "match": 0.6363636363636364,
+      "DOI": "10.1109/sp.2015.22",
+      "URL": "https://doi.org/10.1109/sp.2015.22",
+      "author": [
+        {
+          "given": "Nik",
+          "family": "Unger",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sergej",
+          "family": "Dechand",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Joseph",
+          "family": "Bonneau",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sascha",
+          "family": "Fahl",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Henning",
+          "family": "Perl",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ian",
+          "family": "Goldberg",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Matthew",
+          "family": "Smith",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2015 IEEE Symposium on Security and Privacy"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            5
+          ]
+        ]
+      },
+      "page": "232-249",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "metadata match"
+}

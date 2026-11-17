@@ -1,0 +1,2 @@
+{"t": 1794200910.87984, "variant": "acrafence", "schedule": "disable", "k": 20, "attempt": 0, "err": "AdbTimeout(\"adb shell timeout 4 sh -c 'echo x | nc -w 1 10.0.2.2 8789' >/dev/null 2>&1 && echo up || echo down (>30s)\")"}
+{"t": 1794204122.347745, "variant": "acra", "schedule": "disable", "k": 25, "attempt": 0, "err": "AdbTimeout(\"adb shell timeout 4 sh -c 'echo x | nc -w 1 10.0.2.2 8789' >/dev/null 2>&1 && echo up || echo down (>30s)\")"}

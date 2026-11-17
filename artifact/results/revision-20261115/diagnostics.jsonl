@@ -1,0 +1,3 @@
+{"time": 1794737649.0585759, "event": "AVD_A_process_disappeared_during_reboot", "affected_run": "matched-A", "action": "stop run; preserve incomplete trial; restart isolated overlay"}
+{"time": 1794739928.375223, "event": "AVD_A_graphics_context_failure_repeated", "action": "preserve completed guest-GPU trials; rerun missing cells at k=6 with swiftshader; stratify phase", "affected_run": "matched-A"}
+{"time": 1794740337.474806, "event": "AVD_A_software_renderer_crash", "evidence": "emulator-crash-stack-summary.json", "action": "fixed k7 five-cell replacement using host renderer with Vulkan disabled"}

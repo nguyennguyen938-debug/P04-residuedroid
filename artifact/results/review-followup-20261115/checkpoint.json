@@ -1,0 +1,29 @@
+{
+  "state": "feasible local follow-up completed; acceptance-critical gaps remain",
+  "date": "2026-11-16",
+  "author": "Xuan-Bach Le",
+  "author_count": 1,
+  "llm_disclosure": "approved and included",
+  "handset": "deferred by author; emulator work only",
+  "emulators": "owned instances stopped after campaign and APK hash audit",
+  "manuscript": "manuscript/main.pdf",
+  "report": "review/followup-execution-report.md",
+  "package": "submission/P04-residuedroid-review-followup.zip",
+  "local_rebuild": "clean extraction passed; see review/package-validation.json",
+  "submission": "not registered, submitted or publicly uploaded",
+  "completed": [
+    "280 valid paired matched trials across two AVD configurations",
+    "8 failed paired attempts preserved and excluded",
+    "40/40 installed APK hashes match frozen binaries",
+    "220 TLS and 60 HTTP trials",
+    "mediation and incomplete-label tests",
+    "single-blind 10pt 12-page body"
+  ],
+  "open": [
+    "physical devices and energy",
+    "exact kernel-unsent residue at acknowledgement",
+    "real F-Droid ACRA app end-to-end",
+    "complete external citation verification",
+    "current acmart upgrade"
+  ]
+}

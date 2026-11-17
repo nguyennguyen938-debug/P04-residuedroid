@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "tang2012cleanos",
+    "author": "Yang Tang and Phillip Ames and Sravan Bhamidipati and Ashish Bijlani and Roxana Geambasu and Nikhil Sarda",
+    "title": "{CleanOS}: Limiting Mobile Data Exposure with Idle Eviction",
+    "booktitle": "Proceedings of the 10th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+    "pages": "77--91",
+    "year": "2012"
+  },
+  "checked": 1794759756.281313,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

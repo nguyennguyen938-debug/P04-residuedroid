@@ -1,0 +1,13 @@
+\begin{abstract}
+Android apps persist outboxes and jobs that can outlive a user's withdrawal.
+The enforcement problem is not just when to check a toggle: derived data must retain its source policy, and old data must remain distinguishable after consent is granted again.
+\sys combines durable source epochs, labels copied with persisted data, and a policy check serialized with each bounded socket write.
+We separate collection-only opt-outs, restrictions and deletion contracts, and evaluate them with ten controlled workloads.
+A \corpusN-app static screen identifies candidate deferred paths, not runtime violations.
+The lifecycle experiments expose distinct lineage, epoch and retry failures; their rates depend on the fixture mix.
+Matched layered checks with the same metadata show no confirmed disadvantage in the measured lifecycle schedules.
+The late fence instead closes a narrow residual race: in 20 HTTPS trials with withdrawal after TLS buffering, an early check completes every request whereas the fence accepts no application ciphertext after acknowledgement.
+ACRA and Matomo embeddings exercise persisted-report and queued-dispatcher paths.
+The guarantee requires complete mediation and complete labels; a valid but incomplete developer label bypasses it.
+Already accepted bytes can arrive later, and emulator measurements do not establish physical-device energy or deployment behavior.
+\end{abstract}

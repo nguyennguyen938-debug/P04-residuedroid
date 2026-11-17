@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "nguyen2022freely",
+    "author": "Trung Tin Nguyen and Michael Backes and Ben Stock",
+    "title": "Freely Given Consent? Studying Consent Notice of Third-Party Tracking and Its Violations of {GDPR} in {Android} Apps",
+    "booktitle": "Proceedings of the ACM SIGSAC Conference on Computer and Communications Security (CCS)",
+    "pages": "2369--2383",
+    "year": "2022"
+  },
+  "checked": 1794759762.7128582,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

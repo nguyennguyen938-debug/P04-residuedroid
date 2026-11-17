@@ -1,0 +1,11 @@
+[
+  {
+    "url": "https://jitpack.io/com/github/matomo-org/matomo-sdk-android/4.4/matomo-sdk-android-4.4.aar",
+    "size": 93009,
+    "sha256": "1260bfa19a8ead93cdb66b1fb4f4e132628404d214cf0f21fa6ecced1bc7a7cb"
+  },
+  {
+    "url": "https://jitpack.io/com/github/matomo-org/matomo-sdk-android/tracker/4.4/tracker-4.4.aar",
+    "error": "<HTTPError 404: 'Not Found'>"
+  }
+]

@@ -1,0 +1,17 @@
+cd static && python3 -I static_summary.py >/dev/null
+python3 scripts/summarize.py >/dev/null
+python3 scripts/render.py
+macros: 233 defined; missing: []
+python3 revision/historical_uncertainty.py > results/revision-20261115/bootstrap.log
+python3 revision/oracle_v2.py results/revision-20261115
+socket trials 1020
+python3 revision/matched_oracle.py
+matched 2800 tenant rows; 6 invalid paired trials
+python3 revision/render_revision.py
+revision rendered 1020 socket, 10 matched groups, 52 ACRA, 20 Matomo
+python3 revision/audit_results.py > results/revision-20261115/evidence-audit.log
+python3 followup/analyze_tls.py > results/review-followup-20261115/transport-analysis.log
+python3 followup/render.py
+../manuscript/build.sh
+pages: 18
+overfull: 1

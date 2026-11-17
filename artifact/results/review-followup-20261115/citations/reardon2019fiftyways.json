@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "reardon2019fiftyways",
+    "author": "Joel Reardon and {\\'A}lvaro Feal and Primal Wijesekera and Amit Elazari Bar On and Narseo Vallina-Rodriguez and Serge Egelman",
+    "title": "50 Ways to Leak Your Data: An Exploration of Apps' Circumvention of the {Android} Permissions System",
+    "booktitle": "Proceedings of the 28th USENIX Security Symposium",
+    "year": "2019"
+  },
+  "checked": 1794759763.1941,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

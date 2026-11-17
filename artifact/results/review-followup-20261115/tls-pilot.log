@@ -1,0 +1,4 @@
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/tls_suite.py", line 64
+    r['command']=bc('send',id,tls=True,mode=mode,fault=fault,size=size,port=8798,sndbuf=4096 if case=='stall-small'else262144 if case=='stall-large'else16384,label=label)
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: expected 'else' after 'if' expression

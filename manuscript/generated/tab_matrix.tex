@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Stream-wrapper authorization-order violations (\%), tenants T1, T8, T2, T5 and T4 (personalisation). Trials per schedule (AVD~A): pen 50, kill 50, fstop 50, reb 50, rev 50, net 50, infl 50.}
+\label{tab:matrix}
+\mtab
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+\mhead Variant & \textsf{pen} & \textsf{kill} & \textsf{fstop} & \textsf{reb} & \textsf{rev} & \textsf{net} & \textsf{infl} \\
+\midrule
+none & 100 & 100 & 80 & 100 & 100 & 80 & 44 \\
+cancel & 20 & 20 & 20 & 20 & 20 & 80 & 1 \\
+enqueue & 100 & 100 & 40 & 100 & 100 & 80 & 44 \\
+job-start & 40 & 40 & 40 & 40 & 40 & 79 & 43 \\
+conv & 20 & 20 & 20 & 20 & 20 & 80 & 2 \\
+\midrule
+egress (decl.) & 40 & 40 & 40 & 40 & 40 & 20 & \mgood{\textbf{0}} \\
+\sys & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} \\
+\sys (AVD B) & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} \\
+\midrule
+volatile labels & \mgood{\textbf{0}} & 100 & 80 & 100 & 100 & \mgood{\textbf{0}} & \mgood{\textbf{0}} \\
+taint rule & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} & \mgood{\textbf{0}} \\
+\bottomrule
+\end{tabular}
+\end{table}

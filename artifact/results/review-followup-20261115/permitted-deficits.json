@@ -1,0 +1,308 @@
+[
+  {
+    "run": "A",
+    "trial": "reb001",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        178,
+        1794738135280,
+        11836,
+        4,
+        "JOB_STOPPED",
+        "kind=4;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb001",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        176,
+        1794738135273,
+        11829,
+        6,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb001",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        180,
+        1794738135304,
+        11860,
+        7,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb003",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        135,
+        1794738921572,
+        11122,
+        6,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb003",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        132,
+        1794738921555,
+        11105,
+        7,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb004",
+    "variant": "mboth",
+    "tenant": 3,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        147,
+        1794739300884,
+        12483,
+        3,
+        "JOB_STOPPED",
+        "kind=1;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb004",
+    "variant": "mboth",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        153,
+        1794739300984,
+        12583,
+        4,
+        "JOB_STOPPED",
+        "kind=4;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb004",
+    "variant": "mboth",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        149,
+        1794739300914,
+        12513,
+        6,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb004",
+    "variant": "mboth",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        151,
+        1794739300979,
+        12578,
+        7,
+        "JOB_STOPPED",
+        "kind=1;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb007",
+    "variant": "mboth",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        131,
+        1794740446192,
+        10747,
+        3,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "A",
+    "trial": "reb007",
+    "variant": "mboth",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        133,
+        1794740446216,
+        10771,
+        4,
+        "JOB_STOPPED",
+        "kind=4;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb000",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        167,
+        1794737217060,
+        11622,
+        3,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb000",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        165,
+        1794737217033,
+        11595,
+        4,
+        "JOB_STOPPED",
+        "kind=4;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb001",
+    "variant": "mboth",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        175,
+        1794739921699,
+        11254,
+        4,
+        "JOB_STOPPED",
+        "kind=4;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb001",
+    "variant": "mboth",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        164,
+        1794739921408,
+        10964,
+        7,
+        "JOB_STOPPED",
+        "kind=1;at=8"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb002",
+    "variant": "mboth",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        140,
+        1794740332647,
+        11202,
+        6,
+        "JOB_STOPPED",
+        "kind=1;at=4"
+      ]
+    ]
+  },
+  {
+    "run": "B",
+    "trial": "reb004",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 4,
+    "cause": "JobScheduler stop followed by cooperative loop exit; no subsequent recovery within observation window",
+    "stop_events": [
+      [
+        180,
+        1794741170773,
+        11331,
+        3,
+        "JOB_STOPPED",
+        "kind=1;at=8"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,35 @@
+cd static && python3 -I static_summary.py >/dev/null
+python3 scripts/summarize.py >/dev/null
+python3 scripts/render.py
+macros: 232 defined; missing: []
+python3 revision/historical_uncertainty.py > results/revision-20261115/bootstrap.log
+python3 revision/oracle_v2.py results/revision-20261115
+socket trials 0
+python3 revision/matched_oracle.py
+matched 2000 tenant rows; 6 invalid paired trials
+python3 revision/render_revision.py
+revision rendered 0 socket, 10 matched groups, 52 ACRA, 20 Matomo
+../manuscript/build.sh
+pages: 16
+overfull: 0
+Note: src/org/residuelab/Sched.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+BUILT 15 APKs in build/apk
+3ce0097ae76f914dcef58be9d04ca2a2bea58033ae646da82002f1fa0adb61d6  acra.apk
+39bc290259800bca75cfe157ba00f4bfdac48f6d70bbb8869ce15694e0568c66  acrafence.apk
+15d4ba1f01d050f60b4154717633e6512d2c5ae159aaac9a28095aad80e9c7c7  build/matomo.apk
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+3618d1f054e764e169e702a39c6265a983da4f0d93d7736d036dd864fe77b6be  rl-wmconv.apk
+89d0e0d73ea7675026b83498b2b071cae270c7b229dce72def506b23d27e114f  rl-wmnone.apk
+80dd7371bf7b439256be365da4edfd6a448e0ab286345f45c943d4f828d61d37  rl-wmrd.apk
+PASS chunk and whole-write comparator release lock before response
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

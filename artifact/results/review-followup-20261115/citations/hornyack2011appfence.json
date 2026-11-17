@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "hornyack2011appfence",
+    "author": "Peter Hornyack and Seungyeop Han and Jaeyeon Jung and Stuart Schechter and David Wetherall",
+    "title": "These Aren't the Droids You're Looking For: Retrofitting {Android} to Protect Data from Imperious Applications",
+    "booktitle": "Proceedings of the 18th ACM Conference on Computer and Communications Security (CCS)",
+    "year": "2011"
+  },
+  "checked": 1794759757.442699,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

@@ -1,0 +1,14 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[maturedbar,width=\linewidth,height=3.5cm,bar width=4.5pt,ymin=0,ylabel={items / tenant-trial},symbolic x coords={none,cancel,enq,start,conv,egress,RD,volat.,taint},xtick=data,x tick label style={font=\scriptsize},legend style={at={(0.5,1.0)},anchor=south,legend columns=2},enlarge x limits=0.07]
+\addplot[fill=mBrick,draw=mInk!75] coordinates {(none,10.36) (cancel,0.20) (enq,8.88) (start,2.79) (conv,0.20) (egress,2.80) (RD,0.00) (volat.,8.21) (taint,0.00)};
+\addlegendentry{lifecycle (pen, kill, fstop, reb, rev)}
+\addplot[fill=mTeal,draw=mInk!75] coordinates {(none,6.42) (cancel,1.62) (enq,6.38) (start,6.12) (conv,1.63) (egress,1.28) (RD,0.00) (volat.,0.00) (taint,0.00)};
+\addlegendentry{race (net, infl)}
+\end{axis}
+\end{tikzpicture}
+\caption{Stream-wrapper prohibited authorizations per tenant-trial (T1, T8, T2, T5, T4), AVD~A and B pooled. \sys (RD) authorizes none.}
+\Description{Grouped bars compare authorization-order failures of enforcement variants across lifecycle and retry schedules.}
+\label{fig:bars}
+\end{figure}

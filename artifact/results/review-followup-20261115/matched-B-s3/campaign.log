@@ -1,0 +1,55 @@
+23:35:07 emulator-5690 pen015 50s
+23:35:38 emulator-5690 kil015 31s
+23:36:09 emulator-5690 for015 30s
+23:37:41 emulator-5690 reb015 92s
+23:38:20 emulator-5690 rev015 40s
+23:40:35 emulator-5690 net015 135s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 288, in run_trial
+    time.sleep(3)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+23:42:09 emulator-5690 inf015 45s
+23:43:04 emulator-5690 pen016 55s
+23:43:47 emulator-5690 kil016 43s
+23:44:14 emulator-5690 for016 27s
+23:44:57 emulator-5690 reb016 42s
+23:45:54 emulator-5690 rev016 57s
+23:47:08 emulator-5690 net016 75s
+23:47:53 emulator-5690 inf016 44s
+23:48:24 emulator-5690 pen017 32s
+23:49:15 emulator-5690 kil017 50s
+23:49:44 emulator-5690 for017 29s
+23:51:25 emulator-5690 reb017 101s
+23:52:00 emulator-5690 rev017 35s
+23:54:15 emulator-5690 net017 135s
+23:55:10 emulator-5690 inf017 54s
+23:56:05 emulator-5690 pen018 55s
+23:56:47 emulator-5690 kil018 43s
+23:57:38 emulator-5690 for018 51s
+00:01:53 emulator-5690 reb018 TRIAL_ERROR TimeoutExpired(['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulato
+00:02:10 restarted emulator-5690 in 16s
+00:02:34 emulator-5690 rev018 24s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 369, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 341, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 279, in run_trial
+    time.sleep(6.0)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+00:04:57 emulator-5690 net018 80s
+00:05:46 emulator-5690 inf018 49s
+00:06:41 emulator-5690 pen019 55s
+00:07:24 emulator-5690 kil019 43s
+00:07:53 emulator-5690 for019 29s
+00:12:08 emulator-5690 reb019 TRIAL_ERROR TimeoutExpired(['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulato
+00:12:24 restarted emulator-5690 in 16s
+00:13:02 emulator-5690 rev019 38s
+00:15:13 emulator-5690 net019 132s
+00:15:58 emulator-5690 inf019 45s

@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "liu2016wakelock",
+    "author": "Yepang Liu and Chang Xu and Shing-Chi Cheung and Valerio Terragni",
+    "title": "Understanding and Detecting Wake Lock Misuses for {Android} Applications",
+    "booktitle": "Proceedings of the 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE)",
+    "pages": "396--409",
+    "year": "2016"
+  },
+  "checked": 1794759766.6375942,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

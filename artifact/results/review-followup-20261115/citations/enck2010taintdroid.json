@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "enck2010taintdroid",
+    "author": "William Enck and Peter Gilbert and Byung-Gon Chun and Landon P. Cox and Jaeyeon Jung and Patrick McDaniel and Anmol N. Sheth",
+    "title": "{TaintDroid}: An Information-Flow Tracking System for Realtime Privacy Monitoring on Smartphones",
+    "booktitle": "Proceedings of the 9th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+    "year": "2010"
+  },
+  "checked": 1794759757.4364748,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

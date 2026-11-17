@@ -1,0 +1,173 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "bishop1996races",
+    "author": "Matt Bishop and Michael Dilger",
+    "title": "Checking for Race Conditions in File Accesses",
+    "journal": "Computing Systems",
+    "volume": "9",
+    "number": "2",
+    "pages": "131--152",
+    "year": "1996"
+  },
+  "checked": 1794759767.783843,
+  "candidates": [
+    {
+      "title": "File-based race conditions in UNIX: TOCTOU",
+      "match": 0.5581395348837209,
+      "DOI": "10.26754/jjii3a.4897",
+      "URL": "https://doi.org/10.26754/jjii3a.4897",
+      "author": [
+        {
+          "given": "Razvan",
+          "family": "Raducu",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Ricardo J",
+          "family": "Rodr\u00edguez",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Pedro J",
+          "family": "\u00c1lvarez",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Jornada de J\u00f3venes Investigadores del I3A"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020,
+            12,
+            22
+          ]
+        ]
+      },
+      "page": null,
+      "type": "journal-article"
+    },
+    {
+      "title": "Detection of file-based race conditions",
+      "match": 0.5238095238095238,
+      "DOI": "10.1007/s10207-004-0068-2",
+      "URL": "https://doi.org/10.1007/s10207-004-0068-2",
+      "author": [
+        {
+          "given": "Kyung-suk",
+          "family": "Lhee",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Steve J.",
+          "family": "Chapin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "International Journal of Information Security"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2005,
+            2
+          ]
+        ]
+      },
+      "page": "105-119",
+      "type": "journal-article"
+    },
+    {
+      "title": "Estimating accesses in partitioned signature file organizations",
+      "match": 0.24074074074074073,
+      "DOI": "10.1145/130226.145014",
+      "URL": "https://doi.org/10.1145/130226.145014",
+      "author": [
+        {
+          "given": "Paulo",
+          "family": "Ciaccia",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Univ. of Bologna, Bologna, Italy"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Pavel",
+          "family": "Zezula",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Technical Univ. of Brno, Brno, Czech Republic"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "ACM Transactions on Information Systems"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1993,
+            4
+          ]
+        ]
+      },
+      "page": "133-142",
+      "type": "journal-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

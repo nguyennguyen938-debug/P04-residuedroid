@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "felt2011demystified",
+    "author": "Adrienne Porter Felt and Erika Chin and Steve Hanna and Dawn Song and David Wagner",
+    "title": "Android Permissions Demystified",
+    "booktitle": "Proceedings of the 18th ACM Conference on Computer and Communications Security (CCS)",
+    "year": "2011"
+  },
+  "checked": 1794759758.773741,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\caption{F-Droid corpus screen: apps (\%). Random-stratum percentages carry Wilson 95\% intervals conditional on the screen. Tracking is a census of eligible tracking apps. $^\dagger$persisted deferred work + entry$\to$network + consent signal.}
+\label{tab:corpus}
+\mtab
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\mhead Feature & Tracking ($n{=}$60) & Random ($n{=}$300) \\
+\midrule
+Network API & 57 (95) & 277 (92) [89, 95] \\
+\texttt{JobScheduler} & 32 (53) & 183 (61) [55, 66] \\
+\quad \texttt{setPersisted} & 22 (37) & 114 (38) [33, 44] \\
+WorkManager & 9 (15) & 45 (15) [11, 19] \\
+AlarmManager & 37 (62) & 188 (63) [57, 68] \\
+SyncAdapter & 0 (0) & 3 (1) [0, 3] \\
+Persisted deferred work (any) & 22 (37) & 116 (39) [33, 44] \\
+Entry $\to$ network, $\le$3 hops & 5 (8) & 17 (6) [4, 9] \\
+Entry $\to$ network, any depth & 13 (22) & 53 (18) [14, 22] \\
+Persisted + entry$\to$net, $\le$3 & 4 (7) & 17 (6) [4, 9] \\
+Persisted + entry$\to$net, any & 10 (17) & 50 (17) [13, 21] \\
+Consent/telemetry signal & 23 (38) & 42 (14) [11, 18] \\
+Candidate, $\le$3 hops$^\dagger$ & 3 (5) & 5 (2) [1, 4] \\
+Candidate, any depth$^\dagger$ & 6 (10) & 12 (4) [2, 7] \\
+Telemetry/crash SDK & 19 (32) & 14 (5) [3, 8] \\
+Native libraries & 38 (63) & 210 (70) [65, 75] \\
+\bottomrule
+\end{tabular}
+\end{table}

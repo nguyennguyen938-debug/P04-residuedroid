@@ -1,0 +1,9 @@
+{
+  "started_utc": "2026-11-15T09:55:12.411878+00:00",
+  "setup_experiment_budget_s": 28800,
+  "scope": "P04 only; audited HTTP; ACRA first; no handset",
+  "snapshot_sha256": "b3bc4843424414e3dacd84aee1e442ae38dffed1df8461bf22304a62ce296084",
+  "status": "experiments_complete",
+  "experiments_finished_utc": "2026-11-15T11:38:40.243317+00:00",
+  "wall_seconds_through_experiments": 6207.831439
+}

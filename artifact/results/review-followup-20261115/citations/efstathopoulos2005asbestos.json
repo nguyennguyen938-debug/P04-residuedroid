@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "efstathopoulos2005asbestos",
+    "author": "Petros Efstathopoulos and Maxwell Krohn and Steve VanDeBogart and Cliff Frey and David Ziegler and Eddie Kohler and David Mazi{\\`e}res and M. Frans Kaashoek and Robert Morris",
+    "title": "Labels and Event Processes in the {Asbestos} Operating System",
+    "booktitle": "Proceedings of the 20th ACM Symposium on Operating Systems Principles (SOSP)",
+    "year": "2005"
+  },
+  "checked": 1794759761.635988,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

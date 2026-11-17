@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "android_jobscheduler",
+    "author": "{Android Developers}",
+    "title": "{JobInfo.Builder} -- {setPersisted}",
+    "howpublished": "\\url{https://developer.android.com/reference/android/app/job/JobInfo.Builder}",
+    "note": "Accessed 2026-11-08",
+    "year": "2026"
+  },
+  "checked": 1794759769.5081432,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

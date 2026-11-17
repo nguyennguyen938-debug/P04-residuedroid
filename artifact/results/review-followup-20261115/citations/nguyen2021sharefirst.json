@@ -1,0 +1,411 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "nguyen2021sharefirst",
+    "author": "Trung Tin Nguyen and Michael Backes and Ninja Marnau and Ben Stock",
+    "title": "Share First, Ask Later (or Never?) Studying Violations of {GDPR}'s Explicit Consent in {Android} Apps",
+    "booktitle": "Proceedings of the 30th USENIX Security Symposium",
+    "year": "2021"
+  },
+  "checked": 1794759762.4494982,
+  "candidates": [
+    {
+      "title": "Studying TLS Usage in Android Apps",
+      "match": 0.47244094488188976,
+      "DOI": "10.1145/3232755.3232779",
+      "URL": "https://doi.org/10.1145/3232755.3232779",
+      "author": [
+        {
+          "given": "Abbas",
+          "family": "Razaghpanah",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Stony Brook University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Arian Akhavan",
+          "family": "Niaki",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "UMass-Amherst"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Narseo",
+          "family": "Vallina-Rodriguez",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "IMDEA Networks Institute/ICSI"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Srikanth",
+          "family": "Sundaresan",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Facebook"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Johanna",
+          "family": "Amann",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "ICSI/Corelight"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Philippa",
+          "family": "Gill",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "UMass-Amherst"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the Applied Networking Research Workshop"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2018,
+            7,
+            16
+          ]
+        ]
+      },
+      "page": "5-5",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "An Empirical Evaluation of GDPR Compliance Violations in Android mHealth Apps",
+      "match": 0.47058823529411764,
+      "DOI": "10.1109/issre5003.2020.00032",
+      "URL": "https://doi.org/10.1109/issre5003.2020.00032",
+      "author": [
+        {
+          "given": "Ming",
+          "family": "Fan",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Le",
+          "family": "Yu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Sen",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Hao",
+          "family": "Zhou",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiapu",
+          "family": "Luo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shuyue",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yang",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jun",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ting",
+          "family": "Liu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2020 IEEE 31st International Symposium on Software Reliability Engineering (ISSRE)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020,
+            10
+          ]
+        ]
+      },
+      "page": "253-264",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Breaking the Illusion: Automated Reasoning of GDPR Consent Violations",
+      "match": 0.2236024844720497,
+      "DOI": "10.1109/sp63933.2026.00040",
+      "URL": "https://doi.org/10.1109/sp63933.2026.00040",
+      "author": [
+        {
+          "given": "Ying",
+          "family": "Li",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of California,Los Angeles"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Wenjun",
+          "family": "Qiu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Toronto"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Faysal Hossain",
+          "family": "Shezan",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at Arlington"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Kunlin",
+          "family": "Cai",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of California,Los Angeles"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michelangelo",
+          "family": "Van Dam",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "in2it"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Lisa",
+          "family": "Austin",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at Arlington"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "David",
+          "family": "Lie",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Texas at Arlington"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yuan",
+          "family": "Tian",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of California,Los Angeles"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2026 IEEE Symposium on Security and Privacy (SP)"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            18
+          ]
+        ]
+      },
+      "page": "905-923",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "needs primary verification"
+}

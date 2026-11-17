@@ -1,0 +1,15 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "li2017staticsurvey",
+    "author": "Li Li and Tegawend{\\'e} F. Bissyand{\\'e} and Mike Papadakis and Siegfried Rasthofer and Alexandre Bartel and Damien Octeau and Jacques Klein and Yves Le Traon",
+    "title": "Static Analysis of {Android} Apps: A Systematic Literature Review",
+    "journal": "Information and Software Technology",
+    "volume": "88",
+    "pages": "67--95",
+    "year": "2017"
+  },
+  "checked": 1794759758.537904,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

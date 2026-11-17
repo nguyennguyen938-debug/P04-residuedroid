@@ -1,0 +1,54 @@
+23:35:09 emulator-5688 pen015 57s
+23:35:51 emulator-5688 kil015 41s
+23:36:29 emulator-5688 for015 39s
+23:38:09 emulator-5688 reb015 100s
+23:38:49 emulator-5688 rev015 40s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 288, in run_trial
+    time.sleep(3)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+23:42:41 emulator-5688 net015 77s
+23:43:34 emulator-5688 inf015 53s
+23:44:27 emulator-5688 pen016 53s
+23:45:21 emulator-5688 kil016 54s
+23:46:21 emulator-5688 for016 60s
+23:48:01 emulator-5688 reb016 100s
+23:48:35 emulator-5688 rev016 35s
+23:49:51 emulator-5688 net016 76s
+23:50:31 emulator-5688 inf016 40s
+23:51:27 emulator-5688 pen017 56s
+23:52:19 emulator-5688 kil017 53s
+23:52:47 emulator-5688 for017 28s
+23:57:01 emulator-5688 reb017 TRIAL_ERROR TimeoutExpired(['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulato
+23:57:18 restarted emulator-5688 in 16s
+23:57:40 emulator-5688 rev017 22s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 369, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 341, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 258, in run_trial
+    bt = wait_boot(); act("boot_completed", boot_s=bt)
+    ^^^^^^^^^
+KeyboardInterrupt
+00:00:15 emulator-5688 net017 134s
+00:00:58 emulator-5688 inf017 43s
+00:01:55 emulator-5688 pen018 57s
+00:02:37 emulator-5688 kil018 42s
+00:03:07 emulator-5688 for018 30s
+00:04:33 emulator-5688 reb018 87s
+00:05:18 emulator-5688 rev018 45s
+00:07:31 emulator-5688 net018 133s
+00:08:22 emulator-5688 inf018 51s
+00:09:17 emulator-5688 pen019 55s
+00:09:59 emulator-5688 kil019 43s
+00:10:28 emulator-5688 for019 29s
+00:11:58 emulator-5688 reb019 90s
+00:12:30 emulator-5688 rev019 32s
+00:14:44 emulator-5688 net019 134s
+00:15:45 emulator-5688 inf019 61s

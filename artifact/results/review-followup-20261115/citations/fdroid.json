@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "fdroid",
+    "author": "{F-Droid}",
+    "title": "{F-Droid} repository index v2",
+    "howpublished": "\\url{https://f-droid.org/repo/index-v2.json}",
+    "note": "Fetched 2026-11-08",
+    "year": "2026"
+  },
+  "checked": 1794759770.379483,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

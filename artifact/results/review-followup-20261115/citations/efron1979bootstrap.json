@@ -1,0 +1,111 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "efron1979bootstrap",
+    "author": "Bradley Efron",
+    "title": "Bootstrap Methods: Another Look at the Jackknife",
+    "journal": "The Annals of Statistics",
+    "volume": "7",
+    "number": "1",
+    "pages": "1--26",
+    "year": "1979"
+  },
+  "checked": 1794759768.743191,
+  "candidates": [
+    {
+      "title": "Bootstrap Methods: Another Look at the Jackknife",
+      "match": 1.0,
+      "DOI": "10.1007/978-1-4612-4380-9_41",
+      "URL": "https://doi.org/10.1007/978-1-4612-4380-9_41",
+      "author": [
+        {
+          "given": "Bradley",
+          "family": "Efron",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Springer Series in Statistics",
+        "Breakthroughs in Statistics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1992
+          ]
+        ]
+      },
+      "page": "569-593",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Bootstrap Methods: Another Look at the Jackknife",
+      "match": 1.0,
+      "DOI": "10.1007/978-0-387-75692-9_9",
+      "URL": "https://doi.org/10.1007/978-0-387-75692-9_9",
+      "author": [
+        {
+          "given": "David",
+          "family": "Hinkley",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Springer Series in Statistics",
+        "The Science of Bradley Efron"
+      ],
+      "published": null,
+      "page": "178-206",
+      "type": "book-chapter"
+    },
+    {
+      "title": "Bootstrap Methods: Another Look at the Jackknife",
+      "match": 1.0,
+      "DOI": "10.1214/aos/1176344552",
+      "URL": "https://doi.org/10.1214/aos/1176344552",
+      "author": [
+        {
+          "given": "B.",
+          "family": "Efron",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "The Annals of Statistics"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1979,
+            1,
+            1
+          ]
+        ]
+      },
+      "page": "1-26",
+      "type": "journal-article"
+    }
+  ],
+  "status": "metadata match"
+}

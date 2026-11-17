@@ -1,0 +1,87 @@
+\section{ResidueDroid Design}
+\label{sec:design}
+
+\subsection{Scope and threat model}
+\label{sec:scope}
+
+\sys is a \emph{cooperative} mechanism. The developer, or an SDK vendor, wants the app to keep its stated contract and links
+\sys to do so. We do not defend against a malicious app, which can always exfiltrate data through a path we do not
+mediate~\cite{reardon2019fiftyways}. The adversary is the schedule: a withdrawal arrives at an arbitrary time relative to queued
+work, process death, reboot, force-stop and connectivity changes. A \emph{supported path} is a flow whose data is stored through
+\sys's labelled stores and whose network submission goes through \sys's egress wrapper. Everything else is \emph{uncovered}.
+That includes native code (JNI), custom network stacks such as raw sockets or embedded HTTP clients that bypass the wrapper,
+WebViews, IPC to other apps, and any flow the developer did not route through the wrapper. We claim nothing for uncovered
+paths. The raw-socket tenant measures one directly in \S\ref{sec:eval}.
+
+\sys also cannot recall bytes. Data handed to the network before the withdrawal takes effect may still arrive afterwards, and
+server-side copies are outside the device. The guarantee orders each accepted socket prefix relative to policy updates. A write can accept
+only part of a request; its authorization log, local acceptance and remote receipt are distinct.
+
+\subsection{Three mechanisms}
+\input{figures/fig2-design}
+Figure~\ref{fig:design} shows how the three mechanisms fit together.
+
+
+\paragraph{Durable epochs.} For every withdrawable scope $s$, such as \textit{analytics} or \textit{profile}, \sys keeps a
+durable epoch $\epsilon(s)$ and a flag $a(s)$. A withdrawal runs as one transaction that increments $\epsilon(s)$, clears
+$a(s)$ and, for a deletion request, deletes local rows. A re-grant sets $a(s)$ again but keeps the epoch. Data collected
+afterwards belongs to the new epoch, and data from older epochs stays invalid. The state lives in the app's SQLite database, so
+it survives process death and reboot.
+
+\paragraph{Persistent job lineage.} Each persisted datum carries a label $\ell(d)\subseteq\{(s,\epsilon)\}$, the scopes and
+epochs of the sources it was computed from. The label is written \emph{in the same row or the same job input} as the data,
+so it is committed atomically with the data. Collection assigns $\{(s,\epsilon(s))\}$, and derivation takes the union of its
+inputs' labels. When data is copied into a job's persisted input (a \texttt{PersistableBundle} or WorkManager \texttt{Data}),
+the label is copied with it. The label therefore survives in the job store, which a database deletion does not reach.
+
+\paragraph{Late, serialized egress fence.} Every supported submission passes through
+\texttt{Fence.submit(purpose, items)}. The audited HTTP adapter connects outside the lock,
+encodes the request with a conservative union of its source labels, and writes chunks of at most
+4\,KiB. Before each nonblocking write it acquires the same lock as withdrawal and rechecks
+those labels. A zero-byte return is no handoff; a positive return records exactly the accepted
+prefix. Waiting for socket readiness and reading the response occur outside the lock.
+If policy changes after a partial send, the adapter closes the connection and suppresses the
+remainder; previously accepted bytes remain outstanding. The contract rule for an item with label
+$(s,e)$ and purpose $p$ is
+\begin{equation}
+\begin{aligned}
+\mathit{forbid}(s,e,p)\;=\;{}&p\in R_s\;\wedge\;\big[(\pi_s\wedge e<\epsilon(s))\\
+&\vee\;(e=\epsilon(s)\wedge\neg a(s))\big],
+\end{aligned}
+\label{eq:rule}
+\end{equation}
+where $R_s$ is the set of purposes the contract revokes and $\pi_s$ says whether it covers pending data
+(Table~\ref{tab:contracts}). An item is forbidden if any element of its label is forbidden. For an OS-permission tenant
+$R_s=\emptyset$, so prior data is never blocked. For a processing restriction, $R_s=\{\textit{personalisation}\}$, so backup
+continues. For a ``stop collecting'' opt-out, $\pi_s$ is false, so queued data may still flush.
+
+\begin{algorithm}[t]
+\caption{Audited HTTP fence, with source labels on every retry}
+\label{alg:fence}
+\begin{algorithmic}[1]
+\Require purpose $p$, encoded bytes $B$, durable source union $\ell$
+\State Connect outside $L$; set operation deadline
+\While{unsent bytes remain}
+\State Wait for socket readiness outside $L$
+\State Acquire $L$ within deadline
+\State Read durable policy; reject unknown or forbidden labels
+\State Attempt nonblocking write of at most 4\,KiB
+\State Record returned accepted count; release $L$
+\EndWhile
+\State Read response outside $L$; retain source labels on retry
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Why this placement.} An early check can leave a window when an applicable withdrawal precedes an unprotected send.
+Cancellation can miss re-enqueued or running work if it does not reach the transport. A check at enqueue misses a job queued before the withdrawal. A check at
+job start misses everything the job prepared before the withdrawal and submits after it, including retries. Our declared-scope egress baseline misses a derived source when that source is invalidated
+but the declared scope still passes. A boolean
+consent flag without epochs lets old data through after a re-grant. \S\ref{sec:theory} turns each gap into a statement, and
+\S\ref{sec:eval} measures each one.
+
+\paragraph{Cost and composition.} One app-wide coordinator combines a local mutex with an
+exclusive file lock. This simple design can briefly delay unrelated scopes, and storage or
+scheduling delays can exceed nominal deadlines. Five-second operation deadlines are best-effort
+failure bounds, not real-time guarantees. A failed or pending withdrawal is never acknowledged
+as successful. Layered cancellation and early checks can reduce wasted work; the stated prefix-level guarantee uses a check for each final chunk. The old whole-request HTTP-stream wrapper is retained as a stream-wrapper
+comparison, not used to justify the channel handoff boundary.

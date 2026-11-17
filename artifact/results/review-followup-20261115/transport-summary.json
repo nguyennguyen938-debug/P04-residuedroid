@@ -1,0 +1,6373 @@
+{
+  "rows": [
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-0-c0c4aa",
+      "case": "control",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        246.192375
+      ],
+      "process_cpu_ms": [
+        240
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-0-ee7086",
+      "case": "early",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        166.411292
+      ],
+      "process_cpu_ms": [
+        138
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-0-63758c",
+      "case": "buffered-fence",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.925834,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-0-f6ceee",
+      "case": "buffered-early",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.368625,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        132.142626
+      ],
+      "process_cpu_ms": [
+        113
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-0-8ad8ee",
+      "case": "stall-small",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 424846,
+      "ack_ms": 2.567584,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-0-eec51a",
+      "case": "stall-large",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.0545,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-0-f29b6d",
+      "case": "concurrent",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        343.45775,
+        315.018126
+      ],
+      "process_cpu_ms": [
+        226,
+        274
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-0-b38e97",
+      "case": "labels-complete",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-0-24dcaa",
+      "case": "labels-incomplete",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        522.040708
+      ],
+      "process_cpu_ms": [
+        87
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-0-ac33d9",
+      "case": "labels-missing",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-0-6bf59c",
+      "case": "mixed",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-1-c3f824",
+      "case": "control",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        646.814792
+      ],
+      "process_cpu_ms": [
+        211
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-1-95eefa",
+      "case": "early",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        626.282209
+      ],
+      "process_cpu_ms": [
+        166
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-1-9fb31b",
+      "case": "buffered-fence",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.267375,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-1-77f22a",
+      "case": "buffered-early",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.144167,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        167.257
+      ],
+      "process_cpu_ms": [
+        113
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-1-c1b6f5",
+      "case": "stall-small",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 589875,
+      "ack_ms": 12.749083,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-1-0faeb4",
+      "case": "stall-large",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 837375,
+      "ack_ms": 3.234459,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-1-f8b541",
+      "case": "concurrent",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        276.927167,
+        286.107125
+      ],
+      "process_cpu_ms": [
+        289,
+        255
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-1-697d1f",
+      "case": "labels-complete",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-1-953392",
+      "case": "labels-incomplete",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        66.964166
+      ],
+      "process_cpu_ms": [
+        83
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-1-748871",
+      "case": "labels-missing",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-1-efd99b",
+      "case": "mixed",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-2-9411bb",
+      "case": "control",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        497.602958
+      ],
+      "process_cpu_ms": [
+        224
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-2-97b5ba",
+      "case": "early",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        249.3675
+      ],
+      "process_cpu_ms": [
+        163
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-2-176d98",
+      "case": "buffered-fence",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.203458,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-2-8c6096",
+      "case": "buffered-early",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.141708,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        175.203542
+      ],
+      "process_cpu_ms": [
+        113
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-2-27d4cc",
+      "case": "stall-small",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 482596,
+      "ack_ms": 3.734,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-2-611d42",
+      "case": "stall-large",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 903346,
+      "ack_ms": 4.529375,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-2-f3572c",
+      "case": "concurrent",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        361.475667,
+        314.282375
+      ],
+      "process_cpu_ms": [
+        214,
+        285
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-2-e04eec",
+      "case": "labels-complete",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-2-13c999",
+      "case": "labels-incomplete",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        245.431292
+      ],
+      "process_cpu_ms": [
+        85
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-2-2c7fba",
+      "case": "labels-missing",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-2-938a56",
+      "case": "mixed",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-3-b67683",
+      "case": "control",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        657.272833
+      ],
+      "process_cpu_ms": [
+        202
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-3-8d9dfd",
+      "case": "early",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        634.91125
+      ],
+      "process_cpu_ms": [
+        172
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-3-30982a",
+      "case": "buffered-fence",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.025542,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-3-ffbe62",
+      "case": "buffered-early",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.287917,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        486.333542
+      ],
+      "process_cpu_ms": [
+        107
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-3-59330a",
+      "case": "stall-small",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 507375,
+      "ack_ms": 6.951666,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-3-f2fc69",
+      "case": "stall-large",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.221375,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-3-491625",
+      "case": "concurrent",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        285.3685,
+        308.658751
+      ],
+      "process_cpu_ms": [
+        195,
+        285
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-3-8c66ba",
+      "case": "labels-complete",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-3-d08ea8",
+      "case": "labels-incomplete",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        152.168875
+      ],
+      "process_cpu_ms": [
+        87
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-3-a7b6fc",
+      "case": "labels-missing",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-3-f11e5c",
+      "case": "mixed",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-4-4323e9",
+      "case": "control",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        208.693167
+      ],
+      "process_cpu_ms": [
+        278
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-4-4ef3c5",
+      "case": "early",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        195.109416
+      ],
+      "process_cpu_ms": [
+        244
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-4-5d0c38",
+      "case": "buffered-fence",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.733541,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-4-d70dad",
+      "case": "buffered-early",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 2.0175,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        170.800375
+      ],
+      "process_cpu_ms": [
+        109
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-4-b60b09",
+      "case": "stall-small",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 540346,
+      "ack_ms": 2.077209,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-4-7d55b8",
+      "case": "stall-large",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 3.585333,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-4-4936bc",
+      "case": "concurrent",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        302.2185,
+        308.305584
+      ],
+      "process_cpu_ms": [
+        212,
+        281
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-4-05b555",
+      "case": "labels-complete",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-4-83fd61",
+      "case": "labels-incomplete",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        437.30625
+      ],
+      "process_cpu_ms": [
+        86
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-4-ffa1d1",
+      "case": "labels-missing",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-4-829baf",
+      "case": "mixed",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-5-30b0bd",
+      "case": "control",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        645.2625
+      ],
+      "process_cpu_ms": [
+        202
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-5-043d88",
+      "case": "early",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        178.976292
+      ],
+      "process_cpu_ms": [
+        186
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-5-585a85",
+      "case": "buffered-fence",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.865666,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-5-7a0084",
+      "case": "buffered-early",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.341084,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        635.049708
+      ],
+      "process_cpu_ms": [
+        109
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-5-0ec080",
+      "case": "stall-small",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 593971,
+      "ack_ms": 1.429584,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-5-c6e25c",
+      "case": "stall-large",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1022971,
+      "ack_ms": 1.387291,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-5-bdec42",
+      "case": "concurrent",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        324.867917,
+        316.944126
+      ],
+      "process_cpu_ms": [
+        207,
+        300
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-5-8b44ee",
+      "case": "labels-complete",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-5-dcb18e",
+      "case": "labels-incomplete",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        460.059001
+      ],
+      "process_cpu_ms": [
+        129
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-5-b75fe2",
+      "case": "labels-missing",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-5-66b0a6",
+      "case": "mixed",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-6-4a6694",
+      "case": "control",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        292.313042
+      ],
+      "process_cpu_ms": [
+        198
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-6-b0d1e2",
+      "case": "early",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        371.435167
+      ],
+      "process_cpu_ms": [
+        160
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-6-dad44b",
+      "case": "buffered-fence",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.847959,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-6-6cefd3",
+      "case": "buffered-early",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.026584,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        637.715792
+      ],
+      "process_cpu_ms": [
+        110
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-6-0287b4",
+      "case": "stall-small",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 536221,
+      "ack_ms": 1.515958,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-6-ef29b9",
+      "case": "stall-large",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 944625,
+      "ack_ms": 7.20675,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-6-a18b70",
+      "case": "concurrent",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        359.258583,
+        307.432333
+      ],
+      "process_cpu_ms": [
+        224,
+        287
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-6-fa6766",
+      "case": "labels-complete",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-6-a58385",
+      "case": "labels-incomplete",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        523.267792
+      ],
+      "process_cpu_ms": [
+        95
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-6-63bcee",
+      "case": "labels-missing",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-6-df8c0b",
+      "case": "mixed",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-7-f0a1f8",
+      "case": "control",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        645.751208
+      ],
+      "process_cpu_ms": [
+        202
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-7-e3c20f",
+      "case": "early",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        625.095584
+      ],
+      "process_cpu_ms": [
+        164
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-7-acec65",
+      "case": "buffered-fence",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.660958,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-7-13c044",
+      "case": "buffered-early",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.48975,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        637.843125
+      ],
+      "process_cpu_ms": [
+        105
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-7-014ea7",
+      "case": "stall-small",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 569221,
+      "ack_ms": 5.957,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-7-edcf22",
+      "case": "stall-large",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1014721,
+      "ack_ms": 2.516042,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-7-64220a",
+      "case": "concurrent",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        383.889625,
+        323.140209
+      ],
+      "process_cpu_ms": [
+        218,
+        285
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-7-50f081",
+      "case": "labels-complete",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-7-3851c0",
+      "case": "labels-incomplete",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        519.748667
+      ],
+      "process_cpu_ms": [
+        82
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-7-b87808",
+      "case": "labels-missing",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-7-25e5ba",
+      "case": "mixed",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-8-cbb31e",
+      "case": "control",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        489.845667
+      ],
+      "process_cpu_ms": [
+        209
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-8-31f5a2",
+      "case": "early",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        627.496209
+      ],
+      "process_cpu_ms": [
+        161
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-8-b3c6c4",
+      "case": "buffered-fence",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.302541,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-8-4fb3e0",
+      "case": "buffered-early",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.1245,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        491.223292
+      ],
+      "process_cpu_ms": [
+        105
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-8-967186",
+      "case": "stall-small",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 457846,
+      "ack_ms": 3.565875,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-8-49114b",
+      "case": "stall-large",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.038917,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-8-4fc658",
+      "case": "concurrent",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        344.183875,
+        305.159125
+      ],
+      "process_cpu_ms": [
+        206,
+        288
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-8-e56e63",
+      "case": "labels-complete",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-8-5c7ffc",
+      "case": "labels-incomplete",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        98.144791
+      ],
+      "process_cpu_ms": [
+        92
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-8-946c89",
+      "case": "labels-missing",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-8-499801",
+      "case": "mixed",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-9-0814cb",
+      "case": "control",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        351.397042
+      ],
+      "process_cpu_ms": [
+        206
+      ],
+      "payload_bytes": [
+        1048638
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-9-1493a3",
+      "case": "early",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        318.034166
+      ],
+      "process_cpu_ms": [
+        180
+      ],
+      "payload_bytes": [
+        1048636
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-9-243ed8",
+      "case": "buffered-fence",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 2.550166,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-9-f45703",
+      "case": "buffered-early",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16739,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.172792,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        417.4745
+      ],
+      "process_cpu_ms": [
+        110
+      ],
+      "payload_bytes": [
+        16453
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-9-13e0ed",
+      "case": "stall-small",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 626971,
+      "ack_ms": 1.8905,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-9-e05117",
+      "case": "stall-large",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.207208,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-9-7f7250",
+      "case": "concurrent",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        229.025834,
+        306.757458
+      ],
+      "process_cpu_ms": [
+        294,
+        257
+      ],
+      "payload_bytes": [
+        1048641,
+        1048647
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-9-c2e674",
+      "case": "labels-complete",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-9-156505",
+      "case": "labels-incomplete",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        72.754333
+      ],
+      "process_cpu_ms": [
+        86
+      ],
+      "payload_bytes": [
+        1189
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-9-4ccf74",
+      "case": "labels-missing",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-9-88985d",
+      "case": "mixed",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-10-91c652",
+      "case": "control",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        663.132
+      ],
+      "process_cpu_ms": [
+        222
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-10-547605",
+      "case": "early",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        376.85
+      ],
+      "process_cpu_ms": [
+        173
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-10-c8b162",
+      "case": "buffered-fence",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.298958,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-10-b7433f",
+      "case": "buffered-early",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.539959,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        182.54
+      ],
+      "process_cpu_ms": [
+        110
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-10-9e9f11",
+      "case": "stall-small",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 569221,
+      "ack_ms": 1.34825,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-10-8ee60c",
+      "case": "stall-large",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 5.902833,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-10-2a5710",
+      "case": "concurrent",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        382.794417,
+        304.387542
+      ],
+      "process_cpu_ms": [
+        221,
+        277
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-10-c5a4fb",
+      "case": "labels-complete",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-10-57e9d7",
+      "case": "labels-incomplete",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        521.315542
+      ],
+      "process_cpu_ms": [
+        95
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-10-282800",
+      "case": "labels-missing",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-10-5ff507",
+      "case": "mixed",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-11-c29de6",
+      "case": "control",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        662.387376
+      ],
+      "process_cpu_ms": [
+        204
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-11-e832ec",
+      "case": "early",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        629.982333
+      ],
+      "process_cpu_ms": [
+        171
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-11-3b1d95",
+      "case": "buffered-fence",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.842917,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-11-8c4724",
+      "case": "buffered-early",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.1895,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        523.160125
+      ],
+      "process_cpu_ms": [
+        112
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-11-ab3b22",
+      "case": "stall-small",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 511471,
+      "ack_ms": 1.764792,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-11-75be3e",
+      "case": "stall-large",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 944596,
+      "ack_ms": 9.058833,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-11-42e1b3",
+      "case": "concurrent",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        387.598709,
+        359.322292
+      ],
+      "process_cpu_ms": [
+        228,
+        329
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-11-29b00c",
+      "case": "labels-complete",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-11-653972",
+      "case": "labels-incomplete",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        210.296167
+      ],
+      "process_cpu_ms": [
+        97
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-11-cdb562",
+      "case": "labels-missing",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-11-aec5a6",
+      "case": "mixed",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-12-2fbae8",
+      "case": "control",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        470.849417
+      ],
+      "process_cpu_ms": [
+        224
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-12-a38c00",
+      "case": "early",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        636.200126
+      ],
+      "process_cpu_ms": [
+        169
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-12-8c95e2",
+      "case": "buffered-fence",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.629959,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-12-640da2",
+      "case": "buffered-early",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.486458,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        337.474833
+      ],
+      "process_cpu_ms": [
+        110
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-12-535439",
+      "case": "stall-small",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 499096,
+      "ack_ms": 3.126417,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-12-137b92",
+      "case": "stall-large",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.392958,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-12-0c0f38",
+      "case": "concurrent",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        395.372542,
+        351.331458
+      ],
+      "process_cpu_ms": [
+        223,
+        323
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-12-e1ab1a",
+      "case": "labels-complete",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-12-623824",
+      "case": "labels-incomplete",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        521.863417
+      ],
+      "process_cpu_ms": [
+        89
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-12-03b010",
+      "case": "labels-missing",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-12-a8b826",
+      "case": "mixed",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-13-caa2fb",
+      "case": "control",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        650.137
+      ],
+      "process_cpu_ms": [
+        218
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-13-5a4d92",
+      "case": "early",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        640.332709
+      ],
+      "process_cpu_ms": [
+        181
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-13-517cc7",
+      "case": "buffered-fence",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.642667,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-13-5af8bd",
+      "case": "buffered-early",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.513458,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        624.583251
+      ],
+      "process_cpu_ms": [
+        115
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-13-986932",
+      "case": "stall-small",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 593971,
+      "ack_ms": 4.409375,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-13-434781",
+      "case": "stall-large",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 841500,
+      "ack_ms": 1.576292,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-13-e90d7f",
+      "case": "concurrent",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        309.76775,
+        309.327667
+      ],
+      "process_cpu_ms": [
+        231,
+        286
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-13-6b422f",
+      "case": "labels-complete",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-13-074a3a",
+      "case": "labels-incomplete",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        521.329333
+      ],
+      "process_cpu_ms": [
+        89
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-13-b51de4",
+      "case": "labels-missing",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-13-289937",
+      "case": "mixed",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-14-a6d23d",
+      "case": "control",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        492.844209
+      ],
+      "process_cpu_ms": [
+        217
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-14-d7f24b",
+      "case": "early",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        626.110001
+      ],
+      "process_cpu_ms": [
+        166
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-14-ca4d02",
+      "case": "buffered-fence",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.137458,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-14-989443",
+      "case": "buffered-early",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.321375,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        670.000125
+      ],
+      "process_cpu_ms": [
+        119
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-14-26c2d8",
+      "case": "stall-small",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 453721,
+      "ack_ms": 5.382583,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-14-faa991",
+      "case": "stall-large",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1022971,
+      "ack_ms": 1.369,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-14-cc8f91",
+      "case": "concurrent",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        320.5155,
+        339.713542
+      ],
+      "process_cpu_ms": [
+        219,
+        312
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-14-d64de2",
+      "case": "labels-complete",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-14-b245a0",
+      "case": "labels-incomplete",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        523.342959
+      ],
+      "process_cpu_ms": [
+        93
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-14-52f30f",
+      "case": "labels-missing",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-14-bfbdce",
+      "case": "mixed",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-15-66d734",
+      "case": "control",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        647.314958
+      ],
+      "process_cpu_ms": [
+        211
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-15-cf5217",
+      "case": "early",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        629.3045
+      ],
+      "process_cpu_ms": [
+        168
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-15-600fab",
+      "case": "buffered-fence",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.85825,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-15-1fb253",
+      "case": "buffered-early",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.970333,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        673.069167
+      ],
+      "process_cpu_ms": [
+        110
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-15-d6be55",
+      "case": "stall-small",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 581596,
+      "ack_ms": 2.223333,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-15-4fbb1e",
+      "case": "stall-large",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 952875,
+      "ack_ms": 1.72575,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-15-8ec189",
+      "case": "concurrent",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        379.925125,
+        330.553167
+      ],
+      "process_cpu_ms": [
+        211,
+        315
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-15-2df4bd",
+      "case": "labels-complete",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-15-0d4dbe",
+      "case": "labels-incomplete",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        519.617667
+      ],
+      "process_cpu_ms": [
+        85
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-15-97a591",
+      "case": "labels-missing",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-15-e92a53",
+      "case": "mixed",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-16-d27220",
+      "case": "control",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        640.402041
+      ],
+      "process_cpu_ms": [
+        202
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-16-170d09",
+      "case": "early",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        628.949833
+      ],
+      "process_cpu_ms": [
+        167
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-16-a6521e",
+      "case": "buffered-fence",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.253292,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-16-429a32",
+      "case": "buffered-early",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 3.801292,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        681.915625
+      ],
+      "process_cpu_ms": [
+        118
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-16-817ba1",
+      "case": "stall-small",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 560971,
+      "ack_ms": 1.696375,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-16-323a8b",
+      "case": "stall-large",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1023000,
+      "ack_ms": 1.141209,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-16-64b49f",
+      "case": "concurrent",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        331.038542,
+        316.433167
+      ],
+      "process_cpu_ms": [
+        219,
+        289
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-16-0a025a",
+      "case": "labels-complete",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-16-9b15b4",
+      "case": "labels-incomplete",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        520.952458
+      ],
+      "process_cpu_ms": [
+        87
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-16-a069d2",
+      "case": "labels-missing",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-16-2f6928",
+      "case": "mixed",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-17-b0d585",
+      "case": "control",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        687.411875
+      ],
+      "process_cpu_ms": [
+        253
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-17-ebadba",
+      "case": "early",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        632.318334
+      ],
+      "process_cpu_ms": [
+        172
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-17-ce8567",
+      "case": "buffered-fence",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.754917,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-17-0d54d6",
+      "case": "buffered-early",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.237584,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        645.823459
+      ],
+      "process_cpu_ms": [
+        112
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-17-8856a2",
+      "case": "stall-small",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 437221,
+      "ack_ms": 2.849792,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-17-f8ab70",
+      "case": "stall-large",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1027096,
+      "ack_ms": 1.607833,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-17-fcef4c",
+      "case": "concurrent",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        354.608167,
+        316.20075
+      ],
+      "process_cpu_ms": [
+        210,
+        301
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-17-e1b0af",
+      "case": "labels-complete",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-17-e83607",
+      "case": "labels-incomplete",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        520.567375
+      ],
+      "process_cpu_ms": [
+        90
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-17-8165a0",
+      "case": "labels-missing",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-17-c5ea6a",
+      "case": "mixed",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-18-6fd863",
+      "case": "control",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        444.893334
+      ],
+      "process_cpu_ms": [
+        219
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-18-f98bc0",
+      "case": "early",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        633.924876
+      ],
+      "process_cpu_ms": [
+        166
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-18-9942af",
+      "case": "buffered-fence",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 2.89025,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-18-457e8d",
+      "case": "buffered-early",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.315625,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        408.393917
+      ],
+      "process_cpu_ms": [
+        111
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-18-3c571d",
+      "case": "stall-small",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 462000,
+      "ack_ms": 1.810708,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-18-b9add6",
+      "case": "stall-large",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 1022971,
+      "ack_ms": 1.02275,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-18-3cb1bb",
+      "case": "concurrent",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        344.340542,
+        309.222084
+      ],
+      "process_cpu_ms": [
+        218,
+        283
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-18-5bae13",
+      "case": "labels-complete",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-18-c6e3e1",
+      "case": "labels-incomplete",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        519.033042
+      ],
+      "process_cpu_ms": [
+        89
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-18-dd735e",
+      "case": "labels-missing",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-18-bea6e8",
+      "case": "mixed",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-control-19-f4996f",
+      "case": "control",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        654.355334
+      ],
+      "process_cpu_ms": [
+        218
+      ],
+      "payload_bytes": [
+        1048639
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-early-19-531e07",
+      "case": "early",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        629.769709
+      ],
+      "process_cpu_ms": [
+        170
+      ],
+      "payload_bytes": [
+        1048637
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-fence-19-a16a40",
+      "case": "buffered-fence",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.372208,
+      "sndbuf": 16384,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-buffered-early-19-2266d9",
+      "case": "buffered-early",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16741,
+      "accepted_before_ack": 0,
+      "ack_ms": 1.16225,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        345.242042
+      ],
+      "process_cpu_ms": [
+        114
+      ],
+      "payload_bytes": [
+        16454
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-small-19-8f7a48",
+      "case": "stall-small",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 412471,
+      "ack_ms": 2.180166,
+      "sndbuf": 4096,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-stall-large-19-811197",
+      "case": "stall-large",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 919875,
+      "ack_ms": 5.359959,
+      "sndbuf": 262144,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-concurrent-19-a10281",
+      "case": "concurrent",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        357.736625,
+        345.37875
+      ],
+      "process_cpu_ms": [
+        239,
+        328
+      ],
+      "payload_bytes": [
+        1048642,
+        1048648
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-complete-19-52789d",
+      "case": "labels-complete",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-incomplete-19-cde1a3",
+      "case": "labels-incomplete",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": 16384,
+      "elapsed_ms": [
+        103.187416
+      ],
+      "process_cpu_ms": [
+        88
+      ],
+      "payload_bytes": [
+        1190
+      ]
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-labels-missing-19-88f9fa",
+      "case": "labels-missing",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "tls-final",
+      "trial": "tls-mixed-19-1bf3a6",
+      "case": "mixed",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 0,
+      "early_blocks": 1,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [],
+      "process_cpu_ms": [],
+      "payload_bytes": []
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-0-663998",
+      "case": "http-control",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        216.788083
+      ],
+      "process_cpu_ms": [
+        213
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-0-f492e6",
+      "case": "http-early",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        505.403792
+      ],
+      "process_cpu_ms": [
+        214
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-0-eda3f4",
+      "case": "http-concurrent",
+      "block": 0,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        294.701,
+        239.060666
+      ],
+      "process_cpu_ms": [
+        194,
+        261
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-1-6b285b",
+      "case": "http-control",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        426.713416
+      ],
+      "process_cpu_ms": [
+        209
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-1-14559b",
+      "case": "http-early",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        505.212625
+      ],
+      "process_cpu_ms": [
+        209
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-1-a7a622",
+      "case": "http-concurrent",
+      "block": 1,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        291.468791,
+        227.270083
+      ],
+      "process_cpu_ms": [
+        188,
+        236
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-2-4755a9",
+      "case": "http-control",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        171.182084
+      ],
+      "process_cpu_ms": [
+        223
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-2-8ebb5d",
+      "case": "http-early",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.498542
+      ],
+      "process_cpu_ms": [
+        203
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-2-b55276",
+      "case": "http-concurrent",
+      "block": 2,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        250.961833,
+        229.85175
+      ],
+      "process_cpu_ms": [
+        176,
+        226
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-3-9d1ae9",
+      "case": "http-control",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        168.672625
+      ],
+      "process_cpu_ms": [
+        212
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-3-389525",
+      "case": "http-early",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.57425
+      ],
+      "process_cpu_ms": [
+        211
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-3-ebfad1",
+      "case": "http-concurrent",
+      "block": 3,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        258.052792,
+        229.460251
+      ],
+      "process_cpu_ms": [
+        194,
+        223
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-4-e39cad",
+      "case": "http-control",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.572834
+      ],
+      "process_cpu_ms": [
+        212
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-4-7bd884",
+      "case": "http-early",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        502.986792
+      ],
+      "process_cpu_ms": [
+        254
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-4-6dcb1c",
+      "case": "http-concurrent",
+      "block": 4,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        270.442167,
+        231.620875
+      ],
+      "process_cpu_ms": [
+        231,
+        218
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-5-419020",
+      "case": "http-control",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        505.193542
+      ],
+      "process_cpu_ms": [
+        229
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-5-990ea0",
+      "case": "http-early",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.523667
+      ],
+      "process_cpu_ms": [
+        200
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-5-467f3b",
+      "case": "http-concurrent",
+      "block": 5,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        281.816001,
+        223.573667
+      ],
+      "process_cpu_ms": [
+        195,
+        237
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-6-092ed1",
+      "case": "http-control",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.920542
+      ],
+      "process_cpu_ms": [
+        201
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-6-d89732",
+      "case": "http-early",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.79825
+      ],
+      "process_cpu_ms": [
+        216
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-6-c926ae",
+      "case": "http-concurrent",
+      "block": 6,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        281.394209,
+        246.971209
+      ],
+      "process_cpu_ms": [
+        189,
+        237
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-7-b0a8e3",
+      "case": "http-control",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.718584
+      ],
+      "process_cpu_ms": [
+        218
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-7-c6e181",
+      "case": "http-early",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.574459
+      ],
+      "process_cpu_ms": [
+        219
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-7-cd4222",
+      "case": "http-concurrent",
+      "block": 7,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        287.870583,
+        225.743
+      ],
+      "process_cpu_ms": [
+        206,
+        249
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-8-ac4dc2",
+      "case": "http-control",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        504.331917
+      ],
+      "process_cpu_ms": [
+        230
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-8-95d0fd",
+      "case": "http-early",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        165.806792
+      ],
+      "process_cpu_ms": [
+        221
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-8-593530",
+      "case": "http-concurrent",
+      "block": 8,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        300.880084,
+        241.949125
+      ],
+      "process_cpu_ms": [
+        217,
+        246
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-9-68e299",
+      "case": "http-control",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        170.119958
+      ],
+      "process_cpu_ms": [
+        217
+      ],
+      "payload_bytes": [
+        1048643
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-9-ee8e9e",
+      "case": "http-early",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        159.324333
+      ],
+      "process_cpu_ms": [
+        189
+      ],
+      "payload_bytes": [
+        1048641
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-9-30736b",
+      "case": "http-concurrent",
+      "block": 9,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        288.709625,
+        254.25225
+      ],
+      "process_cpu_ms": [
+        203,
+        257
+      ],
+      "payload_bytes": [
+        1048646,
+        1048652
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-10-428e2d",
+      "case": "http-control",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        175.366667
+      ],
+      "process_cpu_ms": [
+        233
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-10-a2881a",
+      "case": "http-early",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        161.65075
+      ],
+      "process_cpu_ms": [
+        216
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-10-1be921",
+      "case": "http-concurrent",
+      "block": 10,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        305.199708,
+        261.833917
+      ],
+      "process_cpu_ms": [
+        189,
+        271
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-11-ea34ee",
+      "case": "http-control",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        172.118
+      ],
+      "process_cpu_ms": [
+        220
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-11-9a5242",
+      "case": "http-early",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        160.472666
+      ],
+      "process_cpu_ms": [
+        216
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-11-c6f4b3",
+      "case": "http-concurrent",
+      "block": 11,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        289.869625,
+        269.72175
+      ],
+      "process_cpu_ms": [
+        177,
+        262
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-12-8a1b28",
+      "case": "http-control",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        164.992125
+      ],
+      "process_cpu_ms": [
+        203
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-12-b52a7a",
+      "case": "http-early",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        159.830292
+      ],
+      "process_cpu_ms": [
+        222
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-12-a5dcc7",
+      "case": "http-concurrent",
+      "block": 12,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        296.582417,
+        247.546166
+      ],
+      "process_cpu_ms": [
+        198,
+        264
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-13-16989f",
+      "case": "http-control",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        172.120167
+      ],
+      "process_cpu_ms": [
+        223
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-13-fb19ca",
+      "case": "http-early",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        156.943917
+      ],
+      "process_cpu_ms": [
+        204
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-13-e3756b",
+      "case": "http-concurrent",
+      "block": 13,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        284.142625,
+        217.648458
+      ],
+      "process_cpu_ms": [
+        233,
+        223
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-14-6b0f36",
+      "case": "http-control",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        174.453417
+      ],
+      "process_cpu_ms": [
+        221
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-14-41943b",
+      "case": "http-early",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        171.416958
+      ],
+      "process_cpu_ms": [
+        228
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-14-6a5525",
+      "case": "http-concurrent",
+      "block": 14,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        338.482375,
+        268.027417
+      ],
+      "process_cpu_ms": [
+        258,
+        294
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-15-16d73b",
+      "case": "http-control",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        504.017084
+      ],
+      "process_cpu_ms": [
+        227
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-15-e74bdd",
+      "case": "http-early",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.276417
+      ],
+      "process_cpu_ms": [
+        197
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-15-8c81d0",
+      "case": "http-concurrent",
+      "block": 15,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        296.458501,
+        241.547417
+      ],
+      "process_cpu_ms": [
+        202,
+        272
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-16-ecce08",
+      "case": "http-control",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.829292
+      ],
+      "process_cpu_ms": [
+        219
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-16-949f36",
+      "case": "http-early",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.5185
+      ],
+      "process_cpu_ms": [
+        209
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-16-e4eb4e",
+      "case": "http-concurrent",
+      "block": 16,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        305.413042,
+        226.350875
+      ],
+      "process_cpu_ms": [
+        218,
+        255
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-17-f8812c",
+      "case": "http-control",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        502.785584
+      ],
+      "process_cpu_ms": [
+        216
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-17-2d15c7",
+      "case": "http-early",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.474501
+      ],
+      "process_cpu_ms": [
+        222
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-17-4e14a5",
+      "case": "http-concurrent",
+      "block": 17,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        290.58275,
+        243.388626
+      ],
+      "process_cpu_ms": [
+        213,
+        271
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-18-ed600a",
+      "case": "http-control",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        504.466625
+      ],
+      "process_cpu_ms": [
+        250
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-18-095c92",
+      "case": "http-early",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        480.662626
+      ],
+      "process_cpu_ms": [
+        208
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-18-1ad35a",
+      "case": "http-concurrent",
+      "block": 18,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        325.6935,
+        263.273833
+      ],
+      "process_cpu_ms": [
+        223,
+        274
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-control-19-08fec0",
+      "case": "http-control",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        504.296875
+      ],
+      "process_cpu_ms": [
+        234
+      ],
+      "payload_bytes": [
+        1048644
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-early-19-e4d7d4",
+      "case": "http-early",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        503.752167
+      ],
+      "process_cpu_ms": [
+        200
+      ],
+      "payload_bytes": [
+        1048642
+      ]
+    },
+    {
+      "cohort": "http-cost",
+      "trial": "tls-http-concurrent-19-715cfd",
+      "case": "http-concurrent",
+      "block": 19,
+      "harness_error": null,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "accepted_before_ack": 0,
+      "ack_ms": null,
+      "sndbuf": null,
+      "elapsed_ms": [
+        306.043875,
+        232.436625
+      ],
+      "process_cpu_ms": [
+        195,
+        256
+      ],
+      "payload_bytes": [
+        1048647,
+        1048653
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "case": "buffered-early",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 334800,
+      "median_ms": 488.778417,
+      "p95_ms": 673.069167,
+      "median_cpu_ms": 110.5,
+      "ack_p50_ms": 1.3185,
+      "ack_p95_ms": 2.0175,
+      "ack_max_ms": 3.801292,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "buffered-fence",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": 1.6518125000000001,
+      "ack_p95_ms": 2.550166,
+      "ack_max_ms": 2.89025,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "concurrent",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 40,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 321.8278545,
+      "p95_ms": 383.889625,
+      "median_cpu_ms": 265.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "control",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 642.8322705,
+      "p95_ms": 663.132,
+      "median_cpu_ms": 214.0,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "early",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 626.8892089999999,
+      "p95_ms": 636.200126,
+      "median_cpu_ms": 168.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "http-concurrent",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 40,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 265.650625,
+      "p95_ms": 306.043875,
+      "median_cpu_ms": 224.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "http-control",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 464.7495,
+      "p95_ms": 504.466625,
+      "median_cpu_ms": 219.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "http-early",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 503.375459,
+      "p95_ms": 505.212625,
+      "median_cpu_ms": 212.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "labels-complete",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "labels-incomplete",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "after_ack_accepted_total": 0,
+      "median_ms": 519.3253545,
+      "p95_ms": 523.267792,
+      "median_cpu_ms": 88.5,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": [
+        16384
+      ]
+    },
+    {
+      "case": "labels-missing",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "mixed",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": null,
+      "ack_p95_ms": null,
+      "ack_max_ms": null,
+      "accepted_before_ack_median": 0.0,
+      "sndbuf_values": []
+    },
+    {
+      "case": "stall-large",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": 1.5920625,
+      "ack_p95_ms": 7.20675,
+      "ack_max_ms": 9.058833,
+      "accepted_before_ack_median": 1022971.0,
+      "sndbuf_values": [
+        262144
+      ]
+    },
+    {
+      "case": "stall-small",
+      "trials": 20,
+      "harness_errors": 0,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "after_ack_accepted_total": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "median_cpu_ms": null,
+      "ack_p50_ms": 2.3954585,
+      "ack_p95_ms": 6.951666,
+      "ack_max_ms": 12.749083,
+      "accepted_before_ack_median": 523846.0,
+      "sndbuf_values": [
+        4096
+      ]
+    }
+  ],
+  "claims": [
+    "ciphertext counts are not plaintext counts",
+    "accepted minus receiver reads is not kernel unsent bytes",
+    "process CPU is instrumented elapsed CPU, not energy",
+    "fixed 1 MiB cost excludes payload allocation; includes handshake, logging and response",
+    "concurrent latency is per request with two processes sharing one policy lock"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "checked": "2026-11-15",
+  "scope": "primary metadata and background scope; not full theorem replication",
+  "sources": {
+    "tang2012cleanos": "https://www.usenix.org/conference/osdi12/technical-sessions/presentation/tang",
+    "spahn2014pebbles": "https://www.usenix.org/conference/osdi14/technical-sessions/presentation/spahn",
+    "nadkarni2016weir": "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/nadkarni",
+    "backes2015boxify": "https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/backes",
+    "fernandes2016flowfence": "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/fernandes",
+    "xu2012aurasium": "https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/xu_rubin",
+    "reardon2019fiftyways": "https://www.usenix.org/conference/usenixsecurity19/presentation/reardon",
+    "andow2020policheck": "https://www.usenix.org/conference/usenixsecurity20/presentation/andow",
+    "andow2019policylint": "https://www.usenix.org/conference/usenixsecurity19/presentation/andow",
+    "enck2010taintdroid": "https://www.usenix.org/conference/osdi10/legacy-presentation/taintdroid-information-flow-tracking-system-realtime-privacy",
+    "nguyen2021sharefirst": "https://github.com/cispa/gdpr-consent",
+    "nguyen2022freely": "https://cispa.saarland/group/stock/papers/nguyen2022consent.pdf",
+    "zeldovich2006histar": "https://www.usenix.org/conference/osdi-06/making-information-flow-explicit-histar",
+    "wang2019riverbed": "https://www.usenix.org/conference/nsdi19/presentation/wang-frank",
+    "android_sdkruntime": "https://privacysandbox.google.com/private-advertising/sdk-runtime/architecture",
+    "matomo_consent": "https://developer.matomo.org/guides/tracking-consent",
+    "java_sslengine": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/javax/net/ssl/SSLEngine.html"
+  }
+}

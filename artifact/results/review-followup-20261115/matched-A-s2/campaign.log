@@ -1,0 +1,53 @@
+23:35:09 emulator-5684 pen010 63s
+23:35:56 emulator-5684 kil010 48s
+23:36:25 emulator-5684 for010 29s
+23:38:06 emulator-5684 reb010 101s
+23:38:43 emulator-5684 rev010 37s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 367, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 339, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 300, in run_trial
+    time.sleep(3)
+    ~~~~~~~~~~^^^
+KeyboardInterrupt
+23:42:42 emulator-5684 net010 78s
+23:43:41 emulator-5684 inf010 59s
+23:44:33 emulator-5684 pen011 52s
+23:45:16 emulator-5684 kil011 43s
+23:46:08 emulator-5684 for011 51s
+23:46:48 emulator-5684 reb011 40s
+23:47:24 emulator-5684 rev011 36s
+23:48:40 emulator-5684 net011 76s
+23:49:36 emulator-5684 inf011 56s
+23:50:21 emulator-5684 pen012 44s
+23:51:19 emulator-5684 kil012 58s
+23:51:49 emulator-5684 for012 30s
+23:53:21 emulator-5684 reb012 92s
+23:54:01 emulator-5684 rev012 40s
+23:56:15 emulator-5684 net012 134s
+23:57:12 emulator-5684 inf012 57s
+23:58:03 emulator-5684 pen013 51s
+23:58:47 emulator-5684 kil013 43s
+23:59:16 emulator-5684 for013 29s
+23:59:57 emulator-5684 reb013 41s
+00:00:51 emulator-5684 rev013 54s
+00:03:07 emulator-5684 net013 136s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 369, in <module>
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 341, in main
+    t = time.time()
+             ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py", line 288, in run_trial
+    limit = args.timeout if args.substrate == "job" else 240
+        ^^^^^^^^^^^^^
+KeyboardInterrupt
+00:04:36 emulator-5684 inf013 58s
+00:05:29 emulator-5684 pen014 53s
+00:06:10 emulator-5684 kil014 41s
+00:06:39 emulator-5684 for014 30s
+00:07:20 emulator-5684 reb014 41s
+00:07:51 emulator-5684 rev014 31s
+00:10:05 emulator-5684 net014 134s
+00:10:44 emulator-5684 inf014 39s

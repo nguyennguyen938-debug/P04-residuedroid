@@ -1,0 +1,11 @@
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms
+sink on :8787 -> results/raw/c1/A/sink delay=300ms

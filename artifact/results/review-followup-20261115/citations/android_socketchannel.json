@@ -1,0 +1,93 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "android_socketchannel",
+    "author": "{Android Developers}",
+    "title": "{SocketChannel} API Reference",
+    "year": "2026",
+    "url": "https://developer.android.com/reference/java/nio/channels/SocketChannel",
+    "note": "Accessed 2026-11-15"
+  },
+  "checked": 1794759771.249269,
+  "candidates": [
+    {
+      "title": "API Reference",
+      "match": 0.65,
+      "DOI": "10.1007/978-1-4302-0071-0_23",
+      "URL": "https://doi.org/10.1007/978-1-4302-0071-0_23",
+      "author": null,
+      "container-title": [
+        "The Definitive Guide to MySQL5"
+      ],
+      "published": null,
+      "page": "693-720",
+      "type": "book-chapter"
+    },
+    {
+      "title": "API Reference",
+      "match": 0.65,
+      "DOI": "10.1002/9781119057871.ch29",
+      "URL": "https://doi.org/10.1002/9781119057871.ch29",
+      "author": [
+        {
+          "family": "The WebSim Team",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Finding Alphas"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            9,
+            4
+          ]
+        ]
+      },
+      "page": "179-185",
+      "type": "other"
+    },
+    {
+      "title": "API Reference",
+      "match": 0.65,
+      "DOI": "10.1007/978-1-4302-0669-9_20",
+      "URL": "https://doi.org/10.1007/978-1-4302-0669-9_20",
+      "author": [
+        {
+          "given": "Michael",
+          "family": "Kofler",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "The Definitive Guide to MySQL"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2004
+          ]
+        ]
+      },
+      "page": "733-758",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "needs primary verification"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "component": "acra/src",
+    "java_files": 6,
+    "nonblank_lines": 202,
+    "files": [
+      "acra/src/org/residuelab/acra/Fence.java",
+      "acra/src/org/residuelab/acra/Main.java",
+      "acra/src/org/residuelab/acra/FencedSenderFactory.java",
+      "acra/src/org/residuelab/acra/Cmd.java",
+      "acra/src/org/residuelab/acra/AcraApp.java",
+      "acra/src/org/residuelab/acra/FencedSender.java"
+    ]
+  },
+  {
+    "component": "matomo/src",
+    "java_files": 2,
+    "nonblank_lines": 56,
+    "files": [
+      "matomo/src/org/residuelab/matomo/Main.java",
+      "matomo/src/org/residuelab/matomo/Cmd.java"
+    ]
+  },
+  {
+    "component": "transport/src",
+    "java_files": 3,
+    "nonblank_lines": 196,
+    "files": [
+      "transport/src/org/residuelab/transport/TlsTransport.java",
+      "transport/src/org/residuelab/transport/Coordinator.java",
+      "transport/src/org/residuelab/transport/HttpTransport.java"
+    ]
+  }
+]

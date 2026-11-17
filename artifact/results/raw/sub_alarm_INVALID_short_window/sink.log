@@ -1,0 +1,1 @@
+sink on :8791 -> results/raw/sub_alarm/sink delay=300ms

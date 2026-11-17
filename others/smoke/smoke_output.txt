@@ -1,0 +1,11 @@
+enqueue       plain=0.606 lineage-misfiled=0.609 withdraw+regrant=0.604
+jobstart      plain=0.105 lineage-misfiled=0.107 withdraw+regrant=0.107
+cancel        plain=0.105 lineage-misfiled=0.132 withdraw+regrant=0.107
+egress_bool   plain=0.000 lineage-misfiled=0.512 withdraw+regrant=0.552
+residuedroid  plain=0.000 lineage-misfiled=0.000 withdraw+regrant=0.000
+jobstart observed=0.105 Eq.(2) prediction=0.105
+H1 earlier checks leak                        HOLDS
+H2 serialized late fence never leaks          HOLDS
+H3 epochs needed after re-grant               HOLDS
+H4 lineage needed for misfiled derived data   HOLDS
+H5 Eq.(2) predicts job-start leak rate        HOLDS

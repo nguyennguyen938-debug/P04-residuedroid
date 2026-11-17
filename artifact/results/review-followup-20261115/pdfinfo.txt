@@ -1,0 +1,22 @@
+Title:           ResidueDroid: Durable Lineage for Withdrawal-Aware Deferred Egress
+Subject:         -  Security and privacy  ->  Software security engineering.Privacy protections.-  Human-centered computing  ->  Ubiquitous and mobile computing.
+Keywords:        Android, consent withdrawal, deferred work, JobScheduler, data lineage, egress control
+Author:          Xuan-Bach Le
+Creator:         LaTeX with acmart 2020/02/22 v1.70 Typesetting articles for the Association for Computing Machinery and hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+Producer:        pdfTeX-1.40.21
+CreationDate:    Mon Nov 16 00:20:29 2026 +07
+ModDate:         Mon Nov 16 00:20:29 2026 +07
+Custom Metadata: yes
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           18
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       722403 bytes
+Optimized:       no
+PDF version:     1.5

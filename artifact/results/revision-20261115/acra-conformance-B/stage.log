@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/revision/acra_conformance.py", line 18, in <module>
+    d.adb('install','-r','-g',str(ART/'acra/build/apk/acrafence.apk'),timeout=120);time.sleep(.5)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/revision/socket_suite.py", line 50, in adb
+    if r.returncode:raise RuntimeError(r.stderr)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: All files should be loaded. Notifying the device.
+adb: failed to install /Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/acra/build/apk/acrafence.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Existing package org.residuelab.acrafence signatures do not match newer version; ignoring!]
+
+
+valid True True
+missing False True
+malformed False True
+future False True
+withdrawn False True
+old_after_regrant False True
+new_after_regrant True True
+missing_store False True
+corrupt_store False True
+legacy_invalid False True
+legacy_withdrawn False True
+legacy_allowed True True

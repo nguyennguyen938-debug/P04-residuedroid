@@ -1,0 +1,211 @@
+18:04:20 A: campaign c1 k=39..
+18:04:38 restarted emulator-5600 in 16s
+18:06:15 emulator-5600 net039 95s
+18:07:05 emulator-5600 pen039 50s
+18:08:09 emulator-5600 kil039 63s
+18:09:12 emulator-5600 for039 64s
+18:10:01 emulator-5600 reb039 48s
+18:10:40 emulator-5600 rev039 39s
+18:11:27 emulator-5600 inf039 47s
+18:13:00 emulator-5600 net040 92s
+18:13:40 emulator-5600 pen040 40s
+18:14:43 emulator-5600 kil040 63s
+18:15:20 emulator-5600 for040 38s
+18:16:29 emulator-5600 reb040 68s
+18:17:05 emulator-5600 rev040 37s
+18:17:58 emulator-5600 inf040 53s
+18:19:32 emulator-5600 net041 94s
+18:20:35 emulator-5600 pen041 63s
+18:21:38 emulator-5600 kil041 63s
+18:22:14 emulator-5600 for041 36s
+18:23:27 emulator-5600 reb041 72s
+18:24:16 emulator-5600 rev041 49s
+18:25:16 emulator-5600 inf041 60s
+18:26:51 emulator-5600 net042 95s
+18:27:54 emulator-5600 pen042 63s
+18:28:59 emulator-5600 kil042 65s
+18:29:33 emulator-5600 for042 34s
+18:30:43 emulator-5600 reb042 70s
+18:31:18 emulator-5600 rev042 35s
+18:32:11 emulator-5600 inf042 52s
+18:33:45 emulator-5600 net043 94s
+18:34:47 emulator-5600 pen043 62s
+18:35:48 emulator-5600 kil043 61s
+18:36:26 emulator-5600 for043 38s
+18:37:17 emulator-5600 reb043 51s
+18:37:55 emulator-5600 rev043 38s
+18:38:42 emulator-5600 inf043 47s
+18:40:17 emulator-5600 net044 95s
+18:40:53 emulator-5600 pen044 36s
+18:41:57 emulator-5600 kil044 64s
+18:43:03 emulator-5600 for044 66s
+18:43:59 emulator-5600 reb044 56s
+18:44:36 emulator-5600 rev044 37s
+18:45:26 emulator-5600 inf044 50s
+18:47:00 emulator-5600 net045 94s
+18:48:01 emulator-5600 pen045 61s
+18:49:06 emulator-5600 kil045 65s
+18:49:44 emulator-5600 for045 38s
+18:50:54 emulator-5600 reb045 70s
+18:51:41 emulator-5600 rev045 47s
+18:52:39 emulator-5600 inf045 58s
+18:54:09 emulator-5600 net046 90s
+18:55:32 emulator-5600 pen046 83s
+18:56:34 emulator-5600 kil046 61s
+18:57:40 emulator-5600 for046 66s
+18:59:25 emulator-5600 reb046 106s
+19:00:11 emulator-5600 rev046 46s
+19:01:07 emulator-5600 inf046 56s
+19:02:40 emulator-5600 net047 93s
+19:03:43 emulator-5600 pen047 64s
+19:04:44 emulator-5600 kil047 61s
+19:05:42 emulator-5600 for047 58s
+19:06:51 emulator-5600 reb047 69s
+19:07:27 emulator-5600 rev047 36s
+19:08:26 emulator-5600 inf047 59s
+19:09:57 emulator-5600 net048 91s
+19:11:23 emulator-5600 pen048 86s
+19:12:25 emulator-5600 kil048 62s
+19:13:32 emulator-5600 for048 67s
+19:15:22 emulator-5600 reb048 110s
+19:16:08 emulator-5600 rev048 46s
+19:17:06 emulator-5600 inf048 57s
+19:18:36 emulator-5600 net049 91s
+19:19:34 emulator-5600 pen049 58s
+19:20:20 emulator-5600 kil049 46s
+19:23:39 emulator-5600 for049 199s
+19:23:59 restarted emulator-5600 in 20s
+19:25:22 emulator-5600 reb049 103s
+19:26:18 emulator-5600 rev049 56s
+19:27:00 emulator-5600 inf049 43s
+19:28:35 emulator-5600 net050 95s
+19:29:36 emulator-5600 pen050 61s
+19:30:36 emulator-5600 kil050 60s
+19:31:12 emulator-5600 for050 35s
+19:32:55 emulator-5600 reb050 103s
+19:33:37 emulator-5600 rev050 43s
+19:34:36 emulator-5600 inf050 58s
+19:36:11 emulator-5600 net051 95s
+19:37:15 emulator-5600 pen051 64s
+19:38:15 emulator-5600 kil051 60s
+19:41:34 emulator-5600 for051 200s
+19:42:07 restarted emulator-5600 in 32s
+19:44:09 emulator-5600 reb051 154s
+19:44:57 emulator-5600 rev051 49s
+19:45:58 emulator-5600 inf051 61s
+19:47:39 emulator-5600 net052 101s
+19:48:47 emulator-5600 pen052 68s
+19:49:54 emulator-5600 kil052 67s
+19:50:36 emulator-5600 for052 42s
+Traceback (most recent call last):
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 309, in <module>
+    main()
+    ~~~~^^
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 301, in main
+    lg = run_trial(s, k)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 225, in run_trial
+    bt = wait_boot(); act("boot_completed", boot_s=bt)
+  File "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/harness/campaign.py", line 62, in wait_boot
+    subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=limit)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2431, in _communicate
+    self.wait(timeout=_deadline_remaining(endtime))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1445, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2310, in _wait
+    if self._wait_pidfd(timeout) or self._wait_kqueue(timeout):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2286, in _wait_kqueue
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Users/xuanbachle/Workstation/MobiSys2027/papers/shared-android/sdk/platform-tools/adb', '-s', 'emulator-5600', 'wait-for-device']' timed out after 240 seconds
+19:54:59 A: WorkManager substrate
+19:55:19 restarted emulator-5600 in 19s
+19:55:58 emulator-5600 pen000 22s
+19:56:20 emulator-5600 kil000 22s
+19:56:47 emulator-5600 for000 27s
+19:57:38 emulator-5600 reb000 51s
+19:58:01 emulator-5600 pen001 23s
+19:58:28 emulator-5600 kil001 27s
+19:58:52 emulator-5600 for001 24s
+19:59:42 emulator-5600 reb001 50s
+20:00:02 emulator-5600 pen002 20s
+20:00:28 emulator-5600 kil002 26s
+20:00:51 emulator-5600 for002 23s
+20:01:35 emulator-5600 reb002 44s
+20:01:58 emulator-5600 pen003 22s
+20:02:22 emulator-5600 kil003 25s
+20:02:44 emulator-5600 for003 22s
+20:03:30 emulator-5600 reb003 46s
+20:03:55 emulator-5600 pen004 25s
+20:04:14 emulator-5600 kil004 19s
+20:04:41 emulator-5600 for004 27s
+20:05:23 emulator-5600 reb004 42s
+20:05:48 emulator-5600 pen005 24s
+20:06:05 emulator-5600 kil005 17s
+20:06:29 emulator-5600 for005 24s
+20:07:13 emulator-5600 reb005 44s
+20:07:33 emulator-5600 pen006 20s
+20:07:58 emulator-5600 kil006 25s
+20:08:27 emulator-5600 for006 29s
+20:09:07 emulator-5600 reb006 40s
+20:09:32 emulator-5600 pen007 26s
+20:09:51 emulator-5600 kil007 19s
+20:10:18 emulator-5600 for007 27s
+20:10:58 emulator-5600 reb007 40s
+20:11:25 emulator-5600 pen008 27s
+20:11:43 emulator-5600 kil008 18s
+20:12:10 emulator-5600 for008 27s
+20:12:51 emulator-5600 reb008 40s
+20:13:21 emulator-5600 pen009 30s
+20:13:39 emulator-5600 kil009 18s
+20:14:06 emulator-5600 for009 27s
+20:14:45 emulator-5600 reb009 39s
+20:15:12 emulator-5600 pen010 28s
+20:15:30 emulator-5600 kil010 18s
+20:16:03 emulator-5600 for010 33s
+20:16:42 emulator-5600 reb010 39s
+20:17:06 emulator-5600 pen011 24s
+20:17:23 emulator-5600 kil011 17s
+20:17:45 emulator-5600 for011 22s
+20:18:21 emulator-5600 reb011 36s
+20:18:42 emulator-5600 pen012 21s
+20:18:57 emulator-5600 kil012 15s
+20:19:19 emulator-5600 for012 22s
+20:19:59 emulator-5600 reb012 40s
+20:20:22 emulator-5600 pen013 24s
+20:20:43 emulator-5600 kil013 20s
+20:21:13 emulator-5600 for013 30s
+20:21:53 emulator-5600 reb013 40s
+20:22:15 emulator-5600 pen014 21s
+20:22:33 emulator-5600 kil014 18s
+20:22:55 emulator-5600 for014 22s
+20:23:34 emulator-5600 reb014 39s
+20:23:53 emulator-5600 pen015 19s
+20:24:11 emulator-5600 kil015 18s
+20:24:32 emulator-5600 for015 21s
+20:25:10 emulator-5600 reb015 38s
+20:25:29 emulator-5600 pen016 19s
+20:25:47 emulator-5600 kil016 18s
+20:26:08 emulator-5600 for016 22s
+20:26:45 emulator-5600 reb016 37s
+20:27:05 emulator-5600 pen017 20s
+20:27:23 emulator-5600 kil017 18s
+20:27:44 emulator-5600 for017 22s
+20:28:22 emulator-5600 reb017 38s
+20:28:41 emulator-5600 pen018 19s
+20:28:59 emulator-5600 kil018 17s
+20:29:21 emulator-5600 for018 22s
+20:29:59 emulator-5600 reb018 39s
+20:30:19 emulator-5600 pen019 19s
+20:30:36 emulator-5600 kil019 18s
+20:30:58 emulator-5600 for019 21s
+20:31:34 emulator-5600 reb019 37s
+20:31:35 A: done

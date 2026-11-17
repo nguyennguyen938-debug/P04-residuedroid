@@ -1,0 +1,103 @@
+{
+  "entry": {
+    "type": "article",
+    "key": "wilson1927",
+    "author": "Edwin B. Wilson",
+    "title": "Probable Inference, the Law of Succession, and Statistical Inference",
+    "journal": "Journal of the American Statistical Association",
+    "volume": "22",
+    "number": "158",
+    "pages": "209--212",
+    "year": "1927"
+  },
+  "checked": 1794759768.228655,
+  "candidates": [
+    {
+      "title": "Probable Inference, the Law of Succession, and Statistical Inference",
+      "match": 1.0,
+      "DOI": "10.1080/01621459.1927.10502953",
+      "URL": "https://doi.org/10.1080/01621459.1927.10502953",
+      "author": [
+        {
+          "given": "Edwin B.",
+          "family": "Wilson",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Journal of the American Statistical Association"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1927,
+            6
+          ]
+        ]
+      },
+      "page": "209-212",
+      "type": "journal-article"
+    },
+    {
+      "title": "Probable inference.",
+      "match": 0.42857142857142855,
+      "DOI": "10.1037/14099-018",
+      "URL": "https://doi.org/10.1037/14099-018",
+      "author": [
+        {
+          "given": "Edward John",
+          "family": "Hamilton",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "The modalist: or, The laws of rational conviction, a text-book in formal or general logic."
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1891
+          ]
+        ]
+      },
+      "page": "162-173",
+      "type": "book-chapter"
+    },
+    {
+      "title": "On probable Inference",
+      "match": 0.41379310344827586,
+      "DOI": "10.1017/cbo9781107280991.011",
+      "URL": "https://doi.org/10.1017/cbo9781107280991.011",
+      "author": null,
+      "container-title": [
+        "Formal Logic"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2014,
+            8,
+            21
+          ]
+        ]
+      },
+      "page": "191-210",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "metadata match"
+}

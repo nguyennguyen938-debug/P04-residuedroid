@@ -1,0 +1,15 @@
+122 pinned files
+valid True True
+missing False True
+malformed False True
+future False True
+withdrawn False True
+old_after_regrant False True
+new_after_regrant True True
+missing_store False True
+corrupt_store False True
+legacy_invalid False True
+legacy_withdrawn False True
+legacy_allowed True True
+invalid_migration_regrant False True
+missing_store_regrant False True

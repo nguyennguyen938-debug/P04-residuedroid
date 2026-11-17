@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://android.googlesource.com/platform/libcore/+/refs/tags/android-13.0.0_r1/ojluni/src/main/java/sun/nio/ch/SocketChannelImpl.java?format=TEXT",
+    "file": "SocketChannelImpl.java",
+    "sha256": "6122c0f5ea8fba92db4364c6a2e043702ee8c729070bd5691ba7c97c9efd6b6c"
+  },
+  {
+    "url": "https://android.googlesource.com/platform/libcore/+/refs/tags/android-13.0.0_r1/ojluni/src/main/java/sun/nio/ch/SocketDispatcher.java?format=TEXT",
+    "file": "SocketDispatcher.java",
+    "sha256": "236a0773839790b6acb5a8f6016a9583401ce7af7521ac1b3a56ea3a4e272fb7"
+  },
+  {
+    "url": "https://android.googlesource.com/platform/libcore/+/refs/tags/android-13.0.0_r1/ojluni/src/main/java/sun/nio/ch/IOUtil.java?format=TEXT",
+    "file": "IOUtil.java",
+    "sha256": "88fa6bc6c0fbad0285e96ed20c9677a3353c333a2c2ef3c2becda75277ec263a"
+  },
+  {
+    "url": "https://android.googlesource.com/platform/libcore/+/refs/tags/android-13.0.0_r1/ojluni/src/main/java/sun/nio/ch/FileDispatcherImpl.java?format=TEXT",
+    "file": "FileDispatcherImpl.java",
+    "sha256": "2b51ef421bdcdd4f74b50d911ca034f67b909ca6f7e2735ad24524edd31804a6"
+  },
+  {
+    "url": "https://android.googlesource.com/platform/libcore/+/refs/tags/android-13.0.0_r1/ojluni/src/main/native/FileDispatcherImpl.c?format=TEXT",
+    "file": "FileDispatcherImpl.c",
+    "sha256": "435d71d47d6a1e675453b08c61305b23590fc53b1530f7dbd1b41607aebcb3d7"
+  }
+]

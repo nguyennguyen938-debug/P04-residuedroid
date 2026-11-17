@@ -1,0 +1,138 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "fernandes2016flowfence",
+    "author": "Earlence Fernandes and Justin Paupore and Amir Rahmati and Daniel Simionato and Mauro Conti and Atul Prakash",
+    "title": "{FlowFence}: Practical Data Protection for Emerging {IoT} Application Frameworks",
+    "booktitle": "Proceedings of the 25th USENIX Security Symposium",
+    "pages": "531--548",
+    "year": "2016"
+  },
+  "checked": 1794759759.8460648,
+  "candidates": [
+    {
+      "title": "Data Protection in India: Legal Frameworks and Emerging Trends",
+      "match": 0.47058823529411764,
+      "DOI": "10.59646/dataprotectionc19/125",
+      "URL": "https://doi.org/10.59646/dataprotectionc19/125",
+      "author": [
+        {
+          "name": "Assistant Professor, Modern Law College, Pune, Maharashtra 411016, India.",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Anita",
+          "family": "Jadhav",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Personal Data Protection In Digital Age: Issues And Challenges"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            2,
+            18
+          ]
+        ]
+      },
+      "page": null,
+      "type": "book-chapter"
+    },
+    {
+      "title": "PERSONAL DATA PROTECTION \u2013 FRAMEWORKS, PRACTICAL EXPERIENCES AND CHALLENGES",
+      "match": 0.4217687074829932,
+      "DOI": "10.70995/xdnx2648",
+      "URL": "https://doi.org/10.70995/xdnx2648",
+      "author": [
+        {
+          "name": "Energoprojekt Entel plc, Belgrade, Bulevar Mihajla Pupina 12, Belgrade, Republic of  Serbia",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-8067-6582",
+          "authenticated-orcid": false,
+          "given": "Radoslav",
+          "family": "Rakovic",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "9th INTERNATIONAL FORUM \u201cSAFETY FOR THE FUTURE 2023\u201d"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2023
+          ]
+        ]
+      },
+      "page": null,
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Scalable Frameworks for Application Security and Data Protection",
+      "match": 0.2733812949640288,
+      "DOI": "10.1007/978-3-319-51064-4_7",
+      "URL": "https://doi.org/10.1007/978-3-319-51064-4_7",
+      "author": [
+        {
+          "given": "Ilya",
+          "family": "Kabanov",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Global Security, Safety and Sustainability - The Security Challenges of the Connected World"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2016
+          ]
+        ]
+      },
+      "page": "82-95",
+      "type": "book-chapter"
+    }
+  ],
+  "status": "needs primary verification"
+}

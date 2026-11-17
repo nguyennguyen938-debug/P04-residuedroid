@@ -1,0 +1,11 @@
+In the restricted-collector embedding, acra delivered 10/10 disable reports, acrafence delivered 0/10 disable reports, acra delivered 10/10 control reports, acrafence delivered 10/10 control reports. Reboot outcomes and report-retirement states remain in the raw log. These runs use the policy-path build (ACRA-P); the recovery-enabled build (ACRA-R) has a separate cohort.
+
+After reboot, 0/6 disabled reports reached the receiver, while 6/6 remained stored. Non-delivery here is not deletion. Reboot controls delivered 6/6 reports; storage retirement was complete at observation-window closure in 3/6 cases.
+
+Build ACRA-R's normal-path smoke run delivered 2/2 allowed controls; disabled stock/fenced delivery was 1/0. This small smoke run does not establish lifecycle results for ACRA-R.
+
+The actual settings-button trace observed the expected acknowledgement and re-grant text in 2/2 transitions; UI hierarchies, pixels and policy events are included.
+
+The adapter/store conformance suite passed 14/14 cases, covering collection labels, missing/malformed/future labels, withdrawal, re-grant and unavailable or migrated stores. Missing labels suppress an otherwise permitted synthetic report; the valid-label control is delivered. This is explicit availability loss, not proof that all production copies are labelled.
+
+\paragraph{Second SDK.} The pinned Matomo 4.4 AAR~\cite{matomo} was retrieved through JitPack and executed with its real cache, packet builder and dispatcher. stock sent 5/5 withdrawn batches, fenced sent 0/5 withdrawn batches, stock sent 5/5 control batches, fenced sent 5/5 control batches. The embedding promises to invalidate queued events. Its deterministic pre-send barrier isolates an in-flight dispatcher path; this does not test durable-cache recovery, HTTPS, or a production app.

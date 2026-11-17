@@ -1,0 +1,14 @@
+[
+  {
+    "tap": "Disable and withdraw queued reports",
+    "expected": "Withdrawal acknowledged",
+    "observed": true,
+    "events": "1794742054475 mono=1619030758062 pid=29268 WITHDRAW_REQUEST\n1794742054481 mono=1619036289104 pid=29268 WITHDRAW_DURABLE\n1794742054483 mono=1619038273937 pid=29268 WITHDRAW_ACK\n"
+  },
+  {
+    "tap": "Enable new reports",
+    "expected": "Enabled; old reports remain invalid",
+    "observed": true,
+    "events": "1794742054475 mono=1619030758062 pid=29268 WITHDRAW_REQUEST\n1794742054481 mono=1619036289104 pid=29268 WITHDRAW_DURABLE\n1794742054483 mono=1619038273937 pid=29268 WITHDRAW_ACK\n1794742056957 mono=1621512359980 pid=29268 REGRANT_REQUEST\n1794742056960 mono=1621515653897 pid=29268 REGRANT_DURABLE\n1794742056961 mono=1621516714439 pid=29268 REGRANT_ACK\n"
+  }
+]

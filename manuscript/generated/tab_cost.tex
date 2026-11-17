@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Stream-wrapper cost, serialization and durability (on-device, AVD~B).}
+\label{tab:cost}
+\mtab
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.43\linewidth}>{\raggedleft\arraybackslash}p{.53\linewidth}@{}}
+\toprule
+\mgroup{2}{Overhead (median [bootstrap 95\% CI])}
+Row insert, no label / label (\textmu{}s) & 641 [632, 651] / 652 [643, 661] \\
+Critical section: log only (\textmu{}s) & 480 [476, 483] \\
+\quad + declared check / + \sys rule (\textmu{}s) & 579 [573, 584] / 583 [576, 589] \\
+Submission e2e: none / egress (ms) & 12.4 [11.1, 13.3] / 11.1 [10.3, 11.6] \\
+Submission e2e: \sys (ms) & 13.1 [12.0, 14.0] \\
+Job extras growth (bytes) & 52 \\
+\mgroup{2}{Serialization: authorization after withdrawal}
+\sys (serialized), gap 0\,ms & \mgood{0/300 (0\% [0, 1])} \\
+\sys (serialized), gap 1\,ms & \mgood{0/300 (0\% [0, 1])} \\
+\sys (serialized), gap 5\,ms & \mgood{0/300 (0\% [0, 1])} \\
+\vname{noser}, gap 0\,ms & \mbad{117/300 (39\% [34, 45])} \\
+\vname{noser}, gap 1\,ms & \mbad{98/300 (33\% [28, 38])} \\
+\vname{noser}, gap 5\,ms & \mbad{139/300 (46\% [41, 52])} \\
+\mgroup{2}{Durability under SIGKILL (100 kills)}
+Label in same row: unlabelled rows & 0 \\
+Label in separate store: unlabelled rows & 86 (86\% of kills) \\
+\bottomrule
+\end{tabular}
+\end{table}

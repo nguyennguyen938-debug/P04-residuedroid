@@ -1,0 +1,25 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\scriptsize,
+  st/.style={draw=mSlate,rounded corners=2pt,fill=mNavy!7,align=center,inner sep=2.5pt,minimum height=0.7cm},
+  op/.style={draw=mSlate,rounded corners=2pt,fill=mOchre!16,align=center,inner sep=2.5pt,minimum height=0.7cm},
+  fe/.style={draw=mTeal,thick,rounded corners=2pt,fill=mTeal!11,align=center,inner sep=2.5pt,minimum height=0.85cm},
+  arr/.style={-{Latex[length=1.5mm]},thick,draw=mInk!85}]
+\node[op,text width=1.15cm] (col) at (0,0) {collect\\$\ell{=}\{(s,\epsilon)\}$};
+\node[st,text width=1.3cm] (rows) at (1.8,0.5) {outbox rows\\+ label};
+\node[st,text width=1.3cm] (der) at (1.8,-0.5) {derived rows\\$\ell{=}\bigcup$ inputs};
+\node[st,text width=1.25cm] (job) at (3.55,0) {persisted job\\extras + label};
+\node[fe,text width=1.2cm] (fence) at (5.55,0) {\icon[0.9em]{shield} fence\\check each\\chunk};
+\node[draw=mSlate!70,rounded corners=2pt,fill=mSlate!8,align=center,text width=0.7cm,minimum height=0.7cm] (net) at (7.0,0) {\icon{cloud}\\socket};
+\node[op,text width=1.55cm] (wd) at (3.55,-1.35) {withdraw (txn):\\$\epsilon{+}{+}$, $a{=}0$};
+\node[st,text width=1.15cm] (gr) at (5.55,-1.35) {grants $\epsilon,a$\\(durable)};
+\draw[arr] (col) -- (rows); \draw[arr] (col) -- (der); \draw[arr] (rows.east) -- (job); \draw[arr] (der.east) -- (job);
+\draw[arr] (job) -- (fence);
+\node[font=\tiny,align=center] at (4.3,0.72) {restored after kill / reboot};
+\draw[arr] (fence) -- (net);
+\draw[arr] (wd) -- (gr); \draw[arr,dashed] (gr) -- node[right,font=\tiny]{read} (fence);
+\draw[thick,mTeal,dotted] (wd.north east) -- node[above left=-1pt,font=\tiny,text=mTeal]{lock $L$} (fence.south west);
+\end{tikzpicture}
+\caption{\sys data path. Labels travel with every persisted copy. The fence reads durable epochs and writes each bounded chunk while holding the lock that withdrawals also take.}
+\Description{Source labels are stored with outbox rows, combined for derived rows and copied into persisted job extras. A fence checks each outgoing chunk against durable grants while sharing a lock with withdrawal.}\label{fig:design}
+\end{figure}

@@ -1,0 +1,153 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "zeldovich2006histar",
+    "author": "Nickolai Zeldovich and Silas Boyd-Wickizer and Eddie Kohler and David Mazi{\\`e}res",
+    "title": "Making Information Flow Explicit in {HiStar}",
+    "booktitle": "Proceedings of the 7th USENIX Symposium on Operating Systems Design and Implementation (OSDI)",
+    "year": "2006"
+  },
+  "checked": 1794759760.673457,
+  "candidates": [
+    {
+      "title": "Making information flow explicit in HiStar",
+      "match": 1.0,
+      "DOI": "10.1145/2018396.2018419",
+      "URL": "https://doi.org/10.1145/2018396.2018419",
+      "author": [
+        {
+          "given": "Nickolai",
+          "family": "Zeldovich",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Massachusetts Institute of Technology, CSAIL, Cambridge, MA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Silas",
+          "family": "Boyd-Wickizer",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Massachusetts Institute of Technology, CSAIL, Cambridge, MA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Eddie",
+          "family": "Kohler",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of California, Los Angeles, CA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "David",
+          "family": "Mazi\u00e8res",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Stanford University, Stanford, CA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2011,
+            11
+          ]
+        ]
+      },
+      "page": "93-101",
+      "type": "journal-article"
+    },
+    {
+      "title": "Analyzing Explicit Information Flow",
+      "match": 0.5454545454545454,
+      "DOI": "10.1007/978-3-642-17714-9_1",
+      "URL": "https://doi.org/10.1007/978-3-642-17714-9_1",
+      "author": [
+        {
+          "given": "Sriram K.",
+          "family": "Rajamani",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Information Systems Security"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "page": "1-2",
+      "type": "book-chapter"
+    },
+    {
+      "title": "HISTAR 355",
+      "match": 0.23076923076923078,
+      "DOI": "10.31399/asm.ad.sa0731",
+      "URL": "https://doi.org/10.31399/asm.ad.sa0731",
+      "author": null,
+      "container-title": [
+        "Alloy Digest"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2015,
+            9,
+            1
+          ]
+        ]
+      },
+      "page": null,
+      "type": "journal-article"
+    }
+  ],
+  "status": "metadata match"
+}

@@ -1,0 +1,56 @@
+\section{Withdrawal Contracts and Deferred Work}
+\label{sec:background}
+
+\subsection{Four contracts, not one}
+\label{sec:contracts}
+
+``The user said stop'' covers several different promises. We separate four, following the distinctions that consent
+studies~\cite{nguyen2021sharefirst,nguyen2022freely,kollnig2021faitaccompli} and data-deletion work~\cite{reardon2013deletion,garg2020deletion,shastri2020gdprbench}
+already draw, and evaluate every fixture against the contract it states (Table~\ref{tab:contracts}).
+
+\begin{table}[t]
+\centering
+\caption{Withdrawal contracts. ``Pending'' says whether data collected \emph{before} the withdrawal is covered.}
+\label{tab:contracts}
+\mtab
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.15cm}>{\raggedright\arraybackslash}p{2.8cm}@{}}
+\toprule
+\mhead Contract & Purposes revoked & Pending & Violation evidence \\
+\midrule
+OS permission revocation & none (new access only) & no & none from prior data; residue is \emph{not} a violation \\
+In-app opt-out (stop collecting) & all & stated & new collection; prior data only if the app says ``discard'' \\
+Processing restriction & named purpose & yes & use for that purpose; other purposes stay legal \\
+Deletion request & all & yes & any later egress of the data or its derivatives \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+An \emph{OS permission revocation} (\texttt{pm revoke}, or the settings toggle) only stops future access to a source.
+Android kills the process, but nothing in the platform contract obliges the app to forget what it already read,
+so a later upload of earlier location fixes is residue, not a violation~\cite{felt2011demystified,wang2022aper}.
+An \emph{in-app opt-out} is the app's own promise. Some wordings stop collection only (``we will stop collecting''); others
+also discard what is queued (``we will no longer send usage data''). A \emph{processing restriction} withdraws one purpose,
+such as personalisation, while storage and backup stay permitted. A \emph{deletion request} covers the data and anything derived
+from it. Throughout, a submission is a \emph{prohibited submission} only if its contents contradict the contract the app states, at the time
+the bytes leave the device. Stored residue alone never counts. We make no legal claims.
+
+\subsection{Deferred work survives the withdrawal}
+\label{sec:deferred}
+
+Persisted \texttt{JobScheduler} jobs are written to
+the system's job store and restored after reboot~\cite{android_jobscheduler}. WorkManager keeps its own SQLite database and reschedules work
+after app restarts and reboots~\cite{android_workmanager}. Alarms do not survive reboot, so apps re-arm them from their own state. SyncAdapters
+run on the system's schedule. Analytics and crash-reporting SDKs add another layer: they keep an outbox, and many flush it when the app
+starts.
+
+On the Android~13 image we use (\S\ref{sec:setup}), we observed the following lifecycle facts directly over \lcTrials{} campaign trials
+(Table~\ref{tab:lifecycle}). Each one shapes which enforcement points can see a queued upload.
+\input{generated/tab_lifecycle.tex}
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{Reboot.} Persisted jobs are restored and run after boot. A check made at enqueue time is therefore arbitrarily old when the job runs.
+\item \textbf{Process death} (\texttt{kill -9}, or a runtime-permission revocation, which kills the app). Jobs stay scheduled, and JobScheduler restarts the process to run them.
+\item \textbf{Force-stop} removes the app's scheduled jobs. When the user next opens the app, an outbox-driven startup path re-enqueues the work. A job whose \emph{only} copy of the data was in its extras is lost.
+\item \textbf{Network loss mid-job.} An upload loop retries the batch it already prepared. A check made at job start ran before the withdrawal.
+\end{itemize}
+Withdrawal is a user action at an arbitrary time, so it can land in any of these windows. Our question is which enforcement point
+still sees it.

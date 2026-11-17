@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "matte2020cookie",
+    "author": "C{\\'e}lestin Matte and Nataliia Bielova and Cristiana Santos",
+    "title": "Do Cookie Banners Respect my Choice? Measuring Legal Compliance of Banners from {IAB} {Europe}'s Transparency and Consent Framework",
+    "booktitle": "Proceedings of the IEEE Symposium on Security and Privacy (S\\&P)",
+    "year": "2020"
+  },
+  "checked": 1794759761.984056,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

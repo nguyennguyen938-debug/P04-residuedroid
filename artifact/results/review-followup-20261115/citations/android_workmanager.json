@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "type": "misc",
+    "key": "android_workmanager",
+    "author": "{Android Developers}",
+    "title": "Task scheduling ({WorkManager})",
+    "howpublished": "\\url{https://developer.android.com/develop/background-work/background-tasks/persistent}",
+    "note": "Accessed 2026-11-08",
+    "year": "2026"
+  },
+  "checked": 1794759768.744711,
+  "error": "<HTTPError 429: 'Too Many Requests'>",
+  "status": "retrieval failed"
+}

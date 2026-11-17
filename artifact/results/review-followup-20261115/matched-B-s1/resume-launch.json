@@ -1,0 +1,30 @@
+{
+  "pid": 18009,
+  "time": 1794760878.990072,
+  "command": [
+    "python3",
+    "-u",
+    "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/followup/campaign.py",
+    "--serial",
+    "emulator-5682",
+    "--avd",
+    "P04AvdB",
+    "--port",
+    "8802",
+    "--variants",
+    "menqueue,mstart,mlayer,mfence,mboth",
+    "--trials",
+    "5",
+    "--start",
+    "5",
+    "--out",
+    "/Users/xuanbachle/Workstation/MobiSys2027/papers/P04-residuedroid/artifact/results/review-followup-20261115/matched-B-s1",
+    "--apkdir",
+    "fixture/build/revision-apk",
+    "--timeout",
+    "90",
+    "--seed",
+    "followup-20261115"
+  ],
+  "reason": "instance-specific restart detection; completed attempts preserved"
+}

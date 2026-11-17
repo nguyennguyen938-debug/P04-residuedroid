@@ -1,0 +1,206 @@
+{
+  "entry": {
+    "type": "inproceedings",
+    "key": "gray1989leases",
+    "author": "Cary G. Gray and David R. Cheriton",
+    "title": "Leases: An Efficient Fault-Tolerant Mechanism for Distributed File Cache Consistency",
+    "booktitle": "Proceedings of the 12th ACM Symposium on Operating Systems Principles (SOSP)",
+    "year": "1989"
+  },
+  "checked": 1794759767.695563,
+  "candidates": [
+    {
+      "title": "Leases: an efficient fault-tolerant mechanism for distributed file cache consistency",
+      "match": 1.0,
+      "DOI": "10.1145/74851.74870",
+      "URL": "https://doi.org/10.1145/74851.74870",
+      "author": [
+        {
+          "given": "C.",
+          "family": "Gray",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Computer Science Department, Stanford University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "D.",
+          "family": "Cheriton",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Computer Science Department, Stanford University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "ACM SIGOPS Operating Systems Review"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1989,
+            11
+          ]
+        ]
+      },
+      "page": "202-210",
+      "type": "journal-article"
+    },
+    {
+      "title": "Leases: an efficient fault-tolerant mechanism for distributed file cache consistency",
+      "match": 1.0,
+      "DOI": "10.1145/74850.74870",
+      "URL": "https://doi.org/10.1145/74850.74870",
+      "author": [
+        {
+          "given": "C.",
+          "family": "Gray",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Computer Science Department, Stanford University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "D.",
+          "family": "Cheriton",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Computer Science Department, Stanford University"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the twelfth ACM symposium on Operating systems principles"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            1989,
+            11
+          ]
+        ]
+      },
+      "page": "202-210",
+      "type": "proceedings-article"
+    },
+    {
+      "title": "Distributed File System Multilevel Fault-Tolerant High Availability Mechanism",
+      "match": 0.2875,
+      "DOI": "10.1145/3444370.3444609",
+      "URL": "https://doi.org/10.1145/3444370.3444609",
+      "author": [
+        {
+          "given": "Yufeng",
+          "family": "Shi",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Jinxin",
+          "family": "Zuo",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Yihong",
+          "family": "Guo",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Nanjing University of Science &amp; Technology, Nanjing Jiangsu China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Yueming",
+          "family": "Lu",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Key Laboratory of Trustworthy Distributed Computing and Servi-ce(BUPT), Ministry of Education, Beijing University of Posts and Telecommunications, Beijing China"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 2020 International Conference on Cyberspace Innovation of Advanced Technologies"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020,
+            12,
+            4
+          ]
+        ]
+      },
+      "page": "431-438",
+      "type": "proceedings-article"
+    }
+  ],
+  "status": "metadata match"
+}
