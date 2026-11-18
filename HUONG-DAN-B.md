@@ -4,11 +4,11 @@ Plan đầy đủ nằm ở `PLAN-ROUND3.md`. File này chỉ gom những gì B 
 
 ## Bắt đầu
 
-Phần việc của A và C nằm trên nhánh `ac-round3` (đã có sửa Makefile và các renderer). Làm từ nhánh đó, trên nhánh riêng:
+Phần việc của A và C đã gộp vào `main` (có sửa Makefile và các renderer). Bản trước round 3 giữ ở tag `snapshot-20261117`. Làm trên nhánh riêng tạo từ `main`, rồi gộp lại qua PR:
 
 ```bash
 git fetch origin
-git checkout -b b-exp origin/ac-round3
+git checkout -b b-exp origin/main
 ```
 
 B sở hữu `artifact/**`, trừ: các script render (`scripts/render*.py`, `revision/render_revision.py`, `followup/render.py`) và các thư mục mới `mutation/`, `triage/`, `survey/`, `devicefarm/`. Các file đó có thể đọc, nhưng nếu cần sửa thì báo C.
