@@ -116,3 +116,14 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 20:2x INCIDENT: artifact/results/raw/c1/A/sink/ingest.jsonl (52 MB, tracked) was found deleted from the working tree;
   directory mtime 19:48, coinciding with ~65 GB freed on the host disk; no harness or Claude command touches that path.
   Restored from git (blob 3496aee4…, identical). guard.sh rerun afterwards.
+- 22:0x TEST6 DECISION (user): devices = Pixel 8a + Pixel 10 (Device Farm has no Samsung; plan's "2 máy khác hãng" not
+  available → two Pixel generations, same vendor; to report to C for §7a).
+- 22:0x TEST6 LIFECYCLE-ON-PHONE PREP (code only, no device, no minutes). Applied C's `devicefarm/real-device.patch` to B's
+  files (Revision.java host extra; tls_suite.py --no-root/--host/ADB) — identical to the copy used for the uploaded TLS
+  APK. Fixture: `Fence.HOST` now meta `sink_host` (SETUP extra, like sink_port), default 10.0.2.2. followup/campaign.py:
+  `--no-root` (no adb root; run-as copy of rl.db+WAL queried on host; run-as kill -9 with pid check `kill_verified`;
+  reboot/netloss refused; net() no-op) and `--sink-host`; `ADB` env override. Checks: default-mode adb command trace
+  identical to HEAD (87 commands, 5 schedules, fake adb); no-root read == sqlite3 CLI text
+  (`followup/test_campaign_noroot.py` PASS); fixture builds (OUTDIR=build/apk_dev). Side effect: `\impLoc` (render.py
+  counts fixture/src Java lines) 1,230 → 1,233; manuscript/generated is C's, not committed here — C regenerates.
+  Not yet run on any device (emulator rehearsal and Device Farm pilot need the user's go-ahead).

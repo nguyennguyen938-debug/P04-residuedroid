@@ -7,15 +7,20 @@ read each app's durable event log with sqlite3 (root; does not start the app) ->
 All submissions are logged by a host sink (sink.py) reached via 10.0.2.2.
 
 Usage: campaign.py --serial emulator-5600 --port 8787 --variants none,cancel --out DIR --schedules pending,kill --trials 50
+
+Real phone without root (--no-root, e.g. AWS Device Farm): no `adb root`; each app's database files (rl.db + WAL) are
+copied with `run-as` (debuggable APKs) and queried on the host, printed exactly as the sqlite3 CLI would print them;
+kill -9 is sent as the app's own uid via `run-as`; reboot and netloss need root and are refused. --sink-host tells the
+apps where the sink is (default stays 10.0.2.2, the emulator host alias); with `adb reverse tcp:P tcp:P` use 127.0.0.1.
 """
-import argparse, json, os, random, re, subprocess, sys, time
+import argparse, hashlib, json, os, random, re, sqlite3, subprocess, sys, tempfile, time
 
 HERE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "harness"))
 ART = os.path.dirname(HERE)
 SA = os.environ.get("RESIDUE_ANDROID_ROOT", os.path.abspath(os.path.join(ART, "..", "..", "shared-android")))
 SDK = os.environ.get("ANDROID_HOME", f"{SA}/sdk")
 AVD_HOME = os.environ.get("ANDROID_AVD_HOME", f"{SA}/avd")
-ADB = f"{SDK}/platform-tools/adb"
+ADB = os.environ.get("ADB", f"{SDK}/platform-tools/adb")   # Device Farm host: ADB=adb
 TENANTS = list(range(1, 11))
 WITHDRAWN = "1,2,3,4,5,8,9,10"          # explicit in-app withdrawals (T6 control, T7 OS-permission tenant excluded)
 JOBS = [11, 13, 21, 23, 31, 33, 44, 45, 51, 53, 61, 63, 71, 81, 83, 91, 101]
@@ -37,7 +42,11 @@ ap.add_argument("--no-install", action="store_true")
 ap.add_argument("--avd", default="")
 ap.add_argument("--apkdir", default="fixture/build/apk")
 ap.add_argument("--abort-after", type=int, default=5)   # watchdog: abort after N consecutive failed trials
+ap.add_argument("--no-root", action="store_true")       # real phone: run-as instead of root (see module docstring)
+ap.add_argument("--sink-host", default="")              # empty = app default 10.0.2.2 (emulator)
 args = ap.parse_args()
+if args.no_root and {"reboot", "netloss"} & set(args.schedules.split(",")):
+    sys.exit("--no-root: reboot and netloss need root (iptables, adb root after boot); run them on the emulator")
 VARS = args.variants.split(",")
 PKGS = [f"org.residuelab.{v}" for v in VARS]
 os.makedirs(args.out, exist_ok=True)
@@ -67,7 +76,8 @@ def wait_boot(limit=240):
         if sh("getprop sys.boot_completed").strip() == "1":
             break
         time.sleep(1)
-    adb("root"); time.sleep(2)
+    if not args.no_root:
+        adb("root"); time.sleep(2)
     subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=60)
     while sh("getprop sys.boot_completed").strip() != "1":
         time.sleep(1)
@@ -136,6 +146,8 @@ def ensure_device():
 
 def cold_restart():
     """Kill OUR emulator instance (console port of args.serial / our AVD only) and relaunch it from scratch."""
+    if not args.serial.startswith("emulator-"):     # never send emulator console commands to a phone
+        ensure_device(); return
     try:
         subprocess.run([ADB, "-s", args.serial, "emu", "kill"], capture_output=True, timeout=30)
     except Exception:
@@ -161,7 +173,9 @@ def our_work():
     """WorkManager quiescence from its own database: work items still ENQUEUED(0)/RUNNING(1)/BLOCKED(4)."""
     n = 0
     for p in PKGS:
-        out = sh(f"sqlite3 /data/data/{p}/no_backup/androidx.work.workdb 'select count(*) from WorkSpec where state in (0,1,4)'")
+        q = "select count(*) from WorkSpec where state in (0,1,4)"
+        out = (copy_query(p, "no_backup/androidx.work.workdb", [q])[0] if args.no_root else
+               sh(f"sqlite3 /data/data/{p}/no_backup/androidx.work.workdb '{q}'"))
         try:
             n += int(out.strip().splitlines()[-1])
         except Exception:
@@ -172,6 +186,8 @@ def our_work():
 def net(on):
     """Network loss toward the server, applied to every UID: a guest firewall REJECT rule for 10.0.2.2.
     (svc wifi/data disable did not cut app traffic reliably: per-UID routing kept apps connected.)"""
+    if args.no_root:            # netloss is refused under --no-root; never touch a phone's radios or firewall
+        return
     if on:
         sh("svc wifi enable; svc data enable; while iptables -D OUTPUT -d 10.0.2.2 -j REJECT 2>/dev/null; do :; done")
     else:
@@ -189,17 +205,63 @@ def reset_apps():
     sh("input keyevent HOME")
 
 
+def cli_text(rows, sep):
+    """Rows as the sqlite3 CLI prints them in its default list mode: NULL -> '', one line per row."""
+    return "".join(sep.join("" if v is None else str(v) for v in r) + "\n" for r in rows)
+
+
+def pull_run_as(pkg, rel):
+    r = subprocess.run([ADB, "-s", args.serial, "exec-out", "run-as", pkg, "cat", rel], capture_output=True, timeout=60)
+    return r.stdout if r.returncode == 0 else None
+
+
+def copy_query(pkg, rel, queries, seps=None, tries=3):
+    """Copy <rel> and its -wal from the app's data dir with run-as (no root, does not start the app), retrying until two
+    consecutive copies are byte-identical (no write in between), then run the queries on the copy with sqlite3."""
+    seps = seps or ["|"] * len(queries)
+    prev = None
+    for _ in range(tries):
+        snap = {sfx: pull_run_as(pkg, rel + sfx) for sfx in ("", "-wal")}
+        if not snap[""]:
+            raise RuntimeError(f"run-as could not read {pkg}/{rel}")
+        digest = hashlib.sha256(snap[""] + b"\0" + (snap["-wal"] or b"")).hexdigest()
+        if digest == prev:
+            break
+        prev = digest
+    else:
+        raise RuntimeError(f"{pkg}/{rel} changed during {tries} consecutive copies")
+    with tempfile.TemporaryDirectory() as d:
+        f = os.path.join(d, "db")
+        open(f, "wb").write(snap[""])
+        if snap["-wal"]:
+            open(f + "-wal", "wb").write(snap["-wal"])
+        con = sqlite3.connect(f)
+        try:
+            return [cli_text(con.execute(q).fetchall(), sep) for q, sep in zip(queries, seps)]
+        finally:
+            con.close()
+
+
 def read_device(pkg):
     db = f"/data/data/{pkg}/databases/rl.db"
     q = "select seq,t_wall,t_el,tenant,kind,detail from events order by seq"
+    qr = "select tenant, count(*) from records group by tenant"
+    qd = "select tenant, count(*) from derived group by tenant"
+    if args.no_root:
+        out, res, der = copy_query(pkg, "databases/rl.db", [q, qr, qd], ["^^", "|", "|"])
+        return parse_device(out, res, der)
     out = sh(f"sqlite3 -separator '^^' {db} '{q}'", timeout=60)
+    res = sh(f"sqlite3 {db} '{qr}'")
+    der = sh(f"sqlite3 {db} '{qd}'")
+    return parse_device(out, res, der)
+
+
+def parse_device(out, res, der):
     ev = []
     for line in out.splitlines():
         f = line.split("^^")
         if len(f) >= 6:
             ev.append([int(f[0]), int(f[1]), int(f[2]), int(f[3]), f[4], "^^".join(f[5:])])
-    res = sh(f"sqlite3 {db} 'select tenant, count(*) from records group by tenant'")
-    der = sh(f"sqlite3 {db} 'select tenant, count(*) from derived group by tenant'")
     return {"events": ev, "residual_records": res.split(), "residual_derived": der.split()}
 
 
@@ -226,7 +288,8 @@ def run_trial(sched, k):
         inj = ",".join(f"{t}:{o}" for t, o in offs.items()); log["inj"] = offs
     ex = (f"--es trial {trial} --es tenants {','.join(map(str, TENANTS))} --es substrate {args.substrate} "
           f"--es up_delay 15000 --es sum_delay 15000 --es resurrect_delay 5000 --es regrant_ms 1500 --es nrec 12 "
-          f"--es manual {1 if manual else 0} --es sink_port {args.port}" + (f" --es inj {inj}" if inj else ""))
+          f"--es manual {1 if manual else 0} --es sink_port {args.port}" + (f" --es inj {inj}" if inj else "")
+          + (f" --es sink_host {args.sink_host}" if args.sink_host else ""))
     for p in PKGS:
         r = bc(p, "rl.SETUP", ex)
         if 'data="ok"' not in r:
@@ -241,7 +304,15 @@ def run_trial(sched, k):
         time.sleep(2)
         t_life = time.time()
         if sched == "kill":
-            sh("; ".join(f"kill -9 $(pidof {p})" for p in PKGS)); act("kill")
+            if args.no_root:     # shell may not signal another uid; run-as sends the same SIGKILL as the app's own uid
+                before = {p: sh(f"pidof {p}").split() for p in PKGS}
+                kout = sh("; ".join(f"run-as {p} kill -9 $(pidof {p})" for p in PKGS))
+                after = {p: sh(f"pidof {p}").split() for p in PKGS}
+                ok = all(before[p] and not set(before[p]) & set(after[p]) for p in PKGS)   # fault verified (R2.4)
+                act("kill", via="run-as", verified=ok, pids_before=before, pids_after=after, out=kout[-200:])
+                log["kill_verified"] = ok
+            else:
+                sh("; ".join(f"kill -9 $(pidof {p})" for p in PKGS)); act("kill")
         elif sched == "forcestop":
             sh("; ".join(f"am force-stop {p}" for p in PKGS)); act("force_stop")
             time.sleep(3)
@@ -321,13 +392,18 @@ def main():
     time.sleep(1)
     try:
         ensure_device()
-        adb("root"); time.sleep(2)
+        if not args.no_root:
+            adb("root"); time.sleep(2)
         if not args.no_install:
             for v in VARS:
                 adb("install", "-r", "-g", f"{ART}/{args.apkdir}/rl-{v}.apk", timeout=120)
         meta = {"serial": args.serial, "fingerprint": sh("getprop ro.build.fingerprint").strip(),
                 "variants": VARS, "schedules": args.schedules, "trials": args.trials, "seed": args.seed,
                 "sink_delay_ms": args.sink_delay, "substrate": args.substrate, "start": time.time()}
+        if args.no_root or args.sink_host:      # keys added only for real-phone runs; emulator meta.json unchanged
+            meta.update(root=not args.no_root, sink_host=args.sink_host or "10.0.2.2",
+                        db_read="run-as copy + host sqlite3" if args.no_root else "sqlite3 as root",
+                        model=sh("getprop ro.product.model").strip(), android=sh("getprop ro.build.version.release").strip())
         mp = os.path.join(args.out, "meta.json")
         if os.path.exists(mp):      # keep the first launch's meta; later (resume) launches get their own file
             mp = os.path.join(args.out, f"meta_start{args.start}_{args.schedules.replace(',', '-')}.json")

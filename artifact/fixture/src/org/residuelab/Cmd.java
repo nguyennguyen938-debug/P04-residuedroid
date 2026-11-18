@@ -12,10 +12,12 @@ public class Cmd extends BroadcastReceiver {
         final Db db = Db.get(c);
         String sp = i.getStringExtra("sink_port");
         if (sp != null) { db.putMeta("sink_port", sp); Fence.PORT = Integer.parseInt(sp); }
+        String shost = i.getStringExtra("sink_host");
+        if (shost != null) { db.putMeta("sink_host", shost); Fence.HOST = shost; }
         switch (a) {
             case "rl.SETUP": {
                 for (String k : new String[]{"trial", "tenants", "substrate", "agg_delay", "up_delay", "sum_delay", "manual",
-                        "resurrect_delay", "regrant_ms", "nrec", "race_delay", "sink_port"}) {
+                        "resurrect_delay", "regrant_ms", "nrec", "race_delay", "sink_port", "sink_host"}) {
                     String v = i.getStringExtra(k); if (v != null) db.putMeta(k, v);
                 }
                 String inj = i.getStringExtra("inj");
