@@ -37,3 +37,13 @@ and `adb reverse --list` for diagnostics. Receiver mode A (Device Farm host via 
 `run_df.sh <uploads.env> <run-name> <fresh out dir> [timeout min]` — refuses existing out dirs, sets a job timeout,
 polls to completion, downloads FILE/LOG artifacts, records trial minutes before/after. `uploads.env` holds account-specific
 ARNs and stays outside the repository. Every run needs the user's go-ahead.
+
+## Minute budget (from local rehearsal 2, emulator Android 15; Device Farm setup overhead still unmeasured)
+| Run | Content | Expected | Job timeout |
+|---|---|---|---|
+| Pilot (Pixel 8a) | combined spec: TLS ×1 block + lifecycle pen, kill, rev ×1 | ~8–12 min | 20 min |
+| Main, per device, job 1 | TLS ×20 + lifecycle blocks 0–9 (`--trials 10`) | ~70 min | 100 min |
+| Main, per device, job 2 | lifecycle blocks 10–19 (`--start 10 --trials 10`, fresh out dir) | ~66 min | 100 min |
+Two devices (Pixel 8a, Pixel 10): expected ≈ 290 min, worst case 20 + 4×100 = 420 min of the 1,000 trial minutes.
+Lifecycle trial time on the emulator was 104–166 s (rehearsal 2); N per schedule on the phone: *plan không nêu* (20 proposed,
+as B11/B12). summary.json has no lifecycle-on-phone key yet (C).

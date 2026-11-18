@@ -127,3 +127,17 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   (`followup/test_campaign_noroot.py` PASS); fixture builds (OUTDIR=build/apk_dev). Side effect: `\impLoc` (render.py
   counts fixture/src Java lines) 1,230 → 1,233; manuscript/generated is C's, not committed here — C regenerates.
   Not yet run on any device (emulator rehearsal and Device Farm pilot need the user's go-ahead).
+- 22:33 B11 PREP: AVD P04Avd14 created (android-34 google_apis arm64-v8a rev 14, pixel_6, 2 GB RAM, data 3G); config
+  equals P04Avd15 except disk.dataPartition.size (P04Avd15 shows 6442450944 = 6 GiB in its config, apparently raised by the emulator
+  at first boot; not verified). preflight IMAGES="34 35": 18 ok, 0 failed (warn: ~2 GB RAM free).
+- 22:33 LAUNCH TEST6 local rehearsal 2 (PILOT, excluded; user go-ahead): emulator-5644 P04Avd15 -wipe-data, gpu guest;
+  package v2 (zip sha256 f46008ce…01ec, rl-tls.apk 49ae92ac…341d, commit 400f62e) run as the combined pilot spec would run it:
+  adb reverse 8798/8799/8787, TLS --n 1 then campaign.py --no-root --sink-host 127.0.0.1 pen,kill,rev × 1 →
+  results/round3/test6/pilot-local-2/{tls,life}.
+- 22:47 DONE TEST6 local rehearsal 2 (PILOT, excluded) → results/round3/test6/pilot-local-2. Mechanism checks only:
+  adbd uid shell (no root used); TLS TLS_EXIT=0, barrier_seen true in both buffered cases, receiver 14 lines; lifecycle
+  LIFE_EXIT=0, 3/3 trials quiesced (remaining 0), run-as DB read 15/15 without error, kill_verified true (5/5 pids gone),
+  sink reached via sink_host 127.0.0.1 + adb reverse (325 lines). Timing: TLS part 174 s incl. install; lifecycle trials
+  166/104/127 s (reset 34–49 s; pen/rev waited ~72–76 s, backstop force-run at 60 s) vs 55/43/34 s medians of the android-33
+  matched campaign → 20 blocks ≈ 130 min per device, near the 150-min job cap: split lifecycle into 2 jobs per device
+  (plan risk "chia thành nhiều lô nhỏ"). SHUTDOWN emulator-5644; adb reverse and listeners cleared. No Device Farm minutes used.
