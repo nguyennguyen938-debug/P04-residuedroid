@@ -5,7 +5,7 @@ set -euo pipefail
 A=${ANDROID_HOME:?export ANDROID_HOME first}
 AVDM="$A/cmdline-tools/latest/bin/avdmanager"
 [ -x "$AVDM" ] || { echo "missing $AVDM (install cmdline-tools;latest)"; exit 1; }
-IMG="system-images;android-33;google_apis;arm64-v8a"
+API=${API:-33}; IMG="system-images;android-$API;google_apis;arm64-v8a"   # API=34/35 for B11
 for n in ${AVDS:-P04AvdA P04AvdB}; do
   if [ -d "$HOME/.android/avd/$n.avd" ]; then echo "exists: $n"; continue; fi
   echo no | "$AVDM" create avd -n "$n" -k "$IMG" -d pixel_6 >/dev/null
@@ -21,6 +21,6 @@ open(p, "w").write(s.strip() + "\n")
 EOF
   echo "created: $n ($(grep -E '^(hw.ramSize|disk.dataPartition.size)=' "$cfg" | tr '\n' ' '))"
 done
-rev=$(grep Pkg.Revision "$A/system-images/android-33/google_apis/arm64-v8a/source.properties" | cut -d= -f2)
-echo "image revision: $rev (historical 17). Record in RUNLOG and the card."
+rev=$(grep Pkg.Revision "$A/system-images/android-$API/google_apis/arm64-v8a/source.properties" | cut -d= -f2)
+echo "image android-$API revision: $rev (historical android-33 rev 17). Record in RUNLOG."
 echo "the harness launches its own AVD (harness/campaign.py ensure_device); role B = P04AvdB on console 5602"
