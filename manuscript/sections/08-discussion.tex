@@ -15,7 +15,7 @@ cache and later re-read loses its label, and the wrapper then sees an unlabelled
 justify assuming complete labels in deployments. The channel wrapper fails closed on missing, malformed,
 future-epoch or unknown-scope labels and unavailable policy. Only trusted collection-time metadata
 can support migration; re-grant never relabels old data. This can lose permitted flows, which the
-conformance tests report. A direct-call mediation checker reuses the DEX parser. It flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code. These require reachability/configuration review; the checker does not prove complete mediation or handle native code, reflection and IPC. FlowDroid~\cite{arzt2014flowdroid} provides richer flow analysis. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
+conformance tests report. A direct-call mediation checker reuses the DEX parser. It flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code. Appendix~\ref{app:uncovered} classifies them by configuration and reachability; the checker does not prove complete mediation or handle native code, reflection and IPC. FlowDroid~\cite{arzt2014flowdroid} provides richer flow analysis. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
 such as ReCon~\cite{ren2016recon} complement but cannot replace a device-side fence. Our sink counts them as
 \emph{unknown}, never as clean.
 

@@ -1,0 +1,13 @@
+diff --git a/artifact/fixture/src/org/residuelab/Work.java b/artifact/fixture/src/org/residuelab/Work.java
+index 698bc5d..ddc248a 100644
+--- a/artifact/fixture/src/org/residuelab/Work.java
++++ b/artifact/fixture/src/org/residuelab/Work.java
+@@ -100,7 +100,7 @@ public final class Work {
+         if (tags.isEmpty()) { db.event(t.id, "AGG_EMPTY", ""); return; }
+         String tag = String.format(Locale.US, "RD-%s-T%d-sum-%02d", Policy.trial(c), t.id, tags.size());
+         String srcs = String.join("|", tags);
+-        String lab = String.join(",", labels);
++        String lab = labels.last(); // MUTANT M1: summary keeps only the newest source label
+         String payload = "count=" + tags.size() + ";sum=" + sum + ";srcs=" + srcs;
+         d.beginTransaction();
+         try {

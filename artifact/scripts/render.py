@@ -13,12 +13,12 @@ MISSING = "\\textbf{??}"
 
 def rd(name):
     p = os.path.join(RES, name)
-    return list(csv.DictReader(open(p))) if os.path.exists(p) else None
+    return list(csv.DictReader(open(p, encoding="utf-8"))) if os.path.exists(p) else None
 
 
 def jl(name):
     p = os.path.join(RES, name)
-    return json.load(open(p)) if os.path.exists(p) else None
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
 
 
 def f0(x): return f"{float(x):.0f}"
@@ -27,7 +27,7 @@ def pct(x): return f"{100*float(x):.0f}"
 
 
 def write(name, text):
-    open(os.path.join(OUT, name), "w").write(text)
+    open(os.path.join(OUT, name), "w", encoding="utf-8", newline="\n").write(text)
 
 
 # ------------------------------------------------------------------ static corpus
@@ -65,21 +65,34 @@ if sj:
     M.update(pctPollStop=f0(j["app_code"]["workers_poll_stop_pct"]), jobEntries=j["all"]["entries"],
              jobEntriesApp=j["app_code"]["entries"], medianDepth=j["all"]["median_depth"])
 if os.path.exists(corpus_csv):
-    idx = json.load(open(os.path.join(ART, "static", "data", "index", "index-v2.json")))
-    n = 0
-    for pkg, p in idx["packages"].items():
-        vs = sorted(p["versions"].values(), key=lambda v: v["manifest"].get("versionCode", 0))
-        if not vs: continue
-        v = vs[-1]
-        perms = {x["name"] for x in (v["manifest"].get("usesPermission") or [])}
-        if "android.permission.INTERNET" in perms and v["file"]["size"] <= 80 * 2**20:
-            n += 1
-    M["eligibleN"] = n
+    # The 72 MB F-Droid index is not in git; eligible.json caches the one count it feeds, so a clean clone still renders.
+    _idx = os.path.join(ART, "static", "data", "index", "index-v2.json")
+    _cache = os.path.join(ART, "static", "data", "index", "eligible.json")
+    if os.path.exists(_idx):
+        idx = json.load(open(_idx, encoding="utf-8"))
+        n = 0
+        for pkg, p in idx["packages"].items():
+            vs = sorted(p["versions"].values(), key=lambda v: v["manifest"].get("versionCode", 0))
+            if not vs: continue
+            v = vs[-1]
+            perms = {x["name"] for x in (v["manifest"].get("usesPermission") or [])}
+            if "android.permission.INTERNET" in perms and v["file"]["size"] <= 80 * 2**20:
+                n += 1
+        json.dump({"eligibleN": n, "index_sha256": open(_idx + ".sha256").read().split()[0]},
+                  open(_cache, "w", encoding="utf-8", newline="\n"), indent=1)
+    if os.path.exists(_cache):
+        M["eligibleN"] = json.load(open(_cache, encoding="utf-8"))["eligibleN"]
 vj = rd("static_validation_judged.csv")
 if vj:
-    sh = [r for r in vj if int(r["net_depth"]) <= 4]; dp = [r for r in vj if int(r["net_depth"]) >= 5]
-    M.update(valN=len(vj), valShallowN=len(sh), valShallowNo=sum(r["judgment"] == "no" for r in sh),
-             valShallowYes=sum(r["judgment"] == "yes" for r in sh), valDeepN=len(dp), valDeepNo=sum(r["judgment"] == "no" for r in dp))
+    # Split at three hops, the same threshold as the corpus screen (Table tab:corpus).
+    sh = [r for r in vj if int(r["net_depth"]) <= 3]; dp = [r for r in vj if int(r["net_depth"]) > 3]
+    cnt = lambda rows, j: sum(r["judgment"] == j for r in rows)
+    k, n = cnt(vj, "yes"), len(vj)
+    c = 1 + 1.96**2 / n; mid = (k / n + 1.96**2 / (2 * n)) / c
+    half = 1.96 * math.sqrt(k / n * (1 - k / n) / n + 1.96**2 / (4 * n * n)) / c
+    M.update(valN=n, valYes=k, valUnclear=cnt(vj, "unclear"), valYesLo=pct(mid - half), valYesHi=pct(mid + half),
+             valShallowN=len(sh), valShallowYes=cnt(sh, "yes"), valShallowUnclear=cnt(sh, "unclear"),
+             valDeepN=len(dp), valDeepYes=cnt(dp, "yes"), valDeepUnclear=cnt(dp, "unclear"), valDeepNo=cnt(dp, "no"))
 
 # ------------------------------------------------------------------ implementation size
 loc = 0
@@ -98,8 +111,9 @@ if os.path.exists(_rm):
 # ------------------------------------------------------------------ macros
 NEEDED = ["corpusN", "eligibleN", "trackN", "randN", "pctPersistAll", "pctAlarmAll", "pctCandLo", "pctCandHi",
           "pctCandConsentLo", "pctCandConsentHi", "candConsentLoN", "candConsentHiN", "pctConsentTrack", "pctConsentRand",
-          "pctSdkTrack", "pctSdkRand", "pctPollStop", "pctNativeAll", "acraApps", "impLoc", "valN", "valShallowN",
-          "valShallowNo", "valShallowYes", "valDeepN", "valDeepNo",
+          "pctSdkTrack", "pctSdkRand", "pctPollStop", "pctNativeAll", "acraApps", "impLoc", "valN", "valYes", "valUnclear",
+          "valYesLo", "valYesHi", "valShallowN", "valShallowYes", "valShallowUnclear", "valDeepN", "valDeepYes",
+          "valDeepUnclear", "valDeepNo",
           "nTrialsValid", "convViolPct", "acraStockLeak", "acraFenceLeak", "acraStockCtl", "acraFenceCtl",
           "acraStockReb", "acraFenceReb", "acraStockRebCtl", "acraFenceRebCtl", "insNoUs", "insLabUs", "insDeltaUs", "fenceNoneUs", "fenceRdUs", "eeNoneMs", "eeRdMs",
           "extrasDelta", "noserZeroPct", "noserFivePct", "crashKills", "crashOrphA", "crashOrphB", "crashOrphBPct",
@@ -108,6 +122,6 @@ lines = []
 for k in sorted(set(NEEDED) | set(M)):
     v = M.get(k, MISSING)
     lines.append(f"\\newcommand{{\\{k}}}{{{v}\\xspace}}")
-write("macros.tex", "% generated by artifact/scripts/render.py -- do not edit\n" + "\n".join(lines) + "\n")
+write("macros.tex", "% generated by artifact/scripts/render.py; do not edit\n" + "\n".join(lines) + "\n")
 missing = [k for k in NEEDED if k not in M]
 print(f"macros: {len(M)} defined; missing: {missing}")

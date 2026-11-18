@@ -1,0 +1,696 @@
+{
+ "estimand": "cause of each undelivered permitted item, enlarged matched campaign",
+ "tenant_trials": 70,
+ "items": 448,
+ "schedules": {
+  "reboot": 70
+ },
+ "causes": {
+  "stopped_no_restart": 70
+ },
+ "onstop_reasons": {
+  "7": 77
+ },
+ "policy_hits_on_stopped_job": 0,
+ "stopped_without_deficit": {
+  "netloss": 80,
+  "inflight": 52
+ },
+ "window_after_boot_s": {
+  "median": 57.22611355781555,
+  "min": 9.353204011917114,
+  "max": 69.22041082382202
+ },
+ "by_variant": {
+  "menqueue": {
+   "tenant_trials": 0,
+   "items": 0,
+   "causes": {},
+   "reboot_tenant_trials": 160
+  },
+  "mstart": {
+   "tenant_trials": 16,
+   "items": 124,
+   "causes": {
+    "stopped_no_restart": 16
+   },
+   "reboot_tenant_trials": 160
+  },
+  "mlayer": {
+   "tenant_trials": 29,
+   "items": 168,
+   "causes": {
+    "stopped_no_restart": 29
+   },
+   "reboot_tenant_trials": 160
+  },
+  "mfence": {
+   "tenant_trials": 15,
+   "items": 96,
+   "causes": {
+    "stopped_no_restart": 15
+   },
+   "reboot_tenant_trials": 160
+  },
+  "mboth": {
+   "tenant_trials": 10,
+   "items": 60,
+   "causes": {
+    "stopped_no_restart": 10
+   },
+   "reboot_tenant_trials": 160
+  }
+ },
+ "rows": [
+  {
+   "instance": "A",
+   "trial": "reb000",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb001",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 7,
+   "missing": 12,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb001",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb002",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb002",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb003",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb003",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb022",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A",
+   "trial": "reb022",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s1",
+   "trial": "reb009",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s1",
+   "trial": "reb009",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb011",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb011",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb011",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb012",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb013",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb018",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb018",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb018",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb018",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb019",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb019",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 4,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "A-s3",
+   "trial": "reb019",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb000",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb000",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb001",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb001",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb002",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb003",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb003",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb003",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb004",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb020",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb020",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb020",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B",
+   "trial": "reb021",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb005",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb005",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb005",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb005",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb006",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb006",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb007",
+   "schedule": "reboot",
+   "variant": "mboth",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb008",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb008",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 7,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s1",
+   "trial": "reb009",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb011",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb012",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb012",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb012",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb012",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb013",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb013",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb013",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s2",
+   "trial": "reb014",
+   "schedule": "reboot",
+   "variant": "mfence",
+   "tenant": 7,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s3",
+   "trial": "reb015",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 4,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s3",
+   "trial": "reb015",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s3",
+   "trial": "reb016",
+   "schedule": "reboot",
+   "variant": "mstart",
+   "tenant": 3,
+   "missing": 8,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s3",
+   "trial": "reb016",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 3,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  },
+  {
+   "instance": "B-s3",
+   "trial": "reb016",
+   "schedule": "reboot",
+   "variant": "mlayer",
+   "tenant": 6,
+   "missing": 4,
+   "cause": "stopped_no_restart"
+  }
+ ]
+}

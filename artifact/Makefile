@@ -15,6 +15,7 @@ revision: render
 	$(PY) revision/oracle_v2.py results/revision-20261115
 	$(PY) revision/matched_oracle.py
 	$(PY) followup/matched_oracle.py
+	$(PY) followup/deficit_causes.py
 	$(PY) revision/render_revision.py
 	$(PY) revision/audit_results.py > results/revision-20261115/evidence-audit.log
 paper: revision

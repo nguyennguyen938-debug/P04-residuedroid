@@ -11,6 +11,8 @@ cache, SDK and AVDs; scan outputs support numeric regeneration, while new scans 
 Experiment protocols, source freezes and exclusions are in \texttt{revision/}. The local package
 is not a claim of public hosting or third-party reproduction.
 
+\input{sections/appendix-matrix}
+
 \section{Fixture Details}
 \label{app:fixture}
 
@@ -33,6 +35,30 @@ $p$ is revoked by $t$'s contract, the contract covers pending data, and $e < |\{
 prohibited if any of its listed sources is. For the raw-socket tenant, $q$ is joined from the device log by submission id.
 Host-time fallback cannot establish socket order. The socket-acceptance oracle classifies missing or overlapping evidence as unknown; authorization-marker results certify only the logged authorization order.
 
+\section{Trial-Level Matched Results}
+\label{app:matched-trials}
+\input{generated/followup_trials}
+
+\section{Developer Obligations}
+\label{app:obligations}
+The guarantee covers only data whose labels are complete and whose bytes leave through the fenced transport. The runtime
+fence cannot see an omitted source: a valid label that leaves one out passes (\S\ref{sec:revision}). A developer who adds
+\begin{itemize}[leftmargin=*,nosep]
+\item \emph{a data source} stores its scope and collection epoch in the same row or transaction as the data, and never
+defaults a missing label;
+\item \emph{a derived value} (summary, aggregate, model input) labels it with the union of its sources, each with its own
+collection epoch, not with the scope declared by the job that consumes it;
+\item \emph{a queue or job} copies those labels into the persisted job input and reuses them on every retry, never
+relabelling with the current epoch;
+\item \emph{a transport or SDK sender} routes every write through the fenced transport with one writer per socket, and
+registers no stock sender beside it;
+\item \emph{a store migration} retires or blocks unlabelled rows rather than labelling them with the current epoch.
+\end{itemize}
+The artifact's label checker (\texttt{mutation/label\_check.py}) compares, in test builds, each submitted label with the
+sources that tracers find in the content; it is the check that catches an incomplete label. The confirmation shown on
+withdrawal should not overpromise, for example: ``Sharing is off. Data not yet sent will not be sent. Data sent before
+you turned this off may still reach our servers.''
+
 \section{Uncovered Paths}
 \label{app:uncovered}
 
@@ -43,6 +69,13 @@ link the library; (v) SyncAdapters whose I/O runs in system-initiated contexts t
 copied to unlabelled files or caches. Path (ii) requires auditing buffering, retries and the actual transport boundary; an application
 interceptor alone does not establish per-write serialization. Paths (i) and (iii) need platform support. T9 in our campaign
 represents (i)/(ii).
+
+\paragraph{Flagged sites in the SDK builds.} The direct-call mediation checker (\S\ref{sec:discussion}) flags five sites in
+the fenced ACRA build and four in the Matomo build (artifact \texttt{triage/}). Four ACRA sites belong to ACRA's stock
+HTTP sender, which the fenced build never instantiates: its sender service registration lists only the fenced factory.
+Three Matomo sites belong to the stock packet sender, which the test app calls only in its unfenced arm. The remaining
+site in each build is Kotlin's \texttt{URL.readBytes}; we have not established whether any code calls it. These are
+configuration arguments for two test apps, not a proof of complete mediation.
 
 \section{Static Scanner}
 \label{app:scanner}

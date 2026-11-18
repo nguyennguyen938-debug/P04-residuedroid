@@ -13,9 +13,9 @@ That includes native code (JNI), custom network stacks such as raw sockets or em
 WebViews, IPC to other apps, and any flow the developer did not route through the wrapper. We claim nothing for uncovered
 paths. The raw-socket tenant measures one directly in \S\ref{sec:eval}.
 
-\sys also cannot recall bytes. Data handed to the network before the withdrawal takes effect may still arrive afterwards, and
+\sys also cannot recall bytes. Bytes accepted by the socket before the withdrawal commits may still arrive afterwards, and
 server-side copies are outside the device. The guarantee orders each accepted socket prefix relative to policy updates. A write can accept
-only part of a request; its authorization log, local acceptance and remote receipt are distinct.
+only part of a request; its authorization log, socket acceptance (handoff) and request receipt at the receiver are distinct.
 
 \subsection{Three mechanisms}
 \input{figures/fig2-design}

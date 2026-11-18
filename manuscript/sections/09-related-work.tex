@@ -8,7 +8,7 @@ ends: data collected and queued \emph{before} the toggle, carried by persisted w
 enforcement point that still sees it. The two are complementary. Studies of consent notices and explicit-consent
 violations~\cite{nguyen2021sharefirst,nguyen2022freely,kollnig2021faitaccompli,matte2020cookie} and of tracking
 ecosystems~\cite{razaghpanah2018trackers,kollnig2022goodbye} measure whether apps ask and whether they send before asking.
-Policy--code consistency work~\cite{slavin2016policy,andow2019policylint,andow2020policheck,zimmeck2019maps} compares stated
+Policy-code consistency work~\cite{slavin2016policy,andow2019policylint,andow2020policheck,zimmeck2019maps} compares stated
 policies with data flows. Our oracle similarly judges submissions against a stated contract, but it does so at a stated observation boundary
 and in time.
 
@@ -35,8 +35,8 @@ permitted flows.
 definitions~\cite{garg2020deletion} and GDPR-oriented storage benchmarks~\cite{shastri2020gdprbench} address erasing data,
 not stopping its later use by already-queued work. Our soundness argument is a linearizability-style
 argument~\cite{herlihy1990linearizability}: a policy check and each bounded write are serialized against withdrawals, in the
-spirit of TOCTOU defenses~\cite{bishop1996races}. Leases~\cite{gray1989leases} bound how stale a cached grant can be, but they do
-not close the race on one device, and we do not need them. Background-work misuse has been studied for energy (wake
+spirit of TOCTOU defenses~\cite{bishop1996races}. Leases~\cite{gray1989leases} bound how stale a cached grant can be, but do
+not close the race on one device. Background-work misuse has been studied for energy (wake
 locks~\cite{liu2016wakelock}). We study it for privacy contracts.
 
 \paragraph{SDK isolation and downstream policy.} Android's Privacy Sandbox SDK Runtime separates compatible SDKs into a restricted process~\cite{android_sdkruntime}; isolation alone does not supply the source epochs or queued-data contract assumed here. Riverbed enforces user-defined data policies inside attested server runtimes~\cite{wang2019riverbed}, complementing a device boundary that cannot recall delivered data. SDK consent APIs also expose distinct contracts: Matomo's JavaScript tracker separates tracking consent from cookie consent~\cite{matomo_consent}. Those web APIs are related design context, not evidence about the Android SDK's persisted dispatcher tested here.

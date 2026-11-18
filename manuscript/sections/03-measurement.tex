@@ -15,9 +15,9 @@ whose names are kept for reflection, as well as through API references.
 \paragraph{Analysis.} Our scanner (\S\ref{sec:impl}) finds deferred-job entry points: \texttt{doWork}/\texttt{startWork} of
 WorkManager workers, \texttt{onStartJob} of \texttt{JobService}s, and \texttt{onPerformSync}. From each, it searches
 breadth-first for a network sink (\texttt{HttpURLConnection}, OkHttp, Retrofit, Volley, Ktor, raw sockets and similar). The
-search is over-approximate. We validated it on a seeded sample of 20 app-code entries in apps with a consent signal,
-judging from class names and app purpose whether network use is on the job's own path. Of nine entries within three hops, six were judged plausible and three unclear;
-of eleven deeper entries, four were plausible, one unclear and six implausible. These class-name/app-purpose
+search is over-approximate. We validated it on a seeded sample of \valN{} app-code entries in apps with a consent signal,
+judging from class names and app purpose whether network use is on the job's own path. Of \valShallowN{} entries within three hops, \valShallowYes{} were judged plausible and \valShallowUnclear{} unclear;
+of \valDeepN{} deeper entries, \valDeepYes{} were plausible, \valDeepUnclear{} unclear and \valDeepNo{} implausible. These class-name/app-purpose
 judgments do not validate runtime paths or estimate false negatives. We report two screening thresholds
 (three hops and any depth), not lower and upper bounds on real flows. Consent signals are identifier-like constants pairing a topic token
 (\textit{analytics}, \textit{telemetry}, \textit{crash}, \textit{consent}, ...) with a control token (\textit{enable},
@@ -29,12 +29,12 @@ judgments do not validate runtime paths or estimate false negatives. We report t
 The tracking stratum is a census within the eligible index; random-stratum intervals describe
 screening proportions among other eligible apps, conditional on classification. The oversampled
 mixture is descriptive, not a population estimate. Validation uncertainty is separate: with only
-20 judgments, the plausible fraction is 10/20 (Wilson 95\% interval 30--70\%), and four remain
+\valN{} judgments, the plausible fraction is \valYes{}/\valN{} (Wilson 95\% interval from \valYesLo{}\% to \valYesHi{}\%), and \valUnclear{} remain
 unclear. Neither statistic estimates a contract-violation prevalence. Persisted deferred work is common: \pctPersistAll{}\% of the
 corpus uses \texttt{setPersisted}, WorkManager or a SyncAdapter, and \pctAlarmAll{}\% uses AlarmManager. Between
 \pctCandLo{}\% (three-hop screen) and \pctCandHi{}\% (any-depth screen) of apps both persist deferred work and reach the network
 from a deferred-job entry point. Between \pctCandConsentLo{}\% and \pctCandConsentHi{}\% also carry a consent or telemetry
-signal. In absolute terms this is \candConsentLoN{}--\candConsentHiN{} apps. The \emph{Tracking} stratum has more consent
+signal. In absolute terms this is between \candConsentLoN{} and \candConsentHiN{} apps. The \emph{Tracking} stratum has more consent
 signals (\pctConsentTrack{}\% vs.\ \pctConsentRand{}\%) and more telemetry SDKs (\pctSdkTrack{}\% vs.\ \pctSdkRand{}\%).
 At the entry-point level, only \pctPollStop{}\% of app-code workers poll \texttt{isStopped()}. This does not establish whether cancellation interrupts uploads: workers may use other stop
 callbacks or networking cancellation. Between-batch stopping is a fixture assumption, not a corpus finding.

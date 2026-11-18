@@ -1,0 +1,10 @@
+apk,caller,target,class,evidence
+acra/build/apk/acrafence.apk,Lorg/acra/http/BaseHttpRequest;->createConnection,Ljava/net/URL;->openConnection,outside configuration,"acra/build.sh line 22: the fenced build's META-INF/services/org.acra.sender.ReportSenderFactory lists only FencedSenderFactory, so ACRA's stock HttpSender is never instantiated"
+acra/build/apk/acrafence.apk,Lorg/acra/http/BaseHttpRequest;->writeContent,Ljava/net/HttpURLConnection;->connect,outside configuration,same stock HttpSender path as above
+acra/build/apk/acrafence.apk,Lorg/acra/http/BaseHttpRequest;->writeContent,Ljava/net/HttpURLConnection;->getOutputStream,outside configuration,same stock HttpSender path as above (first call site)
+acra/build/apk/acrafence.apk,Lorg/acra/http/BaseHttpRequest;->writeContent,Ljava/net/HttpURLConnection;->getOutputStream,outside configuration,same stock HttpSender path as above (second call site)
+acra/build/apk/acrafence.apk,Lkotlin/io/TextStreamsKt;->readBytes,Ljava/net/URL;->openStream,unresolved,"Kotlin stdlib URL.readBytes(); no caller search done yet, so reachability is unknown"
+matomo/build/matomo.apk,Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send,Ljava/net/URL;->openConnection,wrapped in fenced mode,"matomo/src/.../Cmd.java: the dispatcher factory installs an adapter PacketSender; DefaultPacketSender.send runs only when fenced=false (the stock arm of the test app)"
+matomo/build/matomo.apk,Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send,Ljava/net/HttpURLConnection;->getOutputStream,wrapped in fenced mode,same stock sender as above (first call site)
+matomo/build/matomo.apk,Lorg/matomo/sdk/dispatcher/DefaultPacketSender;->send,Ljava/net/HttpURLConnection;->getOutputStream,wrapped in fenced mode,same stock sender as above (second call site)
+matomo/build/matomo.apk,Lkotlin/io/TextStreamsKt;->readBytes,Ljava/net/URL;->openStream,unresolved,"Kotlin stdlib URL.readBytes(); no caller search done yet, so reachability is unknown"

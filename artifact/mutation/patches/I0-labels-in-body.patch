@@ -1,0 +1,12 @@
+diff --git a/artifact/fixture/src/org/residuelab/Fence.java b/artifact/fixture/src/org/residuelab/Fence.java
+index 068bf9a..1e0db78 100644
+--- a/artifact/fixture/src/org/residuelab/Fence.java
++++ b/artifact/fixture/src/org/residuelab/Fence.java
+@@ -53,6 +53,7 @@ public final class Fence {
+             for (Item it : items) {
+                 JSONObject x = new JSONObject();
+                 x.put("tag", it.tag); x.put("kind", it.kind); x.put("srcs", it.srcs); x.put("payload", it.payload);
++                if (it.labels != null) x.put("labels", it.labels); // MUTATION KIT I0: expose the label the fence checked
+                 a.put(x);
+             }
+             o.put("items", a);

@@ -1,0 +1,13 @@
+diff --git a/artifact/fixture/src/org/residuelab/Work.java b/artifact/fixture/src/org/residuelab/Work.java
+index 698bc5d..3e5f0d5 100644
+--- a/artifact/fixture/src/org/residuelab/Work.java
++++ b/artifact/fixture/src/org/residuelab/Work.java
+@@ -51,7 +51,7 @@ public final class Work {
+                             "(SELECT tag FROM sent WHERE purpose=?) ORDER BY tag", new String[]{"" + t.id, purpose});
+             try {
+                 while (cu.moveToNext())
+-                    items.add(new Fence.Item(cu.getString(0), "raw", "", cu.getString(3), cu.getString(1) + ":" + cu.getInt(2)));
++                    items.add(new Fence.Item(cu.getString(0), "raw", "", cu.getString(3), cu.getString(1) + ":" + db.grant(t.id, cu.getString(1))[0])); // MUTANT M2: current epoch, not collection epoch
+             } finally { cu.close(); }
+         }
+         db.event(t.id, "PREPARED", "kind=" + kind + ";n=" + items.size());

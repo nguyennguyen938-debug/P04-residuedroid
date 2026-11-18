@@ -96,7 +96,7 @@ variants in the race schedules. These stream-wrapper counts indicate authorizati
 The sequence log and fixed response delay cannot establish receipt relative to acknowledgement.
 
 To isolate serialization (A3), we ran a micro-benchmark. A submitter thread loops on single-item submissions while a
-withdrawal lands at a random 0--40\,ms offset (\S\ref{sec:eval-cost}, Table~\ref{tab:cost}). With the check and authorization in one
+withdrawal lands at a random offset between 0 and 40\,ms (\S\ref{sec:eval-cost}, Table~\ref{tab:cost}). With the check and authorization in one
 critical section, no round produced an authorization ordered after the withdrawal. With the check outside it (\vname{noser}),
 \noserZeroPct{}\% of rounds did so with no added delay and \noserFivePct{}\% with a 5\,ms gap inserted between check and authorization.
 In our wrapper the unserialized check runs before the connection is opened, so even without an added gap its window includes

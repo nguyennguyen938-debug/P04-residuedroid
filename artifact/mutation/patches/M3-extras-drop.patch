@@ -1,0 +1,13 @@
+diff --git a/artifact/fixture/src/org/residuelab/Work.java b/artifact/fixture/src/org/residuelab/Work.java
+index 698bc5d..7342462 100644
+--- a/artifact/fixture/src/org/residuelab/Work.java
++++ b/artifact/fixture/src/org/residuelab/Work.java
+@@ -21,7 +21,7 @@ public final class Work {
+         PersistableBundle e = new PersistableBundle();
+         e.putString("tag", tag); e.putString("payload", payload); e.putString("srcs", srcs);
+         Model.Variant v = Model.variant(c);
+-        if (v.lineage && v.durable) e.putString("labels", labels); // label rides in the job's own persisted input
++        // MUTANT M3: the summary label is no longer copied into the job extras
+         return e;
+     }
+ 

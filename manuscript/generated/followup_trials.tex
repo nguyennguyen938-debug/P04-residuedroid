@@ -1,0 +1,14 @@
+\begin{table}[h]\centering
+\caption{Matched campaign at trial level. A paired trial counts once if any affected tenant has a confirmed violation (V) or a request with unknown handoff/content evidence (U). Bounds are one-sided exact 95\% upper bounds, in \%, and assume independent trials; the trials share one host and two AVD configurations.}
+\label{tab:matched-trials}\mtab
+\begin{tabular}{@{}lrrrrrr@{}}\toprule\mhead Variant & Trials & V & U & V or U & Bound V & Bound V or U\\\midrule
+enqueue & 280 & 240 & 3 & 240 & 89.0 & 89.0 \\
+job start & 280 & 80 & 3 & 80 & 33.3 & 33.3 \\
+layered early & 280 & 0 & 6 & 6 & 1.1 & 4.2 \\
+chunk fence & 280 & 0 & 2 & 2 & 1.1 & 2.2 \\
+layered + fence & 280 & 0 & 1 & 1 & 1.1 & 1.7 \\
+\bottomrule\end{tabular}\end{table}
+
+\paragraph{Permitted-flow deficits.} Across all five variants, the 448 undelivered permitted items lie in 70 reboot tenant-trials. In each, JobScheduler stopped a running upload at shutdown (connectivity stop reason), the worker exited at a batch boundary, the fixture's stop callback declines rescheduling, and the app process did not restart before the observation window closed (median 57\,s after boot completion). No affected trace contains a policy block, a send failure, or a skip or cancellation of the stopped job. The variants differ only in how many permitted jobs were mid-upload at shutdown (layered early 29, job start 16, chunk fence 15, layered + fence 10, enqueue 0 of 160 reboot tenant-trials each). We attribute these deficits to the fixture's reboot handling, not to check placement.
+
+\paragraph{Trial level.} In Table~\ref{tab:matched-trials}, layered early, chunk fence and layered + fence have no trial with a confirmed violation among 280 paired trials each; if trials were independent, the one-sided 95\% upper bound on the violating-trial rate would be 1.1\%. Counting every trial with an unknown request as violating gives bounds of 4.2\%, 2.2\% and 1.7\%, respectively. All unknown requests in these variants occur in the in-flight schedule. Enqueue-time and job-start checks have confirmed violations in 240 and 80 of 280 trials.

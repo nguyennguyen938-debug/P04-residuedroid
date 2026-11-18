@@ -1,0 +1,19 @@
+\section{Deployment Matrix}
+\label{app:matrix}
+Table~\ref{tab:deploy} lists, for each experiment, what was built, which transport and contract it exercises, which retry
+path it covers, and which evidence boundary its numbers rest on. Only the channel rows support claims about socket acceptance.
+
+\begin{table*}[t]\centering
+\caption{Deployment matrix. ``Authorization order'' certifies only the logged order of authorization and withdrawal; ``accepted bytes'' pairs each write attempt with its returned count.}
+\label{tab:deploy}\mtab
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}@{}}\toprule
+\mhead Experiment & Build, platform & Transport & Contract & Retry path & Evidence & Exclusions, limits\\\midrule
+Stream-wrapper campaign & fixture, 9 variants; Android~13, 2 AVDs & stream wrapper over HTTP & all four (T1 to T10) & network-loss retry & authorization order & host sleep, emulator restart, unreadable log; T9 uncovered\\
+Substrates & WorkManager and AlarmManager builds; Android~13 & stream wrapper & fixture tenants & as above & authorization order & invalid attempts counted separately\\
+Matched campaign & 5 variants, shared metadata; Android~13, 2 configurations $\times$ 4 instances & HTTP over \texttt{SocketChannel}, 4\,KiB writes & T1 to T8 & retries keep collection epochs & accepted bytes & 8 failed paired trials; unknowns kept separate\\
+Socket matrix & ordering, crash, backpressure and label cells; Android~13 & HTTP over \texttt{SocketChannel} & same or unrelated scope & restart after crash points & accepted bytes; unlogged count is unknown & failed pilots; fixed replacement blocks\\
+TLS suite & 11 conditions $\times$ 20 trials; Android~15 & TLS~1.2, \texttt{SSLEngine} over \texttt{SocketChannel} & withdrawn source of one request & none & accepted application ciphertext & one emulator; pilot excluded\\
+ACRA-P & ACRA~5.14.2 with explicit setting; Android~13 & ACRA sender process, shared HTTP adapter & opt-out invalidating queued reports & reboot recovery & request receipt & ACRA-R is a separate cohort\\
+ACRA preference-only & stock vs.\ preference-aware sender & ACRA sender & collection-only opt-out & reboot discards job & request receipt & no queued-deletion promise\\
+Matomo & Matomo~4.4 AAR, pre-send barrier & Matomo dispatcher over HTTP & invalidate queued events & none & request receipt & disk cache, HTTPS, production app untested\\
+\bottomrule\end{tabular}\end{table*}

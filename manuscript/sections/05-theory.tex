@@ -2,11 +2,25 @@
 \label{sec:theory}
 
 The durable state $\sigma$ contains scope epochs, grant flags and labelled copies.
-An authorization log is an observation of intent, not a send. A \emph{handoff} $c$
-is acceptance of a positive byte prefix by the audited socket transport; a write may
-accept fewer bytes than requested or none. Request receipt and response receipt are
-later, separate events. The guarantee concerns each accepted prefix, including a
+Table~\ref{tab:lifecycle-states} lists the states of one submission. An authorization
+log is an observation of intent, not a send. A \emph{handoff} $c$ is acceptance of a
+positive byte prefix by the audited socket transport; a write may accept fewer bytes
+than requested or none. The guarantee concerns each accepted prefix, including a
 prefix of a request that never completes.
+
+\begin{table}[t]\centering
+\caption{Lifecycle of one submission, with the artifact's event names. The fence check shares the withdrawal lock (A3); earlier checks do not.}
+\label{tab:lifecycle-states}\mtab
+\begin{tabular}{@{}p{0.40\columnwidth}p{0.18\columnwidth}p{0.34\columnwidth}@{}}\toprule
+\mhead State (event) & Check & Crash or loss here\\\midrule
+Labelled copy stored (\texttt{COLLECT}) & none & label survives with the row (A2)\\
+Job queued, label in row or extras (\texttt{ENQUEUE}) & enqueue check & job restored after reboot with its epochs\\
+Batch prepared (\texttt{JOBSTART}, \texttt{AUTHORIZATION\_LOGGED}) & job-start check & nothing accepted; retry rereads policy\\
+TLS record buffered (\texttt{TLS\_BUFFERED}) & none & nothing accepted\\
+Prefix handed off (\texttt{WRITE\_ATTEMPT}, \texttt{BYTES\_ACCEPTED}) & fence, per write & count may be unlogged: unknown, never zero\\
+Request received (receiver log) & none & accepted bytes may still arrive (Prop.~\ref{prop:recall})\\
+Response received (\texttt{RESPONSE\_RECEIVED}) & none & lost response: retry may duplicate\\
+\bottomrule\end{tabular}\end{table}
 
 \begin{assumption}[Supported path]\label{as:sp}
 (A1) Every supported byte is sent through Algorithm~\ref{alg:fence}, with one writer
@@ -20,7 +34,7 @@ The model assumes working durable storage, not recovery from arbitrary power los
 \end{assumption}
 
 \begin{theorem}[Soundness of accepted prefixes]\label{thm:sound}
-Under A1--A3, every source label of a supported prefix accepted at $c$ satisfies
+Under A1, A2 and A3, every source label of a supported prefix accepted at $c$ satisfies
 $\neg\mathit{forbid}_{\sigma(c)}(s,e,p)$. Thus no prefix accepted after an acknowledged
 withdrawal carries a source that remains invalid under the stated contract.
 \end{theorem}
@@ -28,13 +42,10 @@ withdrawal carries a source that remains invalid under the stated contract.
 Consider one write and its preceding check in the same critical section. A3 excludes
 policy changes between the check and every byte acceptance during that write. A2
 includes every source in the checked label union, and the check rejects any forbidden
-source. Hence every accepted prefix satisfies the rule. A crash after logging but
-before writing accepts no bytes through that attempt. A crash during a write can leave
-an accepted prefix: the same check still covers that prefix, even if no return value
-is logged. A crash after handoff but before response receipt leaves outstanding bytes.
-After restart, the next attempt reacquires the lock and reads durable policy; it cannot
-reuse an earlier authorization. A missing completion log therefore limits measurement,
-but does not justify assuming that the interrupted write accepted nothing.
+source. Hence every accepted prefix satisfies the rule. Crashes add no exception
+(Table~\ref{tab:lifecycle-states}): a prefix accepted by an interrupted write is still
+covered by its check, even if no count is logged, and after restart the next attempt
+reacquires the lock and rereads durable policy, so it cannot reuse an earlier authorization.
 \end{proof}
 
 Exact labels avoid policy-induced false positives only when labels and policy are
@@ -75,7 +86,6 @@ A prefix accepted before withdrawal may arrive after acknowledgement. A device-s
 fence cannot guarantee recall of bytes already accepted by the transport.
 \end{proposition}
 
-A retry after a lost response may duplicate a previously received request. Each attempt
-is checked afresh, but this mechanism provides neither server-side deletion nor exactly-once
-delivery. The stream-wrapper evaluation's pre-write sequence markers cannot establish which
+Each retry is checked afresh, but the mechanism provides neither server-side deletion nor
+exactly-once delivery. The stream-wrapper evaluation's pre-write sequence markers cannot establish which
 prefixes were outstanding; the channel wrapper records acceptance and receipt separately.
