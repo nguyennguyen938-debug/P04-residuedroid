@@ -1,35 +1,11 @@
 The channel protocol records authorization, each write attempt, its returned byte count,
-complete receiver requests, and response receipt separately. A five-second operation deadline
-bounds intended waits; a thirty-second harness watchdog detects stuck commands. It is not a
-hard Android scheduling or storage bound. Controlled barriers test authorization-before-withdrawal
-followed by writing, and process death after logging, after a positive prefix, after a native
-write but before its count is logged, and before response receipt. Retries retain source epochs.
-Pilots with a serialized broadcast queue or an incorrectly broad comparator lock are excluded.
-The comparator in the final runs holds the same coordinator only over the write phase; both
-variants connect and wait for responses outside it.
+complete receiver requests, and response receipt separately (details in Appendix~\ref{app:socket}).
 
 The forced ordering test produced confirmed post-acknowledgement byte acceptance in 20/20 early-check attempts, versus 0/20 fenced attempts. The authorization marker preceded acknowledgement in these early-check races, exposing handoffs that the stream-wrapper authorization-marker estimand would miss. This forced schedule does not estimate its natural frequency.
 
 There were 80 crash-point attempts. In the 20 native-return-before-log cases, 20 retained unknown handoff counts; absence of a count was never converted to zero. Receiver prefix logs, restart ordering, collection-epoch retry and re-grant outcomes are preserved separately.
 
-\begin{table}[t]\centering
-\caption{Device-policy acknowledgement under backpressure, ms: median / observed maximum (acknowledged samples). W: whole-write lock; C: per-chunk fence. Both include same/unrelated scopes and same/cross-process cases. Timeouts remain separate.}
-\label{tab:revision-latency}\mtab
-\begin{tabular}{@{}lrrr@{}}\toprule\mhead Load & W & C & Ack./attempts\\\midrule
-
-normal & 0.7 / 1.2 & 0.7 / 1.3 & 160/160 \\
-
-slow & 4896.4 / 4937.1 & 0.7 / 2.1 & 160/160 \\
-
-stalled & 4896.6 / 4929.4 & 0.7 / 1.2 & 160/160 \\
-
-response & 0.7 / 1.3 & 0.7 / 1.7 & 160/160 \\
-
-long & 0.7 / 20.2 & 0.8 / 3.5 & 160/160 \\
-
-\bottomrule\end{tabular}\end{table}
-
-Table~\ref{tab:revision-latency} summarizes 800 backpressure attempts. Slow and stalled receivers use 8 MiB requests; the long-batch case uses 1 MiB. The largest observed unrelated-scope delay with chunk fencing was 2.2 ms. There were 400 sender deadline expirations and 0 attempts without withdrawal acknowledgement. Another 108 attempts retain ambiguous acceptance ordering within the request-to-acknowledgement interval; they are not counted as clean outcomes. The separate ADB command round-trip includes process startup and IPC; it is recorded on one host clock, not mixed with guest timestamps. Per-cell empirical tails and all failures are in the artifact. Fast requests may finish writing before withdrawal; phase-coverage counts accompany the raw observations. Timing includes in-lock instrumentation. The fixed cell order, shared host and different renderer phases limit generalization. Small cell counts do not establish a population p99; any unacknowledged operation is reported as such rather than omitted from the denominator.
+Under receiver backpressure (800 attempts; Table~\ref{tab:revision-latency} in Appendix~\ref{app:socket}), the median withdrawal acknowledgement with per-chunk fencing stayed at or below 0.8\,ms, while a lock held over the whole write reached 4.9\,s with slow or stalled receivers; 0 withdrawals went unacknowledged.
 
 \paragraph{Matched metadata.} Five variants share durable lineage, epochs, copied job extras
 and the same HTTP transport. Each of seven schedules has 20 valid trials per AVD configuration (140 per configuration), with all five variants paired in each trial. Four read-only instances per configuration run disjoint seeded trial ranges on the same host; these are not independent devices. Table~\ref{tab:matched}

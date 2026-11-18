@@ -7,7 +7,10 @@ def load(p,default):return json.loads(p.read_text()) if p.exists() else default
 def jl(p):return [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
 def fmt(x):return 'n/a' if x is None else f'{x:.1f}'
 rows=load(ROOT/'socket-outcomes.json',[])
+# text: body paragraphs (revision_results.tex); det: protocol and backpressure details for Appendix app:socket.
 text=[r'''The channel protocol records authorization, each write attempt, its returned byte count,
+complete receiver requests, and response receipt separately (details in Appendix~\ref{app:socket}).''']
+det=[r'''The channel protocol records authorization, each write attempt, its returned byte count,
 complete receiver requests, and response receipt separately. A five-second operation deadline
 bounds intended waits; a thirty-second harness watchdog detects stuck commands. It is not a
 hard Android scheduling or storage bound. Controlled barriers test authorization-before-withdrawal
@@ -21,7 +24,10 @@ if rows:
  text.append(f"The forced ordering test produced confirmed post-acknowledgement byte acceptance in {sum(r['known_after_ack_bytes']>0 for r in early)}/{len(early)} early-check attempts, versus {sum(r['known_after_ack_bytes']>0 for r in fence)}/{len(fence)} fenced attempts. The authorization marker preceded acknowledgement in these early-check races, exposing handoffs that the stream-wrapper authorization-marker estimand would miss. This forced schedule does not estimate its natural frequency.")
  crash=[r for r in rows if r['group']=='crash'];unlogged=[r for r in crash if r['fault']=='unlogged']
  text.append(f"There were {len(crash)} crash-point attempts. In the {len(unlogged)} native-return-before-log cases, {sum(r['measurement_unknown'] for r in unlogged)} retained unknown handoff counts; absence of a count was never converted to zero. Receiver prefix logs, restart ordering, collection-epoch retry and re-grant outcomes are preserved separately.")
- text.append(r'''\begin{table}[t]\centering
+ bp=[r for r in rows if r['group']=='backpressure']
+ med=lambda load,mode:statistics.median([r['ack_ms'] for r in bp if r['load']==load and r['mode']==mode and r['ack_ms'] is not None])
+ text.append(f"Under receiver backpressure ({len(bp)} attempts; Table~\\ref{{tab:revision-latency}} in Appendix~\\ref{{app:socket}}), the median withdrawal acknowledgement with per-chunk fencing stayed at or below {max(med(l,'fence') for l in ['normal','slow','stalled','response','long']):.1f}\\,ms, while a lock held over the whole write reached {max(med(l,'whole') for l in ['slow','stalled'])/1000:.1f}\\,s with slow or stalled receivers; {sum(not r['acknowledged'] for r in bp)} withdrawals went unacknowledged.")
+ det.append(r'''\begin{table}[t]\centering
 \caption{Device-policy acknowledgement under backpressure, ms: median / observed maximum (acknowledged samples). W: whole-write lock; C: per-chunk fence. Both include same/unrelated scopes and same/cross-process cases. Timeouts remain separate.}
 \label{tab:revision-latency}\mtab
 \begin{tabular}{@{}lrrr@{}}\toprule\mhead Load & W & C & Ack./attempts\\\midrule''')
@@ -29,10 +35,10 @@ if rows:
   rs=[r for r in rows if r['group']=='backpressure' and r['load']==loadname];cells=[]
   for mode in ['whole','fence']:
    ts=[r['ack_ms'] for r in rs if r['mode']==mode and r['ack_ms'] is not None];cells.append(f'{statistics.median(ts):.1f} / {max(ts):.1f}' if ts else 'n/a')
-  text.append(f"{loadname} & {' & '.join(cells)} & {sum(r['acknowledged'] for r in rs)}/{len(rs)} \\\\")
- text.append(r'\bottomrule\end{tabular}\end{table}')
- bp=[r for r in rows if r['group']=='backpressure'];unrelated=[r['ack_ms'] for r in bp if r['tenant']==6 and r['mode']=='fence' and r['ack_ms'] is not None]
- text.append(f"Table~\\ref{{tab:revision-latency}} summarizes {len(bp)} backpressure attempts. Slow and stalled receivers use 8 MiB requests; the long-batch case uses 1 MiB. The largest observed unrelated-scope delay with chunk fencing was {fmt(max(unrelated) if unrelated else None)} ms. There were {sum(r.get('send_timeout',False) for r in bp)} sender deadline expirations and {sum(not r['acknowledged'] for r in bp)} attempts without withdrawal acknowledgement. Another {sum(r['measurement_unknown'] for r in bp)} attempts retain ambiguous acceptance ordering within the request-to-acknowledgement interval; they are not counted as clean outcomes. The separate ADB command round-trip includes process startup and IPC; it is recorded on one host clock, not mixed with guest timestamps. Per-cell empirical tails and all failures are in the artifact. Fast requests may finish writing before withdrawal; phase-coverage counts accompany the raw observations. Timing includes in-lock instrumentation. The fixed cell order, shared host and different renderer phases limit generalization. Small cell counts do not establish a population p99; any unacknowledged operation is reported as such rather than omitted from the denominator.")
+  det.append(f"{loadname} & {' & '.join(cells)} & {sum(r['acknowledged'] for r in rs)}/{len(rs)} \\\\")
+ det.append(r'\bottomrule\end{tabular}\end{table}')
+ unrelated=[r['ack_ms'] for r in bp if r['tenant']==6 and r['mode']=='fence' and r['ack_ms'] is not None]
+ det.append(f"Table~\\ref{{tab:revision-latency}} summarizes {len(bp)} backpressure attempts. Slow and stalled receivers use 8 MiB requests; the long-batch case uses 1 MiB. The largest observed unrelated-scope delay with chunk fencing was {fmt(max(unrelated) if unrelated else None)} ms. There were {sum(r.get('send_timeout',False) for r in bp)} sender deadline expirations and {sum(not r['acknowledged'] for r in bp)} attempts without withdrawal acknowledgement. Another {sum(r['measurement_unknown'] for r in bp)} attempts retain ambiguous acceptance ordering within the request-to-acknowledgement interval; they are not counted as clean outcomes. The separate ADB command round-trip includes process startup and IPC; it is recorded on one host clock, not mixed with guest timestamps. Per-cell empirical tails and all failures are in the artifact. Fast requests may finish writing before withdrawal; phase-coverage counts accompany the raw observations. Timing includes in-lock instrumentation. The fixed cell order, shared host and different renderer phases limit generalization. Small cell counts do not establish a population p99; any unacknowledged operation is reported as such rather than omitted from the denominator.")
 else:text.append('Socket measurements are not yet available in the final-run directories.')
 FOLLOW=ART/'results/review-followup-20261115'
 summary=load(FOLLOW/'matched-summary.json',[])
@@ -92,6 +98,7 @@ are counted as successful suppression. Tenants within each trial remain paired i
  if z:app.append(f"\\paragraph{{Trial level.}} In Table~\\ref{{tab:matched-trials}}, "+andj([names[v] for v in z])+f" have no trial with a confirmed violation among {trow[z[0]][0]} paired trials each; if trials were independent, the one-sided 95\\% upper bound on the violating-trial rate would be {trow[z[0]][4]:.1f}\\%. Counting every trial with an unknown request as violating gives bounds of "+andj([f"{trow[v][5]:.1f}\\%" for v in z])+', respectively. '+('All unknown requests in these variants occur in the in-flight schedule.' if zs=={'inflight'} else 'Unknown requests in these variants occur in the '+andj(sorted(zs))+' schedules.')+f" Enqueue-time and job-start checks have confirmed violations in {trow['menqueue'][1]} and {trow['mstart'][1]} of {trow['menqueue'][0]} trials.")
  (OUT/'followup_trials.tex').write_text('\n'.join(tt)+'\n\n'+'\n\n'.join(app)+'\n',encoding='utf-8',newline='\n')
 (OUT/'revision_results.tex').write_text('\n\n'.join(text)+'\n',encoding='utf-8',newline='\n')
+(OUT/'revision_details.tex').write_text('\n\n'.join(det)+'\n',encoding='utf-8',newline='\n')
 acra=jl(ROOT/'acra-v4-B/trials.jsonl');conf=load(ROOT/'acra-conformance-final/conformance.json',load(ROOT/'acra-conformance-B/conformance.json',[]));m=jl(ROOT/'matomo-A/trials.jsonl');s=[]
 if acra:
  c=lambda v,sc:f"{sum(r['delivered'] for r in acra if r['variant']==v and r['schedule']==sc)}/{sum(1 for r in acra if r['variant']==v and r['schedule']==sc)}"
