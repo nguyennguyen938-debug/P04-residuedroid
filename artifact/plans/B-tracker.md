@@ -1,0 +1,19 @@
+# Tracker — vai B, round 3
+
+Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
+
+| ID | Việc | Đầu ra / khóa | Phụ thuộc | Hạn | Trạng thái | Ghi chú |
+|---|---|---|---|---|---|---|
+| B0 | Môi trường, `make apks`, 1 trial smoke | ghi chú môi trường | — | 19/11 | **Một phần**: môi trường + `make apks` xong 18/11; còn smoke | RUNLOG 2026-11-18 |
+| B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | TODO | build / lời hứa / bọc đường gửi |
+| B11 | Test 4: Android 14, 15 × pen, kill, reb, net | `life*` | B0 | 22/11 | TODO | đêm 20 và 21/11; cần image android-34, android-35 arm64 |
+| A10 | Chạy `triage/find_callers.py` trên acrafence + matomo APK | gửi A | `make apks`, `matomo/build.sh` | 22/11 | TODO | |
+| B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | TODO | |
+| B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | TODO | |
+| B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | TODO | cắt đầu tiên |
+| B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | TODO | |
+| T6 | Test 6: AWS, `real-device.patch`, TLS APK, thử 1 máy rồi 2 máy | `dev*` | tài khoản AWS | 28/11 | TODO | ghi chế độ receiver |
+| B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | TODO | pen, kill, reb, net (+fstop) × 20 |
+| B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | TODO | không chạy thêm sau mốc |
+| B8 | §6, appendix Artifact, sửa tài liệu cũ | văn bản | B7 | 2/12 | TODO | |
+| B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | TODO | |

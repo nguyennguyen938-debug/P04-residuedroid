@@ -1,0 +1,17 @@
+{
+  "id": "<task>-<run>",
+  "kind": "pilot | final",
+  "card": "artifact/plans/B-run.md",
+  "deadline_hours": 12,
+  "env": {"ANDROID_AVD_HOME": "~/.android/avd", "AVDS": "<AVD names>", "PORTS": "<console and sink ports>"},
+  "owned_serials": ["emulator-<port>"],
+  "pre": ["bash .claude/skills/p04-experiment/scripts/preflight.sh"],
+  "stages": [
+    {"name": "<stage>", "cwd": "artifact",
+     "cmd": ["python3", "<harness>.py", "--serial", "emulator-<port>", "--avd", "<AVD>", "--port", "<sink>",
+             "--out", "results/round3/<task>/<run dir>"],
+     "out": "artifact/results/round3/<task>/<run dir>"}
+  ],
+  "post": ["python3 .claude/skills/p04-autorun/scripts/status.py artifact/results/round3/<task>/<run dir>"],
+  "guard_after": true
+}
