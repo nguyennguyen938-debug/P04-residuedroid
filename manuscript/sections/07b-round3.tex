@@ -1,7 +1,6 @@
 % Skeleton for the round-3 results (C5). Not yet \input: it renders ?? until B's summary.json arrives.
-% To enable: add \input{generated/tests_macros.tex} after generated/macros.tex in main.tex, and
-% \input{sections/07b-round3} at the end of 07-evaluation.tex. Keep the variant that matches the S1 decision.
-% Test 3 goes to section 3: see the paragraph at the end of this file.
+% To enable: add \input{sections/07b-round3} at the end of 07-evaluation.tex. Keep the variant that matches the S1 decision.
+% Test 3 is already in section 3 (paragraph "Stated promises"); tests_macros.tex is already included.
 
 \subsection{Natural races and label errors}
 \label{sec:eval-round3}
@@ -29,9 +28,3 @@ had \lifeFourteenLayer{} and \lifeFourteenFence{} violating trials; on Android~1
 \paragraph{Physical device.} On \devModel{} (Android~\devAndroid{}), the TLS barrier repeated over \devTrials{} trials:
 the early check completed \devEarlyComplete{} requests, and the fence accepted application ciphertext after
 acknowledgement in \devFenceAfterAck{} trials.
-
-% Section 3, after "Findings" (test 3). Counts describe the surveyed apps only.
-% \paragraph{Stated promises.} Among the \promiseApps{} surveyed candidate apps, \promiseCollectOnly{} word their
-% switch as collection-only, \promisePending{} also promise to discard queued data, \promiseRestrict{} restrict a
-% purpose, \promiseDelete{} promise deletion, and \promiseUnclear{} state nothing clear. Only the second group makes
-% pending egress a contract violation.

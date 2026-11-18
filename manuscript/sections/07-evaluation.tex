@@ -3,21 +3,12 @@
 \input{sections/07a-setup}
 
 \subsection{Stream-wrapper authorization-order evidence}
-The stream-wrapper \nTrialsValid{} trials compared nine variants over seven lifecycle schedules.
-The pre-write event called \texttt{COMMIT} orders authorization, not socket handoff.
-Under that estimand, the conventional combination admits the mechanism-specific cases in Table~\ref{tab:mechanisms}; the stream-wrapper \sys gate admits none on mediated paths. These rates depend on the fixture mix. T1's summary retained source data under a different declared scope;
-T5 required epochs to distinguish old records after re-grant. Network-loss retries
-exposed gaps after job-start checks. Raw-socket T9 remained uncovered. These observations
-motivate lineage and late placement but cannot quantify physical handoffs in the log-to-write
-gap. The matched channel variants below share metadata to isolate placement.
-
-Permitted-flow controls distinguish suppression from non-delivery: stream-wrapper \sys logged
-\rdFpBlocks{} policy blocks for the controls, while \deficitRdPct{}\% of permitted items
-were undelivered on AVD~A (AVD~B: \deficitRdbPct{}\%). JobScheduler stopping uploads after reboot contributed
-to that deficit. The synthetic contract-unaware policy lost \deficitTaintPct{}\%; this
-is a policy ablation, not a comparison against a complete taint-tracking system.
-\input{generated/followup_mechanisms}
-\input{generated/followup_support}
+The stream-wrapper campaign (\nTrialsValid{} trials, nine variants, seven schedules) orders authorization, not socket
+handoff. Under that estimand the conventional combination admits three mechanism-specific failures
+(Table~\ref{tab:mechanisms}, Appendix~\ref{app:stream}): T1's summary keeps source data under another declared scope,
+T5 needs epochs to tell old records from new ones after re-grant, and network-loss retries pass job-start checks (T8).
+The stream-wrapper \sys gate admits none on mediated paths; raw-socket T9 stays uncovered. These rates depend on the
+fixture mix. The matched channel variants below share metadata to isolate placement.
 
 \subsection{Socket acceptance and withdrawal acknowledgement}
 \label{sec:revision}

@@ -40,6 +40,16 @@ At the entry-point level, only \pctPollStop{}\% of app-code workers poll \texttt
 callbacks or networking cancellation. Between-batch stopping is a fixture assumption, not a corpus finding.
 \pctNativeAll{}\% of apps ship native libraries, and native code is a path no Java-level fence mediates.
 
+\paragraph{Stated promises.} A consent signal does not say what an app promises. We coded the user-facing wording of
+all \promiseApps{} apps with a consent signal (\promiseCand{} of them candidates), using the toggle-like strings in each APK
+and its F-Droid listing; privacy policies were not collected. A language model applied written rules to every app and
+flagged \promiseFlagged{} for review; an author re-read those and recoded \promiseRecoded{}. In this sample,
+\promisePending{} apps word a switch as sending or sharing data (\promiseCandPending{} of the candidates), which we read as
+also covering queued data; \promiseCollectOnly{} word it as collection only; \promisePrompt{} only offer to send an
+individual report; \promiseUnclear{} expose only code identifiers or unclear wording; \promiseFalse{} are scanner false
+positives. \promiseDelete{} offer deletion and \promiseRestrict{} a purpose restriction. Only the first group makes
+queued egress after withdrawal a contract violation. These counts describe the surveyed apps, not F-Droid.
+
 ACRA appears in \acraApps{} apps. Its \texttt{acra.enable}/\texttt{acra.disable} preference keys are library constants, so
 their presence does not show that an app exposes the toggle. Bundled versions and configurations can differ; \S\ref{sec:eval-acra} tests it directly. The screen shows the ingredients are not rare. It does not show
 how often they combine into a contract violation, which needs the contract wording and a runtime schedule. The rest of the

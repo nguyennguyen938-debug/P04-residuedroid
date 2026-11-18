@@ -1,0 +1,457 @@
+[
+ {
+  "pkg": "app.prav.client",
+  "category": "PENDING",
+  "evidence": "Send crash reports",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "bus.chio.wishmaster",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "ch.protonvpn.android",
+  "category": "PENDING",
+  "evidence": "Share anonymous usage statistics",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "ch.protonvpn.android.reproducible",
+  "category": "PENDING",
+  "evidence": "Share anonymous usage statistics",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "chromahub.rhythm.app",
+  "category": "NOT_CONSENT",
+  "evidence": "View, export, and share crash reports",
+  "flag": "yes",
+  "note": "Crash log viewer; \"Crash Reports\" may be a toggle label."
+ },
+ {
+  "pkg": "com.aurora.store",
+  "category": "NOT_CONSENT",
+  "evidence": "Ask before opening an app listing from a link",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "com.bald.uriah.baldphone",
+  "category": "UNCLEAR",
+  "evidence": "Crash Reports",
+  "flag": "yes",
+  "note": "Two-word label plus ACRA identifiers, no sending wording."
+ },
+ {
+  "pkg": "com.biglybt.android.client",
+  "category": "NOT_CONSENT",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Torrent uTP statistics identifier, not user data sharing."
+ },
+ {
+  "pkg": "com.chenyifaer.fafarunner",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only Sentry identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.cweb.messenger",
+  "category": "PENDING",
+  "evidence": "Never send crash reports",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "com.daemon.ssh",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.drnoob.datamonitor",
+  "category": "PENDING",
+  "evidence": "Send the crash report in mail",
+  "flag": "yes",
+  "note": "Manual per-crash send option, not a standing switch."
+ },
+ {
+  "pkg": "com.etesync.syncadapter",
+  "category": "UNCLEAR",
+  "evidence": "Crash Reports",
+  "flag": "yes",
+  "note": "Two-word label plus ACRA identifiers, no sending wording."
+ },
+ {
+  "pkg": "com.fsck.k9",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only enable_telemetry identifier, no user-facing string."
+ },
+ {
+  "pkg": "com.furthersecrets.chemsearch",
+  "category": "PENDING",
+  "evidence": "Share crash report",
+  "flag": "yes",
+  "note": "Looks like a manual share action, not a toggle."
+ },
+ {
+  "pkg": "com.google.android.stardroid",
+  "category": "PENDING",
+  "evidence": "Send usage statistics",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "com.grappim.wallosmobile.fdroid",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only crash_reporting_enabled identifier, no user-facing string."
+ },
+ {
+  "pkg": "com.infomaniak.euria",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only a Sentry config identifier, no user-facing string."
+ },
+ {
+  "pkg": "com.infomaniak.mail",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only a Sentry config identifier, no user-facing string."
+ },
+ {
+  "pkg": "com.kanedias.archforums",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.kjxbyz.picguard",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only Sentry identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.livefast.eattrash.raccoonforlemmy.android",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only a string resource key, text not shown."
+ },
+ {
+  "pkg": "com.mardous.booming",
+  "category": "NOT_CONSENT",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "custom_activity_on_crash is a crash handler, not consent."
+ },
+ {
+  "pkg": "com.mirfatif.permissionmanagerx",
+  "category": "PENDING",
+  "evidence": "Send crash report to the developer",
+  "flag": "yes",
+  "note": "Possibly a manual action rather than a standing switch."
+ },
+ {
+  "pkg": "com.orpheusdroid.screenrecorder",
+  "category": "COLLECT_ONLY",
+  "evidence": "Enable anonymous crash reporting",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "com.orpheusdroid.sqliteviewer",
+  "category": "COLLECT_ONLY",
+  "evidence": "Enable anonymous usage statistics. No personally identifiable information is collected",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "com.pebblentn.app",
+  "category": "PENDING",
+  "evidence": "Share diagnostics",
+  "flag": "yes",
+  "note": "Two-word switch label; \"share\" wording read as sending."
+ },
+ {
+  "pkg": "com.rareventure.gps2",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.resolvecommunity.awaydoomscrollin",
+  "category": "PENDING",
+  "evidence": "Optional usage-data sharing is off by default",
+  "flag": "yes",
+  "note": "Description only; off stops new submissions, in-flight may finish."
+ },
+ {
+  "pkg": "com.searchlauncher.app",
+  "category": "UNCLEAR",
+  "evidence": "Crash reporting is opt-in",
+  "flag": "yes",
+  "note": "Description sentence and Sentry identifier only, no toggle string."
+ },
+ {
+  "pkg": "com.sobuumedia.sobuu",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Consent identifiers only, no user-facing string."
+ },
+ {
+  "pkg": "com.spisoft.quicknote",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "com.streamatico.polymarketviewer",
+  "category": "COLLECT_ONLY",
+  "evidence": "collects minimal anonymous usage statistics",
+  "flag": "yes",
+  "note": "Description only, plus analytics_enabled identifier; no sending wording."
+ },
+ {
+  "pkg": "com.team242.robozzle",
+  "category": "UNCLEAR",
+  "evidence": "rob_ai_telemetry_enabled",
+  "flag": "yes",
+  "note": "Only an identifier plus error strings about submitting telemetry, no switch text."
+ },
+ {
+  "pkg": "com.termux.nix",
+  "category": "NOT_CONSENT",
+  "evidence": "Disable notifications for crash reports.",
+  "flag": "yes",
+  "note": "Concerns notifications, but crash reports could be sent."
+ },
+ {
+  "pkg": "com.trikset.gamepad2",
+  "category": "PENDING",
+  "evidence": "Share diagnostic report",
+  "flag": "yes",
+  "note": "Short label, may be an action button rather than a switch."
+ },
+ {
+  "pkg": "com.twoeightnine.root.xvii",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only restart_send_crash, no user-facing string."
+ },
+ {
+  "pkg": "com.weenas.castbay",
+  "category": "PENDING",
+  "evidence": "Send Anonymous Usage Statistics",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "de.blau.android",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "de.clio.audiobook",
+  "category": "COLLECT_ONLY",
+  "evidence": "Allow anonymous usage data collection to help improve the app",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "de.marmaro.krt.ffupdater",
+  "category": "NOT_CONSENT",
+  "evidence": "Please submit the crash report to notabug.org, GitHub or GitLab.",
+  "flag": "yes",
+  "note": "Manual bug-report prompt, not a data-sharing switch."
+ },
+ {
+  "pkg": "de.schildbach.oeffi",
+  "category": "PENDING",
+  "evidence": "Would you like to send a crash report",
+  "flag": "yes",
+  "note": "Dialog prompt rather than a persistent switch."
+ },
+ {
+  "pkg": "de.seemoo.at_tracking_detection",
+  "category": "PENDING",
+  "evidence": "Support the project by sharing some anonymous data",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "dev.appstract.iconpack",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only crash_report_send identifier."
+ },
+ {
+  "pkg": "dev.yashgarg.qbit",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only Sentry session-tracking identifiers."
+ },
+ {
+  "pkg": "eu.pretix.pretixprint",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Sentry identifier; description says tracking cannot be disabled."
+ },
+ {
+  "pkg": "eu.pretix.pretixscan.droid",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Sentry identifier; description says tracking cannot be disabled."
+ },
+ {
+  "pkg": "fr.gouv.etalab.mastodon",
+  "category": "PENDING",
+  "evidence": "You can send me by email the crash report.",
+  "flag": "yes",
+  "note": "Mixes \"Enable crash reports\" with a sending sentence plus ACRA identifiers."
+ },
+ {
+  "pkg": "fr.luteal.app",
+  "category": "UNCLEAR",
+  "evidence": "your data never leaves your phone without your explicit consent",
+  "flag": "yes",
+  "note": "Statement, not a switch; otherwise only ACRA identifiers."
+ },
+ {
+  "pkg": "info.metadude.android.datenspuren.schedule",
+  "category": "PENDING",
+  "evidence": "Send %s crash report …",
+  "flag": "yes",
+  "note": "Likely a prompt or notification action, not a toggle."
+ },
+ {
+  "pkg": "info.metadude.android.foss4g.schedule",
+  "category": "PENDING",
+  "evidence": "Send %s crash report …",
+  "flag": "yes",
+  "note": "Likely a prompt or notification action, not a toggle."
+ },
+ {
+  "pkg": "it.feio.android.omninotes.foss",
+  "category": "PENDING",
+  "evidence": "Share anonymous data",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "jp.nonbili.meron",
+  "category": "PENDING",
+  "evidence": "Meron sends a SHA-256 hash of each sender's email address to Gravatar",
+  "flag": "yes",
+  "note": "Sharing tied to a sender-images setting, plus a crash.send identifier."
+ },
+ {
+  "pkg": "net.eneiluj.moneybuster",
+  "category": "NOT_CONSENT",
+  "evidence": "Share statistics",
+  "flag": "yes",
+  "note": "Shares project budget statistics by user action, not telemetry."
+ },
+ {
+  "pkg": "net.megaproxy487",
+  "category": "NOT_CONSENT",
+  "evidence": "Send feedback and attach the diagnostic log",
+  "flag": "yes",
+  "note": "User-initiated feedback message, not a standing telemetry switch."
+ },
+ {
+  "pkg": "org.fdroid.fdroid",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA and crash_report_button_send identifiers."
+ },
+ {
+  "pkg": "org.grakovne.lissen",
+  "category": "PENDING",
+  "evidence": "Share diagnostic data for troubleshooting",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "org.jimvixx.smsecure",
+  "category": "PENDING",
+  "evidence": "Collect diagnostic information and share it for troubleshooting.",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "org.joinmastodon.android.moshinda",
+  "category": "NOT_CONSENT",
+  "evidence": "ic_fluent_eye_tracking_off_24_filled",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "org.navitproject.navit",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "org.thunderdog.challegram",
+  "category": "PENDING",
+  "evidence": "Share Call Diagnostics",
+  "flag": "yes",
+  "note": "Short label, may be an action rather than a switch."
+ },
+ {
+  "pkg": "org.zephyrsoft.sdbviewer",
+  "category": "UNCLEAR",
+  "evidence": "identifiers only",
+  "flag": "yes",
+  "note": "Only ACRA identifiers, no user-facing string."
+ },
+ {
+  "pkg": "pw.thedrhax.mosmetro",
+  "category": "PENDING",
+  "evidence": "Automatically send crash reports to application developer.",
+  "flag": "no",
+  "note": ""
+ },
+ {
+  "pkg": "takagi.ru.monica.fdroid",
+  "category": "NOT_CONSENT",
+  "evidence": "Search, filter and share a complete diagnostic report",
+  "flag": "yes",
+  "note": "Reads as a log-viewer feature, not a consent switch."
+ },
+ {
+  "pkg": "ua.syt0r.kanji.fdroid",
+  "category": "UNCLEAR",
+  "evidence": "analytics_enabled",
+  "flag": "yes",
+  "note": "Only an identifier, no user-facing string."
+ }
+]

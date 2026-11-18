@@ -5,12 +5,24 @@ The stream wrapper measures \emph{authorization order} violations among delivere
 items. Its event called \texttt{COMMIT} precedes the stream write. Accordingly, ``authorized''
 in these stream-wrapper results does not establish a socket-handoff boundary. The channel tests
 reported separately use accepted byte counts. We ask four questions.
-\textbf{RQ1:} Which enforcement points let data that a withdrawal invalidated leave the device, under which lifecycle schedules?
+\textbf{RQ1:} Which enforcement points authorize the upload of data that a withdrawal invalidated, under which lifecycle schedules?
 \textbf{RQ2:} Do measured race windows match Theorem~\ref{thm:race}?
 \textbf{RQ3:} Does \sys withhold permitted data, and what do its ablations lose?
 \textbf{RQ4:} What does \sys cost, do its labels survive \texttt{SIGKILL}, and does it carry over to a real library?
 
-
+\subsection{Authorization-order summary}
+\label{app:stream}
+The stream-wrapper \nTrialsValid{} trials compared nine variants over seven lifecycle schedules.
+Under the authorization estimand, the conventional combination admits the mechanism-specific cases in
+Table~\ref{tab:mechanisms}; the stream-wrapper \sys gate admits none on mediated paths. These observations motivate
+lineage and late placement but cannot quantify physical handoffs in the log-to-write gap.
+Permitted-flow controls distinguish suppression from non-delivery: stream-wrapper \sys logged
+\rdFpBlocks{} policy blocks for the controls, while \deficitRdPct{}\% of permitted items
+were undelivered on AVD~A (AVD~B: \deficitRdbPct{}\%). JobScheduler stopping uploads after reboot contributed
+to that deficit. The synthetic contract-unaware policy lost \deficitTaintPct{}\%; this
+is a policy ablation, not a comparison against a complete taint-tracking system.
+\input{generated/followup_mechanisms}
+\input{generated/followup_support}
 
 \subsection{RQ1: Which check points leak?}
 \label{sec:eval-matrix}

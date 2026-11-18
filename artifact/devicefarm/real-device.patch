@@ -1,0 +1,56 @@
+diff --git a/artifact/fixture/src/org/residuelab/Revision.java b/artifact/fixture/src/org/residuelab/Revision.java
+index 1e366da..1e3c9f7 100644
+--- a/artifact/fixture/src/org/residuelab/Revision.java
++++ b/artifact/fixture/src/org/residuelab/Revision.java
+@@ -74,8 +74,8 @@ public class Revision extends BroadcastReceiver {
+                     try(InputStream cert=new FileInputStream(new File(c.getFilesDir(),"test-ca.pem"))){ks.setCertificateEntry("test",java.security.cert.CertificateFactory.getInstance("X.509").generateCertificate(cert));}
+                     javax.net.ssl.TrustManagerFactory tm=javax.net.ssl.TrustManagerFactory.getInstance(javax.net.ssl.TrustManagerFactory.getDefaultAlgorithm());tm.init(ks);
+                     javax.net.ssl.SSLContext ctx=javax.net.ssl.SSLContext.getInstance("TLS");ctx.init(null,tm.getTrustManagers(),null);
+-                    TlsTransport.post(ctx,"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),10000);
+-                } else HttpTransport.postMode("10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,"whole".equals(mode),trace,id,i.getIntExtra("attempt",1));
++                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),10000);
++                } else HttpTransport.postMode(i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,"whole".equals(mode),trace,id,i.getIntExtra("attempt",1));
+                 event(c,id,"SEND_OK","elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu)+";payload_bytes="+body.length);
+             }catch(Exception e){event(c,id,"SEND_ERROR",e.toString()+";elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu));}
+         }
+diff --git a/artifact/followup/tls_suite.py b/artifact/followup/tls_suite.py
+index d23319f..4f0d270 100644
+--- a/artifact/followup/tls_suite.py
++++ b/artifact/followup/tls_suite.py
+@@ -3,12 +3,16 @@
+ from pathlib import Path
+ import argparse,subprocess,threading,socketserver,ssl,time,json,uuid,hashlib,os,contextlib
+ A=Path(__file__).resolve().parents[1];SDK=A.parents[1]/'shared-android/sdk';PKG='org.residuelab.tls'
+-p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
++p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--no-root',action='store_true');p.add_argument('--host');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
+ def adb(*args):
+- r=subprocess.run([str(SDK/'platform-tools/adb'),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
++ r=subprocess.run([os.environ.get('ADB',str(SDK/'platform-tools/adb')),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
+  if r.returncode:raise RuntimeError(r.stderr)
+  return r.stdout
++def adb_try(*args):
++ try:return adb(*args)
++ except RuntimeError as e:return 'unavailable: '+str(e)[:200]
+ def bc(op,id,remote=False,**kw):
++ if op=='send' and a.host:kw['host']=a.host
+  cmd=['shell','am','broadcast','-n',PKG+'/org.residuelab.Revision'+('Remote' if remote else ''),'-a','rl.REVISION','--es','op',op,'--es','id',id]
+  for k,v in kw.items():cmd+=['--ez' if isinstance(v,bool) else '--ei' if isinstance(v,int) else '--es',k,str(v).lower() if isinstance(v,bool) else str(v)]
+  return adb(*cmd)
+@@ -48,7 +52,7 @@ class Handler(socketserver.BaseRequestHandler):
+   except Exception as e:self.server.log({'request':id,'event':'error','error':repr(e),'received':total,'expected':expected})
+ sink=Server(('127.0.0.1',8798),Handler);sink.guard=threading.Lock();sink.mode='normal';threading.Thread(target=sink.serve_forever,daemon=True).start()
+ plain_sink=Server(('127.0.0.1',8799),Handler);plain_sink.guard=threading.Lock();plain_sink.mode='normal';threading.Thread(target=plain_sink.serve_forever,daemon=True).start()
+-adb('root');adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
++(a.no_root or adb('root'));adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
+ adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'cat /data/local/tmp/p04-test-ca.pem | run-as {PKG} sh -c "cat > files/test-ca.pem"')
+ (a.out/'environment.json').write_text(json.dumps({'fingerprint':adb('shell','getprop','ro.build.fingerprint').strip(),'serial':a.serial,'apk_sha256':hashlib.sha256((A/'fixture/build/tls-apk/rl-tls.apk').read_bytes()).hexdigest(),'started':time.time(),'host_load':os.getloadavg()},indent=2)+'\n')
+ for block in range(a.n):
+@@ -73,7 +77,7 @@ for block in range(a.n):
+      time.sleep(.02)
+     r['barrier_seen']=any(e['kind']==target for e in ev)
+     r['withdraw']=bc('withdraw',id,remote=True)
+-    r['tcp_after_withdraw']=adb('shell','cat /proc/net/tcp /proc/net/tcp6')
++    r['tcp_after_withdraw']=adb_try('shell','cat /proc/net/tcp /proc/net/tcp6')
+     if case.startswith('buffered'):adb('shell',f'run-as {PKG} touch files/release')
+    end=time.monotonic()+13
+    while time.monotonic()<end:

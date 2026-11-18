@@ -1,0 +1,30 @@
+# AWS Device Farm custom test environment spec for test 6 (C11). Draft: check field names and the
+# test package type against the AWS documentation during the one-device pilot before a full run.
+# Requires real-device.patch applied to the build that produced rl-tls.apk and to tls_suite.py.
+version: 0.1
+android_test_host: amazon_linux_2
+
+phases:
+  install:
+    commands:
+      - python3 --version
+      - adb version
+  pre_test:
+    commands:
+      # Receiver mode A: the suite's receiver runs on this test host; the phone reaches it over USB.
+      # The fixture certificate already lists 127.0.0.1 as a subject alternative name.
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+      - adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+  test:
+    commands:
+      - cd $DEVICEFARM_TEST_PACKAGE_PATH
+      - ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1
+        --n 20 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent
+        --out $DEVICEFARM_LOG_DIR/tls
+  post_test:
+    commands:
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+
+artifacts:
+  - $DEVICEFARM_LOG_DIR

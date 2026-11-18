@@ -52,6 +52,15 @@ Exact labels avoid policy-induced false positives only when labels and policy ar
 available and valid. Over-approximation, fail-closed migration, timeouts and network
 failure can still prevent permitted delivery. Soundness is not an availability claim.
 
+\paragraph{Splitting blocked requests.} A request whose items mix a forbidden source with permitted ones is blocked
+as a whole (\S\ref{sec:revision}). A split policy recovers the permitted part. If the fence blocks a request before any
+of its bytes is handed off, the sender partitions the items by label, retires those whose labels the rule forbids, and
+resubmits the rest as a new request, at most once per attempt. The new request is an ordinary submission: it takes the
+lock, rechecks every label, and is blocked again if a withdrawal commits in between, so Theorem~\ref{thm:sound} covers it
+unchanged. After a prefix has been handed off, the request cannot be rewritten and its remainder stays withheld. The
+cost is availability, not soundness: a derived item whose label includes the forbidden source is retired whole, and the
+second check adds one lock acquisition.
+
 \begin{theorem}[Race for earlier checks]\label{thm:race}
 Suppose a check $q$ admits a source that a later withdrawal would invalidate for the
 submission's purpose, and the path can still hand off that source at $c>q$ without

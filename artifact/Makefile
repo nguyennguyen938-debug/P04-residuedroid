@@ -21,6 +21,7 @@ revision: render
 paper: revision
 	$(PY) followup/analyze_tls.py > results/review-followup-20261115/transport-analysis.log
 	$(PY) followup/render.py
+	$(PY) scripts/render_tests.py
 	../manuscript/build.sh
 apks:
 	fixture/build.sh && acra/build.sh
