@@ -74,7 +74,7 @@ public class Revision extends BroadcastReceiver {
                     try(InputStream cert=new FileInputStream(new File(c.getFilesDir(),"test-ca.pem"))){ks.setCertificateEntry("test",java.security.cert.CertificateFactory.getInstance("X.509").generateCertificate(cert));}
                     javax.net.ssl.TrustManagerFactory tm=javax.net.ssl.TrustManagerFactory.getInstance(javax.net.ssl.TrustManagerFactory.getDefaultAlgorithm());tm.init(ks);
                     javax.net.ssl.SSLContext ctx=javax.net.ssl.SSLContext.getInstance("TLS");ctx.init(null,tm.getTrustManagers(),null);
-                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),10000);
+                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),i.getIntExtra("deadline_ms",10000));
                 } else HttpTransport.postMode(i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,"whole".equals(mode),trace,id,i.getIntExtra("attempt",1));
                 event(c,id,"SEND_OK","elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu)+";payload_bytes="+body.length);
             }catch(Exception e){event(c,id,"SEND_ERROR",e.toString()+";elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu));}
