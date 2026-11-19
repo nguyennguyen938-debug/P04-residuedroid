@@ -43,6 +43,8 @@
     }
   ],
   "post": [
+    "gzip -9 -k artifact/results/round3/b4/final-v2/trials.jsonl",
+    "shasum -a 256 artifact/results/round3/b4/final-v2/trials.jsonl > artifact/results/round3/b4/final-v2/trials.jsonl.sha256",
     "python3 artifact/followup/analyze_sweep.py artifact/results/round3/b4/final-v2 --out artifact/results/round3/b4/analysis-v2"
   ],
   "guard_after": true
