@@ -102,12 +102,14 @@ def trial(sched, k):
         time.sleep(1.5)
         for v in order: ok, out = hook(v, 'insert', addr=f'AA:00:00:00:02:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert_post', variant=v, ok=ok)
         time.sleep(1.5)
+        END = ('DONATION_OK', 'DONATION_BLOCKED', 'DONATION_ERROR', 'WORKER_SEND')
+        n0 = {v: sum(e['kind'] in END for e in events(v)) for v in order}   # pilot-2: count only attempts after this point
         if sched == 'netloss': net(True); act('net_on')
         else:
             for v in order: hook(v, 'run'); act('run', variant=v)
-        t0 = time.time()                          # quiescence: both workers ended a donation attempt, or the wait expired
+        t0 = time.time()                          # quiescence: both workers ended a new donation attempt, or the wait expired
         while time.time() - t0 < a.wait:
-            done = [any(e['kind'] in ('DONATION_OK', 'DONATION_BLOCKED', 'DONATION_ERROR', 'WORKER_SEND') for e in events(v)) for v in order]
+            done = [sum(e['kind'] in END for e in events(v)) > n0[v] for v in order]
             if all(done): time.sleep(5); break
             time.sleep(3)
         act('quiesced', waited=round(time.time() - t0, 1))

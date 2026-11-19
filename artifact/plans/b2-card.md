@@ -1,6 +1,6 @@
 # Experiment card — b2 (real app end-to-end: AirGuard; protocol v0 = design draft)
 
-Status: DRAFT (design; freeze after the pilot). Owner: B (Duy). Plan `[R3]` B2: "Tích hợp app thật từ đầu đến cuối, chạy pen,
+Status: FROZEN 19/11 (protocol v1, section "Freeze" below) after pilot-2; pilot-3 checks the driver fix, then the final. Owner: B (Duy). Plan `[R3]` B2: "Tích hợp app thật từ đầu đến cuối, chạy pen,
 kill, reb, net (thêm fstop nếu kịp), mỗi lịch 20 trial; so bản gốc với bản có fence, kèm luồng được phép làm đối chứng".
 S1 proposal: AirGuard (`b1-screening.md`), builds from source at the F-Droid commit (`plans/b1/build_airguard.sh`).
 
@@ -54,3 +54,29 @@ new items is blocked whole — the split policy of B3 would recover the 'post' i
   for 10.0.2.2 only, both builds identical. Rebuilt test APKs (stock e53e5254…, fenced 30eb823f…; previous builds kept
   in `realapp/airguard/build/v1-20261119-1740/`). App behaviour not changed: the worker's own error handling is kept as is.
 - Pilot-2: same driver/schedules, fresh dir `results/round3/b2/pilot-2`.
+
+## Pilot-2 (19/11 22:28–22:35; excluded) — mechanism review, no outcome used
+Network reached the sink (36 requests, both ports), warm-up ok (stock 29.8 s, fenced 8.8 s), 4/4 trials ran. Two design
+assumptions were wrong for the real app: (1) AirGuard runs its worker as soon as consent is granted (periodic work
+scheduling), so 'pre' beacons can be donated legitimately *before* the withdrawal — the oracle needs a time bracket, not
+"every donation is after the withdrawal"; (2) the driver's quiescence predicate counted donation events from earlier in the
+trial, so it waited only 5 s after the harness 'run'. Also observed: on netloss the app does not retry a failed run (the
+worker's `catch (e: Error)` lets the IOException fail the work), so no donation follows the link restore — app behaviour,
+kept and reported.
+
+## Freeze (protocol v1, 19/11, before pilot-3 and the final)
+- Builds: `realapp/airguard/build/airguard-{stock,fenced}.apk` (stock e53e5254…, fenced 30eb823f…; SHA256SUMS there;
+  installed hashes in meta.json). AVD P04AvdA (android-33), emulator-5666, sinks 8796 (stock) / 8797 (fenced).
+- Driver `followup/campaign_airguard.py` (as above; quiescence = a new donation-end event after the harness run, max 90 s).
+  Schedules pending, kill, reboot, netloss; **N = 20 trials per schedule**, both builds in every trial (order shuffled per
+  trial), seed `b2-20261119`, 4 beacons per batch. fstop not run (plan: "nếu kịp"; not added).
+- Oracle `followup/analyze_airguard.py` v2 (synthetic test passed): batch by uniqueId; host-clock withdrawal bracket
+  [ws, we] per build; violation = any 'optout' beacon donated, or a 'pre' beacon in a request whose worker-run ping reached
+  the sink after we; 'pre' in a request neither before ws nor after we = unknown (reported per cell, never folded in);
+  deficit = 4 − 'post' beacons donated. Wilson 95% on violating trials per (schedule, build).
+- Validity (harness fields only): no trial_error; every hook ok; device alive at the end; both event logs read; both
+  withdraw actions present. First 20 valid trials per schedule in k order; later valid ones unused.
+- Replacement: environment failures only (trial_error / device not alive), new k from 20 (`--start 20`), cap 3 per schedule.
+- Gate pilot-3 → final (mechanical): 4/4 trials valid, warm-up ok for both builds, ≥ 1 donate request at each port.
+- Threats: one AVD, emulator, synthetic beacons (no BLE), the host sink replaces the study server (HTTP, not HTTPS),
+  host-clock bracket leaves some requests unknown; the fence blocks a mixed request whole (split policy of B3 not applied).
