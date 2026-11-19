@@ -375,3 +375,8 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 2026-11-19 19:38 queue2: b3-final exit 0
 - 2026-11-19 19:38 LAUNCH autorun b10-pilot2 (pilot) card artifact/plans/b10-card.md; stages ['calibrate']; owned ['emulator-5660']; log artifact/results/round3/b10/autorun-b10-pilot2.log.
 - 2026-11-19 19:38 B3 v2 final DONE: 120 logged/0 invalid; retained B: control 20/20 both, prefirst 0/20→20/20 with split, prefix 0/20 both; forbidden_after_ack 0 everywhere. Card §6 filled.
+- 2026-11-19 19:39 ABORT autorun b10-pilot2: ABORT(calibrate exit 1); guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+2026-11-19 19:39 queue2: b10-pilot2 exit 1
+2026-11-19 19:39 queue2: done
+- 2026-11-19 19:39 LAUNCH autorun b4-final-v2 (final) card artifact/plans/b4-card.md; stages ['final']; owned ['emulator-5664']; log artifact/results/round3/b4/autorun-b4-final-v2.log.
+- 2026-11-19 19:40 B10 v2 pilot2 ABORT diagnosis: race_suite.py died before any trial on the radio metadata line (`dumpsys connectivity | grep -m2` exits 1 when nothing matches → adb() raised). Fix: '; true' on that metadata-only command (atomic replace). Protocol v2 unchanged. Fresh dirs: manifests b10-pilot3 (pilot-calib3) / b10-final3 (final3), queued as queue4.sh after queue3 (B4 v2). pilot-calib2 holds only the emulator log.

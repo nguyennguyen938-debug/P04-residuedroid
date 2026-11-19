@@ -1,0 +1,38 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~4 GB available; close apps before 2 emulators
+  [ OK ] 161 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5660 8798 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/race_suite.py --radio --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --calibrate 3 --out results/round3/b10/pilot-calib2
+Traceback (most recent call last):
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/race_suite.py", line 114, in <module>
+    RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"').strip()[:400]}
+                                                                         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/race_suite.py", line 39, in adb
+    if r.returncode: raise RuntimeError(r.stderr.strip()[:300])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5660 emu kill
+OK: killing emulator, bye bye
+OK

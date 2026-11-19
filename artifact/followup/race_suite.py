@@ -111,7 +111,7 @@ adb('root'); time.sleep(2); adb('wait-for-device')
 RADIO = {}
 if a.radio:
     adb('shell', 'svc wifi disable'); adb('shell', 'svc data enable'); time.sleep(8)
-    RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"').strip()[:400]}
+    RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"; true').strip()[:400]}   # metadata only: no match must not abort
 apk = A / 'fixture/build/tls-apk/rl-tls.apk'
 adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
