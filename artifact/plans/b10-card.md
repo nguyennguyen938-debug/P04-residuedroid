@@ -57,3 +57,15 @@ did not shape the app's traffic (the AVD routes data over its virtual Wi-Fi). v2
 data on before the run (routes and active network recorded in meta.json), so traffic uses the emulated cellular link the presets
 apply to; everything else unchanged. New dirs pilot-calib2 / final2; same mechanical gate. If it fails again, a host-side shaper
 (macOS dnctl/pf, needs sudo) is the next step (protocol v3).
+
+## Protocol v3 (19/11 20:2x, after pilot-calib3; no final trial ran)
+pilot-calib2 aborted before any send (metadata line `dumpsys | grep` exit 1; fixed with `; true`). pilot-calib3 ran: the throttle
+gate failed again — 2 MiB medians edge 0.27 s, umts 0.31 s, lte 0.32 s; meta.json routes show the data going over `eth0`
+(10.0.2.15) with Wi-Fi off, and the console preset still does not shape it. v3 replaces the console preset by a guest-side
+shaper instead of the host dnctl/pf named above (it needs no sudo, touches nothing outside the AVD, and is recorded per trial):
+`race_suite.py --radio --shaper tc` applies netem on the guest's egress (upload direction, the one the race is about) of eth0
+and wlan0 before every trial, at the emulator's own nominal uplink rate and the midpoint of its delay range: edge 118.4 kbit/s
++ 240 ms, umts 128 kbit/s + 118 ms, lte 58 Mbit/s + 0 ms (`tc qdisc show` stored in each trial's `net`). Feasibility checked on
+P04AvdA (tbf and netem accepted on eth0; no trial data). Same profiles, sizes, modes, seed, N, deadline rule, validity rules,
+gate and analysis. Construct note: one-way delay only on egress; download direction unshaped (responses are headers only).
+New dirs pilot-calib4 / final4. If the gate fails again, B10 stops and is reported as not run on a shaped link.

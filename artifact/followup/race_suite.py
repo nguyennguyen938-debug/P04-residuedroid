@@ -8,6 +8,9 @@ Modes:  --calibrate N  : N sends per (profile, size) without withdrawal → cali
         --trials N     : N trials per (profile, mode, size) cell with --durations calibration.json
 Design: blocks; one block = every (profile, mode, size) cell once, order shuffled per block from the seed.
 Network: emulator console `network speed <p>` / `network delay <p>` set before every trial (verified by calibration).
+         v3 `--shaper tc`: the console setting does not throttle this image (pilot-calib2/3), so the same profiles are applied
+         in the guest instead: netem egress (upload direction) on eth0 and wlan0 at the emulator's nominal uplink rate and
+         the midpoint of its delay range (edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms).
 Usage: race_suite.py --serial emulator-5650 [--avd P04Avd14] --out DIR (--calibrate 3 | --trials 10 --durations F)
        [--profiles edge,umts,lte] [--sizes 32768,262144,2097152] [--seed race-20261119]
 """
@@ -23,6 +26,7 @@ p.add_argument('--modes', default='early,fence'); p.add_argument('--calibrate', 
 p.add_argument('--trials', type=int, default=0); p.add_argument('--start', type=int, default=0)
 p.add_argument('--durations', type=Path); p.add_argument('--seed', default='race-20261119')
 p.add_argument('--certdir', type=Path, default=A / 'followup/tls-cert')
+p.add_argument('--shaper', default='emu', choices=['emu', 'tc'], help='v3 tc: guest netem egress shaping (see Network)')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
@@ -72,7 +76,15 @@ def events():
     return rows
 
 
+TC = {'edge': ('118400bit', '240ms'), 'umts': ('128kbit', '118ms'), 'lte': ('58mbit', '0ms')}
+
+
 def net(profile):
+    if a.shaper == 'tc':
+        adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none'); rate, d = TC[profile]
+        for dev in ('eth0', 'wlan0'):
+            adb('shell', f'tc qdisc del dev {dev} root 2>/dev/null; tc qdisc replace dev {dev} root netem delay {d} rate {rate} limit 10000; true')
+        return adb('shell', 'tc qdisc show dev eth0; tc qdisc show dev wlan0; true').replace('\r', '').replace('\n', ' | ').strip()[:300]
     o1 = adb('emu', 'network', 'speed', profile); o2 = adb('emu', 'network', 'delay', DELAY.get(profile, 'none'))
     return (o1 + o2).replace('\r', '').replace('\n', ' ').strip()
 
@@ -119,7 +131,7 @@ adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
 meta = {'serial': a.serial, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
