@@ -20,4 +20,11 @@ fdroiddata, 19/11), clone vào scratch của B (không commit). Lời hứa: `ar
   lời hứa PENDING, và worker không kiểm tra lại đồng ý — đúng loại residue bài nghiên cứu.
 - **CastBay dự phòng** (đường gửi đơn giản) nếu AirGuard không build được; build native nặng.
 - **Bỏ Fedilab** cho B2 (gửi qua email, không có đường mạng để fence; C đã mã COLLECT_ONLY).
-- Bước còn lại trước S1: build thử AirGuard trên Mac (sau B11, ~tối 19/11 hoặc 20/11) và ghi kết quả vào đây.
+- **Build thử AirGuard (19/11, `plans/b1/build_airguard.sh`): ĐẠT.** Commit F-Droid `d515c534`, prebuild như F-Droid (bỏ
+  `applicationIdSuffix`), Gradle 9.6.1 chạy trên JDK 21 (toolchain Java 21 bắt buộc; Hilt biên dịch bằng JVM của Gradle),
+  `:app:assembleRelease` → `app-release-unsigned.apk` 9,2 MB, sha256 2125bacd…, package `de.seemoo.at_tracking_detection`
+  3.1.3 (69), minSdk 28, targetSdk 37 (chạy được trên AVD android-33 của bài). Hai lần hỏng trước được ghi ở RUNLOG (thiếu
+  JDK 21; Hilt dùng JVM của Gradle).
+- **Kết luận cho S1: đi tiếp với AirGuard cho B2.** Việc tiếp theo của B2: bọc `SendStatisticsWorker.donateData` qua transport có
+  fence (dữ liệu nghiên cứu mang nhãn nguồn/epoch), trỏ base URL về sink thí nghiệm, gỡ chặn `BuildConfig.DEBUG` cho bản thử,
+  rồi chạy pen, kill, reb, net (+fstop) × 20, bản gốc so với bản có fence, kèm luồng được phép làm đối chứng (plan B2).

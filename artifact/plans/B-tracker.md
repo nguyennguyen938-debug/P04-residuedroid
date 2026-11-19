@@ -5,7 +5,7 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | ID | Việc | Đầu ra / khóa | Phụ thuộc | Hạn | Trạng thái | Ghi chú |
 |---|---|---|---|---|---|---|
 | B0 | Môi trường, `make apks`, 1 trial smoke | ghi chú môi trường | — | 19/11 | DONE 19/11 | smoke = rehearsal Test 6 trên P04Avd15 |
-| B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | SCREENED (b1-screening.md); build thử AirGuard sau emulator | build / lời hứa / bọc đường gửi |
+| B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | DONE 19/11: AirGuard build OK → đề xuất đi tiếp (b1-screening.md) | build / lời hứa / bọc đường gửi |
 | B11 | Test 4: Android 14, 15 × pen, kill, reb, net | `life*` | B0 | 22/11 | RUNNING 19/11 (autorun b11-final) | đêm 20 và 21/11; cần image android-34, android-35 arm64 |
 | A10 | Chạy `triage/find_callers.py` trên acrafence + matomo APK | gửi A | `make apks`, `matomo/build.sh` | 22/11 | DONE 19/11 | `results/round3/a10/` |
 | B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | CODE DONE, queued (b3-chain) | |
