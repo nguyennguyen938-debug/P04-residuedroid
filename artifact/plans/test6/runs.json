@@ -1,5 +1,5 @@
 {
- "_comment": "Test 6 analysis manifest (followup/analyze_test6.py). Paths relative to artifact/. Planned directories per test6-card.md; replacement runs are appended here when they exist. Device keys are one letter.",
+ "_comment": "Test 6 analysis manifest (followup/analyze_test6.py). Paths relative to artifact/. Planned directories per test6-card.md; replacement runs are appended here when they exist. Device keys are one letter. Device Farm paths follow the customer-artifact layout seen in pilot-df-pixel8a.",
  "devices": {
   "P": {
    "label": "Pixel 8a",
@@ -7,8 +7,13 @@
    "android": "17",
    "environment": "AWS Device Farm (custom environment, amazon_linux_2)",
    "receiver_mode": "A: Device Farm host via adb reverse (USB)",
-   "tls": ["results/round3/test6/pixel8a-j1/tls"],
-   "life": {"P-j1": "results/round3/test6/pixel8a-j1/life", "P-j2": "results/round3/test6/pixel8a-j2/life"}
+   "tls": [
+    "results/round3/test6/pixel8a-j1/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/tls"
+   ],
+   "life": {
+    "P-j1": "results/round3/test6/pixel8a-j1/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life",
+    "P-j2": "results/round3/test6/pixel8a-j2/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life"
+   }
   },
   "G": {
    "label": "Galaxy M35",
@@ -16,9 +21,15 @@
    "android": "14",
    "environment": "Samsung Remote Test Lab via Remote Debug Bridge",
    "receiver_mode": "Mac host via adb reverse over the RDB relay",
-   "tls": ["results/round3/test6/galaxy-s1/tls"],
-   "life": {"G-s1": "results/round3/test6/galaxy-s1/life", "G-s2": "results/round3/test6/galaxy-s2/life",
-            "G-s3": "results/round3/test6/galaxy-s3/life", "G-s4": "results/round3/test6/galaxy-s4/life"}
+   "tls": [
+    "results/round3/test6/galaxy-s1/tls"
+   ],
+   "life": {
+    "G-s1": "results/round3/test6/galaxy-s1/life",
+    "G-s2": "results/round3/test6/galaxy-s2/life",
+    "G-s3": "results/round3/test6/galaxy-s3/life",
+    "G-s4": "results/round3/test6/galaxy-s4/life"
+   }
   }
  }
 }
