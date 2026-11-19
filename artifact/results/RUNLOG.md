@@ -300,3 +300,4 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-19 14:02 NOTE: real-phone-only work listed in artifact/plans/real-phone-pending.md (Test 1 reduced on phone; optional
   Galaxy v3). Everything else of B runs on the emulator/Mac.
 - 2026-11-19 14:03 Correction to 14:01: matomo.apk sha256 is ed3b2017…7c87b (full value in the a10 output file).
+- 2026-11-19 14:27 B11 PREP: card artifact/plans/b11-card.md (B decisions where the plan is silent: variants menqueue/mlayer/mfence, N=20, key definitions), manifest plans/autorun/b11-final.json (P04Avd14 emulator-5650 sink 8790, then P04Avd15 emulator-5654 sink 8791; schedules pending,kill,reboot,netloss ×20; seed b11-20261119; --timeout 90). Revision APKs copied from the pinned Test 6 package v4 (sha256 verified). preflight 18 ok (warn ~1 GB free RAM; runs sequential). dry-run OK.
