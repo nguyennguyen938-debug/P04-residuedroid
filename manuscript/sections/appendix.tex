@@ -93,4 +93,28 @@ budget per entry and records the minimum hop count to a sink. It is written for 
 Soot/Dexpler~\cite{bartel2012dexpler} so that it runs with the Python standard library alone. The validation sample
 (\S\ref{sec:measure}) and all per-app outputs are in the artifact.
 
+\section{Round-3 Implementation and Harness}
+\label{app:round3impl}
+
+\paragraph{Transport options and split policy.} The chunk fence takes an optional chunk size and send deadline; the
+defaults used in the main evaluation are unchanged. A split policy handles requests that mix permitted and forbidden
+items: when the check denies a request before any of its chunks was accepted, the sender retires the forbidden items and
+resubmits the permitted ones once, as a new request with its own checks. Once a chunk of the request was accepted, the
+request is not split, so its permitted items are lost with it.
+
+\paragraph{Real-app embedding.} AirGuard's data-donation worker (WorkManager, Retrofit) uploads tracker sightings to a
+study server. The embedding leaves the app's database schema unchanged: a separate durable consent log records grant and
+withdrawal intervals under the coordinator lock, and an item's label is the interval that contains its collection time.
+The fenced build serialises the worker's own request body with the app's converter and sends it through the HTTP
+transport; the stock build keeps Retrofit. Both test builds share identical test hooks (synthetic beacons, consent
+toggles through the app's own preference path, worker runs) and point to a host sink; the patch is applied to a clone at
+the F-Droid build commit and is not part of the app's source tree.
+
+\paragraph{Phone and throttled-link harnesses.} Phone runs set the sink address explicitly instead of the emulator host
+alias and record the receiver path (USB port reverse on the cloud device service, a relay on the remote test lab).
+Throttled emulator runs shape the guest's uplink with \texttt{netem} at the emulator's nominal profile rates, because the
+emulator console's network presets did not slow this image's traffic. Protocols, exclusions and per-run logs are in
+\texttt{results/round3/} (\texttt{PROTOCOL.md}, \texttt{EXCLUSIONS.md}) and the task cards in \texttt{plans/}.
+
+\clearpage
 \input{sections/historical-evaluation}
