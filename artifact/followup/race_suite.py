@@ -81,9 +81,10 @@ TC = {'edge': ('118400bit', '240ms'), 'umts': ('128kbit', '118ms'), 'lte': ('58m
 
 def net(profile):
     if a.shaper == 'tc':
-        adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none'); rate, d = TC[profile]
-        for dev in ('eth0', 'wlan0'):
-            adb('shell', f'tc qdisc del dev {dev} root 2>/dev/null; tc qdisc replace dev {dev} root netem delay {d} rate {rate} limit 10000; true')
+        adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none')
+        for dev in ('eth0', 'wlan0'):                 # a profile without a TC entry ('full', end of run) = shaping removed
+            add = f'; tc qdisc replace dev {dev} root netem delay {TC[profile][1]} rate {TC[profile][0]} limit 10000' if profile in TC else ''
+            adb('shell', f'tc qdisc del dev {dev} root 2>/dev/null{add}; true')
         return adb('shell', 'tc qdisc show dev eth0; tc qdisc show dev wlan0; true').replace('\r', '').replace('\n', ' | ').strip()[:300]
     o1 = adb('emu', 'network', 'speed', profile); o2 = adb('emu', 'network', 'delay', DELAY.get(profile, 'none'))
     return (o1 + o2).replace('\r', '').replace('\n', ' ').strip()
