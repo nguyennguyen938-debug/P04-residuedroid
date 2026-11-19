@@ -367,3 +367,11 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 2026-11-19 19:33 queue2: b12-final exit 0
 - 2026-11-19 19:33 LAUNCH autorun b3-pilot2 (pilot) card artifact/plans/b3-card.md; stages ['pilot']; owned ['emulator-5662']; log artifact/results/round3/b3/autorun-b3-pilot2.log.
 - 2026-11-19 19:34 B12 ANALYSIS: analyze_mutation.py → valid base 40, M1 39, M2 39, M3 38 (4 reboot trials harness/device; no replacement rule in card). M2 39/39 leaking, 908 flagged = 908 wrong-label; M1 null (0/0/0); M3 deficit 116 vs base 44. Card Outcome filled.
+- 2026-11-19 19:35 DONE autorun b3-pilot2: DONE; guard exit 0; SHUTDOWN ['emulator-5662']. Outcomes not inspected by the runner.
+2026-11-19 19:35 queue2: b3-pilot2 exit 0
+2026-11-19 19:35 queue2: B3 v2 gate passed
+- 2026-11-19 19:35 LAUNCH autorun b3-final (final) card artifact/plans/b3-card.md; stages ['final']; owned ['emulator-5662']; log artifact/results/round3/b3/autorun-b3-final.log.
+- 2026-11-19 19:38 DONE autorun b3-final: DONE; guard exit 0; SHUTDOWN ['emulator-5662']. Outcomes not inspected by the runner.
+2026-11-19 19:38 queue2: b3-final exit 0
+- 2026-11-19 19:38 LAUNCH autorun b10-pilot2 (pilot) card artifact/plans/b10-card.md; stages ['calibrate']; owned ['emulator-5660']; log artifact/results/round3/b10/autorun-b10-pilot2.log.
+- 2026-11-19 19:38 B3 v2 final DONE: 120 logged/0 invalid; retained B: control 20/20 both, prefirst 0/20→20/20 with split, prefix 0/20 both; forbidden_after_ack 0 everywhere. Card §6 filled.

@@ -38,6 +38,14 @@ were accepted, no split. Paper §5 "Splitting blocked requests". No `summary.jso
   receiver completion = receipt of all bytes, not server processing.
 
 ## 6. Outcome (after the run)
+- Final run 19/11 19:35–19:38 (protocol v2, autorun b3-final, guard 0): 120 logged, 0 invalid, 120 valid, 20 analysed per
+  cell, 0 unused. Data `results/round3/b3/final`; analysis `results/round3/b3/analysis/b3-summary.json`.
+- Permitted item B retained (Wilson 95%): control 20/20 [0.839, 1] with and without split; prefirst/nosplit 0/20 [0, 0.161]
+  → prefirst/split 20/20 [0.839, 1] (20/20 `-split` resubmissions completed); prefix 0/20 [0, 0.161] with and without split.
+- Safety: forbidden_after_ack 0 in every cell (120/120 trials).
+- Negative result (kept): split recovers nothing once a chunk of the mixed request was accepted (prefix/split 0/20) — by
+  design the fixture splits only on a denial with 0 accepted chunks; a request already partly on the wire is not split.
+- Deviations: protocol v2 (end predicate only), recorded below before any final trial.
 
 ## Protocol v2 (19/11, after pilot-1; before any final trial)
 Pilot-1 mechanism: prefirst+split retired analytics and resent diagnostics (`-split` SEND_OK); prefix denied; control sent.

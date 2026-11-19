@@ -1,0 +1,72 @@
+{
+ "logged": 120,
+ "invalid": [],
+ "cells": {
+  "control/nosplit": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 20,
+   "retained_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "resubmit_ok": 0,
+   "forbidden_after_ack": 0
+  },
+  "control/split": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 20,
+   "retained_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "resubmit_ok": 0,
+   "forbidden_after_ack": 0
+  },
+  "prefirst/nosplit": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 0,
+   "retained_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "resubmit_ok": 0,
+   "forbidden_after_ack": 0
+  },
+  "prefirst/split": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 20,
+   "retained_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "resubmit_ok": 20,
+   "forbidden_after_ack": 0
+  },
+  "prefix/nosplit": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 0,
+   "retained_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "resubmit_ok": 0,
+   "forbidden_after_ack": 0
+  },
+  "prefix/split": {
+   "trials": 20,
+   "unused": 0,
+   "permitted_retained": 0,
+   "retained_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "resubmit_ok": 0,
+   "forbidden_after_ack": 0
+  }
+ }
+}

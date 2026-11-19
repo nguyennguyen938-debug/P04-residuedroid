@@ -8,7 +8,7 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | DONE 19/11: AirGuard build OK → đề xuất đi tiếp (b1-screening.md) | build / lời hứa / bọc đường gửi |
 | B11 | Test 4: Android 14, 15 × pen, kill, reb, net | `life*` | B0 | 22/11 | DONE 19/11: 80+80 analysed, 2 replaced (card §6); keys `life*` in analysis, to summary.json with the next delivery | đêm 20 và 21/11; cần image android-34, android-35 arm64 |
 | A10 | Chạy `triage/find_callers.py` trên acrafence + matomo APK | gửi A | `make apks`, `matomo/build.sh` | 22/11 | DONE 19/11 | `results/round3/a10/` |
-| B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | CODE DONE, queued (b3-chain) | |
+| B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | DONE 19/11 (v2): 120/120 valid; split recovers 20/20 prefirst, 0/20 prefix (card §6) | |
 | B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | CODE DONE, queued (b10-chain) | |
 | B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | CODE DONE, queued (b4-chain) | cắt đầu tiên |
 | B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | DONE 19/11: base/M1/M2/M3 final, 38–40 valid each (card Outcome); M1 null → told A | |
