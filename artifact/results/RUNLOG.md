@@ -222,3 +222,4 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   and simulated link drop (watchdog stopped harness after ~60 s, no orphan process/port, exit 4); pilot data only used as
   well-formed input, no outcome inspected. Package v4 built (zip sha256 8562abeb…09d7; = v2 + the three harness changes),
   not uploaded. Guard OK (macros.tex allowed: \impLoc, C regenerates).
+- 2026-11-19 09:31 TEST6 FREEZE (protocol v1): card committed 7b2b523; freeze.py → results/round3/test6/frozen-test6-v1 (104 files) + package-sha256.json (v4, 20 files, key excluded; package scripts == commit). From here a harness change = protocol v2.

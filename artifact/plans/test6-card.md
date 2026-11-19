@@ -1,6 +1,6 @@
 # Experiment card — test6 (protocol v1)
 
-Status: draft (chưa freeze; freeze = commit card này + gói v4, ghi commit vào đây trước lượt chạy chính đầu tiên)
+Status: frozen 2026-11-19 09:31 +07, commit 7b2b523 (freeze: results/round3/test6/frozen-test6-v1, gói v4 zip 8562abeb…09d7)
 Owner (experimenter): B (Duy)   Approved by (author): C đồng ý môi trường RTL (19/11, theo lời user); định nghĩa khóa §4 chờ C
 
 Nguồn: `[R3]` = `PLAN-ROUND3.md`, `[HB]` = `HUONG-DAN-B.md`, `[DF]` = `artifact/devicefarm/README.md`, `[RT]` =
