@@ -235,3 +235,35 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   prints installer/updateOwner of org.residuelab.tls and uninstalls it, so tls_suite.py installs it fresh (as on RTL and
   emulator). Harness, analysis, N, validity unchanged. Card → protocol v2. Re-pilot → pilot-df-pixel8a-2.
 - 2026-11-19 09:43 TEST6 FREEZE v2: results/round3/test6/frozen-test6-v2 (source pins identical to v1; package v4 unchanged; run_material = sha256 of plans/test6 specs/scripts at 2ec2551). Specs uploaded as *-v2proto.yml. runs.json Device Farm paths set to the customer-artifact layout. LAUNCH TEST6 Device Farm chain (user go-ahead "bạn tự làm, chạy auto"): plans/test6/run_df_chain.sh = pilot-df-pixel8a-2 (timeout 20) → check_gates.py (stop if fail) → pixel8a-j1 (TLS 0–19 + life k 0–9, timeout 100) → pixel8a-j2 (life k 10–19, timeout 100); receiver mode A.
+- 2026-11-19 09:51 DONE TEST6 Device Farm pilot 2 (PILOT, excluded; protocol v2) → results/round3/test6/pilot-df-pixel8a-2.
+  4.9 metered min (995.58 → 990.73). check_gates.py: ALL GATES PASS (TLS 7/7, TLS_EXIT=0, barrier_seen 4/4, receiver 15
+  lines; lifecycle 3/3, remaining 0, seen_max 67/65/67, kill_verified true, 15/15 DB reads, sink 297 lines, root=false,
+  Pixel 8a Android 17). Diagnostic: the pre-installed org.residuelab.tls had installer=null (installerPackageUid -1,
+  versionCode 0), so the update-ownership guess for pilot 1 is NOT supported; why `adb install -r` failed there stays
+  unknown; uninstall-then-install works. Chain continued to main job 1 (09:51).
+- 2026-11-19 09:52 LAUNCH TEST6 RTL session 1 (main, protocol v2; user go-ahead "bạn tự làm, chạy auto"; RDB localhost:52011): run_rtl.sh package v4, TLS blocks 0–19 + lifecycle k 0–4 (pending,kill,revoke) → results/round3/test6/galaxy-s1. Session end time not given (assumed 60 min from now). Runs in parallel with Device Farm job 1 (separate device and host).
+- 2026-11-19 09:53 ABORT TEST6 RTL session 1 attempt (environment): `adb connect localhost:52011` → failed to connect (RDB relay refused), preflight ABORT before anything was installed; dir renamed galaxy-s1_INVALID_rdb-connect (R2.6). run_rtl.sh cleanup now checks the link first (it reported 'left 0' instead of 'unknown' when not connected; run-time logic unchanged). Waiting for the user to restart RDB; retry → galaxy-s1.
+- 2026-11-19 09:55 LAUNCH TEST6 RTL session 1 retry (main, protocol v2): RDB localhost:41654 (restarted by the user), same arguments → results/round3/test6/galaxy-s1. End time not given (assumed 60 min).
+- 2026-11-19 09:56 ABORT TEST6 RTL session 1 attempt 2 (environment): failed to connect to localhost:41654; cause found: the default adb server (5037, not this run's 5038) held the RDB connection (lsof: adb pid on 5037 ESTABLISHED to the rdb listener; device listed offline there) — the RDB tool's own 'ADB connected to RDB'. Released only that device on 5037 (adb disconnect with the matching SDK adb). Dir renamed galaxy-s1_INVALID_rdb-connect2. run_rtl.sh preflight now does this release itself (logged). Possibly also explains the adb-37 hangs of pilot-rtl-1 (two adb servers on one relay); not verified.
+- 2026-11-19 09:57 RTL: default adb server (5037; no device attached, no emulator running) stopped with its own adb kill-server so it cannot auto-connect (mDNS, suspected) to the RDB relay; this run's r33 server stays on 5038. Waiting for the user to restart RDB.
+- 2026-11-19 10:38 RTL: default adb server had restarted (09:58:27, SDK adb 37, parent launchd) and grabbed the new RDB port 49195 again. Restarted it with the same SDK adb and ADB_MDNS=0 ADB_MDNS_AUTO_CONNECT=0 (suspected mDNS auto-connect), no device attached to it.
+- 2026-11-19 10:38 Correction: on 5037 the RDB device was listed as 'localhost:49195' (an explicit adb connect, apparently by the rdb tool), not an mDNS name; the mDNS guess is not supported. After the default server restart, r33 on 5038 connected and answered (model SM-M356B). LAUNCH TEST6 RTL session 1 (main, protocol v2; user: "làm lại rtl"): RDB localhost:49195 → results/round3/test6/galaxy-s1, TLS 0–19 + lifecycle k 0–4.
+- 2026-11-19 10:47 INCIDENT TEST6 Device Farm job 1: the job finished (PASSED, 53.78 metered min, trial minutes 990.73 →
+  936.95) but its poller died with "run_df.sh: line 19: syntax error" because B/Claude edited run_df.sh (cost guard) while
+  that bash process was still reading it; no artifact was downloaded by it. Fix: new plans/test6/fetch_df.sh downloads a
+  finished run by name (no device minutes); fetched → results/round3/test6/pixel8a-j1 (fetched.txt). Gates (check_gates.py
+  --tls 140 --life 30): ALL PASS (TLS 140/140, barrier_seen 80/80, receiver 300 lines; lifecycle 30/30, remaining 0,
+  seen_max 65–67, kill_verified 10/10, 150/150 DB reads, sink 2970 lines). No data lost. Job 2 was scheduled by the new
+  run_df.sh (trial minutes before 936.95; guard passed). Rule for B/Claude: never edit a script a running process uses.
+- 2026-11-19 10:47 ABORT TEST6 RTL session 1 attempt 3 (environment): preflight at 10:38:44 'shell does not answer' on
+  localhost:49195 (a probe one minute earlier answered); cleanup then hung on an untimed `reverse --remove-all` until killed
+  at 10:45. run_rtl.sh: every device adb call now time-limited (to N), connect skipped if already attached, a default-server
+  hold is released by restarting that server (what worked at 10:37); re-checked offline (fake phone: normal run; dead link →
+  abort + cleanup in 25 s). Dir galaxy-s1 → galaxy-s1_INVALID_rdb-noanswer.
+- 2026-11-19 10:55 RTL relay now owned by B/Claude (user: "connect từ terminal của bạn … tự động fix và chạy"): stopped the
+  user's rdb; ~/Downloads/rdb/rdb refuses to start without adb on PATH ("Could not find adb in PATH") — so rdb runs
+  `adb connect` itself, which is what kept attaching the device to the default 5037 server. Started rdb with the r33 adb first on
+  PATH and ANDROID_ADB_SERVER_PORT=5038 (this run's server). Relay listening (adb port 55977, web port 8888); waiting for the
+  RTL web page to attach the device (desktop notification sent to the user). New plans/test6/rtl_auto.sh runs the Galaxy parts
+  s1–s4 unattended: restarts the relay when the link dies, continues a part in a new dir after the last recorded index (the
+  index in progress = environment failure, replaced at ≥ 20 per card §3), max 3 relay restarts per part.

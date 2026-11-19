@@ -37,6 +37,8 @@ log() { echo "$(date +%H:%M:%S) $*" | tee -a "$LOG"; }
 t() { local c=$1 lim=${2:-20}; ( "$ADB" -s "$S" shell "$c" > "$OUT/.t" 2>&1 ) & local p=$!
   for _ in $(seq 1 "$lim"); do kill -0 $p 2>/dev/null || break; sleep 1; done
   kill $p 2>/dev/null && { echo "TIMEOUT"; return 1; }; tr -d '\r' < "$OUT/.t"; }
+to() { local lim=$1; shift; "$@" & local p=$!   # run an adb call with a time limit (a dead RDB link hangs it)
+  for _ in $(seq 1 "$lim"); do kill -0 $p 2>/dev/null || { wait $p; return $?; }; sleep 1; done; kill $p 2>/dev/null; return 124; }
 PROBE=; HPID=; WATCH=
 cleanup() {
   trap - EXIT INT TERM
@@ -45,15 +47,15 @@ cleanup() {
   for p in $(lsof -tnP -iTCP:8787 -iTCP:8798 -iTCP:8799 -sTCP:LISTEN 2>/dev/null); do
     ps -p "$p" -o command= | grep -q "$PKG\|$OUT" && kill "$p"; done      # only listeners this run started
   [ -n "$WATCH" ] && kill "$WATCH" 2>/dev/null; [ -n "$PROBE" ] && kill "$PROBE" 2>/dev/null
-  "$ADB" -s "$S" reverse --remove-all >/dev/null 2>&1
+  to 15 "$ADB" -s "$S" reverse --remove-all >/dev/null 2>&1
   local pk left=unknown
-  if pk=$(t "pm list packages" 15); then
-    for p in $(echo "$pk" | grep -o 'org\.residuelab\.[a-z0-9]*'); do "$ADB" -s "$S" uninstall "$p" >/dev/null 2>&1; done
+  if [ "$(t 'echo ok' 10)" = ok ] && pk=$(t "pm list packages" 15); then
+    for p in $(echo "$pk" | grep -o 'org\.residuelab\.[a-z0-9]*'); do to 30 "$ADB" -s "$S" uninstall "$p" >/dev/null 2>&1; done
     t "rm -f /data/local/tmp/p04-test-ca.pem" 10 >/dev/null
     pk=$(t "pm list packages" 15) && left=$(echo "$pk" | grep -c residuelab)
   fi
   log "CLEANUP org.residuelab.* left on device: $left (unknown = link down; remove at the next connection)"
-  "$ADB" disconnect "$S" >/dev/null 2>&1; rm -f "$OUT/.t"
+  to 10 "$ADB" disconnect "$S" >/dev/null 2>&1; rm -f "$OUT/.t"
   python3 - "$OUT" <<'EOF'
 import json, sys, time, os
 p = os.path.join(sys.argv[1], "session.json"); d = json.load(open(p)) if os.path.exists(p) else {}
@@ -64,16 +66,24 @@ trap cleanup EXIT INT TERM
 
 # --- preflight (nothing installed yet)
 log "PREFLIGHT $S adb $("$ADB" version | sed -n 2p) server port $ANDROID_ADB_SERVER_PORT"
-"$ADB" connect "$S" | tee -a "$LOG"; sleep 2
+# the RDB relay serves one adb client: if the default adb server (5037) grabbed it (the RDB tool connects it), release
+# only this device there, with the adb that matches that server (a mismatched client would restart the server)
+DEFAULT_ADB=${DEFAULT_ADB:-$HOME/Library/Android/sdk/platform-tools/adb}
+if lsof -nP -iTCP:5037 -sTCP:LISTEN >/dev/null 2>&1 && ANDROID_ADB_SERVER_PORT=5037 "$DEFAULT_ADB" devices | grep -q "^$S"; then
+  log "default adb server holds $S: restarting that server (same SDK adb) to release the relay"
+  ANDROID_ADB_SERVER_PORT=5037 to 15 "$DEFAULT_ADB" kill-server >> "$LOG" 2>&1; sleep 1
+  ANDROID_ADB_SERVER_PORT=5037 to 15 "$DEFAULT_ADB" start-server >> "$LOG" 2>&1; fi
+if "$ADB" devices | grep -q "^$S[[:space:]]*device"; then log "$S already attached to this server"
+else to 15 "$ADB" connect "$S" | tee -a "$LOG"; sleep 2; fi
 [ "$(t 'echo ok' 10)" = ok ] || { log "ABORT: shell does not answer"; exit 3; }
 M=$(t "getprop ro.product.model"); V=$(t "getprop ro.build.version.release"); FP=$(t "getprop ro.build.fingerprint")
 U=$(t "id -u"); RA=$(t "which run-as")
 log "device model=$M android=$V uid=$U run-as=$RA fingerprint=$FP"
 [ "$M" = "$MODEL" ] && [ "$V" = "$ANDROID" ] || { log "ABORT: expected $MODEL / Android $ANDROID"; exit 3; }
 [ "$U" = 2000 ] && [ -n "$RA" ] || { log "ABORT: need adbd as shell (uid 2000) and run-as"; exit 3; }
-for p in $(t "pm list packages" 15 | grep -o 'org\.residuelab\.[a-z0-9]*'); do log "removing leftover $p"; "$ADB" -s "$S" uninstall "$p" >> "$LOG" 2>&1; done
-for p in 8798 8799 8787; do "$ADB" -s "$S" reverse tcp:$p tcp:$p >/dev/null || { log "ABORT: adb reverse $p failed"; exit 3; }; done
-[ "$("$ADB" -s "$S" reverse --list | grep -c 'tcp:87')" = 3 ] || { log "ABORT: reverse list incomplete"; exit 3; }
+for p in $(t "pm list packages" 15 | grep -o 'org\.residuelab\.[a-z0-9]*'); do log "removing leftover $p"; to 30 "$ADB" -s "$S" uninstall "$p" >> "$LOG" 2>&1; done
+for p in 8798 8799 8787; do to 15 "$ADB" -s "$S" reverse tcp:$p tcp:$p >/dev/null || { log "ABORT: adb reverse $p failed"; exit 3; }; done
+[ "$(to 15 "$ADB" -s "$S" reverse --list | grep -c 'tcp:87')" = 3 ] || { log "ABORT: reverse list incomplete"; exit 3; }
 python3 - "$OUT" "$PKG" "$REPO" "$S" "$M" "$V" "$FP" "$*" <<'EOF'
 import hashlib, json, os, subprocess, sys, time
 out, pkg, repo, serial, model, android, fp, argv = sys.argv[1:]

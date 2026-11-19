@@ -1,0 +1,4 @@
+10:38:32 PREFLIGHT localhost:49195 adb Version 33.0.3-8952118 server port 5038
+already connected to localhost:49195
+10:38:44 ABORT: shell does not answer
+10:45:11 CLEANUP org.residuelab.* left on device: unknown (unknown = link down; remove at the next connection)

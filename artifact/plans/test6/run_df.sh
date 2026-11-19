@@ -8,6 +8,10 @@ export AWS_PROFILE=${AWS_PROFILE:-p04} AWS_REGION=us-west-2
 source "$ENV"; : "${PRJ:?}" "${APP:?}" "${PKG:?}" "${SPEC:?}" "${POOL:?}"
 [ ! -e "$OUT" ] || { echo "refusing: $OUT exists (fresh directory rule)"; exit 2; }
 before=$(aws devicefarm get-account-settings --query 'accountSettings.trialMinutes.remaining' --output text)
+# cost guard: only schedule if the free trial minutes cover the whole job timeout (+5 min setup); never spill into
+# metered minutes (0.17 USD/min) without the user's explicit go-ahead for that
+python3 -c "import sys; sys.exit(0 if float('$before') >= $TMO + 5 else 1)" || {
+  echo "refusing: trial minutes left $before < job timeout $TMO + 5 (would be billed)"; exit 5; }
 RUN=$(aws devicefarm schedule-run --project-arn "$PRJ" --app-arn "$APP" --device-pool-arn "$POOL" --name "$NAME" \
   --test "type=APPIUM_PYTHON,testPackageArn=$PKG,testSpecArn=$SPEC" \
   --execution-configuration "jobTimeoutMinutes=$TMO,videoCapture=false" --query run.arn --output text)
