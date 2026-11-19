@@ -5,13 +5,13 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | ID | Việc | Đầu ra / khóa | Phụ thuộc | Hạn | Trạng thái | Ghi chú |
 |---|---|---|---|---|---|---|
 | B0 | Môi trường, `make apks`, 1 trial smoke | ghi chú môi trường | — | 19/11 | DONE 19/11 | smoke = rehearsal Test 6 trên P04Avd15 |
-| B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | TODO | build / lời hứa / bọc đường gửi |
-| B11 | Test 4: Android 14, 15 × pen, kill, reb, net | `life*` | B0 | 22/11 | TODO | đêm 20 và 21/11; cần image android-34, android-35 arm64 |
+| B1 | Sàng AirGuard, Fedilab, CastBay | quyết định S1 | B0 | **21/11** | SCREENED (b1-screening.md); build thử AirGuard sau emulator | build / lời hứa / bọc đường gửi |
+| B11 | Test 4: Android 14, 15 × pen, kill, reb, net | `life*` | B0 | 22/11 | RUNNING 19/11 (autorun b11-final) | đêm 20 và 21/11; cần image android-34, android-35 arm64 |
 | A10 | Chạy `triage/find_callers.py` trên acrafence + matomo APK | gửi A | `make apks`, `matomo/build.sh` | 22/11 | DONE 19/11 | `results/round3/a10/` |
-| B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | TODO | |
-| B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | TODO | |
-| B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | TODO | cắt đầu tiên |
-| B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | TODO | |
+| B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | CODE DONE, queued (b3-chain) | |
+| B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | CODE DONE, queued (b10-chain) | |
+| B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | CODE DONE, queued (b4-chain) | cắt đầu tiên |
+| B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | BUILT, queued (b12-chain) | |
 | T6 | Test 6: Pixel 8a (Device Farm) + Galaxy M35 (RTL), TLS ×20 + lifecycle pen/kill/rev ×20 mỗi máy | `dev*` (chờ C chốt định nghĩa) | — | 28/11 | DATA DONE 19/11 | card `test6-card.md` §6; receiver: P USB, G relay RDB |
 | B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | TODO | pen, kill, reb, net (+fstop) × 20 |
 | B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | TODO | không chạy thêm sau mốc |
