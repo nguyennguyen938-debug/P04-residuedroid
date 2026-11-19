@@ -46,10 +46,19 @@ raceEdgeFence, raceThreegLayer, raceThreegFence, raceLteLayer, raceLteFence, rac
 - External: emulator only; fixture app; three profiles. Conclusion: N = 30 per cell; no p-values.
 
 ## 6. Outcome (after the run)
-- Logged / excluded / valid / analysed / unused:
-- Results directory:
-- Deviations:
-- Negative or null results:
+- Final (protocol v3, 19/11 20:33–21:59, autorun b10-final4, guard 0): 180 logged, 0 invalid, 180 valid, 30 analysed per
+  (profile, variant), 0 unused; no replacement. Data `results/round3/b10/final4` (raw trials.jsonl 119 MB kept on disk,
+  committed as `.gz` + sha256 of the original); calibration `pilot-calib4`; analysis `results/round3/b10/analysis/race-summary.json`.
+- Violating trials (bytes accepted after WITHDRAW_ACK; Wilson 95%): early (layered) edge 21/30 [0.52, 0.83], umts 20/30
+  [0.49, 0.81], lte 10/30 [0.19, 0.51]; fence 0/30 [0, 0.114] for every profile. By size (early, 10 each): edge 4/8/9,
+  umts 2/8/10, lte 0/0/10 for 32 KiB / 256 KiB / 2 MiB. Fence trial ends: SEND_ERROR (denied mid-send) 21 / 20 / 12, SEND_OK 9 /
+  10 / 18 (edge / umts / lte); early trials all ended SEND_OK.
+- Eq. 2: predicted 79.4% vs observed 56.7% early violations (pooled, 90 trials): the prediction overestimates by 22.7
+  points. Not explained here; a candidate (not tested) is the host→device withdrawal delivery delay, which makes the
+  effective W later than u·D, so fewer windows overlap the remaining upload.
+- Deviations: protocol v2 then v3 before any final trial (shaper: guest netem; see below). lte at its nominal 58 Mbit/s is
+  as fast as the unshaped link (2 MiB in 0.32 s).
+- Negative or null results: the Eq. 2 gap above; fence 0/30 is not an impossibility guarantee (upper bound 11.4%).
 
 ## Protocol v2 (19/11, after pilot-calib; no final trial ran)
 Throttle gate failed: calibrated 2 MiB medians edge 0.34 s, umts 0.32 s, lte 0.32 s — the emulator console `network speed`

@@ -53,7 +53,9 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/b10/analysis'))
     ap.add_argument('--n', type=int, default=30, help='analysed trials per (profile, mode): first N valid in block order')
     a = ap.parse_args()
-    rows = [json.loads(l) for d in a.dirs for l in open(Path(d) / 'trials.jsonl') if l.strip()]
+    import gzip                            # large raw files are committed gzip-compressed (raw kept on disk, git-ignored)
+    op = lambda d: open(Path(d) / 'trials.jsonl') if (Path(d) / 'trials.jsonl').exists() else gzip.open(Path(d) / 'trials.jsonl.gz', 'rt')
+    rows = [json.loads(l) for d in a.dirs for l in op(d) if l.strip()]
     invalid = [{'trial': r['trial'], 'reason': why} for r in rows if (why := validity(r))]
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
     cells = collections.defaultdict(list)
