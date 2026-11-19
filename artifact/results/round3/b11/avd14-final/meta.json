@@ -1,0 +1,15 @@
+{
+ "serial": "emulator-5650",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:14/UE1A.230829.050/12077443:userdebug/dev-keys",
+ "variants": [
+  "menqueue",
+  "mlayer",
+  "mfence"
+ ],
+ "schedules": "pending,kill,reboot,netloss",
+ "trials": 20,
+ "seed": "b11-20261119",
+ "sink_delay_ms": 300,
+ "substrate": "job",
+ "start": 1795073478.765753
+}

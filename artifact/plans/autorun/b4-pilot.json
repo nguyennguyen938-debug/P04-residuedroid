@@ -11,7 +11,7 @@
     "AVDS": "P04AvdA",
     "PORTS": "5664 8799",
     "IMAGES": "33",
-    "GUARD_ALLOW": "manuscript/generated/macros.tex"
+    "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
   },
   "owned_serials": [
     "emulator-5664"

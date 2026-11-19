@@ -322,3 +322,7 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   Hilt compiles with the Gradle JVM = JDK 17), attempt 3 with Gradle on JDK 21: BUILD SUCCESSFUL → app-release-unsigned.apk
   9.2 MB (sha256 2125bacd…), de.seemoo.at_tracking_detection 3.1.3 (69), minSdk 28, targetSdk 37. S1 proposal: go with AirGuard
   (b1-screening.md). Source clone and build outputs stay outside the repository.
+- 2026-11-19 16:43 DONE autorun b11-final: DONE; guard exit 1; SHUTDOWN ['emulator-5650', 'emulator-5654']. Outcomes not inspected by the runner.
+2026-11-19 16:44 b10-chain: B11 finished; starting B10 calibration pilot
+- 2026-11-19 16:44 LAUNCH autorun b10-pilot (pilot) card artifact/plans/b10-card.md; stages ['calibrate']; owned ['emulator-5660']; log artifact/results/round3/b10/autorun-b10-pilot.log.
+- 2026-11-19 16:44 B11 DONE (data): avd14-final 78/80 valid (reboot 18/20: reb004, reb014 = emulator reboot timeouts, environment), avd15-final 80/80. Runner guard exit 1 = the known generated diff manuscript/generated/tests_macros.tex (summary.json now has the Test 6 keys; C regenerates). Queued manifests' GUARD_ALLOW extended with tests_macros.tex (written atomically before the B10 pilot started) so that diff does not stop the chains; replacement for avd14 reboot ×2 comes from b11-repl-chain at the end of the queue.
