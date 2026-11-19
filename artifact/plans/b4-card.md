@@ -20,3 +20,11 @@ Source `[R3]` B4: "Chi phí transport với thứ tự ngẫu nhiên và tải �
 - Invalid: harness_error; a sender without SEND_OK; a probe without request/ack. First 20 valid per cell.
 - `followup/analyze_sweep.py` (synthetic test passed): ack median / nearest-rank p95 / max; CPU/MiB from 1-sender cells
   (process CPU is process-wide). Descriptive; process CPU is not energy; fixed host, shared load = threats.
+
+## Protocol v2 (19/11, after the v1 final; v1 kept and reported)
+Timestamp check of v1 (device clock, no outcome field): the 3 fixed-delay probes often fell outside the send window when few
+senders were active (median 0–1 of 3 probes inside for 2–8 senders at 4–64 KiB, 1 of 3 at 1 sender), so those cells measured
+an unloaded lock; 16-sender cells had 3/3 inside. v2: `sweep_suite.py --probe-mode overlap --size 4194304` (probes start at the
+first accepted chunk and repeat until every sender ended, max 12; 4 MiB per sender), and `analyze_sweep.py` counts only probes
+whose request lies inside the send window (v2 trials without one are invalid: "no probe under load"). Same cells, order, N.
+Output `final-v2`, `analysis-v2`; v1 (`final`, `analysis`) reported alongside.

@@ -27,19 +27,26 @@ def validity(r):
     ev = r.get('events', [])
     for s in senders_of(r):
         if not any(e['trial'] == s and e['kind'] == 'SEND_OK' for e in ev): return 'sender did not complete'
-    for k in range(3):
+    for k in range(len(r.get('probes', [])) or 3):
         pid = f"{r['trial']}-probe{k}"
         if not all(any(e['trial'] == pid and e['kind'] == kind for e in ev) for kind in ('WITHDRAW_REQUEST', 'WITHDRAW_ACK')): return 'probe incomplete'
+    if r.get('probe_mode') == 'overlap' and not acks(r): return 'no probe under load'
     return None
 
 
 def acks(r):
+    """v1 (fixed): all 3 probes. v2 (overlap): only probes whose request lies inside the send window (first sender event to
+    last SEND_OK, device clock) — the load the estimand is about."""
     ev = r['events']; out = []
-    for k in range(3):
+    ids = senders_of(r); start = min((e['mono_ns'] for e in ev if e['trial'] in ids), default=0)
+    end = max((e['mono_ns'] for e in ev if e['trial'] in ids and e['kind'] == 'SEND_OK'), default=0)
+    for k in range(len(r.get('probes', [])) or 3):
         pid = f"{r['trial']}-probe{k}"
-        req = min(e['mono_ns'] for e in ev if e['trial'] == pid and e['kind'] == 'WITHDRAW_REQUEST')
-        ack = min(e['mono_ns'] for e in ev if e['trial'] == pid and e['kind'] == 'WITHDRAW_ACK')
-        out.append((ack - req) / 1e6)
+        req = [e['mono_ns'] for e in ev if e['trial'] == pid and e['kind'] == 'WITHDRAW_REQUEST']
+        ack = [e['mono_ns'] for e in ev if e['trial'] == pid and e['kind'] == 'WITHDRAW_ACK']
+        if not req or not ack: continue
+        if r.get('probe_mode') == 'overlap' and not (start <= min(req) <= end): continue
+        out.append((min(ack) - min(req)) / 1e6)
     return out
 
 
@@ -51,7 +58,9 @@ def cpu_per_mib(r):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/b4/analysis'))
     ap.add_argument('--n', type=int, default=20); a = ap.parse_args()
-    rows = [json.loads(l) for d in a.dirs for l in open(Path(d) / 'trials.jsonl') if l.strip()]
+    import gzip
+    op = lambda d: open(Path(d) / 'trials.jsonl') if (Path(d) / 'trials.jsonl').exists() else gzip.open(Path(d) / 'trials.jsonl.gz', 'rt')
+    rows = [json.loads(l) for d in a.dirs for l in op(d) if l.strip()]   # large raw files are committed gzip-compressed
     invalid = [{'trial': r['trial'], 'reason': w} for r in rows if (w := validity(r))]
     cells = collections.defaultdict(list)
     for r in sorted((r for r in rows if not validity(r)), key=lambda r: r['block']): cells[r['chunk_kib'], r['senders']].append(r)

@@ -19,6 +19,8 @@ p.add_argument('--blocks', type=int, required=True); p.add_argument('--start', t
 p.add_argument('--chunks', default='1,4,16,64'); p.add_argument('--senders', default='1,2,4,8,16')
 p.add_argument('--size', type=int, default=1048576); p.add_argument('--seed', default='sweep-20261119')
 p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-b4-apk/rl-tls.apk')
+p.add_argument('--probe-mode', default='fixed', choices=['fixed', 'overlap'],
+               help='v2 overlap: probes start at the first accepted chunk and repeat until every sender ended (max 12)')
 a = p.parse_args()
 assert not a.out.exists(), f'refusing: {a.out} exists (fresh directory rule)'
 a.out.mkdir(parents=True)
@@ -96,9 +98,16 @@ def trial(block, chunk, senders):
         ids = [f'{id}-{k}' for k in range(senders)]
         for sid in ids:
             bc('send', sid, tls=False, mode='fence', fault='none', size=a.size, port=8799, chunk=chunk * 1024, deadline_ms=120000, label='analytics:0')
-        r['probes'] = []
-        for k in range(3):                        # unrelated tenant 2: same lock, senders keep going
-            time.sleep(0.2); r['probes'].append(bc('withdraw', f'{id}-probe{k}', remote=True, tenant=2))
+        r['probes'] = []; r['probe_mode'] = a.probe_mode
+        if a.probe_mode == 'fixed':
+            for k in range(3):                    # v1: unrelated tenant 2: same lock, senders keep going
+                time.sleep(0.2); r['probes'].append(bc('withdraw', f'{id}-probe{k}', remote=True, tenant=2))
+        else:                                     # v2: probes while the senders are in flight
+            t0 = time.monotonic()
+            while time.monotonic() - t0 < 20 and not any(e['trial'] in ids and e['kind'] == 'BYTES_ACCEPTED' for e in events()): time.sleep(0.05)
+            for k in range(12):
+                r['probes'].append(bc('withdraw', f'{id}-probe{k}', remote=True, tenant=2))
+                if all(any(e['trial'] == s and e['kind'] in ('SEND_OK', 'SEND_ERROR') for e in events()) for s in ids): break
         end = time.monotonic() + 150
         while time.monotonic() < end:
             ev = events()
