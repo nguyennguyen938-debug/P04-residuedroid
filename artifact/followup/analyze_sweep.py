@@ -58,8 +58,12 @@ def cpu_per_mib(r):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/b4/analysis'))
     ap.add_argument('--n', type=int, default=20); a = ap.parse_args()
-    import gzip
-    op = lambda d: open(Path(d) / 'trials.jsonl') if (Path(d) / 'trials.jsonl').exists() else gzip.open(Path(d) / 'trials.jsonl.gz', 'rt')
+    import gzip, io, subprocess
+    def op(d):                             # raw file if present; else the committed gzip, whole or split into byte parts
+        d = Path(d); parts = sorted(d.glob('trials.jsonl.gz.part-*'))
+        if (d / 'trials.jsonl').exists(): return open(d / 'trials.jsonl')
+        if (d / 'trials.jsonl.gz').exists() or not parts: return gzip.open(d / 'trials.jsonl.gz', 'rt')
+        return io.TextIOWrapper(gzip.GzipFile(fileobj=subprocess.Popen(['cat', *map(str, parts)], stdout=subprocess.PIPE).stdout))
     rows = [json.loads(l) for d in a.dirs for l in op(d) if l.strip()]   # large raw files are committed gzip-compressed
     invalid = [{'trial': r['trial'], 'reason': w} for r in rows if (w := validity(r))]
     cells = collections.defaultdict(list)

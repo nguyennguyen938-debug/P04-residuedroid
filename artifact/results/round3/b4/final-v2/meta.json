@@ -1,0 +1,24 @@
+{
+ "serial": "emulator-5664",
+ "avd": "P04AvdA",
+ "seed": "sweep-20261119",
+ "blocks": 20,
+ "start": 0,
+ "chunks_kib": [
+  1,
+  4,
+  16,
+  64
+ ],
+ "senders": [
+  1,
+  2,
+  4,
+  8,
+  16
+ ],
+ "size": 4194304,
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "apk_sha256": "1afdfda3309226c35b526bc157988059fe0862ede05aec1f89de955852e6829f",
+ "started": 1795091982.7369988
+}

@@ -1,0 +1,189 @@
+{
+ "logged": 400,
+ "invalid": [
+  {
+   "trial": "sw-c4-s16-4-be8647",
+   "reason": "sender did not complete"
+  },
+  {
+   "trial": "sw-c4-s16-9-4d5dbc",
+   "reason": "sender did not complete"
+  },
+  {
+   "trial": "sw-c4-s16-14-b834b3",
+   "reason": "sender did not complete"
+  },
+  {
+   "trial": "sw-c64-s8-16-e3b445",
+   "reason": "sender did not complete"
+  }
+ ],
+ "cells": {
+  "1KiB/1": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 4.1180625,
+   "ack_ms_p95": 23.434709,
+   "ack_ms_max": 52.360708,
+   "cpu_ms_per_mib_median": 159.24766496267705
+  },
+  "1KiB/2": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 2.0797705,
+   "ack_ms_p95": 8.976333,
+   "ack_ms_max": 14.669292,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/4": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 2.052104,
+   "ack_ms_p95": 7.674541,
+   "ack_ms_max": 17.966458,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/8": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.9927294999999998,
+   "ack_ms_p95": 10.018958,
+   "ack_ms_max": 27.37025,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/16": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.961354,
+   "ack_ms_p95": 8.304292,
+   "ack_ms_max": 21.303583,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/1": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.285417,
+   "ack_ms_p95": 6.354583,
+   "ack_ms_max": 26.709334,
+   "cpu_ms_per_mib_median": 72.24894924499894
+  },
+  "4KiB/2": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 2.071125,
+   "ack_ms_p95": 6.985958,
+   "ack_ms_max": 23.649791,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/4": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 2.3674169999999997,
+   "ack_ms_p95": 7.143666,
+   "ack_ms_max": 10.594708,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/8": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 2.392854,
+   "ack_ms_p95": 7.310042,
+   "ack_ms_max": 20.266167,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/16": {
+   "trials": 17,
+   "unused": 0,
+   "ack_ms_median": 2.4543965,
+   "ack_ms_p95": 8.272417,
+   "ack_ms_max": 19.325958,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/1": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 0.778396,
+   "ack_ms_p95": 2.618583,
+   "ack_ms_max": 6.6065,
+   "cpu_ms_per_mib_median": 29.12456599524688
+  },
+  "16KiB/2": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.1916465,
+   "ack_ms_p95": 3.927167,
+   "ack_ms_max": 10.6885,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/4": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.4500625,
+   "ack_ms_p95": 4.80275,
+   "ack_ms_max": 15.5445,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/8": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.674312,
+   "ack_ms_p95": 6.063917,
+   "ack_ms_max": 12.449917,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/16": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.6776460000000002,
+   "ack_ms_p95": 6.70625,
+   "ack_ms_max": 9.255292,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/1": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 0.683125,
+   "ack_ms_p95": 2.522375,
+   "ack_ms_max": 4.3705,
+   "cpu_ms_per_mib_median": 22.249665801776526
+  },
+  "64KiB/2": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.166875,
+   "ack_ms_p95": 3.750166,
+   "ack_ms_max": 6.379833,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/4": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.187625,
+   "ack_ms_p95": 4.651542,
+   "ack_ms_max": 72.916042,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/8": {
+   "trials": 19,
+   "unused": 0,
+   "ack_ms_median": 1.2603330000000001,
+   "ack_ms_p95": 5.025708,
+   "ack_ms_max": 7.44775,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/16": {
+   "trials": 20,
+   "unused": 0,
+   "ack_ms_median": 1.233125,
+   "ack_ms_p95": 3.982333,
+   "ack_ms_max": 7.40725,
+   "cpu_ms_per_mib_median": null
+  }
+ },
+ "keys": {
+  "sweepAckSmallMs": 4.1180625,
+  "sweepAckLargeMs": 1.233125,
+  "sweepCpuSmall": 159.24766496267705,
+  "sweepCpuLarge": 22.249665801776526
+ }
+}

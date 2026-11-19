@@ -380,3 +380,11 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 2026-11-19 19:39 queue2: done
 - 2026-11-19 19:39 LAUNCH autorun b4-final-v2 (final) card artifact/plans/b4-card.md; stages ['final']; owned ['emulator-5664']; log artifact/results/round3/b4/autorun-b4-final-v2.log.
 - 2026-11-19 19:40 B10 v2 pilot2 ABORT diagnosis: race_suite.py died before any trial on the radio metadata line (`dumpsys connectivity | grep -m2` exits 1 when nothing matches → adb() raised). Fix: '; true' on that metadata-only command (atomic replace). Protocol v2 unchanged. Fresh dirs: manifests b10-pilot3 (pilot-calib3) / b10-final3 (final3), queued as queue4.sh after queue3 (B4 v2). pilot-calib2 holds only the emulator log.
+- 2026-11-19 20:08 DONE autorun b4-final-v2: DONE; guard exit 0; SHUTDOWN ['emulator-5664']. Outcomes not inspected by the runner.
+2026-11-19 20:08 queue3: b4-final-v2 exit 0
+- 2026-11-19 20:08 LAUNCH autorun b10-pilot3 (pilot) card artifact/plans/b10-card.md; stages ['calibrate']; owned ['emulator-5660']; log artifact/results/round3/b10/autorun-b10-pilot3.log.
+- 2026-11-19 20:10 DONE autorun b10-pilot3: DONE; guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+2026-11-19 20:10 queue4: b10-pilot3 exit 0
+2026-11-19 20:10 queue4: B10 v2 THROTTLE GATE FAIL (radio path); final not started — host shaper needed (sudo)
+2026-11-19 20:10 queue4: done
+- 2026-11-19 20:10 B4 v2 final DONE (19:39–20:06): 400 logged, 4 invalid (sender Broken pipe after ~31–35 s: 3× 4 KiB/16, 1× 64 KiB/8; no replacement rule → 17 and 19 valid in those cells). Raw 1.94 GB kept on disk; gzip 110 MB > GitHub limit → committed as byte parts part-aa/ab (cat = original gzip, sha256 a5f995f2…); analyze_sweep.py reads parts, output byte-identical. summary.json rebuilt (23 keys; sweep* from analysis-v2). Card Outcome filled.

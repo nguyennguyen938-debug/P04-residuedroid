@@ -28,3 +28,19 @@ an unloaded lock; 16-sender cells had 3/3 inside. v2: `sweep_suite.py --probe-mo
 first accepted chunk and repeat until every sender ended, max 12; 4 MiB per sender), and `analyze_sweep.py` counts only probes
 whose request lies inside the send window (v2 trials without one are invalid: "no probe under load"). Same cells, order, N.
 Output `final-v2`, `analysis-v2`; v1 (`final`, `analysis`) reported alongside.
+
+## Outcome (19/11)
+- v1 final (17:37–17:52, `final`, `analysis`): 400 logged, 0 invalid, 20 valid per cell. Superseded as the estimand by v2
+  (probes mostly outside the send window, see above); kept and reported.
+- v2 final (19:39–20:06, `final-v2`, `analysis-v2`, guard 0): 400 logged, 4 invalid ("sender did not complete": one sender
+  ended with `IOException: Broken pipe` after ~31–35 s; 3 in 4 KiB/16 senders, 1 in 64 KiB/8). The card has no replacement
+  rule, so none were run: 4 KiB/16 has 17 valid trials, 64 KiB/8 has 19, every other cell 20. Likely mechanism (not
+  verified): the host receiver's 30 s per-recv timeout closed a connection whose sender was idle that long under 16-way
+  contention — reported as a harness limit, and as a sign that a sender can wait > 30 s with 16 concurrent senders.
+- Keys from v2 (descriptive order statistics, device clock; process CPU is not energy): probe ack median 4.12 ms at
+  1 KiB/1 sender (p95 23.4, max 52.4) and 1.23 ms at 64 KiB/16 senders (p95 3.98, max 7.41); CPU per MiB (1 sender)
+  159 ms at 1 KiB, 22.2 ms at 64 KiB. v1 for comparison (probes mostly on an unloaded lock): 0.96 / 1.00 ms, 244 / 18.0 ms.
+  All per-cell values in `analysis-v2/sweep-summary.json`. Threats: one AVD, shared host, fixed seed order per block.
+- Storage: v2 raw `trials.jsonl` is 1.94 GB (on disk, git-ignored); committed as `trials.jsonl.gz` split into byte parts
+  `trials.jsonl.gz.part-aa/ab` (< 100 MB each; `cat` restores the gzip, sha256 in `trials.jsonl.gz.sha256`; the original's
+  sha256 in `trials.jsonl.sha256`). `analyze_sweep.py` reads the parts; output from parts is byte-identical.

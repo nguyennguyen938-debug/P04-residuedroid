@@ -10,7 +10,7 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | A10 | Chạy `triage/find_callers.py` trên acrafence + matomo APK | gửi A | `make apks`, `matomo/build.sh` | 22/11 | DONE 19/11 | `results/round3/a10/` |
 | B3 | Tách lô trong `ChunkFence` + transport; 3 điều kiện × 20 | raw, `summary.json` | S0 | 24/11 | DONE 19/11 (v2): 120/120 valid; split recovers 20/20 prefirst, 0/20 prefix (card §6) | |
 | B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | CODE DONE, queued (b10-chain) | |
-| B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | CODE DONE, queued (b4-chain) | cắt đầu tiên |
+| B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | DONE 19/11: v1 + v2 (v2 = keys; 4 invalid, 2 cells < 20, card Outcome) | cắt đầu tiên |
 | B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | DONE 19/11: base/M1/M2/M3 final, 38–40 valid each (card Outcome); M1 null → told A | |
 | T6 | Test 6: Pixel 8a (Device Farm) + Galaxy M35 (RTL), TLS ×20 + lifecycle pen/kill/rev ×20 mỗi máy | `dev*` (chờ C chốt định nghĩa) | — | 28/11 | DATA DONE 19/11 | card `test6-card.md` §6; receiver: P USB, G relay RDB |
 | B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | TODO | pen, kill, reb, net (+fstop) × 20 |
