@@ -8,6 +8,7 @@
 #                   [--tls-start K --tls-n N] [--life-start K --life-trials N --schedules pending,kill,revoke]
 # TLS runs only if --tls-n is given, lifecycle only if --life-trials is given.
 set -uo pipefail
+main() {
 PORT=; PKG=; OUT=; MODEL=; ANDROID=; END=; TLS_START=0; TLS_N=; LIFE_START=0; LIFE_N=; SCHED=pending,kill,revoke
 ADB=${ADB:-$HOME/Library/Android/sdk/platform-tools/adb}
 while [ $# -gt 0 ]; do case $1 in
@@ -18,16 +19,21 @@ while [ $# -gt 0 ]; do case $1 in
 : "${PORT:?--port}" "${PKG:?--pkg}" "${OUT:?--out}" "${MODEL:?--expect-model}" "${ANDROID:?--expect-android}"
 [ -n "$TLS_N$LIFE_N" ] || { echo "nothing to run: give --tls-n and/or --life-trials"; exit 2; }
 case $SCHED in *reboot*|*netloss*) echo "reboot/netloss need root: emulator only"; exit 2;; esac
+[ -d "$(dirname "$OUT")" ] || { echo "parent of $OUT does not exist"; exit 2; }
+OUT="$(cd "$(dirname "$OUT")" && pwd)/$(basename "$OUT")"; PKG="$(cd "$PKG" 2>/dev/null && pwd)"   # absolute: the run cd's into PKG
 [ ! -e "$OUT" ] || { echo "refusing: $OUT exists (fresh directory rule)"; exit 2; }
+if lsof -nP -iTCP:8787 -iTCP:8798 -iTCP:8799 -sTCP:LISTEN >/dev/null 2>&1; then   # fixed harness ports: one run at a time
+  echo "refusing: host ports 8787/8798/8799 already in use (another run is active)"; exit 2; fi
 [ -f "$PKG/artifact/followup/tls_suite.py" ] && [ -f "$PKG/artifact/followup/tls-cert/test-key.pem" ] || { echo "not a package dir: $PKG"; exit 2; }
 HERE=$(cd "$(dirname "$0")" && pwd); REPO=$(cd "$HERE/../../.." && pwd)
+[ -f "$HERE/rdb_probe.py" ] || { echo "refusing: $HERE/rdb_probe.py missing (no link watchdog)"; exit 2; }
 export ANDROID_ADB_SERVER_PORT=${ANDROID_ADB_SERVER_PORT:-5038}   # own adb server; never the default one on 5037
 export ADB
 S=localhost:$PORT
 "$ADB" version | grep -q "Version 33\." || { echo "use platform-tools r33 adb (adb 37 hung on RDB); got: $("$ADB" version | sed -n 2p)"; exit 2; }
 
-# estimated duration (pilot rtl-3: TLS block 36 s, lifecycle trial 75-99 s); refuse if the session would end first
-EST=$(( 120 + ${TLS_N:-0} * 45 + ${LIFE_N:-0} * $(echo "$SCHED" | tr ',' '\n' | wc -l) * 100 ))
+# estimated duration (pilot-rtl-3: TLS block 36 s, lifecycle trial 75-99 s; +fixed setup); refuse if the session would end first
+EST=$(( 150 + ${TLS_N:-0} * 40 + ${LIFE_N:-0} * $(echo "$SCHED" | tr ',' '\n' | wc -l) * 95 ))
 if [ -n "$END" ]; then
   LEFT=$(( $(date -j -f "%H:%M" "$END" +%s) - $(date +%s) ))
   [ $(( EST + 300 )) -le $LEFT ] || { echo "refusing: needs ~$((EST/60)) min + 5 min margin, session has $((LEFT/60)) min"; exit 2; }
@@ -128,3 +134,5 @@ EOF
 log "DONE (cleanup follows)"
 [ -e "$OUT/LINK_DOWN" ] && exit 4   # environment failure: affected trials are replaced per the card
 exit 0
+}
+main "$@"; exit $?

@@ -164,6 +164,25 @@ def analyse_life(instdir, outdir, n):
             "analyzed_paired_trials": {f"{a}/{b}": c for (a, b), c in sorted(analysed.items())}}
 
 
+# ---------------------------------------------------------------- manifest
+def expand(dev, spec):
+    """Glob entries ('*') expand to existing directories, sorted, skipping *_INVALID_* (retained failed attempts).
+    A lifecycle glob key gives one instance per directory: <device>-<directory name after its first '-'>."""
+    import glob as _g
+    tls = []
+    for p in spec.get("tls", []):
+        tls += sorted(x for x in _g.glob(str(ART / p)) if "_INVALID_" not in x) if "*" in p else [str(ART / p)]
+    life = {}
+    for inst, p in spec.get("life", {}).items():
+        if "*" in p:
+            for x in sorted(_g.glob(str(ART / p))):
+                if "_INVALID_" in x: continue
+                life[f"{dev}-{os.path.basename(os.path.dirname(x)).split('-', 1)[1]}"] = x
+        else:
+            life[inst] = str(ART / p)
+    return tls, life
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -178,10 +197,12 @@ def main():
     for dev, spec in man["devices"].items():
         assert len(dev) == 1, "device keys are one letter (the oracle takes run = instance[0])"
         res["devices"][dev] = {k: spec.get(k) for k in ("label", "model", "android", "environment", "receiver_mode")}
-        res["devices"][dev]["tls"] = analyse_tls([ART / p for p in spec.get("tls", [])], a.n)
-        for inst, p in spec.get("life", {}).items():
+        tls, life = expand(dev, spec)
+        res["devices"][dev]["tls"] = analyse_tls(tls, a.n)
+        res["devices"][dev]["dirs"] = {"tls": [os.path.relpath(x, ART) for x in tls], "life": {k: os.path.relpath(v, ART) for k, v in life.items()}}
+        for inst, p in life.items():
             assert inst[0] == dev, f"instance {inst} must start with device key {dev}"
-            instdir[inst] = ART / p
+            instdir[inst] = Path(p)
     if instdir:
         res["lifecycle"] = analyse_life(instdir, out, a.n)
     used = lambda dev: res["devices"][dev]["tls"]["per_case"]

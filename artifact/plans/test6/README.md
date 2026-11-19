@@ -65,6 +65,16 @@ ARNs and stays outside the repository. Every run needs the user's go-ahead.
   `session.json` + `package-sha256.json`, link probe `rdb_probe.py` (stops the harness after 6 failed probes → `LINK_DOWN`,
   exit 4), cleanup that always runs. Checked offline against a fake phone (full run, and a link drop mid-lifecycle). Pilot 3 (`results/round3/test6/pilot-rtl-3`)
   passed all mechanism checks; pilots 1–2 are environment failures (kept).
+- **Unattended (use this):** `END=HH:MM bash artifact/plans/test6/rtl_auto.sh <scratch>` owns the Samsung `rdb` relay
+  (started with the r33 adb on PATH and server port 5038: rdb runs `adb connect` itself and needs adb on PATH) and fills
+  the session: remaining TLS blocks 0–19 and lifecycle k 0–19 (after the last recorded index), then replacements for
+  schedules short of 20 valid (validity counted by `analyze_test6.py`, cap 5), sized to the time left (TLS 40 s/block,
+  95 s/trial, 150 s setup, 5 min margin); new dirs `galaxy-pNN`. Link drop → watchdog exit 4 → relay restart (log line
+  NEED_CLICK: the RTL page must open Remote Debug Bridge again) → continue. Stops after 3 failed or 3 no-progress runs.
+  Checked offline (fake rdb + fake phone, only when no live run uses ports 8787/8798/8799): fill, kill-only replacements up to
+  the cap, link drop + restart + continuation.
+- Lessons (RUNLOG 19/11): never edit a script a running process reads (scripts are now wrapped in main(); replace files
+  atomically); one harness run per Mac at a time (fixed host ports; run_rtl.sh refuses otherwise); give absolute paths.
 - Credits: 4 per 60 min (1 credit = 15 min); the user had 22 (330 min). Pilot 3 times: TLS block 36 s (+~15 s install),
   lifecycle pen+kill+rev block 251 s.
 

@@ -3,6 +3,7 @@
 # Usage: run_df.sh <uploads.env> <run-name> <out-dir> [job-timeout-minutes, default 15]
 # uploads.env (kept outside the repo; holds account-specific ARNs): APP=..., PKG=..., SPEC=..., POOL=..., PRJ file via PRJ=...
 set -euo pipefail
+main() {
 ENV=$1; NAME=$2; OUT=$3; TMO=${4:-15}
 export AWS_PROFILE=${AWS_PROFILE:-p04} AWS_REGION=us-west-2
 source "$ENV"; : "${PRJ:?}" "${APP:?}" "${PKG:?}" "${SPEC:?}" "${POOL:?}"
@@ -34,3 +35,5 @@ for z in "$OUT"/*.zip; do [ -e "$z" ] || continue      # customer artifacts: ext
   find "$d" -maxdepth 6 -type d \( -name tls -o -name life \) | sed "s#^$OUT/#  found #"; done
 after=$(aws devicefarm get-account-settings --query 'accountSettings.trialMinutes.remaining' --output text)
 echo "trial minutes after: $after (used $(python3 -c "print(round($before-$after,1))"))" | tee "$OUT/minutes.txt"
+}
+main "$@"; exit $?

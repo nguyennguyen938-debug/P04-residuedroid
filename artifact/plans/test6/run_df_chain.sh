@@ -4,6 +4,7 @@
 # invalid trials are decided afterwards from the validity rules). Needs the user's go-ahead (Device Farm minutes).
 # Usage: run_df_chain.sh <env dir> <prefix of env files, e.g. uploads-p2> [--skip-pilot]
 set -uo pipefail
+main() {
 ENVD=$1; PFX=$2; SKIP=${3:-}
 HERE=$(cd "$(dirname "$0")" && pwd); ART=$(cd "$HERE/../.." && pwd); R=$ART/results/round3/test6
 note() { echo "$(date '+%Y-%m-%d %H:%M') $*"; }
@@ -18,3 +19,5 @@ python3 "$HERE/check_gates.py" "$R/pixel8a-j1" --tls 140 --life 30; note "chain:
 note "chain: main job 2"
 bash "$HERE/run_df.sh" "$ENVD/$PFX-j2.env" test6-main-j2-pixel8a "$R/pixel8a-j2" 100; note "chain: job 2 exit $?"
 note "chain: done"
+}
+main "$@"; exit $?

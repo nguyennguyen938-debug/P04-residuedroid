@@ -1,0 +1,85 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-5vom32d2/shared-8ne5sf8x/android-home-dkzx85q_/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+8798
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+8799
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8787 tcp:8787
+8787
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+UsbFfs tcp:8798 tcp:8798
+UsbFfs tcp:8799 tcp:8799
+UsbFfs tcp:8787 tcp:8787
+
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell pm list packages -i org.residuelab.tls
+package:org.residuelab.tls  installer=null
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell dumpsys package org.residuelab.tls | grep -i -E 'installer|updateOwner|versionCode' || true
+    versionCode=0 minSdk=26 targetSdk=33
+    installerPackageName=null
+    installerPackageUid=-1
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+Success
+UNINSTALL_TLS_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,revoke --start 10 --trials 10 --seed test6-20261119 --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+03:48:48 44151JEKB02756 pen010 91s
+03:50:25 44151JEKB02756 kil010 96s
+03:51:59 44151JEKB02756 rev010 95s
+03:53:30 44151JEKB02756 pen011 91s
+03:55:07 44151JEKB02756 kil011 97s
+03:56:42 44151JEKB02756 rev011 95s
+03:58:13 44151JEKB02756 pen012 91s
+03:59:49 44151JEKB02756 kil012 96s
+04:01:23 44151JEKB02756 rev012 94s
+04:02:54 44151JEKB02756 pen013 91s
+04:04:06 44151JEKB02756 kil013 72s
+04:05:40 44151JEKB02756 rev013 94s
+04:07:11 44151JEKB02756 pen014 91s
+04:07:48 44151JEKB02756 kil014 37s
+04:08:23 44151JEKB02756 rev014 34s
+04:09:54 44151JEKB02756 pen015 91s
+04:10:30 44151JEKB02756 kil015 37s
+04:12:05 44151JEKB02756 rev015 95s
+04:13:36 44151JEKB02756 pen016 91s
+04:14:13 44151JEKB02756 kil016 37s
+04:15:47 44151JEKB02756 rev016 95s
+04:17:19 44151JEKB02756 pen017 91s
+04:18:55 44151JEKB02756 kil017 96s
+04:20:29 44151JEKB02756 rev017 95s
+04:22:00 44151JEKB02756 pen018 91s
+04:22:37 44151JEKB02756 kil018 37s
+04:24:11 44151JEKB02756 rev018 94s
+04:25:42 44151JEKB02756 pen019 91s
+04:27:19 44151JEKB02756 kil019 97s
+04:28:53 44151JEKB02756 rev019 94s
+LIFE_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.
