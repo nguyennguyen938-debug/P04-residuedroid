@@ -1,0 +1,13 @@
+{
+ "serial": "emulator-5600",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "variants": [
+  "mfence"
+ ],
+ "schedules": "pending,reboot",
+ "trials": 20,
+ "seed": "residue-2027",
+ "sink_delay_ms": 300,
+ "substrate": "job",
+ "start": 1795086818.99748
+}

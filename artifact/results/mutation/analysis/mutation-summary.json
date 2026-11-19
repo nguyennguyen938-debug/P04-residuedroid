@@ -1,0 +1,86 @@
+{
+ "mutants": {
+  "base": {
+   "valid_trials": 40,
+   "invalid": [],
+   "leaking_trials": 0,
+   "flagged_items": 0,
+   "wrong_label_items": 0,
+   "permitted_deficit": 44,
+   "label_check_counts": {
+    "mfence/ok": 2116
+   }
+  },
+  "M1-union-latest": {
+   "valid_trials": 39,
+   "invalid": [
+    {
+     "run": "X",
+     "instance": "X-M1-union-latest",
+     "trial": "reb006",
+     "reason": "harness/device"
+    }
+   ],
+   "leaking_trials": 0,
+   "flagged_items": 0,
+   "wrong_label_items": 0,
+   "permitted_deficit": 52,
+   "label_check_counts": {
+    "mfence/ok": 2054
+   }
+  },
+  "M2-stale-epoch": {
+   "valid_trials": 39,
+   "invalid": [
+    {
+     "run": "X",
+     "instance": "X-M2-stale-epoch",
+     "trial": "reb001",
+     "reason": "harness/device"
+    }
+   ],
+   "leaking_trials": 39,
+   "flagged_items": 908,
+   "wrong_label_items": 908,
+   "permitted_deficit": 504,
+   "label_check_counts": {
+    "mfence/incomplete": 908,
+    "mfence/ok": 1150
+   }
+  },
+  "M3-extras-drop": {
+   "valid_trials": 38,
+   "invalid": [
+    {
+     "run": "X",
+     "instance": "X-M3-extras-drop",
+     "trial": "reb004",
+     "reason": "harness/device"
+    },
+    {
+     "run": "X",
+     "instance": "X-M3-extras-drop",
+     "trial": "reb014",
+     "reason": "harness/device"
+    }
+   ],
+   "leaking_trials": 0,
+   "flagged_items": 0,
+   "wrong_label_items": 0,
+   "permitted_deficit": 116,
+   "label_check_counts": {
+    "mfence/ok": 1936
+   }
+  }
+ },
+ "keys": {
+  "mutOneLeak": 0,
+  "mutOneFlagged": 0,
+  "mutOneWrong": 0,
+  "mutTwoLeak": 39,
+  "mutTwoFlagged": 908,
+  "mutTwoWrong": 908,
+  "mutThreeDeficit": 116,
+  "mutTrials": 38
+ }
+}
