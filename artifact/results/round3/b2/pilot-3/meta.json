@@ -1,0 +1,25 @@
+{
+ "serial": "emulator-5666",
+ "avd": "P04AvdA",
+ "schedules": "pending,kill,reboot,netloss",
+ "trials": 1,
+ "start": 0,
+ "seed": "b2-20261119",
+ "nbeacons": 4,
+ "warmup": {
+  "stock": {
+   "s": 33.7,
+   "ok": true
+  },
+  "fenced": {
+   "s": 10.2,
+   "ok": true
+  }
+ },
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "apks": {
+  "stock": "e53e52549bb02af0fdfcb73c57788e565130edefa3d6057bb0fa338d90841ca7",
+  "fenced": "30eb823f99b1d21a098e4a699200ec9b3e0f33b68fbafcff6abb25cf93484e84"
+ },
+ "started": 1795102961.734066
+}
