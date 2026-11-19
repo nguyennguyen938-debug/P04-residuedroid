@@ -33,6 +33,13 @@ so after re-consent the next upload can include data collected outside consent. 
   consent interval, or inside a withdrawn interval when the upload attempt began after WITHDRAW_ACK, is a violation;
   permitted items missing = deficit. Unknown when write returns are missing (as matched oracle).
 
+## Driver (19/11): `followup/campaign_airguard.py`
+Per trial, both builds in lockstep (order shuffled per trial from the seed): grant → insert 'pre' → [netloss: link cut, worker
+run fails and is retried] → withdraw → insert 'optout' (scanning continues while opted out) → lifecycle (kill: SIGKILL; reboot)
+→ re-grant → insert 'post' → [netloss: link restored, retry runs | else: run worker] → quiescence → read residue-events. Oracle:
+an uploaded 'pre' or 'optout' beacon = violation; a missing 'post' beacon = permitted deficit (a fenced request mixing old and
+new items is blocked whole — the split policy of B3 would recover the 'post' items; reported, not hidden).
+
 ## Open items before the pilot
 - Implement patches (worker, consent log, receiver, Gradle flavor for stock/fenced) and a `campaign_airguard.py` driver.
 - Pilot on P04AvdA (one trial per schedule), then freeze N/seed/timeouts here. Emulator slot per plan: 26–27/11.
