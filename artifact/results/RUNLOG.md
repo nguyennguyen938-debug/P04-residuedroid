@@ -326,3 +326,24 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 2026-11-19 16:44 b10-chain: B11 finished; starting B10 calibration pilot
 - 2026-11-19 16:44 LAUNCH autorun b10-pilot (pilot) card artifact/plans/b10-card.md; stages ['calibrate']; owned ['emulator-5660']; log artifact/results/round3/b10/autorun-b10-pilot.log.
 - 2026-11-19 16:44 B11 DONE (data): avd14-final 78/80 valid (reboot 18/20: reb004, reb014 = emulator reboot timeouts, environment), avd15-final 80/80. Runner guard exit 1 = the known generated diff manuscript/generated/tests_macros.tex (summary.json now has the Test 6 keys; C regenerates). Queued manifests' GUARD_ALLOW extended with tests_macros.tex (written atomically before the B10 pilot started) so that diff does not stop the chains; replacement for avd14 reboot ×2 comes from b11-repl-chain at the end of the queue.
+- 2026-11-19 16:45 DONE autorun b10-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+2026-11-19 16:45 b10-chain: THROTTLE GATE FAIL: emulator link shaping not effective; final not started (protocol v2 needed)
+2026-11-19 16:46 b3-chain: B10 chain finished; starting B3 pilot
+- 2026-11-19 16:46 LAUNCH autorun b3-pilot (pilot) card artifact/plans/b3-card.md; stages ['pilot']; owned ['emulator-5662']; log artifact/results/round3/b3/autorun-b3-pilot.log.
+- 2026-11-19 16:49 DONE autorun b3-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5662']. Outcomes not inspected by the runner.
+2026-11-19 16:49 b3-chain: MECHANISM GATE FAIL; final not started
+2026-11-19 16:49 b4-chain: previous chains finished; starting B4 pilot
+- 2026-11-19 16:49 LAUNCH autorun b4-pilot (pilot) card artifact/plans/b4-card.md; stages ['pilot']; owned ['emulator-5664']; log artifact/results/round3/b4/autorun-b4-pilot.log.
+- 2026-11-19 16:51 DONE autorun b4-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5664']. Outcomes not inspected by the runner.
+2026-11-19 16:51 b4-chain: gate passed; starting B4 final
+2026-11-19 16:51 b4-chain: final autorun exit 3
+2026-11-19 16:51 b12-chain: previous chains finished; starting B12 base pilot
+- 2026-11-19 16:51 LAUNCH autorun b12-pilot (pilot) card artifact/plans/b12-card.md; stages ['base']; owned ['emulator-5600']; log artifact/results/mutation/autorun-b12-pilot.log.
+- 2026-11-19 16:53 DONE autorun b12-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5600']. Outcomes not inspected by the runner.
+2026-11-19 16:53 b12-chain: I0 gate passed; starting B12 final (4 mutants)
+2026-11-19 16:53 b12-chain: final autorun exit 3
+2026-11-19 16:54 b11-repl: replacement plan {"Fourteen": {"avd": "P04Avd14", "serial": "emulator-5650", "port": 8790, "schedules": "reboot", "trials": 2}}
+- 2026-11-19 16:54 LAUNCH autorun b11-repl (final) card artifact/plans/b11-card.md; stages ['repl-Fourteen']; owned ['emulator-5650', 'emulator-5654']; log artifact/results/round3/b11/autorun-b11-repl.log.
+- 2026-11-19 16:56 DONE autorun b11-repl: DONE; guard exit 0; SHUTDOWN ['emulator-5650', 'emulator-5654']. Outcomes not inspected by the runner.
+2026-11-19 16:56 b11-repl: replacement autorun exit 0
+- 2026-11-19 17:04 B2 DESIGN: artifact/plans/b2-card.md (draft): AirGuard SendStatisticsWorker fenced through HttpTransport; durable consent log keyed by collection time (no Room schema change); identical debug test hooks in stock and fenced builds; oracle sink-side. Implementation next; emulator slot 26–27/11.
