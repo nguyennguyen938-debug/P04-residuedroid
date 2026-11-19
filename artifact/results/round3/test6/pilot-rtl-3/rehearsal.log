@@ -1,0 +1,24 @@
+== pre_test 08:45:45
+8798
+8799
+8787
+host-29 tcp:8798 tcp:8798
+host-29 tcp:8799 tcp:8799
+host-29 tcp:8787 tcp:8787
+
+samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys
+== TLS start 08:45:46
+control 0 None [('SEND_OK', 'elapsed_ns=6089041226;process_cpu_ms=5836;payload_bytes=1048638')]
+early 0 None [('SEND_OK', 'elapsed_ns=4687762959;process_cpu_ms=4236;payload_bytes=1048636')]
+buffered-fence 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=12')]
+buffered-early 0 None [('SEND_OK', 'elapsed_ns=1501107306;process_cpu_ms=347;payload_bytes=16453')]
+stall-small 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=99')]
+stall-large 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=87')]
+concurrent 0 None [('SEND_ERROR', 'java.io.IOException: process lock deadline;elapsed_ns=10062873878;process_cpu_ms=6748'), ('SEND_ERROR', 'java.net.SocketTimeoutException: TLS deadline;elapsed_ns=10067902454;process_cpu_ms=6791')]
+TLS_EXIT=0
+== LIFE start 08:46:38
+08:47:58 localhost:52011 pen000 75s
+08:49:37 localhost:52011 kil000 99s
+08:50:54 localhost:52011 rev000 77s
+LIFE_EXIT=0
+== post_test 08:50:54

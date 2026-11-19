@@ -25,5 +25,8 @@ for J in $(aws devicefarm list-jobs --arn "$RUN" --query 'jobs[].arn' --output t
       curl -sS -f -o "$OUT/$(echo "$n" | tr ' /' '__').$e" "$u" || echo "download failed: $n"; done
   done
 done
+for z in "$OUT"/*.zip; do [ -e "$z" ] || continue      # customer artifacts: extracted next to the zip, zip kept as is
+  d="$OUT/unzipped/$(basename "$z" .zip)"; mkdir -p "$d" && unzip -q "$z" -d "$d" && echo "extracted $(basename "$z")"
+  find "$d" -maxdepth 6 -type d \( -name tls -o -name life \) | sed "s#^$OUT/#  found #"; done
 after=$(aws devicefarm get-account-settings --query 'accountSettings.trialMinutes.remaining' --output text)
 echo "trial minutes after: $after (used $(python3 -c "print(round($before-$after,1))"))" | tee "$OUT/minutes.txt"

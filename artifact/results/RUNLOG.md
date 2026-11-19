@@ -141,3 +141,84 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   166/104/127 s (reset 34–49 s; pen/rev waited ~72–76 s, backstop force-run at 60 s) vs 55/43/34 s medians of the android-33
   matched campaign → 20 blocks ≈ 130 min per device, near the 150-min job cap: split lifecycle into 2 jobs per device
   (plan risk "chia thành nhiều lô nhỏ"). SHUTDOWN emulator-5644; adb reverse and listeners cleared. No Device Farm minutes used.
+- 2026-11-19 08:20 TEST6-ALT RTL CHECK (no install, user go-ahead): Samsung Remote Test Lab, Galaxy M35 (SM-M356B,
+  product m35xxx), Remote Debug Bridge on localhost:52011, host adb platform-tools 37.0.1. `adb devices` shows the device
+  as `device` and `get-state` answers, but every service request hung with no output (`shell echo`, `shell -x`,
+  `exec-out`, `reverse --list`; 20–30 s caps, plus one 120 s getprop batch, stopped). The RDB log then printed "ADB disconnected
+  from RDB". Nothing was installed and no reverse was set. `adb disconnect` done. Suspected incompatibility between the new
+  adb client and the RDB relay (not verified). Next: retry with platform-tools r33.0.3 (dl.google.com) on its own server port.
+- 2026-11-19 08:28 TEST6-ALT RTL CHECK 2: same session (RDB localhost:52011, reconnected) with platform-tools r33.0.3 adb on
+  its own server port 5038: shell answers (5 × `shell true` 0.09–0.16 s). Device: Galaxy M35 SM-M356B, Android 14 / SDK 34,
+  fingerprint samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys, arm64-v8a; adbd uid 2000 shell (no
+  root); run-as and pidof present; adb reverse 8798/8799/8787 accepted; no org.residuelab.* packages present before install.
+- 2026-11-19 08:30 LAUNCH TEST6-ALT RTL pilot (PILOT, excluded; user asked B/Claude to run it all): package v2 (commit
+  400f62e harness, same APKs as the Device Farm package) run as testspec-pilot-combined.yml runs it, against the RTL device
+  over RDB (ADB = r33 adb, server port 5038): TLS --n 1 (7 cases), then campaign.py --no-root --sink-host 127.0.0.1
+  pen,kill,rev × 1 → results/round3/test6/pilot-rtl-1/{tls,life}. Receivers on this Mac; phone reaches them through adb
+  reverse over the RTL relay (remote network path, not USB).
+- 2026-11-19 08:27 ABORT TEST6-ALT RTL pilot (PILOT, excluded) → results/round3/test6/pilot-rtl-1 kept as is. Timeline
+  from rehearsal.log: pre_test and TLS start 08:25:54; rl-tls.apk install and the CA push went through; the next command
+  (`shell cat …pem | run-as org.residuelab.tls sh -c "cat > files/test-ca.pem"`) hit the harness's 40 s adb timeout →
+  traceback, TLS_EXIT=1, no TLS trial ran. The user reported at the same time that the RDB log showed a disconnect. Lifecycle
+  started 08:26:37 and wrote nothing (schedule/device_events empty); stopped by B/Claude. Afterwards the device is still
+  listed as `device`, but `shell echo` gets no answer within 15 s. Sink on 8787 (started by campaign.py) killed; no host
+  listeners remain. Left on the device until the next connection: org.residuelab.tls installed,
+  /data/local/tmp/p04-test-ca.pem. Cause of the drop not known (relay or session side; nothing on the host side
+  except hung streams). Correction: the two entries above labelled 08:28 and 08:30 actually happened ~08:24–08:25
+  (times were estimated, not read from the clock; rehearsal.log has the real ones).
+- 2026-11-19 08:39 TEST6-ALT RTL STABILITY PROBE (no install): same session, RDB localhost:52011 reconnected, r33 adb (port 5038);
+  `shell echo ok` every 2 s for 10 min (08:28:53–08:38:5x): 300/300 OK, 0 timeouts (10 s cap); round trip median 0.10 s,
+  nearest-rank p95 0.18 s, max 0.31 s. Log kept in B's scratch (diagnostic, not data). Leftovers of the aborted pilot
+  removed (uninstall org.residuelab.tls, rm /data/local/tmp/p04-test-ca.pem); /data/local/tmp also holds app.apk and
+  sep.apk, not ours, untouched.
+- 2026-11-19 08:39 LAUNCH TEST6-ALT RTL pilot 2 (PILOT, excluded; user: "ok thử lại", run if 10-min probe passes): same runner
+  and package as pilot 1 → results/round3/test6/pilot-rtl-2/{tls,life}; the echo probe runs alongside so that a hang can be
+  told apart from a relay drop.
+- 2026-11-19 08:41 ABORT TEST6-ALT RTL pilot 2 (PILOT, excluded) → results/round3/test6/pilot-rtl-2 kept as is. Same
+  failure point as pilot 1: TLS start 08:39:25, install and push fine, then `shell cat …pem | run-as org.residuelab.tls sh -c
+  "cat > files/test-ca.pem"` hung (40 s harness timeout, TLS_EXIT=1). The parallel echo probe went OK, OK, then TIMEOUT
+  from 08:39:39 on, i.e. the whole adb link froze while that one command was in flight and did not recover after it was
+  killed. Lifecycle then failed at start ("device not alive", LIFE_EXIT=1, nothing written). Probe and sink stopped.
+- 2026-11-19 08:44 DIAGNOSIS (RTL, after reconnect; each command 10 s cap, then an echo check): OK and link alive after
+  `pm list packages`, `echo hi | cat`, `run-as org.residuelab.tls id` (uid 10293, runas_app), `run-as … ls -la`. Hung and
+  froze the link: `run-as org.residuelab.tls sh -c "echo x > files/p04probe.txt; …"` (no stdin pipe). So the trigger is a
+  shell started under run-as, not the pipe and not run-as itself. Why the RDB relay dies on it is unknown. Harness use:
+  only tls_suite.py:56 starts `run-as … sh -c`; campaign.py --no-root uses `exec-out run-as <pkg> cat` and
+  `run-as <pkg> kill -9 $(pidof <pkg>)` (no shell under run-as), tls_suite also uses run-as cat/rm/touch. Left on the device:
+  org.residuelab.tls (with files/p04probe.txt, if it was written). After this the relay refused `adb connect` until the
+  RDB side is restarted.
+- 2026-11-19 08:45 HARNESS FIX (pilot stage, before freeze): followup/tls_suite.py:56 CA copy no longer starts a shell under
+  run-as: `run-as <pkg> tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null` (the device shell opens the
+  file, tee runs as the app). Same bytes land in files/test-ca.pem (checked on RTL: sha256 of the device copy = the
+  package's test-ca.pem). Applies to all later TLS runs (emulator default mode too); earlier runs unaffected (same file
+  content). Device Farm package v2 does not have it → needs v3. Noted: package v2's followup/tls-cert/test-ca.pem
+  (9abca707…) differs from the committed one (849f6d65…); origin to be traced (package internally consistent:
+  rehearsal 2 passed).
+- 2026-11-19 08:45 LAUNCH TEST6-ALT RTL pilot 3 (PILOT, excluded): package v2 + the line-56 fix, same runner, RDB localhost:52011
+  (restarted by the user), device cleaned first (uninstall org.residuelab.tls, rm pem) → results/round3/test6/pilot-rtl-3;
+  echo probe alongside. Session has ~30 min left; stop at ~10 min before the end if not done.
+- 2026-11-19 08:51 DONE TEST6-ALT RTL pilot 3 (PILOT, excluded) → results/round3/test6/pilot-rtl-3. Mechanism checks only:
+  device Galaxy M35 SM-M356B, Android 14, user build, adbd uid shell (no root); TLS 08:45:46–08:46:38, TLS_EXIT=0, 7/7 cases
+  logged, barrier_seen present in the 4 withdraw cases, receiver 15 lines over adb reverse through the RDB relay; lifecycle
+  08:46:38–08:50:54, LIFE_EXIT=0, 3/3 trials (pen000 75 s, kil000 99 s, rev000 77 s) quiesced with remaining 0, no "could not
+  read"/"changed during", kill via run-as with kill_verified true, meta root=false / db_read run-as copy / model + android
+  recorded, sink reached via sink_host 127.0.0.1 (ingest 297, ack 135 lines). Echo probe alongside 155/155 OK (median 0.10 s,
+  p95 0.19 s, max 0.39 s). Cleanup: 6 org.residuelab.* packages uninstalled, CA file removed, reverse list empty, adb
+  disconnect, r33 adb server killed; no host listeners or harness processes left. RTL session closed by the user.
+  Open: RTL as a Test 6 environment departs from S0 (AWS) → needs C/team agreement; tls_suite.py:56 fix needs a new
+  Device Farm package (v3); package CA vs committed CA mismatch to be traced.
+- 2026-11-19 08:52 CORRECTION to the 08:51 entry: "RTL session closed by the user" is not confirmed; B/Claude only disconnected adb. The user ends the RTL session in the browser.
+- 2026-11-19 08:55 RESOLVED (CA mismatch noted 08:44): the Device Farm package build generates a fresh 30-day test CA/key pair into the package (openssl req -x509 … SAN 10.0.2.2,127.0.0.1,localhost; the tls-cert instructions; private key never committed), so package test-ca.pem ≠ committed one by design. Not an error.
+- 2026-11-19 08:53 TEST6 DECISION (reported by the user): C agrees to Samsung Remote Test Lab as a Test 6 environment. Device mix and N per environment still open. User has 22 RTL credits; minutes per credit not yet confirmed.
+- 2026-11-19 08:55 TEST6 DEVICES (user): one Device Farm device + one RTL device → Pixel 8a (Device Farm, Android 17, default: the pilot device) + Galaxy (RTL, Android 14). Package v3 built locally = v2 + tls_suite.py:56 fix only (diff checked), zip sha256 e1777dad…e5ff, not uploaded. plans/test6/README.md updated (devices, RTL procedure, budget).
+- 2026-11-19 09:13 TEST6 PREP (no device; user: N=20, prepare and debug before any run): card artifact/plans/test6-card.md (protocol v1,
+  draft until committed + frozen). Harness: tls_suite.py --start (default 0, same behaviour); campaign.py records seen_max in the
+  quiesced action (largest job count parsed while waiting; no new adb command: emulator command trace still identical, 87).
+  New: plans/test6/run_rtl.sh + rdb_probe.py (RTL runner: preflight before install, link probe + watchdog, cleanup),
+  testspec-main-job1/2.yml (from the pilot spec; ranges and seed only), runs.json (analysis manifest), run_df.sh extracts
+  customer-artifact zips; followup/analyze_test6.py (card validity rules; lifecycle = matched_oracle.py executed unchanged
+  except paths/run list) + test_analyze_test6.py; results/round3/test6/EXCLUSIONS.md (pilots). Offline checks: no-root read
+  test PASS; analysis tests PASS; tls_suite --start and job-2 spec command run against a fake phone; run_rtl.sh full dry run
+  and simulated link drop (watchdog stopped harness after ~60 s, no orphan process/port, exit 4); pilot data only used as
+  well-formed input, no outcome inspected. Package v4 built (zip sha256 8562abeb…09d7; = v2 + the three harness changes),
+  not uploaded. Guard OK (macros.tex allowed: \impLoc, C regenerates).

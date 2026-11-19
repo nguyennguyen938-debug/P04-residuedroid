@@ -3,7 +3,7 @@
 from pathlib import Path
 import argparse,subprocess,threading,socketserver,ssl,time,json,uuid,hashlib,os,contextlib
 A=Path(__file__).resolve().parents[1];SDK=A.parents[1]/'shared-android/sdk';PKG='org.residuelab.tls'
-p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--no-root',action='store_true');p.add_argument('--host');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--start',type=int,default=0);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--no-root',action='store_true');p.add_argument('--host');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
 def adb(*args):
  r=subprocess.run([os.environ.get('ADB',str(SDK/'platform-tools/adb')),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
  if r.returncode:raise RuntimeError(r.stderr)
@@ -53,9 +53,9 @@ class Handler(socketserver.BaseRequestHandler):
 sink=Server(('127.0.0.1',8798),Handler);sink.guard=threading.Lock();sink.mode='normal';threading.Thread(target=sink.serve_forever,daemon=True).start()
 plain_sink=Server(('127.0.0.1',8799),Handler);plain_sink.guard=threading.Lock();plain_sink.mode='normal';threading.Thread(target=plain_sink.serve_forever,daemon=True).start()
 (a.no_root or adb('root'));adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
-adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'cat /data/local/tmp/p04-test-ca.pem | run-as {PKG} sh -c "cat > files/test-ca.pem"')
+adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
 (a.out/'environment.json').write_text(json.dumps({'fingerprint':adb('shell','getprop','ro.build.fingerprint').strip(),'serial':a.serial,'apk_sha256':hashlib.sha256((A/'fixture/build/tls-apk/rl-tls.apk').read_bytes()).hexdigest(),'started':time.time(),'host_load':os.getloadavg()},indent=2)+'\n')
-for block in range(a.n):
+for block in range(a.start,a.start+a.n):
  for case in a.cases.split(','):
   id='tls-'+case+'-'+str(block)+'-'+uuid.uuid4().hex[:6];r={'trial':id,'case':case,'block':block,'host_load':os.getloadavg(),'start':time.time()};sink.mode='stall' if case.startswith('stall')else 'normal'
   try:

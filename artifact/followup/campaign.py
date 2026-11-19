@@ -355,6 +355,7 @@ def run_trial(sched, k):
     # wait until none of our jobs is registered (or timeout)
     t0 = time.time()
     backstop = 0
+    seen_max = -1        # largest job count parsed while waiting: 0 throughout means the dumpsys parser saw none of ours
     min_wait = 0 if args.substrate == "job" else 75      # substrate runs: alarms/WorkManager need a fixed minimum window
     limit = args.timeout if args.substrate == "job" else 240
     while time.time() - t0 < limit:
@@ -363,6 +364,7 @@ def run_trial(sched, k):
             n = our_jobs() if args.substrate == "job" else (our_work() if args.substrate == "work" else our_alarms())
         except Exception as e:
             n = -1
+        seen_max = max(seen_max, n)
         if n == 0 and time.time() - t0 >= min_wait:
             break
         # backstop: after 60 s, let the scheduled time of any remaining job arrive (force-run, once per 15 s)
@@ -371,7 +373,7 @@ def run_trial(sched, k):
             sh("; ".join(f"cmd jobscheduler run -f {p} {j} >/dev/null 2>&1" for p in PKGS for j in JOBS if j % 10 != 2))
             act("backstop_force_run")
     time.sleep(3)
-    act("quiesced", waited=time.time() - t0, remaining=n)
+    act("quiesced", waited=time.time() - t0, remaining=n, seen_max=seen_max)
     for p in PKGS:
         try:
             d = read_device(p)
