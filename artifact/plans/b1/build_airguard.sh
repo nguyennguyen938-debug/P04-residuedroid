@@ -9,7 +9,10 @@ cd "$SRC" || exit 2
 echo "sdk.dir=$HOME/Library/Android/sdk" > local.properties
 sed -i '' -e '/applicationIdSuffix/d' app/build.gradle
 export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
-nice -n 19 ./gradlew --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2g :app:assembleRelease > ../airguard-build.log 2>&1
+J21=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home   # AirGuard asks for a Java 21 toolchain
+[ -x "$J21/bin/java" ] || { echo "JDK 21 missing: brew install openjdk@21"; exit 3; }
+nice -n 19 ./gradlew --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2g -Porg.gradle.java.installations.paths="$J21" \
+  -Porg.gradle.java.installations.auto-detect=false :app:assembleRelease > ../airguard-build.log 2>&1
 rc=$?; echo "exit=$rc" >> ../airguard-build.log; tail -20 ../airguard-build.log; exit $rc
 }
 main "$@"; exit $?
