@@ -47,6 +47,7 @@ def main():
     chosen, unused = set(), []
     for key, ts in valid.items():
         o = sorted(ts); chosen |= {(i, t) for _, i, t in o[:a.n]}; unused += [dict(avd=key[0], schedule=key[1], trial=t) for _, _, t in o[a.n:]]
+    invalid_first, extra_first = list(first['invalid_trials']), list(extra)   # exclusions are reported from the first pass
     extra.clear()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     final = run(instdir, out, lambda inst, plans: [p for p in seen(inst, plans) if (inst, p['trial']) in chosen])
@@ -62,9 +63,9 @@ def main():
                      'unknown_requests': {v: sum(r['unknown_requests'] for r in rs if r['variant'] == v) for v in ('menqueue', 'mlayer', 'mfence')},
                      'legit_missing': {v: sum(r['legit_missing'] for r in rs if r['variant'] == v) for v in ('menqueue', 'mlayer', 'mfence')}}
         keys.update({f'life{name}Trials': len(trials), f'life{name}Layer': viol('mlayer'), f'life{name}Fence': viol('mfence')})
-    (out / 'b11-summary.json').write_text(json.dumps({'invalid_oracle_rules': final['invalid_trials'], 'invalid_extra': extra,
+    (out / 'b11-summary.json').write_text(json.dumps({'invalid_oracle_rules': invalid_first, 'invalid_extra': extra_first,
                                                       'unused_valid': unused, 'avds': res, 'keys': keys}, indent=1) + '\n')
-    print({k: (v['analysed_paired_trials'], v['per_schedule']) for k, v in res.items()}, 'invalid', len(final['invalid_trials']) + len(extra))
+    print({k: (v['analysed_paired_trials'], v['per_schedule']) for k, v in res.items()}, 'invalid', len(invalid_first) + len(extra_first))
 
 
 if __name__ == '__main__':

@@ -52,7 +52,18 @@ early và ResidueDroid. Không cần viết code mới"), `[HB]` HUONG-DAN-B.md 
 - Conclusion: N = 20 per cell; zero-vs-zero reported as paired counts; no p-values.
 
 ## 6. Outcome (filled after the run)
-- Logged / excluded by reason / valid / analyzed / unused:
-- Results directory:
-- Deviations:
-- Negative or null results:
+- Logged / excluded by reason / valid / analyzed / unused (paired trials): Android 14: 82 logged (80 in `avd14-final`, 2
+  replacements reb020–reb021 in `avd14-repl`), 2 excluded (reb004, reb014: emulator reboot timeout → trial_error, oracle
+  reason "harness/device"), 80 valid, 80 analysed (20 per schedule), 0 unused. Android 15: 80 logged, 0 excluded, 80 valid,
+  80 analysed, 0 unused. Extra rule `seen_max ≤ 0`: 0 trials.
+- Results directory: `results/round3/b11/{avd14-final,avd14-repl,avd15-final}`; analysis
+  `results/round3/b11/analysis/b11-summary.json` (`followup/analyze_b11.py`).
+- Outcome per AVD (paired trials with ≥ 1 confirmed violation among affected tenants; Wilson 95%): menqueue 80/80
+  [0.954, 1] on both AVDs (380/400 affected tenant-trials); mlayer 0/80 [0, 0.046]; mfence 0/80 [0, 0.046]. Unknown
+  requests: 0 for every variant. Permitted items missing (`legit_missing`, summed): menqueue 80 per AVD, mlayer 0, mfence 0.
+- Deviations: replacements as in §3 (2 reboot trials on Android 14, new k ≥ 20, fresh directory). Exclusion list in the
+  first analysis output omitted the two excluded trials (reporting bug: taken from the second, filtered pass); fixed in
+  `analyze_b11.py` on 19/11, keys and per-AVD results byte-identical before/after.
+- Negative or null results: mlayer vs mfence is zero-versus-zero on both AVDs (no confirmed difference in 80 paired trials
+  each; not equivalence). The weak baseline also loses permitted items. 0/80 is not an impossibility guarantee (upper
+  Wilson bound 4.6%). Emulator only, one AVD per Android version; not compared causally with the API-33 campaign.
