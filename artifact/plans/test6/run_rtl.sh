@@ -9,12 +9,12 @@
 # TLS runs only if --tls-n is given, lifecycle only if --life-trials is given.
 set -uo pipefail
 main() {
-PORT=; PKG=; OUT=; MODEL=; ANDROID=; END=; TLS_START=0; TLS_N=; LIFE_START=0; LIFE_N=; SCHED=pending,kill,revoke
+PORT=; PKG=; OUT=; MODEL=; ANDROID=; END=; TLS_START=0; TLS_N=; LIFE_START=0; LIFE_N=; SCHED=pending,kill,revoke; TLS_DL=
 ADB=${ADB:-$HOME/Library/Android/sdk/platform-tools/adb}
 while [ $# -gt 0 ]; do case $1 in
   --port) PORT=$2;; --pkg) PKG=$2;; --out) OUT=$2;; --expect-model) MODEL=$2;; --expect-android) ANDROID=$2;;
   --adb) ADB=$2;; --end) END=$2;; --tls-start) TLS_START=$2;; --tls-n) TLS_N=$2;;
-  --life-start) LIFE_START=$2;; --life-trials) LIFE_N=$2;; --schedules) SCHED=$2;;
+  --life-start) LIFE_START=$2;; --life-trials) LIFE_N=$2;; --schedules) SCHED=$2;; --tls-deadline-ms) TLS_DL=$2;;
   *) echo "unknown argument $1"; exit 2;; esac; shift 2; done
 : "${PORT:?--port}" "${PKG:?--pkg}" "${OUT:?--out}" "${MODEL:?--expect-model}" "${ANDROID:?--expect-android}"
 [ -n "$TLS_N$LIFE_N" ] || { echo "nothing to run: give --tls-n and/or --life-trials"; exit 2; }
@@ -116,7 +116,7 @@ TLS_RC=skipped; LIFE_RC=skipped
 if [ -n "$TLS_N" ] && [ ! -e "$OUT/LINK_DOWN" ]; then
   log "TLS start (blocks $TLS_START..$((TLS_START+TLS_N-1)))"
   run python3 artifact/followup/tls_suite.py --serial "$S" --no-root --host 127.0.0.1 --start "$TLS_START" --n "$TLS_N" \
-    --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --out "$OUT/tls"; TLS_RC=$?
+    --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent ${TLS_DL:+--deadline-ms "$TLS_DL"} --out "$OUT/tls"; TLS_RC=$?
   log "TLS_EXIT=$TLS_RC"
 fi
 if [ -n "$LIFE_N" ] && [ ! -e "$OUT/LINK_DOWN" ]; then
