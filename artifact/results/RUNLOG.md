@@ -291,3 +291,12 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   (no replacement needed). Relay stopped. ANALYSIS (followup/analyze_test6.py → results/round3/test6/analysis): both devices TLS
   20/20 valid blocks, lifecycle 20/20 valid paired trials per schedule, 0 invalid, 0 unused. Card §6 filled; B-tracker T6 → data
   done. summary.json not written yet (C to confirm the dev* definitions; candidates in test6-summary.json).
+- 2026-11-19 14:00 B0 DONE (record): environment + `make apks` (18/11); emulator smoke covered by the Test 6 rehearsals on
+  P04Avd15 (pilot-local-1/2: fixture campaign trials and TLS suite ran end to end, RUNLOG 18/11 22:33–22:47).
+- 2026-11-19 14:01 A10 (B part) DONE: `triage/find_callers.py` on acrafence.apk (sha256 fe77d7ec…a061) and matomo.apk
+  (ed3b2017…a061… see file) → results/round3/a10/find_callers-20261119.txt. Direct callers of kotlin TextStreamsKt.readBytes
+  in both APKs: only kotlin TextStreamsKt.readText(+$default); one more level: readText is called by kotlin Paths/Files
+  readText in both, and by org.acra.util.StreamReader.readFully in acrafence; readText$default has no caller. To A for triage.
+- 2026-11-19 14:02 NOTE: real-phone-only work listed in artifact/plans/real-phone-pending.md (Test 1 reduced on phone; optional
+  Galaxy v3). Everything else of B runs on the emulator/Mac.
+- 2026-11-19 14:03 Correction to 14:01: matomo.apk sha256 is ed3b2017…7c87b (full value in the a10 output file).
