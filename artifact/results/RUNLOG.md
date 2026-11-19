@@ -354,3 +354,5 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   saw the pilot's emulator port (5664 / 5600) still busy → no final trial ran, no data affected. B11 replacement ran
   (avd14-repl, reboot k 20–21, 16:54–16:56). New plans/autorun/queue2.sh waits for owned ports to be free and runs B4 final,
   B12 final, B3 v2 (pilot-2 → gate → final), B10 v2 (radio calibration → gate → final2).
+- 2026-11-19 17:37 LAUNCH autorun b4-final (final) card artifact/plans/b4-card.md; stages ['final']; owned ['emulator-5664']; log artifact/results/round3/b4/autorun-b4-final.log.
+- 2026-11-19 17:41 B2 BUILD: artifact/realapp/airguard/apply.sh applied to a separate AirGuard copy (clean F-Droid checkout kept); test APKs via plans/b1/build_airguard.sh (:app:assembleDebug, Gradle on JDK 21): de.seemoo.at_tracking_detection.p04stock (base http://10.0.2.2:8796/, sha256 9822b740…) and .p04fenced (8797, sha256 0067bc1c…), installable side by side; APKs kept outside the repo. followup/airguard_sink.py (ping/get_token/donate_data, per-variant port, body logged) tested locally. Next: campaign driver + pilot when the emulator queue frees (plan slot 26–27/11).
