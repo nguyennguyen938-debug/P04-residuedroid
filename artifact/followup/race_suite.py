@@ -11,6 +11,7 @@ Network: emulator console `network speed <p>` / `network delay <p>` set before e
          v3 `--shaper tc`: the console setting does not throttle this image (pilot-calib2/3), so the same profiles are applied
          in the guest instead: netem egress (upload direction) on eth0 and wlan0 at the emulator's nominal uplink rate and
          the midpoint of its delay range (edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms).
+Phones: --receiver http://IP:8800 --host IP --no-root --certdir DIR (CA of the receiver cert) [--serial <adb serial>]
 Usage: race_suite.py --serial emulator-5650 [--avd P04Avd14] --out DIR (--calibrate 3 | --trials 10 --durations F)
        [--profiles edge,umts,lte] [--sizes 32768,262144,2097152] [--seed race-20261119]
 """
@@ -26,6 +27,10 @@ p.add_argument('--modes', default='early,fence'); p.add_argument('--calibrate', 
 p.add_argument('--trials', type=int, default=0); p.add_argument('--start', type=int, default=0)
 p.add_argument('--durations', type=Path); p.add_argument('--seed', default='race-20261119')
 p.add_argument('--certdir', type=Path, default=A / 'followup/tls-cert')
+p.add_argument('--receiver', help='phones: receiver mode B control URL (http://IP:8800, followup/receiver_b.py); shaping via its tc API')
+p.add_argument('--token', default=os.environ.get('P04_TOKEN', ''), help='control API token (env P04_TOKEN; never stored)')
+p.add_argument('--host', help='phones: sink address passed to the app with each send (receiver host IP)')
+p.add_argument('--no-root', action='store_true', help='phones: no adb root (debuggable app, run-as only)')
 p.add_argument('--shaper', default='emu', choices=['emu', 'tc'], help='v3 tc: guest netem egress shaping (see Network)')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
@@ -64,6 +69,7 @@ def boot():
 def bc(op, id, remote=False, **kw):
     cmd = ['shell', 'am', 'broadcast', '-n', PKG + '/org.residuelab.Revision' + ('Remote' if remote else ''), '-a', 'rl.REVISION',
            '--es', 'op', op, '--es', 'id', id]
+    if op == 'send' and a.host: kw['host'] = a.host
     for k, v in kw.items():
         cmd += ['--ez' if isinstance(v, bool) else '--ei' if isinstance(v, int) else '--es', k, str(v).lower() if isinstance(v, bool) else str(v)]
     return adb(*cmd)
@@ -79,7 +85,14 @@ def events():
 TC = {'edge': ('118400bit', '240ms'), 'umts': ('128kbit', '118ms'), 'lte': ('58mbit', '0ms')}
 
 
+def ctl(method, path):
+    import urllib.request
+    req = urllib.request.Request(a.receiver.rstrip('/') + path, method=method, headers={'X-Token': a.token})
+    with urllib.request.urlopen(req, timeout=60) as r: return r.read().decode()
+
+
 def net(profile):
+    if a.receiver: return ctl('POST', f'/profile/{profile}')[:300]   # remote receiver shapes its ingress (upload) and egress
     if a.shaper == 'tc':
         adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none')
         for dev in ('eth0', 'wlan0'):                 # a profile without a TC entry ('full', end of run) = shaping removed
@@ -92,7 +105,7 @@ def net(profile):
 
 # receiver (as tls_suite.py): TLS on 8798, independent log of what arrived
 ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER); ctx.minimum_version = ctx.maximum_version = ssl.TLSVersion.TLSv1_2
-ctx.load_cert_chain(a.certdir / 'test-ca.pem', a.certdir / 'test-key.pem')
+if not a.receiver: ctx.load_cert_chain(a.certdir / 'test-ca.pem', a.certdir / 'test-key.pem')
 class Server(socketserver.ThreadingTCPServer):
     allow_reuse_address = True; daemon_threads = True
     def log(self, r):
@@ -117,10 +130,13 @@ class Handler(socketserver.BaseRequestHandler):
                 self.server.log({'request': id, 'event': 'body', 'received': total, 'expected': expected, 'complete': total == expected})
                 if total == expected: s.sendall(b'HTTP/1.1 200 OK\r\nContent-Length: 0\r\nConnection: close\r\n\r\n')
         except Exception as e: self.server.log({'request': id, 'event': 'error', 'error': repr(e), 'received': total, 'expected': expected})
-sink = Server(('127.0.0.1', 8798), Handler); sink.guard = threading.Lock(); threading.Thread(target=sink.serve_forever, daemon=True).start()
+sink = None
+if not a.receiver:                                # phones: the receiver runs remotely (receiver_b.py)
+    sink = Server(('127.0.0.1', 8798), Handler); sink.guard = threading.Lock(); threading.Thread(target=sink.serve_forever, daemon=True).start()
 
 boot()
-adb('root'); time.sleep(2); adb('wait-for-device')
+if not a.no_root: adb('root'); time.sleep(2)
+adb('wait-for-device')
 RADIO = {}
 if a.radio:
     adb('shell', 'svc wifi disable'); adb('shell', 'svc data enable'); time.sleep(8)
@@ -132,7 +148,7 @@ adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
 meta = {'serial': a.serial, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
@@ -184,4 +200,5 @@ else:
             trial(block, p_, s, m, u)
 net('full')
 if a.radio: adb('shell', 'svc wifi enable')
-sink.shutdown()
+if a.receiver: (a.out / 'receiver.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in json.loads(ctl('GET', '/log?from=0'))['lines']))
+if sink: sink.shutdown()
