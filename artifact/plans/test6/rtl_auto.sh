@@ -34,6 +34,9 @@ rdb_start() {
     sleep 3; done
   note "relay: device did not attach within 10 min"; return 1; }
 link_ok() { local p; p=$(rdb_port); [ -n "$p" ] || return 1
+  # run_rtl.sh disconnects at cleanup: re-attach to this server first (the relay itself may still be fine)
+  "$A" devices | grep -q "^localhost:$p[[:space:]]*device" || { ( "$A" connect "localhost:$p" >/dev/null 2>&1 ) & local c=$!
+    for _ in $(seq 1 15); do kill -0 $c 2>/dev/null || break; sleep 1; done; kill $c 2>/dev/null; sleep 2; }
   ( "$A" -s "localhost:$p" shell echo ok > "$RD/.probe" 2>&1 ) & local q=$!
   for _ in $(seq 1 10); do kill -0 $q 2>/dev/null || break; sleep 1; done; kill $q 2>/dev/null
   [ "$(tr -d '\r' < "$RD/.probe")" = ok ]; }

@@ -108,7 +108,17 @@ ghi *plan không nêu*; chỗ nào chưa chốt thì là việc phải hỏi tr�
   zero-vs-zero báo số đếm paired.
 
 ## 6. Outcome (điền sau khi chạy, không sửa phần trên)
-- Logged / excluded by reason / valid / analyzed / unused:
-- Results directory:
-- Deviations from this card (with reason and impact):
-- Negative or null results:
+- Logged / excluded by reason / valid / analyzed / unused (19/11, `followup/analyze_test6.py`): TLS mỗi máy 20 block logged,
+  0 invalid, 20 valid, 20 analyzed, 0 unused. Lifecycle mỗi máy mỗi lịch (pending, kill, revoke) 20 paired trial logged, 0 invalid
+  (cả quy tắc oracle lẫn quy tắc điện thoại), 20 analyzed, 0 unused. Không cần thay thế. Lượt hỏng/pilot giữ lại, không phân
+  tích: `pilot-*`, `galaxy-s1_INVALID_rdb-connect`, `_rdb-connect2`, `_rdb-noanswer`, `galaxy-p01_INVALID_relpath` (không trial nào).
+- Results directory: `results/round3/test6/` — P: `pixel8a-j1`, `pixel8a-j2`; G: `galaxy-s1`, `galaxy-p02`, `galaxy-p03`;
+  phân tích `analysis/` (`test6-summary.json`, `matched-*.json`).
+- Deviations: (1) protocol v2 trước lượt chính (gỡ app TLS cài sẵn trong spec Device Farm). (2) Chia lượt G khác §2: s1 = TLS 0–19
+  + k 0–1 (phiên chỉ còn 37 phút), sau đó chế độ fill: p02 = k 2–17, p03 = k 18–19; N, quy tắc, lệnh harness không đổi.
+  (3) Job 1 của P được tải về bằng `fetch_df.sh` sau khi poller chết (sửa script khi đang chạy); dữ liệu đủ. (4) Định nghĩa khóa
+  `summary.json` §4 vẫn chờ C; `summary.json` chưa ghi.
+- Negative or null results: G `concurrent`: 39/40 request kết thúc `SEND_ERROR` (26 TLS deadline, 10 process lock deadline,
+  2 policy lock deadline), P 40/40 `SEND_OK`; trial hợp lệ theo quy tắc (không harness_error); khả năng do đường receiver qua relay
+  RDB tới Mac (chưa kiểm chứng) → mối đe dọa construct/external, báo cả hai máy. G: deficit hợp lệ (`legit_missing`) khác 0 ở mọi
+  biến thể, P bằng 0 (trừ mstart ở cả hai) — báo nguyên số trong `matched-summary.json`, không diễn giải thêm ở đây.

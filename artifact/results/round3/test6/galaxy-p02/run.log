@@ -1,0 +1,55 @@
+12:17:47 PREFLIGHT localhost:52477 adb Version 33.0.3-8952118 server port 5038
+12:17:47 localhost:52477 already attached to this server
+12:17:53 device model=SM-M356B android=14 uid=2000 run-as=/system/bin/run-as fingerprint=samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys
+12:17:58 LIFE start (k 2..17, pending,kill,revoke)
+12:19:22 localhost:52477 pen002 78s
+12:20:40 localhost:52477 kil002 79s
+12:21:58 localhost:52477 rev002 78s
+12:23:07 localhost:52477 pen003 69s
+12:24:26 localhost:52477 kil003 79s
+12:25:42 localhost:52477 rev003 76s
+12:27:00 localhost:52477 pen004 78s
+12:28:23 localhost:52477 kil004 83s
+12:29:46 localhost:52477 rev004 83s
+12:30:54 localhost:52477 pen005 68s
+12:32:14 localhost:52477 kil005 80s
+12:33:33 localhost:52477 rev005 79s
+12:34:47 localhost:52477 pen006 74s
+12:36:26 localhost:52477 kil006 100s
+12:38:06 localhost:52477 rev006 100s
+12:39:24 localhost:52477 pen007 77s
+12:40:35 localhost:52477 kil007 72s
+12:41:54 localhost:52477 rev007 79s
+12:43:09 localhost:52477 pen008 75s
+12:44:25 localhost:52477 kil008 76s
+12:45:47 localhost:52477 rev008 82s
+12:46:23 localhost:52477 pen009 36s
+12:47:41 localhost:52477 kil009 78s
+12:48:59 localhost:52477 rev009 78s
+12:50:19 localhost:52477 pen010 79s
+12:52:02 localhost:52477 kil010 103s
+12:53:20 localhost:52477 rev010 78s
+12:54:38 localhost:52477 pen011 78s
+12:55:55 localhost:52477 kil011 76s
+12:57:14 localhost:52477 rev011 79s
+12:58:51 localhost:52477 pen012 97s
+13:00:10 localhost:52477 kil012 79s
+13:01:34 localhost:52477 rev012 84s
+13:03:14 localhost:52477 pen013 100s
+13:04:34 localhost:52477 kil013 80s
+13:05:56 localhost:52477 rev013 82s
+13:07:13 localhost:52477 pen014 78s
+13:08:51 localhost:52477 kil014 98s
+13:10:30 localhost:52477 rev014 98s
+13:11:50 localhost:52477 pen015 81s
+13:13:09 localhost:52477 kil015 79s
+13:14:48 localhost:52477 rev015 98s
+13:16:12 localhost:52477 pen016 84s
+13:17:32 localhost:52477 kil016 81s
+13:19:11 localhost:52477 rev016 98s
+13:20:28 localhost:52477 pen017 77s
+13:21:46 localhost:52477 kil017 78s
+13:22:37 localhost:52477 rev017 51s
+13:22:37 LIFE_EXIT=0
+13:22:37 DONE (cleanup follows)
+13:22:47 CLEANUP org.residuelab.* left on device: 0 (unknown = link down; remove at the next connection)

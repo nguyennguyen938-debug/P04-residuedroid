@@ -1,0 +1,13 @@
+13:24:03 PREFLIGHT localhost:35827 adb Version 33.0.3-8952118 server port 5038
+13:24:03 localhost:35827 already attached to this server
+13:24:09 device model=SM-M356B android=14 uid=2000 run-as=/system/bin/run-as fingerprint=samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys
+13:24:14 LIFE start (k 18..19, pending,kill,revoke)
+13:25:35 localhost:35827 pen018 75s
+13:27:16 localhost:35827 kil018 101s
+13:28:53 localhost:35827 rev018 97s
+13:30:09 localhost:35827 pen019 76s
+13:30:58 localhost:35827 kil019 49s
+13:32:22 localhost:35827 rev019 84s
+13:32:22 LIFE_EXIT=0
+13:32:22 DONE (cleanup follows)
+13:32:33 CLEANUP org.residuelab.* left on device: 0 (unknown = link down; remove at the next connection)
