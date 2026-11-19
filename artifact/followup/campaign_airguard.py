@@ -127,8 +127,11 @@ sink = subprocess.Popen([sys.executable, str(ART / 'followup/airguard_sink.py'),
 try:
     boot(); root()
     for v, pkg in PKGS.items(): adb('install', '-r', '-g', a.apkdir / f'airguard-{v}.apk', timeout=180, check=True)
+    warm = {}                                 # pilot-1: the first hook after install timed out (cold start + dexopt); one no-op
+    for v in PKGS:                            # broadcast per app, generous timeout, recorded in meta.json
+        t0 = time.time(); out = sh(f'am broadcast -n {PKGS[v]}/{HOOK} --es op noop', timeout=300); warm[v] = {'s': round(time.time() - t0, 1), 'ok': 'data="ok"' in out}
     (a.out / 'meta.json').write_text(json.dumps({'serial': a.serial, 'avd': a.avd, 'schedules': a.schedules, 'trials': a.trials, 'start': a.start,
-        'seed': a.seed, 'nbeacons': a.nbeacons, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
+        'seed': a.seed, 'nbeacons': a.nbeacons, 'warmup': warm, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
         'apks': {v: __import__('hashlib').sha256((a.apkdir / f'airguard-{v}.apk').read_bytes()).hexdigest() for v in PKGS}, 'started': time.time()}, indent=1) + '\n')
     for k in range(a.start, a.start + a.trials):
         for s in a.schedules.split(','): trial(s, k)

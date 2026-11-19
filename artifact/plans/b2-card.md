@@ -43,3 +43,14 @@ new items is blocked whole — the split policy of B3 would recover the 'post' i
 ## Open items before the pilot
 - Implement patches (worker, consent log, receiver, Gradle flavor for stock/fenced) and a `campaign_airguard.py` driver.
 - Pilot on P04AvdA (one trial per schedule), then freeze N/seed/timeouts here. Emulator slot per plan: 26–27/11.
+
+## Pilot-1 (19/11 22:02–22:17, P04AvdA, 1 trial × 4 schedules; excluded) and fixes before pilot-2
+- pen000: first hook broadcast after install timed out (90 s; cold start) → trial_error. Fix: one no-op hook per app after
+  install with a 300 s timeout, recorded in meta.json (`warmup`).
+- kil000, reb000, net000: hooks and consent events fine (GRANT/WITHDRAW/INSERT/RUN_ENQUEUED in both builds), but no
+  WORKER_SEND and **no request at the sink** (not even ping): the app's `network_security_config.xml` denies cleartext for
+  every host, which overrides the patch's `usesCleartextTraffic`, so Retrofit refused http://10.0.2.2 (an IOException,
+  which the worker's `catch (e: Error)` does not catch → worker failure, no event). Fix (apply.sh `nsc`): cleartext permitted
+  for 10.0.2.2 only, both builds identical. Rebuilt test APKs (stock e53e5254…, fenced 30eb823f…; previous builds kept
+  in `realapp/airguard/build/v1-20261119-1740/`). App behaviour not changed: the worker's own error handling is kept as is.
+- Pilot-2: same driver/schedules, fresh dir `results/round3/b2/pilot-2`.

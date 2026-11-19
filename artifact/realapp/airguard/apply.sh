@@ -5,10 +5,25 @@
 # Usage: apply.sh <airguard checkout> ; then build with
 #   ./gradlew :app:assembleDebug -Presidue.variant=stock|fenced -Presidue.base=http://10.0.2.2:<port>/
 set -euo pipefail
+# The app's network_security_config denies cleartext for every host, which overrides usesCleartextTraffic: the test sink
+# (plain HTTP on the host, 10.0.2.2) would be unreachable for Retrofit (B2 pilot-1: no request reached the sink). Permit
+# cleartext for 10.0.2.2 only, identically in both test builds.
+nsc() {
+  local f=$APP/res/xml/network_security_config.xml
+  grep -q "10.0.2.2" "$f" && return 0
+  python3 - "$f" <<'PY'
+import sys
+f = sys.argv[1]; s = open(f).read(); old = '</network-security-config>'
+assert s.count(old) == 1, f
+open(f, 'w').write(s.replace(old, '    <domain-config cleartextTrafficPermitted="true">\n        <domain includeSubdomains="false">10.0.2.2</domain>\n    </domain-config>\n' + old))
+PY
+  echo "network_security_config: cleartext permitted for 10.0.2.2"
+}
 main() {
 SRC=$1; HERE=$(cd "$(dirname "$0")" && pwd); ART=$(cd "$HERE/../.." && pwd)
 APP=$SRC/app/src/main; PKG=$APP/java/de/seemoo/at_tracking_detection
 [ -f "$PKG/statistics/SendStatisticsWorker.kt" ] || { echo "not an AirGuard checkout"; exit 2; }
+nsc   # idempotent; also brings clones patched before 19/11 22:30 up to date
 grep -q "RESIDUE_FENCED" "$SRC/app/build.gradle" && { echo "already applied"; exit 0; }
 mkdir -p "$APP/java/org/residuelab/transport" "$PKG/residue"
 cp "$ART/transport/src/org/residuelab/transport/HttpTransport.java" "$ART/transport/src/org/residuelab/transport/Coordinator.java" "$APP/java/org/residuelab/transport/"
