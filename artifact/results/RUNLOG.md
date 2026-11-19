@@ -414,3 +414,7 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-19 22:49 LAUNCH autorun b2-final (final) card artifact/plans/b2-card.md; stages ['final']; owned ['emulator-5666']; log artifact/results/round3/b2/autorun-b2-final.log.
 - 2026-11-19 22:50 Test 1 on phones (real-phone-pending #1) prep: race_suite.py remote-receiver mode (--receiver/--token/--host/--no-root; shaping and log via receiver_b.py control API; token never stored; defaults unchanged, B10 data unaffected). Control API checked locally (receiver_b --no-tc on 127.0.0.1: profile edge/full, log fetch, bad token 403; stopped). Waiting for user: EC2 go-ahead + RTL session.
 - 2026-11-19 23:11 User decision: Test 1 on phones deferred (before 28/11); no EC2 created.
+- 2026-11-19 23:53 DONE autorun b2-final: DONE; guard exit 0; SHUTDOWN ['emulator-5666']. Outcomes not inspected by the runner.
+2026-11-19 23:53 queue7: b2-final exit 0
+2026-11-19 23:53 queue7: done
+- 2026-11-19 23:54 B2 final DONE (22:50–23:53, guard 0): 80/80 valid; stock violating 20/20 in pending/kill/reboot (optout beacons after re-consent; +2 pre/after in pending), fenced 0/20 everywhere (blocked 20/20, post delivered, deficit 0); netloss: no donation after link restore in both (deficit 80 beacons each); fenced unknown 8/9/9 of 20 (pre beacons in ambiguous requests). Card Outcome filled; EXCLUSIONS.md regenerated; summary.json unchanged (B2 has no SCHEMA keys).

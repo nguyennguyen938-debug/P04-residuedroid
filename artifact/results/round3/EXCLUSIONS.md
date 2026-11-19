@@ -22,6 +22,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 5 / B4 v1 | 400 | 0 | 0 | `b4/analysis` |
 | Test 5 / B4 v2 (keys) | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
+| B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 
 ## Pilots and discarded runs
 
@@ -37,6 +38,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/b2/pilot-2` | sink reached; app donates at consent time; quiescence predicate counted old events | oracle v2 bracket; quiescence fix; protocol v1 frozen |
 | `round3/b2/pilot-2-analysis` | analysis of pilot-2 (pilot) | — |
 | `round3/b2/pilot-3` | check of the driver fix before the final (gate in b2-card.md) | none |
+| `round3/b2/pilot-3-analysis` | analysis of pilot-3 (pilot) | — |
 | `round3/b3/pilot-1` | gate failed on a harness bug (suite waited for a SPLIT the app correctly never emits) | protocol v2: end predicate |
 | `round3/b3/pilot-2` | gate passed | none |
 | `round3/b4/pilot-1` | mechanism check of the sweep | none |

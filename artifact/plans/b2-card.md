@@ -80,3 +80,20 @@ kept and reported.
 - Gate pilot-3 → final (mechanical): 4/4 trials valid, warm-up ok for both builds, ≥ 1 donate request at each port.
 - Threats: one AVD, emulator, synthetic beacons (no BLE), the host sink replaces the study server (HTTP, not HTTPS),
   host-clock bracket leaves some requests unknown; the fence blocks a mixed request whole (split policy of B3 not applied).
+
+## Outcome (final 19/11 22:50–23:53, protocol v1, autorun b2-final, guard 0)
+- Logged / excluded / valid / analysed / unused: 80 trials (20 per schedule, both builds in each) / 0 / 80 / 80 / 0.
+  Data `results/round3/b2/final`; analysis `results/round3/b2/analysis/airguard-summary.json` (oracle v2).
+- Violating trials (Wilson 95%): stock 20/20 [0.839, 1] in pending, kill and reboot; fenced 0/20 [0, 0.161] in every
+  schedule; netloss 0/20 for both. Stock violations: 'optout' beacons (collected while opted out) donated after re-consent
+  in 20/20 trials of pending, kill and reboot (80 beacons each), plus 'pre' beacons in an 'after' request in 2/20 pending
+  trials. The fenced build blocked a donation in 20/20 trials of pending, kill and reboot and delivered all 'post' beacons
+  in a later run (deficit 0).
+- Unknown (reported, never folded in): fenced 8/20 (pending), 9/20 (kill), 9/20 (reboot) trials had 'pre' beacons in an
+  'ambiguous' request (completed after ws, worker run opened before we); stock had such requests in 10–11/20 trials too, all
+  in trials that also violate. These are the app's own consent-time run racing the withdrawal; the host-clock bracket
+  cannot order them.
+- Negative / null results: netloss — no donation after the link returned in either build (the app does not retry a failed
+  run), so every 'post' beacon is missing: deficit 80/80 beacons for stock and for fenced (20/20 trials). 'pre' beacons
+  were donated before the withdrawal (permitted) in 8–19 of 20 trials per cell.
+- Deviations: none from the frozen protocol. Threats as in Freeze (one AVD, synthetic beacons, HTTP sink, host-clock bracket).
