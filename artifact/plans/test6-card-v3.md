@@ -19,3 +19,10 @@ of the fence. v3 removes the artificial limit for all cases.
   Galaxy M35: RTL `run_rtl.sh --tls-start 0 --tls-n 20 --tls-deadline-ms 60000` → `results/round3/test6/galaxy3-tls`
   (prefix galaxy3- so v3 never mixes into the v2 `galaxy-*` analysis glob).
 - Validity, replacement (blocks from 20, cap 5), analysis (`analyze_test6.py` with `plans/test6/runs-v3.json`) as v2.
+
+## Outcome (19/11, `analyze_test6.py --manifest plans/test6/runs-v3.json` → `results/round3/test6/analysis-v3/`)
+- Logged / invalid / analysed / unused: Pixel 20/0/20/0 blocks, Galaxy 20/0/20/0 blocks (140 TLS trials each).
+- `concurrent`: Galaxy 40/40 requests completed (v2: 1/40); Pixel 40/40 (v2: 40/40). Every other case equal to v2 on both
+  phones: fence cases 0/60 trials with bytes accepted after acknowledgement per phone; `buffered-early` 20/20; `control`,
+  `early` 20/20 completed. Report v2 and v3 together; the v2 Galaxy `concurrent` failure is explained by the 10 s deadline.
+- Runs: Pixel `pixel8a-v3-tls` (Device Farm, 9.9 trial min), Galaxy `galaxy3-tls` (RTL 15:09–15:22, gates pass).

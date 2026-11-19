@@ -1,0 +1,11 @@
+{
+  "fingerprint": "google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys",
+  "serial": "43221JEKB22010",
+  "apk_sha256": "ca313b94fd89c9e3515dfead79713c183747436f0e0ecba6445d54652b1aef15",
+  "started": 1795075427.0400507,
+  "host_load": [
+    1.36,
+    1.13,
+    0.47
+  ]
+}

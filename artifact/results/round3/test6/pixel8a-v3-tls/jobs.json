@@ -1,0 +1,11 @@
+{
+    "device": "Google Pixel 8a",
+    "os": "17",
+    "status": "COMPLETED",
+    "result": "PASSED",
+    "minutes": {
+        "total": 10.22,
+        "metered": 9.88,
+        "unmetered": 0.0
+    }
+}
