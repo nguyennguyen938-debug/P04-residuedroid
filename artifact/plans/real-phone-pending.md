@@ -24,3 +24,4 @@ Quy trình RTL: `plans/test6/README.md` (rtl_auto.sh fill mode, relay do Claude 
 - **Cần người dùng:** (1) đồng ý tạo EC2 (`plans/test6/ec2/setup.sh --create`, t3.micro us-west-2, < 10 USD, xoá bằng
   `teardown.sh` sau lượt); (2) một phiên RTL Galaxy M35 (~8 credit) và bấm Remote Debug Bridge khi được nhắc. Sau đó B chạy
   pilot (calibration 3 profile) → card `test1-phone-card.md` (N chốt sau pilot) → lượt chính.
+- Quyết định người dùng 19/11 23:0x: #1 để sau, trước 28/11 (giữ trạng thái sẵn sàng; chưa tạo EC2).
