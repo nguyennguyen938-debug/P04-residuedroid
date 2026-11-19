@@ -223,3 +223,14 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
   well-formed input, no outcome inspected. Package v4 built (zip sha256 8562abeb…09d7; = v2 + the three harness changes),
   not uploaded. Guard OK (macros.tex allowed: \impLoc, C regenerates).
 - 2026-11-19 09:31 TEST6 FREEZE (protocol v1): card committed 7b2b523; freeze.py → results/round3/test6/frozen-test6-v1 (104 files) + package-sha256.json (v4, 20 files, key excluded; package scripts == commit). From here a harness change = protocol v2.
+- 2026-11-19 09:34 LAUNCH TEST6 Device Farm pilot (PILOT, excluded; user go-ahead "bạn tự làm, chạy auto"): Pixel 8a (Android 17, pool pilot-pixel8a), package v4 + testspec-pilot-combined (uploaded 09:32 as -v4), job timeout 20 min, receiver mode A → results/round3/test6/pilot-df-pixel8a. Trial minutes before: 1000.
+- 2026-11-19 09:41 DONE TEST6 Device Farm pilot (PILOT, excluded) → results/round3/test6/pilot-df-pixel8a. Job PASSED (spec
+  ran), 4.42 metered min (1000 → 995.58). Gates (plans/test6/check_gates.py): lifecycle all pass on Pixel 8a Android 17
+  (fingerprint google/akita/akita:17/CP2A.260605.012; 3/3 trials 56/95/94 s, remaining 0, seen_max 67/65/67 → dumpsys parser
+  works on 17, kill_verified true, 15/15 run-as DB reads, sink 297 lines, root=false). TLS FAIL: TLS_EXIT=1 at
+  `adb install -r rl-tls.apk` (rc≠0, empty stderr; Device Farm adb 1.0.39), no TLS trial. Likely cause: Device Farm
+  pre-installs the uploaded app (rl-tls.apk) and Android 14+ update ownership refuses the shell update (not verified; logcat
+  starts after that step). Customer artifacts extracted to unzipped/ (zip kept).
+- 2026-11-19 09:42 PROTOCOL v2 (Test 6, before any main run): Device Farm specs (pilot-combined, main-job1, main-job2) pre_test now
+  prints installer/updateOwner of org.residuelab.tls and uninstalls it, so tls_suite.py installs it fresh (as on RTL and
+  emulator). Harness, analysis, N, validity unchanged. Card → protocol v2. Re-pilot → pilot-df-pixel8a-2.

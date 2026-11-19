@@ -1,6 +1,6 @@
-# Experiment card — test6 (protocol v1)
+# Experiment card — test6 (protocol v2)
 
-Status: frozen 2026-11-19 09:31 +07, commit 7b2b523 (freeze: results/round3/test6/frozen-test6-v1, gói v4 zip 8562abeb…09d7)
+Status: protocol v2 (v1 frozen 7b2b523; v2 = v1 + Device Farm spec change after pilot-df-pixel8a, see §3 "Pilots"); frozen-test6-v2 trước lượt chính
 Owner (experimenter): B (Duy)   Approved by (author): C đồng ý môi trường RTL (19/11, theo lời user); định nghĩa khóa §4 chờ C
 
 Nguồn: `[R3]` = `PLAN-ROUND3.md`, `[HB]` = `HUONG-DAN-B.md`, `[DF]` = `artifact/devicefarm/README.md`, `[RT]` =
@@ -76,6 +76,10 @@ ghi *plan không nêu*; chỗ nào chưa chốt thì là việc phải hỏi tr�
   sửa, pilot lại, protocol v2. Với G: phiên 1 dừng ngay nếu trial đầu có `seen_max` ≤ 0 hoặc `kill_verified` false.
 - Pilot đã có (loại khỏi phân tích): `pilot-local-1/2` (emulator), `pilot-rtl-1/2` (hỏng do `run-as sh` làm chết RDB),
   `pilot-rtl-3` (đạt). Thay đổi do pilot: CA copy bằng `run-as tee` (`tls_suite.py:56`), `--start` cho TLS, `seen_max`.
+  `pilot-df-pixel8a` (v1, Pixel 8a Android 17): lifecycle đạt mọi cổng (`seen_max` 65–67); TLS không chạy trial nào vì
+  `adb install -r rl-tls.apk` thất bại (Device Farm đã cài sẵn app này làm app under test; adb 1.0.39). **v2:** `pre_test` của
+  các spec Device Farm in installer/update owner của `org.residuelab.tls` rồi gỡ nó, để `tls_suite.py` cài lại như trên RTL.
+  Harness, phân tích, N và quy tắc không đổi. Pilot lại: `pilot-df-pixel8a-2`.
 
 ## 4. Analysis
 - Script: `followup/analyze_test6.py --manifest plans/test6/runs.json` → `results/round3/test6/analysis/`. Lifecycle dùng
