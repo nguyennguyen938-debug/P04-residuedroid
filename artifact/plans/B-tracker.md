@@ -16,4 +16,4 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | DONE 19/11 (AirGuard, protocol v1): 80/80 valid; stock 20/20 violating in pen/kill/reb, fenced 0/20; netloss deficit both; unknowns reported (card Outcome) | pen, kill, reb, net (+fstop) × 20 |
 | B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | PREP 19/11: `results/round3/PROTOCOL.md`, `EXCLUSIONS.md` (make_exclusions.py); regenerate + final commit at freeze | không chạy thêm sau mốc |
 | B8 | §6, appendix Artifact, sửa tài liệu cũ | văn bản | B7 | 2/12 | DRAFT 19/11: §6 one-line pointer + appendix "Round-3 Implementation and Harness" (body unchanged, 0 overfull/undefined); old docs fixed 19/11 (`review/artifact-revision-audit.md` is not in the repo); revisit after freeze | |
-| B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | TODO | |
+| B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | SELF-CHECK 19/11 OK after Makefile fix (`results/round3/b9/`); still needs an outside person per plan | |
