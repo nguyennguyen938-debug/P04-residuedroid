@@ -1,0 +1,11 @@
+{
+ "serial": "emulator-5662",
+ "avd": "P04AvdB",
+ "seed": "b3-20261119",
+ "blocks": 1,
+ "start": 0,
+ "items": "analytics:0,diagnostics:0",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "apk_sha256": "fce0401a5b6f62f7a43f683c208eace70491c2a2242f91f08ae14d0b92c9566c",
+ "started": 1795081637.2124422
+}

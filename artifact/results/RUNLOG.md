@@ -347,3 +347,10 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-19 16:56 DONE autorun b11-repl: DONE; guard exit 0; SHUTDOWN ['emulator-5650', 'emulator-5654']. Outcomes not inspected by the runner.
 2026-11-19 16:56 b11-repl: replacement autorun exit 0
 - 2026-11-19 17:04 B2 DESIGN: artifact/plans/b2-card.md (draft): AirGuard SendStatisticsWorker fenced through HttpTransport; durable consent log keyed by collection time (no Room schema change); identical debug test hooks in stock and fenced builds; oracle sink-side. Implementation next; emulator slot 26–27/11.
+- 2026-11-19 17:20 QUEUE RESULTS + FIXES: B10 pilot-calib (16:44–16:45) THROTTLE GATE FAIL (2 MiB medians edge 0.34 / umts 0.32
+  / lte 0.32 s: emulator netspeed not applied over the AVD's Wi-Fi) → protocol v2 `--radio`. B3 pilot-1 (16:46–16:49) mechanism
+  worked (split resent diagnostics; prefix denied) but gate failed on a suite bug (prefix+split waited for a SPLIT that cannot
+  come) → v2 end predicate. B4 pilot passed its gate, but B4 final and B12 final (pilot I0 gate passed) did not start: preflight
+  saw the pilot's emulator port (5664 / 5600) still busy → no final trial ran, no data affected. B11 replacement ran
+  (avd14-repl, reboot k 20–21, 16:54–16:56). New plans/autorun/queue2.sh waits for owned ports to be free and runs B4 final,
+  B12 final, B3 v2 (pilot-2 → gate → final), B10 v2 (radio calibration → gate → final2).

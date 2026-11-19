@@ -1,0 +1,1 @@
+{"stage": "pre", "cmd": "bash .claude/skills/p04-experiment/scripts/preflight.sh", "exit": "fail", "t": 1795082031.817991}

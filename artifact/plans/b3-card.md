@@ -38,3 +38,9 @@ were accepted, no split. Paper §5 "Splitting blocked requests". No `summary.jso
   receiver completion = receipt of all bytes, not server processing.
 
 ## 6. Outcome (after the run)
+
+## Protocol v2 (19/11, after pilot-1; before any final trial)
+Pilot-1 mechanism: prefirst+split retired analytics and resent diagnostics (`-split` SEND_OK); prefix denied; control sent.
+Gate failed on a harness bug: for prefix+split the suite waited for a SPLIT that the app (correctly) never emits once bytes were
+accepted, so the trial timed out. v2 fixes only the suite's end predicate (`b3_suite.py`); fixture, conditions, N, validity and
+analysis unchanged. Pilot-2 → gate → final (queue2.sh).

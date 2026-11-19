@@ -50,3 +50,10 @@ raceEdgeFence, raceThreegLayer, raceThreegFence, raceLteLayer, raceLteFence, rac
 - Results directory:
 - Deviations:
 - Negative or null results:
+
+## Protocol v2 (19/11, after pilot-calib; no final trial ran)
+Throttle gate failed: calibrated 2 MiB medians edge 0.34 s, umts 0.32 s, lte 0.32 s — the emulator console `network speed`
+did not shape the app's traffic (the AVD routes data over its virtual Wi-Fi). v2: `race_suite.py --radio` turns Wi-Fi off and
+data on before the run (routes and active network recorded in meta.json), so traffic uses the emulated cellular link the presets
+apply to; everything else unchanged. New dirs pilot-calib2 / final2; same mechanical gate. If it fails again, a host-side shaper
+(macOS dnctl/pf, needs sudo) is the next step (protocol v3).

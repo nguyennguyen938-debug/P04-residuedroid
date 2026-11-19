@@ -22,7 +22,8 @@ p.add_argument('--profiles', default='edge,umts,lte'); p.add_argument('--sizes',
 p.add_argument('--modes', default='early,fence'); p.add_argument('--calibrate', type=int, default=0)
 p.add_argument('--trials', type=int, default=0); p.add_argument('--start', type=int, default=0)
 p.add_argument('--durations', type=Path); p.add_argument('--seed', default='race-20261119')
-p.add_argument('--certdir', type=Path, default=A / 'followup/tls-cert')   # test-ca.pem + test-key.pem (key never committed)
+p.add_argument('--certdir', type=Path, default=A / 'followup/tls-cert')
+p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
 assert a.trials == 0 or a.durations, '--trials needs --durations (calibration.json)'
@@ -107,6 +108,10 @@ sink = Server(('127.0.0.1', 8798), Handler); sink.guard = threading.Lock(); thre
 
 boot()
 adb('root'); time.sleep(2); adb('wait-for-device')
+RADIO = {}
+if a.radio:
+    adb('shell', 'svc wifi disable'); adb('shell', 'svc data enable'); time.sleep(8)
+    RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"').strip()[:400]}
 apk = A / 'fixture/build/tls-apk/rl-tls.apk'
 adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
@@ -114,7 +119,7 @@ adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
 meta = {'serial': a.serial, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
@@ -165,4 +170,5 @@ else:
             u = random.Random(f'{a.seed}-{block}-{p_}-{s}').random()   # same u for early and fence: paired cells
             trial(block, p_, s, m, u)
 net('full')
+if a.radio: adb('shell', 'svc wifi enable')
 sink.shutdown()

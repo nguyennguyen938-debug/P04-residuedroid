@@ -1,0 +1,12 @@
+{"host_ns": 90775395711958, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 90775722214083, "request": "b3-prefix-split-0-e3e879", "event": "headers", "expected": 8388710}
+{"host_ns": 90787732354583, "request": "b3-prefix-split-0-e3e879", "event": "body", "received": 417652, "expected": 8388710, "complete": false}
+{"host_ns": 90852043309041, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 90852561003208, "request": "b3-prefirst-split-0-1cfc82-split", "event": "headers", "expected": 524386}
+{"host_ns": 90852664874958, "request": "b3-prefirst-split-0-1cfc82-split", "event": "body", "received": 524386, "expected": 524386, "complete": true}
+{"host_ns": 90853406631458, "request": "b3-prefix-nosplit-0-1de7a4", "event": "headers", "expected": 8388712}
+{"host_ns": 90854252468500, "request": "b3-control-split-0-9ad6f0", "event": "headers", "expected": 1048679}
+{"host_ns": 90854435958125, "request": "b3-control-split-0-9ad6f0", "event": "body", "received": 1048679, "expected": 1048679, "complete": true}
+{"host_ns": 90855486648708, "request": "b3-control-nosplit-0-c22354", "event": "headers", "expected": 1048681}
+{"host_ns": 90855665925250, "request": "b3-control-nosplit-0-c22354", "event": "body", "received": 1048681, "expected": 1048681, "complete": true}
+{"host_ns": 90865418980625, "request": "b3-prefix-nosplit-0-1de7a4", "event": "body", "received": 626546, "expected": 8388712, "complete": false}

@@ -1,0 +1,37 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-34 arm64 rev 14
+  [ OK ] system image android-35 arm64 rev 9
+== AVDs
+  [ OK ] AVD P04Avd14
+  [ OK ] AVD P04Avd15
+== host
+  [WARN] only ~6 GB available; close apps before 2 emulators
+  [ OK ] 169 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5650 5654 8790 8791 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 18 ok, 0 failed
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5650 --avd P04Avd14 --port 8790 --variants menqueue,mlayer,mfence --apkdir fixture/build/revision-apk --timeout 90 --schedules reboot --start 20 --trials 2 --seed b11-20261119 --out results/round3/b11/avd14-repl
+16:54:58 restarted emulator-5650 in 24s
+16:55:35 emulator-5650 reb020 35s
+16:56:08 emulator-5650 reb021 33s
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5650 emu kill
+OK: killing emulator, bye bye
+OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5654 emu kill
+error: could not connect to TCP port 5654: Connection refused

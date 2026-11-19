@@ -132,13 +132,14 @@ def trial(block, cond, split):
             r['withdraw'] = bc('withdraw', id, remote=True, scope='analytics')
             if cond == 'prefirst': adb('shell', f'run-as {PKG} touch files/release')
         ends = ('SEND_OK', 'SEND_ERROR', 'EARLY_BLOCK')
-        def finished(ev):
+        def finished(ev):   # v2 (pilot-1): an end event is final unless a SPLIT resubmitted items, then wait for '<id>-split'
             mine = [e for e in ev if e['trial'] == id]
             if not any(e['kind'] in ends for e in mine): return False
             sp = [e for e in mine if e['kind'] == 'SPLIT']
-            if split and sp and 'resubmit=' in sp[0]['detail'] and not sp[0]['detail'].endswith('resubmit='):
+            if sp and not sp[0]['detail'].endswith('resubmit=') and 'retired=;' not in sp[0]['detail']:
                 return any(e['trial'] == id + '-split' and e['kind'] in ends for e in ev)
-            return True if not split or cond == 'control' or sp or any(e['kind'] == 'SEND_OK' for e in mine) else False
+            if split and cond == 'prefirst' and not sp: return False   # the app logs SPLIT right after its SEND_ERROR: keep polling
+            return True
         ok, ev = wait_for(finished, 75 if cond == 'prefix' else 25, step=0.3)
         r['events'] = ev; r['complete_wait'] = ok
     except Exception as e: r['harness_error'] = repr(e)
