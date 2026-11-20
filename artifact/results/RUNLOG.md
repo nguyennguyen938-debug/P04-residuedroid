@@ -437,3 +437,13 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-20 21:35 DONE autorun b4-repl-v3: DONE; guard exit 0; SHUTDOWN ['emulator-5664']. Outcomes not inspected by the runner.
 2026-11-20 21:35 b4-repl-v3 exit 0
 - 2026-11-20 21:38 B4 v3 DONE: final-v3 + 2 replacement blocks → every cell 20 valid (440 logged, 1 invalid, 39 unused); sweep* keys now from analysis-v3-repl (only these 4 keys changed in summary.json); EXCLUSIONS regenerated; guard OK. Card 'Outcome v3'.
+- 2026-11-20 21:42 B12 v2 LAUNCH b12v2-chain (pilot-base → gate incl. AGG after REGRANT → base/M1/M2/M3 × pending,reboot × 20, --regrant-agg); emulator-5600 P04AvdA, sink 8795; A approved in PR #2 (A1); card b12-card.md Protocol v2.
+- 2026-11-20 21:42 LAUNCH autorun b12v2-pilot (pilot) card artifact/plans/b12-card.md; stages ['base']; owned ['emulator-5600']; log artifact/results/mutation-v2/autorun-b12v2-pilot.log.
+- 2026-11-20 21:44 DONE autorun b12v2-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5600']. Outcomes not inspected by the runner.
+2026-11-20 21:44 b12v2-chain: B12 v2 gate passed; starting final (4 builds, --regrant-agg)
+2026-11-20 21:44 b12v2-chain: final autorun exit 3
+- 2026-11-20 21:44 B12 v2 final not started at 21:44: autorun pre-check failed (preflight 'port 5600 in use' right after the pilot emulator shut down; environment, no final trial ran). Relaunching b12v2-final after the ports are free (chain lacked the port wait the queues have).
+- 2026-11-20 21:44 LAUNCH autorun b12v2-final (final) card artifact/plans/b12-card.md; stages ['base', 'M1-union-latest', 'M2-stale-epoch', 'M3-extras-drop']; owned ['emulator-5600']; log artifact/results/mutation-v2/autorun-b12v2-final.log.
+- 2026-11-20 23:29 DONE autorun b12v2-final: DONE; guard exit 0; SHUTDOWN ['emulator-5600']. Outcomes not inspected by the runner.
+2026-11-20 23:29 b12v2-final exit 0
+- 2026-11-20 23:31 B12 v2 DONE: M1 24/40 leaking (24 flagged = 24 wrong-label), M2 39/39, M3 0/40, base 0/39; mut* keys now from mutation-v2/analysis (7 keys changed); EXCLUSIONS regenerated; guard OK. Card 'Outcome v2'.

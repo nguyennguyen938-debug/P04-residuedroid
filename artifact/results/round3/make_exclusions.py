@@ -38,6 +38,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/b2/pilot-3': ('check of the driver fix before the final (gate in b2-card.md)', 'none'),
     'round3/b2/pilot-3-analysis': ('analysis of pilot-3 (pilot)', '—'),
     'mutation/pilot-base': ('B12 base pilot, I0 gate', 'none'),
+    'mutation-v2/pilot-base': ('B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed', 'none'),
 }
 
 
@@ -66,11 +67,12 @@ def trial_rows():
         inv = [f"{x['instance']}/{x['trial']}: {x['reason']}" for x in b11['invalid_oracle_rules']] + [f"{x['instance']}/{x['trial']}: {x['reason']}" for x in b11['invalid_extra']]
         n = sum(v['analysed_paired_trials'] for v in b11['avds'].values()) + len(inv) + len(b11['unused_valid'])
         out.append(('Test 4 / B11 (Android 14 + 15)', n, inv, len(b11['unused_valid']), 'b11/analysis'))
-    mut = load('mutation/analysis/mutation-summary.json')
-    if mut:
-        for m, v in mut['mutants'].items():
-            inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
-            out.append((f'Test 2 / B12 {m}', v['valid_trials'] + len(inv), inv, 0, 'mutation/analysis'))
+    for ver, f in (('v1', 'mutation/analysis'), ('v2 (keys)', 'mutation-v2/analysis')):
+        mut = load(f + '/mutation-summary.json')
+        if mut:
+            for m, v in mut['mutants'].items():
+                inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
+                out.append((f'Test 2 / B12 {ver} {m}', v['valid_trials'] + len(inv), inv, 0, f))
     for name, f in (('B3 split policy', 'round3/b3/analysis/b3-summary.json'), ('Test 5 / B4 v1', 'round3/b4/analysis/sweep-summary.json'),
                     ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json')):
         d = load(f)
@@ -91,7 +93,7 @@ def main():
     for name, n, inv, unused, src in trial_rows():
         L.append(f"| {name} | {n} | {len(inv)}{': ' + '; '.join(inv) if inv else ''} | {unused} | `{src}` |")
     L += ['', '## Pilots and discarded runs', '', '| Directory | What happened | Change caused |', '|---|---|---|']
-    dirs = sorted(str(p.relative_to(R)) for base in (R / 'round3', R / 'mutation') for p in base.rglob('*')
+    dirs = sorted(str(p.relative_to(R)) for base in (R / 'round3', R / 'mutation', R / 'mutation-v2') for p in base.rglob('*')
                   if p.is_dir() and (p.name.startswith('pilot') or '_INVALID_' in p.name))
     for d in dirs:
         what, change = WHY.get(d, ('reason missing', '—'))

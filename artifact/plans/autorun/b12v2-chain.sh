@@ -23,6 +23,7 @@ print('labels', c, 'trials', len(sc), 'errors', len(bad), 'AGG after REGRANT per
 sys.exit(0 if c and all(k.endswith('/ok') for k in c) and len(sc) == 2 and not bad and len(mech) == 2 and all(mech) else 1)
 PY
 note "B12 v2 gate passed; starting final (4 builds, --regrant-agg)"
+for _ in $(seq 1 60); do lsof -nP -iTCP -sTCP:LISTEN 2>/dev/null | grep -qE ":(5600|5601|8795) " || break; sleep 5; done   # pilot emulator releases its ports
 python3 .claude/skills/p04-autorun/scripts/autorun.py artifact/plans/autorun/b12v2-final.json --confirm b12v2-final; note "final autorun exit $?"
 }
 main "$@"; exit $?

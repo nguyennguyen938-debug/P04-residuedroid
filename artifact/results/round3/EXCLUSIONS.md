@@ -14,10 +14,14 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 6 TLS v3 (Pixel 8a) | 20 | 0 | 0 | `test6/analysis-v3` |
 | Test 6 TLS v3 (Galaxy M35) | 20 | 0 | 0 | `test6/analysis-v3` |
 | Test 4 / B11 (Android 14 + 15) | 162 | 2: F-0/reb004: harness/device; F-0/reb014: harness/device | 0 | `b11/analysis` |
-| Test 2 / B12 base | 40 | 0 | 0 | `mutation/analysis` |
-| Test 2 / B12 M1-union-latest | 40 | 1: reb006: harness/device | 0 | `mutation/analysis` |
-| Test 2 / B12 M2-stale-epoch | 40 | 1: reb001: harness/device | 0 | `mutation/analysis` |
-| Test 2 / B12 M3-extras-drop | 40 | 2: reb004: harness/device; reb014: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 base | 40 | 0 | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M1-union-latest | 40 | 1: reb006: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M2-stale-epoch | 40 | 1: reb001: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M3-extras-drop | 40 | 2: reb004: harness/device; reb014: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v2 (keys) base | 40 | 1: reb003: harness/device | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M1-union-latest | 40 | 0 | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M2-stale-epoch | 40 | 1: reb000: harness/device | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M3-extras-drop | 40 | 0 | 0 | `mutation-v2/analysis` |
 | B3 split policy | 120 | 0 | 0 | `b3/analysis` |
 | Test 5 / B4 v1 | 400 | 0 | 0 | `b4/analysis` |
 | Test 5 / B4 v2 | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
@@ -29,6 +33,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 
 | Directory | What happened | Change caused |
 |---|---|---|
+| `mutation-v2/pilot-base` | B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed | none |
 | `mutation/pilot-base` | B12 base pilot, I0 gate | none |
 | `round3/b10/pilot-calib` | throttle gate failed: console netspeed did not shape the AVD Wi-Fi path | protocol v2: --radio |
 | `round3/b10/pilot-calib2` | aborted before any send (metadata `dumpsys | grep` exit 1) | metadata line made non-fatal |

@@ -1,0 +1,13 @@
+{
+  "id": "b12v2-final",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-20T23:29:28.838765+07:00",
+  "stages": [
+    "artifact/results/mutation-v2/base",
+    "artifact/results/mutation-v2/M1-union-latest",
+    "artifact/results/mutation-v2/M2-stale-epoch",
+    "artifact/results/mutation-v2/M3-extras-drop"
+  ]
+}

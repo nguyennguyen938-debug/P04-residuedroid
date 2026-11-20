@@ -6,7 +6,7 @@ Sources (each optional; a missing analysis just leaves its keys absent, which re
   test 1  results/round3/b10/analysis/race-summary.json     keys
   test 4  results/round3/b11/analysis/b11-summary.json      keys
   test 5  results/round3/b4/analysis-v3-repl/sweep-summary.json  keys (protocol v3, final-v3 + replacement blocks; v1, v2 reported in b4-card.md)
-  test 2  results/mutation/analysis/mutation-summary.json   keys
+  test 2  results/mutation-v2/analysis/mutation-summary.json   keys (protocol v2, regrant_agg; v1 reported in b12-card.md)
 Only names in SCHEMA (scripts/render_tests.py) are written; render_tests.py asserts this too.
 Usage: python3 artifact/results/round3/make_summary.py
 """
@@ -17,7 +17,7 @@ ART = Path(__file__).resolve().parents[2]
 R = ART / 'results'
 SRC = [(R / 'round3/test6/analysis/test6-summary.json', 'summary_candidates'), (R / 'round3/b10/analysis/race-summary.json', 'keys'),
        (R / 'round3/b11/analysis/b11-summary.json', 'keys'), (R / 'round3/b4/analysis-v3-repl/sweep-summary.json', 'keys'),
-       (R / 'mutation/analysis/mutation-summary.json', 'keys')]
+       (R / 'mutation-v2/analysis/mutation-summary.json', 'keys')]
 
 
 def schema():

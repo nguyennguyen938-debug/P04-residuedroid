@@ -53,3 +53,20 @@ so the M1 trigger — an aggregate holding e0 and e1 records — could not occur
 - Threat added: the re-aggregation is a test-fixture behaviour chosen to reach T5 (A's README scenario), not observed in a real app.
 - v2 builds (20/11, from commit 36127ed; `fixture/build/apk_mut2_$m/SHA256SUMS`): base 93b78d03, M1 f48529f9, M2 cef9d720,
   M3 889864a6 (sha256 prefixes of rl-mfence.apk); each contains the `regrant_agg` code path.
+
+## Outcome v2 (20/11, final 21:44–23:29, guard 0; key source)
+- Pilot-base: 2/2 trials valid, label_check 104/104 `ok`, AGG for tenant 5 after REGRANT in 2/2 trials → gate passed. The final's
+  first launch was refused by autorun's preflight (port 5600 still held by the pilot emulator; no trial ran) and relaunched.
+- Logged / excluded / valid (paired trials, 20 pending + 20 reboot per build): base 40/1/39 (reb003); M1 40/0/40; M2 40/1/39
+  (reb000); M3 40/0/40. Exclusions: oracle reason "harness/device" (reboot step). No replacement rule; `mutTrials` = 39.
+- Results (`results/mutation-v2/analysis/mutation-summary.json`; Wilson 95%):
+  base: 0/39 leaking [0, 0.090], 0 flagged, 0 wrong-label, permitted deficit 80 items (v1 44).
+  M1-union-latest: **24/40 leaking [0.446, 0.737]**, 24 flagged = 24 wrong-label items (label_check and the independent tracer
+  agree in count), deficit 88 (v1: 0/39 leaking, not triggered).
+  M2-stale-epoch: 39/39 leaking [0.910, 1], 924 flagged = 924 wrong-label, deficit 524 (v1 39/39, 908).
+  M3-extras-drop: 0/40 leaking [0, 0.088], 0 flagged, 0 wrong-label, deficit 136 (base 80).
+- Reading: with the re-aggregation reachable, the label checks catch M1 (the summary labelled only with the newest epoch). Not
+  analysed here: why 16/40 M1 trials did not leak (no per-trial cause was pre-specified); why the base deficit rose from 44 to 80
+  (candidate, not tested: the re-aggregated summary is correctly blocked and the oracle may count part of it as permitted).
+- Report v1 and v2 together; the README statement that pending + reboot alone reach T5 does not hold for M1 without
+  `regrant_agg` (told A in PR #2).
