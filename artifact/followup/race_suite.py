@@ -146,7 +146,10 @@ adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
 adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
-meta = {'serial': a.serial, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
+PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no hardware serial in the results (privacy)
+    'release': adb('shell', 'getprop', 'ro.build.version.release').strip(), 'sdk': adb('shell', 'getprop', 'ro.build.version.sdk').strip(),
+    'transport': adb('shell', 'dumpsys connectivity | grep -m1 -o "TRANSPORT_[A-Z]*"; true').strip()[:40]}
+meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
         'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')

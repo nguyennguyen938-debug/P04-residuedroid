@@ -37,3 +37,9 @@ trống — báo C). Thiếu beacon hợp lệ của Galaxy ở Test 6 v2 giữ 
 (`plans/test6/ec2/setup.sh --create`, < 10 USD, `teardown.sh` sau lượt) và mở phiên RTL Galaxy M35 (~8 credit) → pilot
 calibration → `test1-phone-card.md` (N chốt sau pilot, commit trước lượt chính) → lượt chính. #2 chỉ nếu còn credit.
 B7 freeze chờ cả #1 lẫn câu trả lời của A về M1 (chậm nhất 29/11).
+
+## Quyết định người dùng 20/11 (tối): #1 chạy trên điện thoại Android 15 của người dùng (thay RTL Galaxy)
+Kit: `plans/test1-phone/` (preflight, run, cleanup, README) + card `plans/test1-phone-card.md` (viết trước mọi trial; quy tắc
+N cố định). Receiver EC2 `receiver_b.py --profile-set b10v3` (cùng shaping với B10 v3; chỉ chiều upload), region do người
+dùng chọn (`AWS_REGION`, mặc định us-west-2 giữ nguyên). Không ghi serial phần cứng vào kết quả; gỡ app sau lượt. Không cần
+credit RTL. #2 (Galaxy) không áp dụng cho máy này.

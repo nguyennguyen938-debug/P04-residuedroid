@@ -20,6 +20,9 @@ p = argparse.ArgumentParser()
 p.add_argument('--cert', type=Path, required=True); p.add_argument('--out', type=Path, required=True)
 p.add_argument('--dev', default='ens5'); p.add_argument('--token', default=os.environ.get('P04_TOKEN', ''))
 p.add_argument('--bind', default='0.0.0.0'); p.add_argument('--no-tc', action='store_true')
+p.add_argument('--profile-set', default='emu', choices=['emu', 'b10v3'],
+               help='b10v3: same shaping as B10 protocol v3 (plans/b10-card.md): upload direction only, netem delay + rate '
+                    '(edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms); download unshaped')
 a = p.parse_args()
 assert a.token, 'set --token or P04_TOKEN'
 a.out.mkdir(parents=True, exist_ok=True); LOG = a.out / 'receiver.jsonl'; GUARD = threading.Lock(); MODE = {'v': 'normal'}; STATE = {'profile': 'full'}
@@ -33,10 +36,22 @@ def sh(cmd):
     return subprocess.run(cmd, shell=True, capture_output=True, text=True)
 
 
+V3 = {'edge': ('118400bit', '240ms'), 'umts': ('128kbit', '118ms'), 'lte': ('58mbit', '0ms')}   # = race_suite.py TC (B10 v3)
+
+
 def shape(name):
     up, down, delay = PROFILES[name]
-    if a.no_tc: STATE['profile'] = name; return 'no-tc'
     d = a.dev
+    if a.profile_set == 'b10v3':          # phone upload = ingress here -> ifb0 -> netem delay+rate, as the guest egress in B10 v3
+        cmds = [f'tc qdisc del dev {d} root', f'tc qdisc del dev {d} ingress', 'tc qdisc del dev ifb0 root']
+        if name in V3:
+            cmds += ['modprobe ifb numifbs=1', 'ip link set dev ifb0 up', f'tc qdisc add dev {d} handle ffff: ingress',
+                     f'tc filter add dev {d} parent ffff: protocol ip u32 match u32 0 0 action mirred egress redirect dev ifb0',
+                     f'tc qdisc add dev ifb0 root netem delay {V3[name][1]} rate {V3[name][0]} limit 10000']
+        STATE['profile'] = name
+        if a.no_tc: return 'no-tc: ' + '; '.join(cmds)
+        return '; '.join(f'{c} -> {sh(c).returncode}' for c in cmds)
+    if a.no_tc: STATE['profile'] = name; return 'no-tc'
     sh(f'tc qdisc del dev {d} root; tc qdisc del dev {d} ingress; tc qdisc del dev ifb0 root')
     if up is None: STATE['profile'] = name; return 'cleared'
     out = []
