@@ -15,7 +15,7 @@ echo "INFO Android $REL (SDK $SDK), model $($ADB -s $S shell getprop ro.product.
 chk "test APK is the B10 build (sha256 ca313b94…ef15)" "shasum -a 256 '$APK' | grep -q ^ca313b94fd89c9e3"
 chk "test APK installs (adb install -r)" "$ADB -s $S install -r '$APK'"
 chk "run-as works for $PKG (debuggable, no root needed)" "$ADB -s $S shell run-as $PKG id"
-echo "INFO network: $($ADB -s $S shell 'dumpsys connectivity | grep -m1 -o "TRANSPORT_[A-Z]*"' | tr -d '\r') (WIFI or CELLULAR; keep it the same for the whole run)"
+echo "INFO network: $($ADB -s $S shell 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\{[A-Z_]+(\[[A-Za-z0-9 ]*\])?"' | tr -d '\r') (active default network: WIFI or MOBILE; keep it the same for the whole run)"
 echo "INFO battery: $($ADB -s $S shell dumpsys battery | grep -m1 level | tr -d '\r ') ; stay-awake: $($ADB -s $S shell settings get global stay_on_while_plugged_in | tr -d '\r') (3 or 7 = on while charging)"
 [ $fail = 0 ] && echo "PREFLIGHT OK" || echo "PREFLIGHT FAIL"
 return $fail

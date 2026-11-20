@@ -148,7 +148,7 @@ adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
 PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no hardware serial in the results (privacy)
     'release': adb('shell', 'getprop', 'ro.build.version.release').strip(), 'sdk': adb('shell', 'getprop', 'ro.build.version.sdk').strip(),
-    'transport': adb('shell', 'dumpsys connectivity | grep -m1 -o "TRANSPORT_[A-Z]*"; true').strip()[:40]}
+    'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
         'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
