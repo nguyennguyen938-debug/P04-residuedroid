@@ -1,0 +1,10 @@
+{
+  "id": "b12-pilot",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-19T16:53:51.206806+07:00",
+  "stages": [
+    "artifact/results/mutation/pilot-base"
+  ]
+}

@@ -1,0 +1,76 @@
+[
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "F",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 80,
+    "difference": 0.95,
+    "percentile95": [
+      0.95,
+      0.95
+    ],
+    "strata": {
+      "('kill', 'F-0')": 20,
+      "('netloss', 'F-0')": 20,
+      "('pending', 'F-0')": 20,
+      "('reboot', 'F-0')": 18,
+      "('reboot', 'F-1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "F",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 80,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'F-0')": 20,
+      "('netloss', 'F-0')": 20,
+      "('pending', 'F-0')": 20,
+      "('reboot', 'F-0')": 18,
+      "('reboot', 'F-1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "V",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 80,
+    "difference": 0.95,
+    "percentile95": [
+      0.95,
+      0.95
+    ],
+    "strata": {
+      "('kill', 'V-0')": 20,
+      "('netloss', 'V-0')": 20,
+      "('pending', 'V-0')": 20,
+      "('reboot', 'V-0')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "V",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 80,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'V-0')": 20,
+      "('netloss', 'V-0')": 20,
+      "('pending', 'V-0')": 20,
+      "('reboot', 'V-0')": 20
+    }
+  }
+]

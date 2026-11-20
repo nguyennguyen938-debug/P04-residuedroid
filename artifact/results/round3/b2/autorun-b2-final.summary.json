@@ -1,0 +1,10 @@
+{
+  "id": "b2-final",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-19T23:53:52.070291+07:00",
+  "stages": [
+    "artifact/results/round3/b2/final"
+  ]
+}

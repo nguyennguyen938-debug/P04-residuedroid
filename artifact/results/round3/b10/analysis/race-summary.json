@@ -1,0 +1,128 @@
+{
+ "logged": 180,
+ "invalid": [],
+ "cells": {
+  "edge/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 21,
+   "wilson95": [
+    0.5212387898833981,
+    0.8333543735604105
+   ],
+   "ends": {
+    "SEND_OK": 30
+   },
+   "pred_eq2_mean": 0.742568130561832,
+   "by_size": {
+    "32768": 4,
+    "262144": 8,
+    "2097152": 9
+   }
+  },
+  "edge/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "ends": {
+    "SEND_ERROR": 21,
+    "SEND_OK": 9
+   },
+   "pred_eq2_mean": 0.4613417216878794,
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   }
+  },
+  "lte/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 10,
+   "wilson95": [
+    0.19230295526846194,
+    0.5122027418616973
+   ],
+   "ends": {
+    "SEND_OK": 30
+   },
+   "pred_eq2_mean": 0.847639613590252,
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 10
+   }
+  },
+  "lte/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "ends": {
+    "SEND_ERROR": 12,
+    "SEND_OK": 18
+   },
+   "pred_eq2_mean": 0.8336024342020719,
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   }
+  },
+  "umts/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 20,
+   "wilson95": [
+    0.48779725813830266,
+    0.807697044731538
+   ],
+   "ends": {
+    "SEND_OK": 30
+   },
+   "pred_eq2_mean": 0.7912167165821955,
+   "by_size": {
+    "32768": 2,
+    "262144": 8,
+    "2097152": 10
+   }
+  },
+  "umts/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "ends": {
+    "SEND_ERROR": 20,
+    "SEND_OK": 10
+   },
+   "pred_eq2_mean": 0.4873616720412609,
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   }
+  }
+ },
+ "keys": {
+  "raceEdgeLayer": 21,
+  "raceEdgeFence": 0,
+  "raceLteLayer": 10,
+  "raceLteFence": 0,
+  "raceThreegLayer": 20,
+  "raceThreegFence": 0,
+  "raceTrials": 30,
+  "racePredPct": 79.4,
+  "raceObsPct": 56.7
+ }
+}

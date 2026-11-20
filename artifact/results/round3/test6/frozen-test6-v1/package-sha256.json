@@ -1,0 +1,28 @@
+{
+ "zip": "p04-test6-package-v4.zip",
+ "zip_sha256": "8562abebbb87379e6466530b47fef53b57ec37b59f0a4c57fc6fa6c08a7609d7",
+ "repo_commit": "7b2b523b23c3afe588889a1a552603038ff1ffc7",
+ "files": {
+  "artifact/fixture/build/revision-apk/SHA256SUMS": "f0d6ca3be7e0a715fdce3ed2589a9bc83ab763f6e64ee8e3531a0327aba15027",
+  "artifact/fixture/build/revision-apk/rl-mboth.apk": "853e9d1ac35522e37dc7d25a4100ba3b0848edecbfad12ae929614a592976a86",
+  "artifact/fixture/build/revision-apk/rl-mboth.apk.idsig": "b01e31875413aaab966c0ecd6a8a38da81b9b69f98ffbf581530705c2cc7db30",
+  "artifact/fixture/build/revision-apk/rl-menqueue.apk": "a32106549e370065df6ead0655a240c4e47272b82ecd9b4507af87f9bce86fab",
+  "artifact/fixture/build/revision-apk/rl-menqueue.apk.idsig": "416802f704c9a44ec314a3eab7e531634e11ea74c4e13b27a7f9d18e05c12ba1",
+  "artifact/fixture/build/revision-apk/rl-mfence.apk": "61b53bbf946fa131d9336209be4f58d6e1668f5f84d0cd86fc457aa6b182435b",
+  "artifact/fixture/build/revision-apk/rl-mfence.apk.idsig": "9f2643aa1849b8bf279d84290a951e7716ae9cf19e17c6f16c9e2a4678657328",
+  "artifact/fixture/build/revision-apk/rl-mlayer.apk": "d755633bb3d4a8300008112574a3487fab3ed305c949f3507c37673d248094e5",
+  "artifact/fixture/build/revision-apk/rl-mlayer.apk.idsig": "0579686edf51b163048634fe589ed14080770d53e5704b0a06a5a9f953e5d72c",
+  "artifact/fixture/build/revision-apk/rl-mstart.apk": "ae4f64508f92b2808cb1fe90dca5e1bdaff2b9955337e02e8334b1cf83d29adb",
+  "artifact/fixture/build/revision-apk/rl-mstart.apk.idsig": "317ca9589ef8de9bea5424b6cf836bfa62b79760724da70511dbca010a92d82f",
+  "artifact/fixture/build/tls-apk/SHA256SUMS": "ccaf7b0ddeb8f13edbcda1e994fb2af6408fa0830bb168f178f22eaac7752a97",
+  "artifact/fixture/build/tls-apk/rl-tls.apk": "49ae92ac79948ca6b71aeda2facf449c8188f02416a4e17ca1021c9224ae341d",
+  "artifact/fixture/build/tls-apk/rl-tls.apk.idsig": "51a94b963eaa61d0a24ba6108c9929a059a36ea04a84c6fa588ea7b710dcd5bb",
+  "artifact/followup/campaign.py": "a59954f8c6c6aea0a8cb1e7c69b70fdf32596a7571ce5558527063ed623c4927",
+  "artifact/followup/tls-cert/test-ca.pem": "9abca70718392c30296672b063020aff1285ccbff9e3925e9bdb6a6580693874",
+  "artifact/followup/tls_suite.py": "b84712ce94fcb4902d1e9b297e2acfdf88293c395abeca4bd19238b21a9ed30a",
+  "artifact/harness/sink.py": "82a6fe5783a7c7fdb36f6118a04a252dd8295125d1a20efc3a9e93d2ba1f02f5",
+  "requirements.txt": "8004a972c3d5c274d8c808e8d8afe03b9aca8af8eebf3df4298f114d8008b754",
+  "tests/test_placeholder.py": "424f6b557838797eff9230bcb40479e1e9bb5c81d52d4a8123641815896baa47"
+ },
+ "note": "Device Farm/RTL package v4; test-key.pem excluded (never committed); test-ca.pem generated per package"
+}

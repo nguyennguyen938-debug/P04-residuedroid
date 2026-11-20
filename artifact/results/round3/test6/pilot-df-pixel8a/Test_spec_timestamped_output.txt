@@ -1,0 +1,57 @@
+[2026-11-19 02:34:23.148042] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-19 02:34:23.148113]  
+[2026-11-19 02:34:23.157317]  
+[2026-11-19 02:34:23.157345] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-19 02:34:23.157364]  
+[2026-11-19 02:34:23.157375] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-19 02:34:23.276234] [DeviceFarm] python3 --version
+[2026-11-19 02:34:23.277026] Python 3.12.12
+[2026-11-19 02:34:23.277226] [DeviceFarm] adb version
+[2026-11-19 02:34:23.301242] Android Debug Bridge version 1.0.39
+[2026-11-19 02:34:23.301298] Version 0.0.1-4500957
+[2026-11-19 02:34:23.301317] Installed as /tmp/devicefarm-workspace/execution-1d00gck4/shared-h3c3874a/android-home-tt_s34j1/platform-tools/adb_binary
+[2026-11-19 02:34:23.303043]  
+[2026-11-19 02:34:23.303067] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-19 02:34:23.303082]  
+[2026-11-19 02:34:23.303094] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+[2026-11-19 02:34:23.354721] 8798
+[2026-11-19 02:34:26.450827] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+[2026-11-19 02:34:26.490741] 8799
+[2026-11-19 02:34:29.513176] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8787 tcp:8787
+[2026-11-19 02:34:29.548067] 8787
+[2026-11-19 02:34:32.571079] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+[2026-11-19 02:34:32.597900] UsbFfs tcp:8798 tcp:8798
+[2026-11-19 02:34:32.597938] UsbFfs tcp:8799 tcp:8799
+[2026-11-19 02:34:32.597953] UsbFfs tcp:8787 tcp:8787
+[2026-11-19 02:34:32.597964] 
+[2026-11-19 02:34:32.600721] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-19 02:34:32.697639] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-19 02:34:32.700429]  
+[2026-11-19 02:34:32.700459] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-19 02:34:32.700482]  
+[2026-11-19 02:34:32.700498] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-19 02:34:32.700512] [DeviceFarm] ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1 --n 1 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --out $DEVICEFARM_LOG_DIR/tls; echo "TLS_EXIT=$?"
+[2026-11-19 02:34:33.409289] Traceback (most recent call last):
+[2026-11-19 02:34:33.409355]   File "/tmp/devicefarm-workspace/execution-1d00gck4/test-package-xgbd3h2_/artifact/followup/tls_suite.py", line 55, in <module>
+[2026-11-19 02:34:33.409405]     (a.no_root or adb('root'));adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
+[2026-11-19 02:34:33.409485]                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-11-19 02:34:33.409509]   File "/tmp/devicefarm-workspace/execution-1d00gck4/test-package-xgbd3h2_/artifact/followup/tls_suite.py", line 9, in adb
+[2026-11-19 02:34:33.409568]     if r.returncode:raise RuntimeError(r.stderr)
+[2026-11-19 02:34:33.409612]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-11-19 02:34:33.409633] RuntimeError
+[2026-11-19 02:34:33.419011] TLS_EXIT=1
+[2026-11-19 02:34:33.419059] [DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,revoke --trials 1 --seed test6-pilot --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+[2026-11-19 02:35:33.503553] 02:35:33 44151JEKB02756 pen000 56s
+[2026-11-19 02:37:08.920047] 02:37:08 44151JEKB02756 kil000 95s
+[2026-11-19 02:38:42.881332] 02:38:42 44151JEKB02756 rev000 94s
+[2026-11-19 02:38:42.889717] LIFE_EXIT=0
+[2026-11-19 02:38:42.889774]  
+[2026-11-19 02:38:42.889792] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-19 02:38:42.889805]  
+[2026-11-19 02:38:42.889816] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+[2026-11-19 02:38:43.009071]  
+[2026-11-19 02:38:43.009138] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-19 02:38:43.009153]  
+[2026-11-19 02:38:43.012835] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-19 02:38:43.012868]  
+[2026-11-19 02:38:43.014314]  

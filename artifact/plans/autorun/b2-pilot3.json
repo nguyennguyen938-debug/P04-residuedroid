@@ -1,0 +1,49 @@
+{
+ "id": "b2-pilot3",
+ "kind": "pilot",
+ "card": "artifact/plans/b2-card.md",
+ "deadline_hours": 1.5,
+ "env": {
+  "ANDROID_HOME": "~/Library/Android/sdk",
+  "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+  "ANDROID_AVD_HOME": "~/.android/avd",
+  "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+  "AVDS": "P04AvdA",
+  "PORTS": "5666 8796 8797",
+  "IMAGES": "33",
+  "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
+ },
+ "owned_serials": [
+  "emulator-5666"
+ ],
+ "pre": [
+  "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+ ],
+ "stages": [
+  {
+   "name": "pilot",
+   "cwd": "artifact",
+   "cmd": [
+    "python3",
+    "followup/campaign_airguard.py",
+    "--serial",
+    "emulator-5666",
+    "--avd",
+    "P04AvdA",
+    "--apkdir",
+    "realapp/airguard/build",
+    "--schedules",
+    "pending,kill,reboot,netloss",
+    "--trials",
+    "1",
+    "--out",
+    "results/round3/b2/pilot-3"
+   ],
+   "out": "artifact/results/round3/b2/pilot-3"
+  }
+ ],
+ "post": [
+  "python3 artifact/followup/analyze_airguard.py artifact/results/round3/b2/pilot-3 --out artifact/results/round3/b2/pilot-3-analysis"
+ ],
+ "guard_after": true
+}

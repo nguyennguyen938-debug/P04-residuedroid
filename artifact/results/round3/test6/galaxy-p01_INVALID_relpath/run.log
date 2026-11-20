@@ -1,0 +1,3 @@
+11:20:22 PREFLIGHT localhost:55977 adb Version 33.0.3-8952118 server port 5038
+connected to localhost:55977
+11:20:32 device model=SM-M356B android=14 uid=2000 run-as=/system/bin/run-as fingerprint=samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys

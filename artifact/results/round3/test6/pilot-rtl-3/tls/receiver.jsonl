@@ -1,0 +1,15 @@
+{"host_ns": 61884494343500, "request": "tls-control-0-7fc72d", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 61890128507916, "request": "tls-control-0-7fc72d", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 61892094417250, "request": "tls-early-0-5ce43e", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 61896171128291, "request": "tls-early-0-5ce43e", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 61899063983541, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 61901397569291, "request": "tls-buffered-early-0-0e39a1", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 61901450094125, "request": "tls-buffered-early-0-0e39a1", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 61903272821250, "request": "tls-stall-small-0-92eca4", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 61905868881291, "request": "tls-stall-large-0-e0dfac", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 61908315977000, "request": "tls-concurrent-0-12c53d", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 61908843563333, "request": "tls-concurrent-0-12c53d-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 61915276282791, "request": "tls-stall-small-0-92eca4", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 73587, "expected": 8388674}
+{"host_ns": 61917875850875, "request": "tls-stall-large-0-e0dfac", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 89971, "expected": 8388674}
+{"host_ns": 61918011094750, "request": "tls-concurrent-0-12c53d", "event": "body", "received": 1007476, "expected": 1048641, "complete": false}
+{"host_ns": 61918431833000, "request": "tls-concurrent-0-12c53d-other", "event": "body", "received": 1007470, "expected": 1048647, "complete": false}

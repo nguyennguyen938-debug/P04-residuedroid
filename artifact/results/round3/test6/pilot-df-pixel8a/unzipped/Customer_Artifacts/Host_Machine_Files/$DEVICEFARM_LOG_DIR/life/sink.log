@@ -1,0 +1,1 @@
+sink on :8787 -> /tmp/devicefarm-workspace/execution-1d00gck4/logs-hant6171/life/sink delay=300ms

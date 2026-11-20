@@ -1,0 +1,156 @@
+{
+ "invalid": [
+  {
+   "trial": "pen000",
+   "reason": "trial error"
+  }
+ ],
+ "cells": {
+  "kill/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "kill/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "reboot/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "reboot/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  }
+ },
+ "rows": [
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{"stage": "pre", "cmd": "bash .claude/skills/p04-experiment/scripts/preflight.sh", "exit": "fail", "t": 1795081898.228789}
+{"stage": "launch", "manifest": {"id": "b4-final", "kind": "final", "card": "artifact/plans/b4-card.md", "deadline_hours": 6, "env": {"ANDROID_HOME": "~/Library/Android/sdk", "ANDROID_SDK_ROOT": "~/Library/Android/sdk", "ANDROID_AVD_HOME": "~/.android/avd", "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home", "AVDS": "P04AvdA", "PORTS": "5664 8799", "IMAGES": "33", "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"}, "owned_serials": ["emulator-5664"], "pre": ["bash .claude/skills/p04-experiment/scripts/preflight.sh"], "stages": [{"name": "final", "cwd": "artifact", "cmd": ["python3", "followup/sweep_suite.py", "--serial", "emulator-5664", "--avd", "P04AvdA", "--blocks", "20", "--out", "results/round3/b4/final"], "out": "artifact/results/round3/b4/final"}], "post": ["python3 artifact/followup/analyze_sweep.py artifact/results/round3/b4/final --out artifact/results/round3/b4/analysis"], "guard_after": true}, "t": 1795084626.001625}
+{"stage": "final", "state": "start", "t": 1795084626.001738}
+{"stage": "final", "state": "end", "exit": 0, "t": 1795085513.297888}
+{"stage": "post", "cmd": "python3 artifact/followup/analyze_sweep.py artifact/results/round3/b4/final --out artifact/results/round3/b4/analysis", "exit": 0, "t": 1795085518.373234}
+{"stage": "guard", "exit": 0, "t": 1795085547.238252}
+{"stage": "shutdown", "serials": ["emulator-5664"], "t": 1795085547.2504551}

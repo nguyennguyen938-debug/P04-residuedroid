@@ -1,0 +1,17 @@
+{
+  "id": "b0-smoke",
+  "kind": "pilot",
+  "card": "artifact/plans/B-run.md",
+  "deadline_hours": 1.5,
+  "env": {"ANDROID_AVD_HOME": "~/.android/avd", "AVDS": "P04AvdB", "PORTS": "5602 8788"},
+  "owned_serials": ["emulator-5602"],
+  "pre": ["bash .claude/skills/p04-experiment/scripts/preflight.sh", "cd artifact && make apks"],
+  "stages": [
+    {"name": "b0-smoke", "cwd": "artifact",
+     "cmd": ["python3", "harness/campaign.py", "--serial", "emulator-5602", "--avd", "P04AvdB", "--port", "8788",
+             "--variants", "egress,rd,volatile,taint", "--trials", "1", "--out", "results/round3/b0/pilot-smoke-1"],
+     "out": "artifact/results/round3/b0/pilot-smoke-1"}
+  ],
+  "post": ["python3 .claude/skills/p04-autorun/scripts/status.py artifact/results/round3/b0/pilot-smoke-1 --target 1"],
+  "guard_after": true
+}

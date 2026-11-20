@@ -1,0 +1,10 @@
+{
+  "id": "b10-pilot3",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-19T20:10:13.071006+07:00",
+  "stages": [
+    "artifact/results/round3/b10/pilot-calib3"
+  ]
+}

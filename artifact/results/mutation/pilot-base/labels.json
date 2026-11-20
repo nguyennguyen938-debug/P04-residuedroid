@@ -1,0 +1,10 @@
+{
+ "name": "pilot-base",
+ "runs": [
+  "artifact/results/mutation/pilot-base"
+ ],
+ "counts": {
+  "mfence/ok": 100
+ },
+ "examples": []
+}

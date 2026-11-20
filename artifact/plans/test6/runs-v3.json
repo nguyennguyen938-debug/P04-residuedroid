@@ -1,0 +1,9 @@
+{
+ "_comment": "Test 6 protocol v3 (TLS only, deadline 60 s). Reported next to v2 (runs.json). Lifecycle not rerun.",
+ "devices": {
+  "P": {"label": "Pixel 8a", "model": "Pixel 8a", "android": "17", "environment": "AWS Device Farm", "receiver_mode": "A: Device Farm host via adb reverse (USB)",
+        "tls": ["results/round3/test6/pixel8a-v3-tls/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/tls"], "life": {}},
+  "G": {"label": "Galaxy M35", "model": "SM-M356B", "android": "14", "environment": "Samsung Remote Test Lab via Remote Debug Bridge", "receiver_mode": "Mac host via adb reverse over the RDB relay",
+        "tls": ["results/round3/test6/galaxy3-*/tls"], "life": {}}
+ }
+}

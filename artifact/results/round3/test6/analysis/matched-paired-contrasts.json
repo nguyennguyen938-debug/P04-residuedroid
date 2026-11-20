@@ -1,0 +1,260 @@
+[
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 0.9666666666666667,
+    "percentile95": [
+      0.9166666666666666,
+      1.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "menqueue",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 0.9666666666666667,
+    "percentile95": [
+      0.9166666666666666,
+      1.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "mstart",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "mstart",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "G",
+    "early": "mlayer",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'G-p02')": 16,
+      "('kill', 'G-p03')": 2,
+      "('kill', 'G-s1')": 2,
+      "('pending', 'G-p02')": 16,
+      "('pending', 'G-p03')": 2,
+      "('pending', 'G-s1')": 2,
+      "('revoke', 'G-p02')": 16,
+      "('revoke', 'G-p03')": 2,
+      "('revoke', 'G-s1')": 2
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 1.0,
+    "percentile95": [
+      1.0,
+      1.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "menqueue",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 1.0,
+    "percentile95": [
+      1.0,
+      1.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mstart",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mstart",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mlayer",
+    "fenced": "mboth",
+    "paired_trials": 60,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('kill', 'P-j1')": 10,
+      "('kill', 'P-j2')": 10,
+      "('pending', 'P-j1')": 10,
+      "('pending', 'P-j2')": 10,
+      "('revoke', 'P-j1')": 10,
+      "('revoke', 'P-j2')": 10
+    }
+  }
+]

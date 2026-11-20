@@ -1,0 +1,10 @@
+{
+  "id": "b10-pilot4",
+  "kind": "pilot",
+  "status": "ABORT(calibrate exit 1)",
+  "guard": 0,
+  "finished": "2026-11-19T20:31:27.603877+07:00",
+  "stages": [
+    "artifact/results/round3/b10/pilot-calib4"
+  ]
+}

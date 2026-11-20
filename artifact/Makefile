@@ -22,9 +22,9 @@ paper: revision
 	$(PY) followup/analyze_tls.py > results/review-followup-20261115/transport-analysis.log
 	$(PY) followup/render.py
 	$(PY) scripts/render_tests.py
-	../manuscript/build.sh
+	bash ../manuscript/build.sh
 apks:
-	fixture/build.sh && acra/build.sh
+	bash fixture/build.sh && bash acra/build.sh
 campaign:
 	$(PY) harness/campaign.py --serial emulator-5600 --avd P04AvdA --port 8787 --variants none,cancel,enqueue,jobstart,conv,rd --out $(RERUN)/c1/A --trials 50 &
 	$(PY) harness/campaign.py --serial emulator-5602 --avd P04AvdB --port 8788 --variants egress,rd,volatile,taint --out $(RERUN)/c1/B --trials 50

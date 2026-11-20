@@ -1,0 +1,22 @@
+{
+ "serial": "44161JEKB12639",
+ "fingerprint": "google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys",
+ "variants": [
+  "menqueue",
+  "mstart",
+  "mlayer",
+  "mfence",
+  "mboth"
+ ],
+ "schedules": "pending,kill,revoke",
+ "trials": 10,
+ "seed": "test6-20261119",
+ "sink_delay_ms": 300,
+ "substrate": "job",
+ "start": 1795057276.7644758,
+ "root": false,
+ "sink_host": "127.0.0.1",
+ "db_read": "run-as copy + host sqlite3",
+ "model": "Pixel 8a",
+ "android": "17"
+}

@@ -1,0 +1,16 @@
+# Knowledge-graph scope: code, protocols, docs, paper. Data/vendored/duplicates excluded.
+graphify-out/
+ARCHIVE-MANIFEST.json
+**/deps/
+artifact/revision/matomo-feasibility/
+artifact/static/data/
+artifact/transport/test-build/
+artifact/results/raw/
+artifact/results/dev/
+artifact/results/logs/
+artifact/results/revision-20261115/
+artifact/results/review-followup-20261115/
+artifact/results/*.json
+manuscript/figures/icons/
+others/fig1-cartoon.*
+artifact/results/review-followup-20261115/frozen-followup-source/

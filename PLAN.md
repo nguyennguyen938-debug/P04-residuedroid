@@ -1,6 +1,6 @@
 # PLAN — P04 ResidueDroid (MobiSys 2027)
 
-Venue: MobiSys 2027, `acmart` sigconf review anonymous, 12-page body. Abstract Nov 27, paper Dec 4 2026 (AoE).
+Venue: MobiSys 2027, `acmart` sigconf review (not anonymous; `manuscript/main.tex`), 12-page body. Abstract Nov 27, paper Dec 4 2026 (AoE).
 Authoritative scope: proposal_v3.md §5 + novelty_audit_v2.md §5 (no RiskSync, no lease calculus, no remote deletion,
 no knapsack ratio; no "first withdrawal measurement"; residual storage is not a violation; no recall claim).
 

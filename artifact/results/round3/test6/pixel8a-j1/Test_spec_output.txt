@@ -1,0 +1,227 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-32n478lo/shared-3vjk5anb/android-home-whtvzfa1/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+8798
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+8799
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8787 tcp:8787
+8787
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+UsbFfs tcp:8798 tcp:8798
+UsbFfs tcp:8799 tcp:8799
+UsbFfs tcp:8787 tcp:8787
+
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell pm list packages -i org.residuelab.tls
+package:org.residuelab.tls  installer=null
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell dumpsys package org.residuelab.tls | grep -i -E 'installer|updateOwner|versionCode' || true
+    versionCode=0 minSdk=26 targetSdk=33
+    installerPackageName=null
+    installerPackageUid=-1
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+Success
+UNINSTALL_TLS_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1 --start 0 --n 20 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --out $DEVICEFARM_LOG_DIR/tls; echo "TLS_EXIT=$?"
+control 0 None [('SEND_OK', 'elapsed_ns=2149090251;process_cpu_ms=2848;payload_bytes=1048638')]
+early 0 None [('SEND_OK', 'elapsed_ns=1759125000;process_cpu_ms=2454;payload_bytes=1048636')]
+buffered-fence 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=10')]
+buffered-early 0 None [('SEND_OK', 'elapsed_ns=963540202;process_cpu_ms=1224;payload_bytes=16453')]
+stall-small 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=83')]
+stall-large 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=80')]
+concurrent 0 None [('SEND_OK', 'elapsed_ns=5102433108;process_cpu_ms=3775;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5044665571;process_cpu_ms=5770;payload_bytes=1048647')]
+control 1 None [('SEND_OK', 'elapsed_ns=2464926352;process_cpu_ms=3223;payload_bytes=1048638')]
+early 1 None [('SEND_OK', 'elapsed_ns=1722019411;process_cpu_ms=2473;payload_bytes=1048636')]
+buffered-fence 1 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 1 None [('SEND_OK', 'elapsed_ns=1226208740;process_cpu_ms=1488;payload_bytes=16453')]
+stall-small 1 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=73')]
+stall-large 1 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=71')]
+concurrent 1 None [('SEND_OK', 'elapsed_ns=4976570071;process_cpu_ms=3488;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=4936324872;process_cpu_ms=4327;payload_bytes=1048647')]
+control 2 None [('SEND_OK', 'elapsed_ns=2480679608;process_cpu_ms=3271;payload_bytes=1048638')]
+early 2 None [('SEND_OK', 'elapsed_ns=1727470338;process_cpu_ms=2423;payload_bytes=1048636')]
+buffered-fence 2 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=12')]
+buffered-early 2 None [('SEND_OK', 'elapsed_ns=1190102784;process_cpu_ms=1433;payload_bytes=16453')]
+stall-small 2 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=74')]
+stall-large 2 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=62')]
+concurrent 2 None [('SEND_OK', 'elapsed_ns=5483128583;process_cpu_ms=4736;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5098816734;process_cpu_ms=4226;payload_bytes=1048647')]
+control 3 None [('SEND_OK', 'elapsed_ns=2838013469;process_cpu_ms=4076;payload_bytes=1048638')]
+early 3 None [('SEND_OK', 'elapsed_ns=1669534953;process_cpu_ms=2227;payload_bytes=1048636')]
+buffered-fence 3 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 3 None [('SEND_OK', 'elapsed_ns=1264898641;process_cpu_ms=1513;payload_bytes=16453')]
+stall-small 3 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=75')]
+stall-large 3 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=76')]
+concurrent 3 None [('SEND_OK', 'elapsed_ns=5459390221;process_cpu_ms=3971;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5137435224;process_cpu_ms=5066;payload_bytes=1048647')]
+control 4 None [('SEND_OK', 'elapsed_ns=2340050620;process_cpu_ms=3038;payload_bytes=1048638')]
+early 4 None [('SEND_OK', 'elapsed_ns=1937897828;process_cpu_ms=2879;payload_bytes=1048636')]
+buffered-fence 4 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 4 None [('SEND_OK', 'elapsed_ns=1238535360;process_cpu_ms=1451;payload_bytes=16453')]
+stall-small 4 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=71')]
+stall-large 4 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=75')]
+concurrent 4 None [('SEND_OK', 'elapsed_ns=5240256188;process_cpu_ms=4302;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=4923789554;process_cpu_ms=4278;payload_bytes=1048647')]
+control 5 None [('SEND_OK', 'elapsed_ns=2431786215;process_cpu_ms=3057;payload_bytes=1048638')]
+early 5 None [('SEND_OK', 'elapsed_ns=1730118124;process_cpu_ms=2422;payload_bytes=1048636')]
+buffered-fence 5 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 5 None [('SEND_OK', 'elapsed_ns=1204534343;process_cpu_ms=1299;payload_bytes=16453')]
+stall-small 5 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=66')]
+stall-large 5 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=61')]
+concurrent 5 None [('SEND_OK', 'elapsed_ns=5319289634;process_cpu_ms=4680;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5106357953;process_cpu_ms=4463;payload_bytes=1048647')]
+control 6 None [('SEND_OK', 'elapsed_ns=2514702800;process_cpu_ms=3306;payload_bytes=1048638')]
+early 6 None [('SEND_OK', 'elapsed_ns=1843705771;process_cpu_ms=2663;payload_bytes=1048636')]
+buffered-fence 6 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 6 None [('SEND_OK', 'elapsed_ns=1154276327;process_cpu_ms=1395;payload_bytes=16453')]
+stall-small 6 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=81')]
+stall-large 6 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=66')]
+concurrent 6 None [('SEND_OK', 'elapsed_ns=4970889284;process_cpu_ms=3760;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=4965738039;process_cpu_ms=4386;payload_bytes=1048647')]
+control 7 None [('SEND_OK', 'elapsed_ns=2255607179;process_cpu_ms=2883;payload_bytes=1048638')]
+early 7 None [('SEND_OK', 'elapsed_ns=1732303183;process_cpu_ms=2581;payload_bytes=1048636')]
+buffered-fence 7 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 7 None [('SEND_OK', 'elapsed_ns=1275993328;process_cpu_ms=1515;payload_bytes=16453')]
+stall-small 7 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=70')]
+stall-large 7 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=66')]
+concurrent 7 None [('SEND_OK', 'elapsed_ns=5607618207;process_cpu_ms=4868;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5256822959;process_cpu_ms=4204;payload_bytes=1048647')]
+control 8 None [('SEND_OK', 'elapsed_ns=2362671835;process_cpu_ms=3068;payload_bytes=1048638')]
+early 8 None [('SEND_OK', 'elapsed_ns=1645041464;process_cpu_ms=2324;payload_bytes=1048636')]
+buffered-fence 8 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=12')]
+buffered-early 8 None [('SEND_OK', 'elapsed_ns=1179603476;process_cpu_ms=1300;payload_bytes=16453')]
+stall-small 8 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=77')]
+stall-large 8 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=65')]
+concurrent 8 None [('SEND_OK', 'elapsed_ns=5201266278;process_cpu_ms=4222;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=4985315839;process_cpu_ms=4501;payload_bytes=1048647')]
+control 9 None [('SEND_OK', 'elapsed_ns=2307411418;process_cpu_ms=2938;payload_bytes=1048638')]
+early 9 None [('SEND_OK', 'elapsed_ns=1797275595;process_cpu_ms=2580;payload_bytes=1048636')]
+buffered-fence 9 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 9 None [('SEND_OK', 'elapsed_ns=1233659018;process_cpu_ms=1455;payload_bytes=16453')]
+stall-small 9 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=80')]
+stall-large 9 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=80')]
+concurrent 9 None [('SEND_OK', 'elapsed_ns=5250389692;process_cpu_ms=4179;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=5035442588;process_cpu_ms=4443;payload_bytes=1048647')]
+control 10 None [('SEND_OK', 'elapsed_ns=2485177573;process_cpu_ms=3103;payload_bytes=1048639')]
+early 10 None [('SEND_OK', 'elapsed_ns=1768131429;process_cpu_ms=2444;payload_bytes=1048637')]
+buffered-fence 10 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 10 None [('SEND_OK', 'elapsed_ns=1266590088;process_cpu_ms=1497;payload_bytes=16454')]
+stall-small 10 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=61')]
+stall-large 10 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=66')]
+concurrent 10 None [('SEND_OK', 'elapsed_ns=5145463259;process_cpu_ms=3999;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5150859703;process_cpu_ms=5002;payload_bytes=1048648')]
+control 11 None [('SEND_OK', 'elapsed_ns=2500586997;process_cpu_ms=3198;payload_bytes=1048639')]
+early 11 None [('SEND_OK', 'elapsed_ns=1801481039;process_cpu_ms=2613;payload_bytes=1048637')]
+buffered-fence 11 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=10')]
+buffered-early 11 None [('SEND_OK', 'elapsed_ns=1224595867;process_cpu_ms=1418;payload_bytes=16454')]
+stall-small 11 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=71')]
+stall-large 11 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=81')]
+concurrent 11 None [('SEND_OK', 'elapsed_ns=5290310834;process_cpu_ms=4459;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5151045901;process_cpu_ms=4507;payload_bytes=1048648')]
+control 12 None [('SEND_OK', 'elapsed_ns=1972736004;process_cpu_ms=2535;payload_bytes=1048639')]
+early 12 None [('SEND_OK', 'elapsed_ns=2000912761;process_cpu_ms=2956;payload_bytes=1048637')]
+buffered-fence 12 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 12 None [('SEND_OK', 'elapsed_ns=1169274455;process_cpu_ms=1343;payload_bytes=16454')]
+stall-small 12 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=89')]
+stall-large 12 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=72')]
+concurrent 12 None [('SEND_OK', 'elapsed_ns=6696916385;process_cpu_ms=3908;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=6363871992;process_cpu_ms=4259;payload_bytes=1048648')]
+control 13 None [('SEND_OK', 'elapsed_ns=2561033368;process_cpu_ms=3249;payload_bytes=1048639')]
+early 13 None [('SEND_OK', 'elapsed_ns=1732523153;process_cpu_ms=2371;payload_bytes=1048637')]
+buffered-fence 13 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 13 None [('SEND_OK', 'elapsed_ns=1214603190;process_cpu_ms=1412;payload_bytes=16454')]
+stall-small 13 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=67')]
+stall-large 13 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=68')]
+concurrent 13 None [('SEND_OK', 'elapsed_ns=5058957319;process_cpu_ms=3981;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5030025760;process_cpu_ms=4779;payload_bytes=1048648')]
+control 14 None [('SEND_OK', 'elapsed_ns=2627637575;process_cpu_ms=3539;payload_bytes=1048639')]
+early 14 None [('SEND_OK', 'elapsed_ns=1811951133;process_cpu_ms=2535;payload_bytes=1048637')]
+buffered-fence 14 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=10')]
+buffered-early 14 None [('SEND_OK', 'elapsed_ns=1188122722;process_cpu_ms=1438;payload_bytes=16454')]
+stall-small 14 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=73')]
+stall-large 14 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=80')]
+concurrent 14 None [('SEND_OK', 'elapsed_ns=5137617678;process_cpu_ms=4153;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5157121463;process_cpu_ms=4612;payload_bytes=1048648')]
+control 15 None [('SEND_OK', 'elapsed_ns=2469947796;process_cpu_ms=3158;payload_bytes=1048639')]
+early 15 None [('SEND_OK', 'elapsed_ns=2085205893;process_cpu_ms=3039;payload_bytes=1048637')]
+buffered-fence 15 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 15 None [('SEND_OK', 'elapsed_ns=1294522706;process_cpu_ms=1544;payload_bytes=16454')]
+stall-small 15 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=67')]
+stall-large 15 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=62')]
+concurrent 15 None [('SEND_OK', 'elapsed_ns=5422939822;process_cpu_ms=4742;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5090038455;process_cpu_ms=4242;payload_bytes=1048648')]
+control 16 None [('SEND_OK', 'elapsed_ns=2670192425;process_cpu_ms=3399;payload_bytes=1048639')]
+early 16 None [('SEND_OK', 'elapsed_ns=2148852052;process_cpu_ms=3277;payload_bytes=1048637')]
+buffered-fence 16 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=10')]
+buffered-early 16 None [('SEND_OK', 'elapsed_ns=1259433269;process_cpu_ms=1456;payload_bytes=16454')]
+stall-small 16 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=72')]
+stall-large 16 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=68')]
+concurrent 16 None [('SEND_OK', 'elapsed_ns=5399216881;process_cpu_ms=4822;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5238122154;process_cpu_ms=4301;payload_bytes=1048648')]
+control 17 None [('SEND_OK', 'elapsed_ns=2562251588;process_cpu_ms=3372;payload_bytes=1048639')]
+early 17 None [('SEND_OK', 'elapsed_ns=2058390137;process_cpu_ms=3163;payload_bytes=1048637')]
+buffered-fence 17 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 17 None [('SEND_OK', 'elapsed_ns=1223737386;process_cpu_ms=1437;payload_bytes=16454')]
+stall-small 17 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=78')]
+stall-large 17 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=76')]
+concurrent 17 None [('SEND_OK', 'elapsed_ns=5064746462;process_cpu_ms=3726;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=4918145469;process_cpu_ms=5092;payload_bytes=1048648')]
+control 18 None [('SEND_OK', 'elapsed_ns=2683259116;process_cpu_ms=3817;payload_bytes=1048639')]
+early 18 None [('SEND_OK', 'elapsed_ns=1807016846;process_cpu_ms=2566;payload_bytes=1048637')]
+buffered-fence 18 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=11')]
+buffered-early 18 None [('SEND_OK', 'elapsed_ns=1205102418;process_cpu_ms=1446;payload_bytes=16454')]
+stall-small 18 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=59')]
+stall-large 18 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=72')]
+concurrent 18 None [('SEND_OK', 'elapsed_ns=5197911176;process_cpu_ms=3888;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5062621707;process_cpu_ms=5100;payload_bytes=1048648')]
+control 19 None [('SEND_OK', 'elapsed_ns=2437473145;process_cpu_ms=3312;payload_bytes=1048639')]
+early 19 None [('SEND_OK', 'elapsed_ns=2246818971;process_cpu_ms=3573;payload_bytes=1048637')]
+buffered-fence 19 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=98')]
+buffered-early 19 None [('SEND_OK', 'elapsed_ns=1186628907;process_cpu_ms=1349;payload_bytes=16454')]
+stall-small 19 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=80')]
+stall-large 19 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=72')]
+concurrent 19 None [('SEND_OK', 'elapsed_ns=5943217898;process_cpu_ms=5463;payload_bytes=1048642'), ('SEND_OK', 'elapsed_ns=5489383629;process_cpu_ms=4560;payload_bytes=1048648')]
+TLS_EXIT=0
+[DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,revoke --start 0 --trials 10 --seed test6-20261119 --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+03:01:50 44161JEKB12639 pen000 34s
+03:03:27 44161JEKB12639 kil000 96s
+03:05:01 44161JEKB12639 rev000 94s
+03:06:31 44161JEKB12639 pen001 90s
+03:08:08 44161JEKB12639 kil001 97s
+03:09:28 44161JEKB12639 rev001 80s
+03:10:58 44161JEKB12639 pen002 91s
+03:12:35 44161JEKB12639 kil002 97s
+03:13:26 44161JEKB12639 rev002 51s
+03:14:57 44161JEKB12639 pen003 91s
+03:16:33 44161JEKB12639 kil003 97s
+03:17:47 44161JEKB12639 rev003 73s
+03:19:17 44161JEKB12639 pen004 90s
+03:20:54 44161JEKB12639 kil004 97s
+03:22:29 44161JEKB12639 rev004 95s
+03:23:59 44161JEKB12639 pen005 91s
+03:25:36 44161JEKB12639 kil005 96s
+03:27:10 44161JEKB12639 rev005 94s
+03:28:41 44161JEKB12639 pen006 91s
+03:30:17 44161JEKB12639 kil006 96s
+03:31:51 44161JEKB12639 rev006 94s
+03:33:22 44161JEKB12639 pen007 91s
+03:34:58 44161JEKB12639 kil007 97s
+03:36:33 44161JEKB12639 rev007 94s
+03:37:46 44161JEKB12639 pen008 73s
+03:38:55 44161JEKB12639 kil008 69s
+03:40:29 44161JEKB12639 rev008 94s
+03:42:00 44161JEKB12639 pen009 91s
+03:43:36 44161JEKB12639 kil009 96s
+03:45:10 44161JEKB12639 rev009 95s
+LIFE_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.

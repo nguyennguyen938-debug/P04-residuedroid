@@ -1,0 +1,23 @@
+== pre_test
+8798
+8799
+8787
+host-16 tcp:8798 tcp:8798
+host-16 tcp:8799 tcp:8799
+host-16 tcp:8787 tcp:8787
+
+== TLS start 22:35:45
+control 0 None [('SEND_OK', 'elapsed_ns=6162214628;process_cpu_ms=2924;payload_bytes=1048638')]
+early 0 None [('SEND_OK', 'elapsed_ns=7785245087;process_cpu_ms=3451;payload_bytes=1048636')]
+buffered-fence 0 None [('SEND_ERROR', 'java.io.IOException: barrier timeout;elapsed_ns=4322904377;process_cpu_ms=1334')]
+buffered-early 0 None [('SEND_ERROR', 'java.io.IOException: barrier timeout;elapsed_ns=4248045210;process_cpu_ms=1299')]
+stall-small 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=33')]
+stall-large 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=23')]
+concurrent 0 None [('SEND_OK', 'elapsed_ns=8075452170;process_cpu_ms=5252;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=7882000545;process_cpu_ms=5064;payload_bytes=1048647')]
+TLS_EXIT=0 22:38:39
+== LIFE start 22:38:39
+22:42:11 emulator-5644 pen000 166s
+22:43:55 emulator-5644 kil000 104s
+22:46:03 emulator-5644 rev000 127s
+LIFE_EXIT=0 22:46:03
+== post_test

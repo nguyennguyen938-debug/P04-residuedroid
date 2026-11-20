@@ -1,0 +1,22 @@
+{
+ "serial": "localhost:55977",
+ "fingerprint": "samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys",
+ "variants": [
+  "menqueue",
+  "mstart",
+  "mlayer",
+  "mfence",
+  "mboth"
+ ],
+ "schedules": "pending,kill,revoke",
+ "trials": 2,
+ "seed": "test6-20261119",
+ "sink_delay_ms": 300,
+ "substrate": "job",
+ "start": 1795061574.082114,
+ "root": false,
+ "sink_host": "127.0.0.1",
+ "db_read": "run-as copy + host sqlite3",
+ "model": "SM-M356B",
+ "android": "14"
+}

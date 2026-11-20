@@ -1,0 +1,300 @@
+{"host_ns": 69906393754000, "request": "tls-control-0-7edb28", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 69911684743541, "request": "tls-control-0-7edb28", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 69913504250333, "request": "tls-early-0-09a18c", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 69917563077916, "request": "tls-early-0-09a18c", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 69920205455000, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 69922590567416, "request": "tls-buffered-early-0-751971", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 69922591018916, "request": "tls-buffered-early-0-751971", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 69924462919541, "request": "tls-stall-small-0-e24d55", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 69926824777500, "request": "tls-stall-large-0-74b7fa", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 69929445684250, "request": "tls-concurrent-0-95b6d7", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 69930101387958, "request": "tls-concurrent-0-95b6d7-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 69936468764625, "request": "tls-stall-small-0-e24d55", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 57203, "expected": 8388674}
+{"host_ns": 69938831706416, "request": "tls-stall-large-0-74b7fa", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 110451, "expected": 8388674}
+{"host_ns": 69939018129000, "request": "tls-concurrent-0-95b6d7", "event": "body", "received": 1040244, "expected": 1048641, "complete": false}
+{"host_ns": 69939581301291, "request": "tls-concurrent-0-95b6d7-other", "event": "body", "received": 1023854, "expected": 1048647, "complete": false}
+{"host_ns": 69941784419500, "request": "tls-control-1-6b57a7", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 69947231031791, "request": "tls-control-1-6b57a7", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 69949460456333, "request": "tls-early-1-0d5e63", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 69953516423208, "request": "tls-early-1-0d5e63", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 69956132500000, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 69958818267458, "request": "tls-buffered-early-1-39054d", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 69958818752083, "request": "tls-buffered-early-1-39054d", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 69961019596333, "request": "tls-stall-small-1-c67e9f", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 69964048847041, "request": "tls-stall-large-1-5b611a", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 69966468031250, "request": "tls-concurrent-1-184055", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 69967034165958, "request": "tls-concurrent-1-184055-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 69973102839375, "request": "tls-stall-small-1-c67e9f", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 98163, "expected": 8388674}
+{"host_ns": 69976130981750, "request": "tls-concurrent-1-184055", "event": "body", "received": 1027956, "expected": 1048641, "complete": false}
+{"host_ns": 69976147468416, "request": "tls-stall-large-1-5b611a", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 98163, "expected": 8388674}
+{"host_ns": 69976590970416, "request": "tls-concurrent-1-184055-other", "event": "body", "received": 1011566, "expected": 1048647, "complete": false}
+{"host_ns": 69978729043375, "request": "tls-control-2-b1a990", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 69984021595416, "request": "tls-control-2-b1a990", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 69986221042375, "request": "tls-early-2-00d6d1", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 69990263160666, "request": "tls-early-2-00d6d1", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 69993437440375, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 69996896769083, "request": "tls-buffered-early-2-aff6b5", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 69996939320708, "request": "tls-buffered-early-2-aff6b5", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 69999493661750, "request": "tls-stall-small-2-1702ee", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70004918893625, "request": "tls-stall-large-2-73b2a5", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70007612781250, "request": "tls-concurrent-2-eb0ac7", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70008377859250, "request": "tls-concurrent-2-eb0ac7-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70011593729250, "request": "tls-stall-small-2-1702ee", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81779, "expected": 8388674}
+{"host_ns": 70016988284416, "request": "tls-stall-large-2-73b2a5", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 85875, "expected": 8388674}
+{"host_ns": 70017325022000, "request": "tls-concurrent-2-eb0ac7", "event": "body", "received": 1003380, "expected": 1048641, "complete": false}
+{"host_ns": 70017858318458, "request": "tls-concurrent-2-eb0ac7-other", "event": "body", "received": 1019758, "expected": 1048647, "complete": false}
+{"host_ns": 70020630098916, "request": "tls-control-3-83fad4", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70025863993291, "request": "tls-control-3-83fad4", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70028653801291, "request": "tls-early-3-93295b", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70032951174875, "request": "tls-early-3-93295b", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70036885184458, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70040344304541, "request": "tls-buffered-early-3-70c31d", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70040382021541, "request": "tls-buffered-early-3-70c31d", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70043287782666, "request": "tls-stall-small-3-a23c0e", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70046708272833, "request": "tls-stall-large-3-c589f6", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70050836410958, "request": "tls-concurrent-3-1b746f", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70051628840250, "request": "tls-concurrent-3-1b746f-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70055378253125, "request": "tls-stall-small-3-a23c0e", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 89971, "expected": 8388674}
+{"host_ns": 70058786253791, "request": "tls-stall-large-3-c589f6", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 102259, "expected": 8388674}
+{"host_ns": 70060115075875, "request": "tls-concurrent-3-1b746f", "event": "body", "received": 1044340, "expected": 1048641, "complete": false}
+{"host_ns": 70060632470041, "request": "tls-concurrent-3-1b746f-other", "event": "body", "received": 1023854, "expected": 1048647, "complete": false}
+{"host_ns": 70064241337041, "request": "tls-control-4-ab8343", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70069199336000, "request": "tls-control-4-ab8343", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70071595674625, "request": "tls-early-4-462b47", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70075708776625, "request": "tls-early-4-462b47", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70079695743541, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70082396316416, "request": "tls-buffered-early-4-56f04d", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70082590076166, "request": "tls-buffered-early-4-56f04d", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70084762853250, "request": "tls-stall-small-4-44b8b5", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70088188696666, "request": "tls-stall-large-4-ea86a3", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70092330257083, "request": "tls-concurrent-4-d7f059", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70093070926958, "request": "tls-concurrent-4-d7f059-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70096864253458, "request": "tls-stall-small-4-44b8b5", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 73587, "expected": 8388674}
+{"host_ns": 70100273003458, "request": "tls-stall-large-4-ea86a3", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 122739, "expected": 8388674}
+{"host_ns": 70101981043500, "request": "tls-concurrent-4-d7f059", "event": "body", "received": 1015668, "expected": 1048641, "complete": false}
+{"host_ns": 70102675790958, "request": "tls-concurrent-4-d7f059-other", "event": "body", "received": 1032046, "expected": 1048647, "complete": false}
+{"host_ns": 70104760975916, "request": "tls-control-5-486b45", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70109998605250, "request": "tls-control-5-486b45", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70112418455041, "request": "tls-early-5-847566", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70116159230333, "request": "tls-early-5-847566", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70118793262791, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70122066857666, "request": "tls-buffered-early-5-904bc6", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70122109030208, "request": "tls-buffered-early-5-904bc6", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70124249967666, "request": "tls-stall-small-5-22db8d", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70127066364333, "request": "tls-stall-large-5-d0c0e2", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70129674452625, "request": "tls-concurrent-5-ef5880", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70130266112083, "request": "tls-concurrent-5-ef5880-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70136349535166, "request": "tls-stall-small-5-22db8d", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 85875, "expected": 8388674}
+{"host_ns": 70139166960375, "request": "tls-stall-large-5-d0c0e2", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 106355, "expected": 8388674}
+{"host_ns": 70139281249541, "request": "tls-concurrent-5-ef5880", "event": "body", "received": 1015668, "expected": 1048641, "complete": false}
+{"host_ns": 70139832952375, "request": "tls-concurrent-5-ef5880-other", "event": "body", "received": 1019758, "expected": 1048647, "complete": false}
+{"host_ns": 70141913674541, "request": "tls-control-6-79da5d", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70147171537333, "request": "tls-control-6-79da5d", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70149228541833, "request": "tls-early-6-88070d", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70153319927291, "request": "tls-early-6-88070d", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70156277877541, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70158939007625, "request": "tls-buffered-early-6-a90a78", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70158939699500, "request": "tls-buffered-early-6-a90a78", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70161208267375, "request": "tls-stall-small-6-e7831e", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70163794968125, "request": "tls-stall-large-6-01e38a", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70166194784541, "request": "tls-concurrent-6-925865", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70166645826875, "request": "tls-concurrent-6-925865-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70173304293125, "request": "tls-stall-small-6-e7831e", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 69491, "expected": 8388674}
+{"host_ns": 70175804132208, "request": "tls-stall-large-6-01e38a", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 114547, "expected": 8388674}
+{"host_ns": 70175913506708, "request": "tls-concurrent-6-925865", "event": "body", "received": 1011572, "expected": 1048641, "complete": false}
+{"host_ns": 70176362188375, "request": "tls-concurrent-6-925865-other", "event": "body", "received": 1023854, "expected": 1048647, "complete": false}
+{"host_ns": 70178438825208, "request": "tls-control-7-af959e", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70183673695625, "request": "tls-control-7-af959e", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70185593779541, "request": "tls-early-7-13c11f", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70189833848791, "request": "tls-early-7-13c11f", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70192244806166, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70195908926166, "request": "tls-buffered-early-7-921628", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70195909215125, "request": "tls-buffered-early-7-921628", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70197910784541, "request": "tls-stall-small-7-5775c6", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70200689148500, "request": "tls-stall-large-7-0d58f9", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70203158975250, "request": "tls-concurrent-7-7537d4", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70203707144875, "request": "tls-concurrent-7-7537d4-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70209916393083, "request": "tls-stall-small-7-5775c6", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 73587, "expected": 8388674}
+{"host_ns": 70212691522916, "request": "tls-stall-large-7-0d58f9", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 85875, "expected": 8388674}
+{"host_ns": 70212747977333, "request": "tls-concurrent-7-7537d4", "event": "body", "received": 1044340, "expected": 1048641, "complete": false}
+{"host_ns": 70213288181250, "request": "tls-concurrent-7-7537d4-other", "event": "body", "received": 1023854, "expected": 1048647, "complete": false}
+{"host_ns": 70215485574666, "request": "tls-control-8-f6571e", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70220692122166, "request": "tls-control-8-f6571e", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70222857202166, "request": "tls-early-8-7153d4", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70226889190708, "request": "tls-early-8-7153d4", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70229588938875, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70232616714875, "request": "tls-buffered-early-8-ba1c14", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70232617828791, "request": "tls-buffered-early-8-ba1c14", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70234768527958, "request": "tls-stall-small-8-36d9c5", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70237289023916, "request": "tls-stall-large-8-2abdb5", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70239863675041, "request": "tls-concurrent-8-99a83c", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70240437160083, "request": "tls-concurrent-8-99a83c-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70246860338333, "request": "tls-stall-small-8-36d9c5", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 73587, "expected": 8388674}
+{"host_ns": 70249389664708, "request": "tls-stall-large-8-2abdb5", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81779, "expected": 8388674}
+{"host_ns": 70249538942291, "request": "tls-concurrent-8-99a83c", "event": "body", "received": 1048641, "expected": 1048641, "complete": true}
+{"host_ns": 70250139848791, "request": "tls-concurrent-8-99a83c-other", "event": "body", "received": 1036142, "expected": 1048647, "complete": false}
+{"host_ns": 70252617991041, "request": "tls-control-9-1553bc", "event": "headers", "expected": 1048638, "tls": "TLSv1.2"}
+{"host_ns": 70257846004458, "request": "tls-control-9-1553bc", "event": "body", "received": 1048638, "expected": 1048638, "complete": true}
+{"host_ns": 70260087811958, "request": "tls-early-9-a59ef4", "event": "headers", "expected": 1048636, "tls": "TLSv1.2"}
+{"host_ns": 70264457511583, "request": "tls-early-9-a59ef4", "event": "body", "received": 1048636, "expected": 1048636, "complete": true}
+{"host_ns": 70267932291500, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70272283660291, "request": "tls-buffered-early-9-6ed496", "event": "headers", "expected": 16453, "tls": "TLSv1.2"}
+{"host_ns": 70272326915666, "request": "tls-buffered-early-9-6ed496", "event": "body", "received": 16453, "expected": 16453, "complete": true}
+{"host_ns": 70274436516958, "request": "tls-stall-small-9-b45556", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70277065816791, "request": "tls-stall-large-9-f120f2", "event": "headers", "expected": 8388674, "tls": "TLSv1.2"}
+{"host_ns": 70279652329083, "request": "tls-concurrent-9-ebe80c", "event": "headers", "expected": 1048641, "tls": "TLSv1.2"}
+{"host_ns": 70280216068708, "request": "tls-concurrent-9-ebe80c-other", "event": "headers", "expected": 1048647, "tls": "TLSv1.2"}
+{"host_ns": 70286529267250, "request": "tls-stall-small-9-b45556", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 61299, "expected": 8388674}
+{"host_ns": 70289150524333, "request": "tls-stall-large-9-f120f2", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 98163, "expected": 8388674}
+{"host_ns": 70289333073791, "request": "tls-concurrent-9-ebe80c", "event": "body", "received": 1048436, "expected": 1048641, "complete": false}
+{"host_ns": 70289795189833, "request": "tls-concurrent-9-ebe80c-other", "event": "body", "received": 1027950, "expected": 1048647, "complete": false}
+{"host_ns": 70292204520750, "request": "tls-control-10-73d57c", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70297324060166, "request": "tls-control-10-73d57c", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70300208811583, "request": "tls-early-10-b433a4", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70304320520916, "request": "tls-early-10-b433a4", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70307210626125, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70310040017208, "request": "tls-buffered-early-10-224adf", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70310082081541, "request": "tls-buffered-early-10-224adf", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70312237607833, "request": "tls-stall-small-10-345cc7", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70314921375541, "request": "tls-stall-large-10-c5cbcd", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70317440414791, "request": "tls-concurrent-10-2ada2c", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70317943037666, "request": "tls-concurrent-10-2ada2c-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70324338417708, "request": "tls-stall-small-10-345cc7", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 61298, "expected": 8388675}
+{"host_ns": 70326981573500, "request": "tls-concurrent-10-2ada2c", "event": "body", "received": 1027955, "expected": 1048642, "complete": false}
+{"host_ns": 70326983930833, "request": "tls-stall-large-10-c5cbcd", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81778, "expected": 8388675}
+{"host_ns": 70327598434250, "request": "tls-concurrent-10-2ada2c-other", "event": "body", "received": 1032045, "expected": 1048648, "complete": false}
+{"host_ns": 70330284803916, "request": "tls-control-11-11e679", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70335614561083, "request": "tls-control-11-11e679", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70337863352875, "request": "tls-early-11-63a7bd", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70342108830708, "request": "tls-early-11-63a7bd", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70344829285416, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70347866823666, "request": "tls-buffered-early-11-95c541", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70347867319208, "request": "tls-buffered-early-11-95c541", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70350631133541, "request": "tls-stall-small-11-727281", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70353452405750, "request": "tls-stall-large-11-f59c8b", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70356328085208, "request": "tls-concurrent-11-0acaa2", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70356584903500, "request": "tls-concurrent-11-0acaa2-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70362634395083, "request": "tls-stall-small-11-727281", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81778, "expected": 8388675}
+{"host_ns": 70365458161041, "request": "tls-stall-large-11-f59c8b", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 102258, "expected": 8388675}
+{"host_ns": 70365758120875, "request": "tls-concurrent-11-0acaa2", "event": "body", "received": 962419, "expected": 1048642, "complete": false}
+{"host_ns": 70366210380833, "request": "tls-concurrent-11-0acaa2-other", "event": "body", "received": 1040237, "expected": 1048648, "complete": false}
+{"host_ns": 70368784810958, "request": "tls-control-12-655b9e", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70373862573791, "request": "tls-control-12-655b9e", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70376150323625, "request": "tls-early-12-03bc1c", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70380353465250, "request": "tls-early-12-03bc1c", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70383430636750, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70386258253416, "request": "tls-buffered-early-12-7fdb91", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70386311395041, "request": "tls-buffered-early-12-7fdb91", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70388751978000, "request": "tls-stall-small-12-4909a9", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70391161011333, "request": "tls-stall-large-12-1d0c40", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70393957803291, "request": "tls-concurrent-12-6ac51c", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70394489744000, "request": "tls-concurrent-12-6ac51c-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70400758816375, "request": "tls-stall-small-12-4909a9", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 69490, "expected": 8388675}
+{"host_ns": 70403166243083, "request": "tls-stall-large-12-1d0c40", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81778, "expected": 8388675}
+{"host_ns": 70403511198500, "request": "tls-concurrent-12-6ac51c", "event": "body", "received": 999283, "expected": 1048642, "complete": false}
+{"host_ns": 70403988844291, "request": "tls-concurrent-12-6ac51c-other", "event": "body", "received": 970605, "expected": 1048648, "complete": false}
+{"host_ns": 70406238539833, "request": "tls-control-13-ee32de", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70411570803625, "request": "tls-control-13-ee32de", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70414025831916, "request": "tls-early-13-132edd", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70418216870708, "request": "tls-early-13-132edd", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70422100235916, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70424905029166, "request": "tls-buffered-early-13-3404d9", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70424905423625, "request": "tls-buffered-early-13-3404d9", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70427303497750, "request": "tls-stall-small-13-71d2b2", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70430614422666, "request": "tls-stall-large-13-f14bba", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70433307819291, "request": "tls-concurrent-13-bb0ff5", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70434057888166, "request": "tls-concurrent-13-bb0ff5-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70439344270000, "request": "tls-stall-small-13-71d2b2", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 89970, "expected": 8388675}
+{"host_ns": 70442689254333, "request": "tls-stall-large-13-f14bba", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 94066, "expected": 8388675}
+{"host_ns": 70443392471041, "request": "tls-concurrent-13-bb0ff5", "event": "body", "received": 1048642, "expected": 1048642, "complete": true}
+{"host_ns": 70443722423333, "request": "tls-concurrent-13-bb0ff5-other", "event": "body", "received": 1048648, "expected": 1048648, "complete": true}
+{"host_ns": 70445913185875, "request": "tls-control-14-41a1a6", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70451102574458, "request": "tls-control-14-41a1a6", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70453474707375, "request": "tls-early-14-c4b60f", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70458095447000, "request": "tls-early-14-c4b60f", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70461023530541, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70463782270333, "request": "tls-buffered-early-14-93faa4", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70463782736250, "request": "tls-buffered-early-14-93faa4", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70466424501916, "request": "tls-stall-small-14-3e1d20", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70469947848041, "request": "tls-stall-large-14-859122", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70472435878250, "request": "tls-concurrent-14-5919e8", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70472929218875, "request": "tls-concurrent-14-5919e8-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70478503208791, "request": "tls-stall-small-14-3e1d20", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81778, "expected": 8388675}
+{"host_ns": 70481960399625, "request": "tls-stall-large-14-859122", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 98162, "expected": 8388675}
+{"host_ns": 70482130646958, "request": "tls-concurrent-14-5919e8", "event": "body", "received": 1027955, "expected": 1048642, "complete": false}
+{"host_ns": 70482589659375, "request": "tls-concurrent-14-5919e8-other", "event": "body", "received": 1036141, "expected": 1048648, "complete": false}
+{"host_ns": 70485008086750, "request": "tls-control-15-6d6e92", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70490383691583, "request": "tls-control-15-6d6e92", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70492666347083, "request": "tls-early-15-961846", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70496878394916, "request": "tls-early-15-961846", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70500531229625, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70504547261208, "request": "tls-buffered-early-15-9fb0e9", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70504547908708, "request": "tls-buffered-early-15-9fb0e9", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70506635855875, "request": "tls-stall-small-15-b591c0", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70509103733291, "request": "tls-stall-large-15-81fc22", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70512270004833, "request": "tls-concurrent-15-924c86", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70512638436833, "request": "tls-concurrent-15-924c86-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70518637280708, "request": "tls-stall-small-15-b591c0", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 61298, "expected": 8388675}
+{"host_ns": 70521108410916, "request": "tls-stall-large-15-81fc22", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 130930, "expected": 8388675}
+{"host_ns": 70521839385708, "request": "tls-concurrent-15-924c86", "event": "body", "received": 941939, "expected": 1048642, "complete": false}
+{"host_ns": 70522245921083, "request": "tls-concurrent-15-924c86-other", "event": "body", "received": 1023853, "expected": 1048648, "complete": false}
+{"host_ns": 70525225520208, "request": "tls-control-16-f181c7", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70530559908875, "request": "tls-control-16-f181c7", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70532941724208, "request": "tls-early-16-a2b405", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70537043732958, "request": "tls-early-16-a2b405", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70540023122125, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70543086685750, "request": "tls-buffered-early-16-9f51b8", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70543086973333, "request": "tls-buffered-early-16-9f51b8", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70545464991166, "request": "tls-stall-small-16-3814d8", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70547937528791, "request": "tls-stall-large-16-c517d3", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70551201088291, "request": "tls-concurrent-16-243505", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70551328903708, "request": "tls-concurrent-16-243505-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70557534271708, "request": "tls-stall-small-16-3814d8", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 57202, "expected": 8388675}
+{"host_ns": 70560034786000, "request": "tls-stall-large-16-c517d3", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 122738, "expected": 8388675}
+{"host_ns": 70560498040833, "request": "tls-concurrent-16-243505", "event": "body", "received": 946035, "expected": 1048642, "complete": false}
+{"host_ns": 70560994891250, "request": "tls-concurrent-16-243505-other", "event": "body", "received": 999277, "expected": 1048648, "complete": false}
+{"host_ns": 70563312262250, "request": "tls-control-17-1f4f3b", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70568675930958, "request": "tls-control-17-1f4f3b", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70571142136791, "request": "tls-early-17-81ee3a", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70575381713125, "request": "tls-early-17-81ee3a", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70578870007416, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70582045681000, "request": "tls-buffered-early-17-6c3656", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70582046161083, "request": "tls-buffered-early-17-6c3656", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70584418026208, "request": "tls-stall-small-17-3252d0", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70587606874000, "request": "tls-stall-large-17-f9872a", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70589999728583, "request": "tls-concurrent-17-9bdcbd", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70590614209083, "request": "tls-concurrent-17-9bdcbd-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70596511281000, "request": "tls-stall-small-17-3252d0", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 81778, "expected": 8388675}
+{"host_ns": 70599637977541, "request": "tls-concurrent-17-9bdcbd", "event": "body", "received": 1019763, "expected": 1048642, "complete": false}
+{"host_ns": 70599681543875, "request": "tls-stall-large-17-f9872a", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 106354, "expected": 8388675}
+{"host_ns": 70603247183375, "request": "tls-concurrent-17-9bdcbd-other", "event": "body", "received": 954221, "expected": 1048648, "complete": false}
+{"host_ns": 70604731449333, "request": "tls-control-18-9d3686", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70610043922791, "request": "tls-control-18-9d3686", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70612618727125, "request": "tls-early-18-b9baa0", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70616839331250, "request": "tls-early-18-b9baa0", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70619894574833, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70624635522208, "request": "tls-buffered-early-18-5f85a3", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70624636328750, "request": "tls-buffered-early-18-5f85a3", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70626896666833, "request": "tls-stall-small-18-c76add", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70630550377583, "request": "tls-stall-large-18-f296df", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70633623432958, "request": "tls-concurrent-18-f7bbf8", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70633903815250, "request": "tls-concurrent-18-f7bbf8-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70638996168541, "request": "tls-stall-small-18-c76add", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 73586, "expected": 8388675}
+{"host_ns": 70642562223333, "request": "tls-stall-large-18-f296df", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 135026, "expected": 8388675}
+{"host_ns": 70643081933708, "request": "tls-concurrent-18-f7bbf8", "event": "body", "received": 999283, "expected": 1048642, "complete": false}
+{"host_ns": 70643475760666, "request": "tls-concurrent-18-f7bbf8-other", "event": "body", "received": 1007469, "expected": 1048648, "complete": false}
+{"host_ns": 70645573625291, "request": "tls-control-19-1a2cce", "event": "headers", "expected": 1048639, "tls": "TLSv1.2"}
+{"host_ns": 70652303058458, "request": "tls-control-19-1a2cce", "event": "body", "received": 1048639, "expected": 1048639, "complete": true}
+{"host_ns": 70655434686458, "request": "tls-early-19-1804e1", "event": "headers", "expected": 1048637, "tls": "TLSv1.2"}
+{"host_ns": 70659795566583, "request": "tls-early-19-1804e1", "event": "body", "received": 1048637, "expected": 1048637, "complete": true}
+{"host_ns": 70663270676958, "request": null, "event": "error", "error": "EOFError('header')", "received": 0, "expected": null}
+{"host_ns": 70665694240666, "request": "tls-buffered-early-19-98ae0c", "event": "headers", "expected": 16454, "tls": "TLSv1.2"}
+{"host_ns": 70665736890583, "request": "tls-buffered-early-19-98ae0c", "event": "body", "received": 16454, "expected": 16454, "complete": true}
+{"host_ns": 70668646949000, "request": "tls-stall-small-19-2075e6", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70671310438875, "request": "tls-stall-large-19-606da8", "event": "headers", "expected": 8388675, "tls": "TLSv1.2"}
+{"host_ns": 70674771215708, "request": "tls-concurrent-19-bd231a", "event": "headers", "expected": 1048642, "tls": "TLSv1.2"}
+{"host_ns": 70675548561833, "request": "tls-concurrent-19-bd231a-other", "event": "headers", "expected": 1048648, "tls": "TLSv1.2"}
+{"host_ns": 70680698754666, "request": "tls-stall-small-19-2075e6", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 69490, "expected": 8388675}
+{"host_ns": 70683322644291, "request": "tls-stall-large-19-606da8", "event": "error", "error": "ConnectionResetError(54, 'Connection reset by peer')", "received": 98162, "expected": 8388675}
+{"host_ns": 70684439273833, "request": "tls-concurrent-19-bd231a", "event": "body", "received": 1003379, "expected": 1048642, "complete": false}
+{"host_ns": 70685142667958, "request": "tls-concurrent-19-bd231a-other", "event": "body", "received": 1003373, "expected": 1048648, "complete": false}

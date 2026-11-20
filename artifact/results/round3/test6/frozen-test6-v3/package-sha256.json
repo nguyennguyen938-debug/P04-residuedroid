@@ -1,0 +1,33 @@
+{
+ "protocol": "v3 (TLS only)",
+ "zip": "p04-test6-package-v5.zip",
+ "zip_sha256": "67080b895819ce773b1427634d204583628b5764d20fb3bbb07ca109badf6a2c",
+ "files": {
+  "artifact/fixture/build/revision-apk/SHA256SUMS": "f0d6ca3be7e0a715fdce3ed2589a9bc83ab763f6e64ee8e3531a0327aba15027",
+  "artifact/fixture/build/revision-apk/rl-mboth.apk": "853e9d1ac35522e37dc7d25a4100ba3b0848edecbfad12ae929614a592976a86",
+  "artifact/fixture/build/revision-apk/rl-mboth.apk.idsig": "b01e31875413aaab966c0ecd6a8a38da81b9b69f98ffbf581530705c2cc7db30",
+  "artifact/fixture/build/revision-apk/rl-menqueue.apk": "a32106549e370065df6ead0655a240c4e47272b82ecd9b4507af87f9bce86fab",
+  "artifact/fixture/build/revision-apk/rl-menqueue.apk.idsig": "416802f704c9a44ec314a3eab7e531634e11ea74c4e13b27a7f9d18e05c12ba1",
+  "artifact/fixture/build/revision-apk/rl-mfence.apk": "61b53bbf946fa131d9336209be4f58d6e1668f5f84d0cd86fc457aa6b182435b",
+  "artifact/fixture/build/revision-apk/rl-mfence.apk.idsig": "9f2643aa1849b8bf279d84290a951e7716ae9cf19e17c6f16c9e2a4678657328",
+  "artifact/fixture/build/revision-apk/rl-mlayer.apk": "d755633bb3d4a8300008112574a3487fab3ed305c949f3507c37673d248094e5",
+  "artifact/fixture/build/revision-apk/rl-mlayer.apk.idsig": "0579686edf51b163048634fe589ed14080770d53e5704b0a06a5a9f953e5d72c",
+  "artifact/fixture/build/revision-apk/rl-mstart.apk": "ae4f64508f92b2808cb1fe90dca5e1bdaff2b9955337e02e8334b1cf83d29adb",
+  "artifact/fixture/build/revision-apk/rl-mstart.apk.idsig": "317ca9589ef8de9bea5424b6cf836bfa62b79760724da70511dbca010a92d82f",
+  "artifact/fixture/build/tls-apk/SHA256SUMS": "7e8d4f047cf2d7fcd8fb4f976a6afff735852ae8dc3c13aae1aa7eca2a14556a",
+  "artifact/fixture/build/tls-apk/rl-tls.apk": "ca313b94fd89c9e3515dfead79713c183747436f0e0ecba6445d54652b1aef15",
+  "artifact/fixture/build/tls-apk/rl-tls.apk.idsig": "51a94b963eaa61d0a24ba6108c9929a059a36ea04a84c6fa588ea7b710dcd5bb",
+  "artifact/followup/campaign.py": "a59954f8c6c6aea0a8cb1e7c69b70fdf32596a7571ce5558527063ed623c4927",
+  "artifact/followup/tls-cert/test-ca.pem": "9abca70718392c30296672b063020aff1285ccbff9e3925e9bdb6a6580693874",
+  "artifact/followup/tls_suite.py": "8f15feccaedcc7273ad1ed4c10b21801509b2fbc15aedc1e469493d219c579a0",
+  "artifact/harness/sink.py": "82a6fe5783a7c7fdb36f6118a04a252dd8295125d1a20efc3a9e93d2ba1f02f5",
+  "requirements.txt": "8004a972c3d5c274d8c808e8d8afe03b9aca8af8eebf3df4298f114d8008b754",
+  "tests/test_placeholder.py": "424f6b557838797eff9230bcb40479e1e9bb5c81d52d4a8123641815896baa47"
+ },
+ "run_material": {
+  "artifact/plans/test6/testspec-v3-tls.yml": "4e5a8f4786cce44c41d4732076ac2582040415b2b7b2ccecac15dc1ad3058d06",
+  "artifact/plans/test6/run_rtl.sh": "3736414f7991153a8847dbbcbae8e2c3c9045a94a01a93679a75a164149a9b77",
+  "artifact/followup/tls_suite.py": "8f15feccaedcc7273ad1ed4c10b21801509b2fbc15aedc1e469493d219c579a0",
+  "artifact/plans/test6-card-v3.md": "9a6ce8de971114770c57a759e7cba9d34e75968795da5d602875651aef1a7d30"
+ }
+}

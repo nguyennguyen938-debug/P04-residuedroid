@@ -1,0 +1,204 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-34 arm64 rev 14
+  [ OK ] system image android-35 arm64 rev 9
+== AVDs
+  [ OK ] AVD P04Avd14
+  [ OK ] AVD P04Avd15
+== host
+  [WARN] only ~2 GB available; close apps before 2 emulators
+  [ OK ] 172 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5650 5654 8790 8791 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 18 ok, 0 failed
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5650 --avd P04Avd14 --port 8790 --variants menqueue,mlayer,mfence --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,reboot,netloss --trials 20 --seed b11-20261119 --out results/round3/b11/avd14-final
+14:31:13 restarted emulator-5650 in 202s
+14:32:01 emulator-5650 pen000 43s
+14:32:29 emulator-5650 kil000 28s
+14:34:02 emulator-5650 reb000 93s
+14:34:50 emulator-5650 net000 47s
+14:35:41 emulator-5650 pen001 51s
+14:36:23 emulator-5650 kil001 42s
+14:36:57 emulator-5650 reb001 34s
+14:37:45 emulator-5650 net001 48s
+14:38:40 emulator-5650 pen002 54s
+14:39:31 emulator-5650 kil002 51s
+14:40:05 emulator-5650 reb002 34s
+14:40:52 emulator-5650 net002 47s
+14:41:47 emulator-5650 pen003 54s
+14:42:38 emulator-5650 kil003 51s
+14:43:11 emulator-5650 reb003 33s
+14:43:59 emulator-5650 net003 47s
+14:44:53 emulator-5650 pen004 54s
+14:45:44 emulator-5650 kil004 51s
+14:49:58 emulator-5650 reb004 TRIAL_ERROR TimeoutExpired(['/Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5650', 'wait-for-device']
+14:50:21 restarted emulator-5650 in 23s
+14:51:10 emulator-5650 net004 49s
+14:51:59 emulator-5650 pen005 49s
+14:52:25 emulator-5650 kil005 27s
+14:53:01 emulator-5650 reb005 35s
+14:53:48 emulator-5650 net005 47s
+14:54:30 emulator-5650 pen006 42s
+14:55:06 emulator-5650 kil006 36s
+14:55:41 emulator-5650 reb006 34s
+14:56:28 emulator-5650 net006 47s
+14:57:19 emulator-5650 pen007 51s
+14:58:11 emulator-5650 kil007 51s
+14:58:45 emulator-5650 reb007 35s
+14:59:33 emulator-5650 net007 47s
+15:00:27 emulator-5650 pen008 54s
+15:01:18 emulator-5650 kil008 51s
+15:01:52 emulator-5650 reb008 34s
+15:02:40 emulator-5650 net008 47s
+15:03:34 emulator-5650 pen009 54s
+15:04:25 emulator-5650 kil009 51s
+15:05:00 emulator-5650 reb009 35s
+15:05:47 emulator-5650 net009 47s
+15:06:42 emulator-5650 pen010 54s
+15:07:33 emulator-5650 kil010 51s
+15:08:07 emulator-5650 reb010 34s
+15:08:54 emulator-5650 net010 47s
+15:09:46 emulator-5650 pen011 51s
+15:10:37 emulator-5650 kil011 51s
+15:11:12 emulator-5650 reb011 35s
+15:11:59 emulator-5650 net011 47s
+15:12:53 emulator-5650 pen012 54s
+15:13:45 emulator-5650 kil012 51s
+15:14:20 emulator-5650 reb012 35s
+15:15:07 emulator-5650 net012 47s
+15:16:01 emulator-5650 pen013 54s
+15:16:53 emulator-5650 kil013 51s
+15:17:27 emulator-5650 reb013 35s
+15:18:14 emulator-5650 net013 47s
+15:19:06 emulator-5650 pen014 51s
+15:19:57 emulator-5650 kil014 51s
+15:24:10 emulator-5650 reb014 TRIAL_ERROR TimeoutExpired(['/Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5650', 'wait-for-device']
+15:24:35 restarted emulator-5650 in 24s
+15:25:25 emulator-5650 net014 50s
+15:26:04 emulator-5650 pen015 40s
+15:26:37 emulator-5650 kil015 33s
+15:27:10 emulator-5650 reb015 33s
+15:27:58 emulator-5650 net015 48s
+15:28:53 emulator-5650 pen016 55s
+15:29:44 emulator-5650 kil016 51s
+15:30:18 emulator-5650 reb016 34s
+15:31:05 emulator-5650 net016 47s
+15:31:59 emulator-5650 pen017 54s
+15:32:50 emulator-5650 kil017 51s
+15:33:24 emulator-5650 reb017 33s
+15:34:11 emulator-5650 net017 47s
+15:35:05 emulator-5650 pen018 54s
+15:35:57 emulator-5650 kil018 51s
+15:36:32 emulator-5650 reb018 35s
+15:37:19 emulator-5650 net018 47s
+15:38:13 emulator-5650 pen019 54s
+15:39:05 emulator-5650 kil019 51s
+15:39:39 emulator-5650 reb019 34s
+15:40:26 emulator-5650 net019 47s
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5654 --avd P04Avd15 --port 8791 --variants menqueue,mlayer,mfence --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,reboot,netloss --trials 20 --seed b11-20261119 --out results/round3/b11/avd15-final
+15:40:46 restarted emulator-5654 in 18s
+15:41:46 emulator-5654 pen000 56s
+15:42:37 emulator-5654 kil000 52s
+15:43:15 emulator-5654 reb000 37s
+15:44:02 emulator-5654 net000 47s
+15:44:56 emulator-5654 pen001 54s
+15:45:38 emulator-5654 kil001 42s
+15:46:15 emulator-5654 reb001 36s
+15:47:02 emulator-5654 net001 47s
+15:47:56 emulator-5654 pen002 54s
+15:48:38 emulator-5654 kil002 42s
+15:49:13 emulator-5654 reb002 35s
+15:50:01 emulator-5654 net002 47s
+15:50:55 emulator-5654 pen003 54s
+15:51:37 emulator-5654 kil003 42s
+15:52:14 emulator-5654 reb003 37s
+15:53:02 emulator-5654 net003 47s
+15:53:56 emulator-5654 pen004 54s
+15:54:38 emulator-5654 kil004 42s
+15:55:15 emulator-5654 reb004 37s
+15:56:02 emulator-5654 net004 47s
+15:56:57 emulator-5654 pen005 54s
+15:57:39 emulator-5654 kil005 42s
+15:58:16 emulator-5654 reb005 37s
+15:59:03 emulator-5654 net005 47s
+15:59:57 emulator-5654 pen006 54s
+16:00:49 emulator-5654 kil006 51s
+16:01:25 emulator-5654 reb006 36s
+16:02:13 emulator-5654 net006 47s
+16:03:07 emulator-5654 pen007 55s
+16:03:50 emulator-5654 kil007 42s
+16:04:26 emulator-5654 reb007 36s
+16:05:13 emulator-5654 net007 47s
+16:06:08 emulator-5654 pen008 54s
+16:06:50 emulator-5654 kil008 42s
+16:07:27 emulator-5654 reb008 37s
+16:08:15 emulator-5654 net008 47s
+16:09:09 emulator-5654 pen009 54s
+16:09:51 emulator-5654 kil009 42s
+16:10:28 emulator-5654 reb009 37s
+16:11:16 emulator-5654 net009 47s
+16:12:10 emulator-5654 pen010 55s
+16:12:52 emulator-5654 kil010 42s
+16:13:29 emulator-5654 reb010 37s
+16:14:17 emulator-5654 net010 47s
+16:15:11 emulator-5654 pen011 54s
+16:15:53 emulator-5654 kil011 42s
+16:16:30 emulator-5654 reb011 37s
+16:17:18 emulator-5654 net011 47s
+16:18:12 emulator-5654 pen012 55s
+16:18:54 emulator-5654 kil012 42s
+16:19:32 emulator-5654 reb012 37s
+16:20:19 emulator-5654 net012 47s
+16:21:14 emulator-5654 pen013 55s
+16:21:56 emulator-5654 kil013 42s
+16:23:33 emulator-5654 reb013 97s
+16:24:22 emulator-5654 net013 49s
+16:25:15 emulator-5654 pen014 53s
+16:26:03 emulator-5654 kil014 48s
+16:26:40 emulator-5654 reb014 37s
+16:27:27 emulator-5654 net014 47s
+16:28:22 emulator-5654 pen015 54s
+16:29:04 emulator-5654 kil015 42s
+16:29:41 emulator-5654 reb015 37s
+16:30:28 emulator-5654 net015 47s
+16:31:22 emulator-5654 pen016 54s
+16:32:04 emulator-5654 kil016 42s
+16:32:41 emulator-5654 reb016 36s
+16:33:28 emulator-5654 net016 47s
+16:34:22 emulator-5654 pen017 54s
+16:35:05 emulator-5654 kil017 42s
+16:35:42 emulator-5654 reb017 37s
+16:36:29 emulator-5654 net017 47s
+16:37:23 emulator-5654 pen018 55s
+16:38:15 emulator-5654 kil018 51s
+16:38:51 emulator-5654 reb018 36s
+16:39:38 emulator-5654 net018 47s
+16:40:33 emulator-5654 pen019 54s
+16:41:24 emulator-5654 kil019 51s
+16:42:01 emulator-5654 reb019 37s
+16:42:48 emulator-5654 net019 47s
+$ python3 .claude/skills/p04-autorun/scripts/status.py artifact/results/round3/b11/avd14-final artifact/results/round3/b11/avd15-final --target 20
+artifact/results/round3/b11/avd14-final: valid 78/80 {'pending': 20, 'kill': 20, 'reboot': 18, 'netloss': 20} last action 3742 s  STALE>600s
+artifact/results/round3/b11/avd15-final: valid 80/80 {'pending': 20, 'kill': 20, 'reboot': 20, 'netloss': 20} last action 0 s  TARGET MET
+{"runs": [{"dir": "artifact/results/round3/b11/avd14-final", "logged": 80, "valid": 78, "valid_by_schedule": {"pending": 20, "kill": 20, "reboot": 18, "netloss": 20}, "invalid_reasons": {"host_sleep": 2, "restart_or_setup_fail": 2, "device_log": 2}, "last_action_age_s": 3742, "target_met": false}, {"dir": "artifact/results/round3/b11/avd15-final", "logged": 80, "valid": 80, "valid_by_schedule": {"pending": 20, "kill": 20, "reboot": 20, "netloss": 20}, "invalid_reasons": {}, "last_action_age_s": 0, "target_met": true}], "emulators": {}, "t": 1795081369}
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD FAIL: not reproduced: manuscript/generated/tests_macros.tex
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5650 emu kill
+OK: killing emulator, bye bye
+OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5654 emu kill
+OK: killing emulator, bye bye
+OK

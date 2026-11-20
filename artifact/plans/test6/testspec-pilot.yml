@@ -1,0 +1,27 @@
+# Test 6 pilot (one device, one block). Derived from artifact/devicefarm/testspec.yml (owned by C) with two
+# documented differences: --n 1, and an explicit `devicefarm-cli use python 3.12` (supported on amazon_linux_2).
+version: 0.1
+android_test_host: amazon_linux_2
+
+phases:
+  install:
+    commands:
+      - devicefarm-cli use python 3.12
+      - python3 --version
+      - adb version
+  pre_test:
+    commands:
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+      - adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+  test:
+    commands:
+      - cd $DEVICEFARM_TEST_PACKAGE_PATH
+      - ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1 --n 1 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --out $DEVICEFARM_LOG_DIR/tls
+  post_test:
+    commands:
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+
+artifacts:
+  - $DEVICEFARM_LOG_DIR

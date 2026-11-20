@@ -1,0 +1,20 @@
+{
+    "status": "COMPLETED",
+    "result": "PASSED",
+    "counters": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "warned": 0,
+        "errored": 0,
+        "stopped": 0,
+        "skipped": 0
+    },
+    "deviceMinutes": {
+        "total": 54.11,
+        "metered": 53.78,
+        "unmetered": 0.0
+    },
+    "created": "2026-11-19T09:51:10.372000+07:00",
+    "stopped": "2026-11-19T10:46:14.335000+07:00"
+}

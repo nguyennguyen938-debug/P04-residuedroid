@@ -1,0 +1,26 @@
+{
+ "serial": "emulator-5660",
+ "avd": "P04AvdA",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "seed": "race-20261119",
+ "profiles": [
+  "edge",
+  "umts",
+  "lte"
+ ],
+ "sizes": [
+  32768,
+  262144,
+  2097152
+ ],
+ "modes": [
+  "early",
+  "fence"
+ ],
+ "calibrate": 3,
+ "trials": 0,
+ "start": 0,
+ "durations": {},
+ "apk_sha256": "ca313b94fd89c9e3515dfead79713c183747436f0e0ecba6445d54652b1aef15",
+ "started": 1795081484.531181
+}

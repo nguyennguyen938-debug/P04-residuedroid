@@ -1,0 +1,17 @@
+{
+ "environment": "Samsung Remote Test Lab via Remote Debug Bridge",
+ "receiver_mode": "Mac host via adb reverse over the RDB relay",
+ "serial": "localhost:52477",
+ "model": "SM-M356B",
+ "android": "14",
+ "fingerprint": "samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys",
+ "started_host": 1795065478.4912488,
+ "repo_commit": "98ca667e8b1dbd7e494faaa64d8292fb60bd03a9",
+ "repo_dirty": false,
+ "package": "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg4",
+ "adb_server_port": "5038",
+ "tls_exit": "skipped",
+ "life_exit": "0",
+ "link_down": false,
+ "ended_host": 1795069368.4177809
+}

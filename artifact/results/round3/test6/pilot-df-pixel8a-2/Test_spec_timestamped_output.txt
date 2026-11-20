@@ -1,0 +1,65 @@
+[2026-11-19 02:44:18.004575] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-19 02:44:18.004648]  
+[2026-11-19 02:44:18.013934]  
+[2026-11-19 02:44:18.013972] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-19 02:44:18.013993]  
+[2026-11-19 02:44:18.014011] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-19 02:44:18.146573] [DeviceFarm] python3 --version
+[2026-11-19 02:44:18.147425] Python 3.12.12
+[2026-11-19 02:44:18.147626] [DeviceFarm] adb version
+[2026-11-19 02:44:18.173875] Android Debug Bridge version 1.0.39
+[2026-11-19 02:44:18.173909] Version 0.0.1-4500957
+[2026-11-19 02:44:18.173926] Installed as /tmp/devicefarm-workspace/execution-v2a5e3_u/shared-5a779a8b/android-home-9a53qahw/platform-tools/adb_binary
+[2026-11-19 02:44:18.175483]  
+[2026-11-19 02:44:18.175505] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-19 02:44:18.175521]  
+[2026-11-19 02:44:18.175531] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+[2026-11-19 02:44:18.260707] 8798
+[2026-11-19 02:44:21.372408] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+[2026-11-19 02:44:21.393161] 8799
+[2026-11-19 02:44:24.414255] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8787 tcp:8787
+[2026-11-19 02:44:24.485288] 8787
+[2026-11-19 02:44:27.506548] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+[2026-11-19 02:44:27.571065] UsbFfs tcp:8798 tcp:8798
+[2026-11-19 02:44:27.571116] UsbFfs tcp:8799 tcp:8799
+[2026-11-19 02:44:27.571130] UsbFfs tcp:8787 tcp:8787
+[2026-11-19 02:44:27.571141] 
+[2026-11-19 02:44:27.574070] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-19 02:44:27.671150] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-19 02:44:27.675433] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell pm list packages -i org.residuelab.tls
+[2026-11-19 02:44:27.788258] package:org.residuelab.tls  installer=null
+[2026-11-19 02:44:27.795627] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell dumpsys package org.residuelab.tls | grep -i -E 'installer|updateOwner|versionCode' || true
+[2026-11-19 02:44:27.949339]     versionCode=0 minSdk=26 targetSdk=33
+[2026-11-19 02:44:27.949373]     installerPackageName=null
+[2026-11-19 02:44:27.949385]     installerPackageUid=-1
+[2026-11-19 02:44:27.949473] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+[2026-11-19 02:44:28.260934] Success
+[2026-11-19 02:44:28.278044] UNINSTALL_TLS_EXIT=0
+[2026-11-19 02:44:28.278086]  
+[2026-11-19 02:44:28.278100] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-19 02:44:28.278109]  
+[2026-11-19 02:44:28.278119] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-19 02:44:28.278133] [DeviceFarm] ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1 --n 1 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --out $DEVICEFARM_LOG_DIR/tls; echo "TLS_EXIT=$?"
+[2026-11-19 02:44:34.094737] control 0 None [('SEND_OK', 'elapsed_ns=2815775636;process_cpu_ms=3667;payload_bytes=1048638')]
+[2026-11-19 02:44:38.002806] early 0 None [('SEND_OK', 'elapsed_ns=1860232911;process_cpu_ms=2706;payload_bytes=1048636')]
+[2026-11-19 02:44:40.284486] buffered-fence 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=10')]
+[2026-11-19 02:44:42.298091] buffered-early 0 None [('SEND_OK', 'elapsed_ns=1048441895;process_cpu_ms=1242;payload_bytes=16453')]
+[2026-11-19 02:44:45.577548] stall-small 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=73')]
+[2026-11-19 02:44:49.112812] stall-large 0 None [('SEND_ERROR', 'org.residuelab.transport.HttpTransport$Denied: policy denied remaining bytes;elapsed_ns=77')]
+[2026-11-19 02:44:56.599554] concurrent 0 None [('SEND_OK', 'elapsed_ns=5287311201;process_cpu_ms=4499;payload_bytes=1048641'), ('SEND_OK', 'elapsed_ns=4942042483;process_cpu_ms=4232;payload_bytes=1048647')]
+[2026-11-19 02:45:09.686031] TLS_EXIT=0
+[2026-11-19 02:45:09.686105] [DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules pending,kill,revoke --trials 1 --seed test6-pilot --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+[2026-11-19 02:46:44.227076] 02:46:44 41311JEKB03006 pen000 91s
+[2026-11-19 02:47:29.737841] 02:47:29 41311JEKB03006 kil000 46s
+[2026-11-19 02:49:03.539201] 02:49:03 41311JEKB03006 rev000 94s
+[2026-11-19 02:49:03.546268] LIFE_EXIT=0
+[2026-11-19 02:49:03.546327]  
+[2026-11-19 02:49:03.546344] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-19 02:49:03.546355]  
+[2026-11-19 02:49:03.546367] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+[2026-11-19 02:49:03.667045]  
+[2026-11-19 02:49:03.667088] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-19 02:49:03.667101]  
+[2026-11-19 02:49:03.670204] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-19 02:49:03.670226]  
+[2026-11-19 02:49:03.671551]  

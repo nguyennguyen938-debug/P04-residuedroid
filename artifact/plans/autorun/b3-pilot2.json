@@ -1,0 +1,45 @@
+{
+  "id": "b3-pilot2",
+  "kind": "pilot",
+  "card": "artifact/plans/b3-card.md",
+  "deadline_hours": 1,
+  "env": {
+    "ANDROID_HOME": "~/Library/Android/sdk",
+    "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+    "ANDROID_AVD_HOME": "~/.android/avd",
+    "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "AVDS": "P04AvdB",
+    "PORTS": "5662 8798",
+    "IMAGES": "33",
+    "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
+  },
+  "owned_serials": [
+    "emulator-5662"
+  ],
+  "pre": [
+    "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+  ],
+  "stages": [
+    {
+      "name": "pilot",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/b3_suite.py",
+        "--serial",
+        "emulator-5662",
+        "--avd",
+        "P04AvdB",
+        "--certdir",
+        "/Users/nguyennhatduy/.p04/racecert",
+        "--blocks",
+        "1",
+        "--out",
+        "results/round3/b3/pilot-2"
+      ],
+      "out": "artifact/results/round3/b3/pilot-2"
+    }
+  ],
+  "post": [],
+  "guard_after": true
+}

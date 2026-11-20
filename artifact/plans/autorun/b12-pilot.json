@@ -1,0 +1,51 @@
+{
+  "id": "b12-pilot",
+  "kind": "pilot",
+  "card": "artifact/plans/b12-card.md",
+  "deadline_hours": 1,
+  "env": {
+    "ANDROID_HOME": "~/Library/Android/sdk",
+    "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+    "ANDROID_AVD_HOME": "~/.android/avd",
+    "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "AVDS": "P04AvdA",
+    "PORTS": "5600 8795",
+    "IMAGES": "33",
+    "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
+  },
+  "owned_serials": [
+    "emulator-5600"
+  ],
+  "pre": [
+    "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+  ],
+  "stages": [
+    {
+      "name": "base",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/campaign.py",
+        "--serial",
+        "emulator-5600",
+        "--avd",
+        "P04AvdA",
+        "--port",
+        "8795",
+        "--variants",
+        "mfence",
+        "--schedules",
+        "pending,reboot",
+        "--trials",
+        "1",
+        "--apkdir",
+        "fixture/build/apk_mut_base",
+        "--out",
+        "results/mutation/pilot-base"
+      ],
+      "out": "artifact/results/mutation/pilot-base"
+    }
+  ],
+  "post": [],
+  "guard_after": true
+}

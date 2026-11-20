@@ -1,0 +1,11 @@
+{
+  "fingerprint": "samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys",
+  "serial": "localhost:52011",
+  "apk_sha256": "49ae92ac79948ca6b71aeda2facf449c8188f02416a4e17ca1021c9224ae341d",
+  "started": 1795052748.885272,
+  "host_load": [
+    2.81396484375,
+    2.25439453125,
+    2.2607421875
+  ]
+}

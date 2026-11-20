@@ -1,0 +1,32 @@
+# B9 self-check 2026-11-19 23:56 +0700 — git archive of 8d22a84 + Makefile fix; make -C artifact all
+# first attempt (unfixed Makefile): exit 2, ../manuscript/build.sh: Permission denied (mode 100644 in git, also on origin/main)
+# second attempt: exit 0; artifact/results byte-identical (all tracked files except .gz parts); manuscript/generated differs only in:
+#   62c62
+#   < \newcommand{\impLoc}{1{,}230\xspace}
+#   ---
+#   > \newcommand{\impLoc}{1{,}250\xspace}
+#   tests_macros.tex: 32 macro lines filled from summary.json (C regenerates)
+
+cd static && python3 -I static_summary.py >/dev/null
+python3 scripts/summarize.py >/dev/null
+python3 scripts/render.py
+macros: 239 defined; missing: []
+python3 revision/historical_uncertainty.py > results/revision-20261115/bootstrap.log
+python3 revision/oracle_v2.py results/revision-20261115
+socket trials 1020
+python3 revision/matched_oracle.py
+matched 2800 tenant rows; 6 invalid paired trials
+python3 followup/matched_oracle.py
+matched 11200 tenant rows; 8 invalid paired trials
+python3 followup/deficit_causes.py
+deficits 70 tenant-trials, 448 items; causes {'stopped_no_restart': 70}
+python3 revision/render_revision.py
+revision rendered 1020 socket, 10 matched groups, 52 ACRA, 20 Matomo
+python3 revision/audit_results.py > results/revision-20261115/evidence-audit.log
+python3 followup/analyze_tls.py > results/review-followup-20261115/transport-analysis.log
+python3 followup/render.py
+python3 scripts/render_tests.py
+tests macros: 44 defined; missing: 0
+bash ../manuscript/build.sh
+pages: 21
+overfull: 0

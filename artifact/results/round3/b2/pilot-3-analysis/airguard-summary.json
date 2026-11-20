@@ -1,0 +1,237 @@
+{
+ "invalid": [],
+ "cells": {
+  "kill/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 1,
+   "error_trials": 0
+  },
+  "kill/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 1,
+   "violating_wilson95": [
+    0.20654329147389294,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "unknown_trials": 0,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 1,
+   "unknown_trials": 0,
+   "deficit_beacons": 4,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "pending/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 1,
+   "error_trials": 0
+  },
+  "pending/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 1,
+   "violating_wilson95": [
+    0.20654329147389294,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "reboot/fenced": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.7934567085261071
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 1,
+   "error_trials": 0
+  },
+  "reboot/stock": {
+   "trials": 1,
+   "unused": 0,
+   "violating_trials": 1,
+   "violating_wilson95": [
+    0.20654329147389294,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  }
+ },
+ "rows": [
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/ambiguous": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/ambiguous": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  }
+ ]
+}

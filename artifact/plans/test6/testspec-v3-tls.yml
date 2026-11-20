@@ -1,0 +1,33 @@
+# Test 6 protocol v3 (test6-card-v3.md): TLS suite only, blocks 0-19, every send with deadline_ms 60000 (the fixture's
+# fixed 10 s TLS deadline cut the concurrent case on the slow RDB path). Same pre_test as v2. Receiver mode A.
+version: 0.1
+android_test_host: amazon_linux_2
+
+phases:
+  install:
+    commands:
+      - devicefarm-cli use python 3.12
+      - python3 --version
+      - adb version
+  pre_test:
+    commands:
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8798 tcp:8798
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8799 tcp:8799
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse tcp:8787 tcp:8787
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse --list
+      - adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+      # Device Farm pre-installs the uploaded app (rl-tls.apk); on Android 17 tls_suite's own `adb install -r` of it failed
+      # (pilot-df-pixel8a). Show who installed it, then uninstall so tls_suite installs it fresh, as on RTL/emulator.
+      - adb -s $DEVICEFARM_DEVICE_UDID shell pm list packages -i org.residuelab.tls
+      - adb -s $DEVICEFARM_DEVICE_UDID shell dumpsys package org.residuelab.tls | grep -i -E 'installer|updateOwner|versionCode' || true
+      - adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+  test:
+    commands:
+      - cd $DEVICEFARM_TEST_PACKAGE_PATH
+      - ADB=adb python3 artifact/followup/tls_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --host 127.0.0.1 --start 0 --n 20 --cases control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent --deadline-ms 60000 --out $DEVICEFARM_LOG_DIR/tls; echo "TLS_EXIT=$?"
+  post_test:
+    commands:
+      - adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all
+
+artifacts:
+  - $DEVICEFARM_LOG_DIR

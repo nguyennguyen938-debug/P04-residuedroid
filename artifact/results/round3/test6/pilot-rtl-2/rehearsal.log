@@ -1,0 +1,47 @@
+== pre_test 08:39:25
+8798
+8799
+8787
+host-30 tcp:8798 tcp:8798
+host-30 tcp:8799 tcp:8799
+host-30 tcp:8787 tcp:8787
+
+samsung/m35xxx/m35x:14/UP1A.231005.007/M356BXXS4AYB6:user/release-keys
+== TLS start 08:39:25
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg2/artifact/followup/tls_suite.py", line 56, in <module>
+    adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'cat /data/local/tmp/p04-test-ca.pem | run-as {PKG} sh -c "cat > files/test-ca.pem"')
+                                                                                    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg2/artifact/followup/tls_suite.py", line 8, in adb
+    r=subprocess.run([os.environ.get('ADB',str(SDK/'platform-tools/adb')),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2424, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        skip_check_and_raise=True)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1434, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/rtl/pt33/platform-tools/adb', '-s', 'localhost:52011', 'shell', 'cat /data/local/tmp/p04-test-ca.pem | run-as org.residuelab.tls sh -c "cat > files/test-ca.pem"']' timed out after 40 seconds
+TLS_EXIT=1
+== LIFE start 08:40:07
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg2/artifact/followup/campaign.py", line 447, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg2/artifact/followup/campaign.py", line 394, in main
+    ensure_device()
+    ~~~~~~~~~~~~~^^
+  File "/private/tmp/claude-501/-Users-nguyennhatduy-Documents-coding-tmp-P04-residuedroid/9510d96b-1ee0-4b1e-b337-2ba7ad23de43/scratchpad/test6/pkg2/artifact/followup/campaign.py", line 126, in ensure_device
+    raise RuntimeError("device not alive and no --avd given")
+RuntimeError: device not alive and no --avd given
+LIFE_EXIT=1
+== post_test 08:40:49
+adb: error: closed

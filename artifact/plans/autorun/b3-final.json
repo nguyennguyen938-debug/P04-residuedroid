@@ -1,0 +1,47 @@
+{
+  "id": "b3-final",
+  "kind": "final",
+  "card": "artifact/plans/b3-card.md",
+  "deadline_hours": 5,
+  "env": {
+    "ANDROID_HOME": "~/Library/Android/sdk",
+    "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+    "ANDROID_AVD_HOME": "~/.android/avd",
+    "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "AVDS": "P04AvdB",
+    "PORTS": "5662 8798",
+    "IMAGES": "33",
+    "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
+  },
+  "owned_serials": [
+    "emulator-5662"
+  ],
+  "pre": [
+    "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+  ],
+  "stages": [
+    {
+      "name": "final",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/b3_suite.py",
+        "--serial",
+        "emulator-5662",
+        "--avd",
+        "P04AvdB",
+        "--certdir",
+        "/Users/nguyennhatduy/.p04/racecert",
+        "--blocks",
+        "20",
+        "--out",
+        "results/round3/b3/final"
+      ],
+      "out": "artifact/results/round3/b3/final"
+    }
+  ],
+  "post": [
+    "python3 artifact/followup/analyze_b3.py artifact/results/round3/b3/final --out artifact/results/round3/b3/analysis"
+  ],
+  "guard_after": true
+}

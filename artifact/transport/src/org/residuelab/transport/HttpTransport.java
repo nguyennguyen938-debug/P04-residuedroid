@@ -27,8 +27,14 @@ public final class HttpTransport {
     /** wholeWrite is a matched transport comparator: only its write phase holds the lock. */
     public static void postMode(String host,int port,String path,byte[] body,File lock,Policy policy,
                                 boolean fenced,boolean wholeWrite,Events events,String request,int attempt)throws Exception {
+        postMode(host,port,path,body,lock,policy,fenced,wholeWrite,events,request,attempt,CHUNK,5000);
+    }
+    /** B4/test 5: chunk size and operation deadline as parameters (defaults above: CHUNK, 5 s). */
+    public static void postMode(String host,int port,String path,byte[] body,File lock,Policy policy,
+                                boolean fenced,boolean wholeWrite,Events events,String request,int attempt,
+                                int chunk,int deadlineMillis)throws Exception {
         if (!path.matches("/[A-Za-z0-9/_-]*")) throw new IOException("unsupported path");
-        final long deadline = System.nanoTime() + 5_000_000_000L;
+        final long deadline = System.nanoTime() + deadlineMillis * 1_000_000L;
         String prefix = "v=2;request=" + request + ";attempt=" + attempt + ";";
         byte[] header = ("POST " + path + " HTTP/1.1\r\nHost: " + host + ":" + port
             + "\r\nContent-Type: application/json\r\nX-Request-ID: " + request
@@ -45,7 +51,7 @@ public final class HttpTransport {
                 if(wholeWrite && !policy.permitted())throw new Denied();
             while (wire.hasRemaining()) {
                 ready(selector, key, SelectionKey.OP_WRITE, deadline);
-                final int offset = wire.position(), end = Math.min(wire.limit(), offset + CHUNK);
+                final int offset = wire.position(), end = Math.min(wire.limit(), offset + chunk);
                 Coordinator.Action<Integer> write = () -> {
                     if (System.nanoTime() >= deadline) throw new java.net.SocketTimeoutException("write deadline");
                     if (fenced && !wholeWrite && !policy.permitted()) { events.emit("BLOCK", prefix + "offset=" + offset); throw new Denied(); }

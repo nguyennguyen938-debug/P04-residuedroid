@@ -1,0 +1,19 @@
+artifact/acra/build/apk/acrafence.apk: 2 caller(s) of Lkotlin/io/TextStreamsKt;->readBytes
+   Lkotlin/io/TextStreamsKt;->readText
+   Lkotlin/io/TextStreamsKt;->readText$default
+artifact/matomo/build/matomo.apk: 2 caller(s) of Lkotlin/io/TextStreamsKt;->readBytes
+   Lkotlin/io/TextStreamsKt;->readText
+   Lkotlin/io/TextStreamsKt;->readText$default
+fe77d7ecc6157b4b009fcb9096ec113fa3f26de516ff1c318176037c9621a061  artifact/acra/build/apk/acrafence.apk
+ed3b2017f106af4827966c506ba0cf121988ec3dae0a0bd2eb46ec39f7f7c87b  artifact/matomo/build/matomo.apk
+--- target Lkotlin/io/TextStreamsKt;->readText
+artifact/acra/build/apk/acrafence.apk: 3 caller(s) of Lkotlin/io/TextStreamsKt;->readText
+   Lkotlin/io/path/PathsKt__PathReadWriteKt;->readText
+   Lorg/acra/util/StreamReader;->readFully
+   Lkotlin/io/FilesKt__FileReadWriteKt;->readText
+artifact/matomo/build/matomo.apk: 2 caller(s) of Lkotlin/io/TextStreamsKt;->readText
+   Lkotlin/io/path/PathsKt__PathReadWriteKt;->readText
+   Lkotlin/io/FilesKt__FileReadWriteKt;->readText
+--- target Lkotlin/io/TextStreamsKt;->readText$default
+artifact/acra/build/apk/acrafence.apk: 0 caller(s) of Lkotlin/io/TextStreamsKt;->readText$default
+artifact/matomo/build/matomo.apk: 0 caller(s) of Lkotlin/io/TextStreamsKt;->readText$default

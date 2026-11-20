@@ -3,12 +3,16 @@
 from pathlib import Path
 import argparse,subprocess,threading,socketserver,ssl,time,json,uuid,hashlib,os,contextlib
 A=Path(__file__).resolve().parents[1];SDK=A.parents[1]/'shared-android/sdk';PKG='org.residuelab.tls'
-p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--n',type=int,default=20);p.add_argument('--start',type=int,default=0);p.add_argument('--deadline-ms',type=int);p.add_argument('--out',type=Path,required=True);p.add_argument('--serial',default='emulator-5644');p.add_argument('--no-root',action='store_true');p.add_argument('--host');p.add_argument('--cases',default='control,early,buffered-fence,buffered-early,stall-small,stall-large,concurrent,labels-complete,labels-incomplete,labels-missing,mixed');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
 def adb(*args):
- r=subprocess.run([str(SDK/'platform-tools/adb'),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
+ r=subprocess.run([os.environ.get('ADB',str(SDK/'platform-tools/adb')),'-s',a.serial,*map(str,args)],capture_output=True,text=True,timeout=40)
  if r.returncode:raise RuntimeError(r.stderr)
  return r.stdout
+def adb_try(*args):
+ try:return adb(*args)
+ except RuntimeError as e:return 'unavailable: '+str(e)[:200]
 def bc(op,id,remote=False,**kw):
+ if op=='send' and a.host:kw['host']=a.host
  cmd=['shell','am','broadcast','-n',PKG+'/org.residuelab.Revision'+('Remote' if remote else ''),'-a','rl.REVISION','--es','op',op,'--es','id',id]
  for k,v in kw.items():cmd+=['--ez' if isinstance(v,bool) else '--ei' if isinstance(v,int) else '--es',k,str(v).lower() if isinstance(v,bool) else str(v)]
  return adb(*cmd)
@@ -48,10 +52,10 @@ class Handler(socketserver.BaseRequestHandler):
   except Exception as e:self.server.log({'request':id,'event':'error','error':repr(e),'received':total,'expected':expected})
 sink=Server(('127.0.0.1',8798),Handler);sink.guard=threading.Lock();sink.mode='normal';threading.Thread(target=sink.serve_forever,daemon=True).start()
 plain_sink=Server(('127.0.0.1',8799),Handler);plain_sink.guard=threading.Lock();plain_sink.mode='normal';threading.Thread(target=plain_sink.serve_forever,daemon=True).start()
-adb('root');adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
-adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'cat /data/local/tmp/p04-test-ca.pem | run-as {PKG} sh -c "cat > files/test-ca.pem"')
+(a.no_root or adb('root'));adb('wait-for-device');adb('install','-r',A/'fixture/build/tls-apk/rl-tls.apk');bc('init','setup')
+adb('push',A/'followup/tls-cert/test-ca.pem','/data/local/tmp/p04-test-ca.pem');adb('shell',f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
 (a.out/'environment.json').write_text(json.dumps({'fingerprint':adb('shell','getprop','ro.build.fingerprint').strip(),'serial':a.serial,'apk_sha256':hashlib.sha256((A/'fixture/build/tls-apk/rl-tls.apk').read_bytes()).hexdigest(),'started':time.time(),'host_load':os.getloadavg()},indent=2)+'\n')
-for block in range(a.n):
+for block in range(a.start,a.start+a.n):
  for case in a.cases.split(','):
   id='tls-'+case+'-'+str(block)+'-'+uuid.uuid4().hex[:6];r={'trial':id,'case':case,'block':block,'host_load':os.getloadavg(),'start':time.time()};sink.mode='stall' if case.startswith('stall')else 'normal'
   try:
@@ -62,9 +66,9 @@ for block in range(a.n):
     bc('labelsetup',id);size=1024
     label={'labels-complete':'analytics:0,diagnostics:0','labels-incomplete':'diagnostics:0','labels-missing':'?','mixed':'analytics:0,diagnostics:0'}[case]
    if case.startswith('stall'):size=8*1048576
-   r['command']=bc('send',id,tls=not case.startswith('http'),labeltest=case.startswith('labels')or case=='mixed',mode=mode,fault=fault,size=size,port=8799 if case.startswith('http') else 8798,sndbuf=4096 if case=='stall-small' else 262144 if case=='stall-large' else 16384,label=label)
+   dl={'deadline_ms':a.deadline_ms} if a.deadline_ms else {};r['command']=bc('send',id,**dl,tls=not case.startswith('http'),labeltest=case.startswith('labels')or case=='mixed',mode=mode,fault=fault,size=size,port=8799 if case.startswith('http') else 8798,sndbuf=4096 if case=='stall-small' else 262144 if case=='stall-large' else 16384,label=label)
    ids=[id]
-   if case in ['concurrent','http-concurrent']:ids.append(id+'-other');bc('send',ids[-1],remote=True,tls=not case.startswith('http'),mode=mode,fault='none',size=size,port=8799 if case.startswith('http') else 8798,label=label)
+   if case in ['concurrent','http-concurrent']:ids.append(id+'-other');bc('send',ids[-1],remote=True,**dl,tls=not case.startswith('http'),mode=mode,fault='none',size=size,port=8799 if case.startswith('http') else 8798,label=label)
    if case.startswith('buffered')or case.startswith('stall'):
     target='TLS_BUFFERED'if case.startswith('buffered')else'BYTES_ACCEPTED';end=time.monotonic()+5
     while time.monotonic()<end:
@@ -73,9 +77,9 @@ for block in range(a.n):
      time.sleep(.02)
     r['barrier_seen']=any(e['kind']==target for e in ev)
     r['withdraw']=bc('withdraw',id,remote=True)
-    r['tcp_after_withdraw']=adb('shell','cat /proc/net/tcp /proc/net/tcp6')
+    r['tcp_after_withdraw']=adb_try('shell','cat /proc/net/tcp /proc/net/tcp6')
     if case.startswith('buffered'):adb('shell',f'run-as {PKG} touch files/release')
-   end=time.monotonic()+13
+   end=time.monotonic()+max(13,(a.deadline_ms or 0)/1000+5)
    while time.monotonic()<end:
     ev=events()
     if all(any(e['trial']==x and e['kind']in['SEND_OK','SEND_ERROR','EARLY_BLOCK']for e in ev)for x in ids):break

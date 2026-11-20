@@ -1,3 +1,9 @@
+> Round 3 note (2026-11-19, B): the page count below is that of the 2026-11-15 build; round-3 builds differ (see the
+> latest `manuscript/build.sh` output; 12-page body limit). Phone and newer-Android validation now exists in round 3:
+> Test 6 (Pixel 8a Android 17 via AWS Device Farm, Galaxy M35 Android 14 via Samsung Remote Test Lab; TLS suite and
+> fixture lifecycle without reboot) and Test 4 (Android 14/15 emulators, B11). See `artifact/results/RUNLOG.md` and
+> `artifact/plans/*-card.md`; the plan of record is `PLAN-ROUND3.md`.
+
 # Revision complete — 2026-11-15
 
 Implemented the approved P04 revision plan. The PDF uses explicit 10pt, has an 11-page main body

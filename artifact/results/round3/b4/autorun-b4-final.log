@@ -1,0 +1,457 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~5 GB available; close apps before 2 emulators
+  [ OK ] 168 GB disk free
+  [ OK ] on AC power
+  [FAIL] port 5664 in use
+  [ OK ] ports 5664 8799 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 1 failed
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~6 GB available; close apps before 2 emulators
+  [ OK ] 169 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5664 8799 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/sweep_suite.py --serial emulator-5664 --avd P04AvdA --blocks 20 --out results/round3/b4/final
+17:37:34 sw-c16-s2-0-b844db done
+17:37:55 sw-c64-s4-0-53504a done
+17:38:04 sw-c1-s2-0-9467bc done
+17:38:05 sw-c16-s4-0-ad4814 done
+17:38:07 sw-c64-s2-0-09d4ca done
+17:38:08 sw-c4-s2-0-ecae22 done
+17:38:20 sw-c1-s16-0-deef4a done
+17:38:22 sw-c4-s1-0-63cfcc done
+17:38:23 sw-c16-s1-0-c1b7e0 done
+17:38:24 sw-c64-s1-0-a965a0 done
+17:38:31 sw-c16-s8-0-d81e7b done
+17:38:35 sw-c1-s8-0-cfa63a done
+17:38:36 sw-c1-s1-0-85a632 done
+17:38:39 sw-c4-s16-0-11b355 done
+17:38:47 sw-c16-s16-0-c193c5 done
+17:38:48 sw-c4-s4-0-db09d0 done
+17:38:50 sw-c64-s8-0-d99108 done
+17:38:57 sw-c64-s16-0-35dfed done
+17:38:58 sw-c4-s8-0-c7083e done
+17:38:59 sw-c1-s4-0-1606c6 done
+17:39:00 sw-c16-s1-1-bc396a done
+17:39:01 sw-c64-s1-1-9e1d1b done
+17:39:03 sw-c16-s16-1-5c2724 done
+17:39:05 sw-c1-s8-1-6fd477 done
+17:39:06 sw-c4-s4-1-c771d5 done
+17:39:07 sw-c4-s2-1-abf708 done
+17:39:08 sw-c16-s4-1-d8466d done
+17:39:09 sw-c64-s2-1-f770c4 done
+17:39:10 sw-c64-s4-1-570078 done
+17:39:11 sw-c4-s1-1-2dbd14 done
+17:39:12 sw-c1-s2-1-572389 done
+17:39:20 sw-c64-s16-1-3b2cf7 done
+17:39:21 sw-c1-s1-1-a3fdc8 done
+17:39:23 sw-c4-s16-1-526fa0 done
+17:39:24 sw-c16-s8-1-6c4a9d done
+17:39:25 sw-c64-s8-1-bf13c1 done
+17:39:27 sw-c1-s4-1-4b5997 done
+17:39:28 sw-c16-s2-1-ba7839 done
+17:39:34 sw-c1-s16-1-853f28 done
+17:39:35 sw-c4-s8-1-37e1dc done
+17:39:37 sw-c64-s4-2-b68c20 done
+17:39:38 sw-c16-s4-2-b11ca8 done
+17:39:39 sw-c64-s1-2-39e904 done
+17:39:42 sw-c4-s16-2-fab8a4 done
+17:39:44 sw-c4-s4-2-fc594b done
+17:39:46 sw-c1-s4-2-250a17 done
+17:39:48 sw-c1-s2-2-3add54 done
+17:39:51 sw-c64-s16-2-bf61e9 done
+17:39:52 sw-c1-s1-2-b00c81 done
+17:39:53 sw-c16-s2-2-feb5c1 done
+17:39:55 sw-c16-s8-2-94a418 done
+17:39:59 sw-c1-s8-2-32d979 done
+17:40:00 sw-c4-s2-2-b79033 done
+17:40:02 sw-c64-s8-2-895985 done
+17:40:03 sw-c64-s2-2-a8bde3 done
+17:40:04 sw-c4-s1-2-03a055 done
+17:40:05 sw-c4-s8-2-5a6dae done
+17:40:09 sw-c1-s16-2-468db2 done
+17:40:17 sw-c16-s16-2-f7313f done
+17:40:18 sw-c16-s1-2-a68eb2 done
+17:40:19 sw-c64-s4-3-094e00 done
+17:40:20 sw-c16-s1-3-37d268 done
+17:40:22 sw-c16-s16-3-890e83 done
+17:40:24 sw-c1-s1-3-6974eb done
+17:40:28 sw-c1-s8-3-153437 done
+17:40:31 sw-c64-s16-3-ba2f8c done
+17:40:32 sw-c16-s2-3-f0fece done
+17:40:33 sw-c64-s2-3-ffa37c done
+17:40:35 sw-c1-s4-3-ee2d23 done
+17:40:37 sw-c16-s8-3-27d20a done
+17:40:44 sw-c1-s16-3-dc7cc2 done
+17:40:47 sw-c4-s16-3-a0872d done
+17:40:48 sw-c64-s1-3-49a5b3 done
+17:40:49 sw-c4-s4-3-3bcfbb done
+17:40:50 sw-c4-s2-3-944658 done
+17:40:51 sw-c64-s8-3-496708 done
+17:40:52 sw-c16-s4-3-510f80 done
+17:40:53 sw-c4-s1-3-c4f306 done
+17:40:54 sw-c4-s8-3-319f81 done
+17:40:55 sw-c1-s2-3-fb7fa0 done
+17:40:56 sw-c64-s1-4-590cd0 done
+17:41:04 sw-c64-s16-4-1375df done
+17:41:11 sw-c16-s16-4-209731 done
+17:41:12 sw-c4-s2-4-e7a343 done
+17:41:14 sw-c1-s4-4-70d533 done
+17:41:15 sw-c1-s2-4-8fc81d done
+17:41:16 sw-c16-s4-4-1d4e8f done
+17:41:17 sw-c64-s2-4-c28b13 done
+17:41:18 sw-c16-s2-4-334bcc done
+17:41:19 sw-c4-s1-4-a64913 done
+17:41:20 sw-c1-s1-4-78cdba done
+17:41:23 sw-c1-s8-4-2d2272 done
+17:41:23 sw-c16-s1-4-7a5248 done
+17:41:28 sw-c1-s16-4-911c22 done
+17:41:29 sw-c4-s8-4-425f4d done
+17:41:30 sw-c64-s4-4-74138e done
+17:41:31 sw-c16-s8-4-c6c283 done
+17:41:32 sw-c4-s4-4-f9f468 done
+17:41:34 sw-c4-s16-4-48e795 done
+17:41:36 sw-c64-s8-4-f92c98 done
+17:41:36 sw-c64-s1-5-ab8af5 done
+17:41:37 sw-c64-s4-5-3bee0e done
+17:41:46 sw-c16-s16-5-b39208 done
+17:41:47 sw-c16-s2-5-d947df done
+17:41:55 sw-c64-s8-5-9d0359 done
+17:41:56 sw-c64-s2-5-ae0563 done
+17:41:58 sw-c1-s4-5-3f0772 done
+17:41:59 sw-c16-s8-5-24e920 done
+17:42:00 sw-c16-s4-5-018d35 done
+17:42:07 sw-c64-s16-5-af1171 done
+17:42:10 sw-c1-s8-5-33b6ef done
+17:42:11 sw-c1-s2-5-d82b05 done
+17:42:12 sw-c4-s2-5-8dfb40 done
+17:42:13 sw-c4-s1-5-093bba done
+17:42:15 sw-c4-s16-5-5f785a done
+17:42:16 sw-c4-s4-5-13345d done
+17:42:17 sw-c1-s1-5-b53490 done
+17:42:18 sw-c4-s8-5-5ef5f4 done
+17:42:19 sw-c16-s1-5-64175d done
+17:42:24 sw-c1-s16-5-38b6f7 done
+17:42:26 sw-c1-s4-6-e62725 done
+17:42:27 sw-c64-s2-6-7086d5 done
+17:42:28 sw-c64-s4-6-07850c done
+17:42:35 sw-c16-s16-6-b2d6d1 done
+17:42:36 sw-c16-s1-6-6b43fd done
+17:42:37 sw-c16-s4-6-903939 done
+17:42:39 sw-c1-s8-6-a236ee done
+17:42:40 sw-c1-s1-6-1907e7 done
+17:42:42 sw-c4-s8-6-30d71c done
+17:42:43 sw-c64-s8-6-31c817 done
+17:42:44 sw-c16-s8-6-06cfe9 done
+17:42:51 sw-c64-s16-6-b062fa done
+17:42:52 sw-c16-s2-6-85ed21 done
+17:42:54 sw-c4-s16-6-bf5b97 done
+17:42:55 sw-c1-s2-6-66926d done
+17:42:56 sw-c4-s2-6-a7bbc2 done
+17:42:57 sw-c64-s1-6-737125 done
+17:42:58 sw-c4-s1-6-d8b6a6 done
+17:42:59 sw-c4-s4-6-0e43b4 done
+17:43:04 sw-c1-s16-6-60b62f done
+17:43:05 sw-c4-s1-7-371c9a done
+17:43:05 sw-c64-s1-7-6bc9b6 done
+17:43:08 sw-c1-s8-7-378065 done
+17:43:09 sw-c16-s4-7-331925 done
+17:43:10 sw-c16-s2-7-6dbade done
+17:43:17 sw-c64-s16-7-e106eb done
+17:43:18 sw-c4-s8-7-1f2bd8 done
+17:43:19 sw-c16-s8-7-d62c74 done
+17:43:21 sw-c4-s16-7-dae00c done
+17:43:29 sw-c16-s16-7-211fb4 done
+17:43:30 sw-c64-s2-7-2b9f9d done
+17:43:32 sw-c1-s4-7-7f6e57 done
+17:43:33 sw-c64-s8-7-ffe47b done
+17:43:34 sw-c16-s1-7-fcecca done
+17:43:35 sw-c64-s4-7-38f373 done
+17:43:39 sw-c1-s16-7-adb929 done
+17:43:40 sw-c4-s4-7-5aae5b done
+17:43:41 sw-c1-s2-7-98c6ad done
+17:43:42 sw-c4-s2-7-9c0d5f done
+17:43:43 sw-c1-s1-7-26a676 done
+17:43:44 sw-c4-s8-8-99e1d4 done
+17:43:45 sw-c4-s1-8-d5392e done
+17:43:46 sw-c16-s2-8-21a942 done
+17:43:48 sw-c1-s4-8-3b35ab done
+17:43:52 sw-c1-s16-8-9287c6 done
+17:43:54 sw-c64-s8-8-ef716f done
+17:43:55 sw-c16-s4-8-02c52c done
+17:43:58 sw-c1-s8-8-583961 done
+17:44:00 sw-c16-s8-8-3ee46f done
+17:44:01 sw-c16-s1-8-ec70a5 done
+17:44:02 sw-c64-s4-8-46f90f done
+17:44:09 sw-c64-s16-8-d546ac done
+17:44:10 sw-c4-s4-8-5fc084 done
+17:44:11 sw-c1-s2-8-6c9e2b done
+17:44:13 sw-c4-s16-8-1a6605 done
+17:44:14 sw-c1-s1-8-c3e36f done
+17:44:21 sw-c16-s16-8-71fcdf done
+17:44:22 sw-c64-s2-8-371edc done
+17:44:23 sw-c64-s1-8-720398 done
+17:44:24 sw-c4-s2-8-ba1032 done
+17:44:25 sw-c16-s1-9-4d5fa6 done
+17:44:26 sw-c64-s2-9-7d57e7 done
+17:44:27 sw-c16-s2-9-44d2be done
+17:44:28 sw-c4-s2-9-4a31f8 done
+17:44:29 sw-c64-s4-9-475859 done
+17:44:30 sw-c4-s1-9-8afd29 done
+17:44:31 sw-c16-s4-9-1d1820 done
+17:44:32 sw-c1-s1-9-caf77f done
+17:44:33 sw-c4-s4-9-307b4d done
+17:44:34 sw-c4-s8-9-886622 done
+17:44:35 sw-c1-s2-9-fc9533 done
+17:44:38 sw-c1-s8-9-74e6c7 done
+17:44:39 sw-c16-s8-9-a79a1a done
+17:44:41 sw-c4-s16-9-1f5570 done
+17:44:43 sw-c64-s8-9-fec9f7 done
+17:44:44 sw-c64-s1-9-f2efbf done
+17:44:45 sw-c1-s4-9-17097c done
+17:44:50 sw-c1-s16-9-d2543b done
+17:44:57 sw-c16-s16-9-461ef8 done
+17:45:04 sw-c64-s16-9-20fa79 done
+17:45:06 sw-c1-s4-10-7849ce done
+17:45:13 sw-c64-s8-10-e72ade done
+17:45:14 sw-c4-s2-10-2bdb24 done
+17:45:18 sw-c1-s16-10-9462fb done
+17:45:19 sw-c16-s1-10-fd0d3d done
+17:45:20 sw-c1-s2-10-c37361 done
+17:45:21 sw-c16-s4-10-9aedc9 done
+17:45:29 sw-c64-s16-10-34ca79 done
+17:45:30 sw-c1-s1-10-36f054 done
+17:45:31 sw-c4-s1-10-e4b939 done
+17:45:32 sw-c4-s4-10-b080c7 done
+17:45:33 sw-c64-s4-10-1d0737 done
+17:45:35 sw-c4-s16-10-48ef6d done
+17:45:38 sw-c1-s8-10-81c34c done
+17:45:39 sw-c64-s2-10-18e63d done
+17:45:40 sw-c64-s1-10-524c8e done
+17:45:42 sw-c16-s16-10-390e67 done
+17:45:43 sw-c4-s8-10-32902e done
+17:45:45 sw-c16-s8-10-1a5e1c done
+17:45:46 sw-c16-s2-10-c95834 done
+17:45:47 sw-c4-s2-11-3976e1 done
+17:45:48 sw-c1-s2-11-5e17e2 done
+17:45:55 sw-c16-s16-11-4db097 done
+17:45:56 sw-c16-s2-11-bed6e4 done
+17:45:57 sw-c4-s1-11-8fcbe8 done
+17:46:02 sw-c1-s16-11-c5acb0 done
+17:46:03 sw-c64-s2-11-a5a81d done
+17:46:11 sw-c64-s16-11-754b21 done
+17:46:13 sw-c4-s16-11-64e4e6 done
+17:46:14 sw-c1-s4-11-3da0b3 done
+17:46:17 sw-c1-s8-11-7c8bc9 done
+17:46:18 sw-c16-s4-11-566305 done
+17:46:19 sw-c4-s4-11-b800af done
+17:46:20 sw-c1-s1-11-6fd15c done
+17:46:21 sw-c4-s8-11-72a6e0 done
+17:46:22 sw-c16-s8-11-3e49fb done
+17:46:23 sw-c64-s8-11-fd2896 done
+17:46:24 sw-c64-s4-11-46b9c5 done
+17:46:25 sw-c64-s1-11-099dae done
+17:46:26 sw-c16-s1-11-abb4fa done
+17:46:27 sw-c64-s4-12-699629 done
+17:46:28 sw-c1-s2-12-13e167 done
+17:46:35 sw-c64-s16-12-c3597f done
+17:46:36 sw-c16-s1-12-b0bcd6 done
+17:46:44 sw-c64-s8-12-43b537 done
+17:46:45 sw-c4-s4-12-2f132d done
+17:46:47 sw-c4-s16-12-5683e1 done
+17:46:48 sw-c4-s1-12-2fbb81 done
+17:46:49 sw-c1-s1-12-d08dc1 done
+17:46:50 sw-c64-s1-12-90e7e2 done
+17:46:51 sw-c16-s4-12-f77ed7 done
+17:46:52 sw-c16-s2-12-9d8c9e done
+17:46:53 sw-c1-s4-12-a6b91f done
+17:46:54 sw-c64-s2-12-1c35f0 done
+17:46:55 sw-c16-s8-12-4e8a4d done
+17:46:57 sw-c4-s8-12-47fdcf done
+17:47:04 sw-c16-s16-12-157b6e done
+17:47:09 sw-c1-s16-12-39852b done
+17:47:11 sw-c1-s8-12-f6e7f1 done
+17:47:12 sw-c4-s2-12-9fb8d5 done
+17:47:14 sw-c4-s16-13-ddc05e done
+17:47:15 sw-c1-s2-13-ef380a done
+17:47:16 sw-c16-s8-13-4aa0f8 done
+17:47:24 sw-c64-s16-13-817f44 done
+17:47:25 sw-c64-s2-13-767b24 done
+17:47:26 sw-c4-s2-13-435c59 done
+17:47:28 sw-c4-s8-13-02f3ca done
+17:47:28 sw-c4-s1-13-9305fd done
+17:47:30 sw-c1-s4-13-a525ae done
+17:47:31 sw-c4-s4-13-552362 done
+17:47:32 sw-c64-s1-13-2c5eed done
+17:47:34 sw-c1-s8-13-c9eed5 done
+17:47:39 sw-c1-s16-13-68f45c done
+17:47:47 sw-c16-s16-13-4de5d9 done
+17:47:48 sw-c16-s2-13-b571d7 done
+17:47:49 sw-c16-s1-13-0b0217 done
+17:47:50 sw-c16-s4-13-8a9f9e done
+17:47:56 sw-c64-s8-13-4b2e10 done
+17:47:57 sw-c1-s1-13-6f1e31 done
+17:47:58 sw-c64-s4-13-be7af8 done
+17:47:59 sw-c4-s8-14-2cffb4 done
+17:48:01 sw-c1-s4-14-f0904c done
+17:48:03 sw-c4-s16-14-c28a3e done
+17:48:08 sw-c1-s16-14-94389a done
+17:48:09 sw-c4-s4-14-85dadc done
+17:48:10 sw-c64-s1-14-0a37e6 done
+17:48:11 sw-c4-s2-14-1e1798 done
+17:48:13 sw-c1-s8-14-f383e4 done
+17:48:14 sw-c64-s8-14-b767b0 done
+17:48:15 sw-c16-s1-14-e9eb4d done
+17:48:16 sw-c64-s4-14-9c60ac done
+17:48:17 sw-c16-s8-14-449bb5 done
+17:48:18 sw-c16-s4-14-decfe3 done
+17:48:19 sw-c4-s1-14-2b1ba8 done
+17:48:26 sw-c64-s16-14-091068 done
+17:48:27 sw-c1-s1-14-36d2da done
+17:48:28 sw-c16-s2-14-9458fd done
+17:48:36 sw-c16-s16-14-02a51b done
+17:48:37 sw-c1-s2-14-633ba5 done
+17:48:38 sw-c64-s2-14-580215 done
+17:48:39 sw-c4-s1-15-8e100b done
+17:48:40 sw-c16-s2-15-6dd29d done
+17:48:41 sw-c4-s4-15-0cf185 done
+17:48:43 sw-c1-s8-15-ec51ca done
+17:48:44 sw-c4-s2-15-196545 done
+17:48:49 sw-c1-s16-15-35d91b done
+17:48:50 sw-c16-s8-15-bc4e39 done
+17:48:51 sw-c64-s8-15-19cac0 done
+17:48:59 sw-c16-s16-15-87c9c9 done
+17:49:05 sw-c64-s16-15-e00926 done
+17:49:07 sw-c64-s1-15-8f2551 done
+17:49:08 sw-c16-s4-15-f881c1 done
+17:49:09 sw-c4-s8-15-72d794 done
+17:49:10 sw-c1-s2-15-e45aec done
+17:49:11 sw-c1-s4-15-2821f4 done
+17:49:12 sw-c1-s1-15-9bb04c done
+17:49:13 sw-c64-s2-15-569207 done
+17:49:15 sw-c4-s16-15-bd37e3 done
+17:49:16 sw-c64-s4-15-1a5787 done
+17:49:17 sw-c16-s1-15-58255f done
+17:49:18 sw-c64-s2-16-1681a0 done
+17:49:26 sw-c16-s16-16-2c9355 done
+17:49:27 sw-c4-s8-16-80af71 done
+17:49:28 sw-c1-s1-16-5ca1e4 done
+17:49:29 sw-c1-s2-16-a1fd05 done
+17:49:30 sw-c4-s2-16-c67fd5 done
+17:49:31 sw-c64-s1-16-a97a8e done
+17:49:33 sw-c4-s16-16-ac672d done
+17:49:41 sw-c64-s16-16-0f7e27 done
+17:49:42 sw-c16-s4-16-e1dfe0 done
+17:49:43 sw-c16-s8-16-3f463a done
+17:49:44 sw-c4-s4-16-46799b done
+17:49:48 sw-c1-s16-16-424b6c done
+17:49:50 sw-c1-s4-16-80c62d done
+17:49:51 sw-c64-s4-16-20e460 done
+17:49:52 sw-c4-s1-16-755feb done
+17:49:54 sw-c1-s8-16-e0d1c4 done
+17:49:55 sw-c64-s8-16-6718fa done
+17:49:56 sw-c16-s1-16-dd1bd7 done
+17:49:57 sw-c16-s2-16-b76a0a done
+17:49:59 sw-c16-s8-17-fd5f2d done
+17:50:06 sw-c16-s16-17-4b04f1 done
+17:50:14 sw-c64-s16-17-e4dc4c done
+17:50:15 sw-c64-s2-17-8b84e6 done
+17:50:16 sw-c4-s4-17-41fde6 done
+17:50:17 sw-c4-s2-17-68cca5 done
+17:50:18 sw-c1-s4-17-fc1abe done
+17:50:25 sw-c64-s8-17-86525d done
+17:50:30 sw-c1-s16-17-e31b8e done
+17:50:31 sw-c16-s2-17-fd6bfd done
+17:50:32 sw-c64-s1-17-f04cbc done
+17:50:33 sw-c16-s1-17-91c460 done
+17:50:34 sw-c16-s4-17-df5ea8 done
+17:50:35 sw-c64-s4-17-ee5395 done
+17:50:37 sw-c4-s16-17-fb7106 done
+17:50:38 sw-c4-s8-17-c40e49 done
+17:50:39 sw-c4-s1-17-af25c6 done
+17:50:41 sw-c1-s8-17-1eaccd done
+17:50:42 sw-c1-s2-17-4557a2 done
+17:50:43 sw-c1-s1-17-40203b done
+17:50:44 sw-c1-s1-18-68d785 done
+17:50:46 sw-c4-s16-18-eaef35 done
+17:50:49 sw-c16-s16-18-cba1e3 done
+17:50:51 sw-c1-s8-18-5fdf60 done
+17:50:52 sw-c64-s2-18-966bc1 done
+17:50:53 sw-c4-s8-18-bb87a1 done
+17:50:54 sw-c4-s1-18-dd3034 done
+17:51:02 sw-c64-s16-18-81e5df done
+17:51:03 sw-c64-s4-18-eb9dba done
+17:51:04 sw-c16-s1-18-f622f3 done
+17:51:05 sw-c1-s2-18-1f10f3 done
+17:51:06 sw-c64-s8-18-b6102a done
+17:51:10 sw-c1-s16-18-4bfc5e done
+17:51:11 sw-c4-s2-18-5b1a79 done
+17:51:12 sw-c16-s4-18-10b8f7 done
+17:51:13 sw-c16-s2-18-d9ac02 done
+17:51:14 sw-c64-s1-18-2a6c68 done
+17:51:16 sw-c1-s4-18-2a517b done
+17:51:17 sw-c16-s8-18-043f0c done
+17:51:18 sw-c4-s4-18-a6b1a7 done
+17:51:19 sw-c16-s8-19-da9978 done
+17:51:21 sw-c1-s4-19-4039a8 done
+17:51:23 sw-c1-s8-19-a834fb done
+17:51:25 sw-c16-s16-19-9a6274 done
+17:51:28 sw-c4-s16-19-fbfb3f done
+17:51:35 sw-c64-s16-19-fc41b3 done
+17:51:36 sw-c4-s8-19-014160 done
+17:51:37 sw-c64-s4-19-b760eb done
+17:51:38 sw-c64-s8-19-b5b1c0 done
+17:51:39 sw-c16-s1-19-2618f3 done
+17:51:40 sw-c16-s2-19-47a332 done
+17:51:41 sw-c4-s2-19-81122b done
+17:51:42 sw-c1-s2-19-4e7d0a done
+17:51:43 sw-c16-s4-19-b7fb16 done
+17:51:48 sw-c1-s16-19-fe8b7b done
+17:51:49 sw-c4-s4-19-dff01a done
+17:51:50 sw-c4-s1-19-1f0ac4 done
+17:51:51 sw-c64-s2-19-560892 done
+17:51:52 sw-c1-s1-19-e696ac done
+17:51:53 sw-c64-s1-19-19d068 done
+$ python3 artifact/followup/analyze_sweep.py artifact/results/round3/b4/final --out artifact/results/round3/b4/analysis
+logged 400, invalid 0, cells 20
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5664 emu kill
+OK: killing emulator, bye bye
+OK

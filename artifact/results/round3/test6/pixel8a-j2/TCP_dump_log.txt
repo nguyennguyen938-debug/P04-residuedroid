@@ -1,0 +1,8 @@
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on br0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+04:28:56.168408 IP ip-192-168-1-100.us-west-2.compute.internal.50024 > pj-in-f188.1e100.net.5228: Flags [P.], seq 2188958094:2188958122, ack 1329660668, win 265, options [nop,nop,TS val 2531645134 ecr 1964033797], length 28
+04:28:56.182477 IP pj-in-f188.1e100.net.5228 > ip-192-168-1-100.us-west-2.compute.internal.50024: Flags [.], ack 28, win 1050, options [nop,nop,TS val 1964034085 ecr 2531645134], length 0
+
+2 packets captured
+2 packets received by filter
+0 packets dropped by kernel

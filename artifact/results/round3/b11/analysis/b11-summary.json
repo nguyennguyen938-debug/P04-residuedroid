@@ -1,0 +1,76 @@
+{
+ "invalid_oracle_rules": [
+  {
+   "run": "F",
+   "instance": "F-0",
+   "trial": "reb004",
+   "reason": "harness/device"
+  },
+  {
+   "run": "F",
+   "instance": "F-0",
+   "trial": "reb014",
+   "reason": "harness/device"
+  }
+ ],
+ "invalid_extra": [],
+ "unused_valid": [],
+ "avds": {
+  "Fourteen": {
+   "analysed_paired_trials": 80,
+   "per_schedule": {
+    "pending": 20,
+    "kill": 20,
+    "reboot": 20,
+    "netloss": 20
+   },
+   "violating_trials": {
+    "menqueue": 80,
+    "mlayer": 0,
+    "mfence": 0
+   },
+   "unknown_requests": {
+    "menqueue": 0,
+    "mlayer": 0,
+    "mfence": 0
+   },
+   "legit_missing": {
+    "menqueue": 80,
+    "mlayer": 0,
+    "mfence": 0
+   }
+  },
+  "Fifteen": {
+   "analysed_paired_trials": 80,
+   "per_schedule": {
+    "pending": 20,
+    "kill": 20,
+    "reboot": 20,
+    "netloss": 20
+   },
+   "violating_trials": {
+    "menqueue": 80,
+    "mlayer": 0,
+    "mfence": 0
+   },
+   "unknown_requests": {
+    "menqueue": 0,
+    "mlayer": 0,
+    "mfence": 0
+   },
+   "legit_missing": {
+    "menqueue": 80,
+    "mlayer": 0,
+    "mfence": 0
+   }
+  }
+ },
+ "keys": {
+  "lifeFourteenTrials": 80,
+  "lifeFourteenLayer": 0,
+  "lifeFourteenFence": 0,
+  "lifeFifteenTrials": 80,
+  "lifeFifteenLayer": 0,
+  "lifeFifteenFence": 0
+ }
+}

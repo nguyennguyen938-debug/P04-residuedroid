@@ -1,0 +1,10 @@
+{
+  "id": "b11-repl",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-19T16:56:39.091230+07:00",
+  "stages": [
+    "artifact/results/round3/b11/avd14-repl"
+  ]
+}

@@ -26,7 +26,7 @@ import java.util.UUID;
  */
 public final class Fence {
     public static final Object LOCK = new Object();
-    public static final String HOST = "10.0.2.2";
+    public static volatile String HOST = "10.0.2.2"; // emulator host alias; real devices set meta sink_host
     public static volatile int PORT = 8787;
     private static final String SEQ_PH = "SEQ_____________"; // 16 chars
 

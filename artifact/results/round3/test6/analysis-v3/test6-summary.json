@@ -1,0 +1,3979 @@
+{
+ "n_target": 20,
+ "devices": {
+  "P": {
+   "label": "Pixel 8a",
+   "model": "Pixel 8a",
+   "android": "17",
+   "environment": "AWS Device Farm",
+   "receiver_mode": "A: Device Farm host via adb reverse (USB)",
+   "tls": {
+    "blocks_logged": 20,
+    "blocks_invalid": [],
+    "blocks_valid": 20,
+    "blocks_analyzed": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19
+    ],
+    "blocks_unused": [],
+    "duplicate_records": [],
+    "per_case": {
+     "control": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "early": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "buffered-fence": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "buffered-early": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 20,
+      "after_ack_wilson95": [
+       0.8388698745050667,
+       1.0
+      ],
+      "after_ack_bytes_total": 334820
+     },
+     "stall-small": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "stall-large": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "concurrent": {
+      "trials": 20,
+      "successful_sends": 40,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     }
+    },
+    "rows": [
+     {
+      "trial": "tls-control-0-e14dc4",
+      "case": "control",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2622.337241
+      ]
+     },
+     {
+      "trial": "tls-early-0-3ea415",
+      "case": "early",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1918.348919
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-0-af1163",
+      "case": "buffered-fence",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.804199,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-0-075617",
+      "case": "buffered-early",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 12.792033,
+      "elapsed_ms": [
+       943.895467
+      ]
+     },
+     {
+      "trial": "tls-stall-small-0-ec88ea",
+      "case": "stall-small",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.962118,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-0-7b58a1",
+      "case": "stall-large",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 13.665161,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-0-ae8275",
+      "case": "concurrent",
+      "block": 0,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5275.221479,
+       5156.202232
+      ]
+     },
+     {
+      "trial": "tls-control-1-5e9faa",
+      "case": "control",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2165.053916
+      ]
+     },
+     {
+      "trial": "tls-early-1-b17836",
+      "case": "early",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1826.849447
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-1-3a1a4a",
+      "case": "buffered-fence",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 21.389892,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-1-dc65ef",
+      "case": "buffered-early",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 12.737834,
+      "elapsed_ms": [
+       1138.45573
+      ]
+     },
+     {
+      "trial": "tls-stall-small-1-3aed23",
+      "case": "stall-small",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 30.82369,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-1-d0e2ff",
+      "case": "stall-large",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.280681,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-1-8b0d77",
+      "case": "concurrent",
+      "block": 1,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4877.406171,
+       4854.137494
+      ]
+     },
+     {
+      "trial": "tls-control-2-a47124",
+      "case": "control",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2338.507814
+      ]
+     },
+     {
+      "trial": "tls-early-2-bcc995",
+      "case": "early",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1858.904135
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-2-5294ba",
+      "case": "buffered-fence",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.423136,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-2-3df099",
+      "case": "buffered-early",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 13.341878,
+      "elapsed_ms": [
+       1208.001709
+      ]
+     },
+     {
+      "trial": "tls-stall-small-2-ccef49",
+      "case": "stall-small",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 13.568645,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-2-713803",
+      "case": "stall-large",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.558146,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-2-ab9999",
+      "case": "concurrent",
+      "block": 2,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5228.162641,
+       5079.869346
+      ]
+     },
+     {
+      "trial": "tls-control-3-571675",
+      "case": "control",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2511.20809
+      ]
+     },
+     {
+      "trial": "tls-early-3-1a8c5a",
+      "case": "early",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2114.818076
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-3-cefde3",
+      "case": "buffered-fence",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.543416,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-3-47ed96",
+      "case": "buffered-early",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 16.99943,
+      "elapsed_ms": [
+       1332.190756
+      ]
+     },
+     {
+      "trial": "tls-stall-small-3-dc7ee3",
+      "case": "stall-small",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 20.021403,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-3-aebe8f",
+      "case": "stall-large",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 28.362875,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-3-20a6f2",
+      "case": "concurrent",
+      "block": 3,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5443.272952,
+       5282.451907
+      ]
+     },
+     {
+      "trial": "tls-control-4-2b66cd",
+      "case": "control",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2343.245119
+      ]
+     },
+     {
+      "trial": "tls-early-4-9641a3",
+      "case": "early",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1842.257854
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-4-d13010",
+      "case": "buffered-fence",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 23.671875,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-4-c0225e",
+      "case": "buffered-early",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 10.035401,
+      "elapsed_ms": [
+       1177.827759
+      ]
+     },
+     {
+      "trial": "tls-stall-small-4-54f2b7",
+      "case": "stall-small",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 24.059733,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-4-537105",
+      "case": "stall-large",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.809774,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-4-72698d",
+      "case": "concurrent",
+      "block": 4,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5355.16081,
+       5044.2345
+      ]
+     },
+     {
+      "trial": "tls-control-5-04a5ef",
+      "case": "control",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2586.029379
+      ]
+     },
+     {
+      "trial": "tls-early-5-2e2a64",
+      "case": "early",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1739.854493
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-5-f16c08",
+      "case": "buffered-fence",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 28.36967,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-5-8c8702",
+      "case": "buffered-early",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 18.727458,
+      "elapsed_ms": [
+       1201.403565
+      ]
+     },
+     {
+      "trial": "tls-stall-small-5-537461",
+      "case": "stall-small",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.459758,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-5-648ee4",
+      "case": "stall-large",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 13.531616,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-5-022b1c",
+      "case": "concurrent",
+      "block": 5,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5601.569583,
+       5361.075239
+      ]
+     },
+     {
+      "trial": "tls-control-6-dfcca7",
+      "case": "control",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2585.396323
+      ]
+     },
+     {
+      "trial": "tls-early-6-f328b4",
+      "case": "early",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2007.230754
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-6-a34826",
+      "case": "buffered-fence",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.325968,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-6-d13b9d",
+      "case": "buffered-early",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 16.759807,
+      "elapsed_ms": [
+       1289.108806
+      ]
+     },
+     {
+      "trial": "tls-stall-small-6-0d2b98",
+      "case": "stall-small",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 28.993937,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-6-898ebf",
+      "case": "stall-large",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.480591,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-6-ce7124",
+      "case": "concurrent",
+      "block": 6,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5128.936932,
+       4986.817141
+      ]
+     },
+     {
+      "trial": "tls-control-7-b24d82",
+      "case": "control",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2386.339601
+      ]
+     },
+     {
+      "trial": "tls-early-7-ac5d10",
+      "case": "early",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1916.534466
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-7-ec8cea",
+      "case": "buffered-fence",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.18335,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-7-e347be",
+      "case": "buffered-early",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 11.64449,
+      "elapsed_ms": [
+       1196.794963
+      ]
+     },
+     {
+      "trial": "tls-stall-small-7-134a10",
+      "case": "stall-small",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 32.435669,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-7-5534f9",
+      "case": "stall-large",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 22.04716,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-7-ff4611",
+      "case": "concurrent",
+      "block": 7,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5508.944787,
+       5224.047122
+      ]
+     },
+     {
+      "trial": "tls-control-8-04312a",
+      "case": "control",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2577.102052
+      ]
+     },
+     {
+      "trial": "tls-early-8-2a9126",
+      "case": "early",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1720.105673
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-8-6b894b",
+      "case": "buffered-fence",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.909993,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-8-2fe36b",
+      "case": "buffered-early",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 18.997518,
+      "elapsed_ms": [
+       1236.469686
+      ]
+     },
+     {
+      "trial": "tls-stall-small-8-f2c5fb",
+      "case": "stall-small",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 25.221721,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-8-517e05",
+      "case": "stall-large",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.09497,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-8-e71eb4",
+      "case": "concurrent",
+      "block": 8,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5094.367923,
+       5076.588381
+      ]
+     },
+     {
+      "trial": "tls-control-9-ebd81e",
+      "case": "control",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2413.548545
+      ]
+     },
+     {
+      "trial": "tls-early-9-6149ba",
+      "case": "early",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1736.078899
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-9-7fa164",
+      "case": "buffered-fence",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 19.820882,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-9-3b3924",
+      "case": "buffered-early",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 20.745198,
+      "elapsed_ms": [
+       1193.178264
+      ]
+     },
+     {
+      "trial": "tls-stall-small-9-080154",
+      "case": "stall-small",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 28.444173,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-9-78b91e",
+      "case": "stall-large",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 22.9198,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-9-3cae6e",
+      "case": "concurrent",
+      "block": 9,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5511.935753,
+       5327.822756
+      ]
+     },
+     {
+      "trial": "tls-control-10-09534d",
+      "case": "control",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2588.288779
+      ]
+     },
+     {
+      "trial": "tls-early-10-d14414",
+      "case": "early",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1945.266887
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-10-e52659",
+      "case": "buffered-fence",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 25.730713,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-10-399043",
+      "case": "buffered-early",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 16.431966,
+      "elapsed_ms": [
+       1169.189535
+      ]
+     },
+     {
+      "trial": "tls-stall-small-10-550f20",
+      "case": "stall-small",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.051514,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-10-fba86c",
+      "case": "stall-large",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.95577,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-10-bd97b1",
+      "case": "concurrent",
+      "block": 10,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5387.605879,
+       5090.375287
+      ]
+     },
+     {
+      "trial": "tls-control-11-8e8158",
+      "case": "control",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2522.495443
+      ]
+     },
+     {
+      "trial": "tls-early-11-b56c53",
+      "case": "early",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1895.660564
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-11-99f0e4",
+      "case": "buffered-fence",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 17.947265,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-11-92e7d6",
+      "case": "buffered-early",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 16.397257,
+      "elapsed_ms": [
+       1273.623698
+      ]
+     },
+     {
+      "trial": "tls-stall-small-11-5107fc",
+      "case": "stall-small",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.349284,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-11-a429ff",
+      "case": "stall-large",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.123576,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-11-cc2b1c",
+      "case": "concurrent",
+      "block": 11,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5531.569216,
+       5201.320804
+      ]
+     },
+     {
+      "trial": "tls-control-12-e4d1c5",
+      "case": "control",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2256.592408
+      ]
+     },
+     {
+      "trial": "tls-early-12-da7be0",
+      "case": "early",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1903.91915
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-12-7feb87",
+      "case": "buffered-fence",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.900147,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-12-b4447d",
+      "case": "buffered-early",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 15.67216,
+      "elapsed_ms": [
+       1104.89738
+      ]
+     },
+     {
+      "trial": "tls-stall-small-12-573ae9",
+      "case": "stall-small",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 20.752198,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-12-20b9e0",
+      "case": "stall-large",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 8.995199,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-12-1691b9",
+      "case": "concurrent",
+      "block": 12,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5425.970218,
+       5204.891971
+      ]
+     },
+     {
+      "trial": "tls-control-13-abc1f8",
+      "case": "control",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2583.418051
+      ]
+     },
+     {
+      "trial": "tls-early-13-183e42",
+      "case": "early",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1830.167929
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-13-5a7331",
+      "case": "buffered-fence",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 21.327351,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-13-213e52",
+      "case": "buffered-early",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 21.991171,
+      "elapsed_ms": [
+       1303.295004
+      ]
+     },
+     {
+      "trial": "tls-stall-small-13-6b0eb5",
+      "case": "stall-small",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.749023,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-13-72fb9e",
+      "case": "stall-large",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.115193,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-13-17db06",
+      "case": "concurrent",
+      "block": 13,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5677.486941,
+       5355.984906
+      ]
+     },
+     {
+      "trial": "tls-control-14-e53719",
+      "case": "control",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2475.507204
+      ]
+     },
+     {
+      "trial": "tls-early-14-6c33ec",
+      "case": "early",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1875.052044
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-14-469b1b",
+      "case": "buffered-fence",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.831909,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-14-f1ab79",
+      "case": "buffered-early",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 15.459351,
+      "elapsed_ms": [
+       1246.372518
+      ]
+     },
+     {
+      "trial": "tls-stall-small-14-79dd8b",
+      "case": "stall-small",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.12675,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-14-b90a28",
+      "case": "stall-large",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.18868,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-14-3361f7",
+      "case": "concurrent",
+      "block": 14,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5358.320559,
+       5329.942792
+      ]
+     },
+     {
+      "trial": "tls-control-15-c78d48",
+      "case": "control",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2688.307009
+      ]
+     },
+     {
+      "trial": "tls-early-15-6d6831",
+      "case": "early",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1802.154461
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-15-66cfd1",
+      "case": "buffered-fence",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.191407,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-15-275a4d",
+      "case": "buffered-early",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 17.098023,
+      "elapsed_ms": [
+       1237.894938
+      ]
+     },
+     {
+      "trial": "tls-stall-small-15-74e8db",
+      "case": "stall-small",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.002686,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-15-57ed72",
+      "case": "stall-large",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 30.273234,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-15-2ebe96",
+      "case": "concurrent",
+      "block": 15,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5400.970095,
+       5090.321617
+      ]
+     },
+     {
+      "trial": "tls-control-16-70846c",
+      "case": "control",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2474.047568
+      ]
+     },
+     {
+      "trial": "tls-early-16-ca54db",
+      "case": "early",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1807.93335
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-16-d9e81c",
+      "case": "buffered-fence",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 19.321045,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-16-003733",
+      "case": "buffered-early",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 15.07959,
+      "elapsed_ms": [
+       1215.118775
+      ]
+     },
+     {
+      "trial": "tls-stall-small-16-eb61d0",
+      "case": "stall-small",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.231689,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-16-d8c6e7",
+      "case": "stall-large",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.420817,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-16-68bdc3",
+      "case": "concurrent",
+      "block": 16,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5446.024864,
+       5301.031619
+      ]
+     },
+     {
+      "trial": "tls-control-17-94affb",
+      "case": "control",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2461.180299
+      ]
+     },
+     {
+      "trial": "tls-early-17-43a1ca",
+      "case": "early",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1905.345256
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-17-5184d8",
+      "case": "buffered-fence",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.876058,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-17-ba550f",
+      "case": "buffered-early",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 19.455811,
+      "elapsed_ms": [
+       1259.371786
+      ]
+     },
+     {
+      "trial": "tls-stall-small-17-dda6aa",
+      "case": "stall-small",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.690592,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-17-36e977",
+      "case": "stall-large",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.041464,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-17-936f4e",
+      "case": "concurrent",
+      "block": 17,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5685.473351,
+       5530.612999
+      ]
+     },
+     {
+      "trial": "tls-control-18-ec2295",
+      "case": "control",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2371.969199
+      ]
+     },
+     {
+      "trial": "tls-early-18-5a3320",
+      "case": "early",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1779.836834
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-18-89c56c",
+      "case": "buffered-fence",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.639201,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-18-ced606",
+      "case": "buffered-early",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 35.087402,
+      "elapsed_ms": [
+       1101.798259
+      ]
+     },
+     {
+      "trial": "tls-stall-small-18-35206a",
+      "case": "stall-small",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 45.322794,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-18-abac0e",
+      "case": "stall-large",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.18339,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-18-0ca321",
+      "case": "concurrent",
+      "block": 18,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5179.728071,
+       5050.060834
+      ]
+     },
+     {
+      "trial": "tls-control-19-87446d",
+      "case": "control",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       2471.625123
+      ]
+     },
+     {
+      "trial": "tls-early-19-454026",
+      "case": "early",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       1617.960003
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-19-973192",
+      "case": "buffered-fence",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 19.827067,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-19-46eca7",
+      "case": "buffered-early",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 22.172771,
+      "elapsed_ms": [
+       1249.503581
+      ]
+     },
+     {
+      "trial": "tls-stall-small-19-0753f1",
+      "case": "stall-small",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 21.999878,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-19-029d89",
+      "case": "stall-large",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.068441,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-19-d0f334",
+      "case": "concurrent",
+      "block": 19,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5785.093101,
+       5315.178469
+      ]
+     }
+    ]
+   },
+   "dirs": {
+    "tls": [
+     "results/round3/test6/pixel8a-v3-tls/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/tls"
+    ],
+    "life": {}
+   }
+  },
+  "G": {
+   "label": "Galaxy M35",
+   "model": "SM-M356B",
+   "android": "14",
+   "environment": "Samsung Remote Test Lab via Remote Debug Bridge",
+   "receiver_mode": "Mac host via adb reverse over the RDB relay",
+   "tls": {
+    "blocks_logged": 20,
+    "blocks_invalid": [],
+    "blocks_valid": 20,
+    "blocks_analyzed": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19
+    ],
+    "blocks_unused": [],
+    "duplicate_records": [],
+    "per_case": {
+     "control": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "early": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "buffered-fence": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "buffered-early": {
+      "trials": 20,
+      "successful_sends": 20,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 20,
+      "after_ack_wilson95": [
+       0.8388698745050667,
+       1.0
+      ],
+      "after_ack_bytes_total": 334820
+     },
+     "stall-small": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "stall-large": {
+      "trials": 20,
+      "successful_sends": 0,
+      "blocked_trials": 20,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     },
+     "concurrent": {
+      "trials": 20,
+      "successful_sends": 40,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": [
+       0.0,
+       0.16113012549493322
+      ],
+      "after_ack_bytes_total": 0
+     }
+    },
+    "rows": [
+     {
+      "trial": "tls-control-0-f9c3d6",
+      "case": "control",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       8110.176341
+      ]
+     },
+     {
+      "trial": "tls-early-0-1cab45",
+      "case": "early",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5589.28415
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-0-009114",
+      "case": "buffered-fence",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.354846,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-0-e2f39b",
+      "case": "buffered-early",
+      "block": 0,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 12.14,
+      "elapsed_ms": [
+       1416.528845
+      ]
+     },
+     {
+      "trial": "tls-stall-small-0-bd6584",
+      "case": "stall-small",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.312346,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-0-3efe42",
+      "case": "stall-large",
+      "block": 0,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 13.522962,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-0-59c759",
+      "case": "concurrent",
+      "block": 0,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10870.413916,
+       11150.313108
+      ]
+     },
+     {
+      "trial": "tls-control-1-b755e6",
+      "case": "control",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6132.731534
+      ]
+     },
+     {
+      "trial": "tls-early-1-cfe4e4",
+      "case": "early",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4687.472958
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-1-345ad0",
+      "case": "buffered-fence",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.17,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-1-a14081",
+      "case": "buffered-early",
+      "block": 1,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 9.404884,
+      "elapsed_ms": [
+       1391.154999
+      ]
+     },
+     {
+      "trial": "tls-stall-small-1-2436a5",
+      "case": "stall-small",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.315693,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-1-fc2c76",
+      "case": "stall-large",
+      "block": 1,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.467692,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-1-a38aa8",
+      "case": "concurrent",
+      "block": 1,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11130.794723,
+       11353.942377
+      ]
+     },
+     {
+      "trial": "tls-control-2-d31e8d",
+      "case": "control",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6419.537919
+      ]
+     },
+     {
+      "trial": "tls-early-2-4fcf63",
+      "case": "early",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5003.964689
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-2-e503c9",
+      "case": "buffered-fence",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 9.641462,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-2-75362c",
+      "case": "buffered-early",
+      "block": 2,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 12.710885,
+      "elapsed_ms": [
+       1559.923653
+      ]
+     },
+     {
+      "trial": "tls-stall-small-2-1cf007",
+      "case": "stall-small",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.238423,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-2-d18c16",
+      "case": "stall-large",
+      "block": 2,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.233961,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-2-c611f2",
+      "case": "concurrent",
+      "block": 2,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11008.591185,
+       10955.3843
+      ]
+     },
+     {
+      "trial": "tls-control-3-897d1c",
+      "case": "control",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6354.673803
+      ]
+     },
+     {
+      "trial": "tls-early-3-36b0dd",
+      "case": "early",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4939.517689
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-3-8e023d",
+      "case": "buffered-fence",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.851962,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-3-8177a3",
+      "case": "buffered-early",
+      "block": 3,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 8.549731,
+      "elapsed_ms": [
+       1291.889999
+      ]
+     },
+     {
+      "trial": "tls-stall-small-3-ff3e47",
+      "case": "stall-small",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.374615,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-3-e9932e",
+      "case": "stall-large",
+      "block": 3,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 26.599461,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-3-7d8d4d",
+      "case": "concurrent",
+      "block": 3,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       16050.865719,
+       16054.732835
+      ]
+     },
+     {
+      "trial": "tls-control-4-5417c3",
+      "case": "control",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       7979.859417
+      ]
+     },
+     {
+      "trial": "tls-early-4-78c306",
+      "case": "early",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       8210.938187
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-4-e7f11e",
+      "case": "buffered-fence",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.425153,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-4-053863",
+      "case": "buffered-early",
+      "block": 4,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 10.728423,
+      "elapsed_ms": [
+       1753.647537
+      ]
+     },
+     {
+      "trial": "tls-stall-small-4-4df3d3",
+      "case": "stall-small",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 15.618385,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-4-b8f8dd",
+      "case": "stall-large",
+      "block": 4,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.855846,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-4-9fef4f",
+      "case": "concurrent",
+      "block": 4,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       12631.731644,
+       12342.319415
+      ]
+     },
+     {
+      "trial": "tls-control-5-51b344",
+      "case": "control",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6339.233533
+      ]
+     },
+     {
+      "trial": "tls-early-5-722da7",
+      "case": "early",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5040.382035
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-5-c015cc",
+      "case": "buffered-fence",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.971038,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-5-6d70cd",
+      "case": "buffered-early",
+      "block": 5,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 9.288154,
+      "elapsed_ms": [
+       1695.306345
+      ]
+     },
+     {
+      "trial": "tls-stall-small-5-ad3840",
+      "case": "stall-small",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.785923,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-5-af4c82",
+      "case": "stall-large",
+      "block": 5,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.120807,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-5-a519e9",
+      "case": "concurrent",
+      "block": 5,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11909.047299,
+       11534.362338
+      ]
+     },
+     {
+      "trial": "tls-control-6-985587",
+      "case": "control",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6295.231572
+      ]
+     },
+     {
+      "trial": "tls-early-6-597ca3",
+      "case": "early",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5699.005265
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-6-99a1c0",
+      "case": "buffered-fence",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 20.885654,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-6-20e26d",
+      "case": "buffered-early",
+      "block": 6,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 13.410615,
+      "elapsed_ms": [
+       1510.704498
+      ]
+     },
+     {
+      "trial": "tls-stall-small-6-c069a9",
+      "case": "stall-small",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.233462,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-6-845a07",
+      "case": "stall-large",
+      "block": 6,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 38.702807,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-6-6d1982",
+      "case": "concurrent",
+      "block": 6,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11674.632492,
+       11542.351107
+      ]
+     },
+     {
+      "trial": "tls-control-7-4239be",
+      "case": "control",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6615.975418
+      ]
+     },
+     {
+      "trial": "tls-early-7-298f53",
+      "case": "early",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4795.323343
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-7-6ddcd3",
+      "case": "buffered-fence",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.021347,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-7-35de5d",
+      "case": "buffered-early",
+      "block": 7,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 15.956,
+      "elapsed_ms": [
+       1639.774768
+      ]
+     },
+     {
+      "trial": "tls-stall-small-7-6a3f4f",
+      "case": "stall-small",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 9.985384,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-7-ba4da3",
+      "case": "stall-large",
+      "block": 7,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 22.485077,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-7-cc10f7",
+      "case": "concurrent",
+      "block": 7,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11176.476261,
+       11461.104838
+      ]
+     },
+     {
+      "trial": "tls-control-8-e3339a",
+      "case": "control",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6390.916688
+      ]
+     },
+     {
+      "trial": "tls-early-8-9d5820",
+      "case": "early",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4774.124343
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-8-b7a846",
+      "case": "buffered-fence",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 9.985423,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-8-60c167",
+      "case": "buffered-early",
+      "block": 8,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 10.768385,
+      "elapsed_ms": [
+       1370.187691
+      ]
+     },
+     {
+      "trial": "tls-stall-small-8-857436",
+      "case": "stall-small",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 18.307308,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-8-7e9cb2",
+      "case": "stall-large",
+      "block": 8,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 20.101153,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-8-f97d81",
+      "case": "concurrent",
+      "block": 8,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10759.831531,
+       10750.808992
+      ]
+     },
+     {
+      "trial": "tls-control-9-0f2813",
+      "case": "control",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5898.717419
+      ]
+     },
+     {
+      "trial": "tls-early-9-700620",
+      "case": "early",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4488.08069
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-9-46207d",
+      "case": "buffered-fence",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 11.387769,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-9-84bd4c",
+      "case": "buffered-early",
+      "block": 9,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16740,
+      "ack_ms": 10.056346,
+      "elapsed_ms": [
+       1285.078845
+      ]
+     },
+     {
+      "trial": "tls-stall-small-9-bf6d69",
+      "case": "stall-small",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 13.847731,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-9-969e3d",
+      "case": "stall-large",
+      "block": 9,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.512423,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-9-b498a8",
+      "case": "concurrent",
+      "block": 9,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10714.244185,
+       10591.222724
+      ]
+     },
+     {
+      "trial": "tls-control-10-8bc31b",
+      "case": "control",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6063.935265
+      ]
+     },
+     {
+      "trial": "tls-early-10-73132f",
+      "case": "early",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4857.111804
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-10-98b2c0",
+      "case": "buffered-fence",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 11.205731,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-10-308bb2",
+      "case": "buffered-early",
+      "block": 10,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 10.022615,
+      "elapsed_ms": [
+       1529.378769
+      ]
+     },
+     {
+      "trial": "tls-stall-small-10-a4bd47",
+      "case": "stall-small",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.027577,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-10-c9edbc",
+      "case": "stall-large",
+      "block": 10,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 22.633193,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-10-51f760",
+      "case": "concurrent",
+      "block": 10,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10816.053338,
+       10538.298608
+      ]
+     },
+     {
+      "trial": "tls-control-11-808d0b",
+      "case": "control",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5943.024919
+      ]
+     },
+     {
+      "trial": "tls-early-11-9b8d36",
+      "case": "early",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4685.446689
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-11-42af97",
+      "case": "buffered-fence",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 8.726231,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-11-8eda03",
+      "case": "buffered-early",
+      "block": 11,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 8.935231,
+      "elapsed_ms": [
+       1471.229153
+      ]
+     },
+     {
+      "trial": "tls-stall-small-11-8972a1",
+      "case": "stall-small",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.063692,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-11-15b88d",
+      "case": "stall-large",
+      "block": 11,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.129077,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-11-e655de",
+      "case": "concurrent",
+      "block": 11,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10982.057531,
+       11125.801684
+      ]
+     },
+     {
+      "trial": "tls-control-12-3435af",
+      "case": "control",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5938.960342
+      ]
+     },
+     {
+      "trial": "tls-early-12-17f6f6",
+      "case": "early",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4580.650997
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-12-344f94",
+      "case": "buffered-fence",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 8.72577,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-12-60f36c",
+      "case": "buffered-early",
+      "block": 12,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 10.871577,
+      "elapsed_ms": [
+       1478.88896
+      ]
+     },
+     {
+      "trial": "tls-stall-small-12-b832d9",
+      "case": "stall-small",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 19.266385,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-12-c3fe35",
+      "case": "stall-large",
+      "block": 12,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 31.606269,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-12-00837e",
+      "case": "concurrent",
+      "block": 12,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10685.504762,
+       11102.646223
+      ]
+     },
+     {
+      "trial": "tls-control-13-130a3b",
+      "case": "control",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5985.346804
+      ]
+     },
+     {
+      "trial": "tls-early-13-3919cb",
+      "case": "early",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5049.606766
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-13-b4edf2",
+      "case": "buffered-fence",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.207846,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-13-597c23",
+      "case": "buffered-early",
+      "block": 13,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 9.860692,
+      "elapsed_ms": [
+       1366.780807
+      ]
+     },
+     {
+      "trial": "tls-stall-small-13-5d8573",
+      "case": "stall-small",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 20.263731,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-13-c0e093",
+      "case": "stall-large",
+      "block": 13,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.953769,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-13-d4485c",
+      "case": "concurrent",
+      "block": 13,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10862.639723,
+       10706.257992
+      ]
+     },
+     {
+      "trial": "tls-control-14-87c6ad",
+      "case": "control",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       5815.824611
+      ]
+     },
+     {
+      "trial": "tls-early-14-d77524",
+      "case": "early",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4725.447919
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-14-dac6a6",
+      "case": "buffered-fence",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.552654,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-14-69ef7b",
+      "case": "buffered-early",
+      "block": 14,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 15.169962,
+      "elapsed_ms": [
+       1401.614768
+      ]
+     },
+     {
+      "trial": "tls-stall-small-14-73b950",
+      "case": "stall-small",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.577808,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-14-9b4785",
+      "case": "stall-large",
+      "block": 14,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.007269,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-14-b304db",
+      "case": "concurrent",
+      "block": 14,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11116.804722,
+       10766.711954
+      ]
+     },
+     {
+      "trial": "tls-control-15-00083b",
+      "case": "control",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6145.239419
+      ]
+     },
+     {
+      "trial": "tls-early-15-ff6a5a",
+      "case": "early",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4775.925573
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-15-7f4bb9",
+      "case": "buffered-fence",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 11.956462,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-15-6197c2",
+      "case": "buffered-early",
+      "block": 15,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 13.636346,
+      "elapsed_ms": [
+       1543.791653
+      ]
+     },
+     {
+      "trial": "tls-stall-small-15-1a2e61",
+      "case": "stall-small",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 11.805962,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-15-2a0ebd",
+      "case": "stall-large",
+      "block": 15,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.628423,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-15-d5e964",
+      "case": "concurrent",
+      "block": 15,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10821.324454,
+       10862.06053
+      ]
+     },
+     {
+      "trial": "tls-control-16-33034a",
+      "case": "control",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6156.497958
+      ]
+     },
+     {
+      "trial": "tls-early-16-70e763",
+      "case": "early",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4686.587074
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-16-68c9c1",
+      "case": "buffered-fence",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 10.134731,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-16-994db0",
+      "case": "buffered-early",
+      "block": 16,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 13.377923,
+      "elapsed_ms": [
+       1609.822576
+      ]
+     },
+     {
+      "trial": "tls-stall-small-16-78920c",
+      "case": "stall-small",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 24.765577,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-16-c8f28a",
+      "case": "stall-large",
+      "block": 16,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 19.866885,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-16-87992e",
+      "case": "concurrent",
+      "block": 16,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10690.461608,
+       10618.408492
+      ]
+     },
+     {
+      "trial": "tls-control-17-15e73f",
+      "case": "control",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6116.195573
+      ]
+     },
+     {
+      "trial": "tls-early-17-6257bf",
+      "case": "early",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4738.217266
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-17-5a5efb",
+      "case": "buffered-fence",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 8.930654,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-17-809b82",
+      "case": "buffered-early",
+      "block": 17,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 10.3205,
+      "elapsed_ms": [
+       1524.170961
+      ]
+     },
+     {
+      "trial": "tls-stall-small-17-683dbe",
+      "case": "stall-small",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 14.583077,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-17-0f9652",
+      "case": "stall-large",
+      "block": 17,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.124616,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-17-fa95e1",
+      "case": "concurrent",
+      "block": 17,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10460.811492,
+       10501.992377
+      ]
+     },
+     {
+      "trial": "tls-control-18-1ead26",
+      "case": "control",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6053.960149
+      ]
+     },
+     {
+      "trial": "tls-early-18-97d24d",
+      "case": "early",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4880.24092
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-18-a6fcaf",
+      "case": "buffered-fence",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 9.708192,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-18-391b3a",
+      "case": "buffered-early",
+      "block": 18,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 9.896654,
+      "elapsed_ms": [
+       1580.38846
+      ]
+     },
+     {
+      "trial": "tls-stall-small-18-614e43",
+      "case": "stall-small",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.69677,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-18-d5bdd4",
+      "case": "stall-large",
+      "block": 18,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.253231,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-18-51db64",
+      "case": "concurrent",
+      "block": 18,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       11016.6713,
+       10649.756107
+      ]
+     },
+     {
+      "trial": "tls-control-19-601e5d",
+      "case": "control",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       6158.07738
+      ]
+     },
+     {
+      "trial": "tls-early-19-60ad80",
+      "case": "early",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       4977.215304
+      ]
+     },
+     {
+      "trial": "tls-buffered-fence-19-ac2323",
+      "case": "buffered-fence",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 12.633385,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-buffered-early-19-f82cfc",
+      "case": "buffered-early",
+      "block": 19,
+      "successful_sends": 1,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 1,
+      "after_ack_accepted": 16742,
+      "ack_ms": 10.311846,
+      "elapsed_ms": [
+       1531.593653
+      ]
+     },
+     {
+      "trial": "tls-stall-small-19-21cd96",
+      "case": "stall-small",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 27.144884,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-stall-large-19-4bea2f",
+      "case": "stall-large",
+      "block": 19,
+      "successful_sends": 0,
+      "early_blocks": 0,
+      "policy_blocks": 1,
+      "acks": 1,
+      "after_ack_accepted": 0,
+      "ack_ms": 16.429692,
+      "elapsed_ms": []
+     },
+     {
+      "trial": "tls-concurrent-19-8f73fb",
+      "case": "concurrent",
+      "block": 19,
+      "successful_sends": 2,
+      "early_blocks": 0,
+      "policy_blocks": 0,
+      "acks": 0,
+      "after_ack_accepted": 0,
+      "ack_ms": null,
+      "elapsed_ms": [
+       10820.311339,
+       10757.774954
+      ]
+     }
+    ]
+   },
+   "dirs": {
+    "tls": [
+     "results/round3/test6/galaxy3-tls/tls"
+    ],
+    "life": {}
+   }
+  }
+ },
+ "summary_candidates": {
+  "devModel": "Pixel 8a, Galaxy M35",
+  "devAndroid": "17, 14",
+  "devTrials": 80,
+  "devEarlyComplete": 40,
+  "devFenceAfterAck": 0,
+  "devFenceTrials": 120
+ }
+}

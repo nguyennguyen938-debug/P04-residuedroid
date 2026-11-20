@@ -1,6 +1,6 @@
 # Audited integration protocol (2026-11-15)
 
-This revision is a cooperative test embedding, not a production deployment or a general HTTP-client interceptor. Only the shared nonblocking plain-HTTP sender is covered. Android 13 AVDs exercise it; a phone and newer Android are not tested. HTTPS, native sockets, redirects, proxies, pooled writers, WebViews, system-mediated IPC, arbitrary ACRA collectors and other SDK senders are outside the audited path.
+This revision is a cooperative test embedding, not a production deployment or a general HTTP-client interceptor. Only the shared nonblocking plain-HTTP sender is covered here (the fixture additionally has a fenced TLS 1.2 SSLEngine transport, `transport/TlsTransport.java`, exercised by `followup/tls_suite.py`). Android 13 AVDs exercise this embedding; round 3 adds a TLS-suite and fixture-lifecycle run on two phones (Test 6) and Android 14/15 emulators (Test 4), not of this ACRA/Matomo embedding. HTTPS inside the ACRA/Matomo senders, native sockets, redirects, proxies, pooled writers, WebViews, system-mediated IPC, arbitrary ACRA collectors and other SDK senders are outside the audited path.
 
 ## Observation and policy contract
 
