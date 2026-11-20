@@ -58,5 +58,8 @@ decisions (user 20/11: own Android 15 phone instead of the RTL Galaxy; plan sile
   the foreground a 2 MiB lte send completed (9.6 s). Fix (harness only, before any final trial): on phones `race_suite.py` launches
   Main before each send so the app stays foreground. Construct note: on the phone the sending app is foreground; in B10 it was a
   background process without freezing. Per §3 this allows one more pilot (pilot-calib-3); if its gate fails, no final.
+- pilot-calib-3 (21/11 00:0x): 27/27 calibration sends SEND_OK. 2 MiB medians edge 151.2 s, umts 139.3 s, lte 9.41 s → throttle
+  gate PASS. N rule: block upper bound 12.1 min → min(10, ⌊180/12.1⌋) = **10 blocks** (30 trials per (profile, variant), 10 per
+  size; same N as B10). Durations: `pilot-calib-3/calibration.json`. Final: `run_phone.sh final <ip> <serial> 10` → `final`.
 
 ## 6. Outcome (after the run)

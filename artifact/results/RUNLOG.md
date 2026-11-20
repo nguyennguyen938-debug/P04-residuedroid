@@ -455,3 +455,7 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-20 23:49 test1-phone: pilot results/round3/test1-phone/pilot-calib-2 exit 0
 - 2026-11-20 23:49 test1-phone: pilot gate: {"gate":false,"medians_2mib":[null,null,null],"block_upper_min":1.9244615157445273,"blocks":10}
 - 2026-11-20 23:50 Test 1 phone pilot-calib-2: throttle gate FAIL — 256 KiB/2 MiB sends cut 4.3–4.9 s in (connection abort) on every profile; cause: Android 15 freezes the cached broadcast process (manual check with Main foreground: 2 MiB lte SEND_OK 9.6 s). Fix: race_suite launches Main before each send on phones. Card §3 allows one more pilot: pilot-calib-3.
+- 2026-11-20 23:50 test1-phone: LAUNCH pilot results/round3/test1-phone/pilot-calib-3 (own phone, receiver EC2 b10v3)
+- 2026-11-21 00:08 test1-phone: pilot results/round3/test1-phone/pilot-calib-3 exit 0
+- 2026-11-21 00:08 test1-phone: pilot gate: {"gate":true,"medians_2mib":[151.19129447,139.263035316,9.405375309],"block_upper_min":12.117157117525737,"blocks":10}
+- 2026-11-21 00:09 Test 1 phone pilot-calib-3: 27/27 SEND_OK; 2 MiB medians edge 151.2 s, umts 139.3 s, lte 9.41 s → gate PASS; N rule → 10 blocks (card). Launching final next.
