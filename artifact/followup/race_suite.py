@@ -145,6 +145,8 @@ apk = A / 'fixture/build/tls-apk/rl-tls.apk'
 adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
 adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
+if a.no_root:   # phones: a never-launched app has no network from a broadcast (pilot-calib-1); wake it as campaign.py does
+    adb('shell', f'am set-standby-bucket {PKG} active; am start -W -n {PKG}/org.residuelab.Main >/dev/null; input keyevent HOME; true')
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
 PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no hardware serial in the results (privacy)
     'release': adb('shell', 'getprop', 'ro.build.version.release').strip(), 'sdk': adb('shell', 'getprop', 'ro.build.version.sdk').strip(),

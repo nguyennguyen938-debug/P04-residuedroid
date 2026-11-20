@@ -46,5 +46,10 @@ decisions (user 20/11: own Android 15 phone instead of the RTL Galaxy; plan sile
 - External: one device, one Android version, one network; receiver region. Conclusion: N per cell from the rule; no p-values.
 
 ## Pilot (filled after the pilot)
+- pilot-calib-1 (20/11 23:5x): stopped after 3 calibration sends, all `SocketException: Software caused connection abort`
+  after 5 s before the TLS handshake; network path fine (phone shell and the Mac reach the receiver). Cause: the freshly installed,
+  never-launched app (standby bucket 50) had no network from a broadcast; a manual send after `am set-standby-bucket active` + one
+  launch of Main gave SEND_OK. Fix (harness only, before any final trial): `race_suite.py` wakes the app once at setup on phones,
+  as `campaign.py` does for Test 6. Kept as a failed pilot (EXCLUSIONS); next pilot pilot-calib-2.
 
 ## 6. Outcome (after the run)

@@ -38,6 +38,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/b2/pilot-3': ('check of the driver fix before the final (gate in b2-card.md)', 'none'),
     'round3/b2/pilot-3-analysis': ('analysis of pilot-3 (pilot)', '—'),
     'mutation/pilot-base': ('B12 base pilot, I0 gate', 'none'),
+    'round3/test1-phone/pilot-calib-1': ('phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast', 'race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py'),
     'mutation-v2/pilot-base': ('B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed', 'none'),
 }
 
