@@ -166,6 +166,8 @@ def trial(block, profile, size, mode, u):
     try:
         r['net'] = net(profile)
         adb('shell', f'am force-stop {PKG}'); adb('shell', f'run-as {PKG} rm -f files/revision.jsonl files/release'); bc('init', id)
+        if a.no_root:   # phones (Android 14+): a cached broadcast process is frozen ~5 s in and its sockets are cut (pilot-calib-2); keep it foreground
+            adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
         t_send = time.monotonic()
         r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=16384,
                           label='analytics:0', deadline_ms=deadline)

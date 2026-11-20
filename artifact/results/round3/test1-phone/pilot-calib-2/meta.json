@@ -1,0 +1,35 @@
+{
+ "serial": "physical (not recorded)",
+ "phone": {
+  "release": "15",
+  "sdk": "35",
+  "transport": "ni{WIFI"
+ },
+ "avd": "",
+ "fingerprint": "samsung/a06xxx/a06x:15/AP3A.240905.015.A2/A066BXXS3AYI3_OLM3AYI3:user/release-keys",
+ "seed": "race-20261119",
+ "profiles": [
+  "edge",
+  "umts",
+  "lte"
+ ],
+ "sizes": [
+  32768,
+  262144,
+  2097152
+ ],
+ "modes": [
+  "early",
+  "fence"
+ ],
+ "calibrate": 3,
+ "trials": 0,
+ "start": 0,
+ "durations": {},
+ "radio": {},
+ "shaper": "emu",
+ "receiver": "http://13.212.160.250:8800",
+ "host": "13.212.160.250",
+ "apk_sha256": "ca313b94fd89c9e3515dfead79713c183747436f0e0ecba6445d54652b1aef15",
+ "started": 1795193173.7169
+}

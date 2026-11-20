@@ -51,5 +51,12 @@ decisions (user 20/11: own Android 15 phone instead of the RTL Galaxy; plan sile
   never-launched app (standby bucket 50) had no network from a broadcast; a manual send after `am set-standby-bucket active` + one
   launch of Main gave SEND_OK. Fix (harness only, before any final trial): `race_suite.py` wakes the app once at setup on phones,
   as `campaign.py` does for Test 6. Kept as a failed pilot (EXCLUSIONS); next pilot pilot-calib-2.
+- pilot-calib-2 (23:4x): 27 sends; 32 KiB sends and lte 256 KiB completed, every other 256 KiB / 2 MiB send ended `connection abort`
+  4.3–4.9 s after it started, with bytes still being accepted, on every profile → throttle gate FAIL (no 2 MiB medians). Environment
+  check (receiver up, profiles applied, Wi-Fi unchanged) passed. Cause: Android 15 freezes the cached broadcast process a few
+  seconds after the broadcast returns and its sockets are cut (the emulator image, Android 13, does not). Manual check: with Main in
+  the foreground a 2 MiB lte send completed (9.6 s). Fix (harness only, before any final trial): on phones `race_suite.py` launches
+  Main before each send so the app stays foreground. Construct note: on the phone the sending app is foreground; in B10 it was a
+  background process without freezing. Per §3 this allows one more pilot (pilot-calib-3); if its gate fails, no final.
 
 ## 6. Outcome (after the run)
