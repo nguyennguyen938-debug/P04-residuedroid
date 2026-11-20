@@ -25,4 +25,6 @@ overload (chunk, deadline), and a settable sink host for real phones (`Fence.HOS
 Defaults are unchanged; each card's Design section says which extras its runs use. `UpJob.onStopJob` was not changed. Large raw files are committed gzip-compressed (B4 v2 additionally split into byte parts) with the sha256 of the
 original next to them; the analysis scripts read the compressed form and their outputs are byte-identical.
 
-Data freeze (B7, 29/11): nothing runs after it; this index, `EXCLUSIONS.md`, `summary.json` and the raw data are committed.
+Data freeze (B7) declared 21/11 (plan deadline 29/11), after the last runs (B12 v2, Test 1 on a phone): no device or emulator run
+after it. Raw data, this index, `EXCLUSIONS.md` and `summary.json` are committed. Allowed afterwards: `summary.json` keys computed by
+script from the frozen data once C defines them (Test 6 `dev*`, optional phone keys), with a RUNLOG entry.
