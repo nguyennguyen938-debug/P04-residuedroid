@@ -426,3 +426,5 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 2026-11-20 20:57 queue8: b4-pilot-v3 exit 0
 2026-11-20 20:57 queue8: B4 v3 gate passed
 - 2026-11-20 20:57 LAUNCH autorun b4-final-v3 (final) card artifact/plans/b4-card.md; stages ['final']; owned ['emulator-5664']; log artifact/results/round3/b4/autorun-b4-final-v3.log.
+- 2026-11-20 21:03 User decisions: Test 1 on phones (real-phone-pending #1) and Galaxy v3 via EC2 (#2) not run ("test 1 trôi"); no EC2 created. B12 M1 rerun waits for A's approval. B7 freeze to run now ("B7 chạy đi"), after the B4 v3 final completes.
+- 2026-11-20 21:05 User decision B7: prepare and commit everything (EXCLUSIONS, summary.json, PROTOCOL, raw) after the B4 v3 final; declare the freeze when A answers on the M1 rerun (no → freeze at once; yes → run M1 first) or on 29/11 at the latest.

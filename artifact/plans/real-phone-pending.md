@@ -25,3 +25,9 @@ Quy trình RTL: `plans/test6/README.md` (rtl_auto.sh fill mode, relay do Claude 
   `teardown.sh` sau lượt); (2) một phiên RTL Galaxy M35 (~8 credit) và bấm Remote Debug Bridge khi được nhắc. Sau đó B chạy
   pilot (calibration 3 profile) → card `test1-phone-card.md` (N chốt sau pilot) → lượt chính.
 - Quyết định người dùng 19/11 23:0x: #1 để sau, trước 28/11 (giữ trạng thái sẵn sàng; chưa tạo EC2).
+
+## Quyết định người dùng 20/11 21:0x: không chạy #1 và #2
+"test 1 trôi": Test 1 rút gọn trên điện thoại (#1) và Galaxy v3 qua EC2 (#2) không chạy; không tạo EC2, không dùng thêm credit
+RTL. Test 1 chỉ có phần emulator (B10, `b10-card.md`); bài không có kết quả race trên radio/phần cứng thật (C11 phần Test 1 bỏ
+trống — báo C). Thiếu beacon hợp lệ của Galaxy ở Test 6 v2 giữ là điểm chưa giải thích (mối đe dọa external). Harness remote
+(`race_suite.py --receiver`) và `plans/test6/ec2/` giữ lại, không dùng.
