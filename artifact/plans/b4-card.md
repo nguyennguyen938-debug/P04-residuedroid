@@ -44,3 +44,19 @@ Output `final-v2`, `analysis-v2`; v1 (`final`, `analysis`) reported alongside.
 - Storage: v2 raw `trials.jsonl` is 1.94 GB (on disk, git-ignored); committed as `trials.jsonl.gz` split into byte parts
   `trials.jsonl.gz.part-aa/ab` (< 100 MB each; `cat` restores the gzip, sha256 in `trials.jsonl.gz.sha256`; the original's
   sha256 in `trials.jsonl.sha256`). `analyze_sweep.py` reads the parts; output from parts is byte-identical.
+
+## Protocol v3 (20/11, before any v3 trial; v1 and v2 kept and reported)
+Reason (implementation, not outcome): the 4 invalid v2 trials ("sender did not complete", `IOException: Broken pipe` after
+~31–35 s) match the harness receiver's 30 s per-recv timeout in `sweep_suite.py`, which closes a connection whose sender is
+waiting on the shared lock under 16-way contention. This is a limit of the test receiver, not of the system under test.
+- Change: `sweep_suite.py --recv-timeout 300` (recorded in meta.json as `recv_timeout_s`). Everything else as v2: cells
+  (chunk 1/4/16/64 KiB × senders 1/2/4/8/16), `--probe-mode overlap`, `--size 4194304`, seed `sweep-20261119`, 20 blocks,
+  AVD P04AvdA on emulator-5664, receiver 8799, APK unchanged (sha256 checked against v2 meta), `analyze_sweep.py` unchanged.
+- Pilot `pilot-v3` (1 block, 20 trials). Mechanical gate: 20 trials logged, 0 harness_error, meta `recv_timeout_s` = 300.
+  Fail → no final; report.
+- Final `final-v3`. Replacement (new in v3, fixed here): if any cell has < 20 valid trials, run whole replacement blocks
+  (all 20 cells, `--start 20`) into `final-v3-repl`, at most 2 blocks, regardless of outcome; analysis uses the first 20 valid
+  trials per cell in block order (`analyze_sweep.py final-v3 [final-v3-repl] --out analysis-v3`).
+- Key source (fixed before the run): `sweep*` keys from v3 if the final completes; v2 and v1 stay in the results and are
+  reported next to v3. If the v3 final does not complete, keys stay on v2.
+- The v2 observation "a sender can wait > 30 s with 16 concurrent senders" is kept as a v2 result.
