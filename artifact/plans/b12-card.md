@@ -33,3 +33,21 @@ Status: frozen at the commit that adds this card; pilot (base, 1 trial per sched
   trigger needs an aggregate holding both epochs, which these runs did not show (reported to A; no extra schedule run).
   Base also has a permitted deficit (44). 0/N is not an impossibility guarantee.
 - Deviations: none from the card. Same trial ids (reb004, reb014) failed as on B11 Android 14: noted, not acted on.
+
+## Protocol v2 (20/11, A approved in PR #2 (A1); written before any v2 build or trial; v1 kept and reported)
+Reason (test implementation, not outcome): in v1 the fixture aggregated only at SETUP (Cmd.java "derivation happens before any
+withdrawal"); after the T5 re-grant it collected epoch-1 records but never re-aggregated (0/39 re-grants followed by an AGG),
+so the M1 trigger — an aggregate holding e0 and e1 records — could not occur.
+- Change: fixture extra `regrant_agg` (default off: every earlier build behaves as before). With `regrant_agg=1` the re-grant
+  thread calls `Work.aggregate` for a summary tenant after collecting the epoch-1 records (and the aggregator enqueues the
+  summary upload as usual). Harness: `campaign.py --regrant-agg` (passes the extra; meta.json `regrant_agg: true`).
+- Builds: as v1 (README loop: I0 on every build, base/M1/M2/M3 patches unchanged), from the commit that adds this section,
+  into `fixture/build/apk_mut2_$m`; SHA256SUMS per build dir, recorded under "v2 builds" below before the pilot.
+- Pilot `results/mutation-v2/pilot-base` (base, 1 trial per schedule). Gate (mechanical): both trials logged without
+  trial_error/setup_fail; label_check verdicts all `ok`; and the mechanism is present: in each trial an AGG event for tenant 5
+  after its REGRANT. Fail → no final; report.
+- Final: base, M1, M2, M3 one at a time on P04AvdA (emulator-5600, sink 8795), `--schedules pending,reboot --trials 20
+  --regrant-agg`, into `results/mutation-v2/<build>`. Validity as v1 (matched_oracle rules). No replacement rule (as v1).
+- Analysis: `analyze_mutation.py --root results/mutation-v2 --out results/mutation-v2/analysis` (unchanged script).
+- Key source (fixed now): `mut*` keys from v2 if its final completes; v1 reported next to v2. If v2 does not complete, keys stay v1.
+- Threat added: the re-aggregation is a test-fixture behaviour chosen to reach T5 (A's README scenario), not observed in a real app.
