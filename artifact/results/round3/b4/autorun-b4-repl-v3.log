@@ -1,0 +1,74 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~5 GB available; close apps before 2 emulators
+  [ OK ] 148 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5664 8799 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/sweep_suite.py --probe-mode overlap --size 4194304 --recv-timeout 300 --serial emulator-5664 --avd P04AvdA --blocks 2 --start 20 --out results/round3/b4/final-v3-repl
+21:31:05 sw-c64-s1-20-3752d7 done
+21:31:17 sw-c1-s8-20-746acb done
+21:31:33 sw-c64-s8-20-20a1c5 done
+21:31:38 sw-c16-s8-20-49e270 done
+21:31:40 sw-c16-s2-20-ce66a9 done
+21:32:01 sw-c1-s16-20-cc7b50 done
+21:32:03 sw-c1-s1-20-ae18b9 done
+21:32:03 sw-c64-s2-20-b5a366 done
+21:32:11 sw-c64-s16-20-bd12d7 done
+21:32:13 sw-c16-s4-20-c7297f done
+21:32:16 sw-c1-s2-20-afadfd done
+21:32:20 sw-c1-s4-20-ca8dd6 done
+21:32:22 sw-c4-s2-20-66a53f done
+21:32:23 sw-c64-s4-20-c32020 done
+21:32:24 sw-c4-s1-20-f91f49 done
+21:32:29 sw-c4-s8-20-c881d4 done
+21:32:32 sw-c4-s4-20-63dffc done
+21:32:39 sw-c16-s16-20-da3961 done
+21:32:40 sw-c16-s1-20-2726e5 done
+21:32:48 sw-c4-s16-20-bd52c4 done
+21:32:51 sw-c16-s8-21-abba20 done
+21:32:54 sw-c4-s4-21-2532ba done
+21:33:01 sw-c64-s16-21-76d19d done
+21:33:09 sw-c4-s16-21-b5d6ee done
+21:33:10 sw-c1-s1-21-bfff5f done
+21:33:14 sw-c4-s8-21-284fed done
+21:33:15 sw-c4-s2-21-bfa0cf done
+21:33:16 sw-c64-s1-21-b90e55 done
+21:33:18 sw-c64-s4-21-da12b1 done
+21:33:18 sw-c4-s1-21-d996e9 done
+21:33:26 sw-c16-s16-21-e5e621 done
+21:33:34 sw-c64-s8-21-033ea0 done
+21:33:37 sw-c1-s2-21-c7147d done
+21:33:39 sw-c16-s4-21-91a99f done
+21:33:40 sw-c64-s2-21-54d969 done
+21:33:41 sw-c16-s2-21-25aaf2 done
+21:33:46 sw-c1-s4-21-4bc5d8 done
+21:33:47 sw-c16-s1-21-1a2fab done
+21:34:04 sw-c1-s16-21-15f9a8 done
+21:34:13 sw-c1-s8-21-e0ea70 done
+$ gzip -9 -k artifact/results/round3/b4/final-v3-repl/trials.jsonl
+$ shasum -a 256 artifact/results/round3/b4/final-v3-repl/trials.jsonl > artifact/results/round3/b4/final-v3-repl/trials.jsonl.sha256
+$ python3 artifact/followup/analyze_sweep.py artifact/results/round3/b4/final-v3 artifact/results/round3/b4/final-v3-repl --out artifact/results/round3/b4/analysis-v3-repl
+logged 440, invalid 1, cells 20
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5664 emu kill
+OK: killing emulator, bye bye
+OK

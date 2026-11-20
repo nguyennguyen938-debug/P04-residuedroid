@@ -60,3 +60,18 @@ waiting on the shared lock under 16-way contention. This is a limit of the test 
 - Key source (fixed before the run): `sweep*` keys from v3 if the final completes; v2 and v1 stay in the results and are
   reported next to v3. If the v3 final does not complete, keys stay on v2.
 - The v2 observation "a sender can wait > 30 s with 16 concurrent senders" is kept as a v2 result.
+
+## Outcome v3 (20/11; key source)
+- pilot-v3 20/20 logged, gate passed (20:52–20:57). final-v3 (20:57–21:28, guard false positive, see RUNLOG): 400 logged,
+  1 invalid (sw-c4-s16-3-fd82de, "sender did not complete": one of 16 senders ended `IOException: policy lock deadline` after
+  120.0 s, the app's own deadline). Cell 4 KiB/16 had 19 valid → replacement rule: 2 whole blocks (`final-v3-repl`, k = 20–21,
+  21:30–21:35, guard 0). Analysed: first 20 valid per cell in block order over final-v3 + final-v3-repl (440 logged, 1 invalid,
+  400 analysed, 39 valid unused). Analysis dir `analysis-v3-repl` (the combined run; `analysis-v3` = final-v3 alone, reported).
+- Keys from v3 (descriptive order statistics, device clock; process CPU is not energy): probe ack median 4.08 ms at 1 KiB/1
+  sender and 1.57 ms at 64 KiB/16 senders; CPU per MiB (1 sender) 188 ms at 1 KiB, 23.5 ms at 64 KiB (v2: 4.12 / 1.23 ms,
+  159 / 22.2 ms; v1: 0.96 / 1.00 ms, 244 / 18.0 ms). Per-cell values in `analysis-v3-repl/sweep-summary.json`.
+- Mechanism (reported as a result): raising the receiver timeout removed v2's ~31–35 s cuts, but under 16 senders × 4 KiB one
+  sender still waited the full 120 s app deadline for the policy lock (1/440 trials) — a fairness limit of the shared lock
+  under heavy contention, not a harness artefact. The v2 hypothesis (receiver timeout) explained the v2 failures only.
+- Storage: final-v3 raw 1.8 GB on disk (git-ignored); committed as gzip byte parts `trials.jsonl.gz.part-aa/ab` (sha256 of the
+  gzip and of the original next to them); analysis from the parts is byte-identical. final-v3-repl committed as `.gz`.

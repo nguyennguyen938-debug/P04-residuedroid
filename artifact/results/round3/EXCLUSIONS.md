@@ -20,7 +20,8 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 2 / B12 M3-extras-drop | 40 | 2: reb004: harness/device; reb014: harness/device | 0 | `mutation/analysis` |
 | B3 split policy | 120 | 0 | 0 | `b3/analysis` |
 | Test 5 / B4 v1 | 400 | 0 | 0 | `b4/analysis` |
-| Test 5 / B4 v2 (keys) | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
+| Test 5 / B4 v2 | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
+| Test 5 / B4 v3 (keys; final-v3 + replacement blocks) | 440 | 1: sw-c4-s16-3-fd82de: sender did not complete | 39 | `b4/analysis-v3-repl` |
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 
@@ -42,6 +43,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/b3/pilot-1` | gate failed on a harness bug (suite waited for a SPLIT the app correctly never emits) | protocol v2: end predicate |
 | `round3/b3/pilot-2` | gate passed | none |
 | `round3/b4/pilot-1` | mechanism check of the sweep | none |
+| `round3/b4/pilot-v3` | protocol v3 pilot (receiver recv timeout 300 s), gate passed | none |
 | `round3/test6/galaxy-p01_INVALID_relpath` | relative --out broke after cd; no valid data | absolute paths in run_rtl.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect` | RDB relay not connected (environment) | preflight + relay ownership in rtl_auto.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect2` | RDB relay not connected again (environment) | link_ok re-attaches before restart |
@@ -54,5 +56,5 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/test6/pilot-rtl-2` | RTL: same freeze reproduced | CA copied with `run-as … tee` |
 | `round3/test6/pilot-rtl-3` | RTL: all mechanism checks passed | none |
 
-Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window; v2 is the
-estimand) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.
+Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window) and v2 final
+(`b4/final-v2`, 4 trials cut by the harness receiver's 30 s timeout; v3 is the key source) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.

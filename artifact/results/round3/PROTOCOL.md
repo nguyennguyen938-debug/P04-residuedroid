@@ -12,7 +12,7 @@ Exclusions: `EXCLUSIONS.md` (generated). Numbers to C only through `summary.json
 | Test 4 / B11 | `plans/b11-card.md` | v1 | `round3/b11/{avd14-final,avd14-repl,avd15-final}` | `followup/analyze_b11.py` → `b11/analysis` | `life*` |
 | Test 2 / B12 | `plans/b12-card.md` | v1 | `mutation/{base,M1-union-latest,M2-stale-epoch,M3-extras-drop}` | `followup/analyze_mutation.py` → `mutation/analysis` | `mut*` |
 | B3 split policy | `plans/b3-card.md` | v2 (suite end predicate) | `round3/b3/final` | `followup/analyze_b3.py` → `b3/analysis` | — (raw, card §6) |
-| Test 5 / B4 | `plans/b4-card.md` | v2 (probes under load, 4 MiB); v1 reported | `round3/b4/final-v2` (v1 `final`) | `followup/analyze_sweep.py` → `b4/analysis-v2` (v1 `analysis`) | `sweep*` |
+| Test 5 / B4 | `plans/b4-card.md` | v3 (receiver recv timeout 300 s, replacement rule); v1, v2 reported | `round3/b4/final-v3` + `final-v3-repl` (v2 `final-v2`, v1 `final`) | `followup/analyze_sweep.py` → `b4/analysis-v3-repl` (v2 `analysis-v2`, v1 `analysis`) | `sweep*` |
 | Test 1 / B10 | `plans/b10-card.md` | v3 (guest netem shaper; v1/v2 gates failed, no final trial) | `round3/b10/final4`, calibration `pilot-calib4` | `followup/analyze_race.py` → `b10/analysis`; post-hoc Eq. 2 decomposition `followup/posthoc_race_eq2.py` → `b10/posthoc-eq2` (exploratory, keys unchanged) | `race*` |
 | B2 AirGuard | `plans/b2-card.md` | v1 (frozen after pilot-2; oracle v2 with withdrawal bracket) | `round3/b2/final` | `followup/analyze_airguard.py` → `b2/analysis`; oracle v3 (post-hoc, guest-clock order) `--order device` → `b2/analysis-v3` | — (raw, card) |
 | B1 screening | `plans/b1-screening.md` | — | (builds outside the repo; `plans/b1/build_airguard.sh`) | — | S1 decision |

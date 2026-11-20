@@ -72,7 +72,7 @@ def trial_rows():
             inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
             out.append((f'Test 2 / B12 {m}', v['valid_trials'] + len(inv), inv, 0, 'mutation/analysis'))
     for name, f in (('B3 split policy', 'round3/b3/analysis/b3-summary.json'), ('Test 5 / B4 v1', 'round3/b4/analysis/sweep-summary.json'),
-                    ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys)', 'round3/b4/analysis-v3/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json')):
+                    ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json')):
         d = load(f)
         if d: out.append((name, d['logged'], [f"{x['trial']}: {x['reason']}" for x in d['invalid']], sum(c.get('unused', 0) for c in d['cells'].values()), str(Path(f).parent.relative_to('round3'))))
     b2 = load('round3/b2/analysis/airguard-summary.json')

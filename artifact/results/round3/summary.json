@@ -27,8 +27,8 @@
  "raceThreegFence": 0,
  "raceThreegLayer": 20,
  "raceTrials": 30,
- "sweepAckLargeMs": 1.233125,
- "sweepAckSmallMs": 4.1180625,
- "sweepCpuLarge": 22.249665801776526,
- "sweepCpuSmall": 159.24766496267705
+ "sweepAckLargeMs": 1.5676455,
+ "sweepAckSmallMs": 4.076625,
+ "sweepCpuLarge": 23.499647026595433,
+ "sweepCpuSmall": 188.24723951096482
 }
