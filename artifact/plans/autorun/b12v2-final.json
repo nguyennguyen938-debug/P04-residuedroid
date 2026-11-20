@@ -1,0 +1,132 @@
+{
+  "id": "b12v2-final",
+  "kind": "final",
+  "card": "artifact/plans/b12-card.md",
+  "deadline_hours": 8,
+  "env": {
+    "ANDROID_HOME": "~/Library/Android/sdk",
+    "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+    "ANDROID_AVD_HOME": "~/.android/avd",
+    "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "AVDS": "P04AvdA",
+    "PORTS": "5600 8795",
+    "IMAGES": "33",
+    "GUARD_ALLOW": "manuscript/generated/macros.tex manuscript/generated/tests_macros.tex"
+  },
+  "owned_serials": [
+    "emulator-5600"
+  ],
+  "pre": [
+    "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+  ],
+  "stages": [
+    {
+      "name": "base",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/campaign.py",
+        "--serial",
+        "emulator-5600",
+        "--avd",
+        "P04AvdA",
+        "--port",
+        "8795",
+        "--variants",
+        "mfence",
+        "--schedules",
+        "pending,reboot",
+        "--trials",
+        "20",
+        "--apkdir",
+        "fixture/build/apk_mut2_base",
+        "--regrant-agg",
+        "--out",
+        "results/mutation-v2/base"
+      ],
+      "out": "artifact/results/mutation-v2/base"
+    },
+    {
+      "name": "M1-union-latest",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/campaign.py",
+        "--serial",
+        "emulator-5600",
+        "--avd",
+        "P04AvdA",
+        "--port",
+        "8795",
+        "--variants",
+        "mfence",
+        "--schedules",
+        "pending,reboot",
+        "--trials",
+        "20",
+        "--apkdir",
+        "fixture/build/apk_mut2_M1-union-latest",
+        "--regrant-agg",
+        "--out",
+        "results/mutation-v2/M1-union-latest"
+      ],
+      "out": "artifact/results/mutation-v2/M1-union-latest"
+    },
+    {
+      "name": "M2-stale-epoch",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/campaign.py",
+        "--serial",
+        "emulator-5600",
+        "--avd",
+        "P04AvdA",
+        "--port",
+        "8795",
+        "--variants",
+        "mfence",
+        "--schedules",
+        "pending,reboot",
+        "--trials",
+        "20",
+        "--apkdir",
+        "fixture/build/apk_mut2_M2-stale-epoch",
+        "--regrant-agg",
+        "--out",
+        "results/mutation-v2/M2-stale-epoch"
+      ],
+      "out": "artifact/results/mutation-v2/M2-stale-epoch"
+    },
+    {
+      "name": "M3-extras-drop",
+      "cwd": "artifact",
+      "cmd": [
+        "python3",
+        "followup/campaign.py",
+        "--serial",
+        "emulator-5600",
+        "--avd",
+        "P04AvdA",
+        "--port",
+        "8795",
+        "--variants",
+        "mfence",
+        "--schedules",
+        "pending,reboot",
+        "--trials",
+        "20",
+        "--apkdir",
+        "fixture/build/apk_mut2_M3-extras-drop",
+        "--regrant-agg",
+        "--out",
+        "results/mutation-v2/M3-extras-drop"
+      ],
+      "out": "artifact/results/mutation-v2/M3-extras-drop"
+    }
+  ],
+  "post": [
+    "python3 artifact/followup/analyze_mutation.py --root artifact/results/mutation-v2 --out artifact/results/mutation-v2/analysis"
+  ],
+  "guard_after": true
+}

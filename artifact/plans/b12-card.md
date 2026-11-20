@@ -51,3 +51,5 @@ so the M1 trigger — an aggregate holding e0 and e1 records — could not occur
 - Analysis: `analyze_mutation.py --root results/mutation-v2 --out results/mutation-v2/analysis` (unchanged script).
 - Key source (fixed now): `mut*` keys from v2 if its final completes; v1 reported next to v2. If v2 does not complete, keys stay v1.
 - Threat added: the re-aggregation is a test-fixture behaviour chosen to reach T5 (A's README scenario), not observed in a real app.
+- v2 builds (20/11, from commit 36127ed; `fixture/build/apk_mut2_$m/SHA256SUMS`): base 93b78d03, M1 f48529f9, M2 cef9d720,
+  M3 889864a6 (sha256 prefixes of rl-mfence.apk); each contains the `regrant_agg` code path.
