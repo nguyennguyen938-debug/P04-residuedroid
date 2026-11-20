@@ -111,3 +111,8 @@ guest clock alone — the channel estimand of R4.1 (WRITE_ATTEMPT/BYTES_ACCEPTED
   'unmatched' = unknown. Stock build (no request id, no guest transport events): v2 host bracket unchanged.
 - Validity, first-N, cells as v2. Output `results/round3/b2/analysis-v3` (`analyze_airguard.py --order device`); the default
   (`--order host`) reproduces `analysis` byte for byte. Unit test `followup/test_analyze_airguard.py`. Reported next to v2.
+- Result (20/11, `results/round3/b2/analysis-v3/airguard-summary.json`; unit test 9/9): fenced unknown trials 8 → 0
+  (pending), 9 → 0 (kill), 9 → 0 (reboot); every one of those 'pre' requests was fully accepted on the guest before the
+  withdrawal ack ('pre/before' 75 requests, 'post/after' 60; no 'straddle', no 'unmatched'), so they are the app's permitted
+  consent-time run. Violating trials unchanged: fenced 0/20 [0, 0.161] in every schedule, stock 20/20 in pending/kill/reboot.
+  Stock is not re-ordered (no request id). Report v2 (pre-registered) and v3 (post-hoc) together.

@@ -11,7 +11,10 @@ that variant's withdraw hook was issued, we = time the hook returned (after the 
 'pre' beacon in an 'after' request. A 'pre' beacon in an 'ambiguous' request = unknown (never folded into no-violation).
 'pre' beacons donated 'before' are permitted (the app's own worker run at consent time). Deficit = nbeacons - 'post' donated.
 Validity (harness fields only): no trial_error; every hook call ok; device alive at the end; both variants' event logs read.
-Usage: analyze_airguard.py <run dir>... [--out results/round3/b2/analysis] [--n 20]
+Oracle v3 (`--order device`, post-hoc, b2-card.md "Oracle v3"): for the fenced build, a request with X-Request-ID R is ordered
+against the trial's first WITHDRAW_ACK on the guest clock (wall_ms of R's BYTES_ACCEPTED n>0): 'before' / 'after' / 'straddle'
+/ 'unmatched'; 'pre' in straddle/unmatched = unknown. Stock build and the default (`--order host`) are v2 unchanged.
+Usage: analyze_airguard.py <run dir>... [--out results/round3/b2/analysis] [--n 20] [--order host|device]
 """
 import argparse, collections, json, sys
 from pathlib import Path
@@ -33,9 +36,19 @@ def validity(plan, dev):
     return None
 
 
+def guest_order(events, req):
+    """Oracle v3: order request `req` against the first WITHDRAW_ACK on the guest wall clock (ms)."""
+    def f(e): return dict(x.split('=', 1) for x in (e.get('detail') or '').split(';') if '=' in x)
+    acks = [e['wall_ms'] for e in events if e['kind'] == 'WITHDRAW_ACK']
+    acc = [e['wall_ms'] for e in events if e['kind'] == 'BYTES_ACCEPTED' and req and f(e).get('request') == req and int(f(e).get('n', 0)) > 0]
+    if not acks or not acc: return 'unmatched'
+    ack = min(acks)
+    return 'before' if max(acc) < ack else 'after' if min(acc) > ack else 'straddle'
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/b2/analysis'))
-    ap.add_argument('--n', type=int, default=20); a = ap.parse_args()
+    ap.add_argument('--n', type=int, default=20); ap.add_argument('--order', choices=['host', 'device'], default='host'); a = ap.parse_args()
     rows, invalid = [], []
     for d in map(Path, a.dirs):
         meta = json.loads((d / 'meta.json').read_text()); nb = meta.get('nbeacons', 4)
@@ -55,15 +68,17 @@ def main():
                     if r.get('path') != 'donate_data' or not r.get('complete'): continue
                     ping = max((x['t_host'] for x in mine if x.get('path') == 'ping' and x['t_host'] <= r['t_host']), default=None)
                     when = 'before' if r['t_host'] < ws else 'after' if ping is not None and ping > we else 'ambiguous'
+                    if a.order == 'device' and v == 'fenced': when = guest_order(dev[(plan['trial'], v)], r.get('request'))
                     for devc in r['body'] or []:
                         uid = devc.get('uniqueId') or ''
                         b = BATCH.get(uid.split(':')[-2] if uid.startswith('p04-') else '', 'other')
                         got[f'{b}/{when}'] += len(devc.get('beacons') or [])
                 post = sum(n for k, n in got.items() if k.startswith('post/'))
                 viol = sum(n for k, n in got.items() if k.startswith('optout/')) + got['pre/after'] > 0
+                unk = got['pre/ambiguous'] + got['pre/straddle'] + got['pre/unmatched'] > 0
                 ev = [e['kind'] for e in dev[(plan['trial'], v)]]
                 rows.append({'trial': plan['trial'], 'schedule': plan['schedule'], 'k': plan['k'], 'variant': v, 'donated': dict(got),
-                             'violation': viol, 'unknown': not viol and got['pre/ambiguous'] > 0, 'deficit': max(0, nb - post),
+                             'violation': viol, 'unknown': not viol and unk, 'deficit': max(0, nb - post),
                              'blocked': 'DONATION_BLOCKED' in ev, 'error': 'DONATION_ERROR' in ev})
     cells = collections.defaultdict(list)
     for r in sorted(rows, key=lambda r: r['k']): cells[r['schedule'], r['variant']].append(r)
