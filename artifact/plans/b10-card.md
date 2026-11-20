@@ -91,3 +91,11 @@ posthoc-eq2/`. All times device clock (mono_ns) relative to q = SOCKET_CONFIG of
   δ over that cell's **fence** trials only (no early outcome used). p = |[(a − q − δ̄)/D, (c_k − q − δ̄)/D] ∩ [0, 1]|.
 - Reported: mean P0/P1/P2 over the 90 analysed early trials vs the observed 56.7%, per profile and pooled; δ per profile
   (median, min, max) for fence and, as a check only, early trials. No CI, no test; one AVD; descriptive.
+- Result (20/11, `results/round3/b10/posthoc-eq2/posthoc-summary.json`): pooled over 90 early trials, observed 56.7%;
+  P0 79.4% (= racePredPct), P1 65.7%, P2 57.7%. Per profile (observed / P0 / P1 / P2): edge 70.0 / 74.3 / 66.0 / 66.0; umts
+  66.7 / 79.1 / 72.5 / 72.6; lte 33.3 / 84.8 / 58.5 / 34.5. δ over fence trials, median (min–max): edge 0.110 s (0.061–0.827),
+  umts 0.116 s (0.063–0.727), lte 0.075 s (0.049–1.374); early trials show the same δ (check only).
+- Reading (exploratory): most of the gap comes from how Eq. 2 was applied, not from the race itself: (1) the window started at
+  SOCKET_CONFIG although the layered check runs after the TLS handshake (P0 → P1: −13.7 points), and (2) the ~0.1 s
+  host→app withdrawal delivery shift, which matters where D is short (lte; P1 → P2: −8.0 points). Residual per profile is
+  within ±6 points on 30 trials. Not a test; δ̄ is estimated from the same run's fence trials; one AVD.
