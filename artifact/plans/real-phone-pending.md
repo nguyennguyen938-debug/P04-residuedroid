@@ -43,3 +43,7 @@ Kit: `plans/test1-phone/` (preflight, run, cleanup, README) + card `plans/test1-
 N cố định). Receiver EC2 `receiver_b.py --profile-set b10v3` (cùng shaping với B10 v3; chỉ chiều upload), region do người
 dùng chọn (`AWS_REGION`, mặc định us-west-2 giữ nguyên). Không ghi serial phần cứng vào kết quả; gỡ app sau lượt. Không cần
 credit RTL. #2 (Galaxy) không áp dụng cho máy này.
+
+## DONE 21/11: #1 chạy xong trên Galaxy A06 5G (Android 15) của người dùng
+180/180 trial hợp lệ (10 block); fence 0/30 mọi profile; early 16/19/19 của 30 (edge/umts/lte). Card `test1-phone-card.md` §6.
+App đã gỡ khỏi máy; EC2 đã xoá (0 tài nguyên còn lại ở ap-southeast-1). #2 không áp dụng.

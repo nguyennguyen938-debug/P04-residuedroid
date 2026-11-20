@@ -459,3 +459,8 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-21 00:08 test1-phone: pilot results/round3/test1-phone/pilot-calib-3 exit 0
 - 2026-11-21 00:08 test1-phone: pilot gate: {"gate":true,"medians_2mib":[151.19129447,139.263035316,9.405375309],"block_upper_min":12.117157117525737,"blocks":10}
 - 2026-11-21 00:09 Test 1 phone pilot-calib-3: 27/27 SEND_OK; 2 MiB medians edge 151.2 s, umts 139.3 s, lte 9.41 s → gate PASS; N rule → 10 blocks (card). Launching final next.
+- 2026-11-21 00:09 test1-phone: LAUNCH final results/round3/test1-phone/final (10 blocks, durations results/round3/test1-phone/pilot-calib-3/calibration.json, frozen results/round3/test1-phone/frozen-test1-phone)
+- 2026-11-21 01:46 test1-phone: final exit 0
+- 2026-11-21 01:46 test1-phone: analysis written to results/round3/test1-phone/analysis
+- 2026-11-21 01:48 Test 1 phone close-out: final complete (00:09–01:46, 180 logged, 0 invalid, 30 per (profile, variant)); test app uninstalled and CA file removed from the phone (0 org.residuelab packages for user 0); EC2 i-0c0bdf67836f90494 terminated, security group and key pair deleted; 0 instances, 0 addresses, 0 volumes left in ap-southeast-1.
+- 2026-11-21 01:49 Test 1 phone DONE: fence 0/30 in every profile; early edge 16, umts 19, lte 19 of 30; Eq. 2 68.2 vs 60.0 (post-hoc P2 52.4, does not transfer from B10); card §6, EXCLUSIONS, PROTOCOL, tracker. No SCHEMA keys (asked C in PR #2, C3); summary.json unchanged.

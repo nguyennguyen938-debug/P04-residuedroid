@@ -27,6 +27,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 5 / B4 v2 | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
 | Test 5 / B4 v3 (keys; final-v3 + replacement blocks) | 440 | 1: sw-c4-s16-3-fd82de: sender did not complete | 39 | `b4/analysis-v3-repl` |
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
+| Test 1 phone (Galaxy A06, Android 15) | 180 | 0 | 0 | `test1-phone/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 
 ## Pilots and discarded runs
@@ -49,6 +50,9 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/b3/pilot-2` | gate passed | none |
 | `round3/b4/pilot-1` | mechanism check of the sweep | none |
 | `round3/b4/pilot-v3` | protocol v3 pilot (receiver recv timeout 300 s), gate passed | none |
+| `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
+| `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |
+| `round3/test1-phone/pilot-calib-3` | phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final | none |
 | `round3/test6/galaxy-p01_INVALID_relpath` | relative --out broke after cd; no valid data | absolute paths in run_rtl.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect` | RDB relay not connected (environment) | preflight + relay ownership in rtl_auto.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect2` | RDB relay not connected again (environment) | link_ok re-attaches before restart |

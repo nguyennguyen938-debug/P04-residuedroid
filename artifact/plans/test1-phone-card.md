@@ -63,3 +63,19 @@ decisions (user 20/11: own Android 15 phone instead of the RTL Galaxy; plan sile
   size; same N as B10). Durations: `pilot-calib-3/calibration.json`. Final: `run_phone.sh final <ip> <serial> 10` → `final`.
 
 ## 6. Outcome (after the run)
+- Logged / invalid / valid / analysed / unused: 180 / 0 / 180 / 30 per (profile, variant) / 0; no replacement. Final 21/11
+  00:09–01:46 (`results/round3/test1-phone/final`; raw 118 MB on disk, committed as `.gz` + sha256 of the original; analysis
+  from the gzip is byte-identical). Sources and APK pinned in `frozen-test1-phone/source-sha256.txt`. Phone: Samsung Galaxy A06
+  5G (SM-A066B), Android 15, Wi-Fi; receiver EC2 t3.micro ap-southeast-1 (terminated after the run; app uninstalled).
+- Violating trials (bytes accepted after WITHDRAW_ACK; Wilson 95%): early (layered) edge 16/30 [0.361, 0.698], umts 19/30
+  [0.455, 0.781], lte 19/30 [0.455, 0.781]; **fence 0/30 [0, 0.114] for every profile**. By size (early, 10 each, 32 KiB /
+  256 KiB / 2 MiB): edge 3/5/8, umts 2/7/10, lte 1/8/10. Fence ends: SEND_ERROR (denied mid-send) 16 / 20 / 17, SEND_OK 14 / 10 /
+  13 (edge / umts / lte); early all SEND_OK.
+- Eq. 2: predicted 68.2% vs observed 60.0% (pooled, 90 early trials). B10 post-hoc decomposition (exploratory): P1 55.3%, P2 52.4%
+  — on the phone the corrections overshoot (below observed by 4.7 and 7.6 points); δ (fence trials, median) ≈ 0.25–0.27 s per
+  profile (B10 emulator ≈ 0.08–0.12 s). The B10 explanation does not transfer cleanly; not analysed further.
+- Comparison with B10 (emulator, descriptive only; different device and path, not pooled): fence 0/30 in all 6 cells of both;
+  early edge 16 vs 21, umts 19 vs 20, lte 19 vs 10 of 30 — lte differs most, consistent with the real path's RTT making lte
+  uploads longer on the phone (lte 2 MiB D 9.4 s vs 0.32 s on the emulator).
+- Deviations: two harness fixes after failed pilots, before any final trial (app wake; app kept foreground) — see Pilot. Negative
+  or null: fence 0/30 is not an impossibility guarantee (upper bound 11.4%); one phone, one network.
