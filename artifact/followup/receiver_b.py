@@ -45,7 +45,8 @@ def shape(name):
     if a.profile_set == 'b10v3':          # phone upload = ingress here -> ifb0 -> netem delay+rate, as the guest egress in B10 v3
         cmds = [f'tc qdisc del dev {d} root', f'tc qdisc del dev {d} ingress', 'tc qdisc del dev ifb0 root']
         if name in V3:
-            cmds += ['modprobe ifb numifbs=1', 'ip link set dev ifb0 up', f'tc qdisc add dev {d} handle ffff: ingress',
+            # AL2023: modprobe creates no ifb0, so it is added explicitly (an existing ifb0 makes `ip link add` fail harmlessly)
+            cmds += ['modprobe ifb numifbs=1', 'ip link add ifb0 type ifb', 'ip link set dev ifb0 up', f'tc qdisc add dev {d} handle ffff: ingress',
                      f'tc filter add dev {d} parent ffff: protocol ip u32 match u32 0 0 action mirred egress redirect dev ifb0',
                      f'tc qdisc add dev ifb0 root netem delay {V3[name][1]} rate {V3[name][0]} limit 10000']
         STATE['profile'] = name

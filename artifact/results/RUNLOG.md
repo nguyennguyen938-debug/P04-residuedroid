@@ -447,3 +447,4 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-20 23:29 DONE autorun b12v2-final: DONE; guard exit 0; SHUTDOWN ['emulator-5600']. Outcomes not inspected by the runner.
 2026-11-20 23:29 b12v2-final exit 0
 - 2026-11-20 23:31 B12 v2 DONE: M1 24/40 leaking (24 flagged = 24 wrong-label), M2 39/39, M3 0/40, base 0/39; mut* keys now from mutation-v2/analysis (7 keys changed); EXCLUSIONS regenerated; guard OK. Card 'Outcome v2'.
+- 2026-11-20 23:38 Test 1 on phone: EC2 created with the user's go-ahead ("ok ec2"): t3.micro ap-southeast-1, instance i-0c0bdf67836f90494, receiver IP 13.212.160.250 (delete with teardown.sh). Phone: Samsung Galaxy A06 5G (SM-A066B), Android 15, Wi-Fi; preflight OK; power saving found ON → user asked to turn it off before the pilot.
