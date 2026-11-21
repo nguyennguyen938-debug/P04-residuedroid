@@ -116,3 +116,17 @@ guest clock alone — the channel estimand of R4.1 (WRITE_ATTEMPT/BYTES_ACCEPTED
   withdrawal ack ('pre/before' 75 requests, 'post/after' 60; no 'straddle', no 'unmatched'), so they are the app's permitted
   consent-time run. Violating trials unchanged: fenced 0/20 [0, 0.161] in every schedule, stock 20/20 in pending/kill/reboot.
   Stock is not re-ordered (no request id). Report v2 (pre-registered) and v3 (post-hoc) together.
+
+## Static send-path audit (post-freeze, 21/11; requested by C in PR #2; no device)
+- `followup/mediation_check_apk.py` (same sink set, OkHttp rule and approved classes as `mediation_check.py`, which is fixed to
+  the recorded review-followup APKs and is not rerun) on the B2 final APKs (fenced 30eb823f…, stock e53e5254…) →
+  `results/round3/b2/mediation/mediation.json`. Direct DEX calls only (no native, reflection, dynamic loading or IPC).
+- Donation path: in the fenced build `SendStatisticsWorker.doWork` calls `FencedDonation.send` → `HttpTransport.postMode`
+  (approved), and no app method calls the Retrofit `Api.donateData` (only its generated default-args stub); in the stock build
+  `doWork` calls `Api.donateData$default` (Retrofit) and nothing calls `FencedDonation.send`. The donation send path is
+  mediated in the fenced build at the direct-call level.
+- Other network sites: 25 sink call sites per build, 2 approved (HttpTransport), 23 flagged in both builds, by package:
+  osmdroid tile provider 7 + bonuspack 1, Glide 2, OkHttp internals 3, Retrofit `OkHttpCall` 2, okio 3, the app's
+  `Utility.isValidURL` 2, kotlin `readBytes` 1, coroutines 1, constraintlayout 1. These paths are not mediated; whether any of
+  them can carry the statistics data is not established here (would need a manual review). Claims stay limited to the
+  mediated donation path.

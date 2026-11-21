@@ -166,3 +166,15 @@ The unfenced baselines leak in each setting.
 | C6 | Review the B8 draft, then merge PR #2. |
 
 **Outside person:** B9 (clone + `make -C artifact all`) by 2/12.
+
+## Update after C's answers (21/11)
+- `make_summary.py` computes the 28 keys requested in PR #2 from the frozen analysis outputs:
+  - `devLife*`: `menqueue` 118/120, `mfence` 0/120 (both phones; pending, kill, revoke; pre-registered denominator);
+  - `racePhone*` (11 keys);
+  - `mutBaseTrials` 39, `mutOneTrials` 40, `mutTwoTrials` 39, `mutThreeTrials` 40, `mutBaseDeficit` 80;
+  - `airN` 60, `airStockViol` 60, `airFenceViol` 0, `airFenceUnknownV` 26, `airFenceUnknownVThree` 0;
+  - `splitTrials` 20, `splitPreRecovered` 20, `splitPostRecovered` 0.
+- Until their names are in `SCHEMA`, these keys sit in `results/round3/summary-pending.json`. Rerunning `make_summary.py` after the `SCHEMA` change moves them into `summary.json`.
+- The static send-path audit of AirGuard (C's optional item) is done; see `b2-card.md`, last section.
+  - The donation path is mediated in the fenced build, at the direct-call level.
+  - 23 other network call sites per build (maps, images, URL check, library internals) are not mediated. The paper keeps this as a limit.
