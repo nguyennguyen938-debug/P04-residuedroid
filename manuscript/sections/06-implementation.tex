@@ -46,8 +46,8 @@ in copied job inputs. Their comparisons isolate final placement more closely tha
 
 \paragraph{Harness and oracle.} A host sink, reached via \texttt{10.0.2.2}, logs every request and waits 300\,ms before
 responding, emulating a wide-area server. The oracle (\S\ref{sec:setup}) is a separate Python reimplementation of the
-contract table. It never reads the app's labels or decisions. Round-3 additions (a split policy for mixed requests, an
-embedding in a real app, phone and throttled-link harnesses) are described in Appendix~\ref{app:round3impl}.
+contract table. It never reads the app's labels or decisions. The split policy for mixed requests, the real-app embedding,
+and the phone and throttled-link harnesses are described in Appendix~\ref{app:round3impl}.
 
 \paragraph{Static scanner.} For the measurement (\S\ref{sec:measure}) we wrote a standard-library-only DEX parser. It
 reads string, type, method and class tables, decodes Dalvik code items, and builds an over-approximate call graph:

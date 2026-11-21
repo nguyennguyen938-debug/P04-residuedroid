@@ -5,8 +5,8 @@ The enforcement problem is not just when to check a toggle: derived data must re
 We separate collection-only opt-outs, restrictions and deletion contracts, and judge each workload against the contract it states.
 A \corpusN-app static screen identifies candidate deferred paths, not runtime violations; of the \promiseApps{} apps with a consent signal, \promisePending{} word their switch as sending or sharing data.
 In lifecycle schedules, checks that receive the same metadata show no confirmed disadvantage against the fence.
-When the withdrawal lands during an upload, a check placed before the request lets the socket accept bytes after the acknowledgement in \raceObsPct{}\% of emulator trials and \racePhoneObsPct{}\% on a phone; the fence does so in none.
-In a real app, the stock build shares data collected during an opt-out in \airStockViol{} of \airN{} trials and the fenced build in \airFenceViol{}.
-Label mutants show that a valid but incomplete label bypasses the fence and that a test-time label check catches it.
+The fence's advantage is confined to withdrawals that land during an upload: there, a check placed before the request lets the socket accept bytes after the acknowledgement in \raceObsPct{}\% of emulator trials and \racePhoneObsPct{}\% on a phone, and the server still receives the complete request in each such trial; the fence does so in none.
+In a real app, the stock build shares data collected during an opt-out in \airStockViol{} of \airN{} trials; the fenced build has \airFenceViol{} confirmed violations, with \airFenceUnknownV{} trials unknown under the pre-registered oracle.
+Label mutants show that a valid but incomplete label bypasses the fence and that a test-time check against traced content catches it.
 Already accepted bytes can arrive later, and we make no energy claim.
 \end{abstract}

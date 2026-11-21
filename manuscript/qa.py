@@ -11,10 +11,13 @@ log = Path("main.log").read_text(errors="replace")
 src = {f: Path(f).read_text(encoding="utf-8") for f in glob.glob("sections/*.tex") + ["main.tex"]}
 problems = []
 
-pages = re.findall(r"\[(\d+)\.\d+", log[:log.find("main.bbl")])
-body_end = int(pages[-1]) if pages else 0  # pages shipped before the bibliography starts
-if body_end > 12:
-    problems.append(f"body runs past page 12 (bibliography starts after page {body_end})")
+# The conclusion ends with \label{body-end}; its page in main.aux is the last page of the body.
+m = re.search(r"\\newlabel\{body-end\}\{\{[^}]*\}\{(\d+)\}", Path("main.aux").read_text(errors="replace"))
+body_end = int(m.group(1)) if m else 0
+if not m:
+    problems.append("label body-end missing from main.aux")
+elif body_end > 12:
+    problems.append(f"body ends on page {body_end}, past the 12-page limit")
 if log.count("Overfull"):
     problems.append(f"{log.count('Overfull')} overfull box(es)")
 if re.search(r"undefined (references|citations)|Reference .* undefined", log):

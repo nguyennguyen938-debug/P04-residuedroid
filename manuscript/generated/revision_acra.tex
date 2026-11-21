@@ -1,6 +1,6 @@
 In the restricted-collector embedding, stock ACRA delivered 10/10 reports after reporting was disabled, while the fenced build delivered 0/10; for control reports, the stock and fenced builds delivered 10/10 and 10/10. Reboot outcomes and report-retirement states remain in the raw log. These runs use the policy-path build (ACRA-P); the recovery-enabled build (ACRA-R) has a separate cohort.
 
-After reboot, 0/6 disabled reports reached the receiver, while 6/6 remained stored. Non-delivery here is not deletion. Reboot controls delivered 6/6 reports; storage retirement was complete at observation-window closure in 3/6 cases.
+After reboot, 0/6 disabled reports reached the receiver, while 6/6 remained stored. Non-delivery here is not deletion. Reboot controls, with reporting left enabled, delivered 6/6 reports, and in 3/6 of these control trials the sent report had also left storage when the window closed.
 
 Build ACRA-R's normal-path smoke run delivered 2/2 allowed controls; with reporting disabled, the stock and fenced builds delivered 1 and 0 reports. This small smoke run does not establish lifecycle results for ACRA-R.
 

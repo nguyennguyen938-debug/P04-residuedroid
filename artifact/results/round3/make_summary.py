@@ -81,6 +81,10 @@ def derived():
     for key, v in (('Enq', 'menqueue'), ('Fence', 'mfence')):
         hits = [viol for t, viol in trial.items() if t[4] == v]
         k[f'devLife{key}Viol'], k[f'devLife{key}N'] = sum(hits), len(hits)
+    # Receiver side of the natural races (C, scripts/receiver_race.py, from the same frozen raw logs).
+    rr = R / 'round3/c-analysis/receiver-race.json'
+    if rr.exists():
+        k.update(json.loads(rr.read_text(encoding='utf-8'))['keys'])
     return k
 
 
