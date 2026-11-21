@@ -1,0 +1,5 @@
+With a stalled TLS receiver and an actual send buffer of 4096 bytes, median ciphertext accepted before withdrawal acknowledgement is 523846 bytes; acknowledgement p95/max is 6.95/12.75\,ms (20 trials).
+
+With a stalled TLS receiver and an actual send buffer of 262144 bytes, median ciphertext accepted before withdrawal acknowledgement is 1022971 bytes; acknowledgement p95/max is 7.21/9.06\,ms (20 trials).
+
+Neither setting accepts application bytes after acknowledgement. Accepted ciphertext can already reside at the peer or in TLS/TCP buffers: it is not a measurement of bytes still unsent by the kernel. The post-acknowledgement kernel snapshots are delayed observations; an exact unsent-at-ack count remains unmeasured. Shrinking the send buffer reduces observed accepted exposure in this schedule, but cannot guarantee recall.

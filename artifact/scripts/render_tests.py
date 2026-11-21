@@ -47,10 +47,36 @@ SCHEMA = {
     "devModel": "phone model(s)", "devAndroid": "Android version(s)", "devTrials": "TLS barrier trials",
     "devEarlyComplete": "early-check requests completed after withdrawal",
     "devFenceAfterAck": "fence trials accepting ciphertext after acknowledgement",
+    # Added 21/11 (PR #2, answers C1 and C3). Lifecycle on the two rented phones, pooled over phones and the pending,
+    # kill and revoke schedules, pre-registered denominators.
+    "devLifeEnqViol": "menqueue violating trials", "devLifeEnqN": "menqueue analysed trials",
+    "devLifeFenceViol": "mfence violating trials", "devLifeFenceN": "mfence analysed trials",
+    # Test 1 on a personal phone, same meaning as race*.
+    "racePhoneModel": "phone model", "racePhoneAndroid": "Android version", "racePhoneTrials": "trials per profile and variant",
+    "racePhoneEdgeLayer": "EDGE: early violating trials", "racePhoneEdgeFence": "EDGE: fence violating trials",
+    "racePhoneThreegLayer": "3G: early", "racePhoneThreegFence": "3G: fence",
+    "racePhoneLteLayer": "LTE: early", "racePhoneLteFence": "LTE: fence",
+    "racePhonePredPct": "Eq. 2 predicted early violation rate", "racePhoneObsPct": "observed early violation rate",
+    # B12 per-build trial counts (mutTrials is the minimum and is not cited).
+    "mutBaseTrials": "base trials", "mutOneTrials": "M1 trials", "mutTwoTrials": "M2 trials",
+    "mutThreeTrials": "M3 trials", "mutBaseDeficit": "base permitted items undelivered",
+    # B2, AirGuard real app, pending + kill + reboot pooled; unknowns from the pre-registered oracle v2 and post-hoc v3.
+    "airN": "trials per build", "airStockViol": "stock violating trials", "airFenceViol": "fenced violating trials",
+    "airFenceUnknownV": "fenced unknown trials, oracle v2", "airFenceUnknownVThree": "fenced unknown trials, oracle v3",
+    # B3, split policy.
+    "splitTrials": "trials per cell", "splitPreRecovered": "requests recovered when no chunk was accepted",
+    "splitPostRecovered": "requests recovered after a chunk was accepted",
+    "splitAfterAck": "B3 trials with bytes accepted after the acknowledgement",
+    # Counts the paper cites that the first schema missed.
+    "lifeFourteenEnq": "Android 14 menqueue violating trials", "lifeFifteenEnq": "Android 15 menqueue violating trials",
+    "mutBaseLeak": "base build leaking trials", "mutThreeLeak": "M3 leaking trials",
+    "sweepLogged": "B4 v3 trials logged", "sweepLockStalls": "B4 v3 trials where a sender waited the full deadline for the lock",
 }
 
 
 def esc(v):
+    if isinstance(v, float):
+        v = f"{v:.1f}"  # summary.json carries raw floats; the paper prints one decimal
     return re.sub(r"([%&#_$])", r"\\\1", str(v))
 
 

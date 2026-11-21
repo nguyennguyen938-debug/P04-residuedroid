@@ -2,12 +2,11 @@
 Android apps persist outboxes and jobs that can outlive a user's withdrawal.
 The enforcement problem is not just when to check a toggle: derived data must retain its source policy, and old data must remain distinguishable after consent is granted again.
 \sys combines durable source epochs, labels copied with persisted data, and a policy check serialized with each bounded socket write.
-We separate collection-only opt-outs, restrictions and deletion contracts, and evaluate them with ten controlled workloads.
-A \corpusN-app static screen identifies candidate deferred paths, not runtime violations.
-The lifecycle experiments expose distinct lineage, epoch and retry failures; their rates depend on the fixture mix.
-Matched layered checks with the same metadata show no confirmed disadvantage in the measured lifecycle schedules.
-The late fence instead closes a narrow residual race: in 20 HTTPS trials with withdrawal after TLS buffering, an early check completes every request whereas the fence accepts no application ciphertext after acknowledgement.
-ACRA and Matomo embeddings exercise persisted-report and queued-dispatcher paths.
-The guarantee requires complete mediation and complete labels; a valid but incomplete developer label bypasses it.
-Already accepted bytes can arrive later, and emulator measurements do not establish physical-device energy or deployment behavior.
+We separate collection-only opt-outs, restrictions and deletion contracts, and judge each workload against the contract it states.
+A \corpusN-app static screen identifies candidate deferred paths, not runtime violations; of the \promiseApps{} apps with a consent signal, \promisePending{} word their switch as sending or sharing data.
+In lifecycle schedules, checks that receive the same metadata show no confirmed disadvantage against the fence.
+When the withdrawal lands during an upload, a check placed before the request lets the socket accept bytes after the acknowledgement in \raceObsPct{}\% of emulator trials and \racePhoneObsPct{}\% on a phone; the fence does so in none.
+In a real app, the stock build shares data collected during an opt-out in \airStockViol{} of \airN{} trials and the fenced build in \airFenceViol{}.
+Label mutants show that a valid but incomplete label bypasses the fence and that a test-time label check catches it.
+Already accepted bytes can arrive later, and we make no energy claim.
 \end{abstract}

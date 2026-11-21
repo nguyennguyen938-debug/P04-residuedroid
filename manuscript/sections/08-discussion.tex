@@ -37,6 +37,8 @@ trials. Early net-loss trials used a connectivity cut that did not reach the app
 or an unverified cut (\nInvalid{} of \nTrialsTotal{}), and ran replacement trials. Shared exclusions preserve within-trial pairing but can still select easier schedules.
 \emph{Construct.} Stream-wrapper ordering uses a pre-write log and can undercount baseline handoffs. The channel tests separate authorization, attempts, acceptance and receipt; missing return evidence is unknown. The tags are synthetic tracers, so we test data provenance, not semantic
 sensitivity.
-\emph{External.} We used Android~13 emulators for lifecycle and SDK tests and an Android~15 emulator for HTTP/TLS transport tests. The main campaign uses
-JobScheduler. The WorkManager and AlarmManager runs are smaller (three variants, four
-schedules) and use our fixture's workloads, not third-party apps. No handset was available. Physical devices, OEM scheduling and production integrations remain unvalidated.
+\emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one
+device, the personal phone ran on one network, and Android~15 froze a background sender, so the phone race kept the
+sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
+(three variants, four schedules). One real app (AirGuard) is integrated; its other send paths were not audited, and the
+receivers are test servers, not production services. Process CPU is not energy, and we make no energy claim.

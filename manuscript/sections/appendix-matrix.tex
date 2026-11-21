@@ -16,4 +16,13 @@ TLS suite & 11 conditions $\times$ 20 trials; Android~15 & TLS~1.2, \texttt{SSLE
 ACRA-P & ACRA~5.14.2 with explicit setting; Android~13 & ACRA sender process, shared HTTP adapter & opt-out invalidating queued reports & reboot recovery & request receipt & ACRA-R is a separate cohort\\
 ACRA preference-only & stock vs.\ preference-aware sender & ACRA sender & collection-only opt-out & reboot discards job & request receipt & no queued-deletion promise\\
 Matomo & Matomo~4.4 AAR, pre-send barrier & Matomo dispatcher over HTTP & invalidate queued events & none & request receipt & disk cache, HTTPS, production app untested\\
+\midrule
+Natural race, emulator & early vs.\ fence; \texttt{netem}-shaped uplink & HTTP over \texttt{SocketChannel} & opt-out covering pending data & none & accepted bytes & pilots failing the shaping gate excluded\\
+Natural race, phone & \racePhoneModel{}, Android~\racePhoneAndroid{}; sender in foreground & same, receiver on a shaped cloud host & same & none & accepted bytes & one device on one network\\
+AirGuard & stock vs.\ fenced build; emulator & app's worker; fenced build via the HTTP transport & sharing switch, covers queued data & app does not retry & request receipt with guest order & synthetic beacons; test sink; other send paths not audited\\
+Split policy & TLS fixture with split & TLS~1.2 over \texttt{SocketChannel} & opt-out covering pending data & one split per attempt & accepted bytes & none\\
+Label mutants & fixture with \texttt{regrant\_agg}; base and 3 mutants & HTTP over \texttt{SocketChannel} & fixture tenants & retries keep epochs & labels vs.\ traced content & earlier run without \texttt{regrant\_agg} reported alongside\\
+Lifecycle, Android~14/15 & 3 variants; two AVDs & HTTP over \texttt{SocketChannel} & fixture tenants & as matched campaign & accepted bytes & replaced trials by the card's rule\\
+Rented phones & \devModel{}; Android~\devAndroid{} & TLS and HTTP over \texttt{SocketChannel} & fixture tenants & as matched campaign & accepted bytes & one device per model; TLS rerun after a deadline artifact, both reported\\
+Cost sweep & chunk size and sender count grid & HTTP over \texttt{SocketChannel} & none & none & probe acknowledgement, process CPU & invalid trials replaced by whole blocks\\
 \bottomrule\end{tabular}\end{table*}

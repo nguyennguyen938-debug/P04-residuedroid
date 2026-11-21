@@ -22,8 +22,4 @@ TLS / two fences & 321.8 & 265.5 \\
 
 \paragraph{Cost and residue.} Table~\ref{tab:transport-cost} measures the implemented chunk path, with a matched early-check transport. Cells run in fixed block order on a shared host, so lower measured latency is not evidence that fencing accelerates uploads. Two-process cells include contention for the same policy lock. These CPU observations are not physical energy measurements.
 
-With a stalled TLS receiver and an actual send buffer of 4096 bytes, median ciphertext accepted before withdrawal acknowledgement is 523846 bytes; acknowledgement p95/max is 6.95/12.75\,ms (20 trials).
-
-With a stalled TLS receiver and an actual send buffer of 262144 bytes, median ciphertext accepted before withdrawal acknowledgement is 1022971 bytes; acknowledgement p95/max is 7.21/9.06\,ms (20 trials).
-
-Neither setting accepts application bytes after acknowledgement. Accepted ciphertext can already reside at the peer or in TLS/TCP buffers: it is not a measurement of bytes still unsent by the kernel. The post-acknowledgement kernel snapshots are delayed observations; an exact unsent-at-ack count remains unmeasured. Shrinking the send buffer reduces observed accepted exposure in this schedule, but cannot guarantee recall.
+With a stalled receiver, how much ciphertext the socket accepted before acknowledgement depends on the send buffer; neither buffer setting accepted application bytes after acknowledgement (Appendix~\ref{app:socket}).
