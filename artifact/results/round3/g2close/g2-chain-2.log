@@ -1,0 +1,25 @@
+23:23 start (G2a then G2b)
+[autorun] g2close-pilot (pilot) stages=1 deadline=3 h
+  - calibration: python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes fence --calibrate 3 --out results/round3/g2close/pilot-calib2  -> artifact/results/round3/g2close/pilot-calib2
+[autorun] DONE; guard=0
+2 MiB medians (s): edge 151.402325948 umts 137.442592607 lte 0.318925334
+23:42 G2a throttle gate passed; mechanism pilot next
+[autorun] g2close-mech (pilot) stages=1 deadline=3 h
+  - mechanism: python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes early,close,fence --trials 1 --durations results/round3/g2close/pilot-calib2/calibration.json --out results/round3/g2close/pilot-mech  -> artifact/results/round3/g2close/pilot-mech
+[autorun] DONE; guard=0
+trials 27 invalid [] close 9 no CANCEL [] no ok reply []
+23:53 G2a mechanism gate passed; starting G2a final
+[autorun] g2close-final (final) stages=1 deadline=8 h
+  - final: python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes early,close,fence --trials 10 --durations results/round3/g2close/pilot-calib2/calibration.json --out results/round3/g2close/final  -> artifact/results/round3/g2close/final
+[autorun] DONE; guard=0
+01:50 G2a final autorun exit 0
+[autorun] g2layer-pilot (pilot) stages=1 deadline=2 h
+  - pilot: python3 followup/campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build --variants stock,fenced,layered --schedules pending,kill,reboot,netloss --seed g2layer-20261121 --trials 1 --out results/round3/g2layer/pilot  -> artifact/results/round3/g2layer/pilot
+[autorun] DONE; guard=0
+valid ['pen000', 'kil000', 'reb000', 'net000'] warm-up {'stock': {'s': 2.0, 'ok': True}, 'fenced': {'s': 1.6, 'ok': True}, 'layered': {'s': 1.0, 'ok': True}} donate ports [8795, 8796, 8797]
+01:54 G2b pilot gate passed; starting G2b final
+[autorun] g2layer-final (final) stages=1 deadline=6 h
+  - final: python3 followup/campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build --variants stock,fenced,layered --schedules pending,kill,reboot,netloss --seed g2layer-20261121 --trials 20 --out results/round3/g2layer/final  -> artifact/results/round3/g2layer/final
+[autorun] DONE; guard=0
+03:00 G2b final autorun exit 0
+03:00 done

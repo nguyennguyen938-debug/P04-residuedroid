@@ -75,4 +75,40 @@ B7 freeze: reopened for group 2 only; frozen round-3 data are untouched; G2 outp
   New freeze `frozen-g2-v2` (only race_suite.py changed); next calibration `pilot-calib2`.
 
 ## 6. Outcome (after the run)
-(to be filled)
+- Runs: pilot-calib2 (23:23–23:42, 27/27 SEND_OK; throttle gate passed), pilot-mech (23:42–23:53; mechanism gate passed: 27
+  valid, every close trial CANCEL + reply ok), final 21/11 23:53 – 22/11 01:50 (autorun g2close-final, guard 0). Logged /
+  invalid / valid / analysed / unused: 270 / 0 / 270 / 30 per (profile, mode) / 0; no replacement. Data `results/round3/g2close/final`,
+  analysis `results/round3/g2close/analysis/g2close-summary.json`.
+- Violating trials (bytes accepted after WITHDRAW_ACK; Wilson 95%):
+
+  | Profile | early | close | fence |
+  |---|---|---|---|
+  | edge | 20/30 [0.488, 0.808] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+  | umts | 21/30 [0.521, 0.833] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+  | lte | 9/30 [0.167, 0.479] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+
+  Paired per (block, profile, size): close vs fence 0/0 in all 90 pairs (zero vs zero: no confirmed difference in 90 paired
+  trials, not equivalence); close vs early: 50 pairs early violated and close did not, 40 neither, none the other way.
+  Bytes accepted after the ack: early 12.1 MB / 11.0 MB / 5.8 MB (edge / umts / lte), close and fence 0.
+- Receiver side, cut trials (ack before the request was handed off): early 20/20, 21/21, 9/9 logged complete; close 0/19,
+  0/20, 0/9; fence 0/21, 0/22, 0/9.
+- Cost (descriptive):
+  - Ends: close SEND_ERROR 27 / 30 / 9 of 30 (edge / umts / lte) vs fence 21 / 22 / 9; early all SEND_OK.
+  - Withdrawal latency WITHDRAW_REQUEST → WITHDRAW_ACK, median / p95 / max in ms: close 3.46 / 8.66 / 9.35 (edge), 3.23 / 8.85 /
+    10.01 (umts), 2.53 / 3.57 / 4.76 (lte); fence 0.93 / 1.43 / 2.40, 0.93 / 1.54 / 1.85, 0.95 / 3.58 / 3.80; early 0.91 / 1.45 /
+    1.55, 0.99 / 1.32 / 1.33, 0.86 / 1.21 / 1.54. Cancellation replies: 90/90 ok, 0 timeouts; sockets found open 66/90.
+  - In-flight write at the ack (first post-ack chunk attempted before the ack): early 13 / 14 / 2; close and fence 0.
+- Exploratory (`followup/posthoc_g2close.py` → `results/round3/g2close/posthoc/posthoc.json`; defined after the data were seen; not a pre-registered estimand): among trials **not** cut (request handed off
+  before the ack), close ended SEND_ERROR in 18 trials whose request the receiver had logged complete (24 others SEND_OK);
+  fence 38/38 and early 40/40 such trials ended SEND_OK. Closing the socket also aborts requests that already reached the
+  server while the app waits for the response, so the app sees a failure for delivered data (a retry would duplicate it).
+  Latency by segment (close, ms, median / max): request → durable 0.85 / 2.47, durable → socket closed in the sender 1.43 /
+  7.10, closed → reply 0.52 / 4.26, reply → ack 0.09 / 0.33.
+- Comparison with B10 (descriptive, different build and block order, same u per cell): early 20 / 21 / 9 here vs 21 / 20 / 10
+  in B10; fence 0/30 in both.
+- Reading: with the withdrawal waiting for the cancellation, an early check plus socket close stopped bytes after the ack as
+  the fence did, in these 270 trials. It needs a cancellation path to every in-flight request (here a cross-process
+  broadcast and a token registered before the check), adds a few ms to the acknowledgement, and aborts requests already
+  handed off. Not tested: an asynchronous cancel that does not hold the ack, or cancellation in a real app.
+- Deviations: one harness fix after the failed pilot-calib (setup timeout), before any trial (Pilot log). Negative or null:
+  close 0/30 and fence 0/30 are not impossibility guarantees (upper bound 11.4% per cell).

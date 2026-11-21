@@ -476,3 +476,23 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-21 23:04 ABORT autorun g2close-pilot: ABORT(calibration exit 1); guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
 - 2026-11-21 23:04 g2-chain: G2a calibration pilot failed; chain stopped
 - 2026-11-21 23:04 G2a pilot-calib ABORT before any send: setup `init` broadcast timed out (60 s). Diagnostic boot of P04AvdA on 5660 (23:05–23:07, stopped after): init ok, cold start 83 s; host load 10–12 from other user applications (not touched). Fix: race_suite setup init timeout 300 s + setup_init_s in meta (harness only; B2 pilot-1 precedent). New freeze results/round3/g2close/frozen-g2-v2; calibration rerun as pilot-calib2. pilot-calib kept (excluded).
+- 2026-11-21 23:23 g2-chain relaunch after pilot-calib fix; user closed the games; host load 1-min 3.87
+- 2026-11-21 23:23 g2-chain: start (G2a then G2b)
+- 2026-11-21 23:23 LAUNCH autorun g2close-pilot (pilot) card artifact/plans/g2close-card.md; stages ['calibration']; owned ['emulator-5660']; log artifact/results/round3/g2close/autorun-g2close-pilot.log.
+- 2026-11-21 23:42 DONE autorun g2close-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+- 2026-11-21 23:42 g2-chain: G2a throttle gate passed; mechanism pilot next
+- 2026-11-21 23:42 LAUNCH autorun g2close-mech (pilot) card artifact/plans/g2close-card.md; stages ['mechanism']; owned ['emulator-5660']; log artifact/results/round3/g2close/autorun-g2close-mech.log.
+- 2026-11-21 23:53 DONE autorun g2close-mech: DONE; guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+- 2026-11-21 23:53 g2-chain: G2a mechanism gate passed; starting G2a final
+- 2026-11-21 23:53 LAUNCH autorun g2close-final (final) card artifact/plans/g2close-card.md; stages ['final']; owned ['emulator-5660']; log artifact/results/round3/g2close/autorun-g2close-final.log.
+- 2026-11-22 01:50 DONE autorun g2close-final: DONE; guard exit 0; SHUTDOWN ['emulator-5660']. Outcomes not inspected by the runner.
+- 2026-11-22 01:50 g2-chain: G2a final autorun exit 0
+- 2026-11-22 01:50 LAUNCH autorun g2layer-pilot (pilot) card artifact/plans/g2layer-card.md; stages ['pilot']; owned ['emulator-5666']; log artifact/results/round3/g2layer/autorun-g2layer-pilot.log.
+- 2026-11-22 01:54 DONE autorun g2layer-pilot: DONE; guard exit 0; SHUTDOWN ['emulator-5666']. Outcomes not inspected by the runner.
+- 2026-11-22 01:54 g2-chain: G2b pilot gate passed; starting G2b final
+- 2026-11-22 01:55 LAUNCH autorun g2layer-final (final) card artifact/plans/g2layer-card.md; stages ['final']; owned ['emulator-5666']; log artifact/results/round3/g2layer/autorun-g2layer-final.log.
+- 2026-11-22 03:00 DONE autorun g2layer-final: DONE; guard exit 0; SHUTDOWN ['emulator-5666']. Outcomes not inspected by the runner.
+- 2026-11-22 03:00 g2-chain: G2b final autorun exit 0
+- 2026-11-22 03:00 g2-chain: done
+- 2026-11-22 03:0x G2a DONE (final 21/11 23:53 – 22/11 01:50, 270 logged, 0 invalid, 30 per (profile, mode)): violating trials early 20/21/9 of 30 (edge/umts/lte), close 0/30, fence 0/30; receiver complete among cut trials early 50/50, close 0/48, fence 0/52; close ack latency median 2.5–3.5 ms vs fence ~0.9 ms; 90/90 cancel replies ok. Exploratory (posthoc_g2close.py): close ended SEND_ERROR on 18 uncut requests the receiver had logged complete; fence 0. Raw trials.jsonl (176 MB) committed as .gz + sha256 (pilots too); analysis from the gzip byte-identical.
+- 2026-11-22 03:0x G2b DONE (final 01:55–03:00, 80 logged, 0 invalid): stock 20/20 violating in pending/kill/reboot, fenced 0/20, layered 0/20; netloss 0 for all (deficit 80/80 beacons each); unknown 0 (v2 and v3). Stop points: layered 60 at the early check, fenced 60 in the transport (posthoc_g2layer.py). Close-out: no emulator, sink or caffeinate left (adb devices empty); EXCLUSIONS regenerated (G2 rows, 0 without reason); summary.json unchanged (no SCHEMA keys for G2). B7 data freeze RE-DECLARED: no device or emulator run after this point.

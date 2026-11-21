@@ -49,4 +49,31 @@ per trial instead of two lengthen each trial and shift the apps' own worker timi
 check point, so a race inside an upload is not exercised.
 
 ## 6. Outcome (after the run)
-(to be filled)
+- Runs: pilot 22/11 01:50–01:54 (gate passed: 4/4 valid, warm-up ok for the three builds, donate requests at 8795/8796/8797);
+  final 01:55–03:00 (autorun g2layer-final, guard 0). Installed hashes in meta.json: stock e53e5254…, fenced 30eb823f… (the B2
+  builds), layered f450a506…. Logged / excluded / valid / analysed / unused: 80 trials (three builds each) / 0 / 80 / 80 / 0.
+  Data `results/round3/g2layer/final`; analyses `analysis` (v2, primary) and `analysis-v3` (device order).
+- Violating trials (v2; Wilson 95%), 20 per cell; v3 gives the same counts:
+
+  | Schedule | stock | fenced | layered |
+  |---|---|---|---|
+  | pending | 20/20 [0.839, 1] | 0/20 [0, 0.161] | 0/20 [0, 0.161] |
+  | kill | 20/20 [0.839, 1] | 0/20 [0, 0.161] | 0/20 [0, 0.161] |
+  | reboot | 20/20 [0.839, 1] | 0/20 [0, 0.161] | 0/20 [0, 0.161] |
+  | netloss | 0/20 [0, 0.161] | 0/20 [0, 0.161] | 0/20 [0, 0.161] |
+
+  Unknown trials: 0 in every cell (v2 and v3). Deficit: 0 in pending/kill/reboot for every build; netloss 80/80 beacons
+  (20/20 trials) for every build, as in B2 (the app does not retry a failed run).
+- layered vs fenced: zero vs zero in every schedule (no confirmed difference in 20 paired trials per schedule, not
+  equivalence). Both delivered every 'post' beacon in a later run (80 per schedule). Stop points (`followup/posthoc_g2layer.py`
+  → `results/round3/g2layer/posthoc/posthoc.json`, descriptive): layered stopped 60 donations at the early check (`early=1`),
+  fenced 60 in the transport (60 BLOCK events), i.e. both stopped the mixed request before any of it was sent.
+- Stock (descriptive): 'optout' beacons donated after re-consent in 20/20 trials of pending, kill and reboot (80 each), plus
+  'pre' beacons in an 'after' request in 10/20 trials of each of those schedules.
+- Comparison with B2 (descriptive; new run, three apps per trial, new order seed): violations identical (stock 20/20, fenced
+  0/20 in pending/kill/reboot; netloss 0 for all); B2 fenced had 8, 9, 9 unknown trials under v2, here 0; B2 stock had 'pre'
+  in an 'after' request in 2/20 pending trials, here 10/20 per lifecycle schedule. Not analysed further.
+- Reading: on these lifecycle schedules the withdrawal precedes the next donation, so one durable consent check before
+  sending is enough; the fence adds nothing measurable here. The fence's advantage needs a withdrawal during an upload
+  (B10, G2a, Test 1 on the phone), which this schedule set does not create.
+- Deviations: none from this card. Negative or null: 0/20 is not an impossibility guarantee (upper bound 16.1%).

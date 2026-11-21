@@ -1,0 +1,32 @@
+{
+ "estimand": "exploratory, defined after the data were seen",
+ "trials": 270,
+ "uncut_end_by_receiver": {
+  "close/SEND_ERROR/receiver_complete": 18,
+  "close/SEND_OK/receiver_complete": 24,
+  "early/SEND_OK/receiver_complete": 40,
+  "fence/SEND_OK/receiver_complete": 38
+ },
+ "close_latency_segments_ms": {
+  "WITHDRAW_REQUEST->WITHDRAW_DURABLE": {
+   "n": 90,
+   "median": 0.85,
+   "max": 2.466
+  },
+  "WITHDRAW_DURABLE->CANCEL": {
+   "n": 90,
+   "median": 1.431,
+   "max": 7.095
+  },
+  "CANCEL->CANCEL_DONE": {
+   "n": 90,
+   "median": 0.516,
+   "max": 4.261
+  },
+  "CANCEL_DONE->WITHDRAW_ACK": {
+   "n": 90,
+   "median": 0.088,
+   "max": 0.327
+  }
+ }
+}

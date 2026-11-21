@@ -1,0 +1,283 @@
+{
+ "logged": 270,
+ "invalid": [],
+ "cells": {
+  "edge/close": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 27,
+    "SEND_OK": 3
+   },
+   "after_ack_bytes": 0,
+   "cut": 19,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 3.462,
+    "p95": 8.659,
+    "max": 9.352
+   },
+   "inflight_write_at_ack": 0,
+   "cancel_replies": {
+    "ok": 30
+   },
+   "cancel_found": {
+    "live=1;closed=1": 27,
+    "live=0;closed=0": 3
+   }
+  },
+  "edge/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 20,
+   "wilson95": [
+    0.48779725813830266,
+    0.807697044731538
+   ],
+   "by_size": {
+    "32768": 4,
+    "262144": 7,
+    "2097152": 9
+   },
+   "ends": {
+    "SEND_OK": 30
+   },
+   "after_ack_bytes": 12123985,
+   "cut": 20,
+   "cut_receiver_complete": 20,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.906,
+    "p95": 1.45,
+    "max": 1.546
+   },
+   "inflight_write_at_ack": 13
+  },
+  "edge/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 21,
+    "SEND_OK": 9
+   },
+   "after_ack_bytes": 0,
+   "cut": 21,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.929,
+    "p95": 1.427,
+    "max": 2.403
+   },
+   "inflight_write_at_ack": 0
+  },
+  "lte/close": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 9,
+    "SEND_OK": 21
+   },
+   "after_ack_bytes": 0,
+   "cut": 9,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 2.531,
+    "p95": 3.568,
+    "max": 4.761
+   },
+   "inflight_write_at_ack": 0,
+   "cancel_replies": {
+    "ok": 30
+   },
+   "cancel_found": {
+    "live=1;closed=1": 9,
+    "live=0;closed=0": 21
+   }
+  },
+  "lte/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 9,
+   "wilson95": [
+    0.16664562643958933,
+    0.4787612101166018
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 9
+   },
+   "ends": {
+    "SEND_OK": 30
+   },
+   "after_ack_bytes": 5826973,
+   "cut": 9,
+   "cut_receiver_complete": 9,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.86,
+    "p95": 1.212,
+    "max": 1.535
+   },
+   "inflight_write_at_ack": 2
+  },
+  "lte/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 9,
+    "SEND_OK": 21
+   },
+   "after_ack_bytes": 0,
+   "cut": 9,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.946,
+    "p95": 3.584,
+    "max": 3.798
+   },
+   "inflight_write_at_ack": 0
+  },
+  "umts/close": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 30
+   },
+   "after_ack_bytes": 0,
+   "cut": 20,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 3.232,
+    "p95": 8.845,
+    "max": 10.013
+   },
+   "inflight_write_at_ack": 0,
+   "cancel_replies": {
+    "ok": 30
+   },
+   "cancel_found": {
+    "live=1;closed=1": 30
+   }
+  },
+  "umts/early": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 21,
+   "wilson95": [
+    0.5212387898833981,
+    0.8333543735604105
+   ],
+   "by_size": {
+    "32768": 2,
+    "262144": 9,
+    "2097152": 10
+   },
+   "ends": {
+    "SEND_OK": 30
+   },
+   "after_ack_bytes": 11036367,
+   "cut": 21,
+   "cut_receiver_complete": 21,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.994,
+    "p95": 1.319,
+    "max": 1.327
+   },
+   "inflight_write_at_ack": 14
+  },
+  "umts/fence": {
+   "trials": 30,
+   "unused": 0,
+   "violations": 0,
+   "wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "ends": {
+    "SEND_ERROR": 22,
+    "SEND_OK": 8
+   },
+   "after_ack_bytes": 0,
+   "cut": 22,
+   "cut_receiver_complete": 0,
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.933,
+    "p95": 1.544,
+    "max": 1.854
+   },
+   "inflight_write_at_ack": 0
+  }
+ },
+ "paired": {
+  "close_vs_fence": {
+   "close=0/fence=0": 90
+  },
+  "close_vs_early": {
+   "close=0/early=0": 40,
+   "close=0/early=1": 50
+  }
+ }
+}

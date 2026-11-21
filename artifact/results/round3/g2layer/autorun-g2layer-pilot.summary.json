@@ -1,0 +1,10 @@
+{
+  "id": "g2layer-pilot",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-22T01:54:55.815127+07:00",
+  "stages": [
+    "artifact/results/round3/g2layer/pilot"
+  ]
+}

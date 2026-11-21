@@ -1,0 +1,10 @@
+{
+  "id": "g2close-mech",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-21T23:53:38.199175+07:00",
+  "stages": [
+    "artifact/results/round3/g2close/pilot-mech"
+  ]
+}

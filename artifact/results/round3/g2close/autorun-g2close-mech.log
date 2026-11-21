@@ -1,0 +1,57 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 136 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5660 8798 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes early,close,fence --trials 1 --durations results/round3/g2close/pilot-calib2/calibration.json --out results/round3/g2close/pilot-mech
+23:42:48 race-umts-32768-close-0-14bc99 ['SEND_ERROR']
+23:43:08 race-edge-262144-fence-0-131dc0 ['SEND_ERROR']
+23:43:08 race-lte-2097152-fence-0-672953 ['SEND_ERROR']
+23:43:12 race-umts-32768-fence-0-ab9e0b ['SEND_OK']
+23:43:13 race-lte-262144-early-0-8870b0 ['SEND_OK']
+23:43:35 race-edge-262144-early-0-1127ff ['SEND_OK']
+23:43:44 race-umts-262144-fence-0-62b411 ['SEND_ERROR']
+23:43:48 race-edge-32768-close-0-0079ea ['SEND_ERROR']
+23:44:43 race-umts-2097152-close-0-afa12c ['SEND_ERROR']
+23:47:15 race-umts-2097152-early-0-fd43f3 ['SEND_OK']
+23:47:19 race-umts-32768-early-0-220916 ['SEND_OK']
+23:47:22 race-edge-32768-fence-0-86aef0 ['SEND_OK']
+23:47:23 race-lte-2097152-close-0-902e2c ['SEND_ERROR']
+23:49:57 race-edge-2097152-early-0-6f1943 ['SEND_OK']
+23:50:36 race-edge-2097152-close-0-c1feca ['SEND_ERROR']
+23:50:36 race-lte-32768-fence-0-4ad5c0 ['SEND_OK']
+23:50:36 race-lte-262144-fence-0-d5f7c1 ['SEND_OK']
+23:50:55 race-umts-262144-early-0-f619d3 ['SEND_OK']
+23:50:56 race-lte-262144-close-0-a7742d ['SEND_OK']
+23:50:56 race-lte-32768-early-0-1c9d94 ['SEND_OK']
+23:51:16 race-edge-262144-close-0-617ff2 ['SEND_ERROR']
+23:51:25 race-umts-262144-close-0-04c77b ['SEND_ERROR']
+23:51:29 race-edge-32768-early-0-743330 ['SEND_OK']
+23:52:08 race-edge-2097152-fence-0-efe824 ['SEND_ERROR']
+23:53:02 race-umts-2097152-fence-0-60ce88 ['SEND_ERROR']
+23:53:03 race-lte-2097152-early-0-fd4dbe ['SEND_OK']
+23:53:04 race-lte-32768-close-0-627d8d ['SEND_OK']
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5660 emu kill
+OK: killing emulator, bye bye
+OK

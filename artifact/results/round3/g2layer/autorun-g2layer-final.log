@@ -1,0 +1,114 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 137 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5666 8795 8796 8797 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build --variants stock,fenced,layered --schedules pending,kill,reboot,netloss --seed g2layer-20261121 --trials 20 --out results/round3/g2layer/final
+01:55:55 pen000 ok
+01:56:16 kil000 ok
+01:56:57 reb000 ok
+01:58:50 net000 ok
+01:59:10 pen001 ok
+01:59:30 kil001 ok
+02:00:10 reb001 ok
+02:02:02 net001 ok
+02:02:22 pen002 ok
+02:02:42 kil002 ok
+02:03:23 reb002 ok
+02:05:15 net002 ok
+02:05:35 pen003 ok
+02:05:55 kil003 ok
+02:06:32 reb003 ok
+02:08:24 net003 ok
+02:08:44 pen004 ok
+02:09:04 kil004 ok
+02:09:44 reb004 ok
+02:11:36 net004 ok
+02:11:56 pen005 ok
+02:12:17 kil005 ok
+02:12:54 reb005 ok
+02:14:46 net005 ok
+02:15:06 pen006 ok
+02:15:27 kil006 ok
+02:16:07 reb006 ok
+02:17:59 net006 ok
+02:18:19 pen007 ok
+02:18:39 kil007 ok
+02:19:16 reb007 ok
+02:21:08 net007 ok
+02:21:28 pen008 ok
+02:21:49 kil008 ok
+02:22:29 reb008 ok
+02:24:21 net008 ok
+02:24:41 pen009 ok
+02:25:01 kil009 ok
+02:25:41 reb009 ok
+02:27:33 net009 ok
+02:27:53 pen010 ok
+02:28:14 kil010 ok
+02:28:53 reb010 ok
+02:30:46 net010 ok
+02:31:06 pen011 ok
+02:31:26 kil011 ok
+02:32:06 reb011 ok
+02:33:58 net011 ok
+02:34:18 pen012 ok
+02:34:38 kil012 ok
+02:35:18 reb012 ok
+02:37:11 net012 ok
+02:37:30 pen013 ok
+02:37:51 kil013 ok
+02:38:31 reb013 ok
+02:40:23 net013 ok
+02:40:43 pen014 ok
+02:41:04 kil014 ok
+02:41:44 reb014 ok
+02:43:36 net014 ok
+02:43:56 pen015 ok
+02:44:17 kil015 ok
+02:44:57 reb015 ok
+02:46:50 net015 ok
+02:47:10 pen016 ok
+02:47:30 kil016 ok
+02:48:10 reb016 ok
+02:50:03 net016 ok
+02:50:22 pen017 ok
+02:50:43 kil017 ok
+02:51:20 reb017 ok
+02:53:12 net017 ok
+02:53:32 pen018 ok
+02:53:52 kil018 ok
+02:54:32 reb018 ok
+02:56:25 net018 ok
+02:56:45 pen019 ok
+02:57:05 kil019 ok
+02:57:45 reb019 ok
+02:59:38 net019 ok
+$ python3 artifact/followup/analyze_airguard.py artifact/results/round3/g2layer/final --out artifact/results/round3/g2layer/analysis
+rows 240, invalid 0, cells [('kill/fenced', 20), ('kill/layered', 20), ('kill/stock', 20), ('netloss/fenced', 20), ('netloss/layered', 20), ('netloss/stock', 20), ('pending/fenced', 20), ('pending/layered', 20), ('pending/stock', 20), ('reboot/fenced', 20), ('reboot/layered', 20), ('reboot/stock', 20)]
+$ python3 artifact/followup/analyze_airguard.py artifact/results/round3/g2layer/final --out artifact/results/round3/g2layer/analysis-v3 --order device
+rows 240, invalid 0, cells [('kill/fenced', 20), ('kill/layered', 20), ('kill/stock', 20), ('netloss/fenced', 20), ('netloss/layered', 20), ('netloss/stock', 20), ('pending/fenced', 20), ('pending/layered', 20), ('pending/stock', 20), ('reboot/fenced', 20), ('reboot/layered', 20), ('reboot/stock', 20)]
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5666 emu kill
+OK: killing emulator, bye bye
+OK

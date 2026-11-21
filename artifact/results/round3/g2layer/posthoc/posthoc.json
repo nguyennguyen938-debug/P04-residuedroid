@@ -1,0 +1,114 @@
+{
+ "estimand": "descriptive, after the data were seen",
+ "donated_beacons": {
+  "kill/fenced": {
+   "pre/before": 24,
+   "post/after": 80
+  },
+  "kill/layered": {
+   "post/after": 80,
+   "pre/before": 28
+  },
+  "kill/stock": {
+   "pre/after": 40,
+   "optout/after": 80,
+   "post/after": 80,
+   "pre/before": 28
+  },
+  "netloss/fenced": {
+   "pre/before": 28
+  },
+  "netloss/layered": {
+   "pre/before": 40
+  },
+  "netloss/stock": {
+   "pre/before": 8
+  },
+  "pending/fenced": {
+   "post/after": 80,
+   "pre/before": 24
+  },
+  "pending/layered": {
+   "post/after": 80,
+   "pre/before": 24
+  },
+  "pending/stock": {
+   "pre/before": 31,
+   "optout/after": 80,
+   "post/after": 80,
+   "pre/after": 40
+  },
+  "reboot/fenced": {
+   "post/after": 80,
+   "pre/before": 12
+  },
+  "reboot/layered": {
+   "post/after": 80,
+   "pre/before": 36
+  },
+  "reboot/stock": {
+   "pre/before": 34,
+   "optout/after": 80,
+   "post/after": 80,
+   "pre/after": 40
+  }
+ },
+ "trials_with_donation": {
+  "kill/fenced": {
+   "pre/before": 6,
+   "post/after": 20
+  },
+  "kill/layered": {
+   "post/after": 20,
+   "pre/before": 7
+  },
+  "kill/stock": {
+   "pre/after": 10,
+   "optout/after": 20,
+   "post/after": 20,
+   "pre/before": 7
+  },
+  "netloss/fenced": {
+   "pre/before": 7
+  },
+  "netloss/layered": {
+   "pre/before": 10
+  },
+  "netloss/stock": {
+   "pre/before": 2
+  },
+  "pending/fenced": {
+   "post/after": 20,
+   "pre/before": 6
+  },
+  "pending/layered": {
+   "post/after": 20,
+   "pre/before": 6
+  },
+  "pending/stock": {
+   "pre/before": 9,
+   "optout/after": 20,
+   "post/after": 20,
+   "pre/after": 10
+  },
+  "reboot/fenced": {
+   "post/after": 20,
+   "pre/before": 3
+  },
+  "reboot/layered": {
+   "post/after": 20,
+   "pre/before": 9
+  },
+  "reboot/stock": {
+   "pre/before": 9,
+   "optout/after": 20,
+   "post/after": 20,
+   "pre/after": 10
+  }
+ },
+ "stop_points": {
+  "fenced/BLOCK_event": 60,
+  "fenced/transport": 60,
+  "layered/early_check": 60
+ }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "g2close-final",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-22T01:50:15.262222+07:00",
+  "stages": [
+    "artifact/results/round3/g2close/final"
+  ]
+}

@@ -8,3 +8,6 @@ b4/final-v3-repl/trials.jsonl
 b4/final-v3/trials.jsonl.gz
 b4/final-v3-repl/trials.jsonl
 test1-phone/final/trials.jsonl
+g2close/final/trials.jsonl
+g2close/pilot-calib2/trials.jsonl
+g2close/pilot-mech/trials.jsonl
