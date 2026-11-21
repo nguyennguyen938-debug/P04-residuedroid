@@ -40,5 +40,7 @@ sensitivity.
 \emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one
 device, the personal phone ran on one network, and Android~15 froze a background sender, so the phone race kept the
 sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
-(three variants, four schedules). One real app (AirGuard) is integrated; its other send paths were not audited, and the
-receivers are test servers, not production services. Process CPU is not energy, and we make no energy claim.
+(three variants, four schedules). One real app (AirGuard) is integrated. A direct-call audit of both APKs finds the
+donation path mediated in the fenced build, while the app's other network call sites (map tiles, image loading,
+library internals) are not; we did not establish whether any of them can carry the donated data. The receivers are test
+servers, not production services. Process CPU is not energy, and we make no energy claim.
