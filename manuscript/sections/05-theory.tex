@@ -74,7 +74,8 @@ $c_1<\cdots<c_k$, all carrying sources invalidated by $W$, with no intervening r
 \end{aligned}\label{eq:race}
 \end{equation}
 These equations concern that schedule model; cancellations or retries that depend on
-$W$ require a different model.
+$W$ require a different model. Measured races follow the ordering of check points that the theorem predicts, but not
+its rates, because the model takes a withdrawal to act when it is issued (\S\ref{sec:eval-natural}).
 \end{theorem}
 \begin{proof}
 Place the applicable withdrawal between the passing check and the unprotected write.
