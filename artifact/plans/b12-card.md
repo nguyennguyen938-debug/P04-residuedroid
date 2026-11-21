@@ -70,3 +70,16 @@ so the M1 trigger — an aggregate holding e0 and e1 records — could not occur
   (candidate, not tested: the re-aggregated summary is correctly blocked and the oracle may count part of it as permitted).
 - Report v1 and v2 together; the README statement that pending + reboot alone reach T5 does not hold for M1 without
   `regrant_agg` (told A in PR #2).
+
+## Post-freeze diagnosis (exploratory, 21/11; frozen data only, keys unchanged)
+- Scripts: `followup/deficit_causes_runs.py` (cause rules of `deficit_causes.py`, selftest identical on the review-followup
+  cohort) → `results/mutation{,-v2}/analysis-deficit/`; `followup/m1_trigger.py` → `results/mutation-v2/analysis-m1/`.
+- Base permitted deficit (v1 44, v2 80): every missing item is tenant 3, 4, 6 or 7 in a reboot trial, cause
+  `stopped_no_restart` (job stopped by the reboot, `UpJob.onStopJob` false, process not restarted before the window closed)
+  — v1 5 trials, v2 9 trials. Not an oracle artefact; the candidate in "Outcome v2" (tenant 5 re-aggregation) is rejected.
+  Why more trials were hit in v2 is not analysed (same cause; depends on which jobs run when the reboot lands).
+- M1 16/40 non-leaking trials: the re-derived summary (newest-epoch label) reached the sink in 24/40 trials and every one of
+  them leaked (24/24); in the other 16 it never reached the sink (0/16 leaking). Pending 20/20 uploaded; reboot 4/20. In 14
+  of the 16 the post-reboot summary job prepared 1 item and wrote nothing (ChunkFence filters a blocked item without an event),
+  consistent with the job carrying the earlier epoch-0 summary, which the fence blocks correctly (not verified which tag).
+  Reading: M1's non-leaks are trigger misses (mutant path not reached), not label-check misses.

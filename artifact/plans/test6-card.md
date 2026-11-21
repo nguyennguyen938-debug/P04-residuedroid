@@ -122,3 +122,14 @@ ghi *plan không nêu*; chỗ nào chưa chốt thì là việc phải hỏi tr�
   2 policy lock deadline), P 40/40 `SEND_OK`; trial hợp lệ theo quy tắc (không harness_error); khả năng do đường receiver qua relay
   RDB tới Mac (chưa kiểm chứng) → mối đe dọa construct/external, báo cả hai máy. G: deficit hợp lệ (`legit_missing`) khác 0 ở mọi
   biến thể, P bằng 0 (trừ mstart ở cả hai) — báo nguyên số trong `matched-summary.json`, không diễn giải thêm ở đây.
+
+## Post-freeze diagnosis (exploratory, 21/11; frozen data only, no rule or key changed)
+- Script `followup/deficit_causes_runs.py test6` → `results/round3/test6/analysis-deficit/deficit-causes.json`.
+- G deficit = P deficit (240 items: `mstart` tenant 5, by design on both phones) + 532 items from exactly two trials,
+  G-p02 `pen009` and `rev017`. In both, the harness recorded `quiesced` after 10.3 s / 24.9 s (`remaining` 0) while every
+  app's jobs were still waiting their 15 s delay: no JOBSTART in any variant, 0 sink receipts. A false-zero job count from
+  `dumpsys jobscheduler` over the RDB relay is the likely cause (not verified). Harness/observation failure, not mechanism;
+  the pre-registered validity rules do not catch it; the same check finds no such trial in P, B11 or B12.
+- Sensitivity (not a validity rule): violating paired trials G pending and revoke as analysed `menqueue` 19/20, fence variants
+  0/20; without the two trials `menqueue` 19/19, fence variants 0/19. The pre-registered numbers stay the primary result;
+  C chooses for `dev*` keys (PR #2).
