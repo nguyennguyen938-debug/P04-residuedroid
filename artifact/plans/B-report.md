@@ -166,3 +166,9 @@ The unfenced baselines leak in each setting.
 | C6 | Review the B8 draft, then merge PR #2. |
 
 **Outside person:** B9 (clone + `make -C artifact all`) by 2/12.
+
+## Update after C's answers (21/11)
+- C exports the requested keys through `derived()` in `make_summary.py` on branch `c-final` (commit eba8ba0), computed from these frozen analysis outputs. B's equivalent computation was withdrawn from `b-exp` so the two branches merge cleanly. All 60 keys B computed are identical in C's `summary.json`, which has 67 keys. C's 7 extra keys also match the cards: `lifeFourteenEnq` 80, `lifeFifteenEnq` 80, `mutBaseLeak` 0, `mutThreeLeak` 0, `splitAfterAck` 0, `sweepLogged` 440, `sweepLockStalls` 1.
+- Static send-path audit of AirGuard (C's optional item): see `b2-card.md`, last section.
+  - The donation path is mediated in the fenced build, at the direct-call level.
+  - 23 other network call sites per build (maps, images, URL check, library internals) are not mediated. The paper keeps this as a limit.

@@ -12,8 +12,12 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | B10 | Test 1: payload thật, EDGE/3G/LTE, rút ngẫu nhiên | `race*` | B0 | 25/11 | DONE 19/11 (protocol v3, guest netem): 180/180 valid; early 21/20/10 of 30, fence 0/30 (card §6) | |
 | B4 | Chi phí transport + test 5 (chunk × sender) | `sweep*` | B0 | 26/11 | DONE 20/11: v3 = keys (receiver timeout 300 s; 1 invalid, 2 replacement blocks, every cell 20); v1, v2 reported (card) | cắt đầu tiên |
 | B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | DONE 20/11 v2 (regrant_agg, A approved): M1 24/40 leaking, M2 39/39, M3 0/40; keys from v2; v1 reported (card) | |
-| T6 | Test 6: Pixel 8a (Device Farm) + Galaxy M35 (RTL), TLS ×20 + lifecycle pen/kill/rev ×20 mỗi máy | `dev*` (chờ C chốt định nghĩa) | — | 28/11 | DATA DONE 19/11; Test 1 phần điện thoại (C11): DONE 21/11 trên Galaxy A06 (Android 15): fence 0/30 mọi profile, early 16/19/19 of 30 (test1-phone-card.md §6) | card `test6-card.md` §6; receiver: P USB, G relay RDB |
+| T6 | Test 6: Pixel 8a (Device Farm) + Galaxy M35 (RTL), TLS ×20 + lifecycle pen/kill/rev ×20 mỗi máy | `dev*` (chờ C chốt định nghĩa) | — | 28/11 | DONE 21/11: data 19/11; keys `dev*` (C1) + `devLife*` computed 21/11 (pending SCHEMA, C); Test 1 on a phone (C11) DONE 21/11, keys `racePhone*` (pending SCHEMA) | card `test6-card.md` §6; receiver: P USB, G relay RDB |
 | B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | DONE 19/11 (AirGuard, protocol v1): 80/80 valid; stock 20/20 violating in pen/kill/reb, fenced 0/20; netloss deficit both; unknowns reported (card Outcome) | pen, kill, reb, net (+fstop) × 20 |
 | B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | DONE 21/11: data freeze declared (all runs done: B12 v2, Test 1 phone); later changes only to summary.json keys computed by script from frozen data (C1/C3) | không chạy thêm sau mốc |
-| B8 | §6, appendix Artifact, sửa tài liệu cũ | văn bản | B7 | 2/12 | DRAFT 19/11: §6 one-line pointer + appendix "Round-3 Implementation and Harness" (body unchanged, 0 overfull/undefined); old docs fixed 19/11 (`review/artifact-revision-audit.md` is not in the repo); revisit after freeze | |
-| B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | SELF-CHECK 19/11 OK after Makefile fix (`results/round3/b9/`); still needs an outside person per plan | |
+| B8 | §6, appendix Artifact, sửa tài liệu cũ | văn bản | B7 | 2/12 | DONE 21/11: C reviewed §6 + appendix in PR #2 (C6: OK; C changes "serialises" to "serializes") | |
+| B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | SELF-CHECK 19/11 OK; OPEN: an outside person runs clone + `make -C artifact all` (user finds the person) by 2/12 | |
+
+
+**Handoff 21/11:** all B runs done, data frozen 21/11, final report `plans/B-report.md`, PR #2. All keys C requested are computed
+(`summary.json` 32 keys + 28 in `summary-pending.json` until C adds them to SCHEMA). Open for B: only B9 (outside person).

@@ -1,0 +1,355 @@
+{
+  "limitations": [
+    "direct DEX calls only",
+    "no native, reflection, dynamic loading or IPC proof",
+    "method overloads merged by inherited parser",
+    "library dead code remains flagged"
+  ],
+  "apks": [
+    {
+      "apk": "realapp/airguard/build/airguard-fenced.apk",
+      "sha256": "30eb823f99b1d21a098e4a699200ec9b3e0f33b68fbafcff6abb25cf93484e84",
+      "sites": [
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->lambda$postMode$0",
+          "target": "Ljava/nio/channels/SocketChannel;->write",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->postMode",
+          "target": "Ljava/nio/channels/SocketChannel;->connect",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Landroidx/constraintlayout/core/motion/utils/Utils;->socketSend",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lcom/bumptech/glide/load/data/HttpUrlFetcher$DefaultHttpUrlConnectionFactory;->build",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lcom/bumptech/glide/load/data/HttpUrlFetcher;->loadDataWithRedirects",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lkotlin/io/TextStreamsKt;->readBytes",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lkotlinx/coroutines/internal/FastServiceLoader;->parse",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/platform/Platform;->connectSocket",
+          "target": "Ljava/net/Socket;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/platform/AndroidPlatform;->connectSocket",
+          "target": "Ljava/net/Socket;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/ws/RealWebSocket;->connect",
+          "target": "Lokhttp3/Call;->enqueue",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/Okio__JvmOkioKt;->sink",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/internal/DefaultSocket$SocketSink;-><init>",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/internal/ResourceFileSystem;->source",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/bonuspack/utils/HttpConnection;->doGet",
+          "target": "Lokhttp3/Call;->execute",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/tilesource/bing/BingMapTileSource;->getMetaData",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/tilesource/bing/BingMapTileSource;->getMetaData",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/util/CloudmadeUtil;->getCloudmadeToken",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/util/CloudmadeUtil;->getCloudmadeToken",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lretrofit2/OkHttpCall;->enqueue",
+          "target": "Lokhttp3/Call;->enqueue",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lretrofit2/OkHttpCall;->execute",
+          "target": "Lokhttp3/Call;->execute",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lde/seemoo/at_tracking_detection/util/Utility$isValidURL$2;->invokeSuspend",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lde/seemoo/at_tracking_detection/util/Utility$isValidURL$2;->invokeSuspend",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        }
+      ],
+      "approved_sites": 2,
+      "potential_bypass_sites": 23,
+      "potential_bypass_by_package": {
+        "org/osmdroid/tileprovider": 7,
+        "com/bumptech/glide": 2,
+        "okhttp3/internal/platform": 2,
+        "retrofit2/OkHttpCall": 2,
+        "de/seemoo/at_tracking_detection": 2,
+        "androidx/constraintlayout/core": 1,
+        "kotlin/io/TextStreamsKt": 1,
+        "kotlinx/coroutines/internal": 1,
+        "okhttp3/internal/ws": 1,
+        "okio/Okio__JvmOkioKt": 1,
+        "okio/internal/DefaultSocket$SocketSink": 1,
+        "okio/internal/ResourceFileSystem": 1,
+        "org/osmdroid/bonuspack": 1
+      },
+      "potential_bypass_by_target": {
+        "Ljava/net/URL;->openConnection": 7,
+        "Ljava/net/HttpURLConnection;->connect": 5,
+        "Ljava/net/Socket;->getOutputStream": 3,
+        "Ljava/net/URL;->openStream": 2,
+        "Ljava/net/Socket;->connect": 2,
+        "Lokhttp3/Call;->enqueue": 2,
+        "Lokhttp3/Call;->execute": 2
+      },
+      "callers": {
+        "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData": [
+          "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData$default"
+        ],
+        "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData$default": [
+          "Lde/seemoo/at_tracking_detection/statistics/api/Api$DefaultImpls;->donateData$default"
+        ],
+        "Lde/seemoo/at_tracking_detection/residue/FencedDonation;->send": [
+          "Lde/seemoo/at_tracking_detection/statistics/SendStatisticsWorker;->doWork"
+        ],
+        "Lorg/residuelab/transport/HttpTransport;->postMode": [
+          "Lorg/residuelab/transport/HttpTransport;->post",
+          "Lorg/residuelab/transport/HttpTransport;->postMode",
+          "Lde/seemoo/at_tracking_detection/residue/FencedDonation;->send"
+        ]
+      }
+    },
+    {
+      "apk": "realapp/airguard/build/airguard-stock.apk",
+      "sha256": "e53e52549bb02af0fdfcb73c57788e565130edefa3d6057bb0fa338d90841ca7",
+      "sites": [
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->lambda$postMode$0",
+          "target": "Ljava/nio/channels/SocketChannel;->write",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Lorg/residuelab/transport/HttpTransport;->postMode",
+          "target": "Ljava/nio/channels/SocketChannel;->connect",
+          "status": "approved transport class"
+        },
+        {
+          "caller": "Landroidx/constraintlayout/core/motion/utils/Utils;->socketSend",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lcom/bumptech/glide/load/data/HttpUrlFetcher$DefaultHttpUrlConnectionFactory;->build",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lcom/bumptech/glide/load/data/HttpUrlFetcher;->loadDataWithRedirects",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lkotlin/io/TextStreamsKt;->readBytes",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lkotlinx/coroutines/internal/FastServiceLoader;->parse",
+          "target": "Ljava/net/URL;->openStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/platform/Platform;->connectSocket",
+          "target": "Ljava/net/Socket;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/platform/AndroidPlatform;->connectSocket",
+          "target": "Ljava/net/Socket;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokhttp3/internal/ws/RealWebSocket;->connect",
+          "target": "Lokhttp3/Call;->enqueue",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/Okio__JvmOkioKt;->sink",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/internal/DefaultSocket$SocketSink;-><init>",
+          "target": "Ljava/net/Socket;->getOutputStream",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lokio/internal/ResourceFileSystem;->source",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/bonuspack/utils/HttpConnection;->doGet",
+          "target": "Lokhttp3/Call;->execute",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/modules/TileDownloader;->downloadTile",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/tilesource/bing/BingMapTileSource;->getMetaData",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/tilesource/bing/BingMapTileSource;->getMetaData",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/util/CloudmadeUtil;->getCloudmadeToken",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lorg/osmdroid/tileprovider/util/CloudmadeUtil;->getCloudmadeToken",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lretrofit2/OkHttpCall;->enqueue",
+          "target": "Lokhttp3/Call;->enqueue",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lretrofit2/OkHttpCall;->execute",
+          "target": "Lokhttp3/Call;->execute",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lde/seemoo/at_tracking_detection/util/Utility$isValidURL$2;->invokeSuspend",
+          "target": "Ljava/net/URL;->openConnection",
+          "status": "potential bypass; reachability/configuration review required"
+        },
+        {
+          "caller": "Lde/seemoo/at_tracking_detection/util/Utility$isValidURL$2;->invokeSuspend",
+          "target": "Ljava/net/HttpURLConnection;->connect",
+          "status": "potential bypass; reachability/configuration review required"
+        }
+      ],
+      "approved_sites": 2,
+      "potential_bypass_sites": 23,
+      "potential_bypass_by_package": {
+        "org/osmdroid/tileprovider": 7,
+        "com/bumptech/glide": 2,
+        "okhttp3/internal/platform": 2,
+        "retrofit2/OkHttpCall": 2,
+        "de/seemoo/at_tracking_detection": 2,
+        "androidx/constraintlayout/core": 1,
+        "kotlin/io/TextStreamsKt": 1,
+        "kotlinx/coroutines/internal": 1,
+        "okhttp3/internal/ws": 1,
+        "okio/Okio__JvmOkioKt": 1,
+        "okio/internal/DefaultSocket$SocketSink": 1,
+        "okio/internal/ResourceFileSystem": 1,
+        "org/osmdroid/bonuspack": 1
+      },
+      "potential_bypass_by_target": {
+        "Ljava/net/URL;->openConnection": 7,
+        "Ljava/net/HttpURLConnection;->connect": 5,
+        "Ljava/net/Socket;->getOutputStream": 3,
+        "Ljava/net/URL;->openStream": 2,
+        "Ljava/net/Socket;->connect": 2,
+        "Lokhttp3/Call;->enqueue": 2,
+        "Lokhttp3/Call;->execute": 2
+      },
+      "callers": {
+        "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData": [
+          "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData$default"
+        ],
+        "Lde/seemoo/at_tracking_detection/statistics/api/Api;->donateData$default": [
+          "Lde/seemoo/at_tracking_detection/statistics/api/Api$DefaultImpls;->donateData$default",
+          "Lde/seemoo/at_tracking_detection/statistics/SendStatisticsWorker;->doWork"
+        ],
+        "Lde/seemoo/at_tracking_detection/residue/FencedDonation;->send": [],
+        "Lorg/residuelab/transport/HttpTransport;->postMode": [
+          "Lorg/residuelab/transport/HttpTransport;->post",
+          "Lorg/residuelab/transport/HttpTransport;->postMode",
+          "Lde/seemoo/at_tracking_detection/residue/FencedDonation;->send"
+        ]
+      }
+    }
+  ]
+}
