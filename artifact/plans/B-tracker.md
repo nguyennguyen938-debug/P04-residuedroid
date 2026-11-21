@@ -14,10 +14,16 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 | B12 | Test 2: build + chạy mutant; thêm tham số thư mục cho `matched_oracle.py` | `mut*` | A9 | 28/11 | DONE 20/11 v2 (regrant_agg, A approved): M1 24/40 leaking, M2 39/39, M3 0/40; keys from v2; v1 reported (card) | |
 | T6 | Test 6: Pixel 8a (Device Farm) + Galaxy M35 (RTL), TLS ×20 + lifecycle pen/kill/rev ×20 mỗi máy | `dev*` (chờ C chốt định nghĩa) | — | 28/11 | DONE 21/11: data 19/11; keys `dev*` (C1) + `devLife*` computed 21/11 (pending SCHEMA, C); Test 1 on a phone (C11) DONE 21/11, keys `racePhone*` (pending SCHEMA) | card `test6-card.md` §6; receiver: P USB, G relay RDB |
 | B2 | App thật end-to-end (nếu S1 đi tiếp) | raw, `summary.json` | S1 | 28/11 | DONE 19/11 (AirGuard, protocol v1): 80/80 valid; stock 20/20 violating in pen/kill/reb, fenced 0/20; netloss deficit both; unknowns reported (card Outcome) | pen, kill, reb, net (+fstop) × 20 |
-| B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | DONE 21/11: data freeze declared (all runs done: B12 v2, Test 1 phone); later changes only to summary.json keys computed by script from frozen data (C1/C3) | không chạy thêm sau mốc |
+| B7 | Data freeze | commit raw, summary, PROTOCOL, EXCLUSIONS | tất cả | **29/11** | REOPENED 21/11 for group 2 only (G2a, G2b; leader decision); was DONE 21/11: data freeze declared (all runs done: B12 v2, Test 1 phone); later changes only to summary.json keys computed by script from frozen data (C1/C3) | không chạy thêm sau mốc |
 | B8 | §6, appendix Artifact, sửa tài liệu cũ | văn bản | B7 | 2/12 | DONE 21/11: C reviewed §6 + appendix in PR #2 (C6: OK; C changes "serialises" to "serializes") | |
+| G2a | Group 2 (PR #4, leader 21/11): early check + socket close on withdrawal, B10 v3 race, modes early/close/fence × 30 per profile | analysis JSON (no SCHEMA keys yet) | — | 29/11 | RUNNING 21/11 (chain g2-chain.sh) | card `g2close-card.md` |
+| G2b | Group 2: AirGuard layered-early build, B2 schedules × 20, three builds per trial | analysis JSON (no SCHEMA keys yet) | G2a (one emulator at a time) | 29/11 | RUNNING 21/11 (after G2a) | card `g2layer-card.md` |
 | B9 | Người ngoài clone + `make all` | log | B8 | 2/12 | SELF-CHECK 19/11 OK; OPEN: an outside person runs clone + `make -C artifact all` (user finds the person) by 2/12 | |
 
 
 **Handoff 21/11:** all B runs done, data frozen 21/11, final report `plans/B-report.md`, PR #2. All keys C requested are computed
 (`summary.json` 32 keys + 28 in `summary-pending.json` until C adds them to SCHEMA). Open for B: only B9 (outside person).
+
+**Group 2 (21/11 evening):** the leader accepted PR #4's group-2 runs. B7 is reopened for G2a and G2b only; every
+earlier dataset stays frozen and untouched. G2 outputs go to `results/round3/g2close/` and `results/round3/g2layer/`. B7 is
+re-declared after both finish.

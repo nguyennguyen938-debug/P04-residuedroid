@@ -14,6 +14,8 @@ Validity (harness fields only): no trial_error; every hook call ok; device alive
 Oracle v3 (`--order device`, post-hoc, b2-card.md "Oracle v3"): for the fenced build, a request with X-Request-ID R is ordered
 against the trial's first WITHDRAW_ACK on the guest clock (wall_ms of R's BYTES_ACCEPTED n>0): 'before' / 'after' / 'straddle'
 / 'unmatched'; 'pre' in straddle/unmatched = unknown. Stock build and the default (`--order host`) are v2 unchanged.
+Group 2 (g2layer-card.md): variants are read from meta.json (default stock, fenced); the layered build (port 8795) is
+analysed like the others, and under `--order device` it is ordered on the guest clock like the fenced build (same transport).
 Usage: analyze_airguard.py <run dir>... [--out results/round3/b2/analysis] [--n 20] [--order host|device]
 """
 import argparse, collections, json, sys
@@ -23,16 +25,16 @@ ART = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ART / 'scripts'))
 from summarize import wilson  # noqa: E402
 
-BATCH = {'00': 'pre', '01': 'optout', '02': 'post'}; PORT = {'stock': 8796, 'fenced': 8797}
+BATCH = {'00': 'pre', '01': 'optout', '02': 'post'}; PORT = {'stock': 8796, 'fenced': 8797, 'layered': 8795}
 
 
-def validity(plan, dev):
+def validity(plan, dev, variants=('stock', 'fenced')):
     acts = plan['actions']
     if any(x['a'] == 'trial_error' for x in acts): return 'trial error'
     if any(x.get('ok') is False for x in acts): return 'hook failed'
     if plan.get('device_alive_end') is not True: return 'device not alive'
-    if any(not dev.get((plan['trial'], v)) for v in ('stock', 'fenced')): return 'missing event log'
-    if any(not any(x['a'] == 'withdraw' and x.get('variant') == v for x in acts) for v in ('stock', 'fenced')): return 'no withdraw action'
+    if any(not dev.get((plan['trial'], v)) for v in variants): return 'missing event log'
+    if any(not any(x['a'] == 'withdraw' and x.get('variant') == v for x in acts) for v in variants): return 'no withdraw action'
     return None
 
 
@@ -51,15 +53,15 @@ def main():
     ap.add_argument('--n', type=int, default=20); ap.add_argument('--order', choices=['host', 'device'], default='host'); a = ap.parse_args()
     rows, invalid = [], []
     for d in map(Path, a.dirs):
-        meta = json.loads((d / 'meta.json').read_text()); nb = meta.get('nbeacons', 4)
+        meta = json.loads((d / 'meta.json').read_text()); nb = meta.get('nbeacons', 4); variants = meta.get('variants', ['stock', 'fenced'])
         plans = [json.loads(l) for l in open(d / 'schedule.jsonl') if l.strip()]
         dev = {(x['trial'], x['variant']): x['events'] for x in (json.loads(l) for l in open(d / 'device_events.jsonl') if l.strip())}
         sink = [json.loads(l) for l in open(d / 'sink/ingest.jsonl') if l.strip()] if (d / 'sink/ingest.jsonl').exists() else []
         for plan in plans:
-            why = validity(plan, dev)
+            why = validity(plan, dev, variants)
             if why: invalid.append({'trial': plan['trial'], 'reason': why}); continue
             acts = plan['actions']; t0, t1 = acts[0]['t'], acts[-1]['t']
-            for v in ('stock', 'fenced'):
+            for v in variants:
                 i = next(j for j, x in enumerate(acts) if x['a'] == 'withdraw' and x.get('variant') == v)
                 ws, we = acts[i - 1]['t'], acts[i]['t']
                 mine = [r for r in sink if r.get('port') == PORT[v] and t0 <= r['t_host'] <= t1]
@@ -68,7 +70,7 @@ def main():
                     if r.get('path') != 'donate_data' or not r.get('complete'): continue
                     ping = max((x['t_host'] for x in mine if x.get('path') == 'ping' and x['t_host'] <= r['t_host']), default=None)
                     when = 'before' if r['t_host'] < ws else 'after' if ping is not None and ping > we else 'ambiguous'
-                    if a.order == 'device' and v == 'fenced': when = guest_order(dev[(plan['trial'], v)], r.get('request'))
+                    if a.order == 'device' and v in ('fenced', 'layered'): when = guest_order(dev[(plan['trial'], v)], r.get('request'))
                     for devc in r['body'] or []:
                         uid = devc.get('uniqueId') or ''
                         b = BATCH.get(uid.split(':')[-2] if uid.startswith('p04-') else '', 'other')

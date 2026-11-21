@@ -11,6 +11,8 @@ Network: emulator console `network speed <p>` / `network delay <p>` set before e
          v3 `--shaper tc`: the console setting does not throttle this image (pilot-calib2/3), so the same profiles are applied
          in the guest instead: netem egress (upload direction) on eth0 and wlan0 at the emulator's nominal uplink rate and
          the midpoint of its delay range (edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms).
+Group 2 (g2close-card.md): mode 'close' = layered early check + cancellation path; its withdrawal broadcast carries
+         cancel=true (the app closes in-flight sockets before the ack). --apk selects the build (default: the B10 build).
 Phones: --receiver http://IP:8800 --host IP --no-root --certdir DIR (CA of the receiver cert) [--serial <adb serial>]
 Usage: race_suite.py --serial emulator-5650 [--avd P04Avd14] --out DIR (--calibrate 3 | --trials 10 --durations F)
        [--profiles edge,umts,lte] [--sizes 32768,262144,2097152] [--seed race-20261119]
@@ -32,6 +34,7 @@ p.add_argument('--token', default=os.environ.get('P04_TOKEN', ''), help='control
 p.add_argument('--host', help='phones: sink address passed to the app with each send (receiver host IP)')
 p.add_argument('--no-root', action='store_true', help='phones: no adb root (debuggable app, run-as only)')
 p.add_argument('--shaper', default='emu', choices=['emu', 'tc'], help='v3 tc: guest netem egress shaping (see Network)')
+p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-apk/rl-tls.apk', help='TLS fixture build (default: the B10 build)')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
@@ -141,7 +144,7 @@ RADIO = {}
 if a.radio:
     adb('shell', 'svc wifi disable'); adb('shell', 'svc data enable'); time.sleep(8)
     RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"; true').strip()[:400]}   # metadata only: no match must not abort
-apk = A / 'fixture/build/tls-apk/rl-tls.apk'
+apk = a.apk
 adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
 adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
@@ -174,7 +177,7 @@ def trial(block, profile, size, mode, u):
         if u is not None:                       # no barrier: withdraw at W = u * D after the send was issued
             time.sleep(max(0.0, t_send + u * D - time.monotonic()))
             r['withdraw_host_offset_s'] = time.monotonic() - t_send
-            r['withdraw'] = bc('withdraw', id, remote=True)
+            r['withdraw'] = bc('withdraw', id, remote=True, **({'cancel': True} if mode == 'close' else {}))
         end = time.monotonic() + deadline / 1000 + 20
         while time.monotonic() < end:
             ev = events()

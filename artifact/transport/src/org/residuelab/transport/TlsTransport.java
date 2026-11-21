@@ -21,6 +21,13 @@ public final class TlsTransport {
     public static void post(SSLContext ctx,String host,int port,String path,byte[] body,File lock,
             HttpTransport.Policy policy,boolean fenced,HttpTransport.Events events,String request,
             int sendBuffer,int timeoutMillis)throws Exception {
+        post(ctx,host,port,path,body,lock,policy,fenced,events,request,sendBuffer,timeoutMillis,null);
+    }
+    /** As above; onOpen (may be null) receives the channel right after it is opened, before connect. Used only by the
+     * group-2 comparator (an early check plus a cancellation path that closes the socket); ResidueDroid does not use it. */
+    public static void post(SSLContext ctx,String host,int port,String path,byte[] body,File lock,
+            HttpTransport.Policy policy,boolean fenced,HttpTransport.Events events,String request,
+            int sendBuffer,int timeoutMillis,java.util.function.Consumer<SocketChannel> onOpen)throws Exception {
         if(!path.matches("/[A-Za-z0-9/_-]*")||!request.matches("[A-Za-z0-9_-]+"))throw new IOException("invalid request");
         long deadline=System.nanoTime()+timeoutMillis*1000000L;
         String prefix="request="+request+";transport=tls12;";
@@ -30,6 +37,7 @@ public final class TlsTransport {
         int packet=engine.getSession().getPacketBufferSize(),app=engine.getSession().getApplicationBufferSize();
         ByteBuffer incoming=ByteBuffer.allocate(packet*2),outgoing=ByteBuffer.allocate(packet*2),plain=ByteBuffer.allocate(app*2);
         try(SocketChannel ch=SocketChannel.open();Selector selector=Selector.open()) {
+            if(onOpen!=null)onOpen.accept(ch);
             ch.configureBlocking(false);ch.socket().setSendBufferSize(sendBuffer);
             events.emit("SOCKET_CONFIG",prefix+"requested_sndbuf="+sendBuffer+";actual_sndbuf="+ch.socket().getSendBufferSize());
             SelectionKey key=ch.register(selector,SelectionKey.OP_CONNECT);ch.connect(new InetSocketAddress(host,port));

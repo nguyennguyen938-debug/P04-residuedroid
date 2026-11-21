@@ -1,0 +1,59 @@
+{
+ "id": "g2close-mech",
+ "kind": "pilot",
+ "card": "artifact/plans/g2close-card.md",
+ "deadline_hours": 3,
+ "env": {
+  "ANDROID_HOME": "~/Library/Android/sdk",
+  "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+  "ANDROID_AVD_HOME": "~/.android/avd",
+  "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+  "AVDS": "P04AvdA",
+  "IMAGES": "33",
+  "PORTS": "5660 8798"
+ },
+ "owned_serials": [
+  "emulator-5660"
+ ],
+ "pre": [
+  "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+ ],
+ "stages": [
+  {
+   "name": "mechanism",
+   "cwd": "artifact",
+   "cmd": [
+    "python3",
+    "followup/race_suite.py",
+    "--radio",
+    "--shaper",
+    "tc",
+    "--serial",
+    "emulator-5660",
+    "--avd",
+    "P04AvdA",
+    "--certdir",
+    "/Users/nguyennhatduy/.p04/racecert",
+    "--apk",
+    "fixture/build/g2close-apk/rl-tls.apk",
+    "--profiles",
+    "edge,umts,lte",
+    "--sizes",
+    "32768,262144,2097152",
+    "--seed",
+    "race-20261119",
+    "--modes",
+    "early,close,fence",
+    "--trials",
+    "1",
+    "--durations",
+    "results/round3/g2close/pilot-calib/calibration.json",
+    "--out",
+    "results/round3/g2close/pilot-mech"
+   ],
+   "out": "artifact/results/round3/g2close/pilot-mech"
+  }
+ ],
+ "post": [],
+ "guard_after": true
+}
