@@ -1,0 +1,10 @@
+{
+ "gate": false,
+ "medians_2mib": [
+  null,
+  null,
+  null
+ ],
+ "block_upper_min": 1.9244615157445273,
+ "blocks": 10
+}

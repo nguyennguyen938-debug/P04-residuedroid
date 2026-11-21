@@ -26,6 +26,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/b3/pilot-1': ('gate failed on a harness bug (suite waited for a SPLIT the app correctly never emits)', 'protocol v2: end predicate'),
     'round3/b3/pilot-2': ('gate passed', 'none'),
     'round3/b4/pilot-1': ('mechanism check of the sweep', 'none'),
+    'round3/b4/pilot-v3': ('protocol v3 pilot (receiver recv timeout 300 s), gate passed', 'none'),
     'round3/b10/pilot-calib': ('throttle gate failed: console netspeed did not shape the AVD Wi-Fi path', 'protocol v2: --radio'),
     'round3/b10/pilot-calib2': ('aborted before any send (metadata `dumpsys | grep` exit 1)', 'metadata line made non-fatal'),
     'round3/b10/pilot-calib3': ('throttle gate failed again: console preset does not shape eth0', 'protocol v3: guest netem shaper'),
@@ -37,6 +38,10 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/b2/pilot-3': ('check of the driver fix before the final (gate in b2-card.md)', 'none'),
     'round3/b2/pilot-3-analysis': ('analysis of pilot-3 (pilot)', '—'),
     'mutation/pilot-base': ('B12 base pilot, I0 gate', 'none'),
+    'round3/test1-phone/pilot-calib-2': ('phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15)', 'race_suite keeps the app in the foreground on phones (launch Main before each send)'),
+    'round3/test1-phone/pilot-calib-3': ('phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final', 'none'),
+    'round3/test1-phone/pilot-calib-1': ('phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast', 'race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py'),
+    'mutation-v2/pilot-base': ('B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed', 'none'),
 }
 
 
@@ -65,13 +70,14 @@ def trial_rows():
         inv = [f"{x['instance']}/{x['trial']}: {x['reason']}" for x in b11['invalid_oracle_rules']] + [f"{x['instance']}/{x['trial']}: {x['reason']}" for x in b11['invalid_extra']]
         n = sum(v['analysed_paired_trials'] for v in b11['avds'].values()) + len(inv) + len(b11['unused_valid'])
         out.append(('Test 4 / B11 (Android 14 + 15)', n, inv, len(b11['unused_valid']), 'b11/analysis'))
-    mut = load('mutation/analysis/mutation-summary.json')
-    if mut:
-        for m, v in mut['mutants'].items():
-            inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
-            out.append((f'Test 2 / B12 {m}', v['valid_trials'] + len(inv), inv, 0, 'mutation/analysis'))
+    for ver, f in (('v1', 'mutation/analysis'), ('v2 (keys)', 'mutation-v2/analysis')):
+        mut = load(f + '/mutation-summary.json')
+        if mut:
+            for m, v in mut['mutants'].items():
+                inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
+                out.append((f'Test 2 / B12 {ver} {m}', v['valid_trials'] + len(inv), inv, 0, f))
     for name, f in (('B3 split policy', 'round3/b3/analysis/b3-summary.json'), ('Test 5 / B4 v1', 'round3/b4/analysis/sweep-summary.json'),
-                    ('Test 5 / B4 v2 (keys)', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json')):
+                    ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json'), ('Test 1 phone (Galaxy A06, Android 15)', 'round3/test1-phone/analysis/race-summary.json')):
         d = load(f)
         if d: out.append((name, d['logged'], [f"{x['trial']}: {x['reason']}" for x in d['invalid']], sum(c.get('unused', 0) for c in d['cells'].values()), str(Path(f).parent.relative_to('round3'))))
     b2 = load('round3/b2/analysis/airguard-summary.json')
@@ -90,13 +96,13 @@ def main():
     for name, n, inv, unused, src in trial_rows():
         L.append(f"| {name} | {n} | {len(inv)}{': ' + '; '.join(inv) if inv else ''} | {unused} | `{src}` |")
     L += ['', '## Pilots and discarded runs', '', '| Directory | What happened | Change caused |', '|---|---|---|']
-    dirs = sorted(str(p.relative_to(R)) for base in (R / 'round3', R / 'mutation') for p in base.rglob('*')
+    dirs = sorted(str(p.relative_to(R)) for base in (R / 'round3', R / 'mutation', R / 'mutation-v2') for p in base.rglob('*')
                   if p.is_dir() and (p.name.startswith('pilot') or '_INVALID_' in p.name))
     for d in dirs:
         what, change = WHY.get(d, ('reason missing', '—'))
         L.append(f'| `{d}` | {what} | {change} |')
-    L += ['', 'Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window; v2 is the',
-          'estimand) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.', '']
+    L += ['', 'Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window) and v2 final',
+          '(`b4/final-v2`, 4 trials cut by the harness receiver\'s 30 s timeout; v3 is the key source) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.', '']
     (R / 'round3/EXCLUSIONS.md').write_text('\n'.join(L))
     print(f"EXCLUSIONS.md: {len(trial_rows())} task rows, {len(dirs)} pilot/discarded dirs, {sum(d not in WHY for d in dirs)} without reason")
 

@@ -1,0 +1,10 @@
+{
+  "id": "b4-repl-v3",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-20T21:35:37.871682+07:00",
+  "stages": [
+    "artifact/results/round3/b4/final-v3-repl"
+  ]
+}

@@ -25,3 +25,25 @@ Quy trình RTL: `plans/test6/README.md` (rtl_auto.sh fill mode, relay do Claude 
   `teardown.sh` sau lượt); (2) một phiên RTL Galaxy M35 (~8 credit) và bấm Remote Debug Bridge khi được nhắc. Sau đó B chạy
   pilot (calibration 3 profile) → card `test1-phone-card.md` (N chốt sau pilot) → lượt chính.
 - Quyết định người dùng 19/11 23:0x: #1 để sau, trước 28/11 (giữ trạng thái sẵn sàng; chưa tạo EC2).
+
+## Quyết định người dùng 20/11 21:0x: không chạy #1 và #2
+"test 1 trôi": Test 1 rút gọn trên điện thoại (#1) và Galaxy v3 qua EC2 (#2) không chạy; không tạo EC2, không dùng thêm credit
+RTL. Test 1 chỉ có phần emulator (B10, `b10-card.md`); bài không có kết quả race trên radio/phần cứng thật (C11 phần Test 1 bỏ
+trống — báo C). Thiếu beacon hợp lệ của Galaxy ở Test 6 v2 giữ là điểm chưa giải thích (mối đe dọa external). Harness remote
+(`race_suite.py --receiver`) và `plans/test6/ec2/` giữ lại, không dùng.
+
+## Quyết định người dùng 20/11 (sau đó): giữ #1, chạy 21/11
+"test 1 để lại, tôi chạy ngày mai": thay quyết định "test 1 trôi" ở trên. #1 chạy ngày 21/11: người dùng xác nhận tạo EC2 lúc tạo
+(`plans/test6/ec2/setup.sh --create`, < 10 USD, `teardown.sh` sau lượt) và mở phiên RTL Galaxy M35 (~8 credit) → pilot
+calibration → `test1-phone-card.md` (N chốt sau pilot, commit trước lượt chính) → lượt chính. #2 chỉ nếu còn credit.
+B7 freeze chờ cả #1 lẫn câu trả lời của A về M1 (chậm nhất 29/11).
+
+## Quyết định người dùng 20/11 (tối): #1 chạy trên điện thoại Android 15 của người dùng (thay RTL Galaxy)
+Kit: `plans/test1-phone/` (preflight, run, cleanup, README) + card `plans/test1-phone-card.md` (viết trước mọi trial; quy tắc
+N cố định). Receiver EC2 `receiver_b.py --profile-set b10v3` (cùng shaping với B10 v3; chỉ chiều upload), region do người
+dùng chọn (`AWS_REGION`, mặc định us-west-2 giữ nguyên). Không ghi serial phần cứng vào kết quả; gỡ app sau lượt. Không cần
+credit RTL. #2 (Galaxy) không áp dụng cho máy này.
+
+## DONE 21/11: #1 chạy xong trên Galaxy A06 5G (Android 15) của người dùng
+180/180 trial hợp lệ (10 block); fence 0/30 mọi profile; early 16/19/19 của 30 (edge/umts/lte). Card `test1-phone-card.md` §6.
+App đã gỡ khỏi máy; EC2 đã xoá (0 tài nguyên còn lại ở ap-southeast-1). #2 không áp dụng.

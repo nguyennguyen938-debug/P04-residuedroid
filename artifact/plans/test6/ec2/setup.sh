@@ -4,7 +4,7 @@
 # Usage: setup.sh [--create] ; then start.sh <ip> ; teardown.sh <instance-id>
 set -euo pipefail
 main() {
-export AWS_PROFILE=${AWS_PROFILE:-p04} AWS_REGION=us-west-2
+export AWS_PROFILE=${AWS_PROFILE:-p04} AWS_REGION=${AWS_REGION:-us-west-2}
 HERE=$(cd "$(dirname "$0")" && pwd)
 AMI=$(aws ssm get-parameter --name /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64 --query Parameter.Value --output text)
 echo "plan: t3.micro, AMI $AMI, security group p04-receiver (tcp 8798, 8799 from 0.0.0.0/0; 8800 + 22 from this Mac's IP only), key pair p04-receiver"

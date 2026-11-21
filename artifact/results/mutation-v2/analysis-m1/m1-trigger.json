@@ -1,0 +1,392 @@
+{
+ "estimand": "M1 leak vs whether the re-derived (newest-epoch-labelled) summary reached the sink; exploratory",
+ "trials": 40,
+ "leaking": 24,
+ "reaggregated": 40,
+ "uploaded": 24,
+ "leaking_given_uploaded": "24/24",
+ "leaking_given_not_uploaded": "0/16",
+ "by_schedule": {
+  "pending": {
+   "trials": 20,
+   "uploaded": 20,
+   "leaking": 20,
+   "post_reboot_summary_job_sent_nothing": 0
+  },
+  "reboot": {
+   "trials": 20,
+   "uploaded": 4,
+   "leaking": 4,
+   "post_reboot_summary_job_sent_nothing": 17
+  }
+ },
+ "cells": {
+  "pending/uploaded=True/leaking=True/silent_summary_job=False": 20,
+  "reboot/uploaded=False/leaking=False/silent_summary_job=False": 2,
+  "reboot/uploaded=False/leaking=False/silent_summary_job=True": 14,
+  "reboot/uploaded=True/leaking=True/silent_summary_job=False": 1,
+  "reboot/uploaded=True/leaking=True/silent_summary_job=True": 3
+ },
+ "rows": [
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen000-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb000-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen001",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen001-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb001",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb001-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen002",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen002-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb002",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb002-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen003",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen003-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb003",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb003-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen004",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen004-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb004",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb004-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen005",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen005-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb005",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb005-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen006",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen006-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb006",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb006-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen007",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen007-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb007",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb007-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen008",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen008-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb008",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb008-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen009",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen009-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb009",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb009-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": true
+  },
+  {
+   "trial": "pen010",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen010-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb010",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb010-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen011",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen011-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb011",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb011-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": false
+  },
+  {
+   "trial": "pen012",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen012-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb012",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb012-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "pen013",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen013-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb013",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb013-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen014",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen014-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb014",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb014-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen015",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen015-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb015",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb015-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen016",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen016-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb016",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb016-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": false
+  },
+  {
+   "trial": "pen017",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen017-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb017",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb017-T5-sum-16",
+   "uploaded": false,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": false
+  },
+  {
+   "trial": "pen018",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen018-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb018",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb018-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": true
+  },
+  {
+   "trial": "pen019",
+   "schedule": "pending",
+   "reaggregated": true,
+   "reagg_tag": "RD-pen019-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": false,
+   "leaking": true
+  },
+  {
+   "trial": "reb019",
+   "schedule": "reboot",
+   "reaggregated": true,
+   "reagg_tag": "RD-reb019-T5-sum-16",
+   "uploaded": true,
+   "post_reboot_summary_job_sent_nothing": true,
+   "leaking": true
+  }
+ ]
+}

@@ -14,20 +14,27 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 6 TLS v3 (Pixel 8a) | 20 | 0 | 0 | `test6/analysis-v3` |
 | Test 6 TLS v3 (Galaxy M35) | 20 | 0 | 0 | `test6/analysis-v3` |
 | Test 4 / B11 (Android 14 + 15) | 162 | 2: F-0/reb004: harness/device; F-0/reb014: harness/device | 0 | `b11/analysis` |
-| Test 2 / B12 base | 40 | 0 | 0 | `mutation/analysis` |
-| Test 2 / B12 M1-union-latest | 40 | 1: reb006: harness/device | 0 | `mutation/analysis` |
-| Test 2 / B12 M2-stale-epoch | 40 | 1: reb001: harness/device | 0 | `mutation/analysis` |
-| Test 2 / B12 M3-extras-drop | 40 | 2: reb004: harness/device; reb014: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 base | 40 | 0 | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M1-union-latest | 40 | 1: reb006: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M2-stale-epoch | 40 | 1: reb001: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v1 M3-extras-drop | 40 | 2: reb004: harness/device; reb014: harness/device | 0 | `mutation/analysis` |
+| Test 2 / B12 v2 (keys) base | 40 | 1: reb003: harness/device | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M1-union-latest | 40 | 0 | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M2-stale-epoch | 40 | 1: reb000: harness/device | 0 | `mutation-v2/analysis` |
+| Test 2 / B12 v2 (keys) M3-extras-drop | 40 | 0 | 0 | `mutation-v2/analysis` |
 | B3 split policy | 120 | 0 | 0 | `b3/analysis` |
 | Test 5 / B4 v1 | 400 | 0 | 0 | `b4/analysis` |
-| Test 5 / B4 v2 (keys) | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
+| Test 5 / B4 v2 | 400 | 4: sw-c4-s16-4-be8647: sender did not complete; sw-c4-s16-9-4d5dbc: sender did not complete; sw-c4-s16-14-b834b3: sender did not complete; sw-c64-s8-16-e3b445: sender did not complete | 0 | `b4/analysis-v2` |
+| Test 5 / B4 v3 (keys; final-v3 + replacement blocks) | 440 | 1: sw-c4-s16-3-fd82de: sender did not complete | 39 | `b4/analysis-v3-repl` |
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
+| Test 1 phone (Galaxy A06, Android 15) | 180 | 0 | 0 | `test1-phone/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 
 ## Pilots and discarded runs
 
 | Directory | What happened | Change caused |
 |---|---|---|
+| `mutation-v2/pilot-base` | B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed | none |
 | `mutation/pilot-base` | B12 base pilot, I0 gate | none |
 | `round3/b10/pilot-calib` | throttle gate failed: console netspeed did not shape the AVD Wi-Fi path | protocol v2: --radio |
 | `round3/b10/pilot-calib2` | aborted before any send (metadata `dumpsys | grep` exit 1) | metadata line made non-fatal |
@@ -42,6 +49,10 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/b3/pilot-1` | gate failed on a harness bug (suite waited for a SPLIT the app correctly never emits) | protocol v2: end predicate |
 | `round3/b3/pilot-2` | gate passed | none |
 | `round3/b4/pilot-1` | mechanism check of the sweep | none |
+| `round3/b4/pilot-v3` | protocol v3 pilot (receiver recv timeout 300 s), gate passed | none |
+| `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
+| `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |
+| `round3/test1-phone/pilot-calib-3` | phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final | none |
 | `round3/test6/galaxy-p01_INVALID_relpath` | relative --out broke after cd; no valid data | absolute paths in run_rtl.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect` | RDB relay not connected (environment) | preflight + relay ownership in rtl_auto.sh |
 | `round3/test6/galaxy-s1_INVALID_rdb-connect2` | RDB relay not connected again (environment) | link_ok re-attaches before restart |
@@ -54,5 +65,5 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/test6/pilot-rtl-2` | RTL: same freeze reproduced | CA copied with `run-as … tee` |
 | `round3/test6/pilot-rtl-3` | RTL: all mechanism checks passed | none |
 
-Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window; v2 is the
-estimand) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.
+Superseded (reported, not used for keys): B4 v1 final (`b4/final`, probes mostly outside the send window) and v2 final
+(`b4/final-v2`, 4 trials cut by the harness receiver's 30 s timeout; v3 is the key source) and Test 6 TLS v2 `concurrent` case on the Galaxy (fixed deadline; v3 rerun). Both stay in the results.

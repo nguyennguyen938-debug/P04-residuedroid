@@ -17,7 +17,7 @@ public class Cmd extends BroadcastReceiver {
         switch (a) {
             case "rl.SETUP": {
                 for (String k : new String[]{"trial", "tenants", "substrate", "agg_delay", "up_delay", "sum_delay", "manual",
-                        "resurrect_delay", "regrant_ms", "nrec", "race_delay", "sink_port", "sink_host"}) {
+                        "resurrect_delay", "regrant_ms", "nrec", "race_delay", "sink_port", "sink_host", "regrant_agg"}) {
                     String v = i.getStringExtra(k); if (v != null) db.putMeta(k, v);
                 }
                 String inj = i.getStringExtra("inj");
@@ -92,6 +92,7 @@ public class Cmd extends BroadcastReceiver {
             Fence.sleep(rg);
             Policy.regrant(c, t);
             Policy.collect(c, t, 4);
+            if (t.hasSummary && "1".equals(db.meta("regrant_agg", "0"))) Work.aggregate(c, t); // optional (B12 v2): re-derive after re-consent
             int id = Model.jobId(t.id, Model.K_UPLOAD);
             if (!Sched.pending(c, id)) Sched.enqueue(c, t, Model.K_UPLOAD, Long.parseLong(db.meta("resurrect_delay", "5000")), null, "regrant");
         }).start();

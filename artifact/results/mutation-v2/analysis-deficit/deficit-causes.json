@@ -1,0 +1,1825 @@
+{
+ "base": {
+  "estimand": "cause of each undelivered permitted item (tenants 3, 4, 6, 7), mutation-v2/base",
+  "tenant_trials": 13,
+  "items": 80,
+  "schedules": {
+   "reboot": 13
+  },
+  "causes": {
+   "stopped_no_restart": 13
+  },
+  "items_by_cause": {
+   "stopped_no_restart": 80
+  },
+  "items_with_no_job_started": 0,
+  "trials_with_deficit": 9,
+  "items_by_trial": {
+   "X-base/reb000": 20,
+   "X-base/reb001": 4,
+   "X-base/reb005": 4,
+   "X-base/reb006": 8,
+   "X-base/reb008": 8,
+   "X-base/reb010": 16,
+   "X-base/reb013": 8,
+   "X-base/reb014": 8,
+   "X-base/reb015": 4
+  },
+  "by_variant": {
+   "mfence": {
+    "items": 80,
+    "causes": {
+     "stopped_no_restart": 13
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "X-base",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb001",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb005",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb006",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb013",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb014",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-base",
+    "trial": "reb015",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   }
+  ],
+  "permitted_deficit_all_tenants": 80
+ },
+ "M1-union-latest": {
+  "estimand": "cause of each undelivered permitted item (tenants 3, 4, 6, 7), mutation-v2/M1-union-latest",
+  "tenant_trials": 17,
+  "items": 88,
+  "schedules": {
+   "reboot": 17
+  },
+  "causes": {
+   "stopped_no_restart": 17
+  },
+  "items_by_cause": {
+   "stopped_no_restart": 88
+  },
+  "items_with_no_job_started": 0,
+  "trials_with_deficit": 11,
+  "items_by_trial": {
+   "X-M1-union-latest/reb000": 4,
+   "X-M1-union-latest/reb004": 4,
+   "X-M1-union-latest/reb005": 8,
+   "X-M1-union-latest/reb007": 4,
+   "X-M1-union-latest/reb008": 16,
+   "X-M1-union-latest/reb011": 4,
+   "X-M1-union-latest/reb012": 12,
+   "X-M1-union-latest/reb014": 4,
+   "X-M1-union-latest/reb016": 12,
+   "X-M1-union-latest/reb017": 8,
+   "X-M1-union-latest/reb019": 12
+  },
+  "by_variant": {
+   "mfence": {
+    "items": 88,
+    "causes": {
+     "stopped_no_restart": 17
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb004",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb005",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb007",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb011",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb012",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb012",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb014",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb016",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb016",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb019",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M1-union-latest",
+    "trial": "reb019",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   }
+  ],
+  "permitted_deficit_all_tenants": 88
+ },
+ "M2-stale-epoch": {
+  "estimand": "cause of each undelivered permitted item (tenants 3, 4, 6, 7), mutation-v2/M2-stale-epoch",
+  "tenant_trials": 46,
+  "items": 504,
+  "schedules": {
+   "pending": 20,
+   "reboot": 26
+  },
+  "causes": {
+   "other": 39,
+   "stopped_no_restart": 7
+  },
+  "items_by_cause": {
+   "other": 468,
+   "stopped_no_restart": 36
+  },
+  "items_with_no_job_started": 0,
+  "trials_with_deficit": 39,
+  "items_by_trial": {
+   "X-M2-stale-epoch/pen000": 12,
+   "X-M2-stale-epoch/pen001": 12,
+   "X-M2-stale-epoch/pen002": 12,
+   "X-M2-stale-epoch/pen003": 12,
+   "X-M2-stale-epoch/pen004": 12,
+   "X-M2-stale-epoch/pen005": 12,
+   "X-M2-stale-epoch/pen006": 12,
+   "X-M2-stale-epoch/pen007": 12,
+   "X-M2-stale-epoch/pen008": 12,
+   "X-M2-stale-epoch/pen009": 12,
+   "X-M2-stale-epoch/pen010": 12,
+   "X-M2-stale-epoch/pen011": 12,
+   "X-M2-stale-epoch/pen012": 12,
+   "X-M2-stale-epoch/pen013": 12,
+   "X-M2-stale-epoch/pen014": 12,
+   "X-M2-stale-epoch/pen015": 12,
+   "X-M2-stale-epoch/pen016": 12,
+   "X-M2-stale-epoch/pen017": 12,
+   "X-M2-stale-epoch/pen018": 12,
+   "X-M2-stale-epoch/pen019": 12,
+   "X-M2-stale-epoch/reb001": 12,
+   "X-M2-stale-epoch/reb002": 12,
+   "X-M2-stale-epoch/reb003": 20,
+   "X-M2-stale-epoch/reb004": 12,
+   "X-M2-stale-epoch/reb005": 12,
+   "X-M2-stale-epoch/reb006": 12,
+   "X-M2-stale-epoch/reb007": 12,
+   "X-M2-stale-epoch/reb008": 16,
+   "X-M2-stale-epoch/reb009": 12,
+   "X-M2-stale-epoch/reb010": 12,
+   "X-M2-stale-epoch/reb011": 16,
+   "X-M2-stale-epoch/reb012": 12,
+   "X-M2-stale-epoch/reb013": 12,
+   "X-M2-stale-epoch/reb014": 12,
+   "X-M2-stale-epoch/reb015": 12,
+   "X-M2-stale-epoch/reb016": 12,
+   "X-M2-stale-epoch/reb017": 28,
+   "X-M2-stale-epoch/reb018": 16,
+   "X-M2-stale-epoch/reb019": 12
+  },
+  "by_variant": {
+   "mfence": {
+    "items": 504,
+    "causes": {
+     "other": 39,
+     "stopped_no_restart": 7
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen000",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen001",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb001",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen002",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb002",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen003",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb003",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb003",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen004",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb004",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen005",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb005",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen006",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb006",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen007",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb007",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen008",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb009",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen010",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen011",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb011",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb011",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen012",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb012",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen013",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb013",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen014",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb014",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen015",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb015",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen016",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb016",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen017",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen018",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb018",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb018",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "pen019",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M2-stale-epoch",
+    "trial": "reb019",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 18
+   }
+  ],
+  "permitted_deficit_all_tenants": 524
+ },
+ "M3-extras-drop": {
+  "estimand": "cause of each undelivered permitted item (tenants 3, 4, 6, 7), mutation-v2/M3-extras-drop",
+  "tenant_trials": 84,
+  "items": 132,
+  "schedules": {
+   "pending": 40,
+   "reboot": 44
+  },
+  "causes": {
+   "other": 76,
+   "stopped_no_restart": 8
+  },
+  "items_by_cause": {
+   "other": 76,
+   "stopped_no_restart": 56
+  },
+  "items_with_no_job_started": 0,
+  "trials_with_deficit": 40,
+  "items_by_trial": {
+   "X-M3-extras-drop/pen000": 2,
+   "X-M3-extras-drop/pen001": 2,
+   "X-M3-extras-drop/pen002": 2,
+   "X-M3-extras-drop/pen003": 2,
+   "X-M3-extras-drop/pen004": 2,
+   "X-M3-extras-drop/pen005": 2,
+   "X-M3-extras-drop/pen006": 2,
+   "X-M3-extras-drop/pen007": 2,
+   "X-M3-extras-drop/pen008": 2,
+   "X-M3-extras-drop/pen009": 2,
+   "X-M3-extras-drop/pen010": 2,
+   "X-M3-extras-drop/pen011": 2,
+   "X-M3-extras-drop/pen012": 2,
+   "X-M3-extras-drop/pen013": 2,
+   "X-M3-extras-drop/pen014": 2,
+   "X-M3-extras-drop/pen015": 2,
+   "X-M3-extras-drop/pen016": 2,
+   "X-M3-extras-drop/pen017": 2,
+   "X-M3-extras-drop/pen018": 2,
+   "X-M3-extras-drop/pen019": 2,
+   "X-M3-extras-drop/reb000": 10,
+   "X-M3-extras-drop/reb001": 2,
+   "X-M3-extras-drop/reb002": 2,
+   "X-M3-extras-drop/reb003": 2,
+   "X-M3-extras-drop/reb004": 2,
+   "X-M3-extras-drop/reb005": 2,
+   "X-M3-extras-drop/reb006": 10,
+   "X-M3-extras-drop/reb007": 2,
+   "X-M3-extras-drop/reb008": 2,
+   "X-M3-extras-drop/reb009": 2,
+   "X-M3-extras-drop/reb010": 18,
+   "X-M3-extras-drop/reb011": 6,
+   "X-M3-extras-drop/reb012": 2,
+   "X-M3-extras-drop/reb013": 2,
+   "X-M3-extras-drop/reb014": 2,
+   "X-M3-extras-drop/reb015": 10,
+   "X-M3-extras-drop/reb016": 2,
+   "X-M3-extras-drop/reb017": 10,
+   "X-M3-extras-drop/reb018": 2,
+   "X-M3-extras-drop/reb019": 2
+  },
+  "by_variant": {
+   "mfence": {
+    "items": 132,
+    "causes": {
+     "other": 76,
+     "stopped_no_restart": 8
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen000",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen000",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 9,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb000",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen001",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen001",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb001",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb001",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen002",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen002",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb002",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb002",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen003",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen003",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb003",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb003",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen004",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen004",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb004",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb004",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen005",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen005",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb005",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb005",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen006",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen006",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb006",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb006",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 5,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb006",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 4,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen007",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen007",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb007",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb007",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen008",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen008",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb008",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb009",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb009",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen010",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen010",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb010",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 9,
+    "cause": "stopped_no_restart",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen011",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen011",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb011",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb011",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 5,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen012",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen012",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb012",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb012",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen013",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen013",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb013",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb013",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen014",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen014",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb014",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb014",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen015",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen015",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb015",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb015",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb015",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen016",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen016",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb016",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb016",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen017",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen017",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 8,
+    "cause": "stopped_no_restart",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb017",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen018",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen018",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb018",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb018",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen019",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "pen019",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb019",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "X-M3-extras-drop",
+    "trial": "reb019",
+    "schedule": "reboot",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 1,
+    "cause": "other",
+    "jobs_started": 18
+   }
+  ],
+  "permitted_deficit_all_tenants": 136
+ }
+}

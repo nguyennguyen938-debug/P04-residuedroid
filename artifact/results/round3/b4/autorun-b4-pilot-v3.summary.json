@@ -1,0 +1,10 @@
+{
+  "id": "b4-pilot-v3",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-20T20:57:09.645833+07:00",
+  "stages": [
+    "artifact/results/round3/b4/pilot-v3"
+  ]
+}

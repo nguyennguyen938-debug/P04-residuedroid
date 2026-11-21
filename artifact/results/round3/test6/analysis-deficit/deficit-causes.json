@@ -1,0 +1,1999 @@
+{
+ "G": {
+  "estimand": "cause of each undelivered permitted item (tenants 3-7), Test 6 device G",
+  "tenant_trials": 108,
+  "items": 772,
+  "schedules": {
+   "pending": 44,
+   "kill": 20,
+   "revoke": 44
+  },
+  "causes": {
+   "other": 108
+  },
+  "items_by_cause": {
+   "other": 772
+  },
+  "items_with_no_job_started": 540,
+  "trials_with_deficit": 60,
+  "items_by_trial": {
+   "G-p02/kil002": 4,
+   "G-p02/kil003": 4,
+   "G-p02/kil004": 4,
+   "G-p02/kil005": 4,
+   "G-p02/kil006": 4,
+   "G-p02/kil007": 4,
+   "G-p02/kil008": 4,
+   "G-p02/kil009": 4,
+   "G-p02/kil010": 4,
+   "G-p02/kil011": 4,
+   "G-p02/kil012": 4,
+   "G-p02/kil013": 4,
+   "G-p02/kil014": 4,
+   "G-p02/kil015": 4,
+   "G-p02/kil016": 4,
+   "G-p02/kil017": 4,
+   "G-p02/pen002": 4,
+   "G-p02/pen003": 4,
+   "G-p02/pen004": 4,
+   "G-p02/pen005": 4,
+   "G-p02/pen006": 4,
+   "G-p02/pen007": 4,
+   "G-p02/pen008": 4,
+   "G-p02/pen009": 270,
+   "G-p02/pen010": 4,
+   "G-p02/pen011": 4,
+   "G-p02/pen012": 4,
+   "G-p02/pen013": 4,
+   "G-p02/pen014": 4,
+   "G-p02/pen015": 4,
+   "G-p02/pen016": 4,
+   "G-p02/pen017": 4,
+   "G-p02/rev002": 4,
+   "G-p02/rev003": 4,
+   "G-p02/rev004": 4,
+   "G-p02/rev005": 4,
+   "G-p02/rev006": 4,
+   "G-p02/rev007": 4,
+   "G-p02/rev008": 4,
+   "G-p02/rev009": 4,
+   "G-p02/rev010": 4,
+   "G-p02/rev011": 4,
+   "G-p02/rev012": 4,
+   "G-p02/rev013": 4,
+   "G-p02/rev014": 4,
+   "G-p02/rev015": 4,
+   "G-p02/rev016": 4,
+   "G-p02/rev017": 270,
+   "G-p03/kil018": 4,
+   "G-p03/kil019": 4,
+   "G-p03/pen018": 4,
+   "G-p03/pen019": 4,
+   "G-p03/rev018": 4,
+   "G-p03/rev019": 4,
+   "G-s1/kil000": 4,
+   "G-s1/kil001": 4,
+   "G-s1/pen000": 4,
+   "G-s1/pen001": 4,
+   "G-s1/rev000": 4,
+   "G-s1/rev001": 4
+  },
+  "by_variant": {
+   "mboth": {
+    "items": 108,
+    "causes": {
+     "other": 10
+    }
+   },
+   "menqueue": {
+    "items": 108,
+    "causes": {
+     "other": 10
+    }
+   },
+   "mfence": {
+    "items": 108,
+    "causes": {
+     "other": 10
+    }
+   },
+   "mlayer": {
+    "items": 108,
+    "causes": {
+     "other": 10
+    }
+   },
+   "mstart": {
+    "items": 340,
+    "causes": {
+     "other": 68
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "G-p02",
+    "trial": "pen002",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil002",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev002",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen003",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil003",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev003",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen004",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil004",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev004",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen005",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil005",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev005",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen006",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil006",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev006",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen007",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil007",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev007",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen008",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil008",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev008",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "menqueue",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "menqueue",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "menqueue",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "menqueue",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "menqueue",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mlayer",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mlayer",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mlayer",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mlayer",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mlayer",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mboth",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mboth",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mboth",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mboth",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mboth",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil009",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev009",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen010",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil010",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev010",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen011",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil011",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev011",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen012",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil012",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev012",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen013",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil013",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev013",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen014",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil014",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev014",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen015",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil015",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev015",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen016",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil016",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev016",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p02",
+    "trial": "pen017",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "kil017",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "menqueue",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "menqueue",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "menqueue",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "menqueue",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "menqueue",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mlayer",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mlayer",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mlayer",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mlayer",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mlayer",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mfence",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mfence",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mfence",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mfence",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mfence",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mboth",
+    "tenant": 3,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mboth",
+    "tenant": 4,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mboth",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mboth",
+    "tenant": 6,
+    "missing": 13,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mboth",
+    "tenant": 7,
+    "missing": 12,
+    "cause": "other",
+    "jobs_started": 0
+   },
+   {
+    "instance": "G-p03",
+    "trial": "pen018",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p03",
+    "trial": "kil018",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p03",
+    "trial": "rev018",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p03",
+    "trial": "pen019",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-p03",
+    "trial": "kil019",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "G-p03",
+    "trial": "rev019",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-s1",
+    "trial": "pen000",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-s1",
+    "trial": "kil000",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-s1",
+    "trial": "rev000",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-s1",
+    "trial": "pen001",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "G-s1",
+    "trial": "kil001",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 19
+   },
+   {
+    "instance": "G-s1",
+    "trial": "rev001",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   }
+  ],
+  "trials_no_job_started": [
+   {
+    "instance": "G-p02",
+    "trial": "pen009",
+    "quiesced": {
+     "t": 1795067175.72248,
+     "a": "quiesced",
+     "waited": 10.319411277770996,
+     "remaining": 0,
+     "seen_max": 67
+    },
+    "receipts": 0
+   },
+   {
+    "instance": "G-p02",
+    "trial": "rev017",
+    "quiesced": {
+     "t": 1795069349.14237,
+     "a": "quiesced",
+     "waited": 24.90484094619751,
+     "remaining": 0,
+     "seen_max": 67
+    },
+    "receipts": 0
+   }
+  ],
+  "mstart_tenant5_items": 240,
+  "violating_trials_as_analysed": {
+   "kill/mboth": "0/20",
+   "kill/menqueue": "20/20",
+   "kill/mfence": "0/20",
+   "kill/mlayer": "0/20",
+   "kill/mstart": "0/20",
+   "pending/mboth": "0/20",
+   "pending/menqueue": "19/20",
+   "pending/mfence": "0/20",
+   "pending/mlayer": "0/20",
+   "pending/mstart": "0/20",
+   "revoke/mboth": "0/20",
+   "revoke/menqueue": "19/20",
+   "revoke/mfence": "0/20",
+   "revoke/mlayer": "0/20",
+   "revoke/mstart": "0/20"
+  },
+  "violating_trials_without_no_job_trials": {
+   "kill/mboth": "0/20",
+   "kill/menqueue": "20/20",
+   "kill/mfence": "0/20",
+   "kill/mlayer": "0/20",
+   "kill/mstart": "0/20",
+   "pending/mboth": "0/19",
+   "pending/menqueue": "19/19",
+   "pending/mfence": "0/19",
+   "pending/mlayer": "0/19",
+   "pending/mstart": "0/19",
+   "revoke/mboth": "0/19",
+   "revoke/menqueue": "19/19",
+   "revoke/mfence": "0/19",
+   "revoke/mlayer": "0/19",
+   "revoke/mstart": "0/19"
+  }
+ },
+ "P": {
+  "estimand": "cause of each undelivered permitted item (tenants 3-7), Test 6 device P",
+  "tenant_trials": 60,
+  "items": 240,
+  "schedules": {
+   "pending": 20,
+   "kill": 20,
+   "revoke": 20
+  },
+  "causes": {
+   "other": 60
+  },
+  "items_by_cause": {
+   "other": 240
+  },
+  "items_with_no_job_started": 0,
+  "trials_with_deficit": 60,
+  "items_by_trial": {
+   "P-j1/kil000": 4,
+   "P-j1/kil001": 4,
+   "P-j1/kil002": 4,
+   "P-j1/kil003": 4,
+   "P-j1/kil004": 4,
+   "P-j1/kil005": 4,
+   "P-j1/kil006": 4,
+   "P-j1/kil007": 4,
+   "P-j1/kil008": 4,
+   "P-j1/kil009": 4,
+   "P-j1/pen000": 4,
+   "P-j1/pen001": 4,
+   "P-j1/pen002": 4,
+   "P-j1/pen003": 4,
+   "P-j1/pen004": 4,
+   "P-j1/pen005": 4,
+   "P-j1/pen006": 4,
+   "P-j1/pen007": 4,
+   "P-j1/pen008": 4,
+   "P-j1/pen009": 4,
+   "P-j1/rev000": 4,
+   "P-j1/rev001": 4,
+   "P-j1/rev002": 4,
+   "P-j1/rev003": 4,
+   "P-j1/rev004": 4,
+   "P-j1/rev005": 4,
+   "P-j1/rev006": 4,
+   "P-j1/rev007": 4,
+   "P-j1/rev008": 4,
+   "P-j1/rev009": 4,
+   "P-j2/kil010": 4,
+   "P-j2/kil011": 4,
+   "P-j2/kil012": 4,
+   "P-j2/kil013": 4,
+   "P-j2/kil014": 4,
+   "P-j2/kil015": 4,
+   "P-j2/kil016": 4,
+   "P-j2/kil017": 4,
+   "P-j2/kil018": 4,
+   "P-j2/kil019": 4,
+   "P-j2/pen010": 4,
+   "P-j2/pen011": 4,
+   "P-j2/pen012": 4,
+   "P-j2/pen013": 4,
+   "P-j2/pen014": 4,
+   "P-j2/pen015": 4,
+   "P-j2/pen016": 4,
+   "P-j2/pen017": 4,
+   "P-j2/pen018": 4,
+   "P-j2/pen019": 4,
+   "P-j2/rev010": 4,
+   "P-j2/rev011": 4,
+   "P-j2/rev012": 4,
+   "P-j2/rev013": 4,
+   "P-j2/rev014": 4,
+   "P-j2/rev015": 4,
+   "P-j2/rev016": 4,
+   "P-j2/rev017": 4,
+   "P-j2/rev018": 4,
+   "P-j2/rev019": 4
+  },
+  "by_variant": {
+   "mboth": {
+    "items": 0,
+    "causes": {}
+   },
+   "menqueue": {
+    "items": 0,
+    "causes": {}
+   },
+   "mfence": {
+    "items": 0,
+    "causes": {}
+   },
+   "mlayer": {
+    "items": 0,
+    "causes": {}
+   },
+   "mstart": {
+    "items": 240,
+    "causes": {
+     "other": 60
+    }
+   }
+  },
+  "rows": [
+   {
+    "instance": "P-j1",
+    "trial": "pen000",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil000",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev000",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen001",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil001",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev001",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 18
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen002",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil002",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev002",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen003",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil003",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev003",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen004",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil004",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev004",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen005",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil005",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev005",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen006",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil006",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev006",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen007",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil007",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev007",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen008",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil008",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev008",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "pen009",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "kil009",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j1",
+    "trial": "rev009",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen010",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil010",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev010",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen011",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil011",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev011",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen012",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil012",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev012",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen013",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil013",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev013",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen014",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil014",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev014",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen015",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil015",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev015",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen016",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil016",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev016",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen017",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil017",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev017",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen018",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil018",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev018",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "pen019",
+    "schedule": "pending",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "kil019",
+    "schedule": "kill",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   },
+   {
+    "instance": "P-j2",
+    "trial": "rev019",
+    "schedule": "revoke",
+    "variant": "mstart",
+    "tenant": 5,
+    "missing": 4,
+    "cause": "other",
+    "jobs_started": 17
+   }
+  ],
+  "trials_no_job_started": [],
+  "mstart_tenant5_items": 240,
+  "violating_trials_as_analysed": {
+   "kill/mboth": "0/20",
+   "kill/menqueue": "20/20",
+   "kill/mfence": "0/20",
+   "kill/mlayer": "0/20",
+   "kill/mstart": "0/20",
+   "pending/mboth": "0/20",
+   "pending/menqueue": "20/20",
+   "pending/mfence": "0/20",
+   "pending/mlayer": "0/20",
+   "pending/mstart": "0/20",
+   "revoke/mboth": "0/20",
+   "revoke/menqueue": "20/20",
+   "revoke/mfence": "0/20",
+   "revoke/mlayer": "0/20",
+   "revoke/mstart": "0/20"
+  },
+  "violating_trials_without_no_job_trials": {
+   "kill/mboth": "0/20",
+   "kill/menqueue": "20/20",
+   "kill/mfence": "0/20",
+   "kill/mlayer": "0/20",
+   "kill/mstart": "0/20",
+   "pending/mboth": "0/20",
+   "pending/menqueue": "20/20",
+   "pending/mfence": "0/20",
+   "pending/mlayer": "0/20",
+   "pending/mstart": "0/20",
+   "revoke/mboth": "0/20",
+   "revoke/menqueue": "20/20",
+   "revoke/mfence": "0/20",
+   "revoke/mlayer": "0/20",
+   "revoke/mstart": "0/20"
+  }
+ }
+}

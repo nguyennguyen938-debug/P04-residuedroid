@@ -78,3 +78,24 @@ and wlan0 before every trial, at the emulator's own nominal uplink rate and the 
 P04AvdA (tbf and netem accepted on eth0; no trial data). Same profiles, sizes, modes, seed, N, deadline rule, validity rules,
 gate and analysis. Construct note: one-way delay only on egress; download direction unshaped (responses are headers only).
 New dirs pilot-calib4 / final4. If the gate fails again, B10 stops and is reported as not run on a shaped link.
+
+## Post-hoc analysis of the Eq. 2 gap (20/11; exploratory, written before it was computed)
+Labelled post-hoc: defined after the 22.7-point gap was known. It does not change any key (`racePredPct` / `raceObsPct` stay
+as in §6); it only decomposes the gap. Data: `final4` unchanged. Script `followup/posthoc_race_eq2.py` → `results/round3/b10/
+posthoc-eq2/`. All times device clock (mono_ns) relative to q = SOCKET_CONFIG of the trial; D = calibrated D of the cell.
+- P0 (as §4, reproduces racePredPct): p = clip((c_k − q)/D, 0, 1).
+- P1 (check offset): the layered check runs at a = AUTHORIZATION_LOGGED; a withdrawal before a is blocked, so the violating
+  window is [a − q, c_k − q]: p = |[(a − q)/D, (c_k − q)/D] ∩ [0, 1]|.
+- P2 (check offset + delivery shift): the withdrawal reaches the app at q + u·D + δ, not q + u·D. δ_i = (first WITHDRAW_ACK −
+  q) − u_i·D (a device duration minus the host-planned duration; no timestamps are mixed). δ̄ per (profile, size) cell = median
+  δ over that cell's **fence** trials only (no early outcome used). p = |[(a − q − δ̄)/D, (c_k − q − δ̄)/D] ∩ [0, 1]|.
+- Reported: mean P0/P1/P2 over the 90 analysed early trials vs the observed 56.7%, per profile and pooled; δ per profile
+  (median, min, max) for fence and, as a check only, early trials. No CI, no test; one AVD; descriptive.
+- Result (20/11, `results/round3/b10/posthoc-eq2/posthoc-summary.json`): pooled over 90 early trials, observed 56.7%;
+  P0 79.4% (= racePredPct), P1 65.7%, P2 57.7%. Per profile (observed / P0 / P1 / P2): edge 70.0 / 74.3 / 66.0 / 66.0; umts
+  66.7 / 79.1 / 72.5 / 72.6; lte 33.3 / 84.8 / 58.5 / 34.5. δ over fence trials, median (min–max): edge 0.110 s (0.061–0.827),
+  umts 0.116 s (0.063–0.727), lte 0.075 s (0.049–1.374); early trials show the same δ (check only).
+- Reading (exploratory): most of the gap comes from how Eq. 2 was applied, not from the race itself: (1) the window started at
+  SOCKET_CONFIG although the layered check runs after the TLS handshake (P0 → P1: −13.7 points), and (2) the ~0.1 s
+  host→app withdrawal delivery shift, which matters where D is short (lte; P1 → P2: −8.0 points). Residual per profile is
+  within ±6 points on 30 trials. Not a test; δ̄ is estimated from the same run's fence trials; one AVD.

@@ -145,8 +145,13 @@ apk = A / 'fixture/build/tls-apk/rl-tls.apk'
 adb('install', '-r', apk, timeout=120); bc('init', 'setup')
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
 adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
+if a.no_root:   # phones: a never-launched app has no network from a broadcast (pilot-calib-1); wake it as campaign.py does
+    adb('shell', f'am set-standby-bucket {PKG} active; am start -W -n {PKG}/org.residuelab.Main >/dev/null; input keyevent HOME; true')
 durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
-meta = {'serial': a.serial, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
+PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no hardware serial in the results (privacy)
+    'release': adb('shell', 'getprop', 'ro.build.version.release').strip(), 'sdk': adb('shell', 'getprop', 'ro.build.version.sdk').strip(),
+    'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
+meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
         'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
@@ -161,6 +166,8 @@ def trial(block, profile, size, mode, u):
     try:
         r['net'] = net(profile)
         adb('shell', f'am force-stop {PKG}'); adb('shell', f'run-as {PKG} rm -f files/revision.jsonl files/release'); bc('init', id)
+        if a.no_root:   # phones (Android 14+): a cached broadcast process is frozen ~5 s in and its sockets are cut (pilot-calib-2); keep it foreground
+            adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
         t_send = time.monotonic()
         r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=16384,
                           label='analytics:0', deadline_ms=deadline)

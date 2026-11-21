@@ -26,7 +26,9 @@ for p in "${CORE[@]}"; do
   allowed "$p" && continue
   git diff --quiet "$BASE" -- "$p" || { echo "GUARD FAIL: core analysis code changed: $p (set GUARD_ALLOW if intended)"; fail=1; }
 done
-changed=$(git diff --name-only --diff-filter=MD "$BASE" -- artifact/results | grep -v '^artifact/results/RUNLOG.md$')
+# B's round-3 deliverables are maintained files, not recorded evidence (regenerated or updated at the B7 freeze):
+DELIV='^artifact/results/round3/(PROTOCOL\.md|EXCLUSIONS\.md|summary\.json|make_summary\.py|make_exclusions\.py|\.gitignore)$'
+changed=$(git diff --name-only --diff-filter=MD "$BASE" -- artifact/results | grep -v '^artifact/results/RUNLOG.md$' | grep -Ev "$DELIV")
 [ -z "$changed" ] || { echo "GUARD FAIL: recorded evidence modified or deleted:"; echo "$changed"; fail=1; }
 git diff "$BASE" -- artifact/results/RUNLOG.md | grep -q '^-[^-]' && { echo "GUARD FAIL: RUNLOG lines removed (append-only)"; fail=1; }
 

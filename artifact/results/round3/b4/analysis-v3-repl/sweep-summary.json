@@ -1,0 +1,177 @@
+{
+ "logged": 440,
+ "invalid": [
+  {
+   "trial": "sw-c4-s16-3-fd82de",
+   "reason": "sender did not complete"
+  }
+ ],
+ "cells": {
+  "1KiB/1": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 4.076625,
+   "ack_ms_p95": 19.578,
+   "ack_ms_max": 35.2785,
+   "cpu_ms_per_mib_median": 188.24723951096482
+  },
+  "1KiB/2": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.152146,
+   "ack_ms_p95": 10.695791,
+   "ack_ms_max": 20.014,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/4": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.9008129999999999,
+   "ack_ms_p95": 8.818792,
+   "ack_ms_max": 16.7895,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/8": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.012521,
+   "ack_ms_p95": 8.411416,
+   "ack_ms_max": 28.360625,
+   "cpu_ms_per_mib_median": null
+  },
+  "1KiB/16": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.007208,
+   "ack_ms_p95": 8.501209,
+   "ack_ms_max": 18.932417,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/1": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.4134585,
+   "ack_ms_p95": 7.50425,
+   "ack_ms_max": 16.159417,
+   "cpu_ms_per_mib_median": 79.99883653425489
+  },
+  "4KiB/2": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.215583,
+   "ack_ms_p95": 7.283333,
+   "ack_ms_max": 14.242583,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/4": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.2591460000000003,
+   "ack_ms_p95": 9.456333,
+   "ack_ms_max": 23.618708,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/8": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.4901045,
+   "ack_ms_p95": 10.781,
+   "ack_ms_max": 44.958667,
+   "cpu_ms_per_mib_median": null
+  },
+  "4KiB/16": {
+   "trials": 20,
+   "unused": 1,
+   "ack_ms_median": 3.4551045,
+   "ack_ms_p95": 9.652084,
+   "ack_ms_max": 25.25325,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/1": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 0.942375,
+   "ack_ms_p95": 2.956958,
+   "ack_ms_max": 10.049333,
+   "cpu_ms_per_mib_median": 35.99946785759755
+  },
+  "16KiB/2": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.36975,
+   "ack_ms_p95": 5.912583,
+   "ack_ms_max": 28.520625,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/4": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.7982915,
+   "ack_ms_p95": 5.674375,
+   "ack_ms_max": 14.315417,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/8": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.4297294999999997,
+   "ack_ms_p95": 6.74475,
+   "ack_ms_max": 24.908,
+   "cpu_ms_per_mib_median": null
+  },
+  "16KiB/16": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 2.5448955,
+   "ack_ms_p95": 6.662083,
+   "ack_ms_max": 12.996084,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/1": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 0.792521,
+   "ack_ms_p95": 2.404834,
+   "ack_ms_max": 4.65775,
+   "cpu_ms_per_mib_median": 23.499647026595433
+  },
+  "64KiB/2": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.291021,
+   "ack_ms_p95": 4.046,
+   "ack_ms_max": 5.753042,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/4": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.4250625000000001,
+   "ack_ms_p95": 4.859875,
+   "ack_ms_max": 25.738625,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/8": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.5411455,
+   "ack_ms_p95": 5.136166,
+   "ack_ms_max": 14.694125,
+   "cpu_ms_per_mib_median": null
+  },
+  "64KiB/16": {
+   "trials": 20,
+   "unused": 2,
+   "ack_ms_median": 1.5676455,
+   "ack_ms_p95": 6.809459,
+   "ack_ms_max": 36.278541,
+   "cpu_ms_per_mib_median": null
+  }
+ },
+ "keys": {
+  "sweepAckSmallMs": 4.076625,
+  "sweepAckLargeMs": 1.5676455,
+  "sweepCpuSmall": 188.24723951096482,
+  "sweepCpuLarge": 23.499647026595433
+ }
+}

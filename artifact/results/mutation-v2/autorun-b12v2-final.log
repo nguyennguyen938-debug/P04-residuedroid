@@ -1,0 +1,223 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~4 GB available; close apps before 2 emulators
+  [ OK ] 147 GB disk free
+  [ OK ] on AC power
+  [FAIL] port 5600 in use
+  [ OK ] ports 5600 8795 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 1 failed
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~4 GB available; close apps before 2 emulators
+  [ OK ] 147 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5600 8795 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5600 --avd P04AvdA --port 8795 --variants mfence --schedules pending,reboot --trials 20 --apkdir fixture/build/apk_mut2_base --regrant-agg --out results/mutation-v2/base
+21:45:13 restarted emulator-5600 in 20s
+21:45:53 emulator-5600 pen000 37s
+21:46:24 emulator-5600 reb000 32s
+21:47:20 emulator-5600 pen001 56s
+21:47:52 emulator-5600 reb001 32s
+21:48:34 emulator-5600 pen002 42s
+21:49:10 emulator-5600 reb002 36s
+21:50:04 emulator-5600 pen003 54s
+21:54:17 emulator-5600 reb003 TRIAL_ERROR TimeoutExpired(['/Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5600', 'wait-for-device']
+21:54:42 restarted emulator-5600 in 25s
+21:55:18 emulator-5600 pen004 36s
+21:55:51 emulator-5600 reb004 33s
+21:56:34 emulator-5600 pen005 43s
+21:57:13 emulator-5600 reb005 38s
+21:57:42 emulator-5600 pen006 30s
+21:58:15 emulator-5600 reb006 33s
+21:59:12 emulator-5600 pen007 58s
+21:59:49 emulator-5600 reb007 37s
+22:00:23 emulator-5600 pen008 34s
+22:00:56 emulator-5600 reb008 33s
+22:01:33 emulator-5600 pen009 36s
+22:02:39 emulator-5600 reb009 67s
+22:03:33 emulator-5600 pen010 54s
+22:04:06 emulator-5600 reb010 33s
+22:04:42 emulator-5600 pen011 36s
+22:06:16 emulator-5600 reb011 94s
+22:06:43 emulator-5600 pen012 27s
+22:07:15 emulator-5600 reb012 32s
+22:07:47 emulator-5600 pen013 32s
+22:08:19 emulator-5600 reb013 32s
+22:08:51 emulator-5600 pen014 32s
+22:09:23 emulator-5600 reb014 32s
+22:09:55 emulator-5600 pen015 32s
+22:10:27 emulator-5600 reb015 31s
+22:10:59 emulator-5600 pen016 32s
+22:11:30 emulator-5600 reb016 31s
+22:12:02 emulator-5600 pen017 32s
+22:12:34 emulator-5600 reb017 32s
+22:13:06 emulator-5600 pen018 32s
+22:13:38 emulator-5600 reb018 32s
+22:14:04 emulator-5600 pen019 26s
+22:14:36 emulator-5600 reb019 32s
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5600 --avd P04AvdA --port 8795 --variants mfence --schedules pending,reboot --trials 20 --apkdir fixture/build/apk_mut2_M1-union-latest --regrant-agg --out results/mutation-v2/M1-union-latest
+22:15:08 emulator-5600 pen000 29s
+22:15:40 emulator-5600 reb000 32s
+22:16:13 emulator-5600 pen001 33s
+22:16:45 emulator-5600 reb001 32s
+22:17:17 emulator-5600 pen002 32s
+22:17:49 emulator-5600 reb002 32s
+22:18:21 emulator-5600 pen003 32s
+22:18:53 emulator-5600 reb003 32s
+22:19:26 emulator-5600 pen004 32s
+22:19:57 emulator-5600 reb004 32s
+22:20:30 emulator-5600 pen005 32s
+22:21:02 emulator-5600 reb005 32s
+22:21:34 emulator-5600 pen006 33s
+22:22:06 emulator-5600 reb006 32s
+22:22:39 emulator-5600 pen007 33s
+22:23:11 emulator-5600 reb007 32s
+22:23:43 emulator-5600 pen008 32s
+22:24:16 emulator-5600 reb008 32s
+22:24:49 emulator-5600 pen009 33s
+22:25:30 emulator-5600 reb009 41s
+22:26:30 emulator-5600 pen010 60s
+22:27:01 emulator-5600 reb010 31s
+22:27:33 emulator-5600 pen011 32s
+22:28:05 emulator-5600 reb011 32s
+22:28:47 emulator-5600 pen012 41s
+22:29:18 emulator-5600 reb012 32s
+22:29:51 emulator-5600 pen013 32s
+22:30:23 emulator-5600 reb013 32s
+22:30:55 emulator-5600 pen014 32s
+22:31:26 emulator-5600 reb014 31s
+22:31:59 emulator-5600 pen015 32s
+22:32:30 emulator-5600 reb015 32s
+22:33:03 emulator-5600 pen016 32s
+22:33:34 emulator-5600 reb016 31s
+22:34:06 emulator-5600 pen017 32s
+22:34:38 emulator-5600 reb017 31s
+22:35:10 emulator-5600 pen018 32s
+22:35:45 emulator-5600 reb018 35s
+22:36:14 emulator-5600 pen019 29s
+22:36:52 emulator-5600 reb019 38s
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5600 --avd P04AvdA --port 8795 --variants mfence --schedules pending,reboot --trials 20 --apkdir fixture/build/apk_mut2_M2-stale-epoch --regrant-agg --out results/mutation-v2/M2-stale-epoch
+22:37:43 emulator-5600 pen000 48s
+22:41:56 emulator-5600 reb000 TRIAL_ERROR TimeoutExpired(['/Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5600', 'wait-for-device']
+22:42:19 restarted emulator-5600 in 23s
+22:43:00 emulator-5600 pen001 41s
+22:43:32 emulator-5600 reb001 32s
+22:44:04 emulator-5600 pen002 32s
+22:44:34 emulator-5600 reb002 31s
+22:45:07 emulator-5600 pen003 32s
+22:45:38 emulator-5600 reb003 31s
+22:46:10 emulator-5600 pen004 32s
+22:46:45 emulator-5600 reb004 35s
+22:47:18 emulator-5600 pen005 32s
+22:47:50 emulator-5600 reb005 32s
+22:48:32 emulator-5600 pen006 42s
+22:49:04 emulator-5600 reb006 32s
+22:49:36 emulator-5600 pen007 32s
+22:50:09 emulator-5600 reb007 33s
+22:50:41 emulator-5600 pen008 32s
+22:51:20 emulator-5600 reb008 39s
+22:52:10 emulator-5600 pen009 51s
+22:52:43 emulator-5600 reb009 33s
+22:53:16 emulator-5600 pen010 33s
+22:53:54 emulator-5600 reb010 38s
+22:54:45 emulator-5600 pen011 51s
+22:55:23 emulator-5600 reb011 38s
+22:56:11 emulator-5600 pen012 48s
+22:56:43 emulator-5600 reb012 32s
+22:57:15 emulator-5600 pen013 33s
+22:57:47 emulator-5600 reb013 32s
+22:58:19 emulator-5600 pen014 32s
+22:59:00 emulator-5600 reb014 41s
+22:59:48 emulator-5600 pen015 48s
+23:00:19 emulator-5600 reb015 31s
+23:01:01 emulator-5600 pen016 42s
+23:01:32 emulator-5600 reb016 32s
+23:02:05 emulator-5600 pen017 32s
+23:02:37 emulator-5600 reb017 32s
+23:03:06 emulator-5600 pen018 30s
+23:03:38 emulator-5600 reb018 31s
+23:04:11 emulator-5600 pen019 33s
+23:04:48 emulator-5600 reb019 38s
+$ caffeinate -s -i python3 followup/campaign.py --serial emulator-5600 --avd P04AvdA --port 8795 --variants mfence --schedules pending,reboot --trials 20 --apkdir fixture/build/apk_mut2_M3-extras-drop --regrant-agg --out results/mutation-v2/M3-extras-drop
+23:05:36 emulator-5600 pen000 45s
+23:06:08 emulator-5600 reb000 32s
+23:06:40 emulator-5600 pen001 32s
+23:07:14 emulator-5600 reb001 34s
+23:07:44 emulator-5600 pen002 30s
+23:08:16 emulator-5600 reb002 32s
+23:08:48 emulator-5600 pen003 32s
+23:09:19 emulator-5600 reb003 32s
+23:09:52 emulator-5600 pen004 32s
+23:10:24 emulator-5600 reb004 32s
+23:11:05 emulator-5600 pen005 41s
+23:11:46 emulator-5600 reb005 41s
+23:12:46 emulator-5600 pen006 60s
+23:13:18 emulator-5600 reb006 32s
+23:13:50 emulator-5600 pen007 32s
+23:14:22 emulator-5600 reb007 32s
+23:14:55 emulator-5600 pen008 32s
+23:15:26 emulator-5600 reb008 31s
+23:15:58 emulator-5600 pen009 32s
+23:16:39 emulator-5600 reb009 41s
+23:17:27 emulator-5600 pen010 48s
+23:18:04 emulator-5600 reb010 37s
+23:18:55 emulator-5600 pen011 51s
+23:19:26 emulator-5600 reb011 31s
+23:19:59 emulator-5600 pen012 32s
+23:20:31 emulator-5600 reb012 32s
+23:21:03 emulator-5600 pen013 32s
+23:21:35 emulator-5600 reb013 32s
+23:22:07 emulator-5600 pen014 32s
+23:22:39 emulator-5600 reb014 32s
+23:23:21 emulator-5600 pen015 42s
+23:23:53 emulator-5600 reb015 32s
+23:24:34 emulator-5600 pen016 41s
+23:25:06 emulator-5600 reb016 32s
+23:25:38 emulator-5600 pen017 32s
+23:26:10 emulator-5600 reb017 32s
+23:26:42 emulator-5600 pen018 32s
+23:27:20 emulator-5600 reb018 38s
+23:28:14 emulator-5600 pen019 54s
+23:28:55 emulator-5600 reb019 41s
+$ python3 artifact/followup/analyze_mutation.py --root artifact/results/mutation-v2 --out artifact/results/mutation-v2/analysis
+{'base': (39, 1), 'M1-union-latest': (40, 0), 'M2-stale-epoch': (39, 1), 'M3-extras-drop': (40, 0)}
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5600 emu kill
+OK: killing emulator, bye bye
+OK

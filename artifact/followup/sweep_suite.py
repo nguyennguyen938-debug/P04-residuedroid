@@ -21,6 +21,8 @@ p.add_argument('--size', type=int, default=1048576); p.add_argument('--seed', de
 p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-b4-apk/rl-tls.apk')
 p.add_argument('--probe-mode', default='fixed', choices=['fixed', 'overlap'],
                help='v2 overlap: probes start at the first accepted chunk and repeat until every sender ended (max 12)')
+p.add_argument('--recv-timeout', type=float, default=30.0,
+               help='host receiver per-recv timeout in s (v1/v2: 30; v3: 300, so a sender waiting on the lock is not cut off)')
 a = p.parse_args()
 assert not a.out.exists(), f'refusing: {a.out} exists (fresh directory rule)'
 a.out.mkdir(parents=True)
@@ -70,7 +72,7 @@ class Server(socketserver.ThreadingTCPServer):
 class Handler(socketserver.BaseRequestHandler):      # plain HTTP receiver: reads the whole body, answers 200
     def handle(self):
         with contextlib.suppress(Exception):
-            s = self.request; s.settimeout(30); h = b''
+            s = self.request; s.settimeout(a.recv_timeout); h = b''
             while not h.endswith(b'\r\n\r\n'):
                 b = s.recv(1)
                 if not b: return
@@ -86,7 +88,7 @@ sink = Server(('127.0.0.1', 8799), Handler); threading.Thread(target=sink.serve_
 boot(); adb('root'); time.sleep(2); adb('wait-for-device')
 adb('install', '-r', a.apk, timeout=120); bc('init', 'setup')
 (a.out / 'meta.json').write_text(json.dumps({'serial': a.serial, 'avd': a.avd, 'seed': a.seed, 'blocks': a.blocks, 'start': a.start,
-    'chunks_kib': CHUNKS, 'senders': SENDERS, 'size': a.size, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(),
+    'chunks_kib': CHUNKS, 'senders': SENDERS, 'size': a.size, 'probe_mode': a.probe_mode, 'recv_timeout_s': a.recv_timeout, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(),
     'apk_sha256': hashlib.sha256(a.apk.read_bytes()).hexdigest(), 'started': time.time()}, indent=1) + '\n')
 
 

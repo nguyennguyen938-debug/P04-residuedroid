@@ -44,6 +44,7 @@ ap.add_argument("--apkdir", default="fixture/build/apk")
 ap.add_argument("--abort-after", type=int, default=5)   # watchdog: abort after N consecutive failed trials
 ap.add_argument("--no-root", action="store_true")       # real phone: run-as instead of root (see module docstring)
 ap.add_argument("--sink-host", default="")              # empty = app default 10.0.2.2 (emulator)
+ap.add_argument("--regrant-agg", action="store_true")   # B12 v2: app re-aggregates after the T5 re-grant (fixture extra regrant_agg)
 args = ap.parse_args()
 if args.no_root and {"reboot", "netloss"} & set(args.schedules.split(",")):
     sys.exit("--no-root: reboot and netloss need root (iptables, adb root after boot); run them on the emulator")
@@ -289,7 +290,7 @@ def run_trial(sched, k):
     ex = (f"--es trial {trial} --es tenants {','.join(map(str, TENANTS))} --es substrate {args.substrate} "
           f"--es up_delay 15000 --es sum_delay 15000 --es resurrect_delay 5000 --es regrant_ms 1500 --es nrec 12 "
           f"--es manual {1 if manual else 0} --es sink_port {args.port}" + (f" --es inj {inj}" if inj else "")
-          + (f" --es sink_host {args.sink_host}" if args.sink_host else ""))
+          + (f" --es sink_host {args.sink_host}" if args.sink_host else "") + (" --es regrant_agg 1" if args.regrant_agg else ""))
     for p in PKGS:
         r = bc(p, "rl.SETUP", ex)
         if 'data="ok"' not in r:
@@ -406,6 +407,7 @@ def main():
             meta.update(root=not args.no_root, sink_host=args.sink_host or "10.0.2.2",
                         db_read="run-as copy + host sqlite3" if args.no_root else "sqlite3 as root",
                         model=sh("getprop ro.product.model").strip(), android=sh("getprop ro.build.version.release").strip())
+        if args.regrant_agg: meta["regrant_agg"] = True   # B12 v2 only; other runs' meta.json unchanged
         mp = os.path.join(args.out, "meta.json")
         if os.path.exists(mp):      # keep the first launch's meta; later (resume) launches get their own file
             mp = os.path.join(args.out, f"meta_start{args.start}_{args.schedules.replace(',', '-')}.json")
