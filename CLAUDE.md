@@ -6,7 +6,9 @@ labels with persisted data and serializes a policy check with each bounded socke
 
 ## Team and plan of record (round 3)
 - Three roles: **A** theory (`artifact/mutation/**`, §2/§4/§5/§9), **B** experiments, **C** results and writing
-  (`generated/*`, render scripts, `artifact/devicefarm/**`, §3/§7/§8/§10). **The user is B (Duy).**
+  (`generated/*`, render scripts, `artifact/devicefarm/**`, §3/§7/§8/§10). **Who the user is depends on the
+  session:** the repo owner does A and C, DuyDayy does B. If the session does not make the role clear, ask before
+  editing. Put a personal role line in an untracked `CLAUDE.local.md` (git-ignored), not in this file.
 - **Plan of record: `PLAN-ROUND3.md` + `HUONG-DAN-B.md`**, restated for B in `artifact/plans/B-run.md` and
   `artifact/plans/B-tracker.md`. `PLAN.md` describes the original (pre-round-3) campaign. Do not add tasks or protocol
   beyond the team plan; where it is silent, ask.

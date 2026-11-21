@@ -45,3 +45,6 @@ artifact/static/data/index/index-v2.json
 # Frozen manuscript bundles also contain private figure construction sources.
 /artifact/results/review-followup-20261115/pre-followup-source.tar.gz
 /artifact/results/revision-20261115/pre-revision-source.tar.gz
+
+# personal Claude Code instructions (role, machine); not shared
+CLAUDE.local.md
