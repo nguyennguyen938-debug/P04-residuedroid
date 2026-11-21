@@ -1,5 +1,0 @@
-{
- "_comment": "Device label for Test 1 on a phone (racePhoneModel); model as in test1-phone-card.md §6. Android release is read from final/meta.json. No serial or account data.",
- "label": "Galaxy A06",
- "model": "SM-A066B"
-}
