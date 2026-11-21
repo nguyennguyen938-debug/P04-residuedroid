@@ -69,13 +69,13 @@ def boot():
     adb('root'); time.sleep(3); adb('wait-for-device')
 
 
-def bc(op, id, remote=False, **kw):
+def bc(op, id, remote=False, timeout=60, **kw):
     cmd = ['shell', 'am', 'broadcast', '-n', PKG + '/org.residuelab.Revision' + ('Remote' if remote else ''), '-a', 'rl.REVISION',
            '--es', 'op', op, '--es', 'id', id]
     if op == 'send' and a.host: kw['host'] = a.host
     for k, v in kw.items():
         cmd += ['--ez' if isinstance(v, bool) else '--ei' if isinstance(v, int) else '--es', k, str(v).lower() if isinstance(v, bool) else str(v)]
-    return adb(*cmd)
+    return adb(*cmd, timeout=timeout)
 
 
 def events():
@@ -145,7 +145,9 @@ if a.radio:
     adb('shell', 'svc wifi disable'); adb('shell', 'svc data enable'); time.sleep(8)
     RADIO = {'routes': adb('shell', 'ip route').strip()[:400], 'active': adb('shell', 'dumpsys connectivity | grep -m2 -i "Active default network\\|NetworkAgentInfo"; true').strip()[:400]}   # metadata only: no match must not abort
 apk = a.apk
-adb('install', '-r', apk, timeout=120); bc('init', 'setup')
+adb('install', '-r', apk, timeout=120)
+t_setup = time.monotonic(); bc('init', 'setup', timeout=300)   # g2close pilot-calib: cold start of a fresh install took >60 s under host load
+SETUP_S = round(time.monotonic() - t_setup, 1)
 adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
 adb('shell', f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
 if a.no_root:   # phones: a never-launched app has no network from a broadcast (pilot-calib-1); wake it as campaign.py does
@@ -156,7 +158,7 @@ PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no har
     'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 

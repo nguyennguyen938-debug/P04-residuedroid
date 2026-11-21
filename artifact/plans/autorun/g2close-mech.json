@@ -47,7 +47,7 @@
     "--trials",
     "1",
     "--durations",
-    "results/round3/g2close/pilot-calib/calibration.json",
+    "results/round3/g2close/pilot-calib2/calibration.json",
     "--out",
     "results/round3/g2close/pilot-mech"
    ],

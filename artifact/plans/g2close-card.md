@@ -67,5 +67,12 @@ B7 freeze: reopened for group 2 only; frozen round-3 data are untouched; G2 outp
   is inside the kernel when the socket is closed is counted by its BYTES_ACCEPTED event time.
 - External: emulator, fixture, one cancellation design. Conclusion: N = 30 per cell; zero-vs-zero is reported as counts.
 
+## Pilot log
+- pilot-calib (21/11 22:59–23:04; excluded, no send ran): setup aborted, the first `init` broadcast after install timed out
+  at 60 s. Diagnosis (manual, same AVD, 23:05–23:07): the app works (`init` → ok) but its cold start right after boot took
+  83 s; host load average 10–12 (other user applications running). Fix (harness only, before any trial, protocol unchanged):
+  `race_suite.py` gives that one setup broadcast 300 s and records its duration (`setup_init_s` in meta.json), as B2 pilot-1.
+  New freeze `frozen-g2-v2` (only race_suite.py changed); next calibration `pilot-calib2`.
+
 ## 6. Outcome (after the run)
 (to be filled)

@@ -14,7 +14,7 @@ note "start (G2a then G2b)"
 python3 $AR $P/g2close-pilot.json || { note "G2a calibration pilot failed; chain stopped"; exit 3; }
 python3 - <<'PY' || { note "G2a THROTTLE GATE FAIL; no G2a final (card §3)"; exit 4; }
 import json, sys
-m = json.load(open('artifact/results/round3/g2close/pilot-calib/calibration.json'))['median_s']
+m = json.load(open('artifact/results/round3/g2close/pilot-calib2/calibration.json'))['median_s']
 e, u, l = m.get('edge:2097152'), m.get('umts:2097152'), m.get('lte:2097152')
 print('2 MiB medians (s): edge', e, 'umts', u, 'lte', l)
 sys.exit(0 if e and u and l and e >= 3 * l and u >= 1.5 * l else 1)

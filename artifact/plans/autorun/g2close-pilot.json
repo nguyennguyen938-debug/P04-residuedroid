@@ -47,9 +47,9 @@
     "--calibrate",
     "3",
     "--out",
-    "results/round3/g2close/pilot-calib"
+    "results/round3/g2close/pilot-calib2"
    ],
-   "out": "artifact/results/round3/g2close/pilot-calib"
+   "out": "artifact/results/round3/g2close/pilot-calib2"
   }
  ],
  "post": [],

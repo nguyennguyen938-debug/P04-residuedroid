@@ -47,7 +47,7 @@
     "--trials",
     "10",
     "--durations",
-    "results/round3/g2close/pilot-calib/calibration.json",
+    "results/round3/g2close/pilot-calib2/calibration.json",
     "--out",
     "results/round3/g2close/final"
    ],
@@ -58,5 +58,5 @@
   "python3 artifact/followup/analyze_g2close.py artifact/results/round3/g2close/final --out artifact/results/round3/g2close/analysis"
  ],
  "guard_after": true,
- "frozen": "artifact/results/round3/g2close/frozen-g2"
+ "frozen": "artifact/results/round3/g2close/frozen-g2-v2"
 }

@@ -1,0 +1,54 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~1 GB available; close apps before 2 emulators
+  [ OK ] 133 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5660 8798 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes fence --calibrate 3 --out results/round3/g2close/pilot-calib
+Traceback (most recent call last):
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/race_suite.py", line 148, in <module>
+    adb('install', '-r', apk, timeout=120); bc('init', 'setup')
+                                            ~~^^^^^^^^^^^^^^^^^
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/race_suite.py", line 78, in bc
+    return adb(*cmd)
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/race_suite.py", line 50, in adb
+    r = subprocess.run([ADB, '-s', a.serial, *map(str, args)], capture_output=True, text=True, timeout=timeout)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2424, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        skip_check_and_raise=True)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1434, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5660', 'shell', 'am', 'broadcast', '-n', 'org.residuelab.tls/org.residuelab.Revision', '-a', 'rl.REVISION', '--es', 'op', 'init', '--es', 'id', 'setup']' timed out after 60 seconds
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5660 emu kill
+OK: killing emulator, bye bye
+OK

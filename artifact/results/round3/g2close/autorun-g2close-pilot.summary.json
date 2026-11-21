@@ -1,0 +1,10 @@
+{
+  "id": "g2close-pilot",
+  "kind": "pilot",
+  "status": "ABORT(calibration exit 1)",
+  "guard": 0,
+  "finished": "2026-11-21T23:04:38.244914+07:00",
+  "stages": [
+    "artifact/results/round3/g2close/pilot-calib"
+  ]
+}
