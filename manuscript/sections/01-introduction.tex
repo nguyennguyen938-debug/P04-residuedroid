@@ -16,11 +16,10 @@ upload job, and its job checks the toggle before it starts. But the summary was 
 and its retry loop resends the batch it already prepared. In each case the socket accepts data that the app promised to stop
 sending, after the promise was made. The integration lacks a check that remains effective until socket handoff.
 
-This paper is about that gap, and it is deliberately narrow. Withdrawal inconsistency itself is not new.
-MowChecker~\cite{du2024mowchecker} statically finds withdrawal choices that do not control third-party collection.
-CleanOS~\cite{tang2012cleanos}, Pebbles~\cite{spahn2014pebbles} and Weir~\cite{nadkarni2016weir} established data management
-and information-flow enforcement on Android. Taint tracking~\cite{enck2010taintdroid,arzt2014flowdroid} finds flows to the
-network. Two problems remain. The first is \emph{deferred} egress: data collected before an explicit withdrawal reaches the
+This paper is about that gap, and it is deliberately narrow. MowChecker~\cite{du2024mowchecker} finds withdrawal choices
+that do not control third-party collection; CleanOS~\cite{tang2012cleanos}, Pebbles~\cite{spahn2014pebbles},
+Weir~\cite{nadkarni2016weir} and taint tracking~\cite{enck2010taintdroid,arzt2014flowdroid} manage and track data on
+Android. Two problems remain. The first is \emph{deferred} egress: data collected before an explicit withdrawal reaches the
 network afterwards through persisted work, across process death, reboot and connectivity changes. The second is where a
 cooperative app must enforce its own contract so that no lifecycle interleaving defeats it. We also refuse two simplifications.
 First, a stored residue is not a violation. An OS permission revocation, an in-app opt-out, a processing restriction and a

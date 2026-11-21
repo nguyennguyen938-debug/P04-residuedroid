@@ -1,0 +1,15 @@
+\section{Submission Lifecycle}
+\label{app:lifecycle}
+\begin{table}[h]\centering
+\caption{Lifecycle of one submission, with the artifact's event names. The fence check shares the withdrawal lock (A3); earlier checks do not.}
+\label{tab:lifecycle-states}\mtab
+\begin{tabular}{@{}p{0.40\columnwidth}p{0.18\columnwidth}p{0.34\columnwidth}@{}}\toprule
+\mhead State (event) & Check & Crash or loss here\\\midrule
+Labelled copy stored (\texttt{COLLECT}) & none & label survives with the row (A2)\\
+Job queued, label in row or extras (\texttt{ENQUEUE}) & enqueue check & job restored after reboot with its epochs\\
+Batch prepared (\texttt{JOBSTART}, \texttt{AUTHORIZATION\_LOGGED}) & job-start check & nothing accepted; retry rereads policy\\
+TLS record buffered (\texttt{TLS\_BUFFERED}) & none & nothing accepted\\
+Prefix handed off (\texttt{WRITE\_ATTEMPT}, \texttt{BYTES\_ACCEPTED}) & fence, per write & count may be unlogged: unknown, never zero\\
+Request received (receiver log) & none & accepted bytes may still arrive (Prop.~\ref{prop:recall})\\
+Response received (\texttt{RESPONSE\_RECEIVED}) & none & lost response: retry may duplicate\\
+\bottomrule\end{tabular}\end{table}

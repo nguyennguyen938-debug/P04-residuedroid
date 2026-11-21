@@ -2,14 +2,11 @@
 \label{sec:discussion}
 \label{sec:threats}
 
-\paragraph{What is and is not covered.} \sys's guarantee holds for supported paths only. It does not cover:
-\begin{itemize}[leftmargin=*,nosep]
-\item native code that opens sockets (\pctNativeAll{}\% of the corpus ships native libraries);
-\item embedded HTTP stacks or raw sockets that bypass the wrapper (tenant T9 leaked under \sys and every variant without an early check);
-\item WebViews, Custom Tabs and IPC to other apps or SDK processes that do not link the library;
-\item SyncAdapters and push-triggered work whose network I/O goes through system services;
-\item any flow the developer did not route through the wrapper.
-\end{itemize}
+\paragraph{What is and is not covered.} \sys's guarantee holds for supported paths only. It does not cover native
+sockets (\pctNativeAll{}\% of the corpus ships native libraries), embedded HTTP stacks or raw sockets that bypass the
+wrapper (tenant T9 leaked under \sys and every variant without an early check), WebViews, Custom Tabs, IPC to processes
+that do not link the library, SyncAdapters and push-triggered work whose I/O goes through system services, or any other
+flow the developer did not route through the wrapper.
 Lineage is tracked at the granularity of rows and job inputs, not of program variables. Data copied into an unlabelled
 cache and later re-read loses its label, and the wrapper then sees an unlabelled item. The stream-wrapper prototype let unknown labels through; its zero observed unknowns do not
 justify assuming complete labels in deployments. The channel wrapper fails closed on missing, malformed,
@@ -31,10 +28,9 @@ be converted into a successful withdrawal acknowledgement.
 
 \paragraph{Threats to validity.}
 \emph{Internal.} The fixture's enforcement variants encode common patterns, not any specific app's code. Their behavior
-after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The corpus does not validate the fixture's between-batch cancellation behavior. Host sleep and emulator crashes interrupted early
-trials. Early net-loss trials used a connectivity cut that did not reach the app
-(\S\ref{sec:setup}). We excluded every trial with a harness gap over 200\,s, an emulator restart, an unreadable device log
-or an unverified cut (\nInvalid{} of \nTrialsTotal{}), and ran replacement trials. Shared exclusions preserve within-trial pairing but can still select easier schedules.
+after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The corpus does not validate the fixture's between-batch cancellation behavior. The exclusion rules of \S\ref{sec:setup}
+removed \nInvalid{} of \nTrialsTotal{} stream-wrapper trials; shared exclusions preserve pairing but can select easier
+schedules.
 \emph{Construct.} Stream-wrapper ordering uses a pre-write log and can undercount baseline handoffs. The channel tests separate authorization, attempts, acceptance and receipt; missing return evidence is unknown. The tags are synthetic tracers, so we test data provenance, not semantic
 sensitivity.
 \emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one

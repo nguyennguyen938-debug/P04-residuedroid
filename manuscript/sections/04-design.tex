@@ -30,7 +30,8 @@ it survives process death and reboot.
 
 \paragraph{Persistent job lineage.} Each persisted datum carries a label $\ell(d)\subseteq\{(s,\epsilon)\}$, the scopes and
 epochs of the sources it was computed from. The label is written \emph{in the same row or the same job input} as the data,
-so it is committed atomically with the data. Collection assigns $\{(s,\epsilon(s))\}$, and derivation takes the union of its
+so it is committed atomically with the data. Collection assigns $\{(s,\epsilon(s))\}$ while $a(s)$ holds; an app that keeps
+collecting during an opt-out, for its own function, assigns $\{(s,\bot)\}$ instead. Derivation takes the union of its
 inputs' labels. When data is copied into a job's persisted input (a \texttt{PersistableBundle} or WorkManager \texttt{Data}),
 the label is copied with it. The label therefore survives in the job store, which a database deletion does not reach.
 
@@ -45,7 +46,7 @@ remainder; previously accepted bytes remain outstanding. The contract rule for a
 $(s,e)$ and purpose $p$ is
 \begin{equation}
 \begin{aligned}
-\mathit{forbid}(s,e,p)\;=\;{}&p\in R_s\;\wedge\;\big[(\pi_s\wedge e<\epsilon(s))\\
+\mathit{forbid}(s,e,p)\;=\;{}&p\in R_s\;\wedge\;\big[e=\bot\;\vee\;(\pi_s\wedge e<\epsilon(s))\\
 &\vee\;(e=\epsilon(s)\wedge\neg a(s))\big],
 \end{aligned}
 \label{eq:rule}
@@ -53,7 +54,8 @@ $(s,e)$ and purpose $p$ is
 where $R_s$ is the set of purposes the contract revokes and $\pi_s$ says whether it covers pending data
 (Table~\ref{tab:contracts}). An item is forbidden if any element of its label is forbidden. For an OS-permission tenant
 $R_s=\emptyset$, so prior data is never blocked. For a processing restriction, $R_s=\{\textit{personalisation}\}$, so backup
-continues. For a ``stop collecting'' opt-out, $\pi_s$ is false, so queued data may still flush.
+continues. For a ``stop collecting'' opt-out, $\pi_s$ is false, so queued data may still flush. Items labelled $\bot$
+were collected without consent and are never sent for a revoked purpose, even after a re-grant.
 
 \begin{algorithm}[t]
 \caption{Audited HTTP fence, with source labels on every retry}
@@ -83,5 +85,5 @@ consent flag without epochs lets old data through after a re-grant. \S\ref{sec:t
 exclusive file lock. This simple design can briefly delay unrelated scopes, and storage or
 scheduling delays can exceed nominal deadlines. Five-second operation deadlines are best-effort
 failure bounds, not real-time guarantees. A failed or pending withdrawal is never acknowledged
-as successful. Layered cancellation and early checks can reduce wasted work; the stated prefix-level guarantee uses a check for each final chunk. The old whole-request HTTP-stream wrapper is retained as a stream-wrapper
-comparison, not used to justify the channel handoff boundary.
+as successful. Layered cancellation and early checks can reduce wasted work; the stated prefix-level guarantee uses a check for each final chunk. A whole-request stream wrapper serves only as a historical comparison
+(Appendix~\ref{app:stream}), not to justify the channel handoff boundary.

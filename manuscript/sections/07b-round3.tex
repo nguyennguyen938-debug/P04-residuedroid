@@ -18,8 +18,14 @@ EDGE & \raceEdgeLayer & \mgood{\raceEdgeFence} & \racePhoneEdgeLayer & \mgood{\r
 LTE & \raceLteLayer & \mgood{\raceLteFence} & \racePhoneLteLayer & \mgood{\racePhoneLteFence}\\
 \bottomrule\end{tabular}\end{table}
 
-The early check let bytes follow the acknowledgement in every cell; the fence never did. A fenced upload cut by a
-withdrawal ends with a send error and loses its permitted part unless it is split (\S\ref{sec:eval-realapp}).
+The early check let bytes follow the acknowledgement in every cell; the fence never did. The difference reaches the
+server: of the early trials whose withdrawal was acknowledged before the request was fully handed off, the receiver
+still logged the complete request in \raceCutEarlyComplete{} of \raceCutEarly{} (emulator) and
+\racePhoneCutEarlyComplete{} of \racePhoneCutEarly{} (phone); of the fenced trials cut that way, in
+\raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{}. A fenced upload cut
+by a withdrawal ends with a send error and loses its permitted part unless it is split (\S\ref{sec:eval-realapp}). We did
+not measure an early check that closes the socket on withdrawal; it would stop like the fence, but needs a cancellation
+path to every in-flight request.
 Equation~\ref{eq:race}, applied to the measured check and acceptance times, predicts \racePredPct{}\% (emulator) and
 \racePhonePredPct{}\% (phone) of early trials to violate, against \raceObsPct{}\% and \racePhoneObsPct{}\% observed. The
 model lets a withdrawal act when it is issued; an exploratory decomposition that adds the measured delivery delay fits
@@ -29,11 +35,13 @@ the emulator but not the phone (artifact), so we use the equation to order check
 \label{sec:eval-realapp}
 AirGuard, an open-source tracker detector, donates sightings through a WorkManager worker and Retrofit while ``Support
 the project by sharing some anonymous data'' is enabled, a switch worded as sharing (\S\ref{sec:measure}). Our embedding
-labels each item with the consent interval in which it was collected, kept in a durable log, so data collected during an
-opt-out has no valid label (Appendix~\ref{app:round3impl}). Running both builds in lockstep through the app's own
+labels each item with the consent interval in which it was collected, kept in a durable log; an item collected during an
+opt-out is labelled $\bot$, so Eq.~\ref{eq:rule} forbids it even after re-consent (Appendix~\ref{app:round3impl}). Running both builds in lockstep through the app's own
 preference path, the stock build donated opt-out beacons after re-consent in \airStockViol{} of \airN{} trials (pending,
-kill and reboot pooled) and the fenced build in \airFenceViol{}. The pre-registered oracle leaves \airFenceUnknownV{}
-fenced trials unknown; ordering on the guest clock alone, an exploratory step, leaves \airFenceUnknownVThree{}. After a
+kill and reboot pooled) and the fenced build in \airFenceViol{} confirmed. The pre-registered oracle leaves
+\airFenceUnknownV{} fenced trials unknown; ordering on the guest clock alone, an exploratory step, leaves
+\airFenceUnknownVThree{}. Stock and fenced builds differ in both labels and placement, so this comparison does not
+isolate placement. After a
 network cut neither build delivers permitted post-withdrawal beacons, because the app does not retry a failed run.
 
 \paragraph{Mixed requests.} With the split policy of \S\ref{sec:theory}, the transport recovered the permitted part of a
@@ -41,18 +49,17 @@ mixed request in \splitPreRecovered{} of \splitTrials{} trials when the fence bl
 in \splitPostRecovered{} of \splitTrials{} once a chunk had been accepted, which the policy does not split.
 \splitAfterAck{} trials accepted bytes after the acknowledgement.
 
-\paragraph{SDK embeddings.}\label{sec:eval-acra} In the preference-only ACRA~5.14.2 embedding, stock ACRA sent a queued
-crash report after reporting was disabled in \acraStockLeak{} trials and the preference-aware sender in
-\acraFenceLeak{}; that setting promises nothing about queued reports, so this is not a contract violation. An
-explicit-contract ACRA embedding and a Matomo~4.4 dispatcher embedding exercise library queues, retries and a separate
-sender process (Appendix~\ref{app:sdk}).
+\paragraph{SDK embeddings.}\label{sec:eval-acra} Stock ACRA~5.14.2 sent a queued crash report after reporting was
+disabled in \acraStockLeak{} trials, under a setting that promises nothing about queued reports; ACRA and Matomo~4.4
+embeddings with explicit contracts are in Appendix~\ref{app:sdk}.
 
 \subsection{Label errors, newer Android, phones and cost}
 \label{sec:eval-generality}
 \paragraph{Label errors.} Each mutant corrupts one label propagation point (artifact \texttt{mutation/}). Labelling raw
 records with the current epoch leaked in \mutTwoLeak{} of \mutTwoTrials{} trials; keeping only a summary's newest source
-label leaked in \mutOneLeak{} of \mutOneTrials{} (in the rest, the summary never reached the receiver). A test-time
-checker that compares each label with the sources traced in its content flagged \mutTwoFlagged{} of \mutTwoWrong{} and
+label leaked in \mutOneLeak{} of \mutOneTrials{} (in the rest, the summary never reached the receiver); the base and
+M2 builds each lost a reboot trial to a harness or device failure. A test-time checker that compares each label with
+the sources traced in its content, which requires content that carries source tracers as the fixture's does, flagged \mutTwoFlagged{} of \mutTwoWrong{} and
 \mutOneFlagged{} of \mutOneWrong{} mislabelled items. Dropping the label from the job input failed closed
 (\mutThreeLeak{} leaking trials; \mutThreeDeficit{} permitted items undelivered against \mutBaseDeficit{} for the
 unmodified build, which leaked in \mutBaseLeak{} of \mutBaseTrials{}). Runtime enforcement cannot see a valid but
@@ -71,5 +78,7 @@ acknowledgement in \devFenceAfterAck{} trials. In pending, kill and revoke sched
 
 \paragraph{Cost under load.} With probe withdrawals during uploads, the median acknowledgement was \sweepAckSmallMs{}\,ms
 (1\,KiB chunks, one sender) and \sweepAckLargeMs{}\,ms (64\,KiB, 16 senders), and process CPU per MiB fell from
-\sweepCpuSmall{} to \sweepCpuLarge{}\,ms as chunks grew. In \sweepLockStalls{} of \sweepLogged{} trials a sender waited
-its full deadline for the app-wide lock, a fairness limit of that lock.
+\sweepCpuSmall{} to \sweepCpuLarge{}\,ms as chunks grew. These sweep figures come from a separate harness with
+concurrent probe withdrawals and are not comparable with Table~\ref{tab:transport-cost} or the backpressure cells of
+\S\ref{sec:revision}. In \sweepLockStalls{} of \sweepLogged{} trials a sender waited its full deadline for the app-wide
+lock, a fairness limit of that lock.

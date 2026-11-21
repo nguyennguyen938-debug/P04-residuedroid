@@ -25,7 +25,12 @@ DroidSafe~\cite{gordon2015droidsafe} find source-to-sink paths (see~\cite{li2017
 evicts idle sensitive data, and Pebbles~\cite{spahn2014pebbles} recovers logical data objects so that they can be managed,
 including deleted. Weir~\cite{nadkarni2016weir} brings decentralized information-flow control~\cite{myers1997difc,efstathopoulos2005asbestos,zeldovich2006histar,krohn2007flume}
 to Android, and FlowFence~\cite{fernandes2016flowfence} confines sensitive computation in IoT frameworks. Aurasium and
-Boxify~\cite{xu2012aurasium,backes2015boxify} interpose on app behavior without platform changes. \sys borrows the label idea
+Boxify~\cite{xu2012aurasium,backes2015boxify} interpose on app behavior without platform changes, and
+DroidForce~\cite{rasthofer2014droidforce} and AppGuard~\cite{backes2013appguard} enforce data-centric policies on Android
+apps through inline reference monitors. Usage control~\cite{park2004ucon} re-evaluates a decision while use continues;
+\sys's late check is such an ongoing decision, taken at every bounded write. Purpose-based access
+control~\cite{byun2008purpose} ties access to the purpose of use, and Thoth~\cite{elnikety2016thoth} attaches policies to
+data in server-side retrieval systems. \sys borrows the label idea
 but differs in three ways. Its labels carry an \emph{epoch} that a withdrawal invalidates. They are persisted together with
 \emph{job inputs}, so they survive reboot and force-stop. And the decision is contract-aware: it is purpose- and
 pending-data-sensitive. The \vname{taint} ablation shows why that matters, since our synthetic over-broad rule blocks
@@ -39,4 +44,4 @@ spirit of TOCTOU defenses~\cite{bishop1996races}. Leases~\cite{gray1989leases} b
 not close the race on one device. Background-work misuse has been studied for energy (wake
 locks~\cite{liu2016wakelock}). We study it for privacy contracts.
 
-\paragraph{SDK isolation and downstream policy.} Android's Privacy Sandbox SDK Runtime separates compatible SDKs into a restricted process~\cite{android_sdkruntime}; isolation alone does not supply the source epochs or queued-data contract assumed here. Riverbed enforces user-defined data policies inside attested server runtimes~\cite{wang2019riverbed}, complementing a device boundary that cannot recall delivered data. SDK consent APIs also expose distinct contracts: Matomo's JavaScript tracker separates tracking consent from cookie consent~\cite{matomo_consent}. Those web APIs are related design context, not evidence about the Android SDK's persisted dispatcher tested here.
+\paragraph{SDK isolation and downstream policy.} The SDK Runtime isolates SDKs in a restricted process~\cite{android_sdkruntime} but supplies no source epochs; Riverbed enforces data policies in attested server runtimes~\cite{wang2019riverbed}, beyond a device boundary that cannot recall delivered data.

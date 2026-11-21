@@ -1,0 +1,38 @@
+{
+ "runs": {
+  "b10/final4": {
+   "early": {
+    "cut": 51,
+    "cut_complete": 51,
+    "trials": 90
+   },
+   "fence": {
+    "cut": 53,
+    "cut_complete": 0,
+    "trials": 90
+   }
+  },
+  "test1-phone/final": {
+   "early": {
+    "cut": 54,
+    "cut_complete": 54,
+    "trials": 90
+   },
+   "fence": {
+    "cut": 53,
+    "cut_complete": 0,
+    "trials": 90
+   }
+  }
+ },
+ "keys": {
+  "raceCutEarly": 51,
+  "raceCutEarlyComplete": 51,
+  "raceCutFence": 53,
+  "raceCutFenceComplete": 0,
+  "racePhoneCutEarly": 54,
+  "racePhoneCutEarlyComplete": 54,
+  "racePhoneCutFence": 53,
+  "racePhoneCutFenceComplete": 0
+ }
+}

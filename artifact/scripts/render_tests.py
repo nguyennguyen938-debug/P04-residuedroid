@@ -71,6 +71,12 @@ SCHEMA = {
     "lifeFourteenEnq": "Android 14 menqueue violating trials", "lifeFifteenEnq": "Android 15 menqueue violating trials",
     "mutBaseLeak": "base build leaking trials", "mutThreeLeak": "M3 leaking trials",
     "sweepLogged": "B4 v3 trials logged", "sweepLockStalls": "B4 v3 trials where a sender waited the full deadline for the lock",
+    # Receiver side of the natural races (scripts/receiver_race.py): trials acknowledged before the request was fully
+    # handed off ("cut"), and how many of them the receiver still logged as complete.
+    "raceCutEarly": "emulator early trials cut by the withdrawal", "raceCutEarlyComplete": "of which the receiver got complete",
+    "raceCutFence": "emulator fence trials cut", "raceCutFenceComplete": "of which complete at the receiver",
+    "racePhoneCutEarly": "phone early trials cut", "racePhoneCutEarlyComplete": "of which complete",
+    "racePhoneCutFence": "phone fence trials cut", "racePhoneCutFenceComplete": "of which complete",
 }
 
 

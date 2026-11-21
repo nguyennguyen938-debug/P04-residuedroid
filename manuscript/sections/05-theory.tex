@@ -2,31 +2,19 @@
 \label{sec:theory}
 
 The durable state $\sigma$ contains scope epochs, grant flags and labelled copies.
-Table~\ref{tab:lifecycle-states} lists the states of one submission. An authorization
+Table~\ref{tab:lifecycle-states} (appendix) lists the states of one submission. An authorization
 log is an observation of intent, not a send. A \emph{handoff} $c$ is acceptance of a
 positive byte prefix by the audited socket transport; a write may accept fewer bytes
 than requested or none. The guarantee concerns each accepted prefix, including a
 prefix of a request that never completes.
 
-\begin{table}[t]\centering
-\caption{Lifecycle of one submission, with the artifact's event names. The fence check shares the withdrawal lock (A3); earlier checks do not.}
-\label{tab:lifecycle-states}\mtab
-\begin{tabular}{@{}p{0.40\columnwidth}p{0.18\columnwidth}p{0.34\columnwidth}@{}}\toprule
-\mhead State (event) & Check & Crash or loss here\\\midrule
-Labelled copy stored (\texttt{COLLECT}) & none & label survives with the row (A2)\\
-Job queued, label in row or extras (\texttt{ENQUEUE}) & enqueue check & job restored after reboot with its epochs\\
-Batch prepared (\texttt{JOBSTART}, \texttt{AUTHORIZATION\_LOGGED}) & job-start check & nothing accepted; retry rereads policy\\
-TLS record buffered (\texttt{TLS\_BUFFERED}) & none & nothing accepted\\
-Prefix handed off (\texttt{WRITE\_ATTEMPT}, \texttt{BYTES\_ACCEPTED}) & fence, per write & count may be unlogged: unknown, never zero\\
-Request received (receiver log) & none & accepted bytes may still arrive (Prop.~\ref{prop:recall})\\
-Response received (\texttt{RESPONSE\_RECEIVED}) & none & lost response: retry may duplicate\\
-\bottomrule\end{tabular}\end{table}
 
 \begin{assumption}[Supported path]\label{as:sp}
 (A1) Every supported byte is sent through Algorithm~\ref{alg:fence}, with one writer
 per socket and no unmediated asynchronous sender below its check. For TLS, the checked bytes are application-record ciphertext: the request's conservative source union remains attached to every encrypted record and partial-record remainder. Encryption may precede checking; each subsequent socket write must recheck policy. Handshake traffic contains no request data. TLS early data, renegotiation and external writers are excluded.
 (A2) Every persisted copy carries atomically stored, over-approximate source labels;
-missing or invalid labels fail closed. Labels on retries retain the collection epochs.
+missing or invalid labels fail closed. Labels on retries retain the collection epochs. The collection-time label
+is read so that no withdrawal commits between that read and the write it labels.
 (A3) Each bounded, nonblocking write and its policy check share a process/cross-process
 lock with withdrawal and re-grant. A withdrawal commits its policy transaction before
 acknowledgement. Policy state survives process failure; an unreadable store fails closed.
@@ -45,22 +33,25 @@ includes every source in the checked label union, and the check rejects any forb
 source. Hence every accepted prefix satisfies the rule. Crashes add no exception
 (Table~\ref{tab:lifecycle-states}): a prefix accepted by an interrupted write is still
 covered by its check, even if no count is logged, and after restart the next attempt
-reacquires the lock and rereads durable policy, so it cannot reuse an earlier authorization.
+reacquires the lock and rereads durable policy, so it cannot reuse an earlier authorization. The argument uses only
+that the rule is evaluated on $\sigma$ read inside the critical section, so it holds for any contract rule computed from
+$\sigma$, including the $\bot$ case of Eq.~\ref{eq:rule}.
 \end{proof}
 
 Exact labels avoid policy-induced false positives only when labels and policy are
 available and valid. Over-approximation, fail-closed migration, timeouts and network
-failure can still prevent permitted delivery. Soundness is not an availability claim.
+failure can still prevent permitted delivery. Soundness is not an availability claim. For liveness, with a fair lock a
+withdrawal waits for at most one bounded write per sender ahead of it; our app-wide lock is not fair
+(\S\ref{sec:eval-generality}).
 
 \paragraph{Splitting blocked requests.} A request whose items mix a forbidden source with permitted ones is blocked
-as a whole (\S\ref{sec:revision}). A split policy recovers the permitted part. If the fence blocks a request before any
-of its bytes is handed off, the sender partitions the items by label, retires those whose labels the rule forbids, and
-resubmits the rest as a new request, at most once per attempt. The new request is an ordinary submission: it takes the
-lock, rechecks every label, and is blocked again if a withdrawal commits in between, so Theorem~\ref{thm:sound} covers it
-unchanged. After a prefix has been handed off, the request cannot be rewritten and its remainder stays withheld. The
-cost is availability, not soundness: a derived item whose label includes the forbidden source is retired whole, and the
-second check adds one lock acquisition.
+as a whole (\S\ref{sec:revision}). If the fence blocks a request before any of its bytes is handed off, a split policy
+retires the forbidden items and resubmits the rest once as a new request, which takes the lock and rechecks every label,
+so Theorem~\ref{thm:sound} covers it unchanged. After a handoff the request cannot be rewritten. The cost is
+availability: a derived item with a forbidden source is retired whole.
 
+Let $W$ be the commit point of a withdrawal's policy transaction, and call a check or cancellation \emph{effective}
+for a handoff at $c$ if it runs in $(W,c)$ and can stop that handoff.
 \begin{theorem}[Race for earlier checks]\label{thm:race}
 Suppose a check $q$ admits a source that a later withdrawal would invalidate for the
 submission's purpose, and the path can still hand off that source at $c>q$ without
@@ -75,7 +66,7 @@ $c_1<\cdots<c_k$, all carrying sources invalidated by $W$, with no intervening r
 \end{equation}
 These equations concern that schedule model; cancellations or retries that depend on
 $W$ require a different model. Measured races follow the ordering of check points that the theorem predicts, but not
-its rates, because the model takes a withdrawal to act when it is issued (\S\ref{sec:eval-natural}).
+its rates, because the harness times a withdrawal when it is issued, while $W$ is its commit (\S\ref{sec:eval-natural}).
 \end{theorem}
 \begin{proof}
 Place the applicable withdrawal between the passing check and the unprotected write.
@@ -90,6 +81,11 @@ cannot distinguish old and new data after withdrawal and re-grant when the contr
 invalidates pending old data. Source lineage and retained epochs supply these distinctions;
 equivalent representations are possible.
 \end{proposition}
+\begin{proof}[Sketch]
+For the first claim, let a derived item declare scope $s'$ while its content comes from $s$; withdrawing $s$ leaves $s'$
+granted, so a declared-scope check admits it. For the second, take one item collected before a withdrawal and one after
+the re-grant: $a(s)$ is true at both checks, so no rule over $a(s)$ alone forbids the first and permits the second.
+\end{proof}
 
 \begin{proposition}[No recall]\label{prop:recall}
 A prefix accepted before withdrawal may arrive after acknowledgement. A device-side

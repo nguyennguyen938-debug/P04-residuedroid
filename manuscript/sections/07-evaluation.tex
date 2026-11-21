@@ -2,13 +2,9 @@
 \label{sec:eval}
 \input{sections/07a-setup}
 
-\subsection{Stream-wrapper authorization-order evidence}
-The stream-wrapper campaign (\nTrialsValid{} trials, nine variants, seven schedules) orders authorization, not socket
-handoff. Under that estimand the conventional combination admits three mechanism-specific failures
-(Table~\ref{tab:mechanisms}, Appendix~\ref{app:stream}): T1's summary keeps source data under another declared scope,
-T5 needs epochs to tell old records from new ones after re-grant, and network-loss retries pass job-start checks (T8).
-The stream-wrapper \sys gate admits none on mediated paths; raw-socket T9 stays uncovered. These rates depend on the
-fixture mix. The matched channel variants below share metadata to isolate placement.
+A historical stream-wrapper campaign (\nTrialsValid{} trials), which orders authorization rather than socket handoff,
+exposed the lineage (T1), epoch (T5) and retry (T8) failures of conventional checks (Appendix~\ref{app:stream}); the
+matched variants below share metadata to isolate placement.
 
 \subsection{Socket acceptance and withdrawal acknowledgement}
 \label{sec:revision}

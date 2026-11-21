@@ -29,12 +29,8 @@ layered + fence & 1400 & \mgood{0} & 1 \\
 
 The analysis excludes 8 failed paired trials and retains their diagnostics. Among the fixed permitted-flow controls (T3, T4 backup, T6, T7), layered early leaves 168/14000 permitted items undelivered, chunk fence leaves 96/14000 permitted items undelivered, layered + fence leaves 60/14000 permitted items undelivered. All 448 such items across the five variants come from reboot trials in which JobScheduler stopped an upload at shutdown and the fixture declined rescheduling; no affected trace shows a policy block or send failure (Appendix~\ref{app:matched-trials}).
 
-The matched layered-early versus fence contrast and trial-level intervals are reported below.
+Paired contrasts and trial-level intervals are in Appendix~\ref{app:matched-trials}.
 
-AVD A: paired confirmed-violation difference (layered early minus fence) 0.00 percentage points, percentile interval [0.00, 0.00], across 140 complete paired trials.
-
-AVD B: paired confirmed-violation difference (layered early minus fence) 0.00 percentage points, percentile interval [0.00, 0.00], across 140 complete paired trials.
-
-Layered early checks also have no confirmed violations in these schedules; the enlarged campaign does not demonstrate a natural-schedule advantage for final placement. A zero-event percentile interval is descriptive, not a population zero-risk bound. The forced HTTP and TLS barriers isolate the narrower residual race. Unknowns remain separate from confirmed violations.
+Layered early checks also have no confirmed violations in these schedules; these lifecycle schedules do not demonstrate an advantage for final placement; \S\ref{sec:eval-natural} tests withdrawals during an upload. A zero-event percentile interval is descriptive, not a population zero-risk bound. The forced HTTP and TLS barriers isolate the narrower residual race. Unknowns remain separate from confirmed violations.
 
 At the trial level, layered early, chunk fence and layered + fence have no confirmed violation in 280 paired trials each; counting unknowns as violations, the one-sided 95\% bounds stay at or below 4.2\% if trials were independent (Appendix~\ref{app:matched-trials}).

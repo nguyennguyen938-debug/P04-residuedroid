@@ -13,6 +13,10 @@ is not a claim of public hosting or third-party reproduction.
 
 \input{sections/appendix-matrix}
 
+\input{sections/appendix-protocols}
+
+\input{sections/appendix-lifecycle}
+
 \input{sections/appendix-sdk}
 
 \section{Fixture Details}
@@ -23,6 +27,11 @@ $10t{+}5$. All are persisted, with a 15\,s minimum latency, a 30\,s deadline ove
 schedules (\textsf{net}, \textsf{infl}) setup-time jobs get a 600\,s latency and are started with \texttt{cmd jobscheduler run -f}.
 Jobs enqueued later, by a re-grant or at startup, keep their natural latency. After 60\,s, the harness force-runs any job
 still registered, which bounds the observation window.
+
+\paragraph{Collection labels.} The fixture reads a tenant's grant just before the transaction that inserts its records.
+A collection that races a withdrawal is therefore labelled with the previous epoch, that is, treated as collected before
+the withdrawal: forbidden when the contract covers pending data, and otherwise permitted like any pre-withdrawal record.
+Reading the grant inside the insert transaction would serialize labelling with withdrawal as A2 requires.
 
 \paragraph{Variant semantics.} \vname{cancel} cancels the jobs whose declared scope is the withdrawn scope and whose
 purpose the contract revokes. For contracts covering pending data, it also deletes the tenant's unsent outbox rows (T4 instead marks them
@@ -97,7 +106,7 @@ budget per entry and records the minimum hop count to a sink. It is written for 
 Soot/Dexpler~\cite{bartel2012dexpler} so that it runs with the Python standard library alone. The validation sample
 (\S\ref{sec:measure}) and all per-app outputs are in the artifact.
 
-\section{Round-3 Implementation and Harness}
+\section{Split Policy, Real-App Embedding and Harnesses}
 \label{app:round3impl}
 
 \paragraph{Transport options and split policy.} The chunk fence takes an optional chunk size and send deadline; the
