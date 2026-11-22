@@ -87,6 +87,13 @@ before any data. The user's own phone; no rental, no cost.
 
   G3d runs in parallel with the emulator chain `g3-chain-v4.sh` (G3c v4, then P3) on the same Mac. Host load is recorded
   per cell. Freeze `frozen-g3-v4c`.
+- 22/11, harness review before any G3d run:
+  - `cost_suite.py` now checks that `adb install -r` printed Success and that the installed base.apk sha256 equals the
+    frozen APK (`installed_apk_sha256` in meta). Otherwise it stops. Without the check, an older rl-tls build left on the
+    phone could have run silently, and in that build an unknown mode such as `platform` is treated as fenced;
+  - G3d stages run without the per-stage guard, so that its CPU load does not coincide with emulator timing. The launcher
+    runs one guard at the end;
+  - fake-adb checks: correct install → runs; mismatching installed hash → stops; failed install → stops.
 - Device-free check (fake adb, 22/11): `--host auto` resolved the LAN address. With a matching certificate, 9/9 cells were
   valid and the receiver logged 9 TLS uploads over the LAN address. With the old certificate the harness refused, as
   intended.

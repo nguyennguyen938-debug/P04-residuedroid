@@ -96,7 +96,11 @@ sink = Server((a.host, a.port), Handler); sink.guard = threading.Lock(); threadi
 
 restore = []
 try:
-    adb('install', '-r', a.apk, timeout=180)
+    out = adb('install', '-r', a.apk, timeout=180)
+    assert 'Success' in out, f'adb install failed: {out.strip()[-200:]}'   # 22/11: never run on a previously installed build
+    inst = sh(f'pm path {PKG}').strip().splitlines()[0].split(':', 1)[1]
+    INSTALLED = sh(f'sha256sum {inst}').split()[0]
+    assert INSTALLED == hashlib.sha256(a.apk.read_bytes()).hexdigest(), f'installed APK {INSTALLED[:12]} differs from {a.apk}'
     uid = re.search(r'userId=(\d+)', sh(f'dumpsys package {PKG}')).group(1)
     adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
     sh(f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
@@ -106,7 +110,7 @@ try:
     sh('dumpsys battery unplug'); restore.append('dumpsys battery reset')
     phone = {'release': sh('getprop ro.build.version.release').strip(), 'sdk': sh('getprop ro.build.version.sdk').strip(),
              'model': sh('getprop ro.product.model').strip(), 'wifi': sh('dumpsys wifi | grep -m1 -E "^Wi-Fi is|mWifiInfo" | cut -c1-60; true').strip()[:60]}
-    meta = {'phone': phone, 'serial': 'physical (not recorded)', 'uid': int(uid), 'host': a.host, 'host_source': HOST_SOURCE, 'arms': ARMS, 'sizes': SIZES, 'repeats': a.repeats,
+    meta = {'phone': phone, 'serial': 'physical (not recorded)', 'uid': int(uid), 'host': a.host, 'host_source': HOST_SOURCE, 'installed_apk_sha256': INSTALLED, 'arms': ARMS, 'sizes': SIZES, 'repeats': a.repeats,
             'blocks': a.blocks, 'start': a.start, 'seed': a.seed, 'apk_sha256': hashlib.sha256(a.apk.read_bytes()).hexdigest(),
             'ca_sha256': hashlib.sha256((a.certdir / 'test-ca.pem').read_bytes()).hexdigest(), 'setup_init_s': setup_s,
             'foreground': True, 'battery_unplug_override': True, 'started': time.time()}

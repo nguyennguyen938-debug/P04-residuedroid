@@ -44,3 +44,5 @@ if [ $PHONE = 1 ]; then
 fi
 wait $E; note "emulator chain exited ($?)"
 wait 2>/dev/null; note "all chains ended"
+# G3d stages run with guard_after=false (a 30 s CPU-heavy check during emulator timing would add host load); one guard at the end
+g=$(bash .claude/skills/p04-experiment/scripts/guard.sh 2>&1 | tail -1); note "final guard: $g"

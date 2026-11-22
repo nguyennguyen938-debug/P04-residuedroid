@@ -1,6 +1,6 @@
 # Experiment card — P3 (group 3 follow-up): G3a on lte with balanced withdrawal timing (protocol v4 of G3a/G3b)
 
-Status: written 22/11 evening, before any P3 trial; frozen at the commit that adds it (`results/round3/g3/frozen-g3-v4c`).
+Status: written 22/11 evening, before any P3 trial; frozen at the commit that adds it (`results/round3/g3/frozen-g3-v4d`).
 The order is pilot (1 block) → mechanism + balance gate → final; chain `plans/autorun/g3-chain-v4.sh`, after G3c v4. Owner: B (Duy).
 
 Source: B's request in issue #7 (22/11), approved by the leader (22/11 13:12 UTC: "Leader duyệt cả hai: P3 và P4"). The
@@ -54,7 +54,7 @@ pooled with v3.
     clock differ by at most 15 ms. The pilot has one trial per (size, arm), and the gate is checked per size because C
     found the v3 imbalance in one size: on lte, W fell during the writes at 256 KiB in close2 7/10 vs 0/10 for the other
     arms; at 2 MiB 8–9/10 in every arm; at 32 KiB 0/10 in every arm. In v3 the gap was about 70–80 ms. Added 22/11
-    (C's review in issue #7) before any P3 trial; re-frozen as `frozen-g3-v4c`.
+    (C's review in issue #7) before any P3 trial; re-frozen as `frozen-g3-v4d`.
 
   Fail → no P3 final, reported in issue #7. A fix needs a new version and a new pilot.
 - **Validity and selection:** B10 validity; first 30 valid per arm in block order.
