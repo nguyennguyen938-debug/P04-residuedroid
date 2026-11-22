@@ -46,6 +46,9 @@ p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-apk/rl-tls.apk
 p.add_argument('--g3', action='store_true', help='group 3: g3=true on sends, marker on withdrawals, close2/fence-abort modes')
 p.add_argument('--marker', type=int, default=0, help='group 3: host marker listener port (unshaped band in the guest)')
 p.add_argument('--capture', action='store_true', help='group 3: emulator packet capture of the trial phase -> capture.pcap')
+p.add_argument('--warm-revision', action='store_true', help='group 3 P3: before each send, a no-op broadcast pre-starts the :revision process (all arms)')
+p.add_argument('--sndbuf', type=int, default=16384, help='requested SO_SNDBUF of the TLS socket (default 16384 as B10/G2a/G3a); group 3 P4 varies it')
+p.add_argument('--qsnap', action='store_true', help='group 3 P2: right after the withdraw broadcast returns, snapshot tc -s qdisc and the guest TCP send queue to :8798')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
@@ -189,7 +192,7 @@ PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no har
     'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'warm_revision': a.warm_revision, 'sndbuf': a.sndbuf, 'qsnap': a.qsnap, 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
@@ -204,8 +207,9 @@ def trial(block, profile, size, mode, u):
         adb('shell', f'am force-stop {PKG}'); adb('shell', f'run-as {PKG} rm -f files/revision.jsonl files/release'); bc('init', id)
         if a.no_root:   # phones (Android 14+): a cached broadcast process is frozen ~5 s in and its sockets are cut (pilot-calib-2); keep it foreground
             adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
+        if a.warm_revision: r['warm'] = bc('noop', id, remote=True)   # P3: same pre-start for every arm (close2 included)
         t_send = time.monotonic()
-        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=16384,
+        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=a.sndbuf,
                           label='analytics:0', deadline_ms=deadline, **({'g3': True} if a.g3 else {}))
         if u is not None:                       # no barrier: withdraw at W = u * D after the send was issued
             time.sleep(max(0.0, t_send + u * D - time.monotonic()))
@@ -213,6 +217,10 @@ def trial(block, profile, size, mode, u):
             extra = {'cancel': True} if mode == 'close' else {'cancel2': True} if mode == 'close2' else {}
             if a.marker: extra['marker'] = a.marker
             r['withdraw'] = bc('withdraw', id, remote=mode != 'close2', **extra)
+            if a.qsnap:   # P2: host-timed snapshot after the ack (the broadcast returns after WITHDRAW_ACK and the marker), not at the ack
+                t_q = time.monotonic()
+                r['qsnap'] = adb('shell', 'tc -s qdisc show dev eth0; grep -i ":225E " /proc/net/tcp /proc/net/tcp6; true').replace('\r', '').strip()[:4000]
+                r['qsnap_host_offset_s'] = (t_q - t_send, time.monotonic() - t_send)
         end = time.monotonic() + deadline / 1000 + 20
         while time.monotonic() < end:
             ev = events()

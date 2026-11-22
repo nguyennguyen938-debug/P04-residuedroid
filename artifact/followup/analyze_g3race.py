@@ -31,6 +31,7 @@ from analyze_race import fields, measures, validity  # noqa: E402
 from analyze_g2close import first, order_stats, own  # noqa: E402
 from summarize import wilson  # noqa: E402
 import pcapmin  # noqa: E402
+import tls_records  # noqa: E402
 
 RECV = 8798
 
@@ -75,7 +76,7 @@ def capture(path, marker, guest_to=RECV):
     return markers, conns, data
 
 
-def cap_measure(r, x, markers, conns, data):
+def cap_measure(r, x, markers, conns, data, tls=None):
     m = markers.get(r['trial'])
     if m is None: return {'status': 'no marker'}
     prev = max((v for v in markers.values() if v < m), default=-1)
@@ -92,14 +93,18 @@ def cap_measure(r, x, markers, conns, data):
     before = max((end(p) for p in seg if p['i'] < m and p['len']), default=0)
     post = [p for p in seg if p['i'] > m]
     allb = sum(p['len'] for p in post); hi = max((end(p) for p in post if p['len']), default=0)
-    return {'status': 'matched', 'after_marker_bytes': allb, 'after_marker_new_bytes': max(0, hi - before),
-            'rst_after_marker': any(p['flags'] & pcapmin.RST for p in post), 'fin_after_marker': any(p['flags'] & pcapmin.FIN for p in post)}
+    q = {'status': 'matched', 'after_marker_bytes': allb, 'after_marker_new_bytes': max(0, hi - before),
+         'rst_after_marker': any(p['flags'] & pcapmin.RST for p in post), 'fin_after_marker': any(p['flags'] & pcapmin.FIN for p in post)}
+    if tls is not None:   # P1a (capture-tls.jsonl from tls_records.py): TLS application_data bytes only
+        q['after_marker_app_bytes'] = sum(tls.get(p['i'], {}).get('app', 0) for p in post if p['len'])
+        q['after_marker_unknown_bytes'] = sum(tls.get(p['i'], {}).get('unknown', 0) for p in post if p['len'])
+    return q
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/g3race/analysis'))
     ap.add_argument('--n', type=int, default=30); ap.add_argument('--marker', type=int, default=8799); a = ap.parse_args()
-    rows, complete, caps, interrupted = [], set(), {}, []
+    rows, complete, caps, interrupted, tlss = [], set(), {}, [], {}
     for k, dd in enumerate(a.dirs):
         d = Path(dd)
         op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
@@ -114,6 +119,7 @@ def main():
         if rec.exists(): complete |= {x['request'] for x in (json.loads(l) for l in rec.read_text().splitlines() if l.strip()) if x.get('event') == 'body' and x.get('complete')}
         pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'   # slim: committed truncated copy (pcap_slim.py)
         caps[k] = capture(pc, a.marker) if pc.exists() else None
+        tlsf = d / 'capture-tls.jsonl'; tlss[k] = tls_records.load(tlsf) if tlsf.exists() else None
     cap = any(caps.values()); pc = Path(a.dirs[0])
     invalid = [{'trial': r['trial'], 'reason': why} for r in rows if (why := validity(r))]
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
@@ -138,7 +144,7 @@ def main():
         if mode == 'close2': c['cancel_found'] = dict(collections.Counter(x['cancel_done'] for x in xs))
         if mode == 'fence-abort': c['abort_armed'] = sum(x['abort_armed'] for x in xs)
         if cap:
-            cm = [cap_measure(r, x, *caps[r['_dir']]) if caps[r['_dir']] else {'status': 'no capture file'} for r, x in zip(used, xs)]
+            cm = [cap_measure(r, x, *caps[r['_dir']], tls=tlss.get(r['_dir'])) if caps[r['_dir']] else {'status': 'no capture file'} for r, x in zip(used, xs)]
             ok = [(r, q) for r, q in zip(used, cm) if q['status'] == 'matched']
             conc = collections.Counter(f"capture={int(q['after_marker_bytes'] > 0)}/app={int(viol_all[r['trial']])}" for r, q in ok)
             c['capture'] = {'status': dict(collections.Counter(q['status'] for q in cm)),
@@ -148,6 +154,11 @@ def main():
                             'trials_new_bytes_after_marker': sum(q['after_marker_new_bytes'] > 0 for _, q in ok),
                             'rst_after_marker': sum(q['rst_after_marker'] for _, q in ok),
                             'concordance_vs_app_after_ack': dict(sorted(conc.items()))}
+            if any('after_marker_app_bytes' in q for _, q in ok):
+                t = [q for _, q in ok if 'after_marker_app_bytes' in q]
+                c['capture'].update({'tls_trials': len(t), 'trials_app_after_marker': sum(q['after_marker_app_bytes'] > 0 for q in t),
+                                     'after_marker_app_bytes': sum(q['after_marker_app_bytes'] for q in t),
+                                     'after_marker_unknown_bytes': sum(q['after_marker_unknown_bytes'] for q in t)})
         out[f'{prof}/{mode}'] = c
     paired = {}
     for x, y in (('close2', 'fence'), ('close2', 'early'), ('fence-abort', 'fence'), ('close2', 'close')):

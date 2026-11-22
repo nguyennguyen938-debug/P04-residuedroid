@@ -17,8 +17,8 @@ class G3App(unittest.TestCase):
             acts = [ok('grant'), ok('insert'), ok('run'), ok('withdraw')] + ([{'a': 'trial_error'}] if err else [])
             return {'trial': tid, 'k': 0, 'variant': v, 'actions': acts, 'events': ev, 'device_alive_end': True}
         e = lambda t, k, det='': {'kind': k, 'mono_ns': t, 'detail': det}
-        rows = [trial('g3app-000-stock', 'stock', [e(1, 'DONATION_START'), e(2, 'WITHDRAW_REQUEST'), e(3, 'WITHDRAW_DONE'), e(9, 'DONATION_OK')]),
-                trial('g3app-000-fenced', 'fenced', [e(1, 'DONATION_START'), e(2, 'WITHDRAW_REQUEST'), e(3, 'WITHDRAW_DONE'), e(4, 'BLOCK'), e(5, 'DONATION_BLOCKED')]),
+        rows = [trial('g3app-000-stock', 'stock', [e(0, 'RUN_ENQUEUED'), e(1, 'DONATION_START'), e(2, 'WITHDRAW_REQUEST'), e(3, 'WITHDRAW_DONE'), e(9, 'DONATION_OK')]),
+                trial('g3app-000-fenced', 'fenced', [e(0, 'RUN_ENQUEUED'), e(1, 'DONATION_START'), e(2, 'WITHDRAW_REQUEST'), e(3, 'WITHDRAW_DONE'), e(4, 'BLOCK'), e(5, 'DONATION_BLOCKED')]),
                 trial('g3app-001-fenced', 'fenced', [e(1, 'DONATION_OK')], err=True)]
         (d / 'trials.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows))
         (d / 'marker.jsonl').write_text(json.dumps({'id': 'g3app-000-stock', 'host_ns': 100}) + '\n' + json.dumps({'id': 'g3app-000-fenced', 'host_ns': 300}) + '\n')
@@ -36,6 +36,18 @@ class G3App(unittest.TestCase):
         self.assertEqual((b['stock']['sent_after_ack'], b['stock']['after_marker_bytes'], b['stock']['receiver_complete_after_ack']), (1, 700, 1))
         self.assertEqual((b['fenced']['sent_after_ack'], b['fenced']['after_marker_bytes'], b['fenced']['receiver_complete_after_ack']), (0, 0, 0))
         self.assertEqual(b['stock']['placement'], {'during': 1}); self.assertEqual(s['paired'], {'fenced_vs_stock': {'fenced=0/stock=1': 1}})
+
+
+    def test_v4_validity(self):
+        """Protocol v4: the measured upload must be started by the run hook (startup donation worker excluded)."""
+        import analyze_g3app as g
+        base = {'actions': [{'a': h, 'ok': True} for h in ('grant', 'insert', 'run', 'withdraw')], 'device_alive_end': True}
+        ev = lambda *ks: [{'kind': k, 'mono_ns': i, 'detail': ''} for i, k in enumerate(ks)]
+        self.assertIsNone(g.validity(dict(base, events=ev('GRANT_ACK', 'INSERT', 'RUN_ENQUEUED', 'DONATION_START', 'DONATION_OK'))))
+        self.assertEqual(g.validity(dict(base, events=ev('GRANT_ACK', 'DONATION_START', 'INSERT', 'DONATION_OK', 'RUN_ENQUEUED'))), 'donation started before run')
+        self.assertEqual(g.validity(dict(base, events=ev('DONATION_START', 'INSERT', 'RUN_ENQUEUED', 'DONATION_OK'))), 'donation started before run')
+        self.assertEqual(g.validity(dict(base, events=ev('INSERT', 'DONATION_OK', 'RUN_ENQUEUED'))), 'no donation end after run')
+        self.assertEqual(g.validity(dict(base, events=ev('INSERT', 'DONATION_OK'))), 'no run event')
 
 
 if __name__ == '__main__':

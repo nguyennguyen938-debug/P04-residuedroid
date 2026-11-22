@@ -5,7 +5,7 @@ capture timestamps are host clock and are never compared with device time)."""
 import struct
 
 
-def frames(path):
+def frames(path, full=False):
     with open(path, 'rb') as f:
         gh = f.read(24)
         if len(gh) < 24: return
@@ -33,7 +33,7 @@ def frames(path):
             sp, dp, seq, ack = struct.unpack('>HHII', tcp[:12]); doff = (tcp[12] >> 4) * 4; fl = tcp[13]
             yield {'i': idx, 'ts': ts + tf / 1e6, 'src': '.'.join(map(str, ip[12:16])), 'dst': '.'.join(map(str, ip[16:20])),
                    'sport': sp, 'dport': dp, 'seq': seq, 'flags': fl, 'len': max(0, (tot - ihl) - doff) if tot >= ihl else max(0, len(tcp) - doff),
-                   'payload': bytes(tcp[doff:doff + 64])}
+                   'payload': bytes(tcp[doff:] if full else tcp[doff:doff + 64])}   # full: P1a TLS record parsing
 
 
 SYN, FIN, RST, ACK = 0x02, 0x01, 0x04, 0x10

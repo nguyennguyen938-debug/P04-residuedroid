@@ -5,7 +5,8 @@ Builds (realapp/airguard/build_g3.sh): stock (Retrofit), stockcancel (Retrofit +
 design), layered (G2b design), each with the G3 hooks (donation end, WITHDRAW_DONE, marker). Sink airguard_sink.py ports
 stockcancel 8793, layered 8795, stock 8796, fenced 8797.
 Per trial k: the builds one after another in an order shuffled from the seed; one u ~ U(0,1) per trial (same for every build).
-Per build: pm clear -> grant -> insert N 'pre' beacons (one device) -> start marker (hook op mark: the app connects to the
+Per build: pm clear -> grant -> [v4: wait for the app's startup donation worker (its get_token at the sink, max 30 s) + 3 s]
+-> insert N 'pre' beacons (one device) -> start marker (hook op mark: the app connects to the
 marker port with id <tid>-start) -> run the donation worker -> at W = u * D (host monotonic, from the run hook) the app's own withdrawal path
 (hook withdraw: consent log, preference, scheduler [, cancel]; then WITHDRAW_DONE and the app's marker connection with the
 trial id) -> wait for the donation end event (max 4 D + 30 s) -> read events -> force-stop.
@@ -109,14 +110,26 @@ sink = subprocess.Popen([sys.executable, str(ART / 'followup/airguard_sink.py'),
                         stdout=open(a.out / 'sink.log', 'a'), stderr=subprocess.STDOUT)
 
 
-def sink_donate_after(port, t0_ns):
+def sink_after(port, t0_ns, path):
     f = a.out / 'sink/ingest.jsonl'
     if not f.exists(): return None
     for l in f.read_text().splitlines():
         with contextlib.suppress(ValueError):
             x = json.loads(l)
-            if x.get('port') == port and x.get('path') == 'donate_data' and x['host_ns'] > t0_ns: return x['host_ns'], x.get('bytes')
+            if x.get('port') == port and x.get('path') == path and x['host_ns'] > t0_ns: return x['host_ns'], x.get('bytes')
     return None
+
+
+def sink_donate_after(port, t0_ns): return sink_after(port, t0_ns, 'donate_data')
+
+
+def after_run(ev):
+    """v4: events logged after RUN_ENQUEUED (file order), so only the run hook's donation counts."""
+    i = next((j for j, e in enumerate(ev) if e['kind'] == 'RUN_ENQUEUED'), None)
+    return [] if i is None else ev[i + 1:]
+
+
+STARTUP_WAIT_S, STARTUP_SETTLE_S = 30, 3
 
 
 END = ('DONATION_OK', 'DONATION_ERROR', 'DONATION_BLOCKED')
@@ -128,7 +141,13 @@ def one(k, v, u, D):
     act = lambda name, **kw: r['actions'].append({'t': time.time(), 'a': name, **kw})
     try:
         sh(f'pm clear {PK[v]}'); sh(f'pm grant {PK[v]} android.permission.POST_NOTIFICATIONS 2>/dev/null'); act('reset')
-        ok, out = hook(v, 'grant'); act('grant', ok=ok, out=out)
+        t_g = time.monotonic_ns(); ok, out = hook(v, 'grant'); act('grant', ok=ok, out=out)
+        # v4 (g3app-card Pilot log): the grant hook schedules the app's periodic donation worker, which runs at once (ping,
+        # get_token, then reads the beacon table). Wait for its get_token at the sink, then settle, so it reads an empty table
+        # before the insert and the upload is started by the run hook.
+        t1 = time.monotonic(); seen = None
+        while time.monotonic() - t1 < STARTUP_WAIT_S and not (seen := sink_after(PORTS[v], t_g, 'get_token')): time.sleep(0.5)
+        time.sleep(STARTUP_SETTLE_S); act('startup_worker', seen=bool(seen), waited=round(time.monotonic() - t1, 1))
         ok, out = hook(v, 'insert', timeout=300, addr=f'AA:00:00:03:{k // 100 % 100:02d}:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert', ok=ok, out=out)
         time.sleep(1.5)
         ok, out = hook(v, 'mark', tid=f'{tid}-start', marker=a.marker); act('start_marker', ok=ok, out=out)
@@ -141,10 +160,11 @@ def one(k, v, u, D):
         t0 = time.monotonic(); ev = []
         while time.monotonic() - t0 < deadline:
             ev = events(v)
-            if any(e['kind'] in END for e in ev) and (u is None or any(e['kind'] == 'MARKER_SENT' and f'tid={tid};' in e['detail'] for e in ev)): time.sleep(3); ev = events(v); break
+            if any(e['kind'] in END for e in after_run(ev)) and (u is None or any(e['kind'] == 'MARKER_SENT' and f'tid={tid};' in e['detail'] for e in ev)): time.sleep(3); ev = events(v); break
             time.sleep(1)
         act('quiesced', waited=round(time.monotonic() - t0, 1)); r['events'] = ev
-        if u is None:
+        ks = [e['kind'] for e in ev]; r['donation_before_run'] = 'DONATION_START' in ks[:ks.index('RUN_ENQUEUED')] if 'RUN_ENQUEUED' in ks else None
+        if u is None and r['donation_before_run'] is False:   # v4: a calibration sample only from a run-hook upload
             got = sink_donate_after(PORTS[v], t_run); r['calib_s'] = (got[0] - t_run) / 1e9 if got else None; r['calib_bytes'] = got[1] if got else None
         sh(f'am force-stop {PK[v]}'); act('stopped'); r['device_alive_end'] = alive()
     except Exception as e: act('trial_error', err=repr(e)[:200])

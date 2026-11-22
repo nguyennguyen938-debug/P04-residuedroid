@@ -1,4 +1,4 @@
-# Experiment card — G3c (group 3): AirGuard with the withdrawal during a donation upload (protocol v1)
+# Experiment card — G3c (group 3): AirGuard with the withdrawal during a donation upload (protocol v1; v4 from 22/11 evening, see Pilot log)
 
 Status: written 22/11, before any G3c trial; frozen at the commit that adds it (calibration pilot → gate → mechanism pilot →
 gate → final; chain `plans/autorun/g3-chain.sh`, after G3a/G3b). Owner: B (Duy).
@@ -117,5 +117,29 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
   - the upload was therefore not started by the run hook, and W = u·D from t_run would not fall in it.
 
   This is a harness design fault, not an environment failure. A fix needs protocol v4 and new pilots.
+
+- **Protocol v4** (22/11 evening, before any v4 trial; only the harness and the validity rule change; builds, design, N,
+  gates and analysis are as v1 otherwise). Freeze `results/round3/g3/frozen-g3-v4`; chain `plans/autorun/g3-chain-v4.sh`;
+  manifests `g3app4-*.json`. The new directories are `pilot-v4-calib`, `pilot-v4-calib2` (if body-only), `pilot-v4-mech`
+  and `final-v4`; `calibration-used-v4.json`; `analysis-v4`.
+  1. **Startup worker** (`race_airguard.py`): after the grant hook, wait until the sink logs this build's `get_token`
+     (at most 30 s), then 3 s more, and only then insert, start marker and run. The app's periodic worker therefore reads
+     an empty beacon table (the app's own "nothing to send"), and the donation is the run hook's. The action is logged as
+     `startup_worker` (`seen`, `waited`).
+  2. **Wait loop:** the donation end must be logged after RUN_ENQUEUED (file order).
+  3. **Calibration sample:** counted only if no DONATION_START precedes RUN_ENQUEUED (`donation_before_run` false).
+  4. **Validity** (`analyze_g3app.validity`, harness fields only), added to the v1 rules:
+     - a RUN_ENQUEUED event exists;
+     - no DONATION_START before it;
+     - a donation end event after it.
+
+     Unit test `test_g3app.py test_v4_validity`. On the v3 pilot-calib this rule flags 10/12 sends ("donation started
+     before run"), the fault above.
+  5. **Device-free check** (fake adb, 22/11):
+     - normal app behaviour → 3/3 calibration samples per build, 8/8 mechanism trials valid, markers present;
+     - with the v3 fault simulated → 0 samples, so the gate fails as intended.
+  - Expected body: one undisturbed send of 1,500 beacons was 176,131 B in v3, below 200 KiB, so the pre-registered
+    body-only recalibration (N = ceil(1500 · 262144 / median body)) is likely. It runs automatically, and the final
+    uses the N of the calibration that passed.
 
 ## 6. Outcome (after the run)

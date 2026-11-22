@@ -34,4 +34,7 @@ User decision 22/11: two-day speedrun, device-free work first, runs from 22/11 2
 |---|---|---|
 | G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | DONE 22/11 (final 0–1 + final-r2 2–9; 450 analysed; outcome in card §6; audit exploratory) |
 | G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | GATE FAIL 22/11 (calibration, v3; harness fault; v4 needs a new pilot) |
+| G3c v4 (startup-worker fix; new pilots) | `plans/g3app-card.md` (Pilot log, v4) | READY 22/11 (frozen-g3-v4; chain g3-chain-v4.sh; waits for go-ahead) |
+| P3 G3a-lte balanced (warm :revision; leader-approved 22/11) | `plans/g3lte-card.md` | READY 22/11 (after G3c v4 in g3-chain-v4.sh) |
+| P4 SO_SNDBUF × fence/fence-abort (leader-approved 22/11) | card to write | 23/11 (flag `--sndbuf` ready; no APK rebuild needed) |
 | G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | READY, not run (phone; on the user's request) |

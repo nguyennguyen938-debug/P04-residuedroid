@@ -35,6 +35,12 @@ def validity(r):
     if not r.get('events'): return 'events not read'
     if not r.get('device_alive_end'): return 'device dead'
     if not any(e['kind'] in END for e in r['events']): return 'no donation end event'
+    # protocol v4 (g3app-card Pilot log): the measured upload must be the run hook's (event file order)
+    ks = [e['kind'] for e in r['events']]
+    if 'RUN_ENQUEUED' not in ks: return 'no run event'
+    i = ks.index('RUN_ENQUEUED')
+    if 'DONATION_START' in ks[:i]: return 'donation started before run'
+    if not any(k in END for k in ks[i + 1:]): return 'no donation end after run'
     return None
 
 
