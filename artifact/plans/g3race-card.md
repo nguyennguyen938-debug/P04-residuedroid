@@ -123,5 +123,12 @@ after-W close 10/90, fence 0/90, early 50/90, the counts C reported in issue #7)
   race_airguard.py pass `-tcpdump <run>/capture.pcap` when they launch the emulator. The calibration pilot-calib and its passed
   throttle gate are reused, since calibration never captured in v1 either. A new mechanism pilot `pilot-mech2` runs with the
   same gate. New freeze `results/round3/g3/frozen-g3-v2`; chain `plans/autorun/g3-chain-v2.sh`.
+- final (15:11–15:52): paused on the user's request. Blocks 0–1 were complete and block 2 partial (10/45) when the chain and
+  harness were stopped; no outcome was read. **Resume rule**, fixed before any outcome is read:
+  - resume in a fresh directory `final-r2` with `--start 2 --trials 8`, i.e. blocks 2–9 with the same seed, so the same cell
+    order and u per block;
+  - the analysis uses only blocks that are complete within one directory (`final` 0–1, `final-r2` 2–9);
+  - the partial block 2 in `final` is retained and excluded (interrupted by the pause, operational);
+  - first-N and every other rule as above.
 
 ## 6. Outcome (after the run)
