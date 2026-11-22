@@ -81,6 +81,28 @@ def derived():
     for key, v in (('Enq', 'menqueue'), ('Fence', 'mfence')):
         hits = [viol for t, viol in trial.items() if t[4] == v]
         k[f'devLife{key}Viol'], k[f'devLife{key}N'] = sum(hits), len(hits)
+    # Group 2 (PR #5, C 22/11). G2a: pooled over EDGE/3G/LTE; the delivered-abort counts are B's exploratory post-hoc.
+    g = load('round3/g2close/analysis/g2close-summary.json')['cells']
+    mode = lambda m, f: [c[f] for name, c in sorted(g.items()) if name.endswith('/' + m)]
+    n = {sum(mode(m, 'trials')) for m in ('early', 'close', 'fence')}
+    assert len(n) == 1
+    ack = lambda m: [x['median'] for x in mode(m, 'withdraw_latency_ms')]
+    ph = load('round3/g2close/posthoc/posthoc.json')['uncut_end_by_receiver']
+    k.update(gcloseN=n.pop(), gcloseEarlyViol=sum(mode('early', 'violations')), gcloseCloseViol=sum(mode('close', 'violations')),
+             gcloseFenceViol=sum(mode('fence', 'violations')), gcloseCut=sum(mode('close', 'cut')),
+             gcloseCutComplete=sum(mode('close', 'cut_receiver_complete')), gcloseAckLo=min(ack('close')),
+             gcloseAckHi=max(ack('close')), gcloseFenceAck=max(ack('fence')),
+             gcloseAbortDelivered=ph.get('close/SEND_ERROR/receiver_complete', 0),
+             gcloseFenceAbortDelivered=ph.get('fence/SEND_ERROR/receiver_complete', 0),
+             gcloseFenceDelivered=sum(v for key, v in ph.items() if key.startswith('fence/') and key.endswith('/receiver_complete')))
+    # G2b: same pooling as B2 (pending, kill, reboot), pre-registered oracle v2.
+    gl = load('round3/g2layer/analysis/airguard-summary.json')['cells']
+    cnt = lambda b, f: sum(gl[f'{s}/{b}'][f] for s in sched)
+    nl = {cnt(b, 'trials') for b in ('stock', 'fenced', 'layered')}
+    assert len(nl) == 1
+    k.update(glayN=nl.pop(), glayStockViol=cnt('stock', 'violating_trials'), glayFenceViol=cnt('fenced', 'violating_trials'),
+             glayLayerViol=cnt('layered', 'violating_trials'),
+             glayUnknown=sum(cnt(b, 'unknown_trials') for b in ('stock', 'fenced', 'layered')))
     # Receiver side of the natural races (C, scripts/receiver_race.py, from the same frozen raw logs).
     rr = R / 'round3/c-analysis/receiver-race.json'
     if rr.exists():

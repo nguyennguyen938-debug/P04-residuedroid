@@ -77,6 +77,18 @@ SCHEMA = {
     "raceCutFence": "emulator fence trials cut", "raceCutFenceComplete": "of which complete at the receiver",
     "racePhoneCutEarly": "phone early trials cut", "racePhoneCutEarlyComplete": "of which complete",
     "racePhoneCutFence": "phone fence trials cut", "racePhoneCutFenceComplete": "of which complete",
+    # Group 2 (PR #5). G2a: B10 race with early, close (early check + socket close before the ack) and fence in the same
+    # blocks, EDGE/3G/LTE pooled. Ack medians are per profile; Lo/Hi are the smallest and largest of the three.
+    "gcloseN": "G2a trials per mode", "gcloseEarlyViol": "early violating trials", "gcloseCloseViol": "close violating trials",
+    "gcloseFenceViol": "fence violating trials", "gcloseCut": "close trials cut by the withdrawal",
+    "gcloseCutComplete": "of which complete at the receiver", "gcloseAckLo": "close median ack ms, lowest profile",
+    "gcloseAckHi": "close median ack ms, highest profile", "gcloseFenceAck": "fence median ack ms, highest profile",
+    "gcloseAbortDelivered": "exploratory: close trials not cut, receiver complete, app saw SEND_ERROR",
+    "gcloseFenceDelivered": "exploratory: fence trials not cut, receiver complete",
+    "gcloseFenceAbortDelivered": "exploratory: of which the app saw SEND_ERROR",
+    # G2b: AirGuard stock, fenced and layered early in every trial; pending + kill + reboot pooled, oracle v2.
+    "glayN": "trials per build", "glayStockViol": "stock violating trials", "glayFenceViol": "fenced violating trials",
+    "glayLayerViol": "layered violating trials", "glayUnknown": "unknown trials, all builds",
 }
 
 
