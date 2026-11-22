@@ -100,4 +100,8 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
 - **External:** one app, one path, emulator; stockcancel is one cancellation design (interceptor registry).
 - **Conclusion:** N = 30 per build.
 
+## Pilot log
+- 22/11, before any G3c trial: the capture method changed with G3a/G3b protocol v2 (`-tcpdump` at emulator launch; see
+  g3race-card.md Pilot log). Applies to every G3c trial; nothing else changed. Freeze `frozen-g3-v2`.
+
 ## 6. Outcome (after the run)

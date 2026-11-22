@@ -17,7 +17,8 @@ Group 3 (g3race-card.md): --g3 adds modes close2 (withdrawal in the sending proc
          yet handed off; its withdrawal goes to Revision, not RevisionRemote, with cancel2=true) and fence-abort (fence, SO_LINGER 0
          at the fence's block); every send carries g3=true (socket local port logged) and every withdrawal marker=<port> (after
          WITHDRAW_ACK the app connects to the host marker listener). --capture: emulator console `network capture start` for the
-         whole trial phase (pcap on the host, guest frames). With --marker the guest shaper is a prio root whose default band
+         whole trial phase (pcap on the host, guest frames). v2 (22/11, after
+         pilot-mech): `-tcpdump <run>/capture.pcap` at emulator launch instead; the console command accepts bare file names only. With --marker the guest shaper is a prio root whose default band
          carries the profile's netem and whose first band (u32 dport = marker) is unshaped, so the marker SYN does not queue
          behind request data.
 Phones: --receiver http://IP:8800 --host IP --no-root --certdir DIR (CA of the receiver cert) [--serial <adb serial>]
@@ -71,7 +72,8 @@ def boot():
     if alive() or not a.avd: return
     port = a.serial.split('-')[1]
     subprocess.Popen([f'{SDK}/emulator/emulator', '-avd', a.avd, '-port', port, '-read-only', '-no-window', '-no-audio',
-                      '-no-boot-anim', '-gpu', 'host', '-no-snapshot'], stdout=open(a.out / f'emu{port}.log', 'a'),
+                      '-no-boot-anim', '-gpu', 'host', '-no-snapshot'] + (['-tcpdump', str((a.out / 'capture.pcap').resolve())] if a.capture else []),
+                     stdout=open(a.out / f'emu{port}.log', 'a'),
                      stderr=subprocess.STDOUT, start_new_session=True)
     t0 = time.time()
     while time.time() - t0 < 300 and not alive(): time.sleep(3)
@@ -237,9 +239,8 @@ if a.calibrate:
                 if ok: res.setdefault(f'{profile}:{size}', []).append(int(dict(x.split('=', 1) for x in ok[0]['detail'].split(';') if '=' in x)['elapsed_ns']) / 1e9)
     (a.out / 'calibration.json').write_text(json.dumps({'samples_s': res, 'median_s': {k: statistics.median(v) for k, v in res.items()}}, indent=1) + '\n')
 else:
-    if a.capture:                                 # host path; the emulator writes guest frames of eth0 (pcap)
-        r_cap = adb('emu', 'network', 'capture', 'start', str((a.out / 'capture.pcap').resolve()))
-        (a.out / 'capture.json').write_text(json.dumps({'start': time.time(), 'console': r_cap.strip()[:200]}) + '\n')
+    if a.capture:                                 # v2: -tcpdump at emulator launch (the console command takes bare names only)
+        (a.out / 'capture.json').write_text(json.dumps({'mode': 'emulator -tcpdump at launch', 'trials_start': time.time()}) + '\n')
     for block in range(a.start, a.start + a.trials):
         cells = [(p_, m, s) for p_ in PROFILES for m in MODES for s in SIZES]
         brng = random.Random(f'{a.seed}-{block}'); brng.shuffle(cells)
@@ -247,7 +248,7 @@ else:
             u = random.Random(f'{a.seed}-{block}-{p_}-{s}').random()   # same u for early and fence: paired cells
             trial(block, p_, s, m, u)
 if a.capture and not a.calibrate:
-    c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(stop=time.time(), console_stop=adb('emu', 'network', 'capture', 'stop').strip()[:200])
+    c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(trials_end=time.time())
     (a.out / 'capture.json').write_text(json.dumps(c0) + '\n')
 net('full')
 if a.radio: adb('shell', 'svc wifi enable')

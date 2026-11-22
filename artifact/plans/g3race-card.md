@@ -108,4 +108,20 @@ after-W close 10/90, fence 0/90, early 50/90, the counts C reported in issue #7)
 - **External:** emulator, fixture, one design per arm.
 - **Conclusion:** N = 30 per cell; zero-vs-zero reported as counts.
 
+## Pilot log
+- pilot-calib (22/11 14:16–14:35; excluded): 27/27 calibration sends; throttle gate passed.
+- pilot-mech (14:35–14:51; excluded): MECHANISM GATE FAIL on the capture only. The emulator console `network capture start
+  <path>` answered `KO: <file> must be a bare filename (written under the AVD content directory)`, so no pcap was written.
+  Every other gate field held: 45/45 trials with MARKER_SENT and SOCKET_LOCAL, 45 marker lines, the u32 filter listed, and
+  marker packets in the unshaped band (pfifo 10: sent > 0).
+
+  Diagnosis (manual, 14:52–14:54, same AVD, no trial; emulator stopped after):
+  - `-tcpdump <absolute path>` at emulator launch writes guest frames (10.0.2.15, Ethernet pcap);
+  - the console capture with a bare name wrote only a pcap header.
+
+  **Protocol v2** (before any final; capture method only; design, arms, N and analysis unchanged): race_suite.py and
+  race_airguard.py pass `-tcpdump <run>/capture.pcap` when they launch the emulator. The calibration pilot-calib and its passed
+  throttle gate are reused, since calibration never captured in v1 either. A new mechanism pilot `pilot-mech2` runs with the
+  same gate. New freeze `results/round3/g3/frozen-g3-v2`; chain `plans/autorun/g3-chain-v2.sh`.
+
 ## 6. Outcome (after the run)

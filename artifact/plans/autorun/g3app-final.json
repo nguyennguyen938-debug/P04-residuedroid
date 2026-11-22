@@ -52,5 +52,5 @@
   "python3 artifact/followup/analyze_g3app.py artifact/results/round3/g3app/final --out artifact/results/round3/g3app/analysis"
  ],
  "guard_after": true,
- "frozen": "artifact/results/round3/g3/frozen-g3"
+ "frozen": "artifact/results/round3/g3/frozen-g3-v2"
 }

@@ -11,7 +11,7 @@ marker port with id <tid>-start) -> run the donation worker -> at W = u * D (hos
 trial id) -> wait for the donation end event (max 4 D + 30 s) -> read events -> force-stop.
 D per build = calibrated host time from the run hook to the sink's donate_data log (median of --calibrate sends, no withdrawal).
 Network: guest netem egress on eth0 (B10 v3 profile, default umts) inside a prio root; the marker port goes through the
-unshaped band. Capture: emulator console `network capture start` over the trial phase (pcap, guest frames).
+unshaped band. Capture: `-tcpdump <run>/capture.pcap` at emulator launch (pcap, guest frames; the console command takes bare names only).
 Outcomes are read only by analyze_g3app.py.
 Usage: race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --out DIR
        (--calibrate 3 | --trials 30 --durations F) [--variants stock,stockcancel,fenced,layered] [--nbeacons 1500]
@@ -62,7 +62,8 @@ def boot():
     if not a.avd: raise RuntimeError('device not alive and no --avd')
     port = a.serial.split('-')[1]
     subprocess.Popen([f'{SDK}/emulator/emulator', '-avd', a.avd, '-port', port, '-read-only', '-no-window', '-no-audio', '-no-boot-anim',
-                      '-gpu', 'host', '-no-snapshot'], stdout=open(a.out / f'emu{port}.log', 'a'), stderr=subprocess.STDOUT, start_new_session=True)
+                      '-gpu', 'host', '-no-snapshot'] + (['-tcpdump', str((a.out / 'capture.pcap').resolve())] if a.capture else []),
+                     stdout=open(a.out / f'emu{port}.log', 'a'), stderr=subprocess.STDOUT, start_new_session=True)
     t0 = time.time()
     while time.time() - t0 < 300 and not alive(): time.sleep(3)
     if not alive(): raise RuntimeError('emulator did not boot')
@@ -177,12 +178,12 @@ try:
                                                             'body_bytes': nb, 'nbeacons': a.nbeacons}, indent=1) + '\n')
     else:
         if a.capture:
-            (a.out / 'capture.json').write_text(json.dumps({'start': time.time(), 'console': adb('emu', 'network', 'capture', 'start', str((a.out / 'capture.pcap').resolve())).strip()[:200]}) + '\n')
+            (a.out / 'capture.json').write_text(json.dumps({'mode': 'emulator -tcpdump at launch', 'trials_start': time.time()}) + '\n')
         for k in range(a.start, a.start + a.trials):
             order = list(V); random.Random(f'{a.seed}-{k}').shuffle(order); u = random.Random(f'{a.seed}-{k}-u').random()
             for v in order: one(k, v, u, durations.get(v, 0.0))
         if a.capture:
-            c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(stop=time.time(), console_stop=adb('emu', 'network', 'capture', 'stop').strip()[:200])
+            c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(trials_end=time.time())
             (a.out / 'capture.json').write_text(json.dumps(c0) + '\n')
         (a.out / 'net_end.json').write_text(json.dumps({'tc': sh('tc -s qdisc show dev eth0; true').strip()[:4000]}) + '\n')
 finally:
