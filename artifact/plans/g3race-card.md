@@ -130,5 +130,9 @@ after-W close 10/90, fence 0/90, early 50/90, the counts C reported in issue #7)
   - the analysis uses only blocks that are complete within one directory (`final` 0–1, `final-r2` 2–9);
   - the partial block 2 in `final` is retained and excluded (interrupted by the pause, operational);
   - first-N and every other rule as above.
+- Resume (22/11, user: "tiếp tục, không cắm sạc"): blocks 2–9 run on battery, while blocks 0–1 ran on AC power. Arms stay
+  paired within every block, so arm comparisons are not confounded by this; cross-block timing differences are a reported
+  threat. An operational battery guard (`plans/autorun/battery_guard.sh`, power state only) stops the chain at 15 % charge,
+  as the pause did; any further resume follows the same rule.
 
 ## 6. Outcome (after the run)

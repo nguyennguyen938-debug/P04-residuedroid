@@ -103,5 +103,8 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
 ## Pilot log
 - 22/11, before any G3c trial: the capture method changed with G3a/G3b protocol v2 (`-tcpdump` at emulator launch; see
   g3race-card.md Pilot log). Applies to every G3c trial; nothing else changed. Freeze `frozen-g3-v2`.
+- 22/11: G3c runs after the G3a/G3b resume, on battery power (user decision); the battery guard (15 %) applies. A stop by the
+  guard before the final ends is resumed as G3a/G3b: a fresh directory from the next whole trial k, analysing only trials
+  complete in their directory.
 
 ## 6. Outcome (after the run)

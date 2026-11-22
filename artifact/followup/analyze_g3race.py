@@ -17,7 +17,10 @@ G3b capture (capture.pcap; frame order only, host capture time never compared wi
   advance of the highest sequence end); RST from the guest after the marker. Concordance per mode: capture after-marker bytes
   > 0 vs the app oracle (violation after the ack). Trials without a marker or without a matched connection are counted, not
   folded in.
-Usage: analyze_g3race.py <final run dir> [--out results/round3/g3race/analysis] [--n 30] [--marker 8799]
+Several run directories (a resumed final, g3race-card.md Pilot log): only blocks complete within one directory (every
+(profile, mode, size) cell logged there, from that directory's meta.json) are used; others are listed as excluded
+('interrupted block'). Each trial is matched against the capture of its own directory.
+Usage: analyze_g3race.py <final run dir> [more dirs] [--out results/round3/g3race/analysis] [--n 30] [--marker 8799]
 """
 import argparse, collections, gzip, json, sys
 from pathlib import Path
@@ -94,15 +97,24 @@ def cap_measure(r, x, markers, conns, data):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('dir'); ap.add_argument('--out', default=str(ART / 'results/round3/g3race/analysis'))
+    ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/g3race/analysis'))
     ap.add_argument('--n', type=int, default=30); ap.add_argument('--marker', type=int, default=8799); a = ap.parse_args()
-    d = Path(a.dir)
-    op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
-    rows = [json.loads(l) for l in op(d / 'trials.jsonl') if l.strip()]
-    rec = d / 'receiver.jsonl'
-    complete = {x['request'] for x in (json.loads(l) for l in rec.read_text().splitlines() if l.strip()) if x.get('event') == 'body' and x.get('complete')} if rec.exists() else set()
-    pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'   # slim: committed truncated copy (pcap_slim.py)
-    cap = capture(pc, a.marker) if pc.exists() else None
+    rows, complete, caps, interrupted = [], set(), {}, []
+    for k, dd in enumerate(a.dirs):
+        d = Path(dd)
+        op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
+        rs = [dict(json.loads(l), _dir=k) for l in op(d / 'trials.jsonl') if l.strip()]
+        meta = json.loads((d / 'meta.json').read_text()) if (d / 'meta.json').exists() else {}
+        cells = len(meta.get('profiles', [])) * len(meta.get('modes', [])) * len(meta.get('sizes', [])) or None
+        per = collections.Counter(r['block'] for r in rs)
+        for r in rs:
+            if cells and per[r['block']] < cells: interrupted.append({'trial': r['trial'], 'dir': dd, 'reason': 'interrupted block'})
+            else: rows.append(r)
+        rec = d / 'receiver.jsonl'
+        if rec.exists(): complete |= {x['request'] for x in (json.loads(l) for l in rec.read_text().splitlines() if l.strip()) if x.get('event') == 'body' and x.get('complete')}
+        pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'   # slim: committed truncated copy (pcap_slim.py)
+        caps[k] = capture(pc, a.marker) if pc.exists() else None
+    cap = any(caps.values()); pc = Path(a.dirs[0])
     invalid = [{'trial': r['trial'], 'reason': why} for r in rows if (why := validity(r))]
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
     cells = collections.defaultdict(list)
@@ -126,7 +138,7 @@ def main():
         if mode == 'close2': c['cancel_found'] = dict(collections.Counter(x['cancel_done'] for x in xs))
         if mode == 'fence-abort': c['abort_armed'] = sum(x['abort_armed'] for x in xs)
         if cap:
-            cm = [cap_measure(r, x, *cap) for r, x in zip(used, xs)]
+            cm = [cap_measure(r, x, *caps[r['_dir']]) if caps[r['_dir']] else {'status': 'no capture file'} for r, x in zip(used, xs)]
             ok = [(r, q) for r, q in zip(used, cm) if q['status'] == 'matched']
             conc = collections.Counter(f"capture={int(q['after_marker_bytes'] > 0)}/app={int(viol_all[r['trial']])}" for r, q in ok)
             c['capture'] = {'status': dict(collections.Counter(q['status'] for q in cm)),
@@ -144,9 +156,10 @@ def main():
             if m == x and (b, p_, s, y) in w_all: cnt[f'{x}={int(v)}/{y}={int(w_all[b, p_, s, y])}'] += 1
         if cnt: paired[f'{x}_vs_{y}_after_w'] = dict(sorted(cnt.items()))
     Path(a.out).mkdir(parents=True, exist_ok=True)
-    (Path(a.out) / 'g3race-summary.json').write_text(json.dumps({'logged': len(rows), 'invalid': invalid, 'capture_file': pc.exists(),
+    (Path(a.out) / 'g3race-summary.json').write_text(json.dumps({'dirs': a.dirs, 'logged': len(rows) + len(interrupted), 'interrupted_excluded': interrupted,
+        'invalid': invalid, 'capture_file': {dd: caps[k] is not None for k, dd in enumerate(a.dirs)},
         'cells': out, 'paired': paired}, indent=1) + '\n')
-    print(f"logged {len(rows)}, invalid {len(invalid)}, capture {pc.exists()}, cells {[(c, v['trials'], v['unused']) for c, v in out.items()]}")
+    print(f"logged {len(rows) + len(interrupted)}, interrupted {len(interrupted)}, invalid {len(invalid)}, capture {cap}, cells {[(c, v['trials'], v['unused']) for c, v in out.items()]}")
 
 
 if __name__ == '__main__':
