@@ -103,6 +103,7 @@ try:
     assert INSTALLED == hashlib.sha256(a.apk.read_bytes()).hexdigest(), f'installed APK {INSTALLED[:12]} differs from {a.apk}'
     uid = re.search(r'(?:userId|appId)=(\d+)', sh(f'dumpsys package {PKG}')).group(1)   # Android 15 prints appId= (pilot 22/11)
     adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
+    sh(f'run-as {PKG} mkdir -p files')   # a fresh install has no files/ until the app first runs (pilot-2 22/11)
     sh(f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
     sh(f'am set-standby-bucket {PKG} active; am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
     t0 = time.monotonic(); bc('init', 'setup', timeout=300); setup_s = round(time.monotonic() - t0, 1)

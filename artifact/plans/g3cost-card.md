@@ -101,5 +101,10 @@ before any data. The user's own phone; no rental, no cost.
   sha256 = frozen APK), but `dumpsys package` on Android 15 prints `appId=` and not `userId=`, so the UID lookup failed.
   This is a harness parsing fault, not an environment failure. Fix: accept either key. Rerun as `pilot-2` with the same
   gate; protocol otherwise unchanged; freeze `frozen-g3-v5b`.
+- pilot-2 (22/11 23:00; excluded, no upload ran): stopped at setup again. On a fresh install the app's `files/`
+  directory does not exist until the app first runs, so writing the CA there failed. This is a harness ordering fault.
+  Fix: `run-as mkdir -p files` before the copy. B then checked every remaining setup step by hand on the phone (CA copy,
+  standby bucket, `am start` Main, init broadcast, `getprop`, Wi-Fi state), and all succeeded. Rerun as `pilot-3`; freeze
+  `frozen-g3-v5c`.
 
 ## 6. Outcome (after the run)
