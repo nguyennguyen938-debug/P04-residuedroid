@@ -43,10 +43,16 @@ if a.serial == 'auto':                            # the single attached physical
     a.serial = devs[0]
 
 
+RETRIES = []   # v2 (pilot-3 22/11): adb commands that failed with an empty stderr and were retried once (logged per cell)
+
+
 def adb(*args, timeout=60):
-    r = subprocess.run([ADB, '-s', a.serial, *map(str, args)], capture_output=True, text=True, timeout=timeout)
-    if r.returncode: raise RuntimeError(r.stderr.strip()[:300])
-    return r.stdout
+    for attempt in (0, 1):
+        r = subprocess.run([ADB, '-s', a.serial, *map(str, args)], capture_output=True, text=True, timeout=timeout)
+        if not r.returncode: return r.stdout
+        if attempt == 0 and not r.stderr.strip():
+            RETRIES.append({'t': time.time(), 'cmd': ' '.join(map(str, args))[:160], 'rc': r.returncode}); time.sleep(1); continue
+        raise RuntimeError(f"rc={r.returncode} cmd={' '.join(map(str, args))[:160]} stderr={r.stderr.strip()[:200]}")
 
 
 def sh(c, timeout=60): return adb('shell', c, timeout=timeout)
@@ -138,6 +144,7 @@ try:
                 r['bs_checkin'] = sh(f'dumpsys batterystats --checkin | grep -E "^9,{uid},|,pwi,|^9,0,l,(pws|bt)," ; true', 120).strip()[:30000]
                 r['events'] = events()
             except Exception as e: r['harness_error'] = repr(e)
+            r['adb_retries'] = RETRIES[:]; RETRIES.clear()
             r['finished'] = time.time()
             with (a.out / 'cells.jsonl').open('a') as f: f.write(json.dumps(r) + '\n')
             print(time.strftime('%H:%M:%S'), cell, r.get('harness_error') or [u['end']['kind'] if u['end'] else None for u in r['uploads']].count('SEND_OK'), flush=True)

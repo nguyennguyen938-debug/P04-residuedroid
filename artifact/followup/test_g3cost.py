@@ -20,5 +20,14 @@ class G3Cost(unittest.TestCase):
         self.assertEqual(s['ratios_of_medians'][f'fence/early/{1 << 20}']['cpu_ms_per_mib'], 3.0)
 
 
+    def test_mah_android15(self):
+        """pilot-3 22/11: Android 15 prints only '  u0aN:' in the text; the estimate is in the checkin pwi,uid line (0 is a reading)."""
+        import analyze_g3cost as g
+        self.assertEqual(g.mah('    UID u0a123: 0.042 ( cpu=0.03 )', 10123), 0.042)
+        self.assertEqual(g.mah('  u0a405:\n', 10405, '9,0,l,pwi,uid,0,1,0,0\n9,10405,l,pwi,uid,0,0,0,0'), 0.0)
+        self.assertEqual(g.mah('  u0a405:', 10405, '9,10405,l,pwi,uid,1.25,0,0,0'), 1.25)
+        self.assertIsNone(g.mah('', 10405, '9,10406,l,pwi,uid,1.0,0,0,0'))
+
+
 if __name__ == '__main__':
     unittest.main()

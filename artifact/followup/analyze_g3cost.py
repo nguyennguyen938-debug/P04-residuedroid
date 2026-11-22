@@ -28,8 +28,12 @@ def stats(xs):
     return {'n': n, 'median': round(med, 4), 'p95': round(xs[math.ceil(0.95 * n) - 1], 4), 'max': round(xs[-1], 4)}
 
 
-def mah(bs, uid):
+def mah(bs, uid, checkin=None):
+    """The UID's batterystats estimate (mAh): 'UID u0aN: x' (Android <= 13 text), else the Android 15 checkin line
+    9,<uid>,l,pwi,uid,<mAh>,... (pilot-3 22/11: the text shows only '  u0aN:'). 0 is a reading; None = no record."""
     m = re.search(rf'UID u0a{uid - 10000}: ([0-9.]+)', bs or '')
+    if m: return float(m.group(1))
+    m = re.search(rf'^9,{uid},l,pwi,uid,([0-9.]+)', checkin or '', re.M)
     return float(m.group(1)) if m else None
 
 
@@ -50,7 +54,7 @@ def main():
         failed = sum(u['end']['kind'] != 'SEND_OK' for c in used for u in c['uploads'])
         cpu = [int(fields(e['detail'])['process_cpu_ms']) / (int(fields(e['detail'])['payload_bytes']) / MIB) for e in ok]
         el = [int(fields(e['detail'])['elapsed_ns']) / 1e6 for e in ok]
-        en = [(x / (len(c['uploads']) * size / MIB)) for c in used if (x := mah(c.get('bs'), uid)) is not None]
+        en = [(x / (len(c['uploads']) * size / MIB)) for c in used if (x := mah(c.get('bs'), uid, c.get('bs_checkin'))) is not None]
         out[f'{mode}/{size}'] = {'cells': len(used), 'unused_cells': len(cs) - len(used), 'uploads_ok': len(ok), 'uploads_failed': failed,
                                  'cpu_ms_per_mib': stats(cpu), 'elapsed_ms': stats(el), 'energy_mah_per_mib_est': stats(en),
                                  'cells_with_energy': len(en), 'cells_without_energy': len(used) - len(en)}

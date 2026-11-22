@@ -106,5 +106,25 @@ before any data. The user's own phone; no rental, no cost.
   Fix: `run-as mkdir -p files` before the copy. B then checked every remaining setup step by hand on the phone (CA copy,
   standby bucket, `am start` Main, init broadcast, `getprop`, Wi-Fi state), and all succeeded. Rerun as `pilot-3`; freeze
   `frozen-g3-v5c`.
+- pilot-3 (22/11 23:01; excluded): **PILOT GATE FAIL**. Setup worked; 8/9 cells were valid and 16/16 of their uploads
+  ended SEND_OK with the receiver logging them complete. Three causes:
+  1. **Transient adb error.** The first cell had a harness error before its first upload: an adb command returned non-zero
+     with an empty stderr, and the harness did not record which command. The same sequence run by hand on the phone
+     succeeded at every step.
+  2. **Batterystats format on Android 15.** The text shows only `  u0a405:`; the UID's estimate is in the checkin line
+     `9,<uid>,l,pwi,uid,<mAh>,…`, which the parser did not read. In every pilot cell the estimate was 0 mAh.
+  3. **B's own error in the chain.** Editing the gate's pilot path commented out the `meta = …` statement, so the gate
+     crashed before printing. Fixed, and the corrected gate was run on the pilot-3 data: 9 cells, 8 valid, 16/16 uploads
+     ok and received, 8 cells with a batterystats record. It fails only on item 1.
+- **G3d protocol v2** (22/11 23:04, before any final; arms, cells, N, measures and gate items unchanged):
+  - **adb retry:** an adb command that fails with an empty stderr is retried once after 1 s, and the retry is logged per
+    cell (`adb_retries`). Any other failure raises with the command and its stderr recorded. Uploads are never retried;
+    each upload is still one send;
+  - **parser:** `analyze_g3cost.mah` reads the old text format, else the checkin `pwi,uid` value. **0 counts as a reading
+    and is reported as 0.** The gate's "batterystats UID line" item uses this parser;
+  - unit test `test_mah_android15`. Fake-adb end-to-end check ok;
+  - rerun as `pilot-4`; freeze `frozen-g3-v5d`;
+  - **expected limitation, stated before the final:** the per-cell energy estimate may be 0 mAh at this cell length. If
+    so, it is reported as such (counts of zero cells), never imputed or replaced by another proxy after the fact.
 
 ## 6. Outcome (after the run)
