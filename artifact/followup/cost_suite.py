@@ -20,7 +20,7 @@ from pathlib import Path
 A = Path(__file__).resolve().parents[1]; PKG = 'org.residuelab.tls'
 SDK = os.environ.get('ANDROID_HOME', str(A.parents[1] / 'shared-android/sdk')); ADB = os.environ.get('ADB', str(Path(SDK) / 'platform-tools/adb'))
 p = argparse.ArgumentParser()
-p.add_argument('--serial', required=True); p.add_argument('--host', required=True, help='this host LAN address (receiver)')
+p.add_argument('--serial', required=True); p.add_argument('--host', required=True, help="this host LAN address (receiver); 'auto' = the address of en0/en1 at launch")
 p.add_argument('--port', type=int, default=8798); p.add_argument('--certdir', type=Path, required=True); p.add_argument('--apk', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True); p.add_argument('--blocks', type=int, default=20); p.add_argument('--start', type=int, default=0)
 p.add_argument('--repeats', type=int, default=10); p.add_argument('--arms', default='fence,early,platform')
@@ -29,6 +29,13 @@ a = p.parse_args()
 assert not a.out.exists(), f'refusing: {a.out} exists (fresh directory rule)'
 a.out.mkdir(parents=True)
 ARMS, SIZES = a.arms.split(','), [int(x) for x in a.sizes.split(',')]
+HOST_SOURCE = 'given'
+if a.host == 'auto':                              # 22/11: the Mac's LAN address changed after a move; resolve it at launch
+    a.host = next((ip for i in ('en0', 'en1') if (ip := subprocess.run(['ipconfig', 'getifaddr', i], capture_output=True, text=True).stdout.strip())), '')
+    assert a.host, 'no LAN address on en0/en1'; HOST_SOURCE = 'auto (ipconfig getifaddr)'
+# the app verifies the hostname (HTTPS endpoint identification): the receiver certificate must carry this address
+_san = subprocess.run(['openssl', 'x509', '-in', str(a.certdir / 'test-ca.pem'), '-noout', '-ext', 'subjectAltName'], capture_output=True, text=True).stdout
+assert f'IP Address:{a.host}' in _san, f'receiver certificate SAN does not contain {a.host} (regenerate with plans/autorun/g3-tonight.sh)'
 if a.serial == 'auto':                            # the single attached physical device; its serial is never written to the results
     devs = [l.split()[0] for l in subprocess.run([ADB, 'devices'], capture_output=True, text=True).stdout.splitlines()[1:]
             if l.strip().endswith('device') and not l.startswith('emulator-')]
@@ -99,7 +106,7 @@ try:
     sh('dumpsys battery unplug'); restore.append('dumpsys battery reset')
     phone = {'release': sh('getprop ro.build.version.release').strip(), 'sdk': sh('getprop ro.build.version.sdk').strip(),
              'model': sh('getprop ro.product.model').strip(), 'wifi': sh('dumpsys wifi | grep -m1 -E "^Wi-Fi is|mWifiInfo" | cut -c1-60; true').strip()[:60]}
-    meta = {'phone': phone, 'serial': 'physical (not recorded)', 'uid': int(uid), 'host': a.host, 'arms': ARMS, 'sizes': SIZES, 'repeats': a.repeats,
+    meta = {'phone': phone, 'serial': 'physical (not recorded)', 'uid': int(uid), 'host': a.host, 'host_source': HOST_SOURCE, 'arms': ARMS, 'sizes': SIZES, 'repeats': a.repeats,
             'blocks': a.blocks, 'start': a.start, 'seed': a.seed, 'apk_sha256': hashlib.sha256(a.apk.read_bytes()).hexdigest(),
             'ca_sha256': hashlib.sha256((a.certdir / 'test-ca.pem').read_bytes()).hexdigest(), 'setup_init_s': setup_s,
             'foreground': True, 'battery_unplug_override': True, 'started': time.time()}

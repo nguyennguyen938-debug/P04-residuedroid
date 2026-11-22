@@ -24,7 +24,7 @@
     "--serial",
     "auto",
     "--host",
-    "192.168.1.20",
+    "auto",
     "--port",
     "8800",
     "--certdir",
@@ -45,5 +45,5 @@
  ],
  "post": [],
  "guard_after": true,
- "frozen": "artifact/results/round3/g3/frozen-g3-v3"
+ "frozen": "artifact/results/round3/g3/frozen-g3-v4c"
 }

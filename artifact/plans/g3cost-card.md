@@ -33,7 +33,7 @@ before any data. The user's own phone; no rental, no cost.
   - both are restored at the end (`dumpsys battery reset`, `svc power stayon false`).
 
   The app runs in the **foreground**.
-- Network: Wi-Fi. The receiver is a TLS 1.2 server on this Mac's LAN address (192.168.1.20 on 22/11), port 8800, using a test certificate with
+- Network: Wi-Fi. The receiver is a TLS 1.2 server on this Mac's LAN address (resolved at launch, `--host auto`; see Pilot log), port 8800, using a test certificate with
   SAN = that address. Key in `~/.p04/g3dcert`, never committed; the CA sha256 is in meta.json.
 - N: **20 blocks** → 20 cells and 200 uploads per (arm, size). Runs at the same time as the emulator chain on the same Mac;
   host load is recorded per cell.
@@ -74,5 +74,21 @@ before any data. The user's own phone; no rental, no cost.
   - CPU time is in ms steps (coarse for 4 KiB).
 - **External:** one phone, one Android version, one network, foreground only.
 - **Conclusion:** N = 20 cells per (arm, size); medians and ratios are descriptive.
+
+## Pilot log
+- 22/11 evening, before any G3d run (protocol v1 otherwise unchanged): the Mac moved, so its LAN address is no longer
+  192.168.1.20. Two changes:
+  - `cost_suite.py --host auto` takes the address of en0/en1 at launch. It refuses to start unless the receiver
+    certificate's SAN carries that address, because the app checks the hostname. `meta.json` records `host` and
+    `host_source`;
+  - the launcher `plans/autorun/g3-tonight.sh` regenerates the self-signed 30-day test certificate for the current
+    address when the SAN differs. The old one is kept aside and the key is never committed; the CA sha256 is in
+    `meta.json`.
+
+  G3d runs in parallel with the emulator chain `g3-chain-v4.sh` (G3c v4, then P3) on the same Mac. Host load is recorded
+  per cell. Freeze `frozen-g3-v4c`.
+- Device-free check (fake adb, 22/11): `--host auto` resolved the LAN address. With a matching certificate, 9/9 cells were
+  valid and the receiver logged 9 TLS uploads over the LAN address. With the old certificate the harness refused, as
+  intended.
 
 ## 6. Outcome (after the run)
