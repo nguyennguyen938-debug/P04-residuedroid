@@ -34,6 +34,9 @@ This ledger maps each claim to its source. "VERIFY-FINAL" = re-check wording aga
 | Window CDF (§7.2) | winPendingMed, winRebootMed | device_events.jsonl (variant none) |
 | Exclusions (§7.1, §8) | nInvalid, nTrialsTotal, nValidAll, nValidUnused | summary_campaign.json (first 50 valid trials per AVD×schedule analyzed) |
 | Implementation size (§6) | impLoc | fixture/src/**/*.java |
+| Early check with cancellation matches the fence on the natural race; costs (§7b, abstract, §1) | gcloseN, gcloseEarlyViol, gcloseCloseViol, gcloseFenceViol, gcloseCut, gcloseCutComplete, gcloseAckLo/Hi, gcloseFenceAck | results/round3/g2close/analysis/g2close-summary.json ← final/trials.jsonl.gz (g2close-card.md, pre-registered) via make_summary.derived() |
+| Cancellation aborts delivered requests (§7b, abstract; exploratory) | gcloseAbortDelivered, gcloseFenceAbortDelivered, gcloseFenceDelivered | results/round3/g2close/posthoc/posthoc.json (followup/posthoc_g2close.py, defined after the data) |
+| AirGuard layered early build (§7b, §1) | glayN, glayStockViol, glayFenceViol, glayLayerViol, glayUnknown | results/round3/g2layer/analysis/airguard-summary.json (oracle v2, g2layer-card.md) via make_summary.derived() |
 
 ## Claims deliberately NOT made (novelty audit §5)
 - No "first withdrawal measurement" (MowChecker is prior art); contribution = persistent job lineage + serialized late fence.

@@ -121,7 +121,21 @@ withdrawal intervals under the coordinator lock, and an item's label is the inte
 The fenced build serialises the worker's own request body with the app's converter and sends it through the HTTP
 transport; the stock build keeps Retrofit. Both test builds share identical test hooks (synthetic beacons, consent
 toggles through the app's own preference path, worker runs) and point to a host sink; the patch is applied to a clone at
-the F-Droid build commit and is not part of the app's source tree.
+the F-Droid build commit and is not part of the app's source tree. A third, layered build of the second run sends through
+the same transport without per-chunk checks; it checks the consent rule once under the coordinator lock before sending.
+
+\paragraph{Early check with cancellation.}\label{app:cancel} The comparator of \S\ref{sec:eval-natural} is not part of
+\sys and is not counted in its size. A request registers a cancellation token before its early check, and the transport
+hands the socket to the token as soon as it is opened. The withdrawal commits under the policy lock, then synchronously
+asks the sending process to close every registered socket (or to close it the moment it opens), and is acknowledged
+only after the reply; a request whose check runs after the commit is blocked by the check. The fixture withdraws in its
+own process, so the cancellation crosses processes, which a same-process design would avoid. The median acknowledgement
+was \gcloseAckLo{} to \gcloseAckHi{}\,ms per link profile with cancellation, against at most \gcloseFenceAck{}\,ms for the
+fence. The receiver logged \gcloseCutComplete{} of the \gcloseCut{} cancelled requests cut by the withdrawal as
+complete. In an exploratory count defined after the data were seen, cancellation aborted \gcloseAbortDelivered{} requests
+that had been fully handed off and that the receiver had logged complete, so the app saw a failure for delivered data;
+the fence did so in \gcloseFenceAbortDelivered{} of \gcloseFenceDelivered{} such trials. We did not test an asynchronous
+cancel that does not hold the acknowledgement, or cancellation inside a real app.
 
 \paragraph{Phone and throttled-link harnesses.} Phone runs set the sink address explicitly instead of the emulator host
 alias and record the receiver path (USB port reverse on the cloud device service, a relay on the remote test lab).

@@ -12,7 +12,7 @@ cache and later re-read loses its label, and the wrapper then sees an unlabelled
 justify assuming complete labels in deployments. The channel wrapper fails closed on missing, malformed,
 future-epoch or unknown-scope labels and unavailable policy. Only trusted collection-time metadata
 can support migration; re-grant never relabels old data. This can lose permitted flows, which the
-conformance tests report. A direct-call mediation checker reuses the DEX parser. It flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code. Appendix~\ref{app:uncovered} classifies them by configuration and reachability; the checker does not prove complete mediation or handle native code, reflection and IPC. FlowDroid~\cite{arzt2014flowdroid} provides richer flow analysis. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
+conformance tests report. A direct-call mediation checker flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code (Appendix~\ref{app:uncovered}); it does not prove complete mediation or handle native code, reflection and IPC. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
 such as ReCon~\cite{ren2016recon} complement but cannot replace a device-side fence. Our sink counts them as
 \emph{unknown}, never as clean.
 
@@ -28,7 +28,7 @@ be converted into a successful withdrawal acknowledgement.
 
 \paragraph{Threats to validity.}
 \emph{Internal.} The fixture's enforcement variants encode common patterns, not any specific app's code. Their behavior
-after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The corpus does not validate the fixture's between-batch cancellation behavior. The exclusion rules of \S\ref{sec:setup}
+after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The exclusion rules of \S\ref{sec:setup}
 removed \nInvalid{} of \nTrialsTotal{} stream-wrapper trials; shared exclusions preserve pairing but can select easier
 schedules.
 \emph{Construct.} Stream-wrapper ordering uses a pre-write log and can undercount baseline handoffs. The channel tests separate authorization, attempts, acceptance and receipt; missing return evidence is unknown. The tags are synthetic tracers, so we test data provenance, not semantic
@@ -36,7 +36,6 @@ sensitivity.
 \emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one
 device, the personal phone ran on one network, and Android~15 froze a background sender, so the phone race kept the
 sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
-(three variants, four schedules). One real app (AirGuard) is integrated. A direct-call audit of both APKs finds the
-donation path mediated in the fenced build, while the app's other network call sites (map tiles, image loading,
-library internals) are not; we did not establish whether any of them can carry the donated data. The receivers are test
+(three variants, four schedules). One real app (AirGuard) is integrated; a direct-call audit finds its donation path mediated in the fenced build but
+not its other network call sites, and we did not establish whether any of them can carry the donated data. The receivers are test
 servers, not production services. Process CPU is not energy, and we make no energy claim.

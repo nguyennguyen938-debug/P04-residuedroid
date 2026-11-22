@@ -23,13 +23,19 @@ server: of the early trials whose withdrawal was acknowledged before the request
 still logged the complete request in \raceCutEarlyComplete{} of \raceCutEarly{} (emulator) and
 \racePhoneCutEarlyComplete{} of \racePhoneCutEarly{} (phone); of the fenced trials cut that way, in
 \raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{}. A fenced upload cut
-by a withdrawal ends with a send error and loses its permitted part unless it is split (\S\ref{sec:eval-realapp}). We did
-not measure an early check that closes the socket on withdrawal; it would stop like the fence, but needs a cancellation
-path to every in-flight request.
+by a withdrawal ends with a send error and loses its permitted part unless it is split (\S\ref{sec:eval-realapp}).
+
+\paragraph{Early check with cancellation.} A second pre-registered run added an arm whose withdrawal, after it commits
+and before it is acknowledged, closes every in-flight socket. Bytes followed the acknowledgement in \gcloseEarlyViol{} of
+\gcloseN{} early trials, \gcloseCloseViol{} with cancellation and \gcloseFenceViol{} fenced: an effective cancellation
+closes the window (Theorem~\ref{thm:race}), with no confirmed difference from the fence. It needs a path to every
+in-flight request, slows the acknowledgement and, in an exploratory count, aborted \gcloseAbortDelivered{} requests the
+receiver had already logged complete (Appendix~\ref{app:cancel}).
+
 Equation~\ref{eq:race}, applied to the measured check and acceptance times, predicts \racePredPct{}\% (emulator) and
 \racePhonePredPct{}\% (phone) of early trials to violate, against \raceObsPct{}\% and \racePhoneObsPct{}\% observed. The
-model lets a withdrawal act when it is issued; an exploratory decomposition that adds the measured delivery delay fits
-the emulator but not the phone (artifact), so we use the equation to order check points, not to estimate rates.
+model lets a withdrawal act when issued, not when committed (an exploratory delay decomposition is in the artifact), so
+we use it to order check points, not to estimate rates.
 
 \subsection{A real app and mixed requests}
 \label{sec:eval-realapp}
@@ -41,8 +47,9 @@ preference path, the stock build donated opt-out beacons after re-consent in \ai
 kill and reboot pooled) and the fenced build in \airFenceViol{} confirmed. The pre-registered oracle leaves
 \airFenceUnknownV{} fenced trials unknown; ordering on the guest clock alone, an exploratory step, leaves
 \airFenceUnknownVThree{}. Stock and fenced builds differ in both labels and placement, so this comparison does not
-isolate placement. After a
-network cut neither build delivers permitted post-withdrawal beacons, because the app does not retry a failed run.
+isolate placement. A second run added a layered build with the same labels and one check before sending: stock
+violated in \glayStockViol{} of \glayN{} trials, fenced in \glayFenceViol{}, layered in \glayLayerViol{}, \glayUnknown{} unknown; these schedules
+withdraw before the next donation. After a network cut no build delivers permitted post-withdrawal beacons, because the app does not retry a failed run.
 
 \paragraph{Mixed requests.} With the split policy of \S\ref{sec:theory}, the transport recovered the permitted part of a
 mixed request in \splitPreRecovered{} of \splitTrials{} trials when the fence blocked before any chunk was accepted, and
@@ -78,7 +85,6 @@ acknowledgement in \devFenceAfterAck{} trials. In pending, kill and revoke sched
 
 \paragraph{Cost under load.} With probe withdrawals during uploads, the median acknowledgement was \sweepAckSmallMs{}\,ms
 (1\,KiB chunks, one sender) and \sweepAckLargeMs{}\,ms (64\,KiB, 16 senders), and process CPU per MiB fell from
-\sweepCpuSmall{} to \sweepCpuLarge{}\,ms as chunks grew. These sweep figures come from a separate harness with
-concurrent probe withdrawals and are not comparable with Table~\ref{tab:transport-cost} or the backpressure cells of
-\S\ref{sec:revision}. In \sweepLockStalls{} of \sweepLogged{} trials a sender waited its full deadline for the app-wide
+\sweepCpuSmall{} to \sweepCpuLarge{}\,ms as chunks grew (a separate harness, not comparable with
+Table~\ref{tab:transport-cost}). In \sweepLockStalls{} of \sweepLogged{} trials a sender waited its full deadline for the app-wide
 lock, a fairness limit of that lock.
