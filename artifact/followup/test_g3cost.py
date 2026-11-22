@@ -29,5 +29,14 @@ class G3Cost(unittest.TestCase):
         self.assertIsNone(g.mah('', 10405, '9,10406,l,pwi,uid,1.0,0,0,0'))
 
 
+    def test_valid_v3_wakefulness(self):
+        import analyze_g3cost as g
+        ok = {'uploads': [{'end': {'kind': 'SEND_OK'}}]}
+        self.assertTrue(g.valid(ok))                                                             # v1/v2 cells: no field
+        self.assertTrue(g.valid(dict(ok, wake_start='mWakefulness=Awake', wake_end='mWakefulness=Awake')))
+        self.assertFalse(g.valid(dict(ok, wake_start='mWakefulness=Awake', wake_end='mWakefulness=Dozing')))
+        self.assertFalse(g.valid(dict(ok, wake_start='', wake_end='mWakefulness=Awake')))
+
+
 if __name__ == '__main__':
     unittest.main()

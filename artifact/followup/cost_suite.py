@@ -43,6 +43,9 @@ if a.serial == 'auto':                            # the single attached physical
     a.serial = devs[0]
 
 
+class DeviceLost(Exception): pass
+
+
 RETRIES = []   # v2 (pilot-3 22/11): adb commands that failed with an empty stderr and were retried once (logged per cell)
 
 
@@ -52,6 +55,7 @@ def adb(*args, timeout=60):
         if not r.returncode: return r.stdout
         if attempt == 0 and not r.stderr.strip():
             RETRIES.append({'t': time.time(), 'cmd': ' '.join(map(str, args))[:160], 'rc': r.returncode}); time.sleep(1); continue
+        if re.search(r"not found|offline|no devices", r.stderr): raise DeviceLost(r.stderr.strip()[:200])   # v3: stop, do not run cells into errors
         raise RuntimeError(f"rc={r.returncode} cmd={' '.join(map(str, args))[:160]} stderr={r.stderr.strip()[:200]}")
 
 
@@ -113,7 +117,7 @@ try:
     sh(f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
     sh(f'am set-standby-bucket {PKG} active; am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
     t0 = time.monotonic(); bc('init', 'setup', timeout=300); setup_s = round(time.monotonic() - t0, 1)
-    sh('svc power stayon usb'); restore.append('svc power stayon false')
+    sh('svc power stayon true'); restore.append('svc power stayon false')   # v3: 'usb' does not hold under 'battery unplug' (final v2 22/11)
     sh('dumpsys battery unplug'); restore.append('dumpsys battery reset')
     phone = {'release': sh('getprop ro.build.version.release').strip(), 'sdk': sh('getprop ro.build.version.sdk').strip(),
              'model': sh('getprop ro.product.model').strip(), 'wifi': sh('dumpsys wifi | grep -m1 -E "^Wi-Fi is|mWifiInfo" | cut -c1-60; true').strip()[:60]}
@@ -130,6 +134,7 @@ try:
             r = {'cell': cell, 'block': block, 'mode': mode, 'size': size, 'host_load': os.getloadavg(), 'start': time.time(), 'uploads': []}
             try:
                 sh(f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true'); sh(f'run-as {PKG} rm -f files/revision.jsonl')
+                r['wake_start'] = sh('dumpsys power | grep -m1 -o "mWakefulness=[A-Za-z]*"; true').strip()   # v3 validity: Awake
                 r['battery_level_start'] = sh('dumpsys battery | grep -m1 " level:"').strip()
                 sh('dumpsys batterystats --reset')
                 for k in range(a.repeats):
@@ -142,7 +147,11 @@ try:
                     r['uploads'].append({'id': id, 'end': ev[0] if ev else None, 'host_s': round(time.monotonic() - t, 3)})
                 r['bs'] = sh(f'dumpsys batterystats | grep -E "Estimated power use|Capacity:|Computed drain|Global|UID {U}:|  {U}:" ; true', 120).strip()[:4000]
                 r['bs_checkin'] = sh(f'dumpsys batterystats --checkin | grep -E "^9,{uid},|,pwi,|^9,0,l,(pws|bt)," ; true', 120).strip()[:30000]
-                r['events'] = events()
+                r['events'] = events(); r['wake_end'] = sh('dumpsys power | grep -m1 -o "mWakefulness=[A-Za-z]*"; true').strip()
+            except DeviceLost as e:
+                r['harness_error'] = 'device lost: ' + str(e); r['finished'] = time.time()
+                with (a.out / 'cells.jsonl').open('a') as f: f.write(json.dumps(r) + '\n')
+                raise
             except Exception as e: r['harness_error'] = repr(e)
             r['adb_retries'] = RETRIES[:]; RETRIES.clear()
             r['finished'] = time.time()

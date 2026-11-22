@@ -37,7 +37,10 @@ def mah(bs, uid, checkin=None):
     return float(m.group(1)) if m else None
 
 
-def valid(c): return not c.get('harness_error') and c['uploads'] and all(u['end'] for u in c['uploads'])
+def valid(c):
+    """Harness fields only. v3 (22/11): when recorded, the phone must be Awake at the cell's start and end."""
+    if c.get('harness_error') or not c['uploads'] or not all(u['end'] for u in c['uploads']): return False
+    return all(c[k] == 'mWakefulness=Awake' for k in ('wake_start', 'wake_end') if k in c)
 
 
 def main():

@@ -126,5 +126,23 @@ before any data. The user's own phone; no rental, no cost.
   - rerun as `pilot-4`; freeze `frozen-g3-v5d`;
   - **expected limitation, stated before the final:** the per-cell energy estimate may be 0 mAh at this cell length. If
     so, it is reported as such (counts of zero cells), never imputed or replaced by another proxy after the fact.
+- pilot-4 (v2, 22/11 23:05; excluded): gate passed (9/9 valid, 18/18 uploads ok and received, 9 cells with a
+  batterystats record).
+- final (v2, 23:05–23:27): **ENVIRONMENT FAILURE, not used** (retained, excluded; its `analysis/` output is not a result).
+  - From about 23:15 (block 5) every upload failed to reach the receiver (ConnectException, "connection abort"). The phone
+    screen was off and the phone dozing (`mWakefulness=Dozing`, `mStayOn=false`).
+  - The cause is B's harness design: `svc power stayon usb` holds the screen only while USB counts as plugged, and
+    `dumpsys battery unplug` makes it count as unplugged. The 1-minute pilots ended before the screen timeout.
+  - At about 23:27 the phone left adb, and the harness ran the remaining cells into errors (115/180 invalid). Its restore
+    commands could not reach the phone.
+- **G3d protocol v3** (22/11 night, before any v3 trial; arms, cells, N, measures unchanged):
+  - **stay-on:** `svc power stayon true`, restored to false at the end;
+  - **validity:** each cell records `mWakefulness` at its start and end, and a cell is valid only if both are Awake
+    (`analyze_g3cost.valid`, harness field; unit test `test_valid_v3_wakefulness`);
+  - **device loss:** an adb error "not found / offline / no devices" stops the run (DeviceLost) instead of running cells
+    into errors;
+  - fake-adb checks: normal 18/18 valid; dozing 0/18 valid; device lost stops after the current cell;
+  - **rerun:** pilot `pilot-5` (same gate) → final `final-v3`, all 20 blocks from block 0, the v2 final not pooled;
+    analysis `analysis-v3`; freeze `frozen-g3-v5e`.
 
 ## 6. Outcome (after the run)
