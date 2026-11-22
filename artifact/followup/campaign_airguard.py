@@ -9,6 +9,7 @@ Each INSERT event carries the exact LocalDateTime given to its beacons, so the o
 uploaded beacon to its batch by value: 'pre' and 'optout' beacons uploaded after the withdrawal = violation (PENDING
 contract: withdrawal invalidates data collected before it; nothing collected while opted out may be shared); missing 'post'
 beacons = permitted deficit. The sink (airguard_sink.py) logs bodies per port: 8796 stock, 8797 fenced.
+Group 2 (g2layer-card.md): --variants stock,fenced,layered adds the layered-early build (port 8795); default unchanged.
 Usage: campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir DIR --out DIR --schedules pending,kill,reboot,netloss --trials 20
 """
 import argparse, json, os, random, subprocess, sys, time
@@ -16,14 +17,17 @@ from pathlib import Path
 
 ART = Path(__file__).resolve().parents[1]
 SDK = os.environ.get('ANDROID_HOME', str(ART.parents[1] / 'shared-android/sdk')); ADB = os.environ.get('ADB', f'{SDK}/platform-tools/adb')
-PKGS = {'stock': 'de.seemoo.at_tracking_detection.p04stock', 'fenced': 'de.seemoo.at_tracking_detection.p04fenced'}
+PKGS = {'stock': 'de.seemoo.at_tracking_detection.p04stock', 'fenced': 'de.seemoo.at_tracking_detection.p04fenced',
+        'layered': 'de.seemoo.at_tracking_detection.p04layered'}
+PORTS = {'layered': 8795, 'stock': 8796, 'fenced': 8797}
 HOOK = 'de.seemoo.at_tracking_detection.residue.TestHooks'
 p = argparse.ArgumentParser()
 p.add_argument('--serial', required=True); p.add_argument('--avd', default=''); p.add_argument('--apkdir', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True); p.add_argument('--schedules', default='pending,kill,reboot,netloss')
 p.add_argument('--trials', type=int, default=20); p.add_argument('--start', type=int, default=0); p.add_argument('--seed', default='b2-20261119')
-p.add_argument('--nbeacons', type=int, default=4); p.add_argument('--wait', type=float, default=90)
+p.add_argument('--variants', default='stock,fenced'); p.add_argument('--nbeacons', type=int, default=4); p.add_argument('--wait', type=float, default=90)
 a = p.parse_args()
+PKGS = {v: PKGS[v] for v in a.variants.split(',')}
 assert not a.out.exists(), f'refusing: {a.out} exists (fresh directory rule)'
 a.out.mkdir(parents=True)
 LOG = (a.out / 'schedule.jsonl').open('a'); DEV = (a.out / 'device_events.jsonl').open('a')
@@ -73,7 +77,7 @@ def net(on):
 
 
 def trial(sched, k):
-    tid = f'{sched[:3]}{k:03d}'; rng = random.Random(f'{a.seed}-{sched}-{k}'); order = ['stock', 'fenced']; rng.shuffle(order)
+    tid = f'{sched[:3]}{k:03d}'; rng = random.Random(f'{a.seed}-{sched}-{k}'); order = list(PKGS); rng.shuffle(order)
     log = {'trial': tid, 'schedule': sched, 'k': k, 'order': order, 'host_load': os.getloadavg(), 'actions': []}
     act = lambda name, **kw: log['actions'].append({'t': time.time(), 'a': name, **kw})
     try:
@@ -124,7 +128,7 @@ def trial(sched, k):
     print(time.strftime('%H:%M:%S'), tid, [x['a'] for x in log['actions'] if x['a'] == 'trial_error'] or 'ok', flush=True)
 
 
-sink = subprocess.Popen([sys.executable, str(ART / 'followup/airguard_sink.py'), '--out', str(a.out / 'sink')],
+sink = subprocess.Popen([sys.executable, str(ART / 'followup/airguard_sink.py'), '--out', str(a.out / 'sink'), '--ports', ','.join(str(PORTS[v]) for v in sorted(PKGS, key=PORTS.get))],
                         stdout=open(a.out / 'sink.log', 'a'), stderr=subprocess.STDOUT)
 try:
     boot(); root()
@@ -133,7 +137,7 @@ try:
     for v in PKGS:                            # broadcast per app, generous timeout, recorded in meta.json
         t0 = time.time(); out = sh(f'am broadcast -n {PKGS[v]}/{HOOK} --es op noop', timeout=300); warm[v] = {'s': round(time.time() - t0, 1), 'ok': 'data="ok"' in out}
     (a.out / 'meta.json').write_text(json.dumps({'serial': a.serial, 'avd': a.avd, 'schedules': a.schedules, 'trials': a.trials, 'start': a.start,
-        'seed': a.seed, 'nbeacons': a.nbeacons, 'warmup': warm, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
+        'seed': a.seed, 'variants': list(PKGS), 'nbeacons': a.nbeacons, 'warmup': warm, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
         'apks': {v: __import__('hashlib').sha256((a.apkdir / f'airguard-{v}.apk').read_bytes()).hexdigest() for v in PKGS}, 'started': time.time()}, indent=1) + '\n')
     for k in range(a.start, a.start + a.trials):
         for s in a.schedules.split(','): trial(s, k)

@@ -1,0 +1,54 @@
+{
+ "id": "g2layer-final",
+ "kind": "final",
+ "card": "artifact/plans/g2layer-card.md",
+ "deadline_hours": 6,
+ "env": {
+  "ANDROID_HOME": "~/Library/Android/sdk",
+  "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+  "ANDROID_AVD_HOME": "~/.android/avd",
+  "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+  "AVDS": "P04AvdA",
+  "IMAGES": "33",
+  "PORTS": "5666 8795 8796 8797"
+ },
+ "owned_serials": [
+  "emulator-5666"
+ ],
+ "pre": [
+  "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+ ],
+ "stages": [
+  {
+   "name": "final",
+   "cwd": "artifact",
+   "cmd": [
+    "python3",
+    "followup/campaign_airguard.py",
+    "--serial",
+    "emulator-5666",
+    "--avd",
+    "P04AvdA",
+    "--apkdir",
+    "realapp/airguard/build",
+    "--variants",
+    "stock,fenced,layered",
+    "--schedules",
+    "pending,kill,reboot,netloss",
+    "--seed",
+    "g2layer-20261121",
+    "--trials",
+    "20",
+    "--out",
+    "results/round3/g2layer/final"
+   ],
+   "out": "artifact/results/round3/g2layer/final"
+  }
+ ],
+ "post": [
+  "python3 artifact/followup/analyze_airguard.py artifact/results/round3/g2layer/final --out artifact/results/round3/g2layer/analysis",
+  "python3 artifact/followup/analyze_airguard.py artifact/results/round3/g2layer/final --out artifact/results/round3/g2layer/analysis-v3 --order device"
+ ],
+ "guard_after": true,
+ "frozen": "artifact/results/round3/g2close/frozen-g2-v2"
+}

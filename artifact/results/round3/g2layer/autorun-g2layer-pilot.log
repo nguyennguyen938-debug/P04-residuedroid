@@ -1,0 +1,34 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 137 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5666 8795 8796 8797 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build --variants stock,fenced,layered --schedules pending,kill,reboot,netloss --seed g2layer-20261121 --trials 1 --out results/round3/g2layer/pilot
+01:51:26 pen000 ok
+01:51:46 kil000 ok
+01:52:28 reb000 ok
+01:54:23 net000 ok
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5666 emu kill
+OK: killing emulator, bye bye
+OK

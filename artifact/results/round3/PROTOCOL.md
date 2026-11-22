@@ -16,15 +16,20 @@ Exclusions: `EXCLUSIONS.md` (generated). Numbers to C only through `summary.json
 | Test 1 / B10 | `plans/b10-card.md` | v3 (guest netem shaper; v1/v2 gates failed, no final trial) | `round3/b10/final4`, calibration `pilot-calib4` | `followup/analyze_race.py` → `b10/analysis`; post-hoc Eq. 2 decomposition `followup/posthoc_race_eq2.py` → `b10/posthoc-eq2` (exploratory, keys unchanged) | `race*` |
 | Test 1 on a phone (C11) | `plans/test1-phone-card.md` | v1 (receiver_b b10v3 on EC2; app foreground on the phone) | `round3/test1-phone/final`, calibration `pilot-calib-3`; sources `frozen-test1-phone` | `followup/analyze_race.py` → `test1-phone/analysis`; `posthoc_race_eq2.py` → `test1-phone/posthoc-eq2` | — (no SCHEMA keys; card §6) |
 | B2 AirGuard | `plans/b2-card.md` | v1 (frozen after pilot-2; oracle v2 with withdrawal bracket) | `round3/b2/final` | `followup/analyze_airguard.py` → `b2/analysis`; oracle v3 (post-hoc, guest-clock order) `--order device` → `b2/analysis-v3` | — (raw, card) |
+| G2a early check + socket close (group 2) | `plans/g2close-card.md` | v1 (B10 v3 race; modes early/close/fence; one setup-timeout fix after pilot-calib) | `round3/g2close/final`, calibration `pilot-calib2`, mechanism pilot `pilot-mech`; sources `g2close/frozen-g2-v2` | `followup/analyze_g2close.py` → `g2close/analysis`; exploratory `followup/posthoc_g2close.py` → `g2close/posthoc` | — (no SCHEMA keys; card §6) |
+| G2b AirGuard layered early (group 2) | `plans/g2layer-card.md` | v1 (B2 protocol, three builds per trial) | `round3/g2layer/final`; sources `g2close/frozen-g2-v2` | `followup/analyze_airguard.py` → `g2layer/analysis` (v2) and `--order device` → `g2layer/analysis-v3`; descriptive `followup/posthoc_g2layer.py` → `g2layer/posthoc` | — (no SCHEMA keys; card §6) |
 | B1 screening | `plans/b1-screening.md` | — | (builds outside the repo; `plans/b1/build_airguard.sh`) | — | S1 decision |
 | A10 callers | — | — | `round3/a10/find_callers-20261119.txt` | (A's `triage/find_callers.py`) | — |
 
 Fixture/transport changes since tag `snapshot-20261117` (`git diff snapshot-20261117 -- artifact/fixture/src artifact/transport`):
 optional `Revision` extras `deadline_ms`, `chunk`, `scope`, `split`, `splitsetup`, `items`, `prelock`, an `HttpTransport.postMode`
-overload (chunk, deadline), and a settable sink host for real phones (`Fence.HOST`, meta `sink_host`; `App.java`, `Cmd.java`), and the SETUP extra `regrant_agg` (B12 v2; re-aggregation after the T5 re-grant, default off).
+overload (chunk, deadline), and a settable sink host for real phones (`Fence.HOST`, meta `sink_host`; `App.java`, `Cmd.java`), and the SETUP extra `regrant_agg` (B12 v2; re-aggregation after the T5 re-grant, default off); group 2: `Revision` mode `close` with op `cancel` and withdraw extra `cancel` (comparator logic in `fixture/src-cmp`, not ResidueDroid), a `TlsTransport.post` overload with an `onOpen` callback (old signature unchanged).
 Defaults are unchanged; each card's Design section says which extras its runs use. `UpJob.onStopJob` was not changed. Large raw files are committed gzip-compressed (B4 v2 additionally split into byte parts) with the sha256 of the
 original next to them; the analysis scripts read the compressed form and their outputs are byte-identical.
 
 Data freeze (B7) declared 21/11 (plan deadline 29/11), after the last runs (B12 v2, Test 1 on a phone): no device or emulator run
 after it. Raw data, this index, `EXCLUSIONS.md` and `summary.json` are committed. Allowed afterwards: `summary.json` keys computed by
 script from the frozen data once C defines them (Test 6 `dev*`, optional phone keys), with a RUNLOG entry.
+
+Group 2 (PR #4, leader decision 21/11): B7 reopened for G2a and G2b only; earlier data untouched. Both ran 21/11 23:23 –
+22/11 03:00 (one emulator at a time). B7 re-declared 22/11 03:xx after G2b: no device or emulator run after it.

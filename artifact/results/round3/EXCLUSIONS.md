@@ -28,7 +28,9 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 5 / B4 v3 (keys; final-v3 + replacement blocks) | 440 | 1: sw-c4-s16-3-fd82de: sender did not complete | 39 | `b4/analysis-v3-repl` |
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
 | Test 1 phone (Galaxy A06, Android 15) | 180 | 0 | 0 | `test1-phone/analysis` |
+| G2a early check + socket close (group 2) | 270 | 0 | 0 | `g2close/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
+| G2b AirGuard layered early (group 2) | 80 | 0 | 0 | `g2layer/analysis` |
 
 ## Pilots and discarded runs
 
@@ -50,6 +52,10 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/b3/pilot-2` | gate passed | none |
 | `round3/b4/pilot-1` | mechanism check of the sweep | none |
 | `round3/b4/pilot-v3` | protocol v3 pilot (receiver recv timeout 300 s), gate passed | none |
+| `round3/g2close/pilot-calib` | G2a calibration aborted before any send: setup init broadcast timed out (cold start 83 s under host load) | setup init timeout 300 s (frozen-g2-v2) |
+| `round3/g2close/pilot-calib2` | G2a calibration, 27/27 sends ok, throttle gate passed; durations used by the final | none |
+| `round3/g2close/pilot-mech` | G2a mechanism pilot (1 block, 27 trials): all valid, every close trial CANCEL + reply ok; gate passed | none |
+| `round3/g2layer/pilot` | G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed | none |
 | `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
 | `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |
 | `round3/test1-phone/pilot-calib-3` | phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final | none |

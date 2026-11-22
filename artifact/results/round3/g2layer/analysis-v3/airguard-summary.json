@@ -1,0 +1,3613 @@
+{
+ "invalid": [],
+ "cells": {
+  "kill/fenced": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "kill/layered": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "kill/stock": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 20,
+   "violating_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/fenced": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 20,
+   "unknown_trials": 0,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/layered": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 20,
+   "unknown_trials": 0,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "netloss/stock": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 20,
+   "unknown_trials": 0,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "pending/fenced": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "pending/layered": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "pending/stock": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 20,
+   "violating_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  },
+  "reboot/fenced": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "reboot/layered": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 0,
+   "violating_wilson95": [
+    0.0,
+    0.16113012549493322
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "error_trials": 0
+  },
+  "reboot/stock": {
+   "trials": 20,
+   "unused": 0,
+   "violating_trials": 20,
+   "violating_wilson95": [
+    0.8388698745050667,
+    1.0
+   ],
+   "deficit_trials": 0,
+   "unknown_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "error_trials": 0
+  }
+ },
+ "rows": [
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen000",
+   "schedule": "pending",
+   "k": 0,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil000",
+   "schedule": "kill",
+   "k": 0,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb000",
+   "schedule": "reboot",
+   "k": 0,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net000",
+   "schedule": "netloss",
+   "k": 0,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen001",
+   "schedule": "pending",
+   "k": 1,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen001",
+   "schedule": "pending",
+   "k": 1,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen001",
+   "schedule": "pending",
+   "k": 1,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil001",
+   "schedule": "kill",
+   "k": 1,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil001",
+   "schedule": "kill",
+   "k": 1,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil001",
+   "schedule": "kill",
+   "k": 1,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb001",
+   "schedule": "reboot",
+   "k": 1,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 2,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb001",
+   "schedule": "reboot",
+   "k": 1,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb001",
+   "schedule": "reboot",
+   "k": 1,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net001",
+   "schedule": "netloss",
+   "k": 1,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net001",
+   "schedule": "netloss",
+   "k": 1,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net001",
+   "schedule": "netloss",
+   "k": 1,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen002",
+   "schedule": "pending",
+   "k": 2,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen002",
+   "schedule": "pending",
+   "k": 2,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen002",
+   "schedule": "pending",
+   "k": 2,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil002",
+   "schedule": "kill",
+   "k": 2,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil002",
+   "schedule": "kill",
+   "k": 2,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil002",
+   "schedule": "kill",
+   "k": 2,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb002",
+   "schedule": "reboot",
+   "k": 2,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 0,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb002",
+   "schedule": "reboot",
+   "k": 2,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb002",
+   "schedule": "reboot",
+   "k": 2,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net002",
+   "schedule": "netloss",
+   "k": 2,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net002",
+   "schedule": "netloss",
+   "k": 2,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net002",
+   "schedule": "netloss",
+   "k": 2,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen003",
+   "schedule": "pending",
+   "k": 3,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen003",
+   "schedule": "pending",
+   "k": 3,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen003",
+   "schedule": "pending",
+   "k": 3,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil003",
+   "schedule": "kill",
+   "k": 3,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil003",
+   "schedule": "kill",
+   "k": 3,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil003",
+   "schedule": "kill",
+   "k": 3,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 0,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb003",
+   "schedule": "reboot",
+   "k": 3,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb003",
+   "schedule": "reboot",
+   "k": 3,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb003",
+   "schedule": "reboot",
+   "k": 3,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net003",
+   "schedule": "netloss",
+   "k": 3,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net003",
+   "schedule": "netloss",
+   "k": 3,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net003",
+   "schedule": "netloss",
+   "k": 3,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen004",
+   "schedule": "pending",
+   "k": 4,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen004",
+   "schedule": "pending",
+   "k": 4,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen004",
+   "schedule": "pending",
+   "k": 4,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil004",
+   "schedule": "kill",
+   "k": 4,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil004",
+   "schedule": "kill",
+   "k": 4,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil004",
+   "schedule": "kill",
+   "k": 4,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb004",
+   "schedule": "reboot",
+   "k": 4,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb004",
+   "schedule": "reboot",
+   "k": 4,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb004",
+   "schedule": "reboot",
+   "k": 4,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net004",
+   "schedule": "netloss",
+   "k": 4,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net004",
+   "schedule": "netloss",
+   "k": 4,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net004",
+   "schedule": "netloss",
+   "k": 4,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen005",
+   "schedule": "pending",
+   "k": 5,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen005",
+   "schedule": "pending",
+   "k": 5,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen005",
+   "schedule": "pending",
+   "k": 5,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil005",
+   "schedule": "kill",
+   "k": 5,
+   "variant": "stock",
+   "donated": {
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil005",
+   "schedule": "kill",
+   "k": 5,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil005",
+   "schedule": "kill",
+   "k": 5,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb005",
+   "schedule": "reboot",
+   "k": 5,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb005",
+   "schedule": "reboot",
+   "k": 5,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb005",
+   "schedule": "reboot",
+   "k": 5,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net005",
+   "schedule": "netloss",
+   "k": 5,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net005",
+   "schedule": "netloss",
+   "k": 5,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net005",
+   "schedule": "netloss",
+   "k": 5,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen006",
+   "schedule": "pending",
+   "k": 6,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen006",
+   "schedule": "pending",
+   "k": 6,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen006",
+   "schedule": "pending",
+   "k": 6,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil006",
+   "schedule": "kill",
+   "k": 6,
+   "variant": "stock",
+   "donated": {
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil006",
+   "schedule": "kill",
+   "k": 6,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil006",
+   "schedule": "kill",
+   "k": 6,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb006",
+   "schedule": "reboot",
+   "k": 6,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb006",
+   "schedule": "reboot",
+   "k": 6,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb006",
+   "schedule": "reboot",
+   "k": 6,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net006",
+   "schedule": "netloss",
+   "k": 6,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net006",
+   "schedule": "netloss",
+   "k": 6,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net006",
+   "schedule": "netloss",
+   "k": 6,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen007",
+   "schedule": "pending",
+   "k": 7,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen007",
+   "schedule": "pending",
+   "k": 7,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen007",
+   "schedule": "pending",
+   "k": 7,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil007",
+   "schedule": "kill",
+   "k": 7,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil007",
+   "schedule": "kill",
+   "k": 7,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil007",
+   "schedule": "kill",
+   "k": 7,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb007",
+   "schedule": "reboot",
+   "k": 7,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb007",
+   "schedule": "reboot",
+   "k": 7,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb007",
+   "schedule": "reboot",
+   "k": 7,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net007",
+   "schedule": "netloss",
+   "k": 7,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net007",
+   "schedule": "netloss",
+   "k": 7,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net007",
+   "schedule": "netloss",
+   "k": 7,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen008",
+   "schedule": "pending",
+   "k": 8,
+   "variant": "stock",
+   "donated": {
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen008",
+   "schedule": "pending",
+   "k": 8,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen008",
+   "schedule": "pending",
+   "k": 8,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil008",
+   "schedule": "kill",
+   "k": 8,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil008",
+   "schedule": "kill",
+   "k": 8,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil008",
+   "schedule": "kill",
+   "k": 8,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb008",
+   "schedule": "reboot",
+   "k": 8,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb008",
+   "schedule": "reboot",
+   "k": 8,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb008",
+   "schedule": "reboot",
+   "k": 8,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net008",
+   "schedule": "netloss",
+   "k": 8,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net008",
+   "schedule": "netloss",
+   "k": 8,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net008",
+   "schedule": "netloss",
+   "k": 8,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen009",
+   "schedule": "pending",
+   "k": 9,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen009",
+   "schedule": "pending",
+   "k": 9,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen009",
+   "schedule": "pending",
+   "k": 9,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil009",
+   "schedule": "kill",
+   "k": 9,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil009",
+   "schedule": "kill",
+   "k": 9,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil009",
+   "schedule": "kill",
+   "k": 9,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb009",
+   "schedule": "reboot",
+   "k": 9,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb009",
+   "schedule": "reboot",
+   "k": 9,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb009",
+   "schedule": "reboot",
+   "k": 9,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net009",
+   "schedule": "netloss",
+   "k": 9,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net009",
+   "schedule": "netloss",
+   "k": 9,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 0
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net009",
+   "schedule": "netloss",
+   "k": 9,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen010",
+   "schedule": "pending",
+   "k": 10,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen010",
+   "schedule": "pending",
+   "k": 10,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen010",
+   "schedule": "pending",
+   "k": 10,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 0,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil010",
+   "schedule": "kill",
+   "k": 10,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil010",
+   "schedule": "kill",
+   "k": 10,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil010",
+   "schedule": "kill",
+   "k": 10,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb010",
+   "schedule": "reboot",
+   "k": 10,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb010",
+   "schedule": "reboot",
+   "k": 10,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb010",
+   "schedule": "reboot",
+   "k": 10,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net010",
+   "schedule": "netloss",
+   "k": 10,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net010",
+   "schedule": "netloss",
+   "k": 10,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net010",
+   "schedule": "netloss",
+   "k": 10,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen011",
+   "schedule": "pending",
+   "k": 11,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen011",
+   "schedule": "pending",
+   "k": 11,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen011",
+   "schedule": "pending",
+   "k": 11,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil011",
+   "schedule": "kill",
+   "k": 11,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil011",
+   "schedule": "kill",
+   "k": 11,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil011",
+   "schedule": "kill",
+   "k": 11,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb011",
+   "schedule": "reboot",
+   "k": 11,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb011",
+   "schedule": "reboot",
+   "k": 11,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb011",
+   "schedule": "reboot",
+   "k": 11,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net011",
+   "schedule": "netloss",
+   "k": 11,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net011",
+   "schedule": "netloss",
+   "k": 11,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net011",
+   "schedule": "netloss",
+   "k": 11,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen012",
+   "schedule": "pending",
+   "k": 12,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen012",
+   "schedule": "pending",
+   "k": 12,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen012",
+   "schedule": "pending",
+   "k": 12,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil012",
+   "schedule": "kill",
+   "k": 12,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil012",
+   "schedule": "kill",
+   "k": 12,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil012",
+   "schedule": "kill",
+   "k": 12,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb012",
+   "schedule": "reboot",
+   "k": 12,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb012",
+   "schedule": "reboot",
+   "k": 12,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb012",
+   "schedule": "reboot",
+   "k": 12,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net012",
+   "schedule": "netloss",
+   "k": 12,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net012",
+   "schedule": "netloss",
+   "k": 12,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net012",
+   "schedule": "netloss",
+   "k": 12,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen013",
+   "schedule": "pending",
+   "k": 13,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen013",
+   "schedule": "pending",
+   "k": 13,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen013",
+   "schedule": "pending",
+   "k": 13,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil013",
+   "schedule": "kill",
+   "k": 13,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil013",
+   "schedule": "kill",
+   "k": 13,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil013",
+   "schedule": "kill",
+   "k": 13,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 0,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb013",
+   "schedule": "reboot",
+   "k": 13,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb013",
+   "schedule": "reboot",
+   "k": 13,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb013",
+   "schedule": "reboot",
+   "k": 13,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net013",
+   "schedule": "netloss",
+   "k": 13,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net013",
+   "schedule": "netloss",
+   "k": 13,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net013",
+   "schedule": "netloss",
+   "k": 13,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen014",
+   "schedule": "pending",
+   "k": 14,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen014",
+   "schedule": "pending",
+   "k": 14,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen014",
+   "schedule": "pending",
+   "k": 14,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil014",
+   "schedule": "kill",
+   "k": 14,
+   "variant": "stock",
+   "donated": {
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil014",
+   "schedule": "kill",
+   "k": 14,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil014",
+   "schedule": "kill",
+   "k": 14,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb014",
+   "schedule": "reboot",
+   "k": 14,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb014",
+   "schedule": "reboot",
+   "k": 14,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb014",
+   "schedule": "reboot",
+   "k": 14,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net014",
+   "schedule": "netloss",
+   "k": 14,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net014",
+   "schedule": "netloss",
+   "k": 14,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net014",
+   "schedule": "netloss",
+   "k": 14,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen015",
+   "schedule": "pending",
+   "k": 15,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen015",
+   "schedule": "pending",
+   "k": 15,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen015",
+   "schedule": "pending",
+   "k": 15,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 0,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil015",
+   "schedule": "kill",
+   "k": 15,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil015",
+   "schedule": "kill",
+   "k": 15,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil015",
+   "schedule": "kill",
+   "k": 15,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb015",
+   "schedule": "reboot",
+   "k": 15,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb015",
+   "schedule": "reboot",
+   "k": 15,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb015",
+   "schedule": "reboot",
+   "k": 15,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net015",
+   "schedule": "netloss",
+   "k": 15,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net015",
+   "schedule": "netloss",
+   "k": 15,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net015",
+   "schedule": "netloss",
+   "k": 15,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen016",
+   "schedule": "pending",
+   "k": 16,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen016",
+   "schedule": "pending",
+   "k": 16,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen016",
+   "schedule": "pending",
+   "k": 16,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil016",
+   "schedule": "kill",
+   "k": 16,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil016",
+   "schedule": "kill",
+   "k": 16,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil016",
+   "schedule": "kill",
+   "k": 16,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb016",
+   "schedule": "reboot",
+   "k": 16,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb016",
+   "schedule": "reboot",
+   "k": 16,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb016",
+   "schedule": "reboot",
+   "k": 16,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net016",
+   "schedule": "netloss",
+   "k": 16,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net016",
+   "schedule": "netloss",
+   "k": 16,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net016",
+   "schedule": "netloss",
+   "k": 16,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen017",
+   "schedule": "pending",
+   "k": 17,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 1,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen017",
+   "schedule": "pending",
+   "k": 17,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen017",
+   "schedule": "pending",
+   "k": 17,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil017",
+   "schedule": "kill",
+   "k": 17,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil017",
+   "schedule": "kill",
+   "k": 17,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil017",
+   "schedule": "kill",
+   "k": 17,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb017",
+   "schedule": "reboot",
+   "k": 17,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb017",
+   "schedule": "reboot",
+   "k": 17,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb017",
+   "schedule": "reboot",
+   "k": 17,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net017",
+   "schedule": "netloss",
+   "k": 17,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net017",
+   "schedule": "netloss",
+   "k": 17,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net017",
+   "schedule": "netloss",
+   "k": 17,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen018",
+   "schedule": "pending",
+   "k": 18,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 2,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen018",
+   "schedule": "pending",
+   "k": 18,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen018",
+   "schedule": "pending",
+   "k": 18,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 0,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil018",
+   "schedule": "kill",
+   "k": 18,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil018",
+   "schedule": "kill",
+   "k": 18,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil018",
+   "schedule": "kill",
+   "k": 18,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb018",
+   "schedule": "reboot",
+   "k": 18,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb018",
+   "schedule": "reboot",
+   "k": 18,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb018",
+   "schedule": "reboot",
+   "k": 18,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net018",
+   "schedule": "netloss",
+   "k": 18,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net018",
+   "schedule": "netloss",
+   "k": 18,
+   "variant": "fenced",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net018",
+   "schedule": "netloss",
+   "k": 18,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen019",
+   "schedule": "pending",
+   "k": 19,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "pen019",
+   "schedule": "pending",
+   "k": 19,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "pen019",
+   "schedule": "pending",
+   "k": 19,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil019",
+   "schedule": "kill",
+   "k": 19,
+   "variant": "stock",
+   "donated": {
+    "pre/before": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "kil019",
+   "schedule": "kill",
+   "k": 19,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "kil019",
+   "schedule": "kill",
+   "k": 19,
+   "variant": "layered",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb019",
+   "schedule": "reboot",
+   "k": 19,
+   "variant": "stock",
+   "donated": {
+    "pre/after": 4,
+    "optout/after": 4,
+    "post/after": 4
+   },
+   "violation": true,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "reb019",
+   "schedule": "reboot",
+   "k": 19,
+   "variant": "fenced",
+   "donated": {
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "reb019",
+   "schedule": "reboot",
+   "k": 19,
+   "variant": "layered",
+   "donated": {
+    "pre/before": 4,
+    "post/after": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 0,
+   "blocked": true,
+   "error": false
+  },
+  {
+   "trial": "net019",
+   "schedule": "netloss",
+   "k": 19,
+   "variant": "stock",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net019",
+   "schedule": "netloss",
+   "k": 19,
+   "variant": "fenced",
+   "donated": {
+    "pre/before": 4
+   },
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  },
+  {
+   "trial": "net019",
+   "schedule": "netloss",
+   "k": 19,
+   "variant": "layered",
+   "donated": {},
+   "violation": false,
+   "unknown": false,
+   "deficit": 4,
+   "blocked": false,
+   "error": false
+  }
+ ]
+}

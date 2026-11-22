@@ -1,0 +1,50 @@
+{
+ "id": "g2layer-pilot",
+ "kind": "pilot",
+ "card": "artifact/plans/g2layer-card.md",
+ "deadline_hours": 2,
+ "env": {
+  "ANDROID_HOME": "~/Library/Android/sdk",
+  "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+  "ANDROID_AVD_HOME": "~/.android/avd",
+  "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+  "AVDS": "P04AvdA",
+  "IMAGES": "33",
+  "PORTS": "5666 8795 8796 8797"
+ },
+ "owned_serials": [
+  "emulator-5666"
+ ],
+ "pre": [
+  "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+ ],
+ "stages": [
+  {
+   "name": "pilot",
+   "cwd": "artifact",
+   "cmd": [
+    "python3",
+    "followup/campaign_airguard.py",
+    "--serial",
+    "emulator-5666",
+    "--avd",
+    "P04AvdA",
+    "--apkdir",
+    "realapp/airguard/build",
+    "--variants",
+    "stock,fenced,layered",
+    "--schedules",
+    "pending,kill,reboot,netloss",
+    "--seed",
+    "g2layer-20261121",
+    "--trials",
+    "1",
+    "--out",
+    "results/round3/g2layer/pilot"
+   ],
+   "out": "artifact/results/round3/g2layer/pilot"
+  }
+ ],
+ "post": [],
+ "guard_after": true
+}

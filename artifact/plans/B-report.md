@@ -172,3 +172,37 @@ The unfenced baselines leak in each setting.
 - Static send-path audit of AirGuard (C's optional item): see `b2-card.md`, last section.
   - The donation path is mediated in the fenced build, at the direct-call level.
   - 23 other network call sites per build (maps, images, URL check, library internals) are not mediated. The paper keeps this as a limit.
+
+## Group 2 (new runs requested in PR #4, leader decision 21/11; data frozen again 22/11)
+Both ran on the emulator, one at a time, 21/11 23:23 – 22/11 03:00. Cards: `g2close-card.md`, `g2layer-card.md`. No SCHEMA keys
+exist for them; the numbers below are in the analysis JSONs, ready for `make_summary.py` `derived()` if C adds keys.
+
+**G2a: early check that closes the socket on withdrawal** (B10 v3 race, modes in the same blocks, 30 trials per cell)
+
+| Profile | early | close | fence |
+|---|---|---|---|
+| edge | 20/30 [0.488, 0.808] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+| umts | 21/30 [0.521, 0.833] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+| lte | 9/30 [0.167, 0.479] | 0/30 [0, 0.114] | 0/30 [0, 0.114] |
+
+- `close` = the layered early check plus a cancellation path: a token registered before the check; the withdrawal commits,
+  then synchronously closes every in-flight socket in the sending process before it acknowledges. This is the strongest form
+  we could build without a per-write check; the comparator is not ResidueDroid and is not counted in `\impLoc`.
+- It stopped bytes after the ack as the fence did (zero vs zero in 90 paired trials; not equivalence). Among cut trials the
+  receiver got 0 complete requests with close or fence, and all of them with early (50/50).
+- Costs: the ack waited for the cancellation, median 2.5–3.5 ms vs about 0.9 ms with the fence (max 10 ms; 0 of 90 hit the 5 s
+  timeout). Exploratory: close also aborted 18 requests that had already been handed off and logged complete by the
+  receiver, so the app saw a failure for delivered data; the fence never did (0 of 38).
+- Suggested wording for §7b, if C wants it: an early check can match the fence on this race only with a synchronous
+  cancellation path to every in-flight request, and that path also kills requests already delivered.
+
+**G2b: AirGuard with a layered early check** (B2 schedules, stock/fenced/layered in each trial, 20 per schedule)
+
+| Schedule | stock | fenced | layered |
+|---|---|---|---|
+| pending, kill, reboot (each) | 20/20 [0.839, 1] | 0/20 [0, 0.161] | 0/20 [0, 0.161] |
+| netloss | 0/20 | 0/20 | 0/20 |
+
+- Layered and fenced are zero vs zero on every schedule: on these lifecycle schedules the withdrawal precedes the next
+  donation, so one durable check before sending suffices. The fence's advantage needs a withdrawal during an upload (B10, G2a,
+  Test 1 on the phone). Unknown trials 0; netloss deficit 80/80 beacons for every build (the app does not retry).

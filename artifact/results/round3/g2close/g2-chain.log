@@ -1,0 +1,5 @@
+22:59 start (G2a then G2b)
+[autorun] g2close-pilot (pilot) stages=1 deadline=3 h
+  - calibration: python3 followup/race_suite.py --radio --shaper tc --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g2close-apk/rl-tls.apk --profiles edge,umts,lte --sizes 32768,262144,2097152 --seed race-20261119 --modes fence --calibrate 3 --out results/round3/g2close/pilot-calib  -> artifact/results/round3/g2close/pilot-calib
+[autorun] ABORT(calibration exit 1); guard=0
+23:04 G2a calibration pilot failed; chain stopped

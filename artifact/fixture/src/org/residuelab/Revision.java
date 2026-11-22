@@ -42,7 +42,7 @@ public class Revision extends BroadcastReceiver {
                 try {if(scope==null)d.execSQL("UPDATE grants SET epoch=epoch+1,allowed=0 WHERE tenant=?",new Object[]{tenant});
                     else d.execSQL("UPDATE grants SET epoch=epoch+1,allowed=0 WHERE tenant=? AND scope=?",new Object[]{tenant,scope});d.setTransactionSuccessful();}
                 finally {d.endTransaction();}event(c,id,"WITHDRAW_DURABLE","tenant="+tenant);return null;});
-                event(c,id,"WITHDRAW_ACK","tenant="+tenant);
+                if(i.getBooleanExtra("cancel",false))event(c,id,"CANCEL_DONE","reply="+CancelPath.request(c,id,5000));event(c,id,"WITHDRAW_ACK","tenant="+tenant);
             }catch(Exception e){event(c,id,"WITHDRAW_TIMEOUT",e.toString());}return;
         }
         if("labelsetup".equals(op)) {
@@ -52,11 +52,11 @@ public class Revision extends BroadcastReceiver {
             event(c,id,"LABEL_SETUP","actual_sources=analytics:0,diagnostics:0;analytics_withdrawn=true");return;
         }
         if("splitsetup".equals(op)) {Db.get(c).getWritableDatabase().execSQL("INSERT OR REPLACE INTO grants(tenant,scope,epoch,allowed) VALUES(1,'diagnostics',0,1)");event(c,id,"SPLIT_SETUP","sources=analytics:0,diagnostics:0");return;}
-        if("regrant".equals(op)) {Policy.regrant(c,Model.TENANTS[1]);event(c,id,"REGRANTED","");return;}
+        if("regrant".equals(op)) {Policy.regrant(c,Model.TENANTS[1]);event(c,id,"REGRANTED","");return;}if("cancel".equals(op)) {event(c,id,"CANCEL",CancelPath.cancelAll());return;}
         if("send".equals(op)) {
             final int size=i.getIntExtra("size",16384),port=i.getIntExtra("port",8794);
             final String mode=i.getStringExtra("mode"),fault=i.getStringExtra("fault");
-            final boolean fenced=!"early".equals(mode);final int epoch=i.getIntExtra("epoch",0);
+            final boolean fenced=!"early".equals(mode)&&!"close".equals(mode);final CancelPath.Token tok="close".equals(mode)?CancelPath.register():null;final int epoch=i.getIntExtra("epoch",0);
             final String label=i.getStringExtra("items")!=null?i.getStringExtra("items"):i.hasExtra("label")?i.getStringExtra("label"):"analytics:"+epoch;
             String diagnostic=i.getBooleanExtra("labeltest",false)?",\"actual_sources\":[\"analytics:0\",\"diagnostics:0\"],\"derived\":\""+("analytic-value"+"|"+"diagnostic-value")+"\"":"";
             final String items=i.getStringExtra("items");   // B3: "analytics:0,diagnostics:0" -> one item per label
@@ -67,7 +67,7 @@ public class Revision extends BroadcastReceiver {
                 for(String source:label.split(","))if(Policy.blockedLabel(c,Model.TENANTS[1],source,"analytics",true))return false;
                 return true;
             };
-            if(!policy.permitted()) {event(c,id,"EARLY_BLOCK","label="+label);return;}
+            if(!policy.permitted()) {CancelPath.done(tok);event(c,id,"EARLY_BLOCK","label="+label);return;}
             long started=android.os.SystemClock.elapsedRealtimeNanos(),cpu=android.os.Process.getElapsedCpuTime();
             final java.util.concurrent.atomic.AtomicLong accepted=new java.util.concurrent.atomic.AtomicLong();
             try {
@@ -89,13 +89,13 @@ public class Revision extends BroadcastReceiver {
                     try(InputStream cert=new FileInputStream(new File(c.getFilesDir(),"test-ca.pem"))){ks.setCertificateEntry("test",java.security.cert.CertificateFactory.getInstance("X.509").generateCertificate(cert));}
                     javax.net.ssl.TrustManagerFactory tm=javax.net.ssl.TrustManagerFactory.getInstance(javax.net.ssl.TrustManagerFactory.getDefaultAlgorithm());tm.init(ks);
                     javax.net.ssl.SSLContext ctx=javax.net.ssl.SSLContext.getInstance("TLS");ctx.init(null,tm.getTrustManagers(),null);
-                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),i.getIntExtra("deadline_ms",10000));
+                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),i.getIntExtra("deadline_ms",10000),tok);
                 } else HttpTransport.postMode(i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,"whole".equals(mode),trace,id,i.getIntExtra("attempt",1),i.getIntExtra("chunk",HttpTransport.CHUNK),i.getIntExtra("deadline_ms",5000));
                 event(c,id,"SEND_OK","elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu)+";payload_bytes="+body.length);
             }catch(HttpTransport.Denied e){
                 event(c,id,"SEND_ERROR",e.toString()+";accepted_chunks="+accepted.get());
                 if(i.getBooleanExtra("split",false)&&items!=null&&accepted.get()==0&&fenced) split(c,i,id,items,size);
-            }catch(Exception e){event(c,id,"SEND_ERROR",e.toString()+";elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu));}
+            }catch(Exception e){event(c,id,"SEND_ERROR",e.toString()+";elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu));}finally{CancelPath.done(tok);}
         }
     }
 }

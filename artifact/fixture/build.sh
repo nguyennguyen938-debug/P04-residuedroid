@@ -7,7 +7,7 @@ D=$(cd "$(dirname "$0")" && pwd); cd "$D"
 VARIANTS="${VARIANTS:-none cancel enqueue jobstart conv egress rd volatile taint noser}"
 OUTDIR="${OUTDIR:-build/apk}"; MANIFEST="${MANIFEST:-AndroidManifest.xml}"
 rm -rf build/classes build/dex && mkdir -p build/classes build/dex "$OUTDIR"
-$JAVA_HOME/bin/javac -Xlint:none -d build/classes -classpath "$AJAR" $(find src ../transport/src -name '*.java')
+$JAVA_HOME/bin/javac -Xlint:none -d build/classes -classpath "$AJAR" $(find src src-cmp ../transport/src -name '*.java')
 $BT/d8 --min-api 26 --lib "$AJAR" --output build/dex $(find build/classes -name '*.class')
 [ -f build/k.jks ] || "$JAVA_HOME/bin/keytool" -genkeypair -keystore build/k.jks -alias k -storepass android -keypass android \
     -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=residuelab" >/dev/null 2>&1

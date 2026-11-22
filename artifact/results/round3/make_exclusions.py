@@ -42,6 +42,10 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/test1-phone/pilot-calib-3': ('phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final', 'none'),
     'round3/test1-phone/pilot-calib-1': ('phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast', 'race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py'),
     'mutation-v2/pilot-base': ('B12 v2 base pilot (regrant_agg): labels ok, AGG after REGRANT in 2/2 trials, gate passed', 'none'),
+    'round3/g2close/pilot-calib': ('G2a calibration aborted before any send: setup init broadcast timed out (cold start 83 s under host load)', 'setup init timeout 300 s (frozen-g2-v2)'),
+    'round3/g2close/pilot-calib2': ('G2a calibration, 27/27 sends ok, throttle gate passed; durations used by the final', 'none'),
+    'round3/g2close/pilot-mech': ('G2a mechanism pilot (1 block, 27 trials): all valid, every close trial CANCEL + reply ok; gate passed', 'none'),
+    'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
 
 
@@ -77,13 +81,17 @@ def trial_rows():
                 inv = [f"{x['trial']}: {x['reason']}" for x in v['invalid']]
                 out.append((f'Test 2 / B12 {ver} {m}', v['valid_trials'] + len(inv), inv, 0, f))
     for name, f in (('B3 split policy', 'round3/b3/analysis/b3-summary.json'), ('Test 5 / B4 v1', 'round3/b4/analysis/sweep-summary.json'),
-                    ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json'), ('Test 1 phone (Galaxy A06, Android 15)', 'round3/test1-phone/analysis/race-summary.json')):
+                    ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json'), ('Test 1 phone (Galaxy A06, Android 15)', 'round3/test1-phone/analysis/race-summary.json'), ('G2a early check + socket close (group 2)', 'round3/g2close/analysis/g2close-summary.json')):
         d = load(f)
         if d: out.append((name, d['logged'], [f"{x['trial']}: {x['reason']}" for x in d['invalid']], sum(c.get('unused', 0) for c in d['cells'].values()), str(Path(f).parent.relative_to('round3'))))
     b2 = load('round3/b2/analysis/airguard-summary.json')
     if b2:
         out.append(('B2 AirGuard (real app)', len({r['trial'] for r in b2['rows']}) + len(b2['invalid']), [f"{x['trial']}: {x['reason']}" for x in b2['invalid']],
                     sum(c['unused'] for c in b2['cells'].values()), 'b2/analysis'))
+    g2b = load('round3/g2layer/analysis/airguard-summary.json')
+    if g2b:
+        out.append(('G2b AirGuard layered early (group 2)', len({r['trial'] for r in g2b['rows']}) + len(g2b['invalid']), [f"{x['trial']}: {x['reason']}" for x in g2b['invalid']],
+                    sum(c['unused'] for c in g2b['cells'].values()), 'g2layer/analysis'))
     return out
 
 

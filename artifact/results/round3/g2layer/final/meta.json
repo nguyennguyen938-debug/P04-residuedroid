@@ -1,0 +1,35 @@
+{
+ "serial": "emulator-5666",
+ "avd": "P04AvdA",
+ "schedules": "pending,kill,reboot,netloss",
+ "trials": 20,
+ "start": 0,
+ "seed": "g2layer-20261121",
+ "variants": [
+  "stock",
+  "fenced",
+  "layered"
+ ],
+ "nbeacons": 4,
+ "warmup": {
+  "stock": {
+   "s": 1.6,
+   "ok": true
+  },
+  "fenced": {
+   "s": 0.6,
+   "ok": true
+  },
+  "layered": {
+   "s": 0.8,
+   "ok": true
+  }
+ },
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "apks": {
+  "stock": "e53e52549bb02af0fdfcb73c57788e565130edefa3d6057bb0fa338d90841ca7",
+  "fenced": "30eb823f99b1d21a098e4a699200ec9b3e0f33b68fbafcff6abb25cf93484e84",
+  "layered": "f450a5060ab43dc5fe3c48a031be2d0b8d39abb40a7e124be71fbff751847232"
+ },
+ "started": 1795287329.245497
+}
