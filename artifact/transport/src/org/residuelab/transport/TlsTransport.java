@@ -38,7 +38,7 @@ public final class TlsTransport {
         ByteBuffer incoming=ByteBuffer.allocate(packet*2),outgoing=ByteBuffer.allocate(packet*2),plain=ByteBuffer.allocate(app*2);
         try(SocketChannel ch=SocketChannel.open();Selector selector=Selector.open()) {
             if(onOpen!=null)onOpen.accept(ch);
-            ch.configureBlocking(false);ch.socket().setSendBufferSize(sendBuffer);
+            ch.configureBlocking(false);if(sendBuffer>0)ch.socket().setSendBufferSize(sendBuffer);   // P4 (22/11): sendBuffer<=0 = kernel default (autotuning)
             events.emit("SOCKET_CONFIG",prefix+"requested_sndbuf="+sendBuffer+";actual_sndbuf="+ch.socket().getSendBufferSize());
             SelectionKey key=ch.register(selector,SelectionKey.OP_CONNECT);ch.connect(new InetSocketAddress(host,port));
             while(!ch.finishConnect())ready(selector,key,SelectionKey.OP_CONNECT,deadline);

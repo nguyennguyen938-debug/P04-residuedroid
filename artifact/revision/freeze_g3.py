@@ -5,7 +5,7 @@ import hashlib, json, sys, tarfile
 from pathlib import Path
 art = Path(__file__).resolve().parents[1]; out = art / sys.argv[1] if not Path(sys.argv[1]).is_absolute() else Path(sys.argv[1])
 assert not out.exists(), f'{out} exists (fresh directory only)'
-roots = ['fixture/src', 'fixture/src-cmp', 'fixture/build.sh', 'fixture/AndroidManifest.xml', 'fixture/build/g3-apk/rl-tls.apk', 'transport/src',
+roots = ['fixture/src', 'fixture/src-cmp', 'fixture/build.sh', 'fixture/AndroidManifest.xml', 'fixture/build/g3-apk/rl-tls.apk', 'fixture/build/g3p4-apk/rl-tls.apk', 'followup/analyze_g3p4.py', 'plans/autorun/g3-p4-chain.sh', 'transport/src',
          'followup/race_suite.py', 'followup/race_airguard.py', 'followup/cost_suite.py', 'followup/airguard_sink.py', 'followup/analyze_race.py',
          'followup/analyze_g2close.py', 'followup/analyze_g3race.py', 'followup/analyze_g3app.py', 'followup/analyze_g3cost.py', 'followup/pcapmin.py',
          'followup/test_g3race.py', 'followup/test_g3app.py', 'followup/test_g3cost.py', 'realapp/airguard/apply.sh', 'realapp/airguard/apply_g3.sh',

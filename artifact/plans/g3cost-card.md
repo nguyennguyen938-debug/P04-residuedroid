@@ -143,6 +143,6 @@ before any data. The user's own phone; no rental, no cost.
     into errors;
   - fake-adb checks: normal 18/18 valid; dozing 0/18 valid; device lost stops after the current cell;
   - **rerun:** pilot `pilot-5` (same gate) → final `final-v3`, all 20 blocks from block 0, the v2 final not pooled;
-    analysis `analysis-v3`; freeze `frozen-g3-v5e`.
+    analysis `analysis-v3`; freeze `frozen-g3-v5e`, then `frozen-g3-v6b` (shared with P4, whose transport line change touches no G3d file; same APK g3-apk 8f723ead…).
 
 ## 6. Outcome (after the run)

@@ -32,7 +32,7 @@ def main():
         d = Path(dd); op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
         sb = json.loads((d / 'meta.json').read_text()).get('sndbuf', 16384)
         for l in op(d / 'trials.jsonl'):
-            r = json.loads(l); k = f"{r['profile']}/{r['mode']}/sndbuf={sb}"; q = parse(r.get('qsnap'))
+            r = json.loads(l); k = f"{r['profile']}/{r['mode']}/sndbuf={r.get('sndbuf', sb)}"; q = parse(r.get('qsnap'))
             if q is None: missing[k] += 1
             else: cells[k].append(q)
     out = {k: {'trials': len(v), 'missing': missing[k], **{f: order_stats([x[f] for x in v if x[f] is not None]) for f in ('netem_backlog_bytes', 'tx_queue_bytes')}}

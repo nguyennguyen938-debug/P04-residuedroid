@@ -48,6 +48,7 @@ p.add_argument('--marker', type=int, default=0, help='group 3: host marker liste
 p.add_argument('--capture', action='store_true', help='group 3: emulator packet capture of the trial phase -> capture.pcap')
 p.add_argument('--warm-revision', action='store_true', help='group 3 P3: before each send, a no-op broadcast pre-starts the :revision process (all arms)')
 p.add_argument('--sndbuf', type=int, default=16384, help='requested SO_SNDBUF of the TLS socket (default 16384 as B10/G2a/G3a); group 3 P4 varies it')
+p.add_argument('--sndbufs', help='group 3 P4: comma list of SO_SNDBUF levels crossed with the modes in every block (0 = kernel default, no setSendBufferSize; needs the P4 build)')
 p.add_argument('--qsnap', action='store_true', help='group 3 P2: right after the withdraw broadcast returns, snapshot tc -s qdisc and the guest TCP send queue to :8798')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
@@ -192,16 +193,17 @@ PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no har
     'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'warm_revision': a.warm_revision, 'sndbuf': a.sndbuf, 'qsnap': a.qsnap, 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'warm_revision': a.warm_revision, 'sndbuf': a.sndbuf, 'sndbufs': a.sndbufs, 'qsnap': a.qsnap, 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
-def trial(block, profile, size, mode, u):
+def trial(block, profile, size, mode, u, sb=None):
+    sndbuf = a.sndbuf if sb is None else sb
     id = f'race-{profile}-{size}-{mode}-{block}-{uuid.uuid4().hex[:6]}'
     D = durations.get(f'{profile}:{size}', 0.0)
     deadline = 600000 if a.calibrate else int(max(10000, (4 * D + 20) * 1000))   # calibration: no deadline pressure
     r = {'trial': id, 'block': block, 'profile': profile, 'size': size, 'mode': mode, 'u': u, 'D_s': D, 'deadline_ms': deadline,
-         'host_load': os.getloadavg(), 'start': time.time()}
+         'host_load': os.getloadavg(), 'start': time.time(), 'sndbuf': sndbuf}
     try:
         r['net'] = net(profile)
         adb('shell', f'am force-stop {PKG}'); adb('shell', f'run-as {PKG} rm -f files/revision.jsonl files/release'); bc('init', id)
@@ -209,7 +211,7 @@ def trial(block, profile, size, mode, u):
             adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
         if a.warm_revision: r['warm'] = bc('noop', id, remote=True)   # P3: same pre-start for every arm (close2 included)
         t_send = time.monotonic()
-        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=a.sndbuf,
+        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=sndbuf,
                           label='analytics:0', deadline_ms=deadline, **({'g3': True} if a.g3 else {}))
         if u is not None:                       # no barrier: withdraw at W = u * D after the send was issued
             time.sleep(max(0.0, t_send + u * D - time.monotonic()))
@@ -250,6 +252,11 @@ else:
     if a.capture:                                 # v2: -tcpdump at emulator launch (the console command takes bare names only)
         (a.out / 'capture.json').write_text(json.dumps({'mode': 'emulator -tcpdump at launch', 'trials_start': time.time()}) + '\n')
     for block in range(a.start, a.start + a.trials):
+        if a.sndbufs:   # P4: (profile, mode, size, sndbuf) cells, shuffled per block; the same u per (block, profile, size)
+            cells4 = [(p_, m, s, int(b)) for p_ in PROFILES for m in MODES for s in SIZES for b in a.sndbufs.split(',')]
+            random.Random(f'{a.seed}-{block}-p4').shuffle(cells4)
+            for p_, m, s, b in cells4: trial(block, p_, s, m, random.Random(f'{a.seed}-{block}-{p_}-{s}').random(), sb=b)
+            continue
         cells = [(p_, m, s) for p_ in PROFILES for m in MODES for s in SIZES]
         brng = random.Random(f'{a.seed}-{block}'); brng.shuffle(cells)
         for p_, m, s in cells:
