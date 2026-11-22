@@ -13,6 +13,13 @@ Network: emulator console `network speed <p>` / `network delay <p>` set before e
          the midpoint of its delay range (edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms).
 Group 2 (g2close-card.md): mode 'close' = layered early check + cancellation path; its withdrawal broadcast carries
          cancel=true (the app closes in-flight sockets before the ack). --apk selects the build (default: the B10 build).
+Group 3 (g3race-card.md): --g3 adds modes close2 (withdrawal in the sending process, in-process cancellation of requests not
+         yet handed off; its withdrawal goes to Revision, not RevisionRemote, with cancel2=true) and fence-abort (fence, SO_LINGER 0
+         at the fence's block); every send carries g3=true (socket local port logged) and every withdrawal marker=<port> (after
+         WITHDRAW_ACK the app connects to the host marker listener). --capture: emulator console `network capture start` for the
+         whole trial phase (pcap on the host, guest frames). With --marker the guest shaper is a prio root whose default band
+         carries the profile's netem and whose first band (u32 dport = marker) is unshaped, so the marker SYN does not queue
+         behind request data.
 Phones: --receiver http://IP:8800 --host IP --no-root --certdir DIR (CA of the receiver cert) [--serial <adb serial>]
 Usage: race_suite.py --serial emulator-5650 [--avd P04Avd14] --out DIR (--calibrate 3 | --trials 10 --durations F)
        [--profiles edge,umts,lte] [--sizes 32768,262144,2097152] [--seed race-20261119]
@@ -35,6 +42,9 @@ p.add_argument('--host', help='phones: sink address passed to the app with each 
 p.add_argument('--no-root', action='store_true', help='phones: no adb root (debuggable app, run-as only)')
 p.add_argument('--shaper', default='emu', choices=['emu', 'tc'], help='v3 tc: guest netem egress shaping (see Network)')
 p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-apk/rl-tls.apk', help='TLS fixture build (default: the B10 build)')
+p.add_argument('--g3', action='store_true', help='group 3: g3=true on sends, marker on withdrawals, close2/fence-abort modes')
+p.add_argument('--marker', type=int, default=0, help='group 3: host marker listener port (unshaped band in the guest)')
+p.add_argument('--capture', action='store_true', help='group 3: emulator packet capture of the trial phase -> capture.pcap')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
@@ -100,7 +110,13 @@ def net(profile):
         adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none')
         for dev in ('eth0', 'wlan0'):                 # a profile without a TC entry ('full', end of run) = shaping removed
             add = f'; tc qdisc replace dev {dev} root netem delay {TC[profile][1]} rate {TC[profile][0]} limit 10000' if profile in TC else ''
+            if a.marker and profile in TC:            # group 3: same netem in the default band; marker port unshaped (band 1:1)
+                add = (f'; tc qdisc add dev {dev} root handle 1: prio bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
+                       f'; tc qdisc add dev {dev} parent 1:1 handle 10: pfifo limit 1000'
+                       f'; tc qdisc add dev {dev} parent 1:2 handle 20: netem delay {TC[profile][1]} rate {TC[profile][0]} limit 10000'
+                       f'; tc filter add dev {dev} parent 1: protocol ip prio 1 u32 match ip dport {a.marker} 0xffff flowid 1:1')
             adb('shell', f'tc qdisc del dev {dev} root 2>/dev/null{add}; true')
+        if a.marker: return adb('shell', 'tc -s qdisc show dev eth0; tc filter show dev eth0; true').replace('\r', '').replace('\n', ' | ').strip()[:4000]
         return adb('shell', 'tc qdisc show dev eth0; tc qdisc show dev wlan0; true').replace('\r', '').replace('\n', ' | ').strip()[:300]
     o1 = adb('emu', 'network', 'speed', profile); o2 = adb('emu', 'network', 'delay', DELAY.get(profile, 'none'))
     return (o1 + o2).replace('\r', '').replace('\n', ' ').strip()
@@ -133,6 +149,19 @@ class Handler(socketserver.BaseRequestHandler):
                 self.server.log({'request': id, 'event': 'body', 'received': total, 'expected': expected, 'complete': total == expected})
                 if total == expected: s.sendall(b'HTTP/1.1 200 OK\r\nContent-Length: 0\r\nConnection: close\r\n\r\n')
         except Exception as e: self.server.log({'request': id, 'event': 'error', 'error': repr(e), 'received': total, 'expected': expected})
+if a.marker:                                      # group 3: marker listener; logs host arrival and the trial id the app writes
+    class Marker(socketserver.BaseRequestHandler):
+        def handle(self):
+            t = time.monotonic_ns(); self.request.settimeout(10); d = b''
+            with contextlib.suppress(Exception):
+                while not d.endswith(b'\n') and len(d) < 200:
+                    b = self.request.recv(200)
+                    if not b: break
+                    d += b
+            with sink_guard, (a.out / 'marker.jsonl').open('a') as f:
+                f.write(json.dumps({'host_ns': t, 'peer_port': self.client_address[1], 'id': d.decode(errors='replace').strip()}) + '\n')
+    sink_guard = threading.Lock(); msrv = Server(('127.0.0.1', a.marker), Marker); msrv.guard = sink_guard
+    threading.Thread(target=msrv.serve_forever, daemon=True).start()
 sink = None
 if not a.receiver:                                # phones: the receiver runs remotely (receiver_b.py)
     sink = Server(('127.0.0.1', 8798), Handler); sink.guard = threading.Lock(); threading.Thread(target=sink.serve_forever, daemon=True).start()
@@ -158,7 +187,7 @@ PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no har
     'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
@@ -175,16 +204,20 @@ def trial(block, profile, size, mode, u):
             adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
         t_send = time.monotonic()
         r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=16384,
-                          label='analytics:0', deadline_ms=deadline)
+                          label='analytics:0', deadline_ms=deadline, **({'g3': True} if a.g3 else {}))
         if u is not None:                       # no barrier: withdraw at W = u * D after the send was issued
             time.sleep(max(0.0, t_send + u * D - time.monotonic()))
             r['withdraw_host_offset_s'] = time.monotonic() - t_send
-            r['withdraw'] = bc('withdraw', id, remote=True, **({'cancel': True} if mode == 'close' else {}))
+            extra = {'cancel': True} if mode == 'close' else {'cancel2': True} if mode == 'close2' else {}
+            if a.marker: extra['marker'] = a.marker
+            r['withdraw'] = bc('withdraw', id, remote=mode != 'close2', **extra)
         end = time.monotonic() + deadline / 1000 + 20
         while time.monotonic() < end:
             ev = events()
-            if any(e['trial'] == id and e['kind'] in ('SEND_OK', 'SEND_ERROR', 'EARLY_BLOCK') for e in ev): break
+            if any(e['trial'] == id and e['kind'] in ('SEND_OK', 'SEND_ERROR', 'EARLY_BLOCK') for e in ev) and (
+                    not a.marker or u is None or any(e['trial'] == id and e['kind'] == 'MARKER_SENT' for e in ev)): break
             time.sleep(0.5)
+        if a.marker and profile in TC: r['tc_stats_end'] = adb('shell', 'tc -s qdisc show dev eth0; true').replace('\r', '').replace('\n', ' | ').strip()[:4000]
         r['events'] = ev
     except Exception as e: r['harness_error'] = repr(e)
     r['finished'] = time.time()
@@ -204,12 +237,18 @@ if a.calibrate:
                 if ok: res.setdefault(f'{profile}:{size}', []).append(int(dict(x.split('=', 1) for x in ok[0]['detail'].split(';') if '=' in x)['elapsed_ns']) / 1e9)
     (a.out / 'calibration.json').write_text(json.dumps({'samples_s': res, 'median_s': {k: statistics.median(v) for k, v in res.items()}}, indent=1) + '\n')
 else:
+    if a.capture:                                 # host path; the emulator writes guest frames of eth0 (pcap)
+        r_cap = adb('emu', 'network', 'capture', 'start', str((a.out / 'capture.pcap').resolve()))
+        (a.out / 'capture.json').write_text(json.dumps({'start': time.time(), 'console': r_cap.strip()[:200]}) + '\n')
     for block in range(a.start, a.start + a.trials):
         cells = [(p_, m, s) for p_ in PROFILES for m in MODES for s in SIZES]
         brng = random.Random(f'{a.seed}-{block}'); brng.shuffle(cells)
         for p_, m, s in cells:
             u = random.Random(f'{a.seed}-{block}-{p_}-{s}').random()   # same u for early and fence: paired cells
             trial(block, p_, s, m, u)
+if a.capture and not a.calibrate:
+    c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(stop=time.time(), console_stop=adb('emu', 'network', 'capture', 'stop').strip()[:200])
+    (a.out / 'capture.json').write_text(json.dumps(c0) + '\n')
 net('full')
 if a.radio: adb('shell', 'svc wifi enable')
 if a.receiver: (a.out / 'receiver.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in json.loads(ctl('GET', '/log?from=0'))['lines']))

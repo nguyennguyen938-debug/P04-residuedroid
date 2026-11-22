@@ -27,3 +27,11 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 **Group 2 (21/11 evening):** the leader accepted PR #4's group-2 runs. B7 is reopened for G2a and G2b only; every
 earlier dataset stays frozen and untouched. G2 outputs go to `results/round3/g2close/` and `results/round3/g2layer/`. B7 was
 re-declared on 22/11 after both finished.
+
+**Group 3 (issue #7, 22/11):** four new runs requested by the leader; B7 reopened for G3a–G3d only (earlier data untouched).
+User decision 22/11: two-day speedrun, device-free work first, runs from 22/11 23:59 (emulator chain + phone in parallel).
+| Task | Card | Status |
+|---|---|---|
+| G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | READY (frozen; runs 22/11 23:59) |
+| G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | READY (after G3a/G3b in the chain) |
+| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | READY (phone, parallel) |

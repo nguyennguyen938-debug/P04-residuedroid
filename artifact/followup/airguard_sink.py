@@ -12,7 +12,7 @@ from pathlib import Path
 p = argparse.ArgumentParser(); p.add_argument('--out', type=Path, required=True)
 p.add_argument('--ports', default='8796,8797'); p.add_argument('--delay-ms', type=int, default=300)
 a = p.parse_args(); a.out.mkdir(parents=True, exist_ok=True); LOCK = threading.Lock()
-VARIANT = {8795: 'layered', 8796: 'stock', 8797: 'fenced'}   # 8795: group-2 layered-early build (g2layer-card.md)
+VARIANT = {8793: 'stockcancel', 8795: 'layered', 8796: 'stock', 8797: 'fenced'}   # 8795: group-2 layered-early build (g2layer-card.md); 8793: group-3 stock-cancel build (g3app-card.md)
 
 
 def log(r):

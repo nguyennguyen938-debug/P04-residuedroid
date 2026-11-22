@@ -33,3 +33,10 @@ script from the frozen data once C defines them (Test 6 `dev*`, optional phone k
 
 Group 2 (PR #4, leader decision 21/11): B7 reopened for G2a and G2b only; earlier data untouched. Both ran 21/11 23:23 –
 22/11 03:00 (one emulator at a time). B7 re-declared 22/11 03:xx after G2b: no device or emulator run after it.
+
+Group 3 (issue #7, leader 22/11; user schedule 22/11: two-day speedrun): B7 reopened for G3a–G3d only; earlier data untouched.
+Cards `plans/g3race-card.md` (G3a + G3b, one run), `plans/g3app-card.md` (G3c), `plans/g3cost-card.md` (G3d), committed before
+any G3 trial with the drivers, analysis scripts (unit-tested on synthetic data; G3a/G3b script checked on G2a data), manifests
+and chains (`plans/autorun/g3-chain.sh` emulator: G3a/G3b then G3c; `plans/autorun/g3d-chain.sh` phone, in parallel). Builds
+pinned in `results/round3/g3/frozen-g3` (fixture rl-tls 8f723ead…, AirGuard G3 builds by hash). Full packet captures stay on disk
+(git-ignored) with their sha256; a truncated copy (`pcap_slim.py`) is committed and gives the same analysis.
