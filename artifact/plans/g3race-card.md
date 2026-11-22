@@ -187,3 +187,23 @@ on the committed copies (checked 22/11).
     (16 vs 8) follows the exposure, not extra cancellation;
   - 0–3 matched capture trials per cell have only small (< 200 B) after-marker payload (likely TLS alert or close records,
     not request data).
+- **C's review** (issue #7, 22/11 13:22 UTC): C reran `analyze_g3race.py` and their own after-W count, and both match every
+  cell. C's four notes and B's changes:
+  1. **Send buffer.** Every G3 send used `sndbuf=16384` (`actual_sndbuf=16384` in all 460 trials). **Construct threat,
+     added:** bytes after the marker are measured with a 16 KiB send buffer. P4's "default" level will not call
+     `setSendBufferSize`.
+  2. **Exposure by size** (`g3race-audit.json` `exposed_by_size`). On lte, W fell during the writes only at 256 KiB in
+     close2 (7/10; every other arm 0/10), and at 2 MiB in every arm (8–9/10). At 32 KiB no arm had W during the writes,
+     so lte 32 KiB did not test the race. P3's balance gate is now checked per size.
+  3. **Capture by phase** (`capture_by_phase`, new bytes, pooled over profiles):
+     - W during the writes: fence 751,490 B over 40 trials, fence-abort 88,429 B over 44, close2 864,560 B over 50.
+       So abortive close leaves about 12 % of the fence's bytes, about 88 % less;
+     - request handed off before W: fence 244,394 B over 15 trials, fence-abort 211,881 B over 15, close2 202,937 B
+       over 17. This is permitted data leaving late, about 13–16 KB per trial in every arm.
+
+     The pooled "bytes after the marker" above mixes the two phases.
+  4. **Off-by-one in `cap_measure`.** With no payload before the marker, new bytes counted the SYN's sequence number.
+     Fixed (`before` defaults to 1), with unit test `test_new_bytes_without_payload_before_marker` (it fails without the
+     fix). Regenerated `g3race-summary.json`: only `after_marker_new_bytes` changed, by 1–2 B in 7 cells (e.g. edge/early
+     12,374,066 → 12,374,064; edge/fence-abort 97,845 → 97,843; edge/fence 395,663 → 395,661). No trial count and no
+     other field changed.

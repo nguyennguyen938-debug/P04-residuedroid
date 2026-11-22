@@ -90,7 +90,7 @@ def cap_measure(r, x, markers, conns, data, tls=None):
     seg = [p for p in data[syn[1]] if syn[0] <= p['i'] < nxt]
     isn = next(p['seq'] for p in seg if p['i'] == syn[0])
     end = lambda p: (p['seq'] - isn) % 2 ** 32 + p['len']
-    before = max((end(p) for p in seg if p['i'] < m and p['len']), default=0)
+    before = max((end(p) for p in seg if p['i'] < m and p['len']), default=1)   # fix (C, issue #7 22/11): the SYN takes sequence 1
     post = [p for p in seg if p['i'] > m]
     allb = sum(p['len'] for p in post); hi = max((end(p) for p in post if p['len']), default=0)
     q = {'status': 'matched', 'after_marker_bytes': allb, 'after_marker_new_bytes': max(0, hi - before),

@@ -1,6 +1,6 @@
 # Experiment card — P3 (group 3 follow-up): G3a on lte with balanced withdrawal timing (protocol v4 of G3a/G3b)
 
-Status: written 22/11 evening, before any P3 trial; frozen at the commit that adds it (`results/round3/g3/frozen-g3-v4`).
+Status: written 22/11 evening, before any P3 trial; frozen at the commit that adds it (`results/round3/g3/frozen-g3-v4b`).
 The order is pilot (1 block) → mechanism + balance gate → final; chain `plans/autorun/g3-chain-v4.sh`, after G3c v4. Owner: B (Duy).
 
 Source: B's request in issue #7 (22/11), approved by the leader (22/11 13:12 UTC: "Leader duyệt cả hai: P3 và P4"). The
@@ -50,8 +50,11 @@ pooled with v3.
   - MARKER_SENT and a marker.jsonl line in every trial;
   - the marker and the request SYN in the capture;
   - `warm` reply ok and a `qsnap` present in every trial;
-  - **balance:** the per-arm medians of (WITHDRAW_REQUEST − SOCKET_CONFIG) on the device clock differ by at most 15 ms.
-    In v3 the gap was about 70–80 ms.
+  - **balance, per payload size:** for each size, the arms' values of (WITHDRAW_REQUEST − SOCKET_CONFIG) on the device
+    clock differ by at most 15 ms. The pilot has one trial per (size, arm), and the gate is checked per size because C
+    found the v3 imbalance in one size: on lte, W fell during the writes at 256 KiB in close2 7/10 vs 0/10 for the other
+    arms; at 2 MiB 8–9/10 in every arm; at 32 KiB 0/10 in every arm. In v3 the gap was about 70–80 ms. Added 22/11
+    (C's review in issue #7) before any P3 trial; re-frozen as `frozen-g3-v4b`.
 
   Fail → no P3 final, reported in issue #7. A fix needs a new version and a new pilot.
 - **Validity and selection:** B10 validity; first 30 valid per arm in block order.
@@ -62,8 +65,12 @@ pooled with v3.
 ## 4. Analysis (pre-registered)
 - **Primary:** `analyze_g3race.py final-lte4`, the same primary as G3a. Per arm, trials accepted after W, with Wilson 95 %.
 - **Secondary:** as G3a.
-- **Exposure:** `audit_g3race.py final-lte4` gives the exposure table (W during the writes) and after W among exposed
-  trials. Pre-registered here as secondary; it was exploratory in v3.
+- **Exposure:** `audit_g3race.py final-lte4` gives the exposure table per arm and per size (W during the writes) and after
+  W among exposed trials. Pre-registered here as secondary; it was exploratory in v3. **A size with no exposed trial in
+  any arm (expected for 32 KiB, an upload of 4–5 ms) is reported as not testing the race** (C, issue #7).
+- **Capture by phase** (C, issue #7): new bytes after the marker, and TLS application_data bytes, split by the W phase:
+  before the writes / during the writes / after the handoff / after the end. Only the during-writes part is cut data;
+  after-handoff bytes are permitted data that left late.
 - **TLS records (P1a, leader-approved):**
   - `tls_records.py` on the full capture writes `capture-tls.jsonl`, committed with the pcap sha256;
   - from it, the capture counts trials and bytes of TLS **application_data** after the marker, next to the raw TCP counts;
@@ -78,7 +85,9 @@ pooled with v3.
   - the warm-up adds one broadcast per trial to every arm;
   - the snapshot adds one adb call after the ack;
   - runs at night on AC or battery as recorded.
-- **Construct:** as G3a; the queue snapshot is taken after the ack, not at it.
+- **Construct:**
+  - as G3a; the queue snapshot is taken after the ack, not at it;
+  - every send uses `sndbuf=16384`, so bytes after the marker are measured with a 16 KiB send buffer.
 - **External:** emulator, fixture, lte profile only.
 - **Conclusion:** N = 30 per arm; zero-vs-zero reported as counts.
 

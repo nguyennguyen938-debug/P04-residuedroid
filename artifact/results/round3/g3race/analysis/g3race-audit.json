@@ -26,11 +26,43 @@
     "before writes": 2
    },
    "exposed": 15,
+   "exposed_by_size": {
+    "32768": 1,
+    "262144": 5,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 9.9195,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 9.7586,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 5,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 8,
+     "after_marker_new_bytes": 101592
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 276
+    },
+    "during writes": {
+     "trials": 15,
+     "trials_new_bytes_after_marker": 15,
+     "after_marker_new_bytes": 332144
+    }
+   },
    "capture_trials_after_marker": 25,
    "capture_trials_after_marker_small_only": 2,
    "capture_trials_after_marker_ge_small": 23
@@ -44,11 +76,43 @@
     "before writes": 3
    },
    "exposed": 15,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 6,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 9.7898,
    "median_durable_minus_request_s": 0.0025,
    "median_uD_s": 9.7586,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 6,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 6,
+     "trials_new_bytes_after_marker": 6,
+     "after_marker_new_bytes": 80051
+    },
+    "before writes": {
+     "trials": 3,
+     "trials_new_bytes_after_marker": 3,
+     "after_marker_new_bytes": 369
+    },
+    "during writes": {
+     "trials": 15,
+     "trials_new_bytes_after_marker": 15,
+     "after_marker_new_bytes": 347480
+    }
+   },
    "capture_trials_after_marker": 24,
    "capture_trials_after_marker_small_only": 3,
    "capture_trials_after_marker_ge_small": 21
@@ -62,11 +126,43 @@
     "before writes": 2
    },
    "exposed": 14,
+   "exposed_by_size": {
+    "32768": 1,
+    "262144": 5,
+    "2097152": 8
+   },
+   "after_w_exposed_by_size": {
+    "32768": 1,
+    "262144": 5,
+    "2097152": 8
+   },
    "after_w_exposed": 14,
    "after_w_not_exposed": 2,
    "median_request_minus_socket_s": 9.9338,
    "median_durable_minus_request_s": 0.001,
    "median_uD_s": 9.7586,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 6,
+     "trials_new_bytes_after_marker": 6,
+     "after_marker_new_bytes": 84419
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 66952
+    },
+    "during writes": {
+     "trials": 14,
+     "trials_new_bytes_after_marker": 14,
+     "after_marker_new_bytes": 12222693
+    }
+   },
    "capture_trials_after_marker": 22,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 22
@@ -80,11 +176,43 @@
     "before writes": 3
    },
    "exposed": 13,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 5,
+    "2097152": 8
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 9.8599,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 9.7586,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 6,
+     "trials_new_bytes_after_marker": 6,
+     "after_marker_new_bytes": 98166
+    },
+    "before writes": {
+     "trials": 3,
+     "trials_new_bytes_after_marker": 3,
+     "after_marker_new_bytes": 555
+    },
+    "during writes": {
+     "trials": 13,
+     "trials_new_bytes_after_marker": 13,
+     "after_marker_new_bytes": 296940
+    }
+   },
    "capture_trials_after_marker": 22,
    "capture_trials_after_marker_small_only": 1,
    "capture_trials_after_marker_ge_small": 21
@@ -98,11 +226,43 @@
     "before writes": 2
    },
    "exposed": 17,
+   "exposed_by_size": {
+    "32768": 1,
+    "262144": 7,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 9.8844,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 9.7586,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 6,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 5,
+     "trials_new_bytes_after_marker": 5,
+     "after_marker_new_bytes": 69925
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 462
+    },
+    "during writes": {
+     "trials": 17,
+     "trials_new_bytes_after_marker": 16,
+     "after_marker_new_bytes": 27456
+    }
+   },
    "capture_trials_after_marker": 23,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 23
@@ -114,11 +274,33 @@
     "after end": 22
    },
    "exposed": 8,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 8
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 8
+   },
    "after_w_exposed": 8,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 0.0974,
    "median_durable_minus_request_s": 0.0008,
    "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 22,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "during writes": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 4,
+     "after_marker_new_bytes": 21708
+    }
+   },
    "capture_trials_after_marker": 4,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 4
@@ -131,11 +313,38 @@
     "after handoff": 2
    },
    "exposed": 16,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 7,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 0.0265,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 12,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "after handoff": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "during writes": {
+     "trials": 16,
+     "trials_new_bytes_after_marker": 11,
+     "after_marker_new_bytes": 80794
+    }
+   },
    "capture_trials_after_marker": 11,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 11
@@ -147,11 +356,33 @@
     "after end": 21
    },
    "exposed": 9,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 9
+   },
    "after_w_exposed": 9,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 0.1086,
    "median_durable_minus_request_s": 0.0008,
    "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 21,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "during writes": {
+     "trials": 9,
+     "trials_new_bytes_after_marker": 9,
+     "after_marker_new_bytes": 5072913
+    }
+   },
    "capture_trials_after_marker": 9,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 9
@@ -163,11 +394,33 @@
     "after end": 22
    },
    "exposed": 8,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 8
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 0.1063,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 22,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "during writes": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 3,
+     "after_marker_new_bytes": 18051
+    }
+   },
    "capture_trials_after_marker": 3,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 3
@@ -179,11 +432,33 @@
     "after end": 21
    },
    "exposed": 9,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 0.1053,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 21,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0
+    },
+    "during writes": {
+     "trials": 9,
+     "trials_new_bytes_after_marker": 5,
+     "after_marker_new_bytes": 29137
+    }
+   },
    "capture_trials_after_marker": 5,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 5
@@ -196,11 +471,38 @@
     "before writes": 2
    },
    "exposed": 18,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 10
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 8.645,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 8.5272,
+   "capture_by_phase": {
+    "after handoff": {
+     "trials": 10,
+     "trials_new_bytes_after_marker": 10,
+     "after_marker_new_bytes": 150596
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 276
+    },
+    "during writes": {
+     "trials": 18,
+     "trials_new_bytes_after_marker": 18,
+     "after_marker_new_bytes": 417519
+    }
+   },
    "capture_trials_after_marker": 30,
    "capture_trials_after_marker_small_only": 2,
    "capture_trials_after_marker_ge_small": 28
@@ -213,11 +515,38 @@
     "before writes": 2
    },
    "exposed": 19,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 10
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 8.5622,
    "median_durable_minus_request_s": 0.002,
    "median_uD_s": 8.5272,
+   "capture_by_phase": {
+    "after handoff": {
+     "trials": 9,
+     "trials_new_bytes_after_marker": 9,
+     "after_marker_new_bytes": 122886
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 231
+    },
+    "during writes": {
+     "trials": 19,
+     "trials_new_bytes_after_marker": 19,
+     "after_marker_new_bytes": 436286
+    }
+   },
    "capture_trials_after_marker": 30,
    "capture_trials_after_marker_small_only": 2,
    "capture_trials_after_marker_ge_small": 28
@@ -230,11 +559,38 @@
     "before writes": 2
    },
    "exposed": 20,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 10,
+    "2097152": 10
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 10,
+    "2097152": 10
+   },
    "after_w_exposed": 20,
    "after_w_not_exposed": 2,
    "median_request_minus_socket_s": 8.6508,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 8.5272,
+   "capture_by_phase": {
+    "after handoff": {
+     "trials": 8,
+     "trials_new_bytes_after_marker": 8,
+     "after_marker_new_bytes": 111200
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 66676
+    },
+    "during writes": {
+     "trials": 20,
+     "trials_new_bytes_after_marker": 20,
+     "after_marker_new_bytes": 11241394
+    }
+   },
    "capture_trials_after_marker": 30,
    "capture_trials_after_marker_small_only": 0,
    "capture_trials_after_marker_ge_small": 30
@@ -247,11 +603,38 @@
     "before writes": 2
    },
    "exposed": 19,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 10
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 8.6427,
    "median_durable_minus_request_s": 0.0008,
    "median_uD_s": 8.5272,
+   "capture_by_phase": {
+    "after handoff": {
+     "trials": 9,
+     "trials_new_bytes_after_marker": 9,
+     "after_marker_new_bytes": 146228
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 186
+    },
+    "during writes": {
+     "trials": 19,
+     "trials_new_bytes_after_marker": 19,
+     "after_marker_new_bytes": 436499
+    }
+   },
    "capture_trials_after_marker": 30,
    "capture_trials_after_marker_small_only": 2,
    "capture_trials_after_marker_ge_small": 28
@@ -264,11 +647,38 @@
     "before writes": 2
    },
    "exposed": 18,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 10
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
    "after_w_exposed": 0,
    "after_w_not_exposed": 0,
    "median_request_minus_socket_s": 8.6254,
    "median_durable_minus_request_s": 0.0009,
    "median_uD_s": 8.5272,
+   "capture_by_phase": {
+    "after handoff": {
+     "trials": 10,
+     "trials_new_bytes_after_marker": 10,
+     "after_marker_new_bytes": 141956
+    },
+    "before writes": {
+     "trials": 2,
+     "trials_new_bytes_after_marker": 2,
+     "after_marker_new_bytes": 186
+    },
+    "during writes": {
+     "trials": 18,
+     "trials_new_bytes_after_marker": 16,
+     "after_marker_new_bytes": 31836
+    }
+   },
    "capture_trials_after_marker": 28,
    "capture_trials_after_marker_small_only": 2,
    "capture_trials_after_marker_ge_small": 26

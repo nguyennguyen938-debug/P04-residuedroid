@@ -119,7 +119,7 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
   This is a harness design fault, not an environment failure. A fix needs protocol v4 and new pilots.
 
 - **Protocol v4** (22/11 evening, before any v4 trial; only the harness and the validity rule change; builds, design, N,
-  gates and analysis are as v1 otherwise). Freeze `results/round3/g3/frozen-g3-v4`; chain `plans/autorun/g3-chain-v4.sh`;
+  gates and analysis are as v1 otherwise). Freeze `results/round3/g3/frozen-g3-v4b` (re-frozen after C's review, before any v4 trial); chain `plans/autorun/g3-chain-v4.sh`;
   manifests `g3app4-*.json`. The new directories are `pilot-v4-calib`, `pilot-v4-calib2` (if body-only), `pilot-v4-mech`
   and `final-v4`; `calibration-used-v4.json`; `analysis-v4`.
   1. **Startup worker** (`race_airguard.py`): after the grant hook, wait until the sink logs this build's `get_token`

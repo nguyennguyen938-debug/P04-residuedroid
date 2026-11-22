@@ -10,6 +10,8 @@ Checks:
        after the handoff but before the end event | after the end event.
      "exposed" = during the writes; primary count (after W) split by exposed / not exposed.
      Timing components (medians): WITHDRAW_REQUEST - SOCKET_CONFIG, WITHDRAW_DURABLE - WITHDRAW_REQUEST, u*D (s).
+  4. capture by phase (C, issue #7 22/11): per W phase, matched trials, TCP new bytes after the marker and, with
+     capture-tls.jsonl, TLS application_data bytes after the marker (trials cut vs requests handed off before W).
   3. capture: matched trials whose after-marker bytes are all small (< 200 B, i.e. no full data segment; e.g. TLS alert or
      close records), so that "trials with bytes after the marker" can be read with and without them.
 Output: results/round3/g3race/analysis/g3race-audit.json.
@@ -41,7 +43,7 @@ def phase(r):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', default=str(ART / 'results/round3/g3race/analysis'))
     ap.add_argument('--n', type=int, default=30); ap.add_argument('--marker', type=int, default=8799); a = ap.parse_args()
-    rows, caps = [], {}
+    rows, caps, tlss = [], {}, {}
     for k, dd in enumerate(a.dirs):
         d = Path(dd); op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
         rs = [dict(json.loads(l), _dir=k) for l in op(d / 'trials.jsonl') if l.strip()]
@@ -50,6 +52,7 @@ def main():
         rows += [r for r in rs if per[r['block']] == cells]
         pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'
         caps[k] = g.capture(pc, a.marker) if pc.exists() else None
+        tf = d / 'capture-tls.jsonl'; tlss[k] = g.tls_records.load(tf) if tf.exists() else None
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
     cells = collections.defaultdict(list)
     for r in valid: cells[r['profile'], r['mode']].append(r)
@@ -70,13 +73,22 @@ def main():
             if None not in (sc, rq, W): comp.append(((rq - sc) / 1e9, (W - rq) / 1e9, r['u'] * r['D_s']))
         c = {'trials': len(rs), 'phase': dict(collections.Counter(ph)),
              'exposed': ph.count('during writes'),
+             'exposed_by_size': {str(z): sum(p == 'during writes' for r, p in zip(rs, ph) if r['size'] == z) for z in sorted({r['size'] for r in rs})},
+             'after_w_exposed_by_size': {str(z): sum(x for r, x, p in zip(rs, w, ph) if r['size'] == z and p == 'during writes') for z in sorted({r['size'] for r in rs})},
              'after_w_exposed': sum(x for x, p in zip(w, ph) if p == 'during writes'),
              'after_w_not_exposed': sum(x for x, p in zip(w, ph) if p != 'during writes'),
              'median_request_minus_socket_s': med([x[0] for x in comp]), 'median_durable_minus_request_s': med([x[1] for x in comp]),
              'median_uD_s': med([x[2] for x in comp])}
         if caps.get(rs[0]['_dir']) is not None or any(caps.values()):
-            q = [g.cap_measure(r, g.secondary(r, set()), *caps[r['_dir']]) for r in rs if caps[r['_dir']]]
-            m = [x for x in q if x['status'] == 'matched']
+            qp = [(phase(r), g.cap_measure(r, g.secondary(r, set()), *caps[r['_dir']], tls=tlss.get(r['_dir']))) for r in rs if caps[r['_dir']]]
+            q = [x for _, x in qp]; m = [x for x in q if x['status'] == 'matched']
+            byp = {}
+            for ph_, x in qp:
+                if x['status'] != 'matched': continue
+                b = byp.setdefault(ph_, {'trials': 0, 'trials_new_bytes_after_marker': 0, 'after_marker_new_bytes': 0})
+                b['trials'] += 1; b['trials_new_bytes_after_marker'] += x['after_marker_new_bytes'] > 0; b['after_marker_new_bytes'] += x['after_marker_new_bytes']
+                if 'after_marker_app_bytes' in x: b['after_marker_app_bytes'] = b.get('after_marker_app_bytes', 0) + x['after_marker_app_bytes']
+            c['capture_by_phase'] = dict(sorted(byp.items()))
             c['capture_trials_after_marker'] = sum(x['after_marker_bytes'] > 0 for x in m)
             c['capture_trials_after_marker_small_only'] = sum(0 < x['after_marker_bytes'] < SMALL for x in m)
             c['capture_trials_after_marker_ge_small'] = sum(x['after_marker_bytes'] >= SMALL for x in m)

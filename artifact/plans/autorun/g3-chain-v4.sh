@@ -80,15 +80,16 @@ cap_bad = [r['trial'] for r in rows if r['trial'] not in markers]
 syn_bad = [r['trial'] for r in rows if (p := g.secondary(r, set())['local_port']) and p not in ports]
 warm_bad = [r['trial'] for r in rows if 'data="ok"' not in r.get('warm', '')]
 q_bad = [r['trial'] for r in rows if 'qdisc' not in r.get('qsnap', '')]
-lag = {}
+lag = {}   # per payload size (C, issue #7 22/11): the v3 imbalance sat in one size, so a pooled gate could pass with it
 for r in rows:
     sc, rq = first(r, 'SOCKET_CONFIG'), first(r, 'WITHDRAW_REQUEST')
-    if sc is not None and rq is not None: lag.setdefault(r['mode'], []).append((rq - sc) / 1e9)
-med = {m: round(statistics.median(v), 4) for m, v in lag.items()}
-spread = max(med.values()) - min(med.values()) if len(med) == 5 else None
+    if sc is not None and rq is not None: lag.setdefault(r['size'], {}).setdefault(r['mode'], []).append((rq - sc) / 1e9)
+med = {sz: {m: round(statistics.median(v), 4) for m, v in d.items()} for sz, d in sorted(lag.items())}
+spreads = {sz: round(max(d.values()) - min(d.values()), 4) if len(d) == 5 else None for sz, d in med.items()}
+spread = max(spreads.values()) if len(spreads) == 3 and None not in spreads.values() else None
 print('trials', len(rows), 'invalid', bad, 'close bad', c_bad, 'close2 bad', c2_bad, 'marker_sent bad', mk_bad, 'marker log bad', ml_bad,
       'capture marker missing', cap_bad, 'request SYN missing', syn_bad, 'warm bad', warm_bad, 'qsnap bad', q_bad,
-      'median WITHDRAW_REQUEST - SOCKET_CONFIG (s)', med, 'spread', spread)
+      'WITHDRAW_REQUEST - SOCKET_CONFIG per size and arm (s)', med, 'spread per size', spreads)
 sys.exit(0 if len(rows) == 15 and not (bad or c_bad or c2_bad or mk_bad or ml_bad or cap_bad or syn_bad or warm_bad or q_bad)
          and len(close) == 3 and len(close2) == 3 and spread is not None and spread <= 0.015 else 1)
 PY

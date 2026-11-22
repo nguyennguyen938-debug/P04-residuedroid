@@ -106,7 +106,7 @@
     },
     "trials_after_marker": 25,
     "after_marker_bytes": 436932,
-    "after_marker_new_bytes": 434014,
+    "after_marker_new_bytes": 434012,
     "trials_new_bytes_after_marker": 25,
     "rst_after_marker": 25,
     "concordance_vs_app_after_ack": {
@@ -164,7 +164,7 @@
     },
     "trials_after_marker": 24,
     "after_marker_bytes": 430820,
-    "after_marker_new_bytes": 427902,
+    "after_marker_new_bytes": 427900,
     "trials_new_bytes_after_marker": 24,
     "rst_after_marker": 18,
     "concordance_vs_app_after_ack": {
@@ -213,7 +213,7 @@
     },
     "trials_after_marker": 22,
     "after_marker_bytes": 12374064,
-    "after_marker_new_bytes": 12374066,
+    "after_marker_new_bytes": 12374064,
     "trials_new_bytes_after_marker": 22,
     "rst_after_marker": 0,
     "concordance_vs_app_after_ack": {
@@ -264,7 +264,7 @@
     },
     "trials_after_marker": 22,
     "after_marker_bytes": 397121,
-    "after_marker_new_bytes": 395663,
+    "after_marker_new_bytes": 395661,
     "trials_new_bytes_after_marker": 22,
     "rst_after_marker": 16,
     "concordance_vs_app_after_ack": {
@@ -315,7 +315,7 @@
     },
     "trials_after_marker": 23,
     "after_marker_bytes": 97843,
-    "after_marker_new_bytes": 97845,
+    "after_marker_new_bytes": 97843,
     "trials_new_bytes_after_marker": 23,
     "rst_after_marker": 19,
     "concordance_vs_app_after_ack": {
@@ -628,7 +628,7 @@
     },
     "trials_after_marker": 30,
     "after_marker_bytes": 572771,
-    "after_marker_new_bytes": 568393,
+    "after_marker_new_bytes": 568391,
     "trials_new_bytes_after_marker": 30,
     "rst_after_marker": 30,
     "concordance_vs_app_after_ack": {
@@ -684,7 +684,7 @@
     },
     "trials_after_marker": 30,
     "after_marker_bytes": 562323,
-    "after_marker_new_bytes": 559404,
+    "after_marker_new_bytes": 559403,
     "trials_new_bytes_after_marker": 30,
     "rst_after_marker": 20,
     "concordance_vs_app_after_ack": {

@@ -54,6 +54,15 @@ class Capture(unittest.TestCase):
         q = self.m('C', None); self.assertEqual((q['status'], q['after_marker_bytes']), ('matched', 0))
     def test_missing_marker(self): self.assertEqual(self.m('Z', 40000)['status'], 'no marker')
 
+    def test_new_bytes_without_payload_before_marker(self):
+        """C's finding (issue #7, 22/11): with no payload before the marker, new bytes must equal the bytes sent (no +1 from the SYN)."""
+        P = [dict(src=G, dst=H, sport=40005, dport=8798, seq=500, flags=pc.SYN),
+             dict(src=G, dst=H, sport=50005, dport=M, flags=pc.SYN), dict(src=G, dst=H, sport=50005, dport=M, flags=pc.ACK, payload=b'N\n'),
+             dict(src=G, dst=H, sport=40005, dport=8798, seq=501, flags=pc.ACK, payload=b'x' * 700)]
+        pc.write(self.d / 'n.pcap', P); cap = g.capture(self.d / 'n.pcap', M)
+        q = g.cap_measure({'trial': 'N', 'events': [1]}, {'local_port': 40005}, *cap)
+        self.assertEqual((q['after_marker_bytes'], q['after_marker_new_bytes']), (700, 700))
+
     def test_reused_marker_port(self):
         P = []
         for tid in ('R1', 'R2'):
