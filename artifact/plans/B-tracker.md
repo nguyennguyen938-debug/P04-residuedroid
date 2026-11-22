@@ -32,6 +32,6 @@ re-declared on 22/11 after both finished.
 User decision 22/11: two-day speedrun, device-free work first, runs from 22/11 23:59 (emulator chain + phone in parallel).
 | Task | Card | Status |
 |---|---|---|
-| G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | READY (frozen; runs 22/11 23:59) |
-| G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | READY (after G3a/G3b in the chain) |
-| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | READY (phone, parallel) |
+| G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | DONE 22/11 (final 0–1 + final-r2 2–9; 450 analysed; outcome in card §6; audit exploratory) |
+| G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | GATE FAIL 22/11 (calibration, v3; harness fault; v4 needs a new pilot) |
+| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | READY, not run (phone; on the user's request) |

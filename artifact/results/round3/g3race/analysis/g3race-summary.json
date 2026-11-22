@@ -1,0 +1,861 @@
+{
+ "dirs": [
+  "artifact/results/round3/g3race/final",
+  "artifact/results/round3/g3race/final-r2"
+ ],
+ "logged": 460,
+ "interrupted_excluded": [
+  {
+   "trial": "race-edge-32768-fence-abort-2-73dca3",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-edge-262144-fence-abort-2-0a585c",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-umts-2097152-close-2-23dc1d",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-lte-32768-close-2-effff1",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-edge-32768-fence-2-c00ebf",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-edge-32768-early-2-3a71f2",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-edge-32768-close2-2-37e937",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-umts-32768-close-2-e16194",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-umts-2097152-fence-2-786b4c",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  },
+  {
+   "trial": "race-lte-2097152-close-2-cf2605",
+   "dir": "artifact/results/round3/g3race/final",
+   "reason": "interrupted block"
+  }
+ ],
+ "invalid": [],
+ "capture_file": {
+  "artifact/results/round3/g3race/final": true,
+  "artifact/results/round3/g3race/final-r2": true
+ },
+ "cells": {
+  "edge/close": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 25,
+    "SEND_OK": 5
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 3.282,
+    "p95": 6.936,
+    "max": 8.7
+   },
+   "uncut_receiver_complete_send_error": 8,
+   "uncut_receiver_complete": 13,
+   "cut": 17,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "reply=ok": 30
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 25,
+    "after_marker_bytes": 436932,
+    "after_marker_new_bytes": 434014,
+    "trials_new_bytes_after_marker": 25,
+    "rst_after_marker": 25,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 5,
+     "capture=1/app=0": 25
+    }
+   }
+  },
+  "edge/close2": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 18,
+    "SEND_OK": 12
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 2.711,
+    "p95": 9.547,
+    "max": 9.814
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 12,
+   "cut": 18,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "inproc": 30
+   },
+   "cancel_found": {
+    "inproc;live=1;closed=1;nosocket=0;handed=0": 18,
+    "inproc;live=0;closed=0;nosocket=0;handed=0": 6,
+    "inproc;live=1;closed=0;nosocket=0;handed=1": 6
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 24,
+    "after_marker_bytes": 430820,
+    "after_marker_new_bytes": 427902,
+    "trials_new_bytes_after_marker": 24,
+    "rst_after_marker": 18,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 6,
+     "capture=1/app=0": 24
+    }
+   }
+  },
+  "edge/early": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 16,
+   "after_w_wilson95": [
+    0.3614201328152505,
+    0.6976787277587178
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 3,
+    "262144": 5,
+    "2097152": 8
+   },
+   "violations_after_ack": 16,
+   "violations_wilson95": [
+    0.3614201328152505,
+    0.6976787277587178
+   ],
+   "after_ack_bytes": 11956402,
+   "ends": {
+    "SEND_OK": 30
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.131,
+    "p95": 1.847,
+    "max": 3.044
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 14,
+   "cut": 16,
+   "cut_receiver_complete": 16,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 22,
+    "after_marker_bytes": 12374064,
+    "after_marker_new_bytes": 12374066,
+    "trials_new_bytes_after_marker": 22,
+    "rst_after_marker": 0,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 8,
+     "capture=1/app=0": 6,
+     "capture=1/app=1": 16
+    }
+   }
+  },
+  "edge/fence": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 16,
+    "SEND_OK": 14
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.991,
+    "p95": 1.396,
+    "max": 2.717
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 14,
+   "cut": 16,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 22,
+    "after_marker_bytes": 397121,
+    "after_marker_new_bytes": 395663,
+    "trials_new_bytes_after_marker": 22,
+    "rst_after_marker": 16,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 8,
+     "capture=1/app=0": 22
+    }
+   }
+  },
+  "edge/fence-abort": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 19,
+    "SEND_OK": 11
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.975,
+    "p95": 2.632,
+    "max": 2.937
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 11,
+   "cut": 19,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "abort_armed": 19,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 23,
+    "after_marker_bytes": 97843,
+    "after_marker_new_bytes": 97845,
+    "trials_new_bytes_after_marker": 23,
+    "rst_after_marker": 19,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 7,
+     "capture=1/app=0": 23
+    }
+   }
+  },
+  "lte/close": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 8,
+   "after_w_wilson95": [
+    0.14182495553910618,
+    0.4444830204431169
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 8
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 8,
+    "SEND_OK": 22
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 2.723,
+    "p95": 4.332,
+    "max": 63.319
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 22,
+   "cut": 8,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "reply=ok": 30
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 4,
+    "after_marker_bytes": 21708,
+    "after_marker_new_bytes": 21708,
+    "trials_new_bytes_after_marker": 4,
+    "rst_after_marker": 6,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 26,
+     "capture=1/app=0": 4
+    }
+   }
+  },
+  "lte/close2": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 16,
+    "SEND_OK": 14
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.157,
+    "p95": 1.679,
+    "max": 2.916
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 14,
+   "cut": 16,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "inproc": 30
+   },
+   "cancel_found": {
+    "inproc;live=1;closed=1;nosocket=0;handed=0": 16,
+    "inproc;live=0;closed=0;nosocket=0;handed=0": 12,
+    "inproc;live=1;closed=0;nosocket=0;handed=1": 2
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 11,
+    "after_marker_bytes": 80794,
+    "after_marker_new_bytes": 80794,
+    "trials_new_bytes_after_marker": 11,
+    "rst_after_marker": 12,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 19,
+     "capture=1/app=0": 11
+    }
+   }
+  },
+  "lte/early": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 9,
+   "after_w_wilson95": [
+    0.16664562643958933,
+    0.4787612101166018
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 9
+   },
+   "violations_after_ack": 9,
+   "violations_wilson95": [
+    0.16664562643958933,
+    0.4787612101166018
+   ],
+   "after_ack_bytes": 4985473,
+   "ends": {
+    "SEND_OK": 30
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.895,
+    "p95": 1.386,
+    "max": 1.603
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 21,
+   "cut": 9,
+   "cut_receiver_complete": 9,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 9,
+    "after_marker_bytes": 5072913,
+    "after_marker_new_bytes": 5072913,
+    "trials_new_bytes_after_marker": 9,
+    "rst_after_marker": 0,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 21,
+     "capture=1/app=1": 9
+    }
+   }
+  },
+  "lte/fence": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 8,
+    "SEND_OK": 22
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.989,
+    "p95": 3.953,
+    "max": 4.527
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 22,
+   "cut": 8,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 3,
+    "after_marker_bytes": 18051,
+    "after_marker_new_bytes": 18051,
+    "trials_new_bytes_after_marker": 3,
+    "rst_after_marker": 8,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 27,
+     "capture=1/app=0": 3
+    }
+   }
+  },
+  "lte/fence-abort": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 9,
+    "SEND_OK": 21
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.026,
+    "p95": 3.754,
+    "max": 9.864
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 21,
+   "cut": 9,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "abort_armed": 9,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 5,
+    "after_marker_bytes": 29137,
+    "after_marker_new_bytes": 29137,
+    "trials_new_bytes_after_marker": 5,
+    "rst_after_marker": 8,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 25,
+     "capture=1/app=0": 5
+    }
+   }
+  },
+  "umts/close": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 30
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 3.503,
+    "p95": 6.823,
+    "max": 11.732
+   },
+   "uncut_receiver_complete_send_error": 10,
+   "uncut_receiver_complete": 10,
+   "cut": 20,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "reply=ok": 30
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 30,
+    "after_marker_bytes": 572771,
+    "after_marker_new_bytes": 568393,
+    "trials_new_bytes_after_marker": 30,
+    "rst_after_marker": 30,
+    "concordance_vs_app_after_ack": {
+     "capture=1/app=0": 30
+    }
+   }
+  },
+  "umts/close2": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 21,
+    "SEND_OK": 9
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 2.3,
+    "p95": 6.606,
+    "max": 7.949
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 9,
+   "cut": 21,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "inproc": 30
+   },
+   "cancel_found": {
+    "inproc;live=1;closed=1;nosocket=0;handed=0": 21,
+    "inproc;live=1;closed=0;nosocket=0;handed=1": 9
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 30,
+    "after_marker_bytes": 562323,
+    "after_marker_new_bytes": 559404,
+    "trials_new_bytes_after_marker": 30,
+    "rst_after_marker": 20,
+    "concordance_vs_app_after_ack": {
+     "capture=1/app=0": 30
+    }
+   }
+  },
+  "umts/early": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 22,
+   "after_w_wilson95": [
+    0.5555169795568831,
+    0.8581750444608938
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 2,
+    "262144": 10,
+    "2097152": 10
+   },
+   "violations_after_ack": 22,
+   "violations_wilson95": [
+    0.5555169795568831,
+    0.8581750444608938
+   ],
+   "after_ack_bytes": 10844105,
+   "ends": {
+    "SEND_OK": 30
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.0,
+    "p95": 3.549,
+    "max": 3.829
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 8,
+   "cut": 22,
+   "cut_receiver_complete": 22,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 30,
+    "after_marker_bytes": 11419270,
+    "after_marker_new_bytes": 11419270,
+    "trials_new_bytes_after_marker": 30,
+    "rst_after_marker": 0,
+    "concordance_vs_app_after_ack": {
+     "capture=1/app=0": 8,
+     "capture=1/app=1": 22
+    }
+   }
+  },
+  "umts/fence": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 21,
+    "SEND_OK": 9
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 0.948,
+    "p95": 2.133,
+    "max": 3.345
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 9,
+   "cut": 21,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 30,
+    "after_marker_bytes": 582913,
+    "after_marker_new_bytes": 582913,
+    "trials_new_bytes_after_marker": 30,
+    "rst_after_marker": 21,
+    "concordance_vs_app_after_ack": {
+     "capture=1/app=0": 30
+    }
+   }
+  },
+  "umts/fence-abort": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 20,
+    "SEND_OK": 10
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.003,
+    "p95": 1.983,
+    "max": 2.028
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 10,
+   "cut": 20,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "abort_armed": 20,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 28,
+    "after_marker_bytes": 173978,
+    "after_marker_new_bytes": 173978,
+    "trials_new_bytes_after_marker": 28,
+    "rst_after_marker": 20,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 2,
+     "capture=1/app=0": 28
+    }
+   }
+  }
+ },
+ "paired": {
+  "close2_vs_fence_after_w": {
+   "close2=0/fence=0": 90
+  },
+  "close2_vs_early_after_w": {
+   "close2=0/early=0": 43,
+   "close2=0/early=1": 47
+  },
+  "fence-abort_vs_fence_after_w": {
+   "fence-abort=0/fence=0": 90
+  },
+  "close2_vs_close_after_w": {
+   "close2=0/close=0": 82,
+   "close2=0/close=1": 8
+  }
+ }
+}

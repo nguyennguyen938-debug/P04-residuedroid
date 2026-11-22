@@ -29,6 +29,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | Test 1 / B10 v3 | 180 | 0 | 0 | `b10/analysis` |
 | Test 1 phone (Galaxy A06, Android 15) | 180 | 0 | 0 | `test1-phone/analysis` |
 | G2a early check + socket close (group 2) | 270 | 0 | 0 | `g2close/analysis` |
+| G3a/G3b socket-close comparator + capture (group 3; final + resumed final-r2) | 460 | 10: race-edge-32768-fence-abort-2-73dca3: interrupted block (paused, operational); race-edge-262144-fence-abort-2-0a585c: interrupted block (paused, operational); race-umts-2097152-close-2-23dc1d: interrupted block (paused, operational); race-lte-32768-close-2-effff1: interrupted block (paused, operational); race-edge-32768-fence-2-c00ebf: interrupted block (paused, operational); race-edge-32768-early-2-3a71f2: interrupted block (paused, operational); race-edge-32768-close2-2-37e937: interrupted block (paused, operational); race-umts-32768-close-2-e16194: interrupted block (paused, operational); race-umts-2097152-fence-2-786b4c: interrupted block (paused, operational); race-lte-2097152-close-2-cf2605: interrupted block (paused, operational) | 0 | `g3race/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 | G2b AirGuard layered early (group 2) | 80 | 0 | 0 | `g2layer/analysis` |
 
@@ -56,6 +57,10 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/g2close/pilot-calib2` | G2a calibration, 27/27 sends ok, throttle gate passed; durations used by the final | none |
 | `round3/g2close/pilot-mech` | G2a mechanism pilot (1 block, 27 trials): all valid, every close trial CANCEL + reply ok; gate passed | none |
 | `round3/g2layer/pilot` | G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed | none |
+| `round3/g3app/pilot-calib` | G3c calibration (3 per build): CALIBRATION GATE FAIL (stock 2/3 samples, median body 137,073 B < 200 KiB); the grant hook starts the app's periodic donation worker, which reads the DB during the insert | no G3c final under v3; fix needs protocol v4 |
+| `round3/g3race/pilot-calib` | G3a/G3b calibration (27 fence sends, no withdrawal); throttle gate passed; durations used by the final | none |
+| `round3/g3race/pilot-mech` | G3a/G3b mechanism pilot (45 trials): MECHANISM GATE FAIL on the capture only (console `network capture start` takes bare filenames; no pcap) | protocol v2: emulator -tcpdump at launch |
+| `round3/g3race/pilot-mech2` | G3a/G3b mechanism pilot v2 (45 trials): every gate field held | none |
 | `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
 | `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |
 | `round3/test1-phone/pilot-calib-3` | phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final | none |

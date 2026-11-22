@@ -45,6 +45,10 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g2close/pilot-calib': ('G2a calibration aborted before any send: setup init broadcast timed out (cold start 83 s under host load)', 'setup init timeout 300 s (frozen-g2-v2)'),
     'round3/g2close/pilot-calib2': ('G2a calibration, 27/27 sends ok, throttle gate passed; durations used by the final', 'none'),
     'round3/g2close/pilot-mech': ('G2a mechanism pilot (1 block, 27 trials): all valid, every close trial CANCEL + reply ok; gate passed', 'none'),
+    'round3/g3race/pilot-calib': ('G3a/G3b calibration (27 fence sends, no withdrawal); throttle gate passed; durations used by the final', 'none'),
+    'round3/g3race/pilot-mech': ('G3a/G3b mechanism pilot (45 trials): MECHANISM GATE FAIL on the capture only (console `network capture start` takes bare filenames; no pcap)', 'protocol v2: emulator -tcpdump at launch'),
+    'round3/g3race/pilot-mech2': ('G3a/G3b mechanism pilot v2 (45 trials): every gate field held', 'none'),
+    'round3/g3app/pilot-calib': ('G3c calibration (3 per build): CALIBRATION GATE FAIL (stock 2/3 samples, median body 137,073 B < 200 KiB); the grant hook starts the app\'s periodic donation worker, which reads the DB during the insert', 'no G3c final under v3; fix needs protocol v4'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
 
@@ -84,6 +88,10 @@ def trial_rows():
                     ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json'), ('Test 1 phone (Galaxy A06, Android 15)', 'round3/test1-phone/analysis/race-summary.json'), ('G2a early check + socket close (group 2)', 'round3/g2close/analysis/g2close-summary.json')):
         d = load(f)
         if d: out.append((name, d['logged'], [f"{x['trial']}: {x['reason']}" for x in d['invalid']], sum(c.get('unused', 0) for c in d['cells'].values()), str(Path(f).parent.relative_to('round3'))))
+    g3 = load('round3/g3race/analysis/g3race-summary.json')
+    if g3: out.append(('G3a/G3b socket-close comparator + capture (group 3; final + resumed final-r2)', g3['logged'],
+                       [f"{x['trial']}: {x['reason']}" for x in g3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in g3['interrupted_excluded']],
+                       sum(c.get('unused', 0) for c in g3['cells'].values()), 'g3race/analysis'))
     b2 = load('round3/b2/analysis/airguard-summary.json')
     if b2:
         out.append(('B2 AirGuard (real app)', len({r['trial'] for r in b2['rows']}) + len(b2['invalid']), [f"{x['trial']}: {x['reason']}" for x in b2['invalid']],

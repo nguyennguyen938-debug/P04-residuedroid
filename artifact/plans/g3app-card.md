@@ -107,4 +107,15 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
   guard before the final ends is resumed as G3a/G3b: a fresh directory from the next whole trial k, analysing only trials
   complete in their directory.
 
+- pilot-calib (22/11 18:58–19:03; excluded): **CALIBRATION GATE FAIL**, so no G3c final under v3 (stopped by the chain as
+  pre-registered). Stock has 2/3 calibration samples and the median body is 137,073 B (< 200 KiB); this is not a body-only
+  failure, so no recalibration. Diagnosis (manual, harness fields and event order only):
+  - the grant hook calls `scheduleShareData()`, so the app's periodic SendStatisticsWorker runs at once (ping, get_token);
+  - it read the beacon table while the insert hook was still inserting (WORKER_SEND and DONATION_START before INSERT in
+    10/12 sends, bodies 101,920–176,131 B);
+  - in g3app-000-stock it finished (sink 18:59:08) before the run hook (18:59:20), so there was no sample after t_run;
+  - the upload was therefore not started by the run hook, and W = u·D from t_run would not fall in it.
+
+  This is a harness design fault, not an environment failure. A fix needs protocol v4 and new pilots.
+
 ## 6. Outcome (after the run)

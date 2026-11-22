@@ -136,3 +136,54 @@ after-W close 10/90, fence 0/90, early 50/90, the counts C reported in issue #7)
   as the pause did; any further resume follows the same rule.
 
 ## 6. Outcome (after the run)
+- Outcome below written 22/11 after both directories finished (final 15:11–15:52, blocks 0–1; final-r2 16:36–18:58, blocks 2–9).
+
+Source: `results/round3/g3race/analysis/g3race-summary.json` (`analyze_g3race.py final final-r2`). Raw trial logs as
+`trials.jsonl.gz` + sha256; captures as `capture-slim.pcap` + sha256 of the full pcap. The analysis gives the same result
+on the committed copies (checked 22/11).
+
+- Trials: 460 logged; 10 excluded (the block interrupted by the pause, operational); 0 invalid; 30 per (profile, arm), 0 unused.
+- **Primary, trials accepted after W** (per profile edge / umts / lte, of 30):
+
+  | Arm | edge | umts | lte |
+  |---|---|---|---|
+  | early | 16 | 22 | 9 |
+  | close | 0 | 0 | 8 |
+  | close2 | 0 | 0 | 0 |
+  | fence | 0 | 0 | 0 |
+  | fence-abort | 0 | 0 | 0 |
+
+  Wilson 95 % per cell in the summary file.
+- Paired, after W:
+  - close2 vs fence: 90 pairs, both 0;
+  - close2 vs early: 43 pairs both 0, 47 pairs early only;
+  - close2 vs close: 82 pairs both 0, 8 pairs close only;
+  - fence-abort vs fence: 90 pairs, both 0.
+
+  Zero-vs-zero is reported as counts, not equivalence.
+- Secondary:
+  - violations after the ack equal the after-W counts for early, and are 0 for every other arm;
+  - ack latency medians (ms, edge / umts / lte): early 1.13 / 1.00 / 0.90, close 3.28 / 3.50 / 2.72, close2 2.71 / 2.30 / 1.16,
+    fence 0.99 / 0.95 / 0.99, fence-abort 0.98 / 1.00 / 1.03;
+  - uncut requests the receiver logged complete while the app ended SEND_ERROR: close 8 / 10 / 0, every other arm 0;
+  - close2 `CANCEL_DONE inproc` in 90/90 trials, 17 of them with the request already handed off and left alone;
+  - fence-abort `ABORT_ARMED` in 19 / 20 / 9 trials.
+- **G3b capture:**
+  - every trial was matched (marker and request connection);
+  - trials with TCP payload guest → receiver after the marker (edge / umts / lte): early 22 / 30 / 9, close 25 / 30 / 4,
+    close2 24 / 30 / 11, fence 22 / 30 / 3, fence-abort 23 / 28 / 5;
+  - bytes after the marker: fence 397,121 / 582,913 / 18,051; fence-abort 97,843 / 173,978 / 29,137;
+  - concordance with the app oracle: no trial where the app logged bytes accepted after the ack and the capture showed none.
+    Capture-only trials (bytes leave the NIC after the marker although the socket accepted them before the ack) occur in
+    every arm.
+- **Method audit** (EXPLORATORY, written after the outcomes were read on the user's request; `followup/audit_g3race.py` →
+  `analysis/g3race-audit.json`; no number above changes):
+  - pairing holds: the same u in all 90 paired cells, no write tie with W, close2 withdraws in the sender process;
+  - **lte exposure is unbalanced.** The withdrawal through `:revision` reaches W about 0.1 s after SOCKET_CONFIG; close2,
+    in-process, reaches it after about 0.03 s; the median u·D is 0.03 s. So on lte, W fell during the writes in 16/30
+    close2 trials and in 8–9/30 trials of every other arm. Edge and umts are balanced (13–20 per arm);
+  - after W among exposed trials, pooled: early 43/43, close 8/41 (all lte, 8/8), close2 0/50, fence 0/40, fence-abort 0/44;
+  - the lte cut counts equal the lte exposure counts in every arm, so the close2 / fence difference in cut trials on lte
+    (16 vs 8) follows the exposure, not extra cancellation;
+  - 0–3 matched capture trials per cell have only small (< 200 B) after-marker payload (likely TLS alert or close records,
+    not request data).

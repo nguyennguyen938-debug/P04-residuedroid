@@ -13,3 +13,4 @@ g2close/pilot-calib2/trials.jsonl
 g2close/pilot-mech/trials.jsonl
 g3race/*/capture.pcap
 g3app/*/capture.pcap
+g3race/*/trials.jsonl
