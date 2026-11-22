@@ -36,6 +36,8 @@ This ledger maps each claim to its source. "VERIFY-FINAL" = re-check wording aga
 | Implementation size (§6) | impLoc | fixture/src/**/*.java |
 | Early check with cancellation matches the fence on the natural race; costs (§7b, abstract, §1) | gcloseN, gcloseEarlyViol, gcloseCloseViol, gcloseFenceViol, gcloseCut, gcloseCutComplete, gcloseAckLo/Hi, gcloseFenceAck | results/round3/g2close/analysis/g2close-summary.json ← final/trials.jsonl.gz (g2close-card.md, pre-registered) via make_summary.derived() |
 | Cancellation aborts delivered requests (§7b, abstract; exploratory) | gcloseAbortDelivered, gcloseFenceAbortDelivered, gcloseFenceDelivered | results/round3/g2close/posthoc/posthoc.json (followup/posthoc_g2close.py, defined after the data) |
+| Race outcomes counted from the withdrawal commit W: cancellation accepts post-W writes, fence none (§7b, abstract, §1; exploratory) | gcloseCommit{Early,Close,Fence,N}, gcloseCommitCloseKib, raceCommit*, racePhoneCommit* | results/round3/c-analysis/post-commit.json (scripts/post_commit_race.py, from the frozen race trial logs) via make_summary.derived() |
+| Wilson 95% for pooled race cells (Tab race caption) | raceObsLo/Hi, racePhoneObsLo/Hi, raceZeroHi | b10 and test1-phone race-summary.json via make_summary.derived() (scripts/summarize.wilson) |
 | AirGuard layered early build (§7b, §1) | glayN, glayStockViol, glayFenceViol, glayLayerViol, glayUnknown | results/round3/g2layer/analysis/airguard-summary.json (oracle v2, g2layer-card.md) via make_summary.derived() |
 
 ## Claims deliberately NOT made (novelty audit §5)

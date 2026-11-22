@@ -10,7 +10,7 @@ Sources (each optional; a missing analysis just leaves its keys absent, which re
 Only names in SCHEMA (scripts/render_tests.py) are written; render_tests.py asserts this too.
 Usage: python3 artifact/results/round3/make_summary.py
 """
-import ast, collections, json
+import ast, collections, json, sys
 from pathlib import Path
 
 ART = Path(__file__).resolve().parents[2]
@@ -103,6 +103,22 @@ def derived():
     k.update(glayN=nl.pop(), glayStockViol=cnt('stock', 'violating_trials'), glayFenceViol=cnt('fenced', 'violating_trials'),
              glayLayerViol=cnt('layered', 'violating_trials'),
              glayUnknown=sum(cnt(b, 'unknown_trials') for b in ('stock', 'fenced', 'layered')))
+    # Round-4 review (C, 22/11): Wilson 95% for the pooled race cells (percent, as raceObsPct).
+    sys.path.insert(0, str(ART / 'scripts'))
+    from summarize import wilson
+    ns = set()
+    for p, rel in (('race', 'round3/b10/analysis/race-summary.json'), ('racePhone', 'round3/test1-phone/analysis/race-summary.json')):
+        rk = load(rel)['keys']   # both analyses name their keys race*; the phone's are renamed racePhone* above
+        n = 3 * rk['raceTrials']; ns.add(n)
+        lo, hi = wilson(sum(rk[f'race{prof}Layer'] for prof in ('Edge', 'Threeg', 'Lte')), n)[1:]
+        k[p + 'ObsLo'], k[p + 'ObsHi'] = round(100 * lo, 1), round(100 * hi, 1)
+        assert sum(rk[f'race{prof}Fence'] for prof in ('Edge', 'Threeg', 'Lte')) == 0   # raceZeroHi applies to the fence arms
+    assert len(ns) == 1
+    k['raceZeroHi'] = round(100 * wilson(0, ns.pop())[2], 1)
+    # Commit-relative race outcomes (C, scripts/post_commit_race.py, exploratory).
+    pc = R / 'round3/c-analysis/post-commit.json'
+    if pc.exists():
+        k.update(json.loads(pc.read_text(encoding='utf-8'))['keys'])
     # Receiver side of the natural races (C, scripts/receiver_race.py, from the same frozen raw logs).
     rr = R / 'round3/c-analysis/receiver-race.json'
     if rr.exists():

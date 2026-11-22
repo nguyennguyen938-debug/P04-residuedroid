@@ -73,8 +73,9 @@ registers no stock sender beside it;
 \end{itemize}
 The artifact's label checker (\texttt{mutation/label\_check.py}) compares, in test builds, each submitted label with the
 sources that tracers find in the content; it is the check that catches an incomplete label. The confirmation shown on
-withdrawal should not overpromise, for example: ``Sharing is off. Data not yet sent will not be sent. Data sent before
-you turned this off may still reach our servers.''
+withdrawal should not overpromise, for example: ``Sharing is off. Data not yet handed to the network will not be sent. Data handed over before
+you turned this off may still reach our servers.'' Closing the connection lets bytes already in the socket's send
+buffer leave the device after the acknowledgement; an abortive close would discard them, which we did not test.
 
 \section{Uncovered Paths}
 \label{app:uncovered}
@@ -93,6 +94,13 @@ HTTP sender, which the fenced build never instantiates: its sender service regis
 Three Matomo sites belong to the stock packet sender, which the test app calls only in its unfenced arm. The remaining
 site in each build is Kotlin's \texttt{URL.readBytes}; we have not established whether any code calls it. These are
 configuration arguments for two test apps, not a proof of complete mediation.
+
+\paragraph{Toward common HTTP stacks.} For OkHttp over HTTP/1.1, the per-write check could sit in a socket factory whose
+output stream takes the lock and checks before each bounded write, provided the request's label can be bound to the pooled
+connection for the duration of that request; with TLS the factory would wrap the underlying socket, so the checked bytes
+are ciphertext as in A1. HTTP/2 interleaves frames of differently labelled requests on one connection through an
+asynchronous writer, which conflicts with one writer per socket and would need per-frame labels. Cronet and QUIC send
+below the Java socket layer. We have built none of these ports.
 
 \section{Static Scanner}
 \label{app:scanner}
@@ -141,7 +149,14 @@ cancel that does not hold the acknowledgement, or cancellation inside a real app
 alias and record the receiver path (USB port reverse on the cloud device service, a relay on the remote test lab).
 Throttled emulator runs shape the guest's uplink with \texttt{netem} at the emulator's nominal profile rates, because the
 emulator console's network presets did not slow this image's traffic. Protocols, exclusions and per-run logs are in
-\texttt{results/round3/} (\texttt{PROTOCOL.md}, \texttt{EXCLUSIONS.md}) and the task cards in \texttt{plans/}.
+\texttt{results/round3/} (\texttt{PROTOCOL.md}, \texttt{EXCLUSIONS.md}) and the per-task protocols in \texttt{plans/}.
+
+\paragraph{Cost under load.}\label{app:sweep} The sweep crosses chunk sizes with sender counts and issues probe
+withdrawals during uploads. The median acknowledgement was \sweepAckSmallMs{}\,ms with 1\,KiB chunks and one sender and
+\sweepAckLargeMs{}\,ms with 64\,KiB chunks and 16 senders, and process CPU per MiB fell from \sweepCpuSmall{} to
+\sweepCpuLarge{}\,ms as chunks grew. The harness differs from that of Table~\ref{tab:transport-cost} and the backpressure
+cells of \S\ref{sec:revision}, so the figures are not comparable with them. In \sweepLockStalls{} of \sweepLogged{} trials
+a sender waited its full deadline for the app-wide lock, a fairness limit of that lock.
 
 \clearpage
 \input{sections/historical-evaluation}

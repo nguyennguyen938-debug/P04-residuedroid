@@ -12,13 +12,15 @@ prefix of a request that never completes.
 \begin{assumption}[Supported path]\label{as:sp}
 (A1) Every supported byte is sent through Algorithm~\ref{alg:fence}, with one writer
 per socket and no unmediated asynchronous sender below its check. For TLS, the checked bytes are application-record ciphertext: the request's conservative source union remains attached to every encrypted record and partial-record remainder. Encryption may precede checking; each subsequent socket write must recheck policy. Handshake traffic contains no request data. TLS early data, renegotiation and external writers are excluded.
-(A2) Every persisted copy carries atomically stored, over-approximate source labels;
+(A2) Every persisted copy carries atomically stored, over-approximate source labels (a superset of the true source
+pairs in which an epoch may be replaced by $\bot$ but by no other epoch, so Eq.~\ref{eq:rule} can only forbid more);
 missing or invalid labels fail closed. Labels on retries retain the collection epochs. The collection-time label
 is read so that no withdrawal commits between that read and the write it labels.
 (A3) Each bounded, nonblocking write and its policy check share a process/cross-process
-lock with withdrawal and re-grant. A withdrawal commits its policy transaction before
-acknowledgement. Policy state survives process failure; an unreadable store fails closed.
-The model assumes working durable storage, not recovery from arbitrary power loss.
+lock with withdrawal and re-grant. A withdrawal commits its policy transaction while holding that lock and before
+acknowledgement, and each check reads policy afresh. Policy state survives process failure; an unreadable store fails
+closed. The model assumes working durable storage, not recovery from arbitrary power loss: our store is SQLite in WAL
+mode with the platform's default synchronous setting, and we did not test power loss.
 \end{assumption}
 
 \begin{theorem}[Soundness of accepted prefixes]\label{thm:sound}
@@ -37,18 +39,19 @@ reacquires the lock and rereads durable policy, so it cannot reuse an earlier au
 that the rule is evaluated on $\sigma$ read inside the critical section, so it holds for any contract rule computed from
 $\sigma$, including the $\bot$ case of Eq.~\ref{eq:rule}.
 \end{proof}
+The theorem is deliberately simple: the work lies in establishing A1 to A3, which Appendix~\ref{app:matrix} assesses for
+each evaluated build.
 
 Exact labels avoid policy-induced false positives only when labels and policy are
 available and valid. Over-approximation, fail-closed migration, timeouts and network
 failure can still prevent permitted delivery. Soundness is not an availability claim. For liveness, with a fair lock a
-withdrawal waits for at most one bounded write per sender ahead of it; our app-wide lock is not fair
+withdrawal waits for at most one bounded write and its policy read per sender ahead of it; our app-wide lock is not fair
 (\S\ref{sec:eval-generality}).
 
-\paragraph{Splitting blocked requests.} A request whose items mix a forbidden source with permitted ones is blocked
-as a whole (\S\ref{sec:revision}). If the fence blocks a request before any of its bytes is handed off, a split policy
-retires the forbidden items and resubmits the rest once as a new request, which takes the lock and rechecks every label,
-so Theorem~\ref{thm:sound} covers it unchanged. After a handoff the request cannot be rewritten. The cost is
-availability: a derived item with a forbidden source is retired whole.
+\paragraph{Splitting blocked requests.} A request mixing forbidden and permitted items is blocked whole
+(\S\ref{sec:revision}). If none of its bytes was handed off, a split policy resubmits the permitted items once as a new
+request that takes the lock and rechecks every label, so Theorem~\ref{thm:sound} covers it; after a handoff the request
+cannot be rewritten, and a derived item with a forbidden source is always retired whole.
 
 Let $W$ be the commit point of a withdrawal's policy transaction, and call a check or cancellation \emph{effective}
 for a handoff at $c$ if it runs in $(W,c)$ and can stop that handoff.
@@ -65,14 +68,14 @@ $c_1<\cdots<c_k$, all carrying sources invalidated by $W$, with no intervening r
 \end{aligned}\label{eq:race}
 \end{equation}
 These equations concern that schedule model; cancellations or retries that depend on
-$W$ require a different model. Measured races follow the ordering of check points that the theorem predicts, but not
-its rates, because the harness times a withdrawal when it is issued, while $W$ is its commit (\S\ref{sec:eval-natural}).
+$W$ require a different model.
 \end{theorem}
 \begin{proof}
 Place the applicable withdrawal between the passing check and the unprotected write.
 The path still sends, by hypothesis. Summing the corresponding indicator variables
 gives the expectation; the last interval contains the earlier intervals.
 \end{proof}
+A cancellation triggered by $W$ takes effect after $W$, so it narrows the window to its own delay rather than closing it.
 
 \begin{proposition}[Information needed by the check]\label{prop:nec}
 A declared-scope check can admit an invalid source when a withdrawal invalidates the

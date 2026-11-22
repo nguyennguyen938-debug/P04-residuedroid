@@ -31,8 +31,8 @@ Second, bytes that the socket has already accepted cannot be recalled. A device-
 transaction. \emph{Persistent job lineage} stores a label of source scopes and epochs in the same row, or the same
 persisted job input, as every copy of the data, including derived data. A \emph{late egress fence} evaluates the app's stated
 contract before each bounded nonblocking socket write, inside a critical section shared with withdrawal. Under complete
-mediation, durable labels and this serialization, no newly accepted supported prefix carries a source that the current policy invalidates (Theorem~\ref{thm:sound}). An earlier check without effective later cancellation admits a violating interleaving when withdrawal invalidates the source; its
-probability follows from the job's commit timing (Theorem~\ref{thm:race}).
+mediation, durable labels and this serialization, no newly accepted supported prefix carries a source that the current policy invalidates (Theorem~\ref{thm:sound}). An earlier check without effective later cancellation admits a violating interleaving when withdrawal invalidates the source; the
+window it leaves orders check points (Theorem~\ref{thm:race}).
 
 \input{sections/01b-evidence}
 

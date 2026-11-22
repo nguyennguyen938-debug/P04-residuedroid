@@ -1,13 +1,16 @@
 from pathlib import Path
 import json,csv,collections,statistics
 A=Path(__file__).resolve().parents[1];P=A.parent;R=A/'results/review-followup-20261115';G=P/'manuscript/generated'
-rs=list(csv.DictReader((A/'results/outcomes.csv').open()));rs=[r for r in rs if r['valid']=='1'and r['run']=='A'and r['variant']=='conv'];ks=collections.defaultdict(set)
-for r in rs:ks[r['schedule']].add(int(r['k']))
-keep={s:set(sorted(x)[:50])for s,x in ks.items()};rs=[r for r in rs if int(r['k'])in keep[r['schedule']]]
-lines=[r'\begin{table}[t]\centering\mtab',r'\caption{Conventional-check failures by mechanism: violating tenant-trials/total, stream-wrapper authorization estimand. The selected fixture mix determines these rates.}\label{tab:mechanisms}',r'\begin{tabular}{@{}llr@{}}\toprule\mhead Mechanism & Tenant / schedules & Trials\\\midrule']
-for tenant,label,schedules in [(1,'Lineage','all'),(5,'Epoch after re-grant','all'),(8,'Retry check','netloss')]:
- xs=[r for r in rs if int(r['tenant'])==tenant and(schedules=='all'or r['schedule']==schedules)]
- lines.append(f'{label} & T{tenant}, {schedules} & {sum(int(r["violation"])for r in xs)}/{len(xs)} '+r'\\')
+def first50(variant):  # AVD A, first 50 valid trials per schedule, as the stream-wrapper analysis
+ rs=[r for r in csv.DictReader((A/'results/outcomes.csv').open()) if r['valid']=='1'and r['run']=='A'and r['variant']==variant];ks=collections.defaultdict(set)
+ for r in rs:ks[r['schedule']].add(int(r['k']))
+ keep={s:set(sorted(x)[:50])for s,x in ks.items()};return [r for r in rs if int(r['k'])in keep[r['schedule']]]
+# Round-4 review (R3): conv's T5 failures are net-loss retries (conv purges T5's outbox on withdrawal), so the epoch row
+# shows job-start outside net, whose boolean start check is what misses the epoch.
+lines=[r'\begin{table}[t]\centering\mtab',r'\caption{Conventional-check failures by mechanism (AVD~A): violating tenant-trials/total, stream-wrapper authorization estimand. The epoch row uses \vname{jobstart} outside \textsf{net}, because \vname{conv} purges the outbox of T5 on withdrawal and its T5 failures in \textsf{net} are retries. The selected fixture mix determines these rates.}\label{tab:mechanisms}',r'\begin{tabular}{@{}llr@{}}\toprule\mhead Mechanism & Variant, tenant, schedules & Trials\\\midrule']
+for variant,tenant,label,schedules in [('conv',1,'Lineage','all'),('jobstart',5,'Epoch after re-grant','all but net'),('conv',8,'Retry check','net')]:
+ xs=[r for r in first50(variant) if int(r['tenant'])==tenant and{'all':True,'net':r['schedule']=='netloss','all but net':r['schedule']!='netloss'}[schedules]]
+ lines.append(rf'{label} & \vname{{{variant}}}, T{tenant}, {schedules} & {sum(int(r["violation"])for r in xs)}/{len(xs)} '+r'\\')
 lines+=[r'\bottomrule\end{tabular}\end{table}'];(G/'followup_mechanisms.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
 (G/'followup_support.tex').write_text(r'''\paragraph{Supporting checks.} The stream-wrapper substrate tests include \subWorkManagerLogged{} WorkManager attempts (\subWorkManagerInvalid{} invalid) and \subAlarmManagerLogged{} AlarmManager attempts, with no prohibited authorizations for the fenced mediated paths. Across \crashKills{} process kills, atomic row labels leave \crashOrphA{} unlabelled rows, compared with \crashOrphB{} when data and labels are written separately. The authorization-window prediction agrees in \predAgree{} of \predN{} cases. Stream-wrapper per-submit medians of \eeNoneMs{} and \eeRdMs{}\,ms apply only to that wrapper; they are not the cost of the 4\,KiB channel transport measured in \S\ref{sec:revision}.
 ''',encoding='utf-8',newline='\n')

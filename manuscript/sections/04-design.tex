@@ -55,7 +55,8 @@ where $R_s$ is the set of purposes the contract revokes and $\pi_s$ says whether
 (Table~\ref{tab:contracts}). An item is forbidden if any element of its label is forbidden. For an OS-permission tenant
 $R_s=\emptyset$, so prior data is never blocked. For a processing restriction, $R_s=\{\textit{personalisation}\}$, so backup
 continues. For a ``stop collecting'' opt-out, $\pi_s$ is false, so queued data may still flush. Items labelled $\bot$
-were collected without consent and are never sent for a revoked purpose, even after a re-grant.
+were collected without consent and are never sent for a revoked purpose, even after a re-grant. The last disjunct guards
+against a writer that labels with the current epoch while $a(s)$ is false; only $\bot$ keeps such data blocked after a re-grant.
 
 \begin{algorithm}[t]
 \caption{Audited HTTP fence, with source labels on every retry}

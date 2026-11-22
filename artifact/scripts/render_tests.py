@@ -89,6 +89,15 @@ SCHEMA = {
     # G2b: AirGuard stock, fenced and layered early in every trial; pending + kill + reboot pooled, oracle v2.
     "glayN": "trials per build", "glayStockViol": "stock violating trials", "glayFenceViol": "fenced violating trials",
     "glayLayerViol": "layered violating trials", "glayUnknown": "unknown trials, all builds",
+    # Round-4 review (C, scripts/post_commit_race.py, exploratory): trials whose socket accepted bytes from a write attempted
+    # after the withdrawal commit W (WITHDRAW_DURABLE), per arm; N per arm.
+    "raceCommitEarly": "emulator early", "raceCommitFence": "emulator fence", "raceCommitN": "emulator trials per arm",
+    "racePhoneCommitEarly": "phone early", "racePhoneCommitFence": "phone fence", "racePhoneCommitN": "phone trials per arm",
+    "gcloseCommitEarly": "G2a early", "gcloseCommitClose": "G2a close", "gcloseCommitFence": "G2a fence",
+    "gcloseCommitN": "G2a trials per arm", "gcloseCommitCloseKib": "G2a close: KiB accepted from post-commit writes",
+    # Wilson 95% for the pooled race cells (percent): early arm per platform, and the upper bound of 0 of N.
+    "raceObsLo": "emulator early lower", "raceObsHi": "emulator early upper", "racePhoneObsLo": "phone early lower",
+    "racePhoneObsHi": "phone early upper", "raceZeroHi": "upper bound for 0 of N (N per arm, both platforms)",
 }
 
 
