@@ -38,12 +38,12 @@
     "--repeats",
     "2",
     "--out",
-    "results/round3/g3cost/pilot"
+    "results/round3/g3cost/pilot-2"
    ],
-   "out": "artifact/results/round3/g3cost/pilot"
+   "out": "artifact/results/round3/g3cost/pilot-2"
   }
  ],
  "post": [],
  "guard_after": false,
- "frozen": "artifact/results/round3/g3/frozen-g3-v4d"
+ "frozen": "artifact/results/round3/g3/frozen-g3-v5b"
 }

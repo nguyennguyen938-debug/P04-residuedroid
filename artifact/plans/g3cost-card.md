@@ -97,5 +97,9 @@ before any data. The user's own phone; no rental, no cost.
 - Device-free check (fake adb, 22/11): `--host auto` resolved the LAN address. With a matching certificate, 9/9 cells were
   valid and the receiver logged 9 TLS uploads over the LAN address. With the old certificate the harness refused, as
   intended.
+- pilot (22/11 22:57; excluded, no upload ran): the harness stopped at setup. The install check passed (Success, installed
+  sha256 = frozen APK), but `dumpsys package` on Android 15 prints `appId=` and not `userId=`, so the UID lookup failed.
+  This is a harness parsing fault, not an environment failure. Fix: accept either key. Rerun as `pilot-2` with the same
+  gate; protocol otherwise unchanged; freeze `frozen-g3-v5b`.
 
 ## 6. Outcome (after the run)

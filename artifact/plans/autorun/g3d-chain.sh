@@ -11,7 +11,7 @@ python3 $AR $P/g3cost-pilot.json || { note "G3d pilot failed; chain stopped"; ex
 python3 - <<'PY' || { note "G3d PILOT GATE FAIL; no G3d final (card §3)"; exit 4; }
 import json, sys
 sys.path.insert(0, 'artifact/followup'); import analyze_g3cost as g
-d = 'artifact/results/round3/g3cost/pilot'; meta = json.load(open(f'{d}/meta.json'))
+d = 'artifact/results/round3/g3cost/pilot-2'   # pilot (22/11 22:57) stopped at setup: Android 15 appId; meta = json.load(open(f'{d}/meta.json'))
 cells = [json.loads(l) for l in open(f'{d}/cells.jsonl') if l.strip()]
 rec = {x['request'] for x in map(json.loads, open(f'{d}/receiver.jsonl')) if x.get('complete')}
 ups = [u for c in cells for u in c['uploads']]

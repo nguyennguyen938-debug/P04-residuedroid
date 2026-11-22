@@ -101,7 +101,7 @@ try:
     inst = sh(f'pm path {PKG}').strip().splitlines()[0].split(':', 1)[1]
     INSTALLED = sh(f'sha256sum {inst}').split()[0]
     assert INSTALLED == hashlib.sha256(a.apk.read_bytes()).hexdigest(), f'installed APK {INSTALLED[:12]} differs from {a.apk}'
-    uid = re.search(r'userId=(\d+)', sh(f'dumpsys package {PKG}')).group(1)
+    uid = re.search(r'(?:userId|appId)=(\d+)', sh(f'dumpsys package {PKG}')).group(1)   # Android 15 prints appId= (pilot 22/11)
     adb('push', a.certdir / 'test-ca.pem', '/data/local/tmp/p04-test-ca.pem')
     sh(f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
     sh(f'am set-standby-bucket {PKG} active; am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
