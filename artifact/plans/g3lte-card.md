@@ -94,4 +94,25 @@ pooled with v3.
 
 ## Pilot log
 
+- pilot-lte4 (22/11 22:46–22:47; excluded): **BALANCE GATE FAIL**, so no P3 final under v4. Every mechanism field held:
+  15/15 valid, cancellations, markers, capture, warm replies and queue snapshots. The per-size spread of
+  (WITHDRAW_REQUEST − SOCKET_CONFIG) was 337 / 42 / 19 ms against the 15 ms limit. Diagnosis (manual, timing fields only):
+  - in one trial (32 KiB, fence) the send broadcast returned about 3.2 s late (an adb stall, host load 4.1);
+  - with one trial per (size, arm), the gate measured per-trial delivery jitter of about ±20–40 ms, not a systematic
+    arm difference;
+  - in the other 14 trials, WITHDRAW_REQUEST − SOCKET_CONFIG followed the host offset to within about −25 to +23 ms in
+    every arm, so the ~70–80 ms `:revision` cold-start gap of v3 did not appear.
+
+  This is a gate design fault (B).
+- **Protocol v5** (22/11 night, user decision, before any v5 trial; design, arms, N and analysis unchanged):
+  - **pilot** `pilot-lte5`: 3 blocks (45 trials, 9 per arm), excluded;
+  - **balance gate v5:** per trial, d = (WITHDRAW_REQUEST − SOCKET_CONFIG, device clock) − (the withdrawal's host offset,
+    host clock). This is a difference of two durations, each on its own clock: the delivery delay of the withdrawal
+    relative to that of the send, which is what the v3 cold start inflated;
+  - trials whose host offset exceeds u·D by more than 1 s (adb stall) are counted and left out of d;
+  - pass: per-arm medians of d (at least 5 trials per arm) differ by ≤ 15 ms, plus every v4 mechanism field;
+  - **final** `final-lte5` (10 blocks), `analysis-lte5`; chain `plans/autorun/g3-p3v5-chain.sh`; freeze `frozen-g3-v5`;
+  - the v4 pilot and its failed gate are reported. Code check: on the v4 pilot data, the v5 metric flags the stalled
+    trial and computes per-arm medians.
+
 ## 6. Outcome (after the run)
