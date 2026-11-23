@@ -1,0 +1,49 @@
+{
+ "serial": "emulator-5660",
+ "phone": {},
+ "avd": "P04AvdA",
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "seed": "race-20261119",
+ "profiles": [
+  "edge",
+  "umts"
+ ],
+ "sizes": [
+  2097152
+ ],
+ "modes": [
+  "fence",
+  "fence-abort"
+ ],
+ "calibrate": 0,
+ "trials": 30,
+ "start": 0,
+ "durations": {
+  "edge:32768": 5.214419586,
+  "edge:262144": 25.793981929,
+  "edge:2097152": 152.002680739,
+  "umts:32768": 2.70384946,
+  "umts:262144": 17.674894384,
+  "umts:2097152": 137.443886607,
+  "lte:32768": 0.017170625,
+  "lte:262144": 0.077532583,
+  "lte:2097152": 0.347760542
+ },
+ "radio": {
+  "routes": "10.0.0.0/8 dev eth0 proto kernel scope link src 10.0.2.15",
+  "active": ""
+ },
+ "shaper": "tc",
+ "receiver": null,
+ "host": null,
+ "apk_sha256": "fa46f01d2a75712c51aab10f529c36d2ce86b5b4e5c3675d28727178d9d8e717",
+ "setup_init_s": 3.6,
+ "g3": true,
+ "marker": 8799,
+ "capture": true,
+ "warm_revision": false,
+ "sndbuf": 16384,
+ "sndbufs": "0,16384,65536",
+ "qsnap": true,
+ "started": 1795367079.698857
+}
