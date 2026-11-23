@@ -52,7 +52,7 @@ def main():
         rows += [r for r in rs if per[r['block']] == cells]
         pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'
         caps[k] = g.capture(pc, a.marker) if pc.exists() else None
-        tf = d / 'capture-tls.jsonl'; tlss[k] = g.tls_records.load(tf) if tf.exists() else None
+        tf = d / 'capture-tls-v2.jsonl' if (d / 'capture-tls-v2.jsonl').exists() else d / 'capture-tls.jsonl'; tlss[k] = g.tls_records.load(tf) if tf.exists() else None  # v2 (23/11): capture-tls.jsonl written by the autorun post step before the emulator closed the pcap; v2 from the complete pcap
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
     cells = collections.defaultdict(list)
     for r in valid: cells[r['profile'], r['mode']].append(r)

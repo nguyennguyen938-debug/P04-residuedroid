@@ -59,6 +59,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g3cost/pilot': ('G3d pilot: stopped at setup before any upload (Android 15 dumpsys prints appId=, UID regex failed); empty', 'UID regex accepts userId= or appId='),
     'round3/g3cost/pilot-2': ('G3d pilot-2: stopped at setup before any upload (fresh install has no files/ dir, CA copy failed); empty', 'run-as mkdir -p files before the CA copy'),
     'round3/g3cost/pilot-3': ('G3d pilot-3: PILOT GATE FAIL (8/9 cells valid; one transient adb error with empty stderr; Android 15 batterystats estimate only on the checkin line; chain gate line bug)', 'G3d protocol v2: one logged adb retry, Android 15 parser, gate line fixed'),
+    'round3/g3cost/pilot-5': ('G3d v3 pilot (23/11 15:30): gate passed (1 block); the v3 final then dozed at the 10 min screen timeout under battery unplug (harness design fault)', 'G3d protocol v4: screen timeout 24 h + Doze off during the run, checked in meta and the pilot gate'),
     'round3/g3cost/pilot-4': ('G3d v2 pilot: gate passed (9/9 valid, 18/18 uploads ok and received)', 'none (the v2 final then failed on the environment: phone dozed, device lost; protocol v3)'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
@@ -109,6 +110,9 @@ def trial_rows():
     p3 = load('round3/g3race/analysis-lte5/g3race-summary.json')
     if p3: out.append(('P3: G3a on lte, balanced exposure (protocol v5)', p3['logged'], [f"{x['trial']}: {x['reason']}" for x in p3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p3['interrupted_excluded']],
                        sum(c.get('unused', 0) for c in p3['cells'].values()), 'g3race/analysis-lte5'))
+    p4 = load('round3/g3race/analysis-p4/g3p4-summary.json')
+    if p4: out.append(('P4: SO_SNDBUF x fence/fence-abort (final-p4 + resumed final-p4b, final-p4c)', p4['logged'], [f"{x['trial']}: {x['reason']}" for x in p4['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p4['interrupted_excluded']],
+                       sum(c.get('unused', 0) for c in p4['cells'].values()), 'g3race/analysis-p4'))
     b2 = load('round3/b2/analysis/airguard-summary.json')
     if b2:
         out.append(('B2 AirGuard (real app)', len({r['trial'] for r in b2['rows']}) + len(b2['invalid']), [f"{x['trial']}: {x['reason']}" for x in b2['invalid']],

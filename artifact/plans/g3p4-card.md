@@ -93,4 +93,51 @@ counting. C's review (issue #7, 13:22 UTC) fixes:
   is kept as `analysis-p4_INVALID_interrupted-partial` and is not the pre-registered analysis. Resume (if the user decides):
   a fresh directory from block 16, same freeze `frozen-g3-v6b`, analysed with blocks 0–15 of final-p4.
 
+- **Pause 2 and resume 2 (23/11):** final-p4b (blocks 16–29, 13:14) was paused by the user; B's SIGINT matched the caffeinate
+  wrapper too and race_suite kept running with abnormal trial durations, so B sent SIGTERM at 16:25 (blocks 16–24 complete,
+  all before the signal; block 25 partial, 5 trials). Resume 2: final-p4c, blocks 25–29 (16:27–17:25), freeze `frozen-g3-v7`
+  (differs from v6b only in G3d files; every P4 file identical).
+- **Analysis rule added before the analysis ran (23/11):** `analyze_g3p4.split_blocks` keeps only blocks complete within
+  their directory (§3), as `analyze_g3race`; unit test `followup/test_g3p4.py`.
+- **TLS file correction (23/11):** the autorun post step ran `tls_records.py` before the emulator shut down and closed the
+  pcap, so every `capture-tls.jsonl` written by a post step (final-lte5, final-p4, final-p4b, final-p4c) carries the sha256 of
+  an unfinished pcap. `capture-tls-v2.jsonl` was written next to each from the complete pcap (sha256 matches); the analyses
+  read v2 when present. P3 (`analysis-lte5`) rerun with v2: 0 differences in g3race-summary and g3race-audit.
+
 ## 6. Outcome (after the run)
+- Written 23/11 after final-p4c. Source: `results/round3/g3race/analysis-p4/` (`analyze_g3p4.py final-p4 final-p4b
+  final-p4c`, `qsnap.py`). Raw: `trials.jsonl.gz` + sha256, `capture-slim.pcap` + sha256 of the full pcap, `capture-tls-v2.jsonl`.
+- Trials: 368 logged; 8 excluded (interrupted blocks 16 in final-p4 and 25 in final-p4b, operational); 0 invalid; 30 per
+  (profile, arm, level), 0 unused. `actual_sndbuf` 1,048,576 / 16,384 / 65,536 in 30/30 trials of each level.
+- **Trials accepted after W: 0/30 in every cell** (both arms, all levels, both profiles).
+- **Primary: TLS application_data bytes after the marker, trials with W during the writes** (per trial median / max; trials
+  with any application data after the marker):
+
+  | Profile | Level | fence: exposed | fence median / max | fence-abort: exposed | fence-abort median / max | fence-abort trials > 0 |
+  |---|---|---|---|---|---|---|
+  | edge | default (1 MiB) | 8 | 1,618,027.5 / 1,619,750 | 8 | 0 / 1,365 | 3/8 |
+  | edge | 16 KiB | 30 | 21,042.5 / 24,445 | 29 | 0 / 1,535 | 12/29 |
+  | edge | 64 KiB | 27 | 97,195 / 100,710 | 28 | 0 / 1,570 | 3/28 |
+  | umts | default (1 MiB) | 10 | 1,618,845 / 1,621,235 | 9 | 0 / 810 | 1/9 |
+  | umts | 16 KiB | 30 | 20,817.5 / 24,745 | 30 | 0 / 2,170 | 11/30 |
+  | umts | 64 KiB | 30 | 97,065 / 100,545 | 30 | 0 / 2,305 | 11/30 |
+
+  fence: application data after the marker in every exposed trial at every level. Paired per (block, profile, level),
+  fence-abort had fewer application-data bytes than fence in every pair (edge 7 / 29 / 27, umts 9 / 30 / 30 pairs for
+  default / 16 KiB / 64 KiB). Descriptive; no p-values.
+- **Reading (B, descriptive):** with the graceful close, the bytes that leave after the ack are about the send-buffer size
+  (fence medians 20,817.5–21,042.5 B at 16 KiB, 97,065–97,195 B at 64 KiB, 1,618,027.5–1,618,845 B at the 1 MiB default). The abortive close (SO_LINGER 0, RST)
+  leaves at most 2,305 B per trial of application data (median 0) at every level.
+- **Exposure depends on the level:** with the default buffer, W fell during the writes in only 8–10/30 trials; in 20–22/30
+  the request had been handed off before W, and permitted data then left after the marker (after-handoff app bytes,
+  fence median 836,942 edge / 1,039,882 umts). This is permitted data leaving late, not cut data (card §4).
+- **Secondary:**
+  - write rate into the socket before W (median, bytes/s): default 27,502 / 27,510 (edge fence / fence-abort), 36,297 / 36,414
+    (umts); 16 KiB 14,262 / 14,133 and 15,559 / 14,956; 64 KiB 15,122 / 14,676 and 16,286 / 16,250. This is a write rate into
+    the socket, not goodput: a larger buffer accepts writes ahead of the link;
+  - RST after the marker in every during-writes trial of both arms;
+  - queue snapshot after the ack (median netem backlog 9,084–9,138 B in every cell; socket send queue median 1,072,469 edge and
+    1,337,723 umts for fence at the default, 23,360.5 / 22,846 at 16 KiB and 99,281 / 99,281 at 64 KiB for fence (edge / umts), 0 at 16 and 64 KiB for
+    fence-abort; full table in `qsnap-summary.json`).
+- **Threats** as §5; in addition, the snapshot mixes phases (after-handoff trials still have permitted data queued), and the
+  1 MiB default is this emulator kernel's autotuning.

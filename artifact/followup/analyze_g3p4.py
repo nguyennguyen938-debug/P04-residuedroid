@@ -9,6 +9,8 @@ edge and umts, size 2 MiB, seed race-20261119. Per (profile, mode, sndbuf), tria
     counts); RST after the marker; actual_sndbuf from SOCKET_CONFIG; write throughput before W =
     BYTES_ACCEPTED before W / (W - SOCKET_CONFIG) on the device clock (bytes/s); queue snapshot (qsnap.parse) netem backlog
     and socket send queue. Paired per (block, profile): fence-abort vs fence application_data bytes, per sndbuf.
+Several run directories (a paused final, g3p4-card §3): only blocks complete within one directory (every cell of the block
+logged there) are analysed; the others are listed as 'interrupted block' (added 23/11 after the pause, before the analysis ran).
 No p-values. Output: <out>/g3p4-summary.json. Usage: analyze_g3p4.py <run dir> [more] [--out DIR] [--n 30]
 """
 import argparse, collections, gzip, json, sys
@@ -36,16 +38,32 @@ def actual_sndbuf(r):
     return int(fields(e['detail']).get('actual_sndbuf', -1)) if e else None
 
 
+def cells_per_block(meta):
+    sb = meta.get('sndbufs') or ''
+    n = len(meta.get('profiles', [])) * len(meta.get('modes', [])) * len(meta.get('sizes', [])) * (len(str(sb).split(',')) if sb else 1)
+    return n or None
+
+
+def split_blocks(rs, cells):
+    """Keep trials of blocks complete within this directory; the rest are 'interrupted block' (g3p4-card §3)."""
+    per = collections.Counter(r['block'] for r in rs)
+    keep = [r for r in rs if not cells or per[r['block']] >= cells]
+    return keep, [r for r in rs if cells and per[r['block']] < cells]
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dirs', nargs='+'); ap.add_argument('--out', required=True)
     ap.add_argument('--n', type=int, default=30); ap.add_argument('--marker', type=int, default=8799); a = ap.parse_args()
-    rows, caps, tlss = [], {}, {}
+    rows, caps, tlss, interrupted = [], {}, {}, []
     for k, dd in enumerate(a.dirs):
         d = Path(dd); op = (lambda p: open(p)) if (d / 'trials.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))
-        rows += [dict(json.loads(l), _dir=k) for l in op(d / 'trials.jsonl') if l.strip()]
+        rs = [dict(json.loads(l), _dir=k) for l in op(d / 'trials.jsonl') if l.strip()]
+        meta = json.loads((d / 'meta.json').read_text()) if (d / 'meta.json').exists() else {}
+        keep, cut = split_blocks(rs, cells_per_block(meta)); rows += keep
+        interrupted += [{'trial': r['trial'], 'dir': dd, 'reason': 'interrupted block'} for r in cut]
         pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'
         caps[k] = g.capture(pc, a.marker) if pc.exists() else None
-        tf = d / 'capture-tls.jsonl'; tlss[k] = tls_records.load(tf) if tf.exists() else None
+        tf = d / 'capture-tls-v2.jsonl' if (d / 'capture-tls-v2.jsonl').exists() else d / 'capture-tls.jsonl'; tlss[k] = tls_records.load(tf) if tf.exists() else None  # v2 (23/11): capture-tls.jsonl written by the autorun post step before the emulator closed the pcap; v2 from the complete pcap
     invalid = [{'trial': r['trial'], 'reason': why} for r in rows if (why := validity(r))]
     cells = collections.defaultdict(list)
     for r in sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial'])): cells[r['profile'], r['mode'], r.get('sndbuf', 16384)].append(r)
@@ -74,9 +92,9 @@ def main():
         w = app_by[blk, prof, 'fence', sb, ph]; p = paired[f'{prof}/sndbuf={sb}']; p['pairs'] += 1
         p['abort_less' if v < w else 'equal' if v == w else 'abort_more'] += 1
     Path(a.out).mkdir(parents=True, exist_ok=True)
-    (Path(a.out) / 'g3p4-summary.json').write_text(json.dumps({'dirs': a.dirs, 'logged': len(rows), 'invalid': invalid, 'cells': out,
+    (Path(a.out) / 'g3p4-summary.json').write_text(json.dumps({'dirs': a.dirs, 'logged': len(rows) + len(interrupted), 'interrupted_excluded': interrupted, 'invalid': invalid, 'cells': out,
         'paired_during_writes_app_bytes': dict(sorted(paired.items()))}, indent=1) + '\n')
-    print(f"logged {len(rows)}, invalid {len(invalid)}, cells {[(c, v['trials']) for c, v in out.items()]}")
+    print(f"logged {len(rows) + len(interrupted)}, interrupted {len(interrupted)}, invalid {len(invalid)}, cells {[(c, v['trials']) for c, v in out.items()]}")
 
 
 if __name__ == '__main__':

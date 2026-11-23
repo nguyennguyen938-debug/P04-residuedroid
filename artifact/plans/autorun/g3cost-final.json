@@ -47,5 +47,5 @@
   "python3 artifact/followup/analyze_g3cost.py artifact/results/round3/g3cost/final-v4 --out artifact/results/round3/g3cost/analysis-v4"
  ],
  "guard_after": false,
- "frozen": "artifact/results/round3/g3/frozen-g3-v7"
+ "frozen": "artifact/results/round3/g3/frozen-g3-v7b"
 }

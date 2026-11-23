@@ -119,7 +119,7 @@ def main():
         if rec.exists(): complete |= {x['request'] for x in (json.loads(l) for l in rec.read_text().splitlines() if l.strip()) if x.get('event') == 'body' and x.get('complete')}
         pc = d / 'capture.pcap' if (d / 'capture.pcap').exists() else d / 'capture-slim.pcap'   # slim: committed truncated copy (pcap_slim.py)
         caps[k] = capture(pc, a.marker) if pc.exists() else None
-        tlsf = d / 'capture-tls.jsonl'; tlss[k] = tls_records.load(tlsf) if tlsf.exists() else None
+        tlsf = d / 'capture-tls-v2.jsonl' if (d / 'capture-tls-v2.jsonl').exists() else d / 'capture-tls.jsonl'; tlss[k] = tls_records.load(tlsf) if tlsf.exists() else None  # v2 (23/11): capture-tls.jsonl written by the autorun post step before the emulator closed the pcap; v2 from the complete pcap
     cap = any(caps.values()); pc = Path(a.dirs[0])
     invalid = [{'trial': r['trial'], 'reason': why} for r in rows if (why := validity(r))]
     valid = sorted((r for r in rows if not validity(r)), key=lambda r: (r['block'], r['trial']))
