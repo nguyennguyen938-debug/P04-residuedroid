@@ -6,6 +6,9 @@ design), layered (G2b design), each with the G3 hooks (donation end, WITHDRAW_DO
 stockcancel 8793, layered 8795, stock 8796, fenced 8797.
 G3c v5 (g3app5-card.md, 23/11): build stockcancel16 (stockcancel + OkHttp SO_SNDBUF 16384), sink port 8794; run with
 --variants stockcancel16,stockcancel,fenced --apkdir realapp/airguard/build/g3v5. Every v5 build logs SOCKET_CONFIG actual_sndbuf.
+G3c v5c (--sockdiag): from the run hook until the trial quiesces, poll guest `ss -tmn dport = :<sink port>` every 1 s and keep
+the first socket with Send-Q >= 4096 (the donation body; ping/token requests are small): its skmem tb is the kernel send
+buffer, read the same way for every build and independent of the app (r['sockdiag']).
 Per trial k: the builds one after another in an order shuffled from the seed; one u ~ U(0,1) per trial (same for every build).
 Per build: pm clear -> grant -> [v4: wait for the app's startup donation worker (its get_token at the sink, max 30 s) + 3 s]
 -> insert N 'pre' beacons (one device) -> start marker (hook op mark: the app connects to the
@@ -19,7 +22,7 @@ Outcomes are read only by analyze_g3app.py.
 Usage: race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --out DIR
        (--calibrate 3 | --trials 30 --durations F) [--variants stock,stockcancel,fenced,layered] [--nbeacons 1500]
 """
-import argparse, contextlib, hashlib, json, os, random, socketserver, statistics, subprocess, sys, threading, time
+import argparse, contextlib, hashlib, json, os, random, re, socketserver, statistics, subprocess, sys, threading, time
 from pathlib import Path
 
 ART = Path(__file__).resolve().parents[1]
@@ -35,6 +38,7 @@ p.add_argument('--calibrate', type=int, default=0); p.add_argument('--trials', t
 p.add_argument('--durations', type=Path); p.add_argument('--seed', default='g3app-20261122')
 p.add_argument('--nbeacons-auto', type=Path, help='recalibration (g3app-card §3): N = ceil(N_F * 262144 / median body bytes of F)')
 p.add_argument('--marker', type=int, default=8799); p.add_argument('--capture', action='store_true')
+p.add_argument('--sockdiag', action='store_true', help='G3c v5c: kernel send buffer of the donation socket from guest ss (skmem tb)')
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
 assert a.trials == 0 or a.durations, '--trials needs --durations'
@@ -134,6 +138,28 @@ def after_run(ev):
 STARTUP_WAIT_S, STARTUP_SETTLE_S = 30, 3
 
 
+def ssdiag(port):
+    """Guest TCP sockets to the sink port: [{'state', 'sendq', 'local', 'tb'}] from `ss -tmn` (skmem tb = kernel sndbuf)."""
+    res, cur = [], None
+    for l in sh(f'ss -tmn dport = :{port}; true', 20).replace('\r', '').splitlines():
+        f = l.split()
+        if len(f) >= 5 and f[1].isdigit() and f[2].isdigit(): cur = {'state': f[0], 'sendq': int(f[2]), 'local': f[3]}; res.append(cur)
+        elif cur is not None and 'skmem:' in l:
+            m = re.search(r'\btb(\d+)', l); cur['tb'] = int(m[1]) if m else None
+    return res
+
+
+def sockwatch(port, stop, store):
+    t0 = time.monotonic(); store['polls'] = 0
+    while not stop.is_set() and time.monotonic() - t0 < 600:
+        try: socks = ssdiag(port)
+        except Exception as e: store['err'] = repr(e)[:120]; socks = []
+        store['polls'] += 1
+        big = [s for s in socks if s['sendq'] >= 4096 and s.get('tb')]
+        if big: store['first'] = dict(big[0], t_s=round(time.monotonic() - t0, 2)); return
+        stop.wait(1.0)
+
+
 END = ('DONATION_OK', 'DONATION_ERROR', 'DONATION_BLOCKED')
 
 
@@ -141,6 +167,7 @@ def one(k, v, u, D):
     tid = f'g3app-{k:03d}-{v}'
     r = {'trial': tid, 'k': k, 'variant': v, 'u': u, 'D_s': D, 'host_load': os.getloadavg(), 'start': time.time(), 'actions': []}
     act = lambda name, **kw: r['actions'].append({'t': time.time(), 'a': name, **kw})
+    sd_stop, sd = threading.Event(), {}
     try:
         sh(f'pm clear {PK[v]}'); sh(f'pm grant {PK[v]} android.permission.POST_NOTIFICATIONS 2>/dev/null'); act('reset')
         t_g = time.monotonic_ns(); ok, out = hook(v, 'grant'); act('grant', ok=ok, out=out)
@@ -153,6 +180,7 @@ def one(k, v, u, D):
         ok, out = hook(v, 'insert', timeout=300, addr=f'AA:00:00:03:{k // 100 % 100:02d}:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert', ok=ok, out=out)
         time.sleep(1.5)
         ok, out = hook(v, 'mark', tid=f'{tid}-start', marker=a.marker); act('start_marker', ok=ok, out=out)
+        if a.sockdiag: sd_th = threading.Thread(target=sockwatch, args=(PORTS[v], sd_stop, sd), daemon=True); sd_th.start()
         t_run = time.monotonic_ns(); ok, out = hook(v, 'run'); act('run', ok=ok, out=out)
         deadline = 4 * D + 30 if D else 120
         if u is not None:
@@ -165,11 +193,13 @@ def one(k, v, u, D):
             if any(e['kind'] in END for e in after_run(ev)) and (u is None or any(e['kind'] == 'MARKER_SENT' and f'tid={tid};' in e['detail'] for e in ev)): time.sleep(3); ev = events(v); break
             time.sleep(1)
         act('quiesced', waited=round(time.monotonic() - t0, 1)); r['events'] = ev
+        if a.sockdiag: sd_stop.set(); sd_th.join(30); r['sockdiag'] = sd
         ks = [e['kind'] for e in ev]; r['donation_before_run'] = 'DONATION_START' in ks[:ks.index('RUN_ENQUEUED')] if 'RUN_ENQUEUED' in ks else None
         if u is None and r['donation_before_run'] is False:   # v4: a calibration sample only from a run-hook upload
             got = sink_donate_after(PORTS[v], t_run); r['calib_s'] = (got[0] - t_run) / 1e9 if got else None; r['calib_bytes'] = got[1] if got else None
         sh(f'am force-stop {PK[v]}'); act('stopped'); r['device_alive_end'] = alive()
     except Exception as e: act('trial_error', err=repr(e)[:200])
+    sd_stop.set()   # v5c: the ss poller never outlives its build-trial
     r['finished'] = time.time(); LOG.write(json.dumps(r) + '\n'); LOG.flush()
     print(time.strftime('%H:%M:%S'), tid, [x['a'] for x in r['actions'] if x['a'] == 'trial_error'] or [e['kind'] for e in r.get('events', []) if e['kind'] in END], flush=True)
     return r
@@ -186,7 +216,7 @@ try:
     durations = json.loads(a.durations.read_text())['median_s'] if a.durations else {}
     meta = {'serial': a.serial, 'avd': a.avd, 'variants': V, 'ports': {v: PORTS[v] for v in V}, 'profile': a.profile, 'nbeacons': a.nbeacons,
             'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start, 'seed': a.seed, 'durations': durations, 'marker': a.marker,
-            'capture': a.capture, 'warmup': warm, 'radio': radio, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
+            'capture': a.capture, 'sockdiag': a.sockdiag, 'warmup': warm, 'radio': radio, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
             'apks': {v: hashlib.sha256((a.apkdir / f'airguard-{v}.apk').read_bytes()).hexdigest() for v in V}, 'started': time.time()}
     (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
     meta_net = net(a.profile); (a.out / 'net.json').write_text(json.dumps({'tc': meta_net}) + '\n')

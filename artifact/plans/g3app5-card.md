@@ -1,7 +1,7 @@
 # Experiment card — G3c protocol v5: stockcancel with a 16 KiB send buffer (stockcancel16) vs stockcancel vs fenced
 
 Status: written 23/11, before any v5 trial; frozen at the commit that adds it (`results/round3/g3/frozen-g3-v8`). Chain
-`plans/autorun/g3-g3c5-chain.sh` (calibration pilot → gate → mechanism pilot → gate → final). Owner: B (Duy).
+`plans/autorun/g3-g3c5-chain.sh` (v5c: `g3-g3c5c-chain.sh`; calibration pilot → gate → mechanism pilot → gate → final). Owner: B (Duy).
 Source: the leader's request in issue #7 (23/11 13:20 UTC, relayed by C). The request fixes the new build (`stockcancel16`:
 stockcancel with OkHttp `SO_SNDBUF` 16 KiB set by a `SocketFactory` before connect), the three builds in the same trials
 (stockcancel16, stockcancel, fenced), "as G3c v4" (body ≈ 256 KiB, umts, the app's own withdrawal path at u·D from a fixed
@@ -107,5 +107,23 @@ is withdrawn. Reported in issue #7.
     `calibration-used-v5b.json`, `analysis-v5b`; chain `plans/autorun/g3-g3c5b-chain.sh`; manifests `g3app5b-*.json`; freeze
     `frozen-g3-v8b` (G3d manifests repointed to it; G3d files unchanged).
   - The analysis reports both `donation_sndbuf` (API units) and `donation_kernel_sndbuf`.
+- pilot-v5b-calib (23/11 21:41–21:47; excluded): calibration gate passed (D 18.2 / 18.3 / 18.0 s; body 262,625 B).
+- pilot-v5b-mech (21:47–21:51; excluded): **MECHANISM GATE FAIL**, no v5b final. All other checks passed; every build-trial
+  logged `kernel_sndbuf=-1;kernel_err=NoSuchMethodException`: API 33 blocks the hidden `getsockoptInt` through reflection.
+  A harness measurement fault. (API units again: fenced 16384, stockcancel16 32768, stockcancel 2097152.)
+- **Protocol v5c** (23/11, before any v5c trial; builds = the v5b APKs `build/g3v5b`, whose in-app `kernel_sndbuf` is -1 by
+  construction and is not used; design, N, seed and analysis otherwise as v5):
+  - the harness reads the kernel send buffer itself (`race_airguard.py --sockdiag`): from the run hook until the build-trial
+    quiesces it polls guest `ss -tmn dport = :<sink port>` (iproute2, checked on the image) every 1 s and keeps the first
+    socket with Send-Q ≥ 4096 (the donation body; ping and token requests are small); `skmem tb` is the kernel sndbuf. Same
+    read for every build, independent of the app; used in every v5c stage;
+  - calibration gate (no withdrawal there, so every send has a body socket): in addition to v5's checks, all 9 calibration
+    sends have a `tb`, and it is 32768 (= 2 × 16384, Linux doubles the requested value) for every stockcancel16 and fenced send;
+  - mechanism gate: v4 checks, and the ss poller ran in every build-trial (its value is not re-checked: a withdrawal can fall
+    before the donation starts);
+  - analysis adds `donation_sockdiag_tb`; directories `pilot-v5c-calib`, `pilot-v5c-mech`, `final-v5c`,
+    `calibration-used-v5c.json`, `analysis-v5c`; chain `g3-g3c5c-chain.sh`; manifests `g3app5c-*.json`; freeze `frozen-g3-v8c`
+    (G3d manifests repointed; G3d files unchanged).
+  - Threat (internal): the poll adds one adb shell call per second during each build-trial, the same for every build.
 
 ## 6. Outcome (after the run)

@@ -17,6 +17,8 @@ Secondary:
     kernel value, NIO SocketChannel half of it) and, from v5b, kernel_sndbuf (getsockopt on the fd, same call in every build)
     of the SOCKET_CONFIG event of the donation (OkHttp: path ending donate_data; HttpTransport: the only SOCKET_CONFIG) after
     RUN_ENQUEUED; counts per value, 'missing' if absent;
+  - v5c: kernel send buffer of the donation socket from the harness's guest `ss` read (r['sockdiag'] first socket with
+    Send-Q >= 4096, skmem tb), the same read for every build; 'missing' if no such socket was seen;
   - end events and placement.
 No p-values. Output: <out>/g3app5-summary.json. Usage: analyze_g3app5.py <run dir> [--out DIR] [--n 30]
 """
@@ -41,6 +43,10 @@ def donation_sndbuf(ev, key='actual_sndbuf'):
         f = fields(e['detail'])
         if 'path' not in f or f['path'].rstrip('/').endswith('donate_data'): return int(f[key]) if key in f else None
     return None
+
+
+def sockdiag_tb(r):
+    return ((r.get('sockdiag') or {}).get('first') or {}).get('tb')
 
 
 def cancel_cut(ev):
@@ -80,7 +86,7 @@ def main():
             ev = r['events']; q = {'placement': placement(ev), 'end': next((e['kind'] for e in after_run(ev) if e['kind'] in END), None)}
             wd = first(ev, 'WITHDRAW_DONE')
             q['app_after_done'] = wd is not None and any(e['kind'] == 'BYTES_ACCEPTED' and e['mono_ns'] > wd and int(fields(e['detail']).get('n', 0)) > 0 for e in ev)
-            q['blocks'] = sum(e['kind'] == 'BLOCK' for e in ev); q['cancel_cut'] = cancel_cut(ev); q['sndbuf'] = donation_sndbuf(ev); q['ksndbuf'] = donation_sndbuf(ev, 'kernel_sndbuf')
+            q['blocks'] = sum(e['kind'] == 'BLOCK' for e in ev); q['cancel_cut'] = cancel_cut(ev); q['sndbuf'] = donation_sndbuf(ev); q['ksndbuf'] = donation_sndbuf(ev, 'kernel_sndbuf'); q['tb'] = sockdiag_tb(r)
             hm = mk.get(r['trial'])
             q['complete_after_ack'] = None if hm is None else receiver_complete(sink, port, v, hm, mk)
             q['sent_after_ack'] = None
@@ -110,6 +116,7 @@ def main():
                   'app_bytes_after_withdraw_done': sum(q['app_after_done'] for q in qs) if v == 'fenced' else None,
                   'trials_with_block_event': sum(q['blocks'] > 0 for q in qs),
                   'donation_sndbuf': dict(collections.Counter('missing' if q['sndbuf'] is None else str(q['sndbuf']) for q in qs)),
+                  'donation_sockdiag_tb': dict(collections.Counter('missing' if q['tb'] is None else str(q['tb']) for q in qs)),
                   'donation_kernel_sndbuf': dict(collections.Counter('missing' if q['ksndbuf'] is None else str(q['ksndbuf']) for q in qs)),
                   'ends': dict(collections.Counter(q['end'] for q in qs)), 'placement': dict(collections.Counter(q['placement'] for q in qs))}
     paired = {}

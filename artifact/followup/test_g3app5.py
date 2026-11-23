@@ -27,6 +27,10 @@ class G3App5(unittest.TestCase):
         k = [e(1, 'RUN_ENQUEUED'), e(2, 'SOCKET_CONFIG', 'path=/donate_data;actual_sndbuf=32768;kernel_sndbuf=32768')]
         self.assertEqual(g.donation_sndbuf(k, 'kernel_sndbuf'), 32768); self.assertIsNone(g.donation_sndbuf(ok, 'kernel_sndbuf'))
 
+    def test_sockdiag(self):
+        self.assertEqual(g.sockdiag_tb({'sockdiag': {'polls': 3, 'first': {'sendq': 9000, 'tb': 32768}}}), 32768)
+        self.assertIsNone(g.sockdiag_tb({'sockdiag': {'polls': 3}})); self.assertIsNone(g.sockdiag_tb({}))
+
     def test_run(self):
         d = Path(tempfile.mkdtemp()); (d / 'sink').mkdir()
         P = {'stockcancel16': 8794, 'fenced': 8797}
