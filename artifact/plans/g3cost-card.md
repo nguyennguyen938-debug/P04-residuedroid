@@ -168,3 +168,44 @@ before any data. The user's own phone; no rental, no cost.
   receiver) is identical to v7b, so G3d protocol v4 is unchanged.
 
 ## 6. Outcome (after the run)
+Source: `results/round3/g3cost/analysis-v4/g3cost-summary.json` (pre-registered analysis, run by the final manifest) and
+`analysis-v4/batterystats-check.json` (`followup/bs_check_g3cost.py`, exploratory, post hoc).
+
+- **Run (24/11, user go-ahead):** pilot-6 00:14 → gate passed → final-v4 00:14–01:10; no other run on the Mac (the
+  emulator chain was not running). The phone was restored at the end (timeout 600000, Doze enabled, battery reset);
+  no serial in the run files (`meta.json` `serial` = "physical (not recorded)").
+- **Validity:** 180 cells logged (20 per arm and size), 180 valid, 0 unused; 1800 uploads (200 per arm and size),
+  every one SEND_OK with the receiver logging it complete; no replacement.
+- **Process CPU per MiB, median (p95), ms** and **elapsed per upload, median (p95), ms**, device clock, N = 200 uploads per row:
+
+  | size | fence CPU | early CPU | platform CPU | fence elapsed | early elapsed | platform elapsed |
+  |---|---|---|---|---|---|---|
+  | 4 KiB | 6798 (14102) | 5288 (10828) | 5283 (10063) | 79.9 (350.4) | 69.8 (213.9) | 92.4 (421.0) |
+  | 256 KiB | 867.8 (2327) | 639.8 (2047) | 136.0 (219.9) | 379.6 (2749) | 356.5 (2990) | 275.6 (1446) |
+  | 2 MiB | 780.5 (2372) | 555.2 (1840) | 31.0 (45.0) | 2677 (20363) | 2557 (19806) | 1258 (13407) |
+
+- **Ratios of medians** (descriptive, no p-values):
+
+  | size | CPU fence/early | CPU fence/platform | elapsed fence/early | elapsed fence/platform |
+  |---|---|---|---|---|
+  | 4 KiB | 1.286 | 1.287 | 1.145 | 0.865 |
+  | 256 KiB | 1.356 | 6.382 | 1.065 | 1.377 |
+  | 2 MiB | 1.406 | 25.177 | 1.047 | 2.128 |
+
+- **Estimated energy: no information.** Every one of the 180 cells has a batterystats record for the app UID and every
+  reading is 0 mAh, so the pre-registered estimate is 0 for all 9 (arm, size) and the energy ratios are undefined (null).
+  Exploratory check: in all 180 cells the checkin line's global CPU component and the text "Computed drain" are also 0;
+  the same holds in pilot-4, pilot-5, final-v3 and pilot-6 (271 cells in all). The platform's power model on this phone
+  (Android 15, with `dumpsys battery unplug` while USB power is present) attributes nothing to the app over a cell, so
+  **G3d supports no energy claim**, not even a relative one. This is a property of the proxy, not a harness fault: the
+  parser reads the UID line, and the readings are 0 rather than missing.
+- **Reading (descriptive, one phone, foreground, screen on, Wi-Fi):**
+  - fence vs early (same TlsTransport, the only difference is the per-write check under the lock): CPU per MiB
+    1.29–1.41× and elapsed 1.05–1.15× at the median;
+  - fence vs the platform client: at 4 KiB about the same CPU and a lower median elapsed; at 256 KiB and 2 MiB the
+    platform client uses far less process CPU (6.4× and 25× lower median) and less time (1.4× and 2.1×). Most of that
+    gap is shared by `early` (early/platform CPU at 2 MiB = 555.2/31.0), so it comes from the user-space TLS transport
+    of the fixture, not from the fence check;
+  - elapsed tails are wide (p95 up to ~20 s at 2 MiB in every arm); Wi-Fi rate varies (§5).
+- **Threats (in addition to §5):** process CPU includes the whole app; the shuffled order is per block; the energy
+  proxy is uninformative here (above); one phone and one network.

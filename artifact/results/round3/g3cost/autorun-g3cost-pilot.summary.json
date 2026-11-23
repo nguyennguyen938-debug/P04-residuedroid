@@ -3,8 +3,8 @@
   "kind": "pilot",
   "status": "DONE",
   "guard": null,
-  "finished": "2026-11-23T15:31:23.870059+07:00",
+  "finished": "2026-11-24T00:14:40.135205+07:00",
   "stages": [
-    "artifact/results/round3/g3cost/pilot-5"
+    "artifact/results/round3/g3cost/pilot-6"
   ]
 }

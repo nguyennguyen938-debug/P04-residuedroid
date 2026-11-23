@@ -14,3 +14,4 @@ g2close/pilot-mech/trials.jsonl
 g3race/*/capture.pcap
 g3app/*/capture.pcap
 g3race/*/trials.jsonl
+g3cost/final-v4/cells.jsonl

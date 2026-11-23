@@ -18,3 +18,7 @@
 {"stage": "pilot", "state": "start", "t": 1795422648.817973}
 {"stage": "pilot", "state": "end", "exit": 0, "t": 1795422683.8689659}
 {"stage": "shutdown", "serials": [], "t": 1795422683.869872}
+{"stage": "launch", "manifest": {"id": "g3cost-pilot", "kind": "pilot", "card": "artifact/plans/g3cost-card.md", "deadline_hours": 1, "env": {"ANDROID_HOME": "~/Library/Android/sdk", "ANDROID_SDK_ROOT": "~/Library/Android/sdk", "ANDROID_AVD_HOME": "~/.android/avd", "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home", "PORTS": "8800"}, "owned_serials": [], "pre": ["bash .claude/skills/p04-experiment/scripts/preflight.sh"], "stages": [{"name": "pilot", "cwd": "artifact", "cmd": ["python3", "followup/cost_suite.py", "--serial", "auto", "--host", "auto", "--port", "8800", "--certdir", "/Users/nguyennhatduy/.p04/g3dcert", "--apk", "fixture/build/g3-apk/rl-tls.apk", "--seed", "g3cost-20261122", "--blocks", "1", "--repeats", "2", "--out", "results/round3/g3cost/pilot-6"], "out": "artifact/results/round3/g3cost/pilot-6"}], "post": [], "guard_after": false, "frozen": "artifact/results/round3/g3/frozen-g3-v8c"}, "t": 1795454040.865493}
+{"stage": "pilot", "state": "start", "t": 1795454040.8657348}
+{"stage": "pilot", "state": "end", "exit": 0, "t": 1795454080.133872}
+{"stage": "shutdown", "serials": [], "t": 1795454080.1347}

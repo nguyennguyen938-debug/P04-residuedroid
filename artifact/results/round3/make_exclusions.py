@@ -67,6 +67,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g3cost/pilot-3': ('G3d pilot-3: PILOT GATE FAIL (8/9 cells valid; one transient adb error with empty stderr; Android 15 batterystats estimate only on the checkin line; chain gate line bug)', 'G3d protocol v2: one logged adb retry, Android 15 parser, gate line fixed'),
     'round3/g3cost/pilot-5': ('G3d v3 pilot (23/11 15:30): gate passed (1 block); the v3 final then dozed at the 10 min screen timeout under battery unplug (harness design fault)', 'G3d protocol v4: screen timeout 24 h + Doze off during the run, checked in meta and the pilot gate'),
     'round3/g3cost/pilot-4': ('G3d v2 pilot: gate passed (9/9 valid, 18/18 uploads ok and received)', 'none (the v2 final then failed on the environment: phone dozed, device lost; protocol v3)'),
+    'round3/g3cost/pilot-6': ('G3d v4 pilot (24/11 00:14): gate passed (9/9 valid, 18/18 uploads ok and received, batterystats in 9 cells, screen timeout 86400000 and Doze off)', 'none'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
 
@@ -116,6 +117,9 @@ def trial_rows():
     g3c5 = load('round3/g3app/analysis-v5c/g3app5-summary.json')
     if g3c5: out.append(('G3c v5c AirGuard stockcancel16 / stockcancel / fenced (group 3, leader request)', g3c5['logged'], [f"{x['trial']}: {x['reason']}" for x in g3c5['invalid']],
                          sum(c.get('unused', 0) for c in g3c5['builds'].values()), 'g3app/analysis-v5c'))
+    g3d = load('round3/g3cost/analysis-v4/g3cost-summary.json')
+    if g3d: out.append(('G3d upload cost on the phone (Galaxy A06, Android 15), protocol v4 (unit: cell)', g3d['logged_cells'], [str(x) for x in g3d['invalid']],
+                        sum(c.get('unused_cells', 0) for c in g3d['cells'].values()), 'g3cost/analysis-v4'))
     p3 = load('round3/g3race/analysis-lte5/g3race-summary.json')
     if p3: out.append(('P3: G3a on lte, balanced exposure (protocol v5)', p3['logged'], [f"{x['trial']}: {x['reason']}" for x in p3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p3['interrupted_excluded']],
                        sum(c.get('unused', 0) for c in p3['cells'].values()), 'g3race/analysis-lte5'))

@@ -11,7 +11,7 @@ Per (arm, size), descriptive (nearest-rank p95; median = mean of the two middle 
 Ratios of medians fence/early and fence/platform per size (descriptive). No p-values.
 Usage: analyze_g3cost.py <run dir> [--out results/round3/g3cost/analysis] [--n 20]
 """
-import argparse, collections, json, math, re
+import gzip, argparse, collections, json, math, re
 from pathlib import Path
 
 ART = Path(__file__).resolve().parents[1]
@@ -47,7 +47,8 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('dir'); ap.add_argument('--out', default=str(ART / 'results/round3/g3cost/analysis'))
     ap.add_argument('--n', type=int, default=20); a = ap.parse_args()
     d = Path(a.dir); meta = json.loads((d / 'meta.json').read_text()); uid = meta['uid']
-    cells = [json.loads(l) for l in open(d / 'cells.jsonl') if l.strip()]
+    op = (lambda p: open(p)) if (d / 'cells.jsonl').exists() else (lambda p: gzip.open(str(p) + '.gz', 'rt'))   # 24/11: large raw committed gzip-compressed
+    cells = [json.loads(l) for l in op(d / 'cells.jsonl') if l.strip()]
     by = collections.defaultdict(list)
     for c in sorted(cells, key=lambda c: (c['block'], c['cell'])):
         if valid(c): by[c['mode'], c['size']].append(c)
