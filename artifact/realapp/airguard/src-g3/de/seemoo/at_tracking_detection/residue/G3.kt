@@ -47,10 +47,23 @@ object G3 {
     object SockLog : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val s = chain.connection()?.socket()
-            ctx?.let { ResidueEvents.log(it, "SOCKET_CONFIG", "path=${chain.request().url.encodedPath};requested_sndbuf=${if (BuildConfig.RESIDUE_SNDBUF16) 16384 else 0};actual_sndbuf=${s?.sendBufferSize ?: -1};local_port=${s?.localPort ?: -1}") }
+            ctx?.let { ResidueEvents.log(it, "SOCKET_CONFIG", "path=${chain.request().url.encodedPath};requested_sndbuf=${if (BuildConfig.RESIDUE_SNDBUF16) 16384 else 0};actual_sndbuf=${s?.sendBufferSize ?: -1};kernel_sndbuf=${kern(s)};local_port=${s?.localPort ?: -1}") }
             return chain.proceed(chain.request())
         }
     }
+
+    /** v5b: SO_SNDBUF as the kernel reports it (getsockopt on a dup of the socket's fd), the same call for every build;
+     *  getSendBufferSize() differs by API (java.net.Socket: raw kernel value; NIO SocketChannel: halved). "-1;kernel_err=.." on failure. */
+    @JvmStatic fun kern(s: Socket?): String = try {
+        android.os.ParcelFileDescriptor.fromSocket(s).use { pfd ->
+            // getsockoptInt is not in the public SDK: reflection on android.system.Os (hidden), else libcore.io.Libcore.os
+            val args = arrayOf<Any>(pfd.fileDescriptor, android.system.OsConstants.SOL_SOCKET, android.system.OsConstants.SO_SNDBUF)
+            val sig = arrayOf<Class<*>>(java.io.FileDescriptor::class.java, Int::class.javaPrimitiveType!!, Int::class.javaPrimitiveType!!)
+            val v = try { android.system.Os::class.java.getMethod("getsockoptInt", *sig).invoke(null, *args) }
+                    catch (e: Exception) { val os = Class.forName("libcore.io.Libcore").getField("os").get(null); os.javaClass.getMethod("getsockoptInt", *sig).invoke(os, *args) }
+            "$v"
+        }
+    } catch (e: Throwable) { "-1;kernel_err=${(e.cause ?: e).javaClass.simpleName}" }
 
     object SndBuf16 : javax.net.SocketFactory() {
         private fun s(): Socket = Socket().apply { sendBufferSize = 16384 }

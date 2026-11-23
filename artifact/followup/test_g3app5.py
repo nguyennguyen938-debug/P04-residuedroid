@@ -24,6 +24,8 @@ class G3App5(unittest.TestCase):
         self.assertEqual(g.donation_sndbuf(ok), 16384)
         self.assertEqual(g.donation_sndbuf([e(1, 'RUN_ENQUEUED'), e(2, 'SOCKET_CONFIG', 'v=2;request=x;attempt=1;requested_sndbuf=16384;actual_sndbuf=16384')]), 16384)
         self.assertIsNone(g.donation_sndbuf([e(0, 'SOCKET_CONFIG', 'path=/donate_data;actual_sndbuf=9'), e(1, 'RUN_ENQUEUED')]))
+        k = [e(1, 'RUN_ENQUEUED'), e(2, 'SOCKET_CONFIG', 'path=/donate_data;actual_sndbuf=32768;kernel_sndbuf=32768')]
+        self.assertEqual(g.donation_sndbuf(k, 'kernel_sndbuf'), 32768); self.assertIsNone(g.donation_sndbuf(ok, 'kernel_sndbuf'))
 
     def test_run(self):
         d = Path(tempfile.mkdtemp()); (d / 'sink').mkdir()

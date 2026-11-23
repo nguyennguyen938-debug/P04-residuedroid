@@ -89,5 +89,23 @@ donation, the trial with DONATION_OK. The v4 reading "at least 4 blocked trials 
 is withdrawn. Reported in issue #7.
 
 ## Pilot log
+- pilot-v5-calib (23/11 21:27–21:33; excluded): calibration gate passed (3 samples per build; D stockcancel16 24.0 s,
+  stockcancel 18.2 s, fenced 18.0 s; body 262,625 B).
+- pilot-v5-mech (21:33–21:36; excluded): **MECHANISM GATE FAIL**, so no v5 final. Every other check passed (6/6 valid,
+  markers in log and capture). `actual_sndbuf` of the donation socket was 16384 for fenced, **32768** for stockcancel16 and
+  2097152 for stockcancel. Diagnosis (B, from the logged values, not outcomes): `getSendBufferSize()` reports different
+  units by API. Linux stores twice the requested SO_SNDBUF; `java.net.Socket` (OkHttp) returns the kernel value, while the
+  NIO `SocketChannel` adaptor (HttpTransport) returns half of it (OpenJDK behaviour on Linux). stockcancel's 2097152 is the
+  1 MiB that P4 saw through NIO. So the factory worked, but the gate compared values in different units: a gate design
+  fault, not an environment failure. v5 directories are kept and not pooled.
+- **Protocol v5b** (23/11, before any v5b trial; builds, design, N, seed, analysis otherwise as v5):
+  - every build also logs `kernel_sndbuf`, read by the same call in every build (getsockopt on a dup of the socket fd via
+    reflection, `G3.kern`; on failure `-1;kernel_err=<class>`); new APKs `realapp/airguard/build/g3v5b` (sha256 stockcancel16
+    266d26b4…, stockcancel 5061f227…, fenced bcd96ab4…);
+  - mechanism gate: every build-trial has `kernel_sndbuf` > 0, and stockcancel16 and fenced both have 32768 (= 2 × 16384);
+  - a new calibration (the APKs changed); directories `pilot-v5b-calib`, `pilot-v5b-mech`, `final-v5b`,
+    `calibration-used-v5b.json`, `analysis-v5b`; chain `plans/autorun/g3-g3c5b-chain.sh`; manifests `g3app5b-*.json`; freeze
+    `frozen-g3-v8b` (G3d manifests repointed to it; G3d files unchanged).
+  - The analysis reports both `donation_sndbuf` (API units) and `donation_kernel_sndbuf`.
 
 ## 6. Outcome (after the run)

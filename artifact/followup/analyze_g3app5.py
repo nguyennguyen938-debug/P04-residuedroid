@@ -13,8 +13,10 @@ Secondary:
   - Call.cancel() cut an in-flight call (cancel builds): CANCEL_DONE calls >= 1 and the donation ended DONATION_ERROR after
     CANCEL_DONE (device clock); CANCEL_DONE calls = 0 counted separately;
   - fenced: app oracle, BYTES_ACCEPTED n > 0 after WITHDRAW_DONE; BLOCK events;
-  - send buffer of the donation socket: actual_sndbuf of the SOCKET_CONFIG event of the donation (OkHttp: path ending
-    donate_data; HttpTransport: the only SOCKET_CONFIG) after RUN_ENQUEUED; counts per value, 'missing' if absent;
+  - send buffer of the donation socket: actual_sndbuf (getSendBufferSize(); API-dependent units: java.net.Socket reports the
+    kernel value, NIO SocketChannel half of it) and, from v5b, kernel_sndbuf (getsockopt on the fd, same call in every build)
+    of the SOCKET_CONFIG event of the donation (OkHttp: path ending donate_data; HttpTransport: the only SOCKET_CONFIG) after
+    RUN_ENQUEUED; counts per value, 'missing' if absent;
   - end events and placement.
 No p-values. Output: <out>/g3app5-summary.json. Usage: analyze_g3app5.py <run dir> [--out DIR] [--n 30]
 """
@@ -33,11 +35,11 @@ def after_run(ev):
     return ev[ks.index('RUN_ENQUEUED') + 1:] if 'RUN_ENQUEUED' in ks else []
 
 
-def donation_sndbuf(ev):
+def donation_sndbuf(ev, key='actual_sndbuf'):
     for e in after_run(ev):
         if e['kind'] != 'SOCKET_CONFIG': continue
         f = fields(e['detail'])
-        if 'path' not in f or f['path'].rstrip('/').endswith('donate_data'): return int(f.get('actual_sndbuf', -1))
+        if 'path' not in f or f['path'].rstrip('/').endswith('donate_data'): return int(f[key]) if key in f else None
     return None
 
 
@@ -78,7 +80,7 @@ def main():
             ev = r['events']; q = {'placement': placement(ev), 'end': next((e['kind'] for e in after_run(ev) if e['kind'] in END), None)}
             wd = first(ev, 'WITHDRAW_DONE')
             q['app_after_done'] = wd is not None and any(e['kind'] == 'BYTES_ACCEPTED' and e['mono_ns'] > wd and int(fields(e['detail']).get('n', 0)) > 0 for e in ev)
-            q['blocks'] = sum(e['kind'] == 'BLOCK' for e in ev); q['cancel_cut'] = cancel_cut(ev); q['sndbuf'] = donation_sndbuf(ev)
+            q['blocks'] = sum(e['kind'] == 'BLOCK' for e in ev); q['cancel_cut'] = cancel_cut(ev); q['sndbuf'] = donation_sndbuf(ev); q['ksndbuf'] = donation_sndbuf(ev, 'kernel_sndbuf')
             hm = mk.get(r['trial'])
             q['complete_after_ack'] = None if hm is None else receiver_complete(sink, port, v, hm, mk)
             q['sent_after_ack'] = None
@@ -108,6 +110,7 @@ def main():
                   'app_bytes_after_withdraw_done': sum(q['app_after_done'] for q in qs) if v == 'fenced' else None,
                   'trials_with_block_event': sum(q['blocks'] > 0 for q in qs),
                   'donation_sndbuf': dict(collections.Counter('missing' if q['sndbuf'] is None else str(q['sndbuf']) for q in qs)),
+                  'donation_kernel_sndbuf': dict(collections.Counter('missing' if q['ksndbuf'] is None else str(q['ksndbuf']) for q in qs)),
                   'ends': dict(collections.Counter(q['end'] for q in qs)), 'placement': dict(collections.Counter(q['placement'] for q in qs))}
     paired = {}
     for x, y in (('stockcancel16', 'fenced'), ('stockcancel16', 'stockcancel'), ('stockcancel', 'fenced')):

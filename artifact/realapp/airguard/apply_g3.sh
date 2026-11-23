@@ -10,6 +10,7 @@
 #  - G3c v5 (g3app5-card.md, 23/11): variant stockcancel16 = stockcancel + OkHttp SocketFactory with SO_SNDBUF 16384 set
 #    before connect; every build logs SOCKET_CONFIG actual_sndbuf after connect (OkHttp: network interceptor G3.SockLog;
 #    fenced/layered: one emit appended to the connect line of the clone's HttpTransport copy; artifact/transport unchanged).
+#    v5b (23/11): the same event also carries kernel_sndbuf (getsockopt on the fd, G3.kern) for every build.
 # apply.sh is unchanged (B2/G2b builds unaffected).
 set -euo pipefail
 SRC=$1; HERE=$(cd "$(dirname "$0")" && pwd)
@@ -40,7 +41,7 @@ edit(pkg + '/hilt/ApiModule.kt', [
      '        if (BuildConfig.RESIDUE_TEST) builder.addNetworkInterceptor(de.seemoo.at_tracking_detection.residue.G3.SockLog)\n        return builder.build()', 1)])
 edit(app + '/src/main/java/org/residuelab/transport/HttpTransport.java', [
     ('            while (!channel.finishConnect()) ready(selector, key, SelectionKey.OP_CONNECT, deadline);\n',
-     '            while (!channel.finishConnect()) ready(selector, key, SelectionKey.OP_CONNECT, deadline); events.emit("SOCKET_CONFIG", prefix + "requested_sndbuf=16384;actual_sndbuf=" + channel.socket().getSendBufferSize());\n', 1)])
+     '            while (!channel.finishConnect()) ready(selector, key, SelectionKey.OP_CONNECT, deadline); events.emit("SOCKET_CONFIG", prefix + "requested_sndbuf=16384;actual_sndbuf=" + channel.socket().getSendBufferSize() + ";kernel_sndbuf=" + de.seemoo.at_tracking_detection.residue.G3.kern(channel.socket()));\n', 1)])
 edit(pkg + '/residue/TestHooks.kt', [
     ('app.backgroundWorkScheduler.removeShareData() }',
      'app.backgroundWorkScheduler.removeShareData(); G3.afterWithdraw(context, intent) }', 1),
