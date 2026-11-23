@@ -6,6 +6,7 @@ import de.seemoo.at_tracking_detection.BuildConfig
 import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.Socket
 import java.util.concurrent.ConcurrentHashMap
@@ -19,9 +20,15 @@ import java.util.concurrent.ConcurrentHashMap
  *  - afterWithdraw(): after the app's own withdrawal path (consent log, preference, scheduler), [cancel], then
  *    WITHDRAW_DONE and one TCP connection to the host marker port carrying the trial id (ack position in the capture).
  *  - mark(): the same connection on demand (hook op mark), used by the harness as the start marker of each build-trial.
+ *  - G3c v5 (g3app5-card.md): SockLog, an OkHttp network interceptor in every OkHttp build, logs SOCKET_CONFIG with
+ *    getSendBufferSize() of the connected socket per request; SndBuf16, a SocketFactory that sets SO_SNDBUF 16384 before
+ *    connect, installed only in the stockcancel16 build (BuildConfig.RESIDUE_SNDBUF16).
  */
 object G3 {
+    @Volatile var ctx: Context? = null
+
     suspend fun <T> stock(c: Context, call: suspend () -> retrofit2.Response<T>): retrofit2.Response<T> {
+        ctx = c.applicationContext
         ResidueEvents.log(c, "DONATION_START", "stock=1")
         try {
             val r = call(); ResidueEvents.log(c, "DONATION_OK", "stock=1;code=${r.code()}"); return r
@@ -35,6 +42,23 @@ object G3 {
             try { return chain.proceed(chain.request()) } finally { live.remove(chain.call()) }
         }
         fun cancelAll(): Int { var n = 0; for (c in live) { c.cancel(); n++ }; return n }
+    }
+
+    object SockLog : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val s = chain.connection()?.socket()
+            ctx?.let { ResidueEvents.log(it, "SOCKET_CONFIG", "path=${chain.request().url.encodedPath};requested_sndbuf=${if (BuildConfig.RESIDUE_SNDBUF16) 16384 else 0};actual_sndbuf=${s?.sendBufferSize ?: -1};local_port=${s?.localPort ?: -1}") }
+            return chain.proceed(chain.request())
+        }
+    }
+
+    object SndBuf16 : javax.net.SocketFactory() {
+        private fun s(): Socket = Socket().apply { sendBufferSize = 16384 }
+        override fun createSocket(): Socket = s()
+        override fun createSocket(host: String, port: Int): Socket = s().apply { connect(InetSocketAddress(host, port)) }
+        override fun createSocket(host: String, port: Int, la: InetAddress, lp: Int): Socket = s().apply { bind(InetSocketAddress(la, lp)); connect(InetSocketAddress(host, port)) }
+        override fun createSocket(host: InetAddress, port: Int): Socket = s().apply { connect(InetSocketAddress(host, port)) }
+        override fun createSocket(host: InetAddress, port: Int, la: InetAddress, lp: Int): Socket = s().apply { bind(InetSocketAddress(la, lp)); connect(InetSocketAddress(host, port)) }
     }
 
     fun afterWithdraw(c: Context, i: Intent) {

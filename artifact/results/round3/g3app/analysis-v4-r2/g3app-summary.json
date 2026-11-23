@@ -1,0 +1,124 @@
+{
+ "logged": 120,
+ "invalid": [],
+ "capture_file": true,
+ "builds": {
+  "stock": {
+   "trials": 30,
+   "unused": 0,
+   "capture_status": {
+    "ok": 30
+   },
+   "sent_after_ack": 29,
+   "sent_after_ack_wilson95": [
+    0.8332924860304112,
+    0.9940915620051425
+   ],
+   "capture_trials": 30,
+   "after_marker_bytes": 4049960,
+   "receiver_complete_after_ack": 30,
+   "ends": {
+    "DONATION_OK": 30
+   },
+   "placement": {
+    "during": 30
+   },
+   "app_bytes_after_withdraw_done": null,
+   "trials_with_block_event": 0,
+   "early_blocked": 0,
+   "cancel_calls": null
+  },
+  "stockcancel": {
+   "trials": 30,
+   "unused": 0,
+   "capture_status": {
+    "ok": 30
+   },
+   "sent_after_ack": 29,
+   "sent_after_ack_wilson95": [
+    0.8332924860304112,
+    0.9940915620051425
+   ],
+   "capture_trials": 30,
+   "after_marker_bytes": 3654955,
+   "receiver_complete_after_ack": 30,
+   "ends": {
+    "DONATION_ERROR": 30
+   },
+   "placement": {
+    "during": 30
+   },
+   "app_bytes_after_withdraw_done": null,
+   "trials_with_block_event": 0,
+   "early_blocked": 0,
+   "cancel_calls": {
+    "1": 30
+   }
+  },
+  "fenced": {
+   "trials": 30,
+   "unused": 0,
+   "capture_status": {
+    "ok": 30
+   },
+   "sent_after_ack": 29,
+   "sent_after_ack_wilson95": [
+    0.8332924860304112,
+    0.9940915620051425
+   ],
+   "capture_trials": 30,
+   "after_marker_bytes": 676729,
+   "receiver_complete_after_ack": 1,
+   "ends": {
+    "DONATION_BLOCKED": 29,
+    "DONATION_OK": 1
+   },
+   "placement": {
+    "during": 30
+   },
+   "app_bytes_after_withdraw_done": 0,
+   "trials_with_block_event": 29,
+   "early_blocked": 0,
+   "cancel_calls": null
+  },
+  "layered": {
+   "trials": 30,
+   "unused": 0,
+   "capture_status": {
+    "ok": 30
+   },
+   "sent_after_ack": 29,
+   "sent_after_ack_wilson95": [
+    0.8332924860304112,
+    0.9940915620051425
+   ],
+   "capture_trials": 30,
+   "after_marker_bytes": 4046113,
+   "receiver_complete_after_ack": 30,
+   "ends": {
+    "DONATION_OK": 30
+   },
+   "placement": {
+    "during": 30
+   },
+   "app_bytes_after_withdraw_done": 29,
+   "trials_with_block_event": 0,
+   "early_blocked": 0,
+   "cancel_calls": null
+  }
+ },
+ "paired": {
+  "fenced_vs_stock": {
+   "fenced=0/stock=0": 1,
+   "fenced=1/stock=1": 29
+  },
+  "fenced_vs_stockcancel": {
+   "fenced=0/stockcancel=0": 1,
+   "fenced=1/stockcancel=1": 29
+  },
+  "fenced_vs_layered": {
+   "fenced=0/layered=0": 1,
+   "fenced=1/layered=1": 29
+  }
+ }
+}

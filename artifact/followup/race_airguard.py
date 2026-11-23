@@ -4,6 +4,8 @@
 Builds (realapp/airguard/build_g3.sh): stock (Retrofit), stockcancel (Retrofit + Call.cancel() on switch-off), fenced (B2
 design), layered (G2b design), each with the G3 hooks (donation end, WITHDRAW_DONE, marker). Sink airguard_sink.py ports
 stockcancel 8793, layered 8795, stock 8796, fenced 8797.
+G3c v5 (g3app5-card.md, 23/11): build stockcancel16 (stockcancel + OkHttp SO_SNDBUF 16384), sink port 8794; run with
+--variants stockcancel16,stockcancel,fenced --apkdir realapp/airguard/build/g3v5. Every v5 build logs SOCKET_CONFIG actual_sndbuf.
 Per trial k: the builds one after another in an order shuffled from the seed; one u ~ U(0,1) per trial (same for every build).
 Per build: pm clear -> grant -> [v4: wait for the app's startup donation worker (its get_token at the sink, max 30 s) + 3 s]
 -> insert N 'pre' beacons (one device) -> start marker (hook op mark: the app connects to the
@@ -23,7 +25,7 @@ from pathlib import Path
 ART = Path(__file__).resolve().parents[1]
 SDK = os.environ.get('ANDROID_HOME', str(ART.parents[1] / 'shared-android/sdk')); ADB = os.environ.get('ADB', f'{SDK}/platform-tools/adb')
 PKG = 'de.seemoo.at_tracking_detection.p04'; HOOK = 'de.seemoo.at_tracking_detection.residue.TestHooks'
-PORTS = {'stockcancel': 8793, 'layered': 8795, 'stock': 8796, 'fenced': 8797}
+PORTS = {'stockcancel': 8793, 'stockcancel16': 8794, 'layered': 8795, 'stock': 8796, 'fenced': 8797}
 TC = {'edge': ('118400bit', '240ms'), 'umts': ('128kbit', '118ms'), 'lte': ('58mbit', '0ms')}
 p = argparse.ArgumentParser()
 p.add_argument('--serial', required=True); p.add_argument('--avd', default=''); p.add_argument('--apkdir', type=Path, required=True)

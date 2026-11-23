@@ -38,6 +38,15 @@ class G3App(unittest.TestCase):
         self.assertEqual(b['stock']['placement'], {'during': 1}); self.assertEqual(s['paired'], {'fenced_vs_stock': {'fenced=0/stock=1': 1}})
 
 
+    def test_receiver_window(self):
+        """Correction 23/11: a later trial's completion of the same build must not count for an earlier trial."""
+        import analyze_g3app as g
+        mk = {'g3app-000-fenced-start': 50, 'g3app-000-fenced': 100, 'g3app-001-stock-start': 150, 'g3app-001-fenced-start': 200, 'g3app-001-fenced': 300}
+        sink = [{'port': 8797, 'path': 'donate_data', 'complete': True, 'host_ns': 250}]
+        self.assertFalse(g.receiver_complete(sink, 8797, 'fenced', 100, mk))   # 250 belongs to trial 001 (after its start marker)
+        self.assertTrue(g.receiver_complete(sink, 8797, 'fenced', 100, {k: v for k, v in mk.items() if k != 'g3app-001-fenced-start'}))
+        self.assertTrue(g.receiver_complete([dict(sink[0], host_ns=170)], 8797, 'fenced', 100, mk))   # after another build's start: still trial 000
+
     def test_v4_validity(self):
         """Protocol v4: the measured upload must be started by the run hook (startup donation worker excluded)."""
         import analyze_g3app as g

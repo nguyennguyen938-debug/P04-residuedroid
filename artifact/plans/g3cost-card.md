@@ -163,5 +163,8 @@ before any data. The user's own phone; no rental, no cost.
   - rerun: pilot `pilot-6` → final `final-v4`, all 20 blocks from block 0; analysis `analysis-v4`; freeze `frozen-g3-v7`;
   - Threat (construct): with Doze off and the screen kept on, the cost is measured with the app in the foreground and the
     screen on, as the card already states; background or idle cost is not measured.
+- **Order and freeze (23/11, user decision):** G3c v5 (`plans/g3app5-card.md`) runs first and G3d v4 after it. The G3d
+  manifests now point to `frozen-g3-v8` (made for G3c v5); every G3d file (cost_suite.py, analyze_g3cost.py, g3d-chain.sh,
+  receiver) is identical to v7b, so G3d protocol v4 is unchanged.
 
 ## 6. Outcome (after the run)

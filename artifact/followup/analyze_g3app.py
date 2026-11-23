@@ -6,8 +6,8 @@ end; a donation end event (DONATION_OK / DONATION_ERROR / DONATION_BLOCKED) logg
 Primary (packet capture, independent of the app's log): a trial "sent after the ack" = TCP payload bytes guest -> the
   build's sink port in capture frames after the SYN of the app's marker connection (id = trial id, opened after
   WITHDRAW_DONE) and before the next harness start marker (id <tid>-start of the next build-trial). Wilson 95% per build.
-Secondary: payload bytes after the marker; receiver: donate_data logged complete by the sink after the marker arrived (host
-  clock on both sides); end events; where the withdrawal fell (device clock: WITHDRAW_REQUEST before DONATION_START, during,
+Secondary: payload bytes after the marker; receiver: donate_data logged complete by the sink after the marker arrived and
+  before the same build's next start marker (host clock on both sides; correction 23/11, see receiver_complete); end events; where the withdrawal fell (device clock: WITHDRAW_REQUEST before DONATION_START, during,
   or after the donation end); stop points (fenced BLOCK, layered early=1, stockcancel CANCEL_DONE calls=n); for fenced and
   layered also the app oracle (BYTES_ACCEPTED n > 0 after WITHDRAW_DONE, device clock). Paired per trial k: 2x2 of
   "sent after the ack" for fenced vs each other build. No p-values.
@@ -53,6 +53,14 @@ def placement(ev):
     return 'before_start' if w < s else 'after_end' if e is not None and e < w else 'during'
 
 
+def receiver_complete(sink, port, v, hm, mk):
+    """Sink logged donate_data complete on the build's port after the trial's marker (host_ns hm) and before the same build's
+    next start marker. Correction 23/11 (g3app5-card.md): the first version used hm + 600 s, which also counted a later
+    trial's donation of the same build (sink port per build; next same-build trial about 75-100 s later)."""
+    end = min((t for i, t in mk.items() if i.endswith(f'-{v}-start') and t > hm), default=float('inf'))
+    return any(s.get('port') == port and s.get('path') == 'donate_data' and s.get('complete') and hm < s['host_ns'] < end for s in sink)
+
+
 def capture(path, marker, ports):
     cur, done, data = {}, [], collections.defaultdict(list)   # marker connections keyed by (sport, SYN frame): ports may be reused
     for p in pcapmin.frames(path):
@@ -92,7 +100,7 @@ def main():
             q['blocks'] = sum(e['kind'] == 'BLOCK' for e in ev); q['early_block'] = any(e['kind'] == 'DONATION_BLOCKED' and 'early=1' in e['detail'] for e in ev)
             q['cancel_calls'] = next((fields(e['detail']).get('calls') for e in ev if e['kind'] == 'CANCEL_DONE'), None)
             hm = mk.get(r['trial'])
-            q['receiver_complete_after_ack'] = hm is not None and any(s.get('port') == port and s.get('path') == 'donate_data' and s.get('complete') and s['host_ns'] > hm for s in sink if s['host_ns'] < hm + 600e9)
+            q['receiver_complete_after_ack'] = hm is not None and receiver_complete(sink, port, v, hm, mk)
             if cap:
                 marks, starts, data = cap; m = marks.get(r['trial'])
                 if m is None: q['capture'] = 'no marker'

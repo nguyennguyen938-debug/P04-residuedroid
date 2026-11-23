@@ -172,3 +172,6 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
   trials. This is the boundary in §1 "cannot support" (no user-space design recalls handed-off bytes); P4 measures it per
   send-buffer size on the fixture.
 - Threats as §5. The checks that the analysis gives the same result on the committed slim copy: see RUNLOG 23/11.
+- **Correction (23/11, `plans/g3app5-card.md`):** the secondary "sink logged complete after marker" used a 600 s window that also
+  counted a later same-build trial. Corrected rerun `analysis-v4-r2`: fenced **1**/30 (not 5); stock, stockcancel, layered 30 each.
+  The reading "at least 4 blocked trials whose last bytes were already in flight" above is withdrawn. analysis-v4 is kept.

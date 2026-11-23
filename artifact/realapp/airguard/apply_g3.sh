@@ -7,6 +7,9 @@
 #  - stockcancel: Retrofit/OkHttp Call.cancel() on every in-flight call when the switch is turned off (R1's deployable option);
 #  - withdraw hook: after the app's own path, WITHDRAW_DONE and the marker connection (trial id) for the packet capture;
 #  - hook op mark: the same marker connection on demand (the harness's start marker).
+#  - G3c v5 (g3app5-card.md, 23/11): variant stockcancel16 = stockcancel + OkHttp SocketFactory with SO_SNDBUF 16384 set
+#    before connect; every build logs SOCKET_CONFIG actual_sndbuf after connect (OkHttp: network interceptor G3.SockLog;
+#    fenced/layered: one emit appended to the connect line of the clone's HttpTransport copy; artifact/transport unchanged).
 # apply.sh is unchanged (B2/G2b builds unaffected).
 set -euo pipefail
 SRC=$1; HERE=$(cd "$(dirname "$0")" && pwd)
@@ -25,13 +28,19 @@ def edit(path, pairs):
 edit(app + '/build.gradle', [
     ('        buildConfigField "boolean", "RESIDUE_LAYERED", residueVariant == "layered" ? "true" : "false"\n',
      '        buildConfigField "boolean", "RESIDUE_LAYERED", residueVariant == "layered" ? "true" : "false"\n'
-     '        buildConfigField "boolean", "RESIDUE_CANCEL", residueVariant == "stockcancel" ? "true" : "false"\n', 1)])
+     '        buildConfigField "boolean", "RESIDUE_CANCEL", (residueVariant == "stockcancel" || residueVariant == "stockcancel16") ? "true" : "false"\n'
+     '        buildConfigField "boolean", "RESIDUE_SNDBUF16", residueVariant == "stockcancel16" ? "true" : "false"\n', 1)])
 edit(pkg + '/statistics/SendStatisticsWorker.kt', [
     ('            } else if (!api.donateData(token = token, devices=devices).isSuccessful) {',
      '            } else if (!de.seemoo.at_tracking_detection.residue.G3.stock(applicationContext) { api.donateData(token = token, devices=devices) }.isSuccessful) {', 1)])
 edit(pkg + '/hilt/ApiModule.kt', [
     ('        return builder.build()',
-     '        if (BuildConfig.RESIDUE_CANCEL) builder.addInterceptor(de.seemoo.at_tracking_detection.residue.G3.InFlight)\n        return builder.build()', 1)])
+     '        if (BuildConfig.RESIDUE_CANCEL) builder.addInterceptor(de.seemoo.at_tracking_detection.residue.G3.InFlight)\n'
+     '        if (BuildConfig.RESIDUE_SNDBUF16) builder.socketFactory(de.seemoo.at_tracking_detection.residue.G3.SndBuf16)\n'
+     '        if (BuildConfig.RESIDUE_TEST) builder.addNetworkInterceptor(de.seemoo.at_tracking_detection.residue.G3.SockLog)\n        return builder.build()', 1)])
+edit(app + '/src/main/java/org/residuelab/transport/HttpTransport.java', [
+    ('            while (!channel.finishConnect()) ready(selector, key, SelectionKey.OP_CONNECT, deadline);\n',
+     '            while (!channel.finishConnect()) ready(selector, key, SelectionKey.OP_CONNECT, deadline); events.emit("SOCKET_CONFIG", prefix + "requested_sndbuf=16384;actual_sndbuf=" + channel.socket().getSendBufferSize());\n', 1)])
 edit(pkg + '/residue/TestHooks.kt', [
     ('app.backgroundWorkScheduler.removeShareData() }',
      'app.backgroundWorkScheduler.removeShareData(); G3.afterWithdraw(context, intent) }', 1),

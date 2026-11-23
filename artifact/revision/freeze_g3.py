@@ -10,7 +10,7 @@ roots = ['fixture/src', 'fixture/src-cmp', 'fixture/build.sh', 'fixture/AndroidM
          'followup/analyze_g2close.py', 'followup/analyze_g3race.py', 'followup/analyze_g3app.py', 'followup/analyze_g3cost.py', 'followup/pcapmin.py',
          'followup/test_g3race.py', 'followup/test_g3app.py', 'followup/test_g3cost.py', 'realapp/airguard/apply.sh', 'realapp/airguard/apply_g3.sh',
          'realapp/airguard/build_g3.sh', 'realapp/airguard/src', 'realapp/airguard/src-g3', 'realapp/airguard/build/g3', 'plans/b1/build_airguard.sh',
-         'scripts/summarize.py', 'plans/autorun/g3-chain.sh', 'plans/autorun/g3-chain-v2.sh', 'plans/autorun/g3-chain-v3.sh', 'plans/autorun/g3-chain-v4.sh', 'plans/autorun/g3d-chain.sh', 'followup/audit_g3race.py', 'followup/tls_records.py', 'followup/qsnap.py', 'followup/test_tls_records.py', 'followup/test_qsnap.py', 'plans/autorun/battery_guard.sh', 'plans/autorun/g3-tonight.sh', 'plans/autorun/g3-p3v5-chain.sh'] + [f'plans/autorun/{p.name}' for p in sorted((art / 'plans/autorun').glob('g3*.json'))]
+         'scripts/summarize.py', 'plans/autorun/g3-chain.sh', 'plans/autorun/g3-chain-v2.sh', 'plans/autorun/g3-chain-v3.sh', 'plans/autorun/g3-chain-v4.sh', 'plans/autorun/g3d-chain.sh', 'followup/audit_g3race.py', 'followup/tls_records.py', 'followup/qsnap.py', 'followup/test_tls_records.py', 'followup/test_qsnap.py', 'plans/autorun/battery_guard.sh', 'plans/autorun/g3-tonight.sh', 'plans/autorun/g3-p3v5-chain.sh', 'followup/analyze_g3app5.py', 'followup/test_g3app5.py', 'realapp/airguard/build/g3v5', 'plans/autorun/g3-g3c5-chain.sh'] + [f'plans/autorun/{p.name}' for p in sorted((art / 'plans/autorun').glob('g3*.json'))]
 files = []
 for r in roots:
     b = art / r
