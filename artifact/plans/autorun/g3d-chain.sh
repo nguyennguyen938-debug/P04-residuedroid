@@ -11,15 +11,16 @@ python3 $AR $P/g3cost-pilot.json || { note "G3d pilot failed; chain stopped"; ex
 python3 - <<'PY' || { note "G3d PILOT GATE FAIL; no G3d final (card §3)"; exit 4; }
 import json, sys
 sys.path.insert(0, 'artifact/followup'); import analyze_g3cost as g
-# pilot, pilot-2 stopped at setup; pilot-3 gate fail -> v2 (pilot-4 passed); final v2 dozed -> v3, pilot-5
-d = 'artifact/results/round3/g3cost/pilot-5'; meta = json.load(open(f'{d}/meta.json'))
+# pilot, pilot-2 stopped at setup; pilot-3 gate fail -> v2 (pilot-4 passed); final v2 dozed -> v3, pilot-5; final-v3 dozed (screen timeout under unplug) -> v4, pilot-6
+d = 'artifact/results/round3/g3cost/pilot-6'; meta = json.load(open(f'{d}/meta.json'))
 cells = [json.loads(l) for l in open(f'{d}/cells.jsonl') if l.strip()]
 rec = {x['request'] for x in map(json.loads, open(f'{d}/receiver.jsonl')) if x.get('complete')}
 ups = [u for c in cells for u in c['uploads']]
 ok = [u for u in ups if u['end'] and u['end']['kind'] == 'SEND_OK' and u['id'] in rec]
 bs = sum(g.mah(c.get('bs'), meta['uid'], c.get('bs_checkin')) is not None for c in cells)
-print('cells', len(cells), 'valid', sum(g.valid(c) for c in cells), 'uploads ok+received', len(ok), '/', len(ups), 'cells with batterystats', bs)
-sys.exit(0 if len(cells) == 9 and all(g.valid(c) for c in cells) and len(ok) == len(ups) == 18 and bs >= 1 else 1)
+pc = meta.get('power_check', {}); power = pc.get('screen_off_timeout') == '86400000' and 'mLightEnabled=false  mDeepEnabled=false' in pc.get('deviceidle', '')   # v4
+print('cells', len(cells), 'valid', sum(g.valid(c) for c in cells), 'uploads ok+received', len(ok), '/', len(ups), 'cells with batterystats', bs, 'power_check', pc)
+sys.exit(0 if len(cells) == 9 and all(g.valid(c) for c in cells) and len(ok) == len(ups) == 18 and bs >= 1 and power else 1)
 PY
 note "G3d pilot gate passed; starting final"
 python3 $AR $P/g3cost-final.json --confirm g3cost-final; rc=$?; note "G3d final autorun exit $rc"

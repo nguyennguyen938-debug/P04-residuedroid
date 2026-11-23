@@ -145,4 +145,23 @@ before any data. The user's own phone; no rental, no cost.
   - **rerun:** pilot `pilot-5` (same gate) → final `final-v3`, all 20 blocks from block 0, the v2 final not pooled;
     analysis `analysis-v3`; freeze `frozen-g3-v5e`, then `frozen-g3-v6b` (shared with P4, whose transport line change touches no G3d file; same APK g3-apk 8f723ead…).
 
+- final-v3 (v3, 23/11 15:31–15:50; **not usable, harness design fault (B)**): blocks 0–4 and the first 8 cells of block 5
+  (53 cells) ran with the phone Awake at start and end; from cell 53 (block 5, 15:41:25) the phone was Dozing at cell start,
+  and every upload ended `ConnectException` to the receiver. Diagnosis (manual, harness and phone state only):
+  - `dumpsys battery unplug` makes the phone count as unplugged (`USB powered: false`), so `svc power stayon true`
+    (stay on *while plugged in*, any source) did not hold;
+  - the screen went off at the phone's 10 min `screen_off_timeout` (600,000 ms) and the phone entered deep Doze
+    (`mState=IDLE`), which blocks the app's network; adb shell still reached the Mac (ping 10 ms, TCP 8800 ok) and the
+    receiver was listening, so the receiver was not at fault;
+  - the v3 validity rule flags these cells (Dozing at start); 10 such cells were logged before B stopped the run at 15:50 (SIGINT).
+  The phone was restored (`dumpsys battery reset`, `svc power stayon false`). final-v3 is kept as recorded and not pooled.
+- **G3d protocol v4** (23/11, before any v4 trial; arms, cells, N, measures and analysis unchanged):
+  - `cost_suite.py`: after `battery unplug`, `settings put system screen_off_timeout 86400000` and
+    `dumpsys deviceidle disable all`, restored at the end (the previous timeout value is read first);
+  - the applied values are read back into `meta.json` `power_check`;
+  - pilot gate (`g3d-chain.sh`) additionally requires `power_check` = timeout 86400000 and light/deep idle disabled;
+  - rerun: pilot `pilot-6` → final `final-v4`, all 20 blocks from block 0; analysis `analysis-v4`; freeze `frozen-g3-v7`;
+  - Threat (construct): with Doze off and the screen kept on, the cost is measured with the app in the foreground and the
+    screen on, as the card already states; background or idle cost is not measured.
+
 ## 6. Outcome (after the run)

@@ -119,12 +119,20 @@ try:
     t0 = time.monotonic(); bc('init', 'setup', timeout=300); setup_s = round(time.monotonic() - t0, 1)
     sh('svc power stayon true'); restore.append('svc power stayon false')   # v3: 'usb' does not hold under 'battery unplug' (final v2 22/11)
     sh('dumpsys battery unplug'); restore.append('dumpsys battery reset')
+    # v4 (23/11): under 'battery unplug' the phone counts as unplugged, so stayon does not hold; final-v3 dozed at the 10 min screen
+    # timeout and Doze blocked the app's network (ConnectException; adb shell still reached the Mac). Screen timeout 24 h and deep/light
+    # idle off for the run, both restored at the end.
+    sto = sh('settings get system screen_off_timeout').strip() or '600000'
+    sh('settings put system screen_off_timeout 86400000'); restore.append(f'settings put system screen_off_timeout {sto}')
+    sh('dumpsys deviceidle disable all; true'); restore.append('dumpsys deviceidle enable all')
+    POWER_CHECK = {'screen_off_timeout': sh('settings get system screen_off_timeout').strip(),
+                   'deviceidle': sh('dumpsys deviceidle | grep -m1 -o "mLightEnabled=[a-z]*  mDeepEnabled=[a-z]*"; true').strip()}
     phone = {'release': sh('getprop ro.build.version.release').strip(), 'sdk': sh('getprop ro.build.version.sdk').strip(),
              'model': sh('getprop ro.product.model').strip(), 'wifi': sh('dumpsys wifi | grep -m1 -E "^Wi-Fi is|mWifiInfo" | cut -c1-60; true').strip()[:60]}
     meta = {'phone': phone, 'serial': 'physical (not recorded)', 'uid': int(uid), 'host': a.host, 'host_source': HOST_SOURCE, 'installed_apk_sha256': INSTALLED, 'arms': ARMS, 'sizes': SIZES, 'repeats': a.repeats,
             'blocks': a.blocks, 'start': a.start, 'seed': a.seed, 'apk_sha256': hashlib.sha256(a.apk.read_bytes()).hexdigest(),
             'ca_sha256': hashlib.sha256((a.certdir / 'test-ca.pem').read_bytes()).hexdigest(), 'setup_init_s': setup_s,
-            'foreground': True, 'battery_unplug_override': True, 'started': time.time()}
+            'foreground': True, 'battery_unplug_override': True, 'screen_off_timeout_override_ms': 86400000, 'deviceidle_disabled': True, 'power_check': POWER_CHECK, 'started': time.time()}
     (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
     U = f'u0a{int(uid) - 10000}'
     for block in range(a.start, a.start + a.blocks):

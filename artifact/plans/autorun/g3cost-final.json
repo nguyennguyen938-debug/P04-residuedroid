@@ -38,14 +38,14 @@
     "--repeats",
     "10",
     "--out",
-    "results/round3/g3cost/final-v3"
+    "results/round3/g3cost/final-v4"
    ],
-   "out": "artifact/results/round3/g3cost/final-v3"
+   "out": "artifact/results/round3/g3cost/final-v4"
   }
  ],
  "post": [
-  "python3 artifact/followup/analyze_g3cost.py artifact/results/round3/g3cost/final-v3 --out artifact/results/round3/g3cost/analysis-v3"
+  "python3 artifact/followup/analyze_g3cost.py artifact/results/round3/g3cost/final-v4 --out artifact/results/round3/g3cost/analysis-v4"
  ],
  "guard_after": false,
- "frozen": "artifact/results/round3/g3/frozen-g3-v6b"
+ "frozen": "artifact/results/round3/g3/frozen-g3-v7"
 }
