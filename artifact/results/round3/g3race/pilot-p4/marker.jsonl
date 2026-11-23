@@ -1,0 +1,12 @@
+{"host_ns": 242529821643708, "peer_port": 53862, "id": "race-umts-2097152-fence-0-ab44d4"}
+{"host_ns": 242569006439291, "peer_port": 53925, "id": "race-edge-2097152-fence-abort-0-11894d"}
+{"host_ns": 242607850624166, "peer_port": 54005, "id": "race-edge-2097152-fence-abort-0-fcd03b"}
+{"host_ns": 242662392829666, "peer_port": 54082, "id": "race-umts-2097152-fence-abort-0-ad4291"}
+{"host_ns": 242804374868416, "peer_port": 54648, "id": "race-umts-2097152-fence-abort-0-70dee3"}
+{"host_ns": 242843279628708, "peer_port": 54703, "id": "race-edge-2097152-fence-0-621d59"}
+{"host_ns": 242897858871208, "peer_port": 54790, "id": "race-umts-2097152-fence-0-9c266f"}
+{"host_ns": 242952361897541, "peer_port": 54855, "id": "race-umts-2097152-fence-abort-0-a5116d"}
+{"host_ns": 242991132899333, "peer_port": 54910, "id": "race-edge-2097152-fence-abort-0-2f7360"}
+{"host_ns": 243029952853916, "peer_port": 54969, "id": "race-edge-2097152-fence-0-3e26cd"}
+{"host_ns": 243068746679750, "peer_port": 55021, "id": "race-edge-2097152-fence-0-eccf36"}
+{"host_ns": 243236096689166, "peer_port": 55827, "id": "race-umts-2097152-fence-0-5f0b87"}
