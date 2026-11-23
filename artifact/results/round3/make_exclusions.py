@@ -52,6 +52,12 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g3app/pilot-v4-calib': ('G3c v4 calibration (3 per build, startup-worker wait): 12/12 samples from the run hook; body below 200 KiB only, so the pre-registered body-only recalibration ran', 'none (N from the recalibration)'),
     'round3/g3app/pilot-v4-calib2': ('G3c v4 body-only recalibration: calibration gate passed; durations and N used by final-v4', 'none'),
     'round3/g3app/pilot-v4-mech': ('G3c v4 mechanism pilot: gate passed', 'none'),
+    'round3/g3app/pilot-v5-calib': ('G3c v5 calibration (stockcancel16, stockcancel, fenced; 3 per build): gate passed', 'none (v5 stopped at the mechanism gate)'),
+    'round3/g3app/pilot-v5-mech': ('G3c v5 mechanism pilot: MECHANISM GATE FAIL on actual_sndbuf only (getSendBufferSize units differ by API: java.net.Socket kernel value, NIO half)', 'no v5 final; protocol v5b'),
+    'round3/g3app/pilot-v5b-calib': ('G3c v5b calibration (rebuilt APKs with in-app kernel_sndbuf): gate passed', 'none (v5b stopped at the mechanism gate)'),
+    'round3/g3app/pilot-v5b-mech': ('G3c v5b mechanism pilot: MECHANISM GATE FAIL, kernel_sndbuf -1 in every build-trial (hidden getsockoptInt blocked on API 33)', 'no v5b final; protocol v5c (harness-side ss read)'),
+    'round3/g3app/pilot-v5c-calib': ('G3c v5c calibration with guest ss kernel send-buffer read: gate passed (tb 32768 stockcancel16 and fenced, 2097152 stockcancel)', 'none'),
+    'round3/g3app/pilot-v5c-mech': ('G3c v5c mechanism pilot: gate passed', 'none'),
     'round3/g3race/pilot-lte4': ('P3 (G3a on lte) v4 pilot (1 block, 15 trials): every mechanism field held; BALANCE GATE FAIL (per-size spread 337/42/19 ms > 15 ms; one adb stall, otherwise per-trial jitter with one trial per size and arm)', 'P3 protocol v5: 3-block pilot, gate on d = device delay minus host offset, adb-stall trials left out of d'),
     'round3/g3race/pilot-lte5': ('P3 v5 pilot (3 blocks, 45 trials): mechanism fields and balance gate v5 passed', 'none'),
     'round3/g3race/pilot-p4': ('P4 pilot (1 block, 12 trials): mechanism gate passed (sndbuf levels requested/actual 0/1048576, 16384/16384, 65536/65536)', 'none'),
@@ -107,6 +113,9 @@ def trial_rows():
     g3c = load('round3/g3app/analysis-v4/g3app-summary.json')
     if g3c: out.append(('G3c AirGuard withdrawal mid-upload v4 (group 3)', g3c['logged'], [f"{x['trial']}: {x['reason']}" for x in g3c['invalid']],
                         sum(c.get('unused', 0) for c in g3c['builds'].values()), 'g3app/analysis-v4'))
+    g3c5 = load('round3/g3app/analysis-v5c/g3app5-summary.json')
+    if g3c5: out.append(('G3c v5c AirGuard stockcancel16 / stockcancel / fenced (group 3, leader request)', g3c5['logged'], [f"{x['trial']}: {x['reason']}" for x in g3c5['invalid']],
+                         sum(c.get('unused', 0) for c in g3c5['builds'].values()), 'g3app/analysis-v5c'))
     p3 = load('round3/g3race/analysis-lte5/g3race-summary.json')
     if p3: out.append(('P3: G3a on lte, balanced exposure (protocol v5)', p3['logged'], [f"{x['trial']}: {x['reason']}" for x in p3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p3['interrupted_excluded']],
                        sum(c.get('unused', 0) for c in p3['cells'].values()), 'g3race/analysis-lte5'))

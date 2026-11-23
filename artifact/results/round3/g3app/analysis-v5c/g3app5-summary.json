@@ -1,0 +1,266 @@
+{
+ "dir": "artifact/results/round3/g3app/final-v5c",
+ "logged": 90,
+ "invalid": [
+  {
+   "trial": "g3app-010-stockcancel",
+   "reason": "no donation end event"
+  },
+  {
+   "trial": "g3app-010-stockcancel16",
+   "reason": "no donation end event"
+  }
+ ],
+ "capture_file": true,
+ "builds": {
+  "stockcancel16": {
+   "trials": 29,
+   "unused": 0,
+   "receiver_complete_after_ack": 4,
+   "receiver_trials": 29,
+   "receiver_no_marker": 0,
+   "receiver_complete_after_ack_wilson95": [
+    0.05497350852047822,
+    0.30559357712699325
+   ],
+   "capture_status": {
+    "ok": 29
+   },
+   "sent_after_ack": 27,
+   "capture_trials": 29,
+   "sent_after_ack_wilson95": [
+    0.7803505240414808,
+    0.9808791359020055
+   ],
+   "after_marker_bytes_sum": 727501,
+   "after_marker_bytes": {
+    "n": 29,
+    "median": 17520,
+    "p95": 26280,
+    "max": 262953
+   },
+   "after_marker_by_placement": {
+    "after_end": {
+     "trials": 2,
+     "trials_bytes_after_marker": 0,
+     "bytes_sum": 0,
+     "bytes": {
+      "n": 2,
+      "median": 0.0,
+      "p95": 0,
+      "max": 0
+     }
+    },
+    "during": {
+     "trials": 27,
+     "trials_bytes_after_marker": 27,
+     "bytes_sum": 727501,
+     "bytes": {
+      "n": 27,
+      "median": 17520,
+      "p95": 26280,
+      "max": 262953
+     }
+    }
+   },
+   "cancel": {
+    "cut_in_flight": 26,
+    "not_cut": 0,
+    "no_call": 3
+   },
+   "app_bytes_after_withdraw_done": null,
+   "trials_with_block_event": 0,
+   "donation_sndbuf": {
+    "32768": 29
+   },
+   "donation_sockdiag_tb": {
+    "32768": 29
+   },
+   "donation_kernel_sndbuf": {
+    "-1": 29
+   },
+   "ends": {
+    "DONATION_ERROR": 26,
+    "DONATION_OK": 3
+   },
+   "placement": {
+    "during": 27,
+    "after_end": 2
+   }
+  },
+  "stockcancel": {
+   "trials": 29,
+   "unused": 0,
+   "receiver_complete_after_ack": 28,
+   "receiver_trials": 29,
+   "receiver_no_marker": 0,
+   "receiver_complete_after_ack_wilson95": [
+    0.8282410893529976,
+    0.9938869433859677
+   ],
+   "capture_status": {
+    "ok": 29
+   },
+   "sent_after_ack": 27,
+   "capture_trials": 29,
+   "sent_after_ack_wilson95": [
+    0.7803505240414808,
+    0.9808791359020055
+   ],
+   "after_marker_bytes_sum": 3418126,
+   "after_marker_bytes": {
+    "n": 29,
+    "median": 122465,
+    "p95": 183960,
+    "max": 262951
+   },
+   "after_marker_by_placement": {
+    "during": {
+     "trials": 29,
+     "trials_bytes_after_marker": 27,
+     "bytes_sum": 3418126,
+     "bytes": {
+      "n": 29,
+      "median": 122465,
+      "p95": 183960,
+      "max": 262951
+     }
+    }
+   },
+   "cancel": {
+    "cut_in_flight": 28,
+    "not_cut": 0,
+    "no_call": 1
+   },
+   "app_bytes_after_withdraw_done": null,
+   "trials_with_block_event": 0,
+   "donation_sndbuf": {
+    "2097152": 29
+   },
+   "donation_sockdiag_tb": {
+    "2097152": 29
+   },
+   "donation_kernel_sndbuf": {
+    "-1": 29
+   },
+   "ends": {
+    "DONATION_ERROR": 28,
+    "DONATION_OK": 1
+   },
+   "placement": {
+    "during": 29
+   }
+  },
+  "fenced": {
+   "trials": 30,
+   "unused": 0,
+   "receiver_complete_after_ack": 2,
+   "receiver_trials": 30,
+   "receiver_no_marker": 0,
+   "receiver_complete_after_ack_wilson95": [
+    0.01847663532769335,
+    0.21323817721072091
+   ],
+   "capture_status": {
+    "ok": 30
+   },
+   "sent_after_ack": 28,
+   "capture_trials": 30,
+   "sent_after_ack_wilson95": [
+    0.7867618227892791,
+    0.9815233646723066
+   ],
+   "after_marker_bytes_sum": 566532,
+   "after_marker_bytes": {
+    "n": 30,
+    "median": 21900.0,
+    "p95": 24536,
+    "max": 24921
+   },
+   "after_marker_by_placement": {
+    "before_start": {
+     "trials": 3,
+     "trials_bytes_after_marker": 2,
+     "bytes_sum": 314,
+     "bytes": {
+      "n": 3,
+      "median": 157,
+      "p95": 157,
+      "max": 157
+     }
+    },
+    "during": {
+     "trials": 27,
+     "trials_bytes_after_marker": 26,
+     "bytes_sum": 566218,
+     "bytes": {
+      "n": 27,
+      "median": 21900,
+      "p95": 24536,
+      "max": 24921
+     }
+    }
+   },
+   "cancel": null,
+   "app_bytes_after_withdraw_done": 0,
+   "trials_with_block_event": 28,
+   "donation_sndbuf": {
+    "16384": 30
+   },
+   "donation_sockdiag_tb": {
+    "32768": 27,
+    "missing": 3
+   },
+   "donation_kernel_sndbuf": {
+    "-1": 30
+   },
+   "ends": {
+    "DONATION_BLOCKED": 28,
+    "DONATION_OK": 2
+   },
+   "placement": {
+    "during": 27,
+    "before_start": 3
+   }
+  }
+ },
+ "paired": {
+  "stockcancel16_vs_fenced": {
+   "receiver_complete_after_ack": {
+    "stockcancel16=0/fenced=0": 23,
+    "stockcancel16=0/fenced=1": 2,
+    "stockcancel16=1/fenced=0": 4
+   },
+   "sent_after_ack": {
+    "stockcancel16=0/fenced=0": 1,
+    "stockcancel16=0/fenced=1": 1,
+    "stockcancel16=1/fenced=0": 1,
+    "stockcancel16=1/fenced=1": 26
+   }
+  },
+  "stockcancel16_vs_stockcancel": {
+   "receiver_complete_after_ack": {
+    "stockcancel16=0/stockcancel=0": 1,
+    "stockcancel16=0/stockcancel=1": 24,
+    "stockcancel16=1/stockcancel=1": 4
+   },
+   "sent_after_ack": {
+    "stockcancel16=0/stockcancel=0": 2,
+    "stockcancel16=1/stockcancel=1": 27
+   }
+  },
+  "stockcancel_vs_fenced": {
+   "receiver_complete_after_ack": {
+    "stockcancel=0/fenced=0": 1,
+    "stockcancel=1/fenced=0": 26,
+    "stockcancel=1/fenced=1": 2
+   },
+   "sent_after_ack": {
+    "stockcancel=0/fenced=0": 1,
+    "stockcancel=0/fenced=1": 1,
+    "stockcancel=1/fenced=0": 1,
+    "stockcancel=1/fenced=1": 26
+   }
+  }
+ }
+}

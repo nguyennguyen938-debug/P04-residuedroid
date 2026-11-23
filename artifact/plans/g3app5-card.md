@@ -127,3 +127,56 @@ is withdrawn. Reported in issue #7.
   - Threat (internal): the poll adds one adb shell call per second during each build-trial, the same for every build.
 
 ## 6. Outcome (after the run)
+- Written 23/11 after final-v5c (22:04–22:39; chain `g3-g3c5c-chain.sh`, calibration and mechanism gates passed). Source:
+  `results/round3/g3app/analysis-v5c/g3app5-summary.json` (`analyze_g3app5.py final-v5c`; the committed slim capture gives the
+  same JSON). Raw: `trials.jsonl`, `sink/ingest.jsonl`, `marker.jsonl`, `capture-slim.pcap` + sha256 of the full pcap.
+- **Seed actually used: `g3app5c-20261123`**, not `g3app5-20261123` as §2 says. The v5b and v5c manifests were made by text
+  replacement of `g3app5-` and that also changed the seed string. It was fixed in the frozen manifest before any trial and was
+  not chosen by any outcome; it only changes the u values and build orders.
+- Trials: 90 logged; **2 invalid** (`g3app-010-stockcancel`, `g3app-010-stockcancel16`: no donation end event). In trial 10,
+  u < 0.01, so the withdrawal ran about 0.1 s after the run hook, before the app's worker started; the stock worker then did
+  not donate at all. This is the validity rule, not an environment failure, so there is no replacement (§3): 29 trials for
+  stockcancel16 and stockcancel, 30 for fenced; 0 unused. (In the same trial the fenced worker still started and was blocked
+  at its first chunk.)
+- **Kernel send buffer of the donation socket** (guest `ss`, skmem tb): stockcancel16 32768 in 29/29, fenced 32768 in 27/30
+  (3 missing: the withdrawal fell before the donation started and the fence blocked at the first chunk, so no socket ever had
+  Send-Q ≥ 4096), stockcancel 2097152 in 29/29. stockcancel16 and fenced had the same buffer.
+- **Primary, sink logged the donation complete after the marker:**
+
+  | Build | complete after ack | Wilson 95 % |
+  |---|---|---|
+  | stockcancel16 | 4/29 | 5.5–30.6 % |
+  | stockcancel | 28/29 | 82.8–99.4 % |
+  | fenced | 2/30 | 1.8–21.3 % |
+
+  Paired per trial (29 pairs): stockcancel16 vs fenced 23 both 0, 4 stockcancel16 only, 2 fenced only; stockcancel16 vs
+  stockcancel 24 stockcancel only, 4 both, 1 both 0. Counts, no p-values.
+- **Secondary:**
+  - capture, trials with payload to the sink after the marker: stockcancel16 27/29 (78.0–98.1 %), stockcancel 27/29
+    (78.0–98.1 %), fenced 28/30 (78.7–98.2 %);
+  - payload bytes after the marker, sum / per-trial median / p95 / max: stockcancel16 727,501 / 17,520 / 26,280 / 262,953;
+    stockcancel 3,418,126 / 122,465 / 183,960 / 262,951; fenced 566,532 / 21,900 / 24,536 / 24,921;
+  - placement: stockcancel16 during 27, after the end 2; stockcancel during 29; fenced during 27, before the start 3;
+  - `Call.cancel()` cut an in-flight call: stockcancel16 26/29 (3 with calls = 0), stockcancel 28/29 (1 with calls = 0);
+  - fenced: BLOCK in 28/30, app oracle 0/30, end events DONATION_BLOCKED 28, DONATION_OK 2.
+- **Reading (B, descriptive):** with the same 32 KiB kernel buffer, Call.cancel() and the fence give about the same result on
+  the primary (4/29 vs 2/30), and both leave about one buffer of payload after the ack (medians 17,520 B and 21,900 B). With
+  the default buffer (2 MiB here) cancel does not stop the sink from receiving the body (28/29). The v4 gap between
+  stockcancel (30/30) and fenced (1/30) therefore came mainly from the send buffer size, not from where the check sits.
+
+### Exploratory diagnosis (post hoc, B, 23/11; not pre-registered; from event order and the capture)
+Per-trial table: `followup/diag_g3app5.py final-v5c` → `results/round3/g3app/analysis-v5c/diag-v5c.json`.
+- The 4 stockcancel16 and 2 fenced trials with the sink complete:
+  - stockcancel16 trials 1, 2, 5 (u 0.87–0.93): `Call.cancel()` closed the socket ("Socket closed"), but 245,765–261,825 B
+    had left before the marker and the remaining 1,285–17,345 B were already in the kernel buffer, so they still left after
+    the ack and the sink had the whole body;
+  - fenced trials 13 and 20 (u 0.96–0.97): DONATION_OK, the fence's last chunk had been written before the withdrawal; 0 and
+    1,747 B after the marker;
+  - stockcancel16 trial 12 (u 0.02): the withdrawal came 40 ms after DONATION_START but before the call reached OkHttp's
+    interceptor (SOCKET_CONFIG 190 ms later), so the in-flight registry was empty (calls = 0), the call then ran to the end
+    and the whole body (262,953 B) left after the ack. In the three fenced trials with the withdrawal before the donation
+    start, the fence blocked at the first chunk.
+- So "complete at the sink" here mostly means that the withdrawal fell inside the last buffer-worth of the upload, which no
+  user-space design can recall. The one structural difference seen is the registration window of the cancel design (1 trial).
+  In the same trials k (1, 2, 5) fenced was not complete; at the same u each build was at a different point of its upload
+  (D and progress differ per build), so this is timing, not a measured design effect.
