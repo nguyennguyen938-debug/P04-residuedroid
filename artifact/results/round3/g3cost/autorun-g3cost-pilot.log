@@ -1,0 +1,134 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+  [ OK ] AVD P04AvdB
+== host
+  [WARN] only ~4 GB available; close apps before 2 emulators
+  [ OK ] 135 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 8800 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 1 --repeats 2 --out results/round3/g3cost/pilot
+Traceback (most recent call last):
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/cost_suite.py", line 104, in <module>
+    uid = re.search(r'userId=(\d+)', sh(f'dumpsys package {PKG}')).group(1)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+  [ OK ] AVD P04AvdB
+== host
+  [WARN] only ~2 GB available; close apps before 2 emulators
+  [ OK ] 134 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 8800 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 1 --repeats 2 --out results/round3/g3cost/pilot-2
+Traceback (most recent call last):
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/cost_suite.py", line 106, in <module>
+    sh(f'run-as {PKG} tee files/test-ca.pem < /data/local/tmp/p04-test-ca.pem > /dev/null')
+    ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/cost_suite.py", line 52, in sh
+    def sh(c, timeout=60): return adb('shell', c, timeout=timeout)
+                                  ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nguyennhatduy/Documents/coding/tmp/P04-residuedroid/artifact/followup/cost_suite.py", line 48, in adb
+    if r.returncode: raise RuntimeError(r.stderr.strip()[:300])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: tee: files/test-ca.pem: No such file or directory
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+  [ OK ] AVD P04AvdB
+== host
+  [WARN] only ~2 GB available; close apps before 2 emulators
+  [ OK ] 133 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 8800 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 1 --repeats 2 --out results/round3/g3cost/pilot-3
+23:01:05 cost-fence-262144-0-67a403 RuntimeError('')
+23:01:07 cost-fence-4096-0-ff786b 2
+23:01:08 cost-early-4096-0-0ec5e3 2
+23:01:14 cost-early-2097152-0-28dbb6 2
+23:01:16 cost-platform-4096-0-2610a3 2
+23:01:23 cost-fence-2097152-0-339518 2
+23:01:25 cost-early-262144-0-e5b2a5 2
+23:01:28 cost-platform-2097152-0-0b6e8b 2
+23:01:29 cost-platform-262144-0-6eb7c0 2
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+  [ OK ] AVD P04AvdB
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 134 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 8800 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 1 --repeats 2 --out results/round3/g3cost/pilot-4
+23:05:06 cost-fence-262144-0-71f008 2
+23:05:07 cost-fence-4096-0-d08d5b 2
+23:05:08 cost-early-4096-0-f0ea6c 2
+23:05:14 cost-early-2097152-0-e16423 2
+23:05:15 cost-platform-4096-0-374071 2
+23:05:22 cost-fence-2097152-0-919aa9 2
+23:05:23 cost-early-262144-0-81c387 2
+23:05:27 cost-platform-2097152-0-71fcce 2
+23:05:28 cost-platform-262144-0-23212d 2

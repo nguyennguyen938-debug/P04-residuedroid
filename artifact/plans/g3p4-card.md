@@ -86,5 +86,11 @@ counting. C's review (issue #7, 13:22 UTC) fixes:
 - **Conclusion:** N = 30 per cell; descriptive.
 
 ## Pilot log
+- pilot-p4 (22/11 23:48–23/11 00:03; excluded): mechanism gate passed (12/12 valid; sndbuf requested/actual 0/1,048,576,
+  16,384/16,384, 65,536/65,536).
+- **Pause (23/11 04:58, user decision):** final-p4 stopped after 195 logged trials (16 complete blocks 0–15 + 3 trials of
+  block 16; 0 invalid). Per §3 only complete blocks count. The chain's post steps ran on the partial directory; that output
+  is kept as `analysis-p4_INVALID_interrupted-partial` and is not the pre-registered analysis. Resume (if the user decides):
+  a fresh directory from block 16, same freeze `frozen-g3-v6b`, analysed with blocks 0–15 of final-p4.
 
 ## 6. Outcome (after the run)

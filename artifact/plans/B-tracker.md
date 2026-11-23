@@ -34,7 +34,7 @@ User decision 22/11: two-day speedrun, device-free work first, runs from 22/11 2
 |---|---|---|
 | G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | DONE 22/11 (final 0–1 + final-r2 2–9; 450 analysed; outcome in card §6; audit exploratory) |
 | G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | GATE FAIL 22/11 (calibration, v3; harness fault; v4 needs a new pilot) |
-| G3c v4 (startup-worker fix; new pilots) | `plans/g3app-card.md` (Pilot log, v4) | READY 22/11 (frozen-g3-v4c; launcher g3-tonight.sh; waits for go-ahead) |
-| P3 G3a-lte balanced (warm :revision; leader-approved 22/11) | `plans/g3lte-card.md` | READY 22/11 (after G3c v4 in g3-chain-v4.sh) |
-| P4 SO_SNDBUF × fence/fence-abort (leader-approved 22/11) | card to write | 23/11 (flag `--sndbuf` ready; no APK rebuild needed) |
-| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | READY 22/11 (host auto + cert check; parallel via g3-tonight.sh; frozen-g3-v4c) |
+| G3c v4 (startup-worker fix; new pilots) | `plans/g3app-card.md` (Pilot log, v4) | DONE 22/11 (final-v4, 120/120 valid; sent after ack 29/30 in every build, fenced receiver-complete 5/30 vs 30/30; card §6) |
+| P3 G3a-lte balanced (warm :revision; leader-approved 22/11) | `plans/g3lte-card.md` | v4 GATE FAIL 22/11 (balance gate design); v5 DONE 22/11 (150/150 valid; after W early 16, close 18, close2/fence/fence-abort 0 of 30; card §6) |
+| P4 SO_SNDBUF × fence/fence-abort (leader-approved 22/11) | `plans/g3p4-card.md` | PAUSED 23/11 04:58 by the user (pilot gate passed; final-p4 16/30 complete blocks, 0 invalid; resume from block 16 in a fresh directory) |
+| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | ON HOLD 23/11 (user). pilot/pilot-2/pilot-3 failed on harness faults, v2 pilot-4 passed, v2 final failed on the environment (phone dozed, device lost); v3 ready (frozen-g3-v6b), no valid data yet. v2 final data not committed yet: adb error strings carry the phone serial |

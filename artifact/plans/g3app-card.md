@@ -143,3 +143,32 @@ a B decision, made before any data. B7 freeze reopened for group 3 only.
     uses the N of the calibration that passed.
 
 ## 6. Outcome (after the run)
+- Written 23/11 after final-v4 (22/11 21:56–22:46). **v3 produced no final** (calibration gate fail, Pilot log); v4 is the
+  only G3c final. Source: `results/round3/g3app/analysis-v4/g3app-summary.json` (`analyze_g3app.py final-v4`). Raw:
+  `trials.jsonl`, `sink/ingest.jsonl`, `capture-slim.pcap` + sha256 of the full pcap.
+- Trials: 120 logged, 0 invalid, 30 per build, 0 unused. The withdrawal fell during the donation in 30/30 trials of every
+  build (device clock; reported, not used for selection).
+- **Primary, trials "sent after the ack"** (TCP payload guest → sink after the marker SYN), of 30 with the marker matched:
+
+  | Build | sent after ack | Wilson 95 % | payload bytes after marker | sink logged complete after marker |
+  |---|---|---|---|---|
+  | stock | 29 | 83.3–99.4 % | 4,049,960 | 30 |
+  | stockcancel | 29 | 83.3–99.4 % | 3,654,955 | 30 |
+  | fenced | 29 | 83.3–99.4 % | 676,729 | 5 |
+  | layered | 29 | 83.3–99.4 % | 4,046,113 | 30 |
+
+  **The primary does not separate fenced from the other builds**: in 29/30 trials of every build some request payload
+  left the guest after the marker. Paired fenced vs each other build: 29 pairs both 1, 1 pair both 0 (counts, not a difference).
+- Secondary:
+  - end events: stock DONATION_OK 30; stockcancel DONATION_ERROR 30 (CANCEL_DONE 1 call per trial, 30/30); fenced
+    DONATION_BLOCKED 29, DONATION_OK 1; layered DONATION_OK 30 (early check blocked 0);
+  - app oracle (BYTES_ACCEPTED n > 0 after WITHDRAW_DONE): fenced 0/30, layered 29/30;
+  - stockcancel stops the app's own job, yet the sink logged the request complete in 30/30: cancelling the job does not
+    stop the upload already in flight;
+  - fenced: the sink logged complete in 5/30 (1 uncut DONATION_OK + at least 4 blocked trials whose last bytes were
+    already in flight), against 30/30 elsewhere.
+- Reading (B, descriptive): fenced stops further writes (0 accepted after WITHDRAW_DONE; 29 BLOCK) and has less payload
+  after the marker (676,729 B in total against 4,049,960 B for stock), but bytes already handed to the socket still leave after the ack in 29/30
+  trials. This is the boundary in §1 "cannot support" (no user-space design recalls handed-off bytes); P4 measures it per
+  send-buffer size on the fixture.
+- Threats as §5. The checks that the analysis gives the same result on the committed slim copy: see RUNLOG 23/11.

@@ -116,3 +116,49 @@ pooled with v3.
     trial and computes per-arm medians.
 
 ## 6. Outcome (after the run)
+- Written 23/11 after final-lte5 (22/11 22:59–23:02; lte trials last about 0.45 s each, as in v3). **v4 produced no
+  final** (balance gate fail, Pilot log). Source: `results/round3/g3race/analysis-lte5/` (`analyze_g3race.py`,
+  `audit_g3race.py`, `qsnap.py` on `final-lte5`). Raw: `trials.jsonl.gz` + sha256, `capture-slim.pcap` + sha256 of the
+  full pcap, `capture-tls.jsonl` (from the full pcap).
+- Trials: 150 logged, 0 invalid, 0 excluded, 30 per arm, 0 unused. Same u in all 30 paired cells; no write tie with W.
+- **Exposure is balanced** (W during the writes): early 16, close 18, close2 17, fence 18, fence-abort 18 of 30; by size
+  32 KiB 0 in every arm (**32 KiB does not test the race**), 256 KiB 8–9, 2 MiB 8–9. Median WITHDRAW_REQUEST −
+  SOCKET_CONFIG 0.027–0.031 s per arm, median u·D 0.03 s (v3: about 0.1 s for the `:revision` arms).
+- **Primary, trials accepted after W** (of 30), with G3a v3 lte unchanged next to it:
+
+  | Arm | P3 v5 | Wilson 95 % | among exposed | v3 lte |
+  |---|---|---|---|---|
+  | early | 16 | 36.1–69.8 % | 16/16 | 9 |
+  | close | 18 | 42.3–75.4 % | 18/18 | 8 |
+  | close2 | 0 | 0–11.4 % | 0/17 | 0 |
+  | fence | 0 | 0–11.4 % | 0/18 | 0 |
+  | fence-abort | 0 | 0–11.4 % | 0/18 | 0 |
+
+  By size: early 0 / 8 / 8, close 0 / 9 / 9 (32 KiB / 256 KiB / 2 MiB). Paired: close2 vs fence 30 both 0; fence-abort vs
+  fence 30 both 0; close2 vs early 14 both 0, 16 early only; close2 vs close 12 both 0, 18 close only. Zero-vs-zero is
+  counts, not equivalence; 0/30 is not an impossibility guarantee.
+- With exposure balanced, the v3 lte reading "close2 cuts more requests than fence" does not hold: both have 0 accepted
+  after W, and the cross-process `close` accepts after W in every exposed trial on lte.
+- Secondary:
+  - violations after the ack: early 16 (10,007,288 B), every other arm 0;
+  - ack latency (ms, median / p95 / max): early 1.24 / 5.50 / 7.04; close 3.63 / 6.36 / 6.79; close2 1.10 / 2.99 / 3.14;
+    fence 2.10 / 10.37 / 10.52; fence-abort 1.55 / 12.36 / 17.34 (descriptive order statistics);
+  - uncut requests the receiver logged complete while the app ended SEND_ERROR: close 1, every other arm 0;
+  - close2 `CANCEL_DONE inproc` 30/30 (1 already handed off); close CANCEL_DONE reply=ok 30/30; fence-abort ABORT_ARMED 18.
+- **Capture** (all 150 matched; every after-marker byte is in the "during writes" phase; after-handoff and after-end 0):
+
+  | Arm | trials TCP new bytes after marker | new bytes | trials TLS application_data after marker | app bytes | RST after marker |
+  |---|---|---|---|---|---|
+  | early | 16 | 10,079,465 | 16 | 10,079,465 | 0 |
+  | close | 4 | 16,897 | 3 | 5,159 | 7 |
+  | close2 | 10 | 86,421 | 10 | 61,845 | 14 |
+  | fence | 3 | 13,623 | 2 | 4,765 | 19 |
+  | fence-abort | 3 | 19,897 | 3 | 11,705 | 17 |
+
+  Capture-only trials (bytes leave the NIC after the marker although the app logged no byte accepted after the ack):
+  close 4, close2 10, fence 3, fence-abort 3. **Unfavourable for the fence:** with a 16 KiB send buffer, application data left
+  after the marker in 2 of 18 exposed fence trials (4,765 B in total) and 3 of 18 fence-abort trials (11,705 B in total);
+  close2 in 10 of 17 (61,845 B).
+- Queues (snapshot after the ack): netem backlog and socket send queue 0 in every trial of close, close2, fence and
+  fence-abort; early p95 9,084 B backlog and 15,581 B send queue (max 17,016).
+- Threats as §5 (sndbuf 16 KiB in every send; snapshot after the ack, not at it).
