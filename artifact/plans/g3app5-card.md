@@ -164,6 +164,13 @@ is withdrawn. Reported in issue #7.
   the default buffer (2 MiB here) cancel does not stop the sink from receiving the body (28/29). The v4 gap between
   stockcancel (30/30) and fenced (1/30) therefore came mainly from the send buffer size, not from where the check sits.
 
+- **Correction (C's independent check, issue #7, 23/11):** the donation body is not always 262,625 B. Among the bodies the
+  sink logged complete (`followup/body_sizes_g3app.py` → `analysis-v5c/body-sizes.json`): final-v5c 262,625 B in 33 of 37
+  records, 260,390 B in 3 (stockcancel 2, stockcancel16 1) and 258,155 B in 1 (stockcancel); final-v4 262,625 B in 80 of
+  91, 260,390 B in 11 (stock 2, stockcancel 4, layered 5). The sizes differ by multiples of 2,235 B; the cause was not
+  examined. No count above changes. Where this card and the v4 card say "body 262,625 B", read "262,625 B in most sends".
+  C's own script reproduced every primary count, the paired tables and the v4 correction.
+
 ### Exploratory diagnosis (post hoc, B, 23/11; not pre-registered; from event order and the capture)
 Per-trial table: `followup/diag_g3app5.py final-v5c` → `results/round3/g3app/analysis-v5c/diag-v5c.json`.
 - The 4 stockcancel16 and 2 fenced trials with the sink complete:
