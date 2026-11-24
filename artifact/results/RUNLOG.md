@@ -688,3 +688,10 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-24 22:47 r4df life/net: run_df exit 0; trial minutes after: 854.25 (used 27.5); run COMPLETED PASSED
 - 2026-11-24 22:47 r4df life/net: done
 - 2026-11-24 22:48 r4df life/net (final, netloss START=0 N=20): COMPLETED PASSED (27.5 trial min; 854.25 left). Harness check: 20 plans, 0 phone-invalid, 0 trial/setup errors, net_verified_down in all, max action gap 9.6 s. Pre-registered analysis: analyze_test6.py --manifest plans/r4df/manifest-life-df.json (B copy of C's manifest, reboot dropped) -> life/analysis: 20 analysed, 0 invalid, 0 unused.
+- 2026-11-24 22:48 r4df airguard: starting pilot-p1 (pending,kill,netloss N=1; no reboot pilot, reboot dropped on Device Farm).
+- 2026-11-24 22:48 r4df airguard/pilot-p1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-p1.yml, timeout 20 min)
+- 2026-11-24 22:49 r4df airguard/pilot-p1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:54 r4df airguard/pilot-p1: run_df exit 0; trial minutes after: 851.08 (used 3.2); run COMPLETED PASSED
+- 2026-11-24 22:55 r4df airguard/pilot-p1: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-24 22:55 r4df airguard/pilot-p1: done
+- 2026-11-24 22:55 r4df airguard/pilot-p1: COMPLETED PASSED (3.2 trial min; 851.08 left); gates.py + gate_b PASS; kill_verified (pids existed and gone), cut verified (up before, down after), hooks ok, warm-up ok; netloss quiescence wait 90.8 s as on the emulator (B2/G2b netloss 20/20 at about 92 s). Frozen: frozen-airguard-df (HEAD 57e726c; package sha256 a6d75ac4, built at adfe463, same harness). Starting finals f1 (START=0 N=10) then f2 (START=10 N=10), timeout 70 min each.

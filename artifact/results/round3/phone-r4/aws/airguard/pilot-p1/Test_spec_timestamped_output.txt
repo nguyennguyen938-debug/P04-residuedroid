@@ -1,0 +1,43 @@
+[2026-11-24 15:49:53.812032] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-24 15:49:53.812096]  
+[2026-11-24 15:49:53.821724]  
+[2026-11-24 15:49:53.821772] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-24 15:49:53.821786]  
+[2026-11-24 15:49:53.821798] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-24 15:49:53.946024] [DeviceFarm] python3 --version
+[2026-11-24 15:49:53.946863] Python 3.12.12
+[2026-11-24 15:49:53.947061] [DeviceFarm] adb version
+[2026-11-24 15:49:53.970112] Android Debug Bridge version 1.0.39
+[2026-11-24 15:49:53.970158] Version 0.0.1-4500957
+[2026-11-24 15:49:53.970175] Installed as /tmp/devicefarm-workspace/execution-3uv1vci3/shared-tiarbyn3/android-home-bmtjkvjy/platform-tools/adb_binary
+[2026-11-24 15:49:53.971747]  
+[2026-11-24 15:49:53.971774] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-24 15:49:53.971784]  
+[2026-11-24 15:49:53.971794] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-24 15:49:54.089336] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-24 15:49:54.097242] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04fenced; echo "UNINSTALL_EXIT=$?"
+[2026-11-24 15:49:54.404705] Success
+[2026-11-24 15:49:54.407075] UNINSTALL_EXIT=0
+[2026-11-24 15:49:54.407108]  
+[2026-11-24 15:49:54.407121] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-24 15:49:54.407130]  
+[2026-11-24 15:49:54.407139] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-24 15:49:54.407169] [DeviceFarm] ADB=adb python3 artifact/followup/campaign_airguard.py --serial $DEVICEFARM_DEVICE_UDID --apkdir artifact/realapp/airguard/build/phone --phone --variants stock,fenced,layered --schedules pending,kill,netloss --start 0 --trials 1 --seed airguard-df-20261125 --out $DEVICEFARM_LOG_DIR/airguard; echo "AIRGUARD_EXIT=$?"
+[2026-11-24 15:50:28.881773] 15:50:28 pen000 ok
+[2026-11-24 15:50:56.166528] 15:50:56 kil000 ok
+[2026-11-24 15:52:55.739185] 15:52:55 net000 ok
+[2026-11-24 15:52:55.746483] AIRGUARD_EXIT=0
+[2026-11-24 15:52:55.746541]  
+[2026-11-24 15:52:55.746564] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-24 15:52:55.746581]  
+[2026-11-24 15:52:55.746597] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all || true
+[2026-11-24 15:52:55.856951] [DeviceFarm] for v in stock fenced layered; do adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04$v || true; done
+[2026-11-24 15:52:56.152545] Success
+[2026-11-24 15:52:56.376733] Success
+[2026-11-24 15:52:56.600891] Success
+[2026-11-24 15:52:56.646432]  
+[2026-11-24 15:52:56.646471] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-24 15:52:56.646485]  
+[2026-11-24 15:52:56.650183] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-24 15:52:56.650218]  
+[2026-11-24 15:52:56.651603]  
