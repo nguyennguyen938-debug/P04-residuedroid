@@ -26,6 +26,19 @@ Không đưa vào claim: "fence giữ được nhiều thư hợp lệ hơn". Ph
 
 Android apps persist outboxes and jobs that can outlive a user's withdrawal of consent. Enforcing the withdrawal is not only a matter of when to check a toggle: derived data must keep its source policy, and old data must stay distinguishable after consent is granted again. ResidueDroid keeps durable source epochs and labels with every persisted copy and job input, and checks the app's stated contract before each bounded socket write, serialized with withdrawal. We judge each workload against the contract it states. Lineage and epochs decide the lifecycle schedules: conventional checks fail through lost lineage, stale epochs and unchecked retries, while earlier checks that receive the same metadata show no confirmed violations, like the fence. Placement matters only when a withdrawal lands during an upload, where every write after the withdrawal commits must be rechecked under its lock: a check before the request let the socket accept bytes afterwards in 56.7% of emulator trials and 60.0% on a phone, and cancellation from another process still accepted writes started after the commit in 8 of 90 trials; the fence accepted none. Below the socket the designs converge: about one send buffer of accepted bytes still leaves the device. In a real app, the stock build shares opt-out data after re-consent in 60 of 60 trials; the fenced build has no confirmed violation, with 26 trials unknown under the pre-registered oracle. The guarantee requires complete mediation and complete labels.
 
+## Tác giả (thứ tự người dùng chốt ngày 24/11, giống `main.tex`)
+
+Đơn vị chung: Ho Chi Minh City University of Technology (HCMUT), VNU-HCM, Vietnam.
+
+| # | Tên in | Email | ORCID |
+|---|---|---|---|
+| 1 | Nhat Duy Nguyen | duy.nguyencse@hcmut.edu.vn | 0009-0003-5543-8181 |
+| 2 | Phung Trung Nguyen Nguyen | nguyen.nguyen938@hcmut.edu.vn | 0009-0004-8643-4172 |
+| 3 | Nguyen Dang Nghia | nghia.nguyen3112007@hcmut.edu.vn (lấy từ git commit, cần Nghĩa xác nhận) | chưa có |
+| 4 | Hieu Le Minh | hieu.lehieulhks@hcmut.edu.vn | 0009-0003-9199-7677 |
+| 5 | Nguyen Hoang Nhat Khang | khang.nguyen2111@hcmut.edu.vn | 0009-0008-2781-7228 |
+| 6 | Xuan-Bach Le (corresponding) | lexuanbach@hcmut.edu.vn | 0009-0003-6848-5403 |
+
 ## Cần kiểm trước khi bấm đăng ký
 
 - Tên bài, danh sách tác giả, topic trên HotCRP.
