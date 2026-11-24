@@ -55,3 +55,35 @@ for the run.
   `f2 --start 3 --trials 3`, `f3 --start 6 --trials 3`, `f4 --start 9 --trials 1`.
 
 ## 6. Outcome (after the run)
+Source: `results/round3/phone-r4/aws/g3a/analysis/g3race-summary.json` (pre-registered `analyze_g3race.py` on f1–f4, `--n 30`)
+and `results/round3/phone-r4/aws/r4df-report.json`.
+
+- **Run:** f1 (blocks 0–2) 00:53–02:12, f2 (3–5) 02:17–03:22, f3 (6–8) 03:29–04:36, f4 (9) 04:42–04:58 on 25/11; Pixel 8a,
+  Android 17; receiver B on EC2 (`b10v3`); 216.9 trial minutes. EC2 receiver log kept in `g3a/receiver-ec2/`; the instance,
+  its security group and key pair were deleted after the run.
+- **Validity:** 450 trials logged (10 blocks × 45), 0 invalid, 0 interrupted, 0 unused; 30 per (profile, arm).
+- **Primary: trials whose socket accepted a write that started after W** (per profile and arm, N = 30; Wilson 95 %):
+
+  | arm | edge | umts | lte | all |
+  |---|---|---|---|---|
+  | early | 22 (55.6–85.8 %) | 18 (42.3–75.4 %) | 22 (55.6–85.8 %) | 62/90 |
+  | close (cross-process cancel) | 4 (5.3–29.7 %) | 3 (3.5–25.6 %) | 20 (48.8–80.8 %) | 27/90 |
+  | close2 (same-process cancel) | 0 (0–11.4 %) | 0 (0–11.4 %) | **6 (9.5–37.3 %)** | 6/90 |
+  | fence | 0 (0–11.4 %) | 0 (0–11.4 %) | 0 (0–11.4 %) | 0/90 |
+  | fence-abort | 0 (0–11.4 %) | 0 (0–11.4 %) | 0 (0–11.4 %) | 0/90 |
+
+  close2 on lte by size: 32 KiB 0, 256 KiB 2, 2 MiB 4. Paired per trial (counts, no p-values): close2 vs fence 84 both 0,
+  6 close2 only; fence-abort vs fence 90 both 0; close2 vs close 63 / 0 / 21 / 6 (both 0 / close2 only / close only / both).
+- **Secondary:** violations after the ack: early 22 / 18 / 22 (edge / umts / lte), every other arm 0. Withdrawal-to-ack latency
+  medians: fence 14.5 / 12.4 / 12.1 ms, close2 7.8 / 7.7 / 4.6 ms, close 33.7 / 30.9 / 28.4 ms (edge / umts / lte; p95 and
+  max in the summary).
+- **Reading (descriptive, one rented phone):**
+  - the fence and the abortive fence: no socket acceptance after W in 90 trials each (not a guarantee; 0–11.4 % per cell);
+  - **unfavourable for the emulator result:** same-process cancellation (close2) was 0/90 on the emulator (G3a) and 0 on
+    lte in P3, but here it let the socket accept a write started after W in 6/30 lte trials (all 256 KiB or 2 MiB). So the
+    claim "same-process cancellation 0" does not carry over to this phone; unserialized cancellation can lag W here too;
+  - cross-process cancellation lags W far more on lte (20/30) than under edge / umts shaping (4, 3);
+  - the early check accepts after W in 18–22/30 per profile, as on the emulator.
+- **Threats (in addition to §5):** remote receiver over the internet (latency and shaping at EC2); one device model; the
+  close2 difference from the emulator is one cell (lte) of 30 trials; why it lags (scheduling on the phone, the faster link)
+  is not diagnosed here.

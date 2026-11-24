@@ -68,6 +68,9 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g3cost/pilot-5': ('G3d v3 pilot (23/11 15:30): gate passed (1 block); the v3 final then dozed at the 10 min screen timeout under battery unplug (harness design fault)', 'G3d protocol v4: screen timeout 24 h + Doze off during the run, checked in meta and the pilot gate'),
     'round3/g3cost/pilot-4': ('G3d v2 pilot: gate passed (9/9 valid, 18/18 uploads ok and received)', 'none (the v2 final then failed on the environment: phone dozed, device lost; protocol v3)'),
     'round3/phone-r4/aws/life/pilot-preb': ('Round 4 Device Farm lifecycle reboot pilot (24/11): both gates passed, but the phone never rebooted (adb reboot ignored; boot_s 0.55 s, monotonic clock continuous in all five apps, reboot-evidence.json)', 'reboot schedule dropped on Device Farm; harness v1.1 records uptime and requires reboot_verified'),
+    'round3/phone-r4/aws/life/pilot-pnet': ('Round 4 Device Farm lifecycle netloss pilot (1 paired trial): gates passed, cut confirmed (up before, down after)', 'none'),
+    'round3/phone-r4/aws/airguard/pilot-p1': ('Round 4 Device Farm AirGuard pilot (pending, kill, netloss; 1 trial each): gates passed, kill and cut confirmed', 'none'),
+    'round3/phone-r4/aws/g3a/pilot-calib': ('Round 4 Device Farm G3a calibration pilot (--calibrate 3): gate passed (edge 150.6 s, umts 138.8 s, lte 1.56 s at 2 MiB; N = 10 blocks)', 'none'),
     'round3/g3cost/pilot-6': ('G3d v4 pilot (24/11 00:14): gate passed (9/9 valid, 18/18 uploads ok and received, batterystats in 9 cells, screen timeout 86400000 and Doze off)', 'none'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
@@ -127,6 +130,17 @@ def trial_rows():
     p4 = load('round3/g3race/analysis-p4/g3p4-summary.json')
     if p4: out.append(('P4: SO_SNDBUF x fence/fence-abort (final-p4 + resumed final-p4b, final-p4c)', p4['logged'], [f"{x['trial']}: {x['reason']}" for x in p4['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p4['interrupted_excluded']],
                        sum(c.get('unused', 0) for c in p4['cells'].values()), 'g3race/analysis-p4'))
+    r4l = load('round3/phone-r4/aws/life/analysis/test6-summary.json')
+    if r4l:
+        lc = r4l['lifecycle']; inv = [f"{x.get('trial')}: {x.get('reason')}" for x in lc.get('invalid_oracle_rules', []) + lc.get('invalid_phone_rules', [])]
+        out.append(('Round 4 Device Farm lifecycle netloss (Pixel 8a, Android 17; reboot dropped)', sum(lc['logged'].values()), inv, len(lc.get('unused_valid', [])), 'phone-r4/aws/life/analysis'))
+    r4a = load('round3/phone-r4/aws/airguard/analysis/airguard-summary.json')
+    if r4a:
+        out.append(('Round 4 Device Farm AirGuard lifecycle (pending, kill, netloss)', len({r['trial'] for r in r4a['rows']}) + len(r4a['invalid']), [f"{x['trial']}: {x['reason']}" for x in r4a['invalid']],
+                    sum(c['unused'] for c in r4a['cells'].values()), 'phone-r4/aws/airguard/analysis'))
+    r4g = load('round3/phone-r4/aws/g3a/analysis/g3race-summary.json')
+    if r4g: out.append(('Round 4 Device Farm G3a commit point (5 arms, EC2 receiver)', r4g['logged'], [f"{x['trial']}: {x['reason']}" for x in r4g['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in r4g.get('interrupted_excluded', [])],
+                        sum(c.get('unused', 0) for c in r4g['cells'].values()), 'phone-r4/aws/g3a/analysis'))
     b2 = load('round3/b2/analysis/airguard-summary.json')
     if b2:
         out.append(('B2 AirGuard (real app)', len({r['trial'] for r in b2['rows']}) + len(b2['invalid']), [f"{x['trial']}: {x['reason']}" for x in b2['invalid']],

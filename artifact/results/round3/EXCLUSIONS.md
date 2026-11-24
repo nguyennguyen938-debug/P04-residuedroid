@@ -35,6 +35,9 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | G3d upload cost on the phone (Galaxy A06, Android 15), protocol v4 (unit: cell) | 180 | 0 | 0 | `g3cost/analysis-v4` |
 | P3: G3a on lte, balanced exposure (protocol v5) | 150 | 0 | 0 | `g3race/analysis-lte5` |
 | P4: SO_SNDBUF x fence/fence-abort (final-p4 + resumed final-p4b, final-p4c) | 368 | 8: race-umts-2097152-fence-abort-16-d5ea11: interrupted block (paused, operational); race-umts-2097152-fence-abort-16-1a221c: interrupted block (paused, operational); race-edge-2097152-fence-abort-16-5b954f: interrupted block (paused, operational); race-edge-2097152-fence-abort-25-48a086: interrupted block (paused, operational); race-umts-2097152-fence-25-ce6559: interrupted block (paused, operational); race-umts-2097152-fence-abort-25-1efcf8: interrupted block (paused, operational); race-edge-2097152-fence-25-d1623a: interrupted block (paused, operational); race-edge-2097152-fence-abort-25-ed2d1d: interrupted block (paused, operational) | 0 | `g3race/analysis-p4` |
+| Round 4 Device Farm lifecycle netloss (Pixel 8a, Android 17; reboot dropped) | 20 | 0 | 0 | `phone-r4/aws/life/analysis` |
+| Round 4 Device Farm AirGuard lifecycle (pending, kill, netloss) | 60 | 0 | 0 | `phone-r4/aws/airguard/analysis` |
+| Round 4 Device Farm G3a commit point (5 arms, EC2 receiver) | 450 | 0 | 0 | `phone-r4/aws/g3a/analysis` |
 | B2 AirGuard (real app) | 80 | 0 | 0 | `b2/analysis` |
 | G2b AirGuard layered early (group 2) | 80 | 0 | 0 | `g2layer/analysis` |
 
@@ -85,6 +88,9 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/g3race/pilot-mech` | G3a/G3b mechanism pilot (45 trials): MECHANISM GATE FAIL on the capture only (console `network capture start` takes bare filenames; no pcap) | protocol v2: emulator -tcpdump at launch |
 | `round3/g3race/pilot-mech2` | G3a/G3b mechanism pilot v2 (45 trials): every gate field held | none |
 | `round3/g3race/pilot-p4` | P4 pilot (1 block, 12 trials): mechanism gate passed (sndbuf levels requested/actual 0/1048576, 16384/16384, 65536/65536) | none |
+| `round3/phone-r4/aws/airguard/pilot-p1` | Round 4 Device Farm AirGuard pilot (pending, kill, netloss; 1 trial each): gates passed, kill and cut confirmed | none |
+| `round3/phone-r4/aws/g3a/pilot-calib` | Round 4 Device Farm G3a calibration pilot (--calibrate 3): gate passed (edge 150.6 s, umts 138.8 s, lte 1.56 s at 2 MiB; N = 10 blocks) | none |
+| `round3/phone-r4/aws/life/pilot-pnet` | Round 4 Device Farm lifecycle netloss pilot (1 paired trial): gates passed, cut confirmed (up before, down after) | none |
 | `round3/phone-r4/aws/life/pilot-preb` | Round 4 Device Farm lifecycle reboot pilot (24/11): both gates passed, but the phone never rebooted (adb reboot ignored; boot_s 0.55 s, monotonic clock continuous in all five apps, reboot-evidence.json) | reboot schedule dropped on Device Farm; harness v1.1 records uptime and requires reboot_verified |
 | `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
 | `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |

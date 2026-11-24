@@ -715,3 +715,22 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-25 00:51 r4df g3a/pilot-calib: pilot gate: gates.py PASS, gate_b PASS
 - 2026-11-25 00:51 r4df g3a/pilot-calib: done
 - 2026-11-25 00:53 r4df g3a/pilot-calib: COMPLETED PASSED (18.0 trial min; 774.85 left); gates.py PASS (2 MiB medians edge 150.6 s, umts 138.8 s, lte 1.56 s; block upper bound 29.7 min -> N = 10 blocks). N and job timeout 130 min (account max 150; 3 blocks up to about 89 min + setup) written in plans/r4df-g3a-card.md before any final. frozen-g3a-df (HEAD dd823b2, final package sha256 2d83b299). job.sh: results check accepts trials.jsonl (G3a finals). Starting finals f1 (blocks 0-2), f2 (3-5), f3 (6-8), f4 (9).
+- 2026-11-25 00:53 r4df g3a/f1: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f1.yml, timeout 130 min)
+- 2026-11-25 00:53 r4df g3a/f1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 02:17 r4df g3a/f1: run_df exit 0; trial minutes after: 697.17 (used 77.7); run COMPLETED PASSED
+- 2026-11-25 02:17 r4df g3a/f1: done
+- 2026-11-25 02:17 r4df g3a/f2: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f2.yml, timeout 130 min)
+- 2026-11-25 02:17 r4df g3a/f2: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 02:18 r4df g3a/f1 (blocks 0-2): COMPLETED PASSED (77.7 trial min; 697.17 left). job.sh bug found: an inline comment in the results-dir check (edit of 00:52) swallowed the '|| { note; exit 5; }' branch, so results_dir.txt was not written and a missing results dir would not stop the job; data unaffected. results_dir.txt written by hand for f1 (pointer file only); job.sh fixed after the chain ends (not edited while a job.sh is running).
+- 2026-11-25 03:29 r4df g3a/f2: run_df exit 0; trial minutes after: 635.07 (used 62.1); run COMPLETED PASSED
+- 2026-11-25 03:29 r4df g3a/f2: done
+- 2026-11-25 03:29 r4df g3a/f3: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f3.yml, timeout 130 min)
+- 2026-11-25 03:29 r4df g3a/f3: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 04:42 r4df g3a/f3: run_df exit 0; trial minutes after: 570.85 (used 64.2); run COMPLETED PASSED
+- 2026-11-25 04:42 r4df g3a/f3: done
+- 2026-11-25 04:42 r4df g3a/f4: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f4.yml, timeout 130 min)
+- 2026-11-25 04:42 r4df g3a/f4: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 04:59 r4df g3a/f4: run_df exit 0; trial minutes after: 557.92 (used 12.9); run COMPLETED PASSED
+- 2026-11-25 04:59 r4df g3a/f4: done
+- 2026-11-25 05:00 r4df g3a: finals f1-f4 COMPLETED PASSED (f1 77.7, f2 62.1, f3 64.2 trial min; f4 see minutes.txt). EC2 receiver logs fetched to g3a/receiver-ec2 (no token inside). Port 8800 revoked; instance i-012615ad768c3476f terminated, security group and key pair deleted (no EC2 left). G3a packages holding the token deleted.
+- 2026-11-25 05:03 r4df g3a: f4 COMPLETED PASSED (12.9 trial min; 557.92 left). 450/450 valid. Pre-registered analysis analyze_g3race.py f1-f4 --n 30 -> g3a/analysis (rerun from the repo root for repo-relative paths; numbers identical to the first run). Packaging: g3a trials.jsonl and ListArtifactType.log.json git-ignored, committed as .gz + sha256 (convention of g3race); analysis on the .gz alone gives the same numbers. job.sh results-dir check fixed (chain ended). Card §6 for G3a, tracker, EXCLUSIONS (32 task rows, 0 dirs without reason), r4df-report.json.

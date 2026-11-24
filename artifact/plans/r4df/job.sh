@@ -29,7 +29,8 @@ note "run_df exit $rc; $(cat "$OUT/minutes.txt" 2>/dev/null); run $(python3 -c "
 [ $rc = 0 ] || exit 4
 cp "$SPEC" "$OUT/testspec.yml"; shasum -a 256 "$PKG" "$APK" | sed 's#  .*/#  #' > "$OUT/inputs.sha256"
 D=$(find "$OUT/unzipped" -maxdepth 7 -type d -name "$TASK" | head -1)
-[ -n "$D" ] && [ -f "$D/schedule.jsonl" -o -f "$D/calibration.json" -o -f "$D/trials.jsonl" ] ||   # trials.jsonl: G3a finals { note "no $TASK results dir in the customer artifacts (environment failure)"; exit 5; }
+# trials.jsonl: G3a finals (25/11: an inline comment here had swallowed the || branch, results_dir.txt then written by hand)
+[ -n "$D" ] && [ -f "$D/schedule.jsonl" -o -f "$D/calibration.json" -o -f "$D/trials.jsonl" ] || { note "no $TASK results dir in the customer artifacts (environment failure)"; exit 5; }
 echo "$D" > "$OUT/results_dir.txt"
 if [ "$KIND" = pilot ]; then
   python3 artifact/devicefarm/phone-r4/gates.py "$TASK" "$D" ${GS:+--schedules "$GS"}; g1=$?

@@ -1,0 +1,56 @@
+{
+ "serial": "physical (not recorded)",
+ "phone": {
+  "release": "17",
+  "sdk": "37",
+  "transport": "ni{WIFI"
+ },
+ "avd": "",
+ "fingerprint": "google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys",
+ "seed": "g3a-df-20261125",
+ "profiles": [
+  "edge",
+  "umts",
+  "lte"
+ ],
+ "sizes": [
+  32768,
+  262144,
+  2097152
+ ],
+ "modes": [
+  "early",
+  "close",
+  "close2",
+  "fence",
+  "fence-abort"
+ ],
+ "calibrate": 0,
+ "trials": 3,
+ "start": 0,
+ "durations": {
+  "edge:32768": 3.599686851,
+  "edge:262144": 19.907299245,
+  "edge:2097152": 150.642524162,
+  "umts:32768": 2.791817221,
+  "umts:262144": 17.922131682,
+  "umts:2097152": 138.784122707,
+  "lte:32768": 0.121728515,
+  "lte:262144": 0.304804402,
+  "lte:2097152": 1.557639852
+ },
+ "radio": {},
+ "shaper": "emu",
+ "receiver": "http://54.186.50.117:8800",
+ "host": "54.186.50.117",
+ "apk_sha256": "8f723ead0a9ac8d0eb1c7ea15c7a52e6da83363c912a7ef00a4eba15a028e1ad",
+ "setup_init_s": 0.3,
+ "g3": true,
+ "marker": 0,
+ "capture": false,
+ "warm_revision": true,
+ "sndbuf": 16384,
+ "sndbufs": null,
+ "qsnap": false,
+ "started": 1795542841.6385758
+}
