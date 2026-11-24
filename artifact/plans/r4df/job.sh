@@ -13,7 +13,16 @@ PRJ=$(aws devicefarm list-projects --query "projects[?name=='P04-test6'].arn | [
 POOL=$(aws devicefarm list-device-pools --arn "$PRJ" --type PRIVATE --query "devicePools[?name=='pilot-pixel8a'].arn | [0]" --output text)
 mkdir -p ~/.p04/r4df; ENV=~/.p04/r4df/uploads-$TASK-$JOB.env
 note "upload (app $(basename "$APK"), package sha256 $(shasum -a 256 "$PKG" | cut -c1-12), spec $(basename "$SPEC"), timeout $TMO min)"
-bash artifact/devicefarm/phone-r4/aws/upload_df.sh "$PRJ" "$POOL" "$APK" "$PKG" "$SPEC" > "$ENV" || { note "upload FAILED"; exit 3; }
+# 24/11: a curl PUT of the 59 MB AirGuard package stalled for 23 min (upload_df.sh has no timeout); watchdog + retries here
+ok=0
+for try in 1 2 3; do
+  bash artifact/devicefarm/phone-r4/aws/upload_df.sh "$PRJ" "$POOL" "$APK" "$PKG" "$SPEC" > "$ENV" & up=$!
+  for _ in $(seq 1 240); do kill -0 $up 2>/dev/null || break; sleep 5; done
+  if kill -0 $up 2>/dev/null; then pkill -P $up 2>/dev/null; pkill -f "curl -sS -f -T $PKG" 2>/dev/null; kill $up 2>/dev/null; wait $up 2>/dev/null
+    note "upload attempt $try stalled (> 20 min), killed"; continue; fi
+  wait $up && { ok=1; break; }; note "upload attempt $try failed"
+done
+[ $ok = 1 ] || { note "upload FAILED after 3 attempts (no run scheduled)"; exit 3; }
 note "scheduled on Device Farm (Pixel 8a pool)"
 bash artifact/plans/test6/run_df.sh "$ENV" "r4df-$TASK-$JOB" "$OUT" "$TMO"; rc=$?
 note "run_df exit $rc; $(cat "$OUT/minutes.txt" 2>/dev/null); run $(python3 -c "import json;r=json.load(open('$OUT/run.json'));print(r['status'],r['result'])" 2>/dev/null)"
