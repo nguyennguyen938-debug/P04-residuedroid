@@ -51,6 +51,8 @@ SCHEMA = {
     # kill and revoke schedules, pre-registered denominators.
     "devLifeEnqViol": "menqueue violating trials", "devLifeEnqN": "menqueue analysed trials",
     "devLifeFenceViol": "mfence violating trials", "devLifeFenceN": "mfence analysed trials",
+    "devLifeLayerViol": "mlayer (layered early) violating trials", "devLifeLayerN": "mlayer analysed trials",
+    "devLifeStartViol": "mstart (job-start check) violating trials", "devLifeStartN": "mstart analysed trials",
     # Test 1 on a personal phone, same meaning as race*.
     "racePhoneModel": "phone model", "racePhoneAndroid": "Android version", "racePhoneTrials": "trials per profile and variant",
     "racePhoneEdgeLayer": "EDGE: early violating trials", "racePhoneEdgeFence": "EDGE: fence violating trials",

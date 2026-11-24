@@ -1,0 +1,14 @@
+{
+ "_comment": "Own-phone lifecycle with reboot and netloss (devicefarm/phone-r4, priority 2), for followup/analyze_test6.py. Paths relative to artifact/. One device key, one letter. Fill model/android from the run's meta.json before the analysis; no serial.",
+ "devices": {
+  "A": {
+   "label": "own phone",
+   "model": "FILL FROM meta.json",
+   "android": "FILL FROM meta.json",
+   "environment": "user's own phone on USB, Mac harness",
+   "receiver_mode": "A: Mac sink via adb reverse (USB); netloss = reverse port removed",
+   "tls": [],
+   "life": {"A-final": "results/round3/phone-r4/lifecycle/final"}
+  }
+ }
+}

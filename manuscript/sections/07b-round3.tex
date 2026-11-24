@@ -108,8 +108,9 @@ that carries source tracers as the fixture's does (Appendix~\ref{app:generality}
 \paragraph{Newer Android and rented phones.} On Android~14 and 15 emulators (\lifeFourteenTrials{} and
 \lifeFifteenTrials{} paired trials), the enqueue-time baseline violated in \lifeFourteenEnq{} and \lifeFifteenEnq{}
 trials, layered early checks in \lifeFourteenLayer{} and \lifeFifteenLayer{}, and the fence in \lifeFourteenFence{} and
-\lifeFifteenFence{}. On two rented phones (\devModel{}), the fence violated in \devLifeFenceViol{} of \devLifeFenceN{}
-lifecycle trials against \devLifeEnqViol{} of \devLifeEnqN{} for the enqueue baseline (Appendix~\ref{app:generality}).
+\lifeFifteenFence{}. On two rented phones (\devModel{}; pending, kill and revoke), the enqueue baseline violated in
+\devLifeEnqViol{} of \devLifeEnqN{} paired trials, and the job-start check, layered early checks and the fence in
+\devLifeStartViol{}, \devLifeLayerViol{} and \devLifeFenceViol{} (Appendix~\ref{app:generality}).
 
 \paragraph{Cost.} A sweep of chunk size and sender count in a separate harness (Appendix~\ref{app:sweep}) put
 the median acknowledgement between \sweepAckLargeMs{} and \sweepAckSmallMs{}\,ms, and some senders stalled on the app-wide lock. On the \racePhoneModel{} over Wi-Fi, in the
