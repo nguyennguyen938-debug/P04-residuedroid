@@ -1,0 +1,104 @@
+{
+ "n_target": 20,
+ "devices": {
+  "P": {
+   "label": "Pixel 8a (Device Farm)",
+   "model": "Pixel 8a",
+   "android": "17",
+   "environment": "AWS Device Farm (custom environment, amazon_linux_2)",
+   "receiver_mode": "A: Device Farm host via adb reverse (USB); netloss = reverse port removed; reboot = adb reboot",
+   "tls": {
+    "blocks_logged": 0,
+    "blocks_invalid": [],
+    "blocks_valid": 0,
+    "blocks_analyzed": [],
+    "blocks_unused": [],
+    "duplicate_records": [],
+    "per_case": {
+     "control": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "early": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "buffered-fence": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "buffered-early": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "stall-small": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "stall-large": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     },
+     "concurrent": {
+      "trials": 0,
+      "successful_sends": 0,
+      "blocked_trials": 0,
+      "trials_after_ack_accepted": 0,
+      "after_ack_wilson95": null,
+      "after_ack_bytes_total": 0
+     }
+    },
+    "rows": []
+   },
+   "dirs": {
+    "tls": [],
+    "life": {
+     "P-net": "results/round3/phone-r4/aws/life/net/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life"
+    }
+   }
+  }
+ },
+ "lifecycle": {
+  "logged": {
+   "P/netloss": 20
+  },
+  "invalid_oracle_rules": [],
+  "invalid_phone_rules": [],
+  "unused_valid": [],
+  "analyzed_paired_trials": {
+   "P/netloss": 20
+  }
+ },
+ "summary_candidates": {
+  "devModel": "Pixel 8a (Device Farm)",
+  "devAndroid": "17",
+  "devTrials": 0,
+  "devEarlyComplete": 0,
+  "devFenceAfterAck": 0,
+  "devFenceTrials": 0
+ }
+}

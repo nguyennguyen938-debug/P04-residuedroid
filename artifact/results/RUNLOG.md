@@ -683,3 +683,8 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-24 22:14 r4df life/pilot-pnet: pilot gate: gates.py PASS, gate_b PASS
 - 2026-11-24 22:14 r4df life/pilot-pnet: done
 - 2026-11-24 22:15 r4df life/pilot-pnet: COMPLETED PASSED (1.6 trial min; 881.75 left); gates.py + gate_b PASS; cut confirmed in every app (probe up before, down after; net_verified_down true); NET_FAIL events in all five app logs (mechanism check). Protocol frozen: frozen-life-df (plans/r4df/freeze_r4df.py; HEAD 1bf77cd, package sha256 abba818f). Starting the netloss final (START=0 N=20, timeout 80 min).
+- 2026-11-24 22:15 r4df life/net: upload (app rl-mfence.apk, package sha256 abba818f270b, spec life-net.yml, timeout 80 min)
+- 2026-11-24 22:16 r4df life/net: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:47 r4df life/net: run_df exit 0; trial minutes after: 854.25 (used 27.5); run COMPLETED PASSED
+- 2026-11-24 22:47 r4df life/net: done
+- 2026-11-24 22:48 r4df life/net (final, netloss START=0 N=20): COMPLETED PASSED (27.5 trial min; 854.25 left). Harness check: 20 plans, 0 phone-invalid, 0 trial/setup errors, net_verified_down in all, max action gap 9.6 s. Pre-registered analysis: analyze_test6.py --manifest plans/r4df/manifest-life-df.json (B copy of C's manifest, reboot dropped) -> life/analysis: 20 analysed, 0 invalid, 0 unused.

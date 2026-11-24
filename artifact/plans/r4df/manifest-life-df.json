@@ -1,0 +1,16 @@
+{
+ "_comment": "B copy (24/11) of devicefarm/phone-r4/aws/manifest-life-df.json for the round-4 lifecycle run on Device Farm: reboot dropped (Device Farm ignores adb reboot, plans/r4df-lifecycle-card.md Pilot log); android from meta.json.",
+ "devices": {
+  "P": {
+   "label": "Pixel 8a (Device Farm)",
+   "model": "Pixel 8a",
+   "android": "17",
+   "environment": "AWS Device Farm (custom environment, amazon_linux_2)",
+   "receiver_mode": "A: Device Farm host via adb reverse (USB); netloss = reverse port removed; reboot = adb reboot",
+   "tls": [],
+   "life": {
+    "P-net": "results/round3/phone-r4/aws/life/net/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life"
+   }
+  }
+ }
+}
