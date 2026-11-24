@@ -64,6 +64,9 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7). No jo
   records `/proc/uptime` before and after, `reboot_verified` = uptime restarted, and the analysis marks a plan with
   `reboot_verified` false as "reboot not verified" (`followup/test_phone_reboot.py`, `test_airguard_phone.py`). This keeps
   the check for a later own-phone run, where `adb reboot` works.
+- Also before the netloss pilot (24/11): positive control for the cut. With `--phone-faults` / `--phone`, the probe must see
+  the sink up right before each cut (`net_probe_before`), and `net_verified_down` needs up-before and down-after (a missing
+  `nc` would otherwise read as down). The probe's one-line `x` gets HTTP 400 from the sinks and is not logged.
 - Remaining lifecycle work on Device Farm: netloss pilot, then the netloss final (`START=0 N=20`).
 
 ## 6. Outcome (after the run)

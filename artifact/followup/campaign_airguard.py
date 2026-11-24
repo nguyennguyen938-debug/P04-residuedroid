@@ -110,10 +110,13 @@ def trial(sched, k):
         for v in order: ok, out = hook(v, 'insert', addr=f'AA:00:00:00:00:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert_pre', variant=v, ok=ok)
         time.sleep(1.5)
         if sched == 'netloss':
+            if a.phone:                           # B 24/11: positive control, the sink ports must answer before the cut
+                pre = {v: sh(f'echo x | nc -w 1 127.0.0.1 {PORTS[v]} >/dev/null 2>&1 && echo up || echo down').strip() for v in order}
+                act('net_probe_before', state=pre)
             net(False); act('net_off')
             if a.phone:                           # B 24/11: confirm each sink port refuses from the phone before the outage counts
                 st = {v: sh(f'echo x | nc -w 1 127.0.0.1 {PORTS[v]} >/dev/null 2>&1 && echo up || echo down').strip() for v in order}
-                log['net_verified_down'] = all(x.endswith('down') for x in st.values()); act('net_probe', state=st)
+                log['net_verified_down'] = all(x.endswith('up') for x in pre.values()) and all(x.endswith('down') for x in st.values()); act('net_probe', state=st)
             for v in order: hook(v, 'run'); act('run_during_outage', variant=v)
             time.sleep(8)
         for v in order: ok, out = hook(v, 'withdraw'); act('withdraw', variant=v, ok=ok, out=out)

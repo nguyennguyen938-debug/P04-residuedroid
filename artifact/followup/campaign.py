@@ -370,6 +370,9 @@ def run_trial(sched, k):
             # During each app's own 6 s outage only the trigger uploads of T8, T2, T5, T4 are started.
             ok_all = True
             for p in PKGS:
+                if args.phone_faults:   # B 24/11: positive control; the probe must see the sink up before the cut
+                    pre = sh(f"echo x | nc -w 1 {SINK_HOST} {args.port} >/dev/null 2>&1 && echo up || echo down").strip()
+                    act("net_probe_before", pkg=p, state=pre); ok_all &= pre.endswith("up")
                 net(False); act("net_off", pkg=p)
                 t_cut = time.time(); st = "up"
                 while time.time() - t_cut < 15:
