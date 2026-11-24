@@ -78,9 +78,11 @@ def derived():
     for r in rows:
         if r['tenant'] in (1, 2, 4, 5, 8):
             trial[r['run'], r['schedule'], r['instance'], r['trial'], r['variant']] |= r['violation'] > 0
-    for key, v in (('Enq', 'menqueue'), ('Fence', 'mfence')):
+    # Layered early (mlayer) and job-start (mstart) added 24/11 (C): the same paired trials, already in the frozen output.
+    for key, v in (('Enq', 'menqueue'), ('Fence', 'mfence'), ('Layer', 'mlayer'), ('Start', 'mstart')):
         hits = [viol for t, viol in trial.items() if t[4] == v]
         k[f'devLife{key}Viol'], k[f'devLife{key}N'] = sum(hits), len(hits)
+    assert len({k[f'devLife{key}N'] for key in ('Enq', 'Fence', 'Layer', 'Start')}) == 1   # the paper cites one N
     # Group 2 (PR #5, C 22/11). G2a: pooled over EDGE/3G/LTE; the delivered-abort counts are B's exploratory post-hoc.
     g = load('round3/g2close/analysis/g2close-summary.json')['cells']
     mode = lambda m, f: [c[f] for name, c in sorted(g.items()) if name.endswith('/' + m)]

@@ -1,0 +1,112 @@
+diff --git a/artifact/followup/campaign_airguard.py b/artifact/followup/campaign_airguard.py
+index 36800f2..3f3fc61 100644
+--- a/artifact/followup/campaign_airguard.py
++++ b/artifact/followup/campaign_airguard.py
+@@ -11,6 +11,10 @@ contract: withdrawal invalidates data collected before it; nothing collected whi
+ beacons = permitted deficit. The sink (airguard_sink.py) logs bodies per port: 8796 stock, 8797 fenced.
+ Group 2 (g2layer-card.md): --variants stock,fenced,layered adds the layered-early build (port 8795); default unchanged.
+ Usage: campaign_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir DIR --out DIR --schedules pending,kill,reboot,netloss --trials 20
++Own phone on USB (--phone; builds with -Presidue.base=http://127.0.0.1:<port>/ and cleartext for 127.0.0.1): no adb root;
++events read with run-as; kill -9 as the app's uid via run-as; the sink ports go through `adb reverse`, which netloss
++removes for the outage (connection refused, as the emulator's REJECT rule) and reboot re-adds after `adb reboot`.
++The phone must have no screen lock, or its credential-encrypted storage stays locked after the reboot.
+ """
+ import argparse, json, os, random, subprocess, sys, time
+ from pathlib import Path
+@@ -26,6 +30,7 @@ p.add_argument('--serial', required=True); p.add_argument('--avd', default='');
+ p.add_argument('--out', type=Path, required=True); p.add_argument('--schedules', default='pending,kill,reboot,netloss')
+ p.add_argument('--trials', type=int, default=20); p.add_argument('--start', type=int, default=0); p.add_argument('--seed', default='b2-20261119')
+ p.add_argument('--variants', default='stock,fenced'); p.add_argument('--nbeacons', type=int, default=4); p.add_argument('--wait', type=float, default=90)
++p.add_argument('--phone', action='store_true', help='own phone on USB: no root, run-as, sink via adb reverse (see docstring)')
+ a = p.parse_args()
+ PKGS = {v: PKGS[v] for v in a.variants.split(',')}
+ assert not a.out.exists(), f'refusing: {a.out} exists (fresh directory rule)'
+@@ -56,7 +61,17 @@ def boot():
+     if not alive(): raise RuntimeError('emulator did not boot')
+ 
+ 
++def reverse(on):
++    for v in PKGS:
++        if on: adb('reverse', f'tcp:{PORTS[v]}', f'tcp:{PORTS[v]}')
++        else: adb('reverse', '--remove', f'tcp:{PORTS[v]}')
++
++
+ def root():
++    if a.phone:                               # no adb root on a phone; wait for boot and keep the sink reachable
++        adb('wait-for-device'); reverse(True)
++        while not alive(): time.sleep(1)
++        return
+     adb('root'); time.sleep(2); adb('wait-for-device')
+     while not alive(): time.sleep(1)
+ 
+@@ -68,10 +83,12 @@ def hook(var, op, **kw):
+ 
+ 
+ def events(var):
+-    return [json.loads(l) for l in sh(f'cat /data/data/{PKGS[var]}/files/residue-events.jsonl 2>/dev/null').splitlines() if l.startswith('{')]
++    c = f'run-as {PKGS[var]} cat files/residue-events.jsonl' if a.phone else f'cat /data/data/{PKGS[var]}/files/residue-events.jsonl'
++    return [json.loads(l) for l in sh(c + ' 2>/dev/null').splitlines() if l.startswith('{')]
+ 
+ 
+ def net(on):
++    if a.phone: reverse(on); return
+     if on: sh('while iptables -D OUTPUT -d 10.0.2.2 -j REJECT 2>/dev/null; do :; done')
+     else: sh('iptables -I OUTPUT -d 10.0.2.2 -j REJECT')
+ 
+@@ -96,7 +113,9 @@ def trial(sched, k):
+         for v in order: ok, out = hook(v, 'insert', addr=f'AA:00:00:00:01:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert_optout', variant=v, ok=ok)
+         time.sleep(1.5)
+         if sched == 'kill':
+-            for v in order: sh(f'kill -9 $(pidof {PKGS[v]})'); act('kill', variant=v, pid_after=sh(f'pidof {PKGS[v]}').strip())
++            for v in order:
++                sh(f"{'run-as ' + PKGS[v] + ' ' if a.phone else ''}kill -9 $(pidof {PKGS[v]})")
++                act('kill', variant=v, pid_after=sh(f'pidof {PKGS[v]}').strip())
+         elif sched == 'reboot':
+             act('reboot'); adb('reboot'); time.sleep(5); adb('wait-for-device', timeout=300)
+             t0 = time.time()
+@@ -133,11 +152,14 @@ sink = subprocess.Popen([sys.executable, str(ART / 'followup/airguard_sink.py'),
+ try:
+     boot(); root()
+     for v, pkg in PKGS.items(): adb('install', '-r', '-g', a.apkdir / f'airguard-{v}.apk', timeout=180, check=True)
++    if a.phone: reverse(True)
+     warm = {}                                 # pilot-1: the first hook after install timed out (cold start + dexopt); one no-op
+     for v in PKGS:                            # broadcast per app, generous timeout, recorded in meta.json
+         t0 = time.time(); out = sh(f'am broadcast -n {PKGS[v]}/{HOOK} --es op noop', timeout=300); warm[v] = {'s': round(time.time() - t0, 1), 'ok': 'data="ok"' in out}
+     (a.out / 'meta.json').write_text(json.dumps({'serial': a.serial, 'avd': a.avd, 'schedules': a.schedules, 'trials': a.trials, 'start': a.start,
+         'seed': a.seed, 'variants': list(PKGS), 'nbeacons': a.nbeacons, 'warmup': warm, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
++        **({'phone': True, 'model': sh('getprop ro.product.model').strip(), 'android': sh('getprop ro.build.version.release').strip(),
++            'faults': {'netloss': 'adb reverse ports removed', 'reboot': 'adb reboot, reverse re-added'}} if a.phone else {}),
+         'apks': {v: __import__('hashlib').sha256((a.apkdir / f'airguard-{v}.apk').read_bytes()).hexdigest() for v in PKGS}, 'started': time.time()}, indent=1) + '\n')
+     for k in range(a.start, a.start + a.trials):
+         for s in a.schedules.split(','): trial(s, k)
+diff --git a/artifact/realapp/airguard/apply.sh b/artifact/realapp/airguard/apply.sh
+index 48e7872..4c55995 100755
+--- a/artifact/realapp/airguard/apply.sh
++++ b/artifact/realapp/airguard/apply.sh
+@@ -10,16 +10,20 @@ set -euo pipefail
+ # The app's network_security_config denies cleartext for every host, which overrides usesCleartextTraffic: the test sink
+ # (plain HTTP on the host, 10.0.2.2) would be unreachable for Retrofit (B2 pilot-1: no request reached the sink). Permit
+ # cleartext for 10.0.2.2 only, identically in both test builds.
++# Own-phone builds (artifact/devicefarm/phone-r4): CLEARTEXT_HOSTS="10.0.2.2 127.0.0.1" also permits the adb reverse
++# address; the default (10.0.2.2 only) writes exactly what earlier builds got.
+ nsc() {
+-  local f=$APP/res/xml/network_security_config.xml
+-  grep -q "10.0.2.2" "$f" && return 0
+-  python3 - "$f" <<'PY'
++  local f=$APP/res/xml/network_security_config.xml h
++  for h in ${CLEARTEXT_HOSTS:-10.0.2.2}; do
++    grep -q ">$h<" "$f" && continue
++    python3 - "$f" "$h" <<'PY'
+ import sys
+-f = sys.argv[1]; s = open(f).read(); old = '</network-security-config>'
++f, h = sys.argv[1], sys.argv[2]; s = open(f).read(); old = '</network-security-config>'
+ assert s.count(old) == 1, f
+-open(f, 'w').write(s.replace(old, '    <domain-config cleartextTrafficPermitted="true">\n        <domain includeSubdomains="false">10.0.2.2</domain>\n    </domain-config>\n' + old))
++open(f, 'w').write(s.replace(old, '    <domain-config cleartextTrafficPermitted="true">\n        <domain includeSubdomains="false">' + h + '</domain>\n    </domain-config>\n' + old))
+ PY
+-  echo "network_security_config: cleartext permitted for 10.0.2.2"
++    echo "network_security_config: cleartext permitted for $h"
++  done
+ }
+ main() {
+ SRC=$1; HERE=$(cd "$(dirname "$0")" && pwd); ART=$(cd "$HERE/../.." && pwd)
