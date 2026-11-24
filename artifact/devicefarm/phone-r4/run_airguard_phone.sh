@@ -21,22 +21,7 @@ pilot)
   n=1; while [ -e $D/pilot-$n ]; do n=$((n+1)); done; OUT=$D/pilot-$n
   log "LAUNCH pilot $OUT (own phone, adb reverse sink)"; doze disable
   caffeinate -s -i "${RUN[@]}" --trials 1 --out $OUT; rc=$?; doze enable; log "pilot $OUT exit $rc"
-  python3 - "$OUT" <<'PY'
-import json, sys
-from pathlib import Path
-d = Path(sys.argv[1]); rows = [json.loads(l) for l in open(d / 'schedule.jsonl') if l.strip()]
-chk = {}
-for r in rows:
-    a = r.get('actions', []); names = [x['a'] for x in a]
-    hooks_ok = all(x.get('ok', True) for x in a if x['a'] in ('grant', 'insert_pre', 'withdraw', 'insert_optout', 'regrant', 'insert_post'))
-    ok = 'trial_error' not in names and hooks_ok and r.get('device_alive_end') is True
-    if r['schedule'] == 'reboot': ok &= 'boot_completed' in names
-    chk[r['schedule']] = {'ok': bool(ok), 'quiesced_s': next((x.get('waited') for x in a if x['a'] == 'quiesced'), None)}
-dev = [json.loads(l) for l in open(d / 'device_events.jsonl') if l.strip()]
-gate = set(chk) == {'pending', 'kill', 'reboot', 'netloss'} and all(v['ok'] for v in chk.values()) and all(x['events'] for x in dev)
-print(chk, '| app logs read' if all(x['events'] for x in dev) else '| EMPTY app log', '| gate', 'PASS' if gate else 'FAIL')
-(d / 'gate.json').write_text(json.dumps({'gate': gate, 'per_schedule': chk}, indent=1) + '\n')
-PY
+  python3 devicefarm/phone-r4/gates.py airguard $OUT
   log "pilot gate: $(tr -d '\n ' < $OUT/gate.json)";;
 final)
   T=${3:?trials}; git ls-files --error-unmatch $CARD >/dev/null 2>&1 && git diff --quiet HEAD -- $CARD \

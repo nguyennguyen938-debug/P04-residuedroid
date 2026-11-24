@@ -1,0 +1,18 @@
+{
+ "_comment": "Round 4 lifecycle (reboot/netloss) on AWS Device Farm, for followup/analyze_test6.py. Paths relative to artifact/; one entry per Device Farm job (run_df.sh out dir, customer artifacts extracted). Fill the job dirs after the runs; instance keys start with the device letter.",
+ "devices": {
+  "P": {
+   "label": "Pixel 8a (Device Farm)",
+   "model": "Pixel 8a",
+   "android": "FILL FROM meta.json",
+   "environment": "AWS Device Farm (custom environment, amazon_linux_2)",
+   "receiver_mode": "A: Device Farm host via adb reverse (USB); netloss = reverse port removed; reboot = adb reboot",
+   "tls": [],
+   "life": {
+    "P-net": "results/round3/phone-r4/aws/life/net/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life",
+    "P-reb1": "results/round3/phone-r4/aws/life/reb1/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life",
+    "P-reb2": "results/round3/phone-r4/aws/life/reb2/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/life"
+   }
+  }
+ }
+}

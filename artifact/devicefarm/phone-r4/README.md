@@ -27,6 +27,9 @@ Theo quy tắc nghiên cứu, mỗi thí nghiệm có card, pilot, cổng, freez
 
 Trước 29/11, leader đề xuất: #1, rồi #2 hoặc #3 nếu còn thời gian.
 
+**Chạy trên máy thuê AWS Device Farm thay cho máy cá nhân:** xem `aws/README.md`. Card, patch và cổng pilot (`gates.py`)
+dùng chung; chỉ khác cách đóng gói, testspec và chia job.
+
 ## 1. Chuẩn bị máy (USER làm, B kiểm bằng preflight)
 
 1. USB debugging bật, chấp nhận khóa RSA của Mac. Cắm sạc. Developer options, bật Stay awake.
