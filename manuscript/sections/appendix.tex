@@ -75,7 +75,7 @@ The artifact's label checker (\texttt{mutation/label\_check.py}) compares, in te
 sources that tracers find in the content; it is the check that catches an incomplete label. The confirmation shown on
 withdrawal should not overpromise, for example: ``Sharing is off. Data not yet handed to the network will not be sent. Data handed over before
 you turned this off may still reach our servers.'' Closing the connection lets bytes already in the socket's send
-buffer leave the device after the acknowledgement; an abortive close would discard them, which we did not test.
+buffer leave the device after the acknowledgement; an abortive close discards most of them (\S\ref{sec:eval-natural}).
 
 \section{Uncovered Paths}
 \label{app:uncovered}
@@ -132,18 +132,70 @@ toggles through the app's own preference path, worker runs) and point to a host 
 the F-Droid build commit and is not part of the app's source tree. A third, layered build of the second run sends through
 the same transport without per-chunk checks; it checks the consent rule once under the coordinator lock before sending.
 
-\paragraph{Early check with cancellation.}\label{app:cancel} The comparator of \S\ref{sec:eval-natural} is not part of
-\sys and is not counted in its size. A request registers a cancellation token before its early check, and the transport
-hands the socket to the token as soon as it is opened. The withdrawal commits under the policy lock, then synchronously
-asks the sending process to close every registered socket (or to close it the moment it opens), and is acknowledged
-only after the reply; a request whose check runs after the commit is blocked by the check. The fixture withdraws in its
-own process, so the cancellation crosses processes, which a same-process design would avoid. The median acknowledgement
-was \gcloseAckLo{} to \gcloseAckHi{}\,ms per link profile with cancellation, against at most \gcloseFenceAck{}\,ms for the
-fence. The receiver logged \gcloseCutComplete{} of the \gcloseCut{} cancelled requests cut by the withdrawal as
-complete. In an exploratory count defined after the data were seen, cancellation aborted \gcloseAbortDelivered{} requests
-that had been fully handed off and that the receiver had logged complete, so the app saw a failure for delivered data;
-the fence did so in \gcloseFenceAbortDelivered{} of \gcloseFenceDelivered{} such trials. We did not test an asynchronous
-cancel that does not hold the acknowledgement, or cancellation inside a real app.
+\paragraph{Early check with cancellation.}\label{app:cancel} The comparators of \S\ref{sec:eval-natural} are not part of
+\sys and are not counted in its size. A request registers a cancellation token before its early check, and the transport
+hands the socket to the token as soon as it is opened. In the \emph{cross-process} arm, the withdrawal commits under the
+policy lock in the fixture's withdrawal process, then synchronously asks the sending process to close every registered
+socket (or to close it the moment it opens), and is acknowledged only after the reply; a request whose check runs after
+the commit is blocked by the check. In the \emph{same-process} arm, the withdrawal itself runs in the sending process and
+closes, by a method call, every registered request that has not yet logged its handoff; this arm differs from the others
+both in where the withdrawal runs and in how it cancels. The abortive fence sets \texttt{SO\_LINGER} to 0 on its socket
+when it blocks, so the close discards unsent data and sends a reset. In the first run (early, cross-process cancellation
+and fence), the median acknowledgement was \gcloseAckLo{} to \gcloseAckHi{}\,ms per link profile with cancellation,
+against at most \gcloseFenceAck{}\,ms for the fence; the receiver logged \gcloseCutComplete{} of the \gcloseCut{}
+cancelled requests cut by the withdrawal as complete. In an exploratory count defined after the data were seen,
+cancellation aborted \gcloseAbortDelivered{} requests that had been fully handed off and that the receiver had logged
+complete, so the app saw a failure for delivered data; the fence did so in \gcloseFenceAbortDelivered{} of
+\gcloseFenceDelivered{} such trials. Counted from $W$ in that run (also exploratory), cross-process cancellation accepted
+post-commit writes in \gcloseCommitClose{} of \gcloseN{} trials (\gcloseCommitCloseKib{}\,KiB), the fence in
+\gcloseCommitFence{}. The second run added the same-process and abortive arms and made the commit count its primary
+(Table~\ref{tab:commit}); a third, on LTE only, started the withdrawal process before every trial so that the
+withdrawal's timing within the upload was balanced across arms, which an earlier LTE run had not achieved. We did not
+test an asynchronous cancel that does not hold the acknowledgement.
+
+\paragraph{Equation~\ref{eq:race} on the natural races.}\label{app:eqrace} From the measured check and acceptance times,
+Equation~\ref{eq:race} predicts \racePredPct{}\% (emulator) and \racePhonePredPct{}\% (phone) of early trials to
+violate, against \raceObsPct{}\% and \racePhoneObsPct{}\% observed. It times a withdrawal when issued, not when
+committed, so we use it to order check points, not to estimate rates.
+
+\paragraph{Capture and send buffers.}\label{app:capture} The host capture records the emulator's network traffic after the guest's rate
+limiter. After each acknowledgement the app opens a TCP connection to a marker port, which a separate queue band lets
+through unthrottled; request bytes in the capture after the marker's SYN left the device after the acknowledgement. Its
+counts include requests that were fully handed off before the withdrawal and whose permitted bytes simply left late. The
+send-buffer sweep therefore counts only TLS application-data records, and only in trials whose withdrawal fell between
+the first write and the handoff. It set \texttt{SO\_SNDBUF} to 16\,KiB, 64\,KiB, or left it unset; the socket API
+reported the platform default as \gsDefaultKib{}\,KiB, and Linux allocates twice the reported size in the kernel, which
+is the figure the AirGuard runs read with \texttt{ss}. All other fixture runs set 16\,KiB.
+
+\paragraph{AirGuard during a donation.}\label{app:airrace} In the lifecycle runs of \S\ref{sec:eval-realapp}, no build
+delivered permitted post-withdrawal beacons after a network cut, because the app does not retry a failed run; the second
+lifecycle run left no trial unknown, and we did not analyse why the first run's unknowns did not recur. In the
+first in-upload run, the analysis first counted \gaFenceRxFirst{} fenced trials complete at the receiver: its window of
+600\,s after the marker let a later trial of the same build, which shares the sink port, count for an earlier one. A unit
+test written for the second run found this after the data were seen; the corrected window ends at the next trial of the
+same build and gives the counts below, and both outputs are in the artifact. The first run's pre-registered primary, payload in the capture
+after the acknowledgement marker, did not separate the builds (\gaSentMin{} of \gaN{} trials in each); the receiver
+logged the donation complete after the acknowledgement in \gaStockRx{} stock, \gaCancelRx{} cancelling, \gaLayerRx{}
+layered and \gaFenceRx{} fenced trials. In the equal-buffer run, the cancelling build with the default buffer was
+complete in \gbCancelRx{} of \gbCancelN{} trials ([\gbCancelLo{}\%, \gbCancelHi{}\%]); paired with the fenced build,
+\gbPairSixteenOnly{} trials were complete only with equal-buffer cancellation, \gbPairFenceOnly{} only with the fence,
+\gbPairBoth{} with both and \gbPairNone{} with neither. The cancelling build registers an OkHttp interceptor that records every in-flight
+call and cancels each when the sharing switch is turned off; the stock build is unchanged. The equal-buffer build adds a
+socket factory that sets \texttt{SO\_SNDBUF} to 16\,KiB before connecting. Kernel send buffers were read from the guest
+with \texttt{ss} for every build (the kernel doubles the requested value). In the equal-buffer run, both cancelling builds
+lost one trial each to the validity rule (the withdrawal came before the worker started), with no replacement. Where the
+equal-buffer build's donation arrived complete despite a cancelled call, most of the body had already left and the rest
+was in the kernel buffer when the call was cancelled (exploratory diagnosis).
+
+\paragraph{Label mutants, newer Android and rented phones.}\label{app:generality} The mutants are in the artifact
+(\texttt{mutation/}). In the M1 trials that did not leak, the summary never reached the receiver; the base and M2 builds
+each lost a reboot trial to a harness or device failure. Dropping the label from the job input (M3) leaked in
+\mutThreeLeak{} trials and left \mutThreeDeficit{} permitted items undelivered against \mutBaseDeficit{} for the unmodified
+build, which leaked in \mutBaseLeak{} of \mutBaseTrials{}. The Android~14 and 15 runs cover pending, kill, reboot and
+network-loss schedules. The rented phones are one device per model from two device clouds; the TLS barrier of
+\S\ref{sec:revision} ran over \devTrials{} trials split evenly between the arms, the early check completing all
+\devEarlyComplete{} of its requests, and the lifecycle runs used pending,
+kill and revoke schedules.
 
 \paragraph{Phone and throttled-link harnesses.} Phone runs set the sink address explicitly instead of the emulator host
 alias and record the receiver path (USB port reverse on the cloud device service, a relay on the remote test lab).
@@ -157,6 +209,14 @@ withdrawals during uploads. The median acknowledgement was \sweepAckSmallMs{}\,m
 \sweepCpuLarge{}\,ms as chunks grew. The harness differs from that of Table~\ref{tab:transport-cost} and the backpressure
 cells of \S\ref{sec:revision}, so the figures are not comparable with them. In \sweepLockStalls{} of \sweepLogged{} trials
 a sender waited its full deadline for the app-wide lock, a fairness limit of that lock.
+
+\input{generated/followup_transport_cost.tex}
+
+\paragraph{Cost on a phone.} The phone run uses the TLS fixture with three arms (fence, early, and the platform's
+\texttt{HttpsURLConnection}), 4\,KiB, 256\,KiB and 2\,MiB uploads, ten uploads per cell and cells shuffled per block, in
+\gdCells{} valid cells. The fence and early arms share the transport and its per-record event logging; the platform arm
+logs four events per upload, so its much lower process CPU reflects both the user-space TLS path and that logging, and we
+do not report fence/platform ratios. Doze was disabled and the screen kept on during the run.
 
 \clearpage
 \input{sections/historical-evaluation}

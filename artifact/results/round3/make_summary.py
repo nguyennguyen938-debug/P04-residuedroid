@@ -115,6 +115,7 @@ def derived():
         assert sum(rk[f'race{prof}Fence'] for prof in ('Edge', 'Threeg', 'Lte')) == 0   # raceZeroHi applies to the fence arms
     assert len(ns) == 1
     k['raceZeroHi'] = round(100 * wilson(0, ns.pop())[2], 1)
+    k.update(group3(wilson))
     # Commit-relative race outcomes (C, scripts/post_commit_race.py, exploratory).
     pc = R / 'round3/c-analysis/post-commit.json'
     if pc.exists():
@@ -123,6 +124,92 @@ def derived():
     rr = R / 'round3/c-analysis/receiver-race.json'
     if rr.exists():
         k.update(json.loads(rr.read_text(encoding='utf-8'))['keys'])
+    return k
+
+
+def group3(wilson):
+    """Group 3 (issue #7, PR #8; C 24/11), read from B's frozen analysis outputs; nothing is re-run. Card per run in plans/.
+    Floats that the paper prints with two decimals are returned as strings (render_tests.esc prints floats with one)."""
+    k, pct = {}, lambda x: round(100 * x, 1)
+    # G3a (g3race-card.md): five arms in the same blocks, EDGE/3G/LTE pooled; primary = trials accepted after W.
+    c = load('round3/g3race/analysis/g3race-summary.json')['cells']
+    arm = lambda a, f: sum(x[f] for name, x in c.items() if name.split('/')[1] == a)
+    n = {arm(a, 'trials') for a in ('early', 'close', 'close2', 'fence', 'fence-abort')}
+    assert len(n) == 1
+    k.update(gtrN=n.pop(), gtrEarlyW=arm('early', 'after_w'), gtrCloseW=arm('close', 'after_w'),
+             gtrCloseTwoW=arm('close2', 'after_w'), gtrFenceW=arm('fence', 'after_w'), gtrAbortW=arm('fence-abort', 'after_w'),
+             gtrCloseLte=c['lte/close']['after_w'], gtrEarlyAck=arm('early', 'violations_after_ack'),
+             gtrCancelAck=arm('close', 'violations_after_ack') + arm('close2', 'violations_after_ack'))
+    # G3b, same trials: request payload in the host capture after the ack marker (any phase), per arm; all 90 matched.
+    cap = {a: sum(x['capture']['trials_after_marker'] for name, x in c.items() if name.split('/')[1] == a)
+           for a in ('early', 'close', 'close2', 'fence', 'fence-abort')}
+    assert all(x['capture']['status'] == {'matched': x['trials']} for x in c.values())
+    k.update(gtrCapLo=min(cap.values()), gtrCapHi=max(cap.values()))
+    # P3 (g3lte-card.md, protocol v5): LTE only, exposure balanced; same primary. Ack p95 = nearest-rank, ms.
+    p = load('round3/g3race/analysis-lte5/g3race-summary.json')['cells']
+    au = load('round3/g3race/analysis-lte5/g3race-audit.json')['cells']
+    n = {x['trials'] for x in p.values()}
+    assert len(n) == 1
+    k.update(gpN=n.pop(), gpEarlyW=p['lte/early']['after_w'], gpCloseW=p['lte/close']['after_w'],
+             gpCloseExposed=au['lte/close']['exposed'], gpEarlyExposed=au['lte/early']['exposed'], gpCloseTwoW=p['lte/close2']['after_w'], gpFenceW=p['lte/fence']['after_w'],
+             gpAbortW=p['lte/fence-abort']['after_w'], gpFenceAckP=p['lte/fence']['withdraw_latency_ms']['p95'],
+             gpAbortAckP=p['lte/fence-abort']['withdraw_latency_ms']['p95'],
+             gpCloseTwoAckP=p['lte/close2']['withdraw_latency_ms']['p95'])
+    # P4 (g3p4-card.md): SO_SNDBUF level x fence / fence-abort, EDGE and 3G. Primary: TLS application data after the ack
+    # marker in trials whose W fell during the writes; level 0 = no setSendBufferSize (kernel autotuning).
+    s = load('round3/g3race/analysis-p4/g3p4-summary.json')
+    cells, pr = s['cells'], s['paired_during_writes_app_bytes']
+    n = {x['trials'] for x in cells.values()}
+    assert len(n) == 1
+    med = lambda lvl: [x['by_phase']['during writes']['app_bytes']['median'] for name, x in cells.items()
+                       if name.split('/')[1] == 'fence' and name.endswith(f'sndbuf={lvl}')]
+    ab = [x['by_phase']['during writes']['app_bytes'] for name, x in cells.items() if name.split('/')[1] == 'fence-abort']
+    dflt = {v for name, x in cells.items() if name.endswith('sndbuf=0') for v in x['actual_sndbuf']}
+    assert len(dflt) == 1
+    k.update(gsN=n.pop(), gsAfterW=sum(x['after_w'] for x in cells.values()),
+             gsFenceSmallLo=round(min(med(16384)) / 1000, 1), gsFenceSmallHi=round(max(med(16384)) / 1000, 1),
+             gsFenceMidLo=round(min(med(65536)) / 1000, 1), gsFenceMidHi=round(max(med(65536)) / 1000, 1),
+             gsFenceDefLo=f"{min(med(0)) / 1e6:.2f}", gsFenceDefHi=f"{max(med(0)) / 1e6:.2f}",
+             gsAbortMax=f"{max(a['max'] for a in ab):,}", gsAbortMed=int(max(a['median'] for a in ab)), gsPairs=sum(x['pairs'] for x in pr.values()),
+             gsAbortLess=sum(x['abort_less'] for x in pr.values()), gsDefaultKib=int(dflt.pop()) // 1024)
+    # G3c v4 (g3app-card.md, analysis-v4-r2 = receiver window corrected 23/11). Primary: payload sent after the ack (capture);
+    # receiver-complete after the ack is secondary.
+    b = load('round3/g3app/analysis-v4-r2/g3app-summary.json')['builds']
+    n = {x['trials'] for x in b.values()}
+    assert len(n) == 1
+    # Before the 23/11 correction (analysis-v4, window marker + 600 s), reported next to the corrected count.
+    k['gaFenceRxFirst'] = load('round3/g3app/analysis-v4/g3app-summary.json')['builds']['fenced']['receiver_complete_after_ack']
+    k.update(gaN=n.pop(), gaSentMin=min(x['sent_after_ack'] for x in b.values()),
+             gaSentMax=max(x['sent_after_ack'] for x in b.values()),
+             gaStockRx=b['stock']['receiver_complete_after_ack'], gaCancelRx=b['stockcancel']['receiver_complete_after_ack'],
+             gaLayerRx=b['layered']['receiver_complete_after_ack'], gaFenceRx=b['fenced']['receiver_complete_after_ack'])
+    # G3c v5c (g3app5-card.md): stockcancel16 / stockcancel / fenced in the same trials; primary = receiver-complete after
+    # the ack, Wilson 95%; kernel send buffer from guest ss (skmem tb).
+    v = load('round3/g3app/analysis-v5c/g3app5-summary.json')
+    bb, pp = v['builds'], v['paired']['stockcancel16_vs_fenced']['receiver_complete_after_ack']
+    tb = lambda x: {int(t) for t in bb[x]['donation_sockdiag_tb'] if t != 'missing'}
+    assert len(tb('stockcancel16') | tb('fenced')) == 1 and len(tb('stockcancel')) == 1
+    for key, x in (('Sixteen', 'stockcancel16'), ('Cancel', 'stockcancel'), ('Fence', 'fenced')):
+        lo, hi = bb[x]['receiver_complete_after_ack_wilson95']
+        k.update({f'gb{key}N': bb[x]['receiver_trials'], f'gb{key}Rx': bb[x]['receiver_complete_after_ack'],
+                  f'gb{key}Lo': pct(lo), f'gb{key}Hi': pct(hi)})
+    k.update(gbPairSixteenOnly=pp.get('stockcancel16=1/fenced=0', 0), gbPairFenceOnly=pp.get('stockcancel16=0/fenced=1', 0),
+             gbPairBoth=pp.get('stockcancel16=1/fenced=1', 0), gbPairNone=pp.get('stockcancel16=0/fenced=0', 0),
+             gbKernSmallKib=tb('fenced').pop() // 1024, gbKernDefKib=tb('stockcancel').pop() // 1024)
+    # Exploratory (followup/diag_g3app5.py, after the data): stockcancel16 trials where the withdrawal fell during the
+    # donation, Call.cancel() found no registered call, and the sink still logged the body complete.
+    d = load('round3/g3app/analysis-v5c/diag-v5c.json')['rows']
+    k['gbNoCallRx'] = sum(r['trial'].endswith('-stockcancel16') and r['placement'] == 'during' and r['cancel_cut'] == 'no call'
+                          and r['complete_after_ack'] for r in d)
+    # G3d v4 (g3cost-card.md): Galaxy A06, Wi-Fi, foreground; ratios of medians fence/early per size.
+    g = load('round3/g3cost/analysis-v4/g3cost-summary.json')
+    r = [x for key, x in g['ratios_of_medians'].items() if key.startswith('fence/early/')]
+    bs = load('round3/g3cost/analysis-v4/batterystats-check.json')['final-v4']
+    k.update(gdCells=g['logged_cells'] - len(g['invalid']), gdUploads=sum(x['uploads_ok'] for x in g['cells'].values()),
+             gdUploadFail=sum(x['uploads_failed'] for x in g['cells'].values()),
+             gdCpuLo=f"{min(x['cpu_ms_per_mib'] for x in r):.2f}", gdCpuHi=f"{max(x['cpu_ms_per_mib'] for x in r):.2f}",
+             gdTimeLo=f"{min(x['elapsed_ms'] for x in r):.2f}", gdTimeHi=f"{max(x['elapsed_ms'] for x in r):.2f}",
+             gdEnergyNonzero=bs['uid_mah_nonzero'], gdEnergyCells=bs['cells'])
     return k
 
 

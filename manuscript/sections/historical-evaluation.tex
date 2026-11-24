@@ -3,7 +3,8 @@
 
 The stream wrapper measures \emph{authorization order} violations among delivered
 items. Its event called \texttt{COMMIT} precedes the stream write. Accordingly, ``authorized''
-in these stream-wrapper results does not establish a socket-handoff boundary. The channel tests
+in these stream-wrapper results does not establish a socket-handoff boundary: baselines can undercount forbidden handoffs
+in the log-to-write gap, and host receipt time cannot reconstruct handoff order. The channel tests
 reported separately use accepted byte counts. We ask four questions.
 \textbf{RQ1:} Which enforcement points authorize the upload of data that a withdrawal invalidated, under which lifecycle schedules?
 \textbf{RQ2:} Do measured race windows match Theorem~\ref{thm:race}?
@@ -13,6 +14,12 @@ reported separately use accepted byte counts. We ask four questions.
 \subsection{Authorization-order summary}
 \label{app:stream}
 The stream-wrapper \nTrialsValid{} trials compared nine variants over seven lifecycle schedules.
+AVD~A runs \vname{none}, \vname{cancel}, \vname{enqueue}, \vname{jobstart}, \vname{conv} and \vname{rd}; AVD~B runs
+\vname{egress}, \vname{rd}, \vname{volatile} and \vname{taint}. Repeating \vname{rd} on both AVDs does not remove the
+confounding of variant and AVD, so cross-AVD comparisons are descriptive. Of \nTrialsTotal{} logged trials, \nInvalid{}
+were excluded under the rules of \S\ref{sec:setup}. We analyze the first 50 valid trials per schedule and AVD; the
+\nValidUnused{} further valid trials, run as replacements while exclusions were still being counted, are kept in the
+artifact but not used.
 Under the authorization estimand, the conventional combination admits the mechanism-specific cases in
 Table~\ref{tab:mechanisms}; the stream-wrapper \sys gate admits none on mediated paths. These observations motivate
 lineage and late placement but cannot quantify physical handoffs in the log-to-write gap.

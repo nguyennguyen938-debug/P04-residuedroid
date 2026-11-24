@@ -3,8 +3,8 @@
 
 \paragraph{Platform.} Lifecycle and SDK runs use the stock Android~13 emulator image
 (android-33 google\_apis arm64-v8a rev.~17, build TE1A.240213.009), emulator 37.2.13, on an 18-core Apple-silicon host. The stream-wrapper campaign uses two AVDs side by side; the matched campaign uses four read-only instances of each of those two configurations. HTTP/TLS cost and label-error tests use a separate Android~15 emulator on the same host; exact fingerprints and host load are archived. The natural-race, real-app, mutation and lifecycle runs of \S\ref{sec:eval-natural} to \S\ref{sec:eval-generality} add Android~14 and 15 images, guest-side link shaping with \texttt{netem}, two rented phones (\devModel{}) and one personal phone (\racePhoneModel{}); Table~\ref{tab:deploy} and Appendix~\ref{app:round3impl} give each build and harness.
-AVD~A runs \vname{none}, \vname{cancel}, \vname{enqueue}, \vname{jobstart}, \vname{conv} and \vname{rd}. AVD~B runs
-\vname{egress}, \vname{rd}, \vname{volatile} and \vname{taint}. Repeating \vname{rd} on both AVDs does not remove the confounding of variant and AVD: cross-AVD comparisons are descriptive. Matched channel variants run within each AVD. Before every trial each package is cleared with \texttt{pm clear}, granted location, opened once,
+Stream-wrapper variants are split across the two AVDs, so their cross-AVD comparisons are descriptive
+(Appendix~\ref{app:stream}); matched channel variants run within each AVD. Before every trial each package is cleared with \texttt{pm clear}, granted location, opened once,
 and placed in the \texttt{active} standby bucket, without which JobScheduler never ran our jobs.
 
 \begin{table}[t]
@@ -50,20 +50,16 @@ server; pilots that cut it with \texttt{svc} or started all jobs at once are exc
 (schedule, trial), so both AVDs replay identical schedules.
 
 \paragraph{Oracle and metrics.} Ground truth comes from the sink. Tags are visible in plaintext payloads, and a summary's
-content lists its source tags. The stream-wrapper device sequence orders withdrawals against pre-write authorization
-logs, not byte acceptance, so baselines can undercount forbidden handoffs in the log-to-write gap; host receipt time
-cannot reconstruct handoff order. The channel oracle uses paired write-attempt/accepted-count events and the withdrawal
-transaction order; interrupted or overlapping observations remain unknown. We report:
-\begin{itemize}[leftmargin=*,nosep]
-\item \emph{Violation rate}: the fraction of tenant-trials with at least one prohibited item, with trial-cluster uncertainty, keeping all tenants and paired variants together.
-\item \emph{Prohibited items} per tenant-trial.
-\item \emph{Legit deficit}: permitted items that a variant had not delivered when the observation window closed (\vname{none}'s deficit is the availability loss that enforcement does not cause).
-\item \emph{Unattributable} submissions: post-withdrawal bodies the sink cannot read.
-\item \emph{Outstanding} submissions: accepted before withdrawal, possibly received afterwards; stream-wrapper logs identify only authorization/response overlap.
-\end{itemize}
+content lists its source tags. Stream-wrapper runs order withdrawals against authorization logs, not byte acceptance
+(Appendix~\ref{app:stream}). The channel oracle uses paired write-attempt/accepted-count events and the withdrawal
+transaction order; interrupted or overlapping observations remain unknown. We report the \emph{violation rate}
+(tenant-trials with at least one prohibited item, with trial-cluster uncertainty that keeps all tenants and paired
+variants together), \emph{prohibited items} per tenant-trial, the \emph{legit deficit} (permitted items not delivered
+when the observation window closed; \vname{none}'s deficit is the availability loss that enforcement does not cause),
+\emph{unattributable} submissions (post-withdrawal bodies the sink cannot read) and \emph{outstanding} submissions
+(accepted before withdrawal, possibly received afterwards).
 A trial is excluded if the host slept during it (any gap between harness actions over 200\,s), if the emulator restarted,
-if any device log could not be read, or if a network cut was not verified (\S\ref{sec:threats}). Of \nTrialsTotal{} logged trials, \nInvalid{} were excluded.
-We analyze the first 50 valid trials per schedule and AVD (\nTrialsValid{} trials); the \nValidUnused{} further valid trials,
-run as replacements while exclusions were still being counted, are kept in the artifact but not used.
+if any device log could not be read, or if a network cut was not verified (\S\ref{sec:threats}); stream-wrapper counts
+are in Appendix~\ref{app:stream}.
 
 \input{generated/revision_uncertainty.tex}

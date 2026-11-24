@@ -1,13 +1,14 @@
 \begin{abstract}
 Android apps persist outboxes and jobs that can outlive a user's withdrawal.
 The enforcement problem is not just when to check a toggle: derived data must retain its source policy, and old data must remain distinguishable after consent is granted again.
-\sys combines durable source epochs, labels copied with persisted data, and a policy check serialized with each bounded socket write.
+\sys keeps durable source epochs and labels with every persisted copy and job input, and checks the app's stated contract before each bounded socket write, serialized with withdrawal.
 We separate collection-only opt-outs, restrictions and deletion contracts, and judge each workload against the contract it states.
 A \corpusN-app static screen identifies candidate deferred paths, not runtime violations; of the \promiseApps{} apps with a consent signal, \promisePending{} word their switch as sending or sharing data.
-In lifecycle schedules, checks that receive the same metadata had no confirmed violations, like the fence.
-The fence differs only when a withdrawal lands during an upload: there, a check placed before the request let the socket accept bytes after the acknowledgement in \raceObsPct{}\% of emulator trials and \racePhoneObsPct{}\% on a phone, and in an exploratory count the server received each such request complete; the fence did so in none.
-An early check that also closes in-flight sockets before acknowledging matches the fence at the acknowledgement (\gcloseCloseViol{} of \gcloseN{} trials), but in an exploratory count from the withdrawal's commit it still accepted newly started writes in \gcloseCommitClose{} trials, the fence in none.
-In a real app, the stock build shares data collected during an opt-out once the user re-consents, in \airStockViol{} of \airN{} trials; the fenced build has \airFenceViol{} confirmed violations, with \airFenceUnknownV{} trials unknown under the pre-registered oracle.
-Label mutants show that a valid but incomplete label bypasses the fence and that a test-time check against traced content catches it.
-Already accepted bytes can arrive later, and we make no energy claim.
+Lineage and epochs decide the lifecycle schedules: conventional checks fail through lost lineage, stale epochs and unchecked retries, while layered early checks that receive the same metadata had no confirmed violations, like the fence.
+Placement matters only when a withdrawal lands during an upload, and there the boundary is the withdrawal's commit: every later write must be checked under its lock.
+A check before the request let the socket accept bytes after the acknowledgement in \raceObsPct{}\% of emulator trials and \racePhoneObsPct{}\% on a phone, and cancelling in-flight requests from another process still let it accept writes started after the commit in \gtrCloseW{} of \gtrN{} trials; the fence, which needs no registry of in-flight requests, accepted none, as did cancellation inside the sending process, which is not serialized with the writer.
+Below the socket the designs converge: about one send buffer of accepted bytes leaves after the acknowledgement with a normal close, and with equal buffers a real app's server received a donation complete about as rarely with its HTTP client's cancellation as with the fence (\gbSixteenRx{} of \gbSixteenN{} against \gbFenceRx{} of \gbFenceN{}).
+In that app, the stock build shares data collected during an opt-out once the user re-consents, in \airStockViol{} of \airN{} trials; the fenced build has \airFenceViol{} confirmed violations, with \airFenceUnknownV{} trials unknown under the pre-registered oracle.
+Label mutants show that a valid but incomplete label bypasses any placement and that a test-time check against traced content catches it.
+On a phone the fence used \gdCpuLo{} to \gdCpuHi{} times the early check's process CPU per MiB; we make no energy claim.
 \end{abstract}

@@ -3,19 +3,8 @@
 
 \paragraph{Library and integration.} The implementation uses a shared Java
 \texttt{SocketChannel}~\cite{android_socketchannel} HTTP/1.1 sender and a TLS~1.2 adapter built on \texttt{SSLEngine}~\cite{java_sslengine}. The latter verifies the peer certificate and host, encrypts at most 4\,KiB of plaintext per wrap, and rechecks policy before each at-most-4\,KiB ciphertext write. Proxies, redirects, pooled writers, early data and renegotiation are excluded. Its positive write return is socket acceptance, not server delivery. A local
-mutex plus file lock coordinates threads and processes. The ACRA embedding keeps its epochs in
-transactional SQLite state; malformed state fails closed. Initialization is
-explicit and an interrupted initialization cannot silently recreate an allowed policy.
-The stream-based implementation and APK inputs are archived separately.
-
-The ACRA adapter changes application initialization, crash-time custom-data labels,
-\texttt{ReportSender}, and the settings callback. The setting explicitly invalidates queued
-reports, shows pending acknowledgement, and preserves old epochs on re-grant. A normal blocked
-sender return retires the report; network errors retain it for ACRA retry. Persisted report
-labels survive both paths. The artifact inventories changed call sites, schema, service-loader
-registration, and bypasses. This is an SDK test embedding, not a deployed production app.
-
-The ACRA embedding comprises six Java files (202 nonblank lines), touching initialization/collectors, report labels, sender/factory registration and settings acknowledgement. Matomo uses two embedding files (56 lines), touching tracker setup, packet labels and the dispatcher connection callback. The shared coordinator and HTTP/TLS transports comprise three files (196 lines). These are maintained embedding-source sizes, not SDK diff sizes or estimates of production integration effort.
+mutex plus file lock coordinates threads and processes. The ACRA and Matomo embeddings and their sizes are in
+Appendix~\ref{app:sdk}.
 
 \paragraph{Fixture app (\lab).} To compare enforcement points on identical schedules, we built a fixture app with ten
 \emph{tenants}. Each is an independent workload with its own scope, stated contract and persisted jobs (Table~\ref{tab:tenants}).

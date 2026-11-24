@@ -13,8 +13,7 @@ policies with data flows; our oracle judges submissions against a stated contrac
 
 \paragraph{Permissions and asynchronous use.} Android's permission model and its pitfalls are well
 studied~\cite{felt2011demystified,felt2012attention,au2012pscout}. Aper~\cite{wang2022aper} finds dangerous APIs used
-asynchronously after permission checks, a crash- and misuse-oriented cousin of our check-to-commit race. Apps also circumvent permissions through side channels~\cite{reardon2019fiftyways},
-so we restrict our claims to cooperative apps and mediated paths.
+asynchronously after permission checks, a crash- and misuse-oriented cousin of our check-to-commit race.
 
 \paragraph{Data management and information flow.} TaintDroid~\cite{enck2010taintdroid} tracks data to the network at
 runtime. AppFence~\cite{hornyack2011appfence} blocks or shadows sensitive flows. Static analyzers such as
@@ -38,4 +37,4 @@ check and each bounded write are serialized against withdrawals, in the spirit o
 not close the race on one device. Wake-lock studies~\cite{liu2016wakelock} examine background-work misuse for energy; we
 study it for privacy contracts.
 
-\paragraph{SDK isolation and downstream policy.} The SDK Runtime~\cite{android_sdkruntime} isolates SDKs but supplies no source epochs; Riverbed~\cite{wang2019riverbed} enforces data policies in attested server runtimes, beyond the device.
+\paragraph{System and downstream policy.} The SDK Runtime~\cite{android_sdkruntime} isolates SDKs but supplies no source epochs; Riverbed~\cite{wang2019riverbed} enforces data policies in attested server runtimes, beyond the device. Egress controls in the kernel or an on-device proxy can block paths the app does not mediate, but see no epochs, purposes or derived data, so they could back up \sys rather than replace it.

@@ -75,7 +75,7 @@ Place the applicable withdrawal between the passing check and the unprotected wr
 The path still sends, by hypothesis. Summing the corresponding indicator variables
 gives the expectation; the last interval contains the earlier intervals.
 \end{proof}
-A cancellation triggered by $W$ takes effect after $W$, so it narrows the window to its own delay rather than closing it.
+A cancellation triggered by $W$ and not serialized with the writer takes effect after $W$, so it narrows the window to its own delay rather than closing it; one that runs under the writer's lock before $W$ completes closes it, but only for the requests it can reach.
 
 \begin{proposition}[Information needed by the check]\label{prop:nec}
 A declared-scope check can admit an invalid source when a withdrawal invalidates the

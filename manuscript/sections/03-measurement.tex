@@ -25,20 +25,15 @@ judgments do not validate runtime paths or estimate false negatives. We report t
 
 \input{generated/tab_corpus.tex}
 
-\paragraph{Findings.} Table~\ref{tab:corpus} reports each sampling stratum separately.
-The tracking stratum is a census within the eligible index; random-stratum intervals describe
-screening proportions among other eligible apps, conditional on classification. The oversampled
-mixture is descriptive, not a population estimate. Validation uncertainty is separate: with only
-\valN{} judgments, the plausible fraction is \valYes{}/\valN{} (Wilson 95\% interval from \valYesLo{}\% to \valYesHi{}\%), and \valUnclear{} remain
-unclear. Neither statistic estimates a contract-violation prevalence. Persisted deferred work is common: \pctPersistAll{}\% of the
-corpus uses \texttt{setPersisted}, WorkManager or a SyncAdapter, and \pctAlarmAll{}\% uses AlarmManager. Between
-\pctCandLo{}\% (three-hop screen) and \pctCandHi{}\% (any-depth screen) of apps both persist deferred work and reach the network
-from a deferred-job entry point. Between \pctCandConsentLo{}\% and \pctCandConsentHi{}\% also carry a consent or telemetry
-signal. In absolute terms this is between \candConsentLoN{} and \candConsentHiN{} apps. The \emph{Tracking} stratum has more consent
-signals (\pctConsentTrack{}\% vs.\ \pctConsentRand{}\%) and more telemetry SDKs (\pctSdkTrack{}\% vs.\ \pctSdkRand{}\%).
-At the entry-point level, only \pctPollStop{}\% of app-code workers poll \texttt{isStopped()}. This does not establish whether cancellation interrupts uploads: workers may use other stop
-callbacks or networking cancellation. Between-batch stopping is a fixture assumption, not a corpus finding.
-\pctNativeAll{}\% of apps ship native libraries, and native code is a path no Java-level fence mediates.
+\paragraph{Findings.} Table~\ref{tab:corpus} reports each sampling stratum separately: the tracking stratum is a census
+within the eligible index, random-stratum intervals are conditional on classification, and we do not pool the
+oversampled strata. With only \valN{} validation judgments, the plausible fraction is \valYes{}/\valN{} (Wilson 95\%
+interval from \valYesLo{}\% to \valYesHi{}\%), and \valUnclear{} remain unclear. Between \candConsentLoN{} (three-hop
+screen) and \candConsentHiN{} (any depth) screened apps persist deferred work, reach the network from a deferred-job entry
+point and carry a consent or telemetry signal; neither count estimates a contract-violation prevalence. Only
+\pctPollStop{}\% of app-code workers poll \texttt{isStopped()}, which does not show whether cancellation interrupts
+uploads; between-batch stopping is a fixture assumption, not a corpus finding. Native code, which most screened apps in
+both strata ship, is a path no Java-level fence mediates.
 
 \paragraph{Stated promises.} A consent signal does not say what an app promises. We coded the user-facing wording of
 all \promiseApps{} apps with a consent signal (\promiseCand{} of them candidates), using the toggle-like strings in each APK
@@ -51,5 +46,5 @@ positives. \promiseDelete{} offer deletion and \promiseRestrict{} a purpose rest
 queued egress after withdrawal a contract violation. These counts describe the surveyed apps, not F-Droid.
 
 ACRA appears in \acraApps{} apps, but its preference keys are library constants and do not show an exposed toggle
-(\S\ref{sec:eval-acra}). The screen shows that the ingredients are common, not how often they combine into a violation;
+(\S\ref{sec:eval-acra}). The screen shows that the ingredients co-occur in the screened apps, not how often they combine into a violation;
 the rest of the paper turns to controlled, contract-aware experiments.
