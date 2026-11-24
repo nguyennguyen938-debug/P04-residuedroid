@@ -55,6 +55,8 @@ This ledger maps each claim to its source. "VERIFY-FINAL" = re-check wording aga
 - No claim that the fence leaks fewer bytes at the NIC than cancellation: at equal send buffers they did not differ at the receiver (G3c v5c), and a graceful close drains about one buffer for any design (P4).
 - No claim that same-process cancellation closes the race: its 0 post-W trials bound a rate; it is not serialized with the writer.
 - No claim that the fence is the only way to meet the commit boundary: a cancellation serialized with the writer that reaches every in-flight request would too (§5 remark; untested). The fence's stated edge is that it needs no registry of in-flight requests.
+- AirGuard lifecycle counts are violations only under our reading of the sharing switch (data collected while off stays forbidden after re-consent); §7.4 and App. round3impl say so (24/11, after the paperreview.ai and round-5 reviews).
+- Appendix "Design Variants We Did Not Evaluate" (per-scope locks, serialized cancellation, abortive close and small buffers, durable acknowledgement with synchronous=FULL), the HTTP/2, TLS 1.3, Cronet and kernel/VPN composition notes, and the safety specification (App. lifecycle) are reasoning only: no run, no number.
 - No fence/platform cost ratio (G3d): the platform arm logs 4 events per upload, the fixture transport about 7 per TLS record.
 - No energy claim: batterystats estimated 0 mAh in every G3d cell.
 

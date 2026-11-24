@@ -13,3 +13,15 @@ Prefix handed off (\texttt{WRITE\_ATTEMPT}, \texttt{BYTES\_ACCEPTED}) & fence, p
 Request received (receiver log) & none & accepted bytes may still arrive (Prop.~\ref{prop:recall})\\
 Response received (\texttt{RESPONSE\_RECEIVED}) & none & lost response: retry may duplicate\\
 \bottomrule\end{tabular}\end{table}
+
+\paragraph{Safety specification.}\label{app:spec} Theorem~\ref{thm:sound} can be stated as a linearizability property.
+The sequential specification is a policy object with operations $\mathit{withdraw}(s)$, $\mathit{regrant}(s)$,
+$\mathit{collect}(s)$, which returns a label, and $\mathit{accept}(r,k)$, which records the $k$-th accepted prefix of
+request $r$ and is allowed only if no source in $r$'s label is forbidden by Eq.~\ref{eq:rule} in the current state. In a
+build that meets A1 to A3, $\mathit{withdraw}$ and $\mathit{regrant}$ take effect at the commit of their policy
+transaction, $\mathit{collect}$ at its label read (A2), and $\mathit{accept}(r,k)$ at the positive return of the write,
+which happens while the writer holds the lock after its check. Withdrawals, re-grants and accepts take effect inside
+critical sections of the same lock, so the order of lock acquisitions, with each collect placed at its label read, gives
+a sequential history consistent with real time. In it each accept follows a check that read the same policy state, so the
+history satisfies the specification. A zero-byte return or an exception is not an accept, and an accepted prefix is never
+undone (Proposition~\ref{prop:recall}).

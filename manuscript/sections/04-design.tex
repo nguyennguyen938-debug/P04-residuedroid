@@ -6,7 +6,8 @@
 
 \sys is a \emph{cooperative} mechanism. The developer, or an SDK vendor, wants the app to keep its stated contract and links
 \sys to do so. We do not defend against a malicious app, which can always exfiltrate data through a path we do not
-mediate~\cite{reardon2019fiftyways}. The adversary is the schedule: a withdrawal arrives at an arbitrary time relative to queued
+mediate~\cite{reardon2019fiftyways}. The developer is trusted for complete labels, honest purposes and routing every write
+through \sys (Appendix~\ref{app:obligations}). The adversary is the schedule: a withdrawal arrives at an arbitrary time relative to queued
 work, process death, reboot, force-stop and connectivity changes. A \emph{supported path} is a flow whose data is stored through
 \sys's labelled stores and whose network submission goes through \sys's egress wrapper. Everything else is \emph{uncovered}.
 That includes native code (JNI), custom network stacks such as raw sockets or embedded HTTP clients that bypass the wrapper,
