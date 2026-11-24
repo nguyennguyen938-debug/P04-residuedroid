@@ -45,6 +45,29 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g2close/pilot-calib': ('G2a calibration aborted before any send: setup init broadcast timed out (cold start 83 s under host load)', 'setup init timeout 300 s (frozen-g2-v2)'),
     'round3/g2close/pilot-calib2': ('G2a calibration, 27/27 sends ok, throttle gate passed; durations used by the final', 'none'),
     'round3/g2close/pilot-mech': ('G2a mechanism pilot (1 block, 27 trials): all valid, every close trial CANCEL + reply ok; gate passed', 'none'),
+    'round3/g3race/pilot-calib': ('G3a/G3b calibration (27 fence sends, no withdrawal); throttle gate passed; durations used by the final', 'none'),
+    'round3/g3race/pilot-mech': ('G3a/G3b mechanism pilot (45 trials): MECHANISM GATE FAIL on the capture only (console `network capture start` takes bare filenames; no pcap)', 'protocol v2: emulator -tcpdump at launch'),
+    'round3/g3race/pilot-mech2': ('G3a/G3b mechanism pilot v2 (45 trials): every gate field held', 'none'),
+    'round3/g3app/pilot-calib': ('G3c calibration (3 per build): CALIBRATION GATE FAIL (stock 2/3 samples, median body 137,073 B < 200 KiB); the grant hook starts the app\'s periodic donation worker, which reads the DB during the insert', 'no G3c final under v3; fix needs protocol v4'),
+    'round3/g3app/pilot-v4-calib': ('G3c v4 calibration (3 per build, startup-worker wait): 12/12 samples from the run hook; body below 200 KiB only, so the pre-registered body-only recalibration ran', 'none (N from the recalibration)'),
+    'round3/g3app/pilot-v4-calib2': ('G3c v4 body-only recalibration: calibration gate passed; durations and N used by final-v4', 'none'),
+    'round3/g3app/pilot-v4-mech': ('G3c v4 mechanism pilot: gate passed', 'none'),
+    'round3/g3app/pilot-v5-calib': ('G3c v5 calibration (stockcancel16, stockcancel, fenced; 3 per build): gate passed', 'none (v5 stopped at the mechanism gate)'),
+    'round3/g3app/pilot-v5-mech': ('G3c v5 mechanism pilot: MECHANISM GATE FAIL on actual_sndbuf only (getSendBufferSize units differ by API: java.net.Socket kernel value, NIO half)', 'no v5 final; protocol v5b'),
+    'round3/g3app/pilot-v5b-calib': ('G3c v5b calibration (rebuilt APKs with in-app kernel_sndbuf): gate passed', 'none (v5b stopped at the mechanism gate)'),
+    'round3/g3app/pilot-v5b-mech': ('G3c v5b mechanism pilot: MECHANISM GATE FAIL, kernel_sndbuf -1 in every build-trial (hidden getsockoptInt blocked on API 33)', 'no v5b final; protocol v5c (harness-side ss read)'),
+    'round3/g3app/pilot-v5c-calib': ('G3c v5c calibration with guest ss kernel send-buffer read: gate passed (tb 32768 stockcancel16 and fenced, 2097152 stockcancel)', 'none'),
+    'round3/g3app/pilot-v5c-mech': ('G3c v5c mechanism pilot: gate passed', 'none'),
+    'round3/g3race/pilot-lte4': ('P3 (G3a on lte) v4 pilot (1 block, 15 trials): every mechanism field held; BALANCE GATE FAIL (per-size spread 337/42/19 ms > 15 ms; one adb stall, otherwise per-trial jitter with one trial per size and arm)', 'P3 protocol v5: 3-block pilot, gate on d = device delay minus host offset, adb-stall trials left out of d'),
+    'round3/g3race/pilot-lte5': ('P3 v5 pilot (3 blocks, 45 trials): mechanism fields and balance gate v5 passed', 'none'),
+    'round3/g3race/pilot-p4': ('P4 pilot (1 block, 12 trials): mechanism gate passed (sndbuf levels requested/actual 0/1048576, 16384/16384, 65536/65536)', 'none'),
+    'round3/g3race/analysis-p4_INVALID_interrupted-partial': ('derived output of the P4 chain post steps on the partial final-p4 (user pause 23/11 04:58 after 16 complete blocks); not the pre-registered analysis', 'none (final-p4 resumes in a fresh directory)'),
+    'round3/g3cost/pilot': ('G3d pilot: stopped at setup before any upload (Android 15 dumpsys prints appId=, UID regex failed); empty', 'UID regex accepts userId= or appId='),
+    'round3/g3cost/pilot-2': ('G3d pilot-2: stopped at setup before any upload (fresh install has no files/ dir, CA copy failed); empty', 'run-as mkdir -p files before the CA copy'),
+    'round3/g3cost/pilot-3': ('G3d pilot-3: PILOT GATE FAIL (8/9 cells valid; one transient adb error with empty stderr; Android 15 batterystats estimate only on the checkin line; chain gate line bug)', 'G3d protocol v2: one logged adb retry, Android 15 parser, gate line fixed'),
+    'round3/g3cost/pilot-5': ('G3d v3 pilot (23/11 15:30): gate passed (1 block); the v3 final then dozed at the 10 min screen timeout under battery unplug (harness design fault)', 'G3d protocol v4: screen timeout 24 h + Doze off during the run, checked in meta and the pilot gate'),
+    'round3/g3cost/pilot-4': ('G3d v2 pilot: gate passed (9/9 valid, 18/18 uploads ok and received)', 'none (the v2 final then failed on the environment: phone dozed, device lost; protocol v3)'),
+    'round3/g3cost/pilot-6': ('G3d v4 pilot (24/11 00:14): gate passed (9/9 valid, 18/18 uploads ok and received, batterystats in 9 cells, screen timeout 86400000 and Doze off)', 'none'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }
 
@@ -84,6 +107,25 @@ def trial_rows():
                     ('Test 5 / B4 v2', 'round3/b4/analysis-v2/sweep-summary.json'), ('Test 5 / B4 v3 (keys; final-v3 + replacement blocks)', 'round3/b4/analysis-v3-repl/sweep-summary.json'), ('Test 1 / B10 v3', 'round3/b10/analysis/race-summary.json'), ('Test 1 phone (Galaxy A06, Android 15)', 'round3/test1-phone/analysis/race-summary.json'), ('G2a early check + socket close (group 2)', 'round3/g2close/analysis/g2close-summary.json')):
         d = load(f)
         if d: out.append((name, d['logged'], [f"{x['trial']}: {x['reason']}" for x in d['invalid']], sum(c.get('unused', 0) for c in d['cells'].values()), str(Path(f).parent.relative_to('round3'))))
+    g3 = load('round3/g3race/analysis/g3race-summary.json')
+    if g3: out.append(('G3a/G3b socket-close comparator + capture (group 3; final + resumed final-r2)', g3['logged'],
+                       [f"{x['trial']}: {x['reason']}" for x in g3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in g3['interrupted_excluded']],
+                       sum(c.get('unused', 0) for c in g3['cells'].values()), 'g3race/analysis'))
+    g3c = load('round3/g3app/analysis-v4/g3app-summary.json')
+    if g3c: out.append(('G3c AirGuard withdrawal mid-upload v4 (group 3)', g3c['logged'], [f"{x['trial']}: {x['reason']}" for x in g3c['invalid']],
+                        sum(c.get('unused', 0) for c in g3c['builds'].values()), 'g3app/analysis-v4'))
+    g3c5 = load('round3/g3app/analysis-v5c/g3app5-summary.json')
+    if g3c5: out.append(('G3c v5c AirGuard stockcancel16 / stockcancel / fenced (group 3, leader request)', g3c5['logged'], [f"{x['trial']}: {x['reason']}" for x in g3c5['invalid']],
+                         sum(c.get('unused', 0) for c in g3c5['builds'].values()), 'g3app/analysis-v5c'))
+    g3d = load('round3/g3cost/analysis-v4/g3cost-summary.json')
+    if g3d: out.append(('G3d upload cost on the phone (Galaxy A06, Android 15), protocol v4 (unit: cell)', g3d['logged_cells'], [str(x) for x in g3d['invalid']],
+                        sum(c.get('unused_cells', 0) for c in g3d['cells'].values()), 'g3cost/analysis-v4'))
+    p3 = load('round3/g3race/analysis-lte5/g3race-summary.json')
+    if p3: out.append(('P3: G3a on lte, balanced exposure (protocol v5)', p3['logged'], [f"{x['trial']}: {x['reason']}" for x in p3['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p3['interrupted_excluded']],
+                       sum(c.get('unused', 0) for c in p3['cells'].values()), 'g3race/analysis-lte5'))
+    p4 = load('round3/g3race/analysis-p4/g3p4-summary.json')
+    if p4: out.append(('P4: SO_SNDBUF x fence/fence-abort (final-p4 + resumed final-p4b, final-p4c)', p4['logged'], [f"{x['trial']}: {x['reason']}" for x in p4['invalid']] + [f"{x['trial']}: {x['reason']} (paused, operational)" for x in p4['interrupted_excluded']],
+                       sum(c.get('unused', 0) for c in p4['cells'].values()), 'g3race/analysis-p4'))
     b2 = load('round3/b2/analysis/airguard-summary.json')
     if b2:
         out.append(('B2 AirGuard (real app)', len({r['trial'] for r in b2['rows']}) + len(b2['invalid']), [f"{x['trial']}: {x['reason']}" for x in b2['invalid']],

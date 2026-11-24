@@ -1,0 +1,10 @@
+{
+  "id": "g3lte5-pilot",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-22T22:59:09.812572+07:00",
+  "stages": [
+    "artifact/results/round3/g3race/pilot-lte5"
+  ]
+}

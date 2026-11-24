@@ -1,0 +1,16 @@
+21:54 start G3c v5c (stockcancel16, stockcancel, fenced)
+[autorun] g3app5c-pilot (pilot) stages=1 deadline=2 h
+  - calib: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5c-20261123 --marker 8799 --nbeacons 2233 --calibrate 3 --sockdiag --out results/round3/g3app/pilot-v5c-calib  -> artifact/results/round3/g3app/pilot-v5c-calib
+[autorun] DONE; guard=0
+calibrations per build {'stockcancel16': 3, 'stockcancel': 3, 'fenced': 3} D {'stockcancel16': 19.201062, 'stockcancel': 18.28748125, 'fenced': 18.165036375} median body bytes 262625 nbeacons 2233
+kernel sndbuf (ss tb) per calibration send {'g3app-000-stockcancel16': 32768, 'g3app-000-stockcancel': 2097152, 'g3app-000-fenced': 32768, 'g3app-001-stockcancel16': 32768, 'g3app-001-stockcancel': 2097152, 'g3app-001-fenced': 32768, 'g3app-002-stockcancel16': 32768, 'g3app-002-stockcancel': 2097152, 'g3app-002-fenced': 32768} tb bad []
+22:00 G3c v5c calibration gate passed; mechanism pilot next
+[autorun] g3app5c-mech (pilot) stages=1 deadline=2 h
+  - mech: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5c-20261123 --marker 8799 --capture --trials 2 --durations results/round3/g3app/calibration-used-v5c.json --sockdiag --out results/round3/g3app/pilot-v5c-mech  -> artifact/results/round3/g3app/pilot-v5c-mech
+[autorun] DONE; guard=0
+rows 6 invalid [] marker_sent bad [] start marker bad [] missing in marker log [] missing in capture [] donation sndbuf (API) {'g3app-000-fenced': 16384, 'g3app-000-stockcancel': 2097152, 'g3app-000-stockcancel16': 32768, 'g3app-001-fenced': 16384, 'g3app-001-stockcancel16': 32768, 'g3app-001-stockcancel': 2097152} sockdiag polls {'g3app-000-fenced': 2, 'g3app-000-stockcancel': 2, 'g3app-000-stockcancel16': 4, 'g3app-001-fenced': 2, 'g3app-001-stockcancel16': 2, 'g3app-001-stockcancel': 4} sndbuf bad []
+22:04 G3c v5c mechanism gate passed; starting final-v5c
+[autorun] g3app5c-final (final) stages=1 deadline=4 h
+  - final: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5c-20261123 --marker 8799 --capture --trials 30 --durations results/round3/g3app/calibration-used-v5c.json --sockdiag --out results/round3/g3app/final-v5c  -> artifact/results/round3/g3app/final-v5c
+[autorun] DONE; guard=0
+22:39 G3c final-v5c autorun exit 0

@@ -1,0 +1,43 @@
+{
+ "samples_s": {
+  "stockcancel16": [
+   19.071141375,
+   18.188893209,
+   17.924948083
+  ],
+  "stockcancel": [
+   19.037090791,
+   18.184180708,
+   18.282337375
+  ],
+  "fenced": [
+   22.274481959,
+   17.99598175,
+   18.025013625
+  ]
+ },
+ "median_s": {
+  "stockcancel16": 18.188893209,
+  "stockcancel": 18.282337375,
+  "fenced": 18.025013625
+ },
+ "body_bytes": {
+  "stockcancel16": [
+   262625,
+   260390,
+   260390
+  ],
+  "stockcancel": [
+   262625,
+   262625,
+   262625
+  ],
+  "fenced": [
+   262625,
+   262625,
+   262625
+  ]
+ },
+ "nbeacons": 2233,
+ "source": "artifact/results/round3/g3app/pilot-v5b-calib/calibration.json"
+}

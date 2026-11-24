@@ -1,0 +1,56 @@
+{
+ "id": "g3app5b-mech",
+ "kind": "pilot",
+ "card": "artifact/plans/g3app5-card.md",
+ "deadline_hours": 2,
+ "env": {
+  "ANDROID_HOME": "~/Library/Android/sdk",
+  "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+  "ANDROID_AVD_HOME": "~/.android/avd",
+  "JAVA_HOME": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+  "AVDS": "P04AvdA",
+  "IMAGES": "33",
+  "PORTS": "5666 8793 8794 8797 8799"
+ },
+ "owned_serials": [
+  "emulator-5666"
+ ],
+ "pre": [
+  "bash .claude/skills/p04-experiment/scripts/preflight.sh"
+ ],
+ "stages": [
+  {
+   "name": "mech",
+   "cwd": "artifact",
+   "cmd": [
+    "python3",
+    "followup/race_airguard.py",
+    "--serial",
+    "emulator-5666",
+    "--avd",
+    "P04AvdA",
+    "--apkdir",
+    "realapp/airguard/build/g3v5b",
+    "--variants",
+    "stockcancel16,stockcancel,fenced",
+    "--profile",
+    "umts",
+    "--seed",
+    "g3app5b-20261123",
+    "--marker",
+    "8799",
+    "--capture",
+    "--trials",
+    "2",
+    "--durations",
+    "results/round3/g3app/calibration-used-v5b.json",
+    "--out",
+    "results/round3/g3app/pilot-v5b-mech"
+   ],
+   "out": "artifact/results/round3/g3app/pilot-v5b-mech"
+  }
+ ],
+ "post": [],
+ "guard_after": true,
+ "frozen": "artifact/results/round3/g3/frozen-g3-v8b"
+}

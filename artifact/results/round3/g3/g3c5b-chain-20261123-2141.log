@@ -1,0 +1,11 @@
+21:41 start G3c v5b (stockcancel16, stockcancel, fenced)
+[autorun] g3app5b-pilot (pilot) stages=1 deadline=2 h
+  - calib: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5b-20261123 --marker 8799 --nbeacons 2233 --calibrate 3 --out results/round3/g3app/pilot-v5b-calib  -> artifact/results/round3/g3app/pilot-v5b-calib
+[autorun] DONE; guard=0
+calibrations per build {'stockcancel16': 3, 'stockcancel': 3, 'fenced': 3} D {'stockcancel16': 18.188893209, 'stockcancel': 18.282337375, 'fenced': 18.025013625} median body bytes 262625 nbeacons 2233
+21:47 G3c v5b calibration gate passed; mechanism pilot next
+[autorun] g3app5b-mech (pilot) stages=1 deadline=2 h
+  - mech: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5b-20261123 --marker 8799 --capture --trials 2 --durations results/round3/g3app/calibration-used-v5b.json --out results/round3/g3app/pilot-v5b-mech  -> artifact/results/round3/g3app/pilot-v5b-mech
+[autorun] DONE; guard=0
+rows 6 invalid [] marker_sent bad [] start marker bad [] missing in marker log [] missing in capture [] donation sndbuf (API) {'g3app-000-fenced': 16384, 'g3app-000-stockcancel': 2097152, 'g3app-000-stockcancel16': 32768, 'g3app-001-fenced': 16384, 'g3app-001-stockcancel': 2097152, 'g3app-001-stockcancel16': 32768} kernel sndbuf {'g3app-000-fenced': -1, 'g3app-000-stockcancel': -1, 'g3app-000-stockcancel16': -1, 'g3app-001-fenced': -1, 'g3app-001-stockcancel': -1, 'g3app-001-stockcancel16': -1} sndbuf bad ['g3app-000-fenced', 'g3app-000-stockcancel', 'g3app-000-stockcancel16', 'g3app-001-fenced', 'g3app-001-stockcancel', 'g3app-001-stockcancel16']
+21:51 G3c v5b MECHANISM GATE FAIL; no final (card §3)

@@ -1,0 +1,11 @@
+00:14 start (G3d on the phone)
+[autorun] g3cost-pilot (pilot) stages=1 deadline=1 h
+  - pilot: python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 1 --repeats 2 --out results/round3/g3cost/pilot-6  -> artifact/results/round3/g3cost/pilot-6
+[autorun] DONE; guard=None
+cells 9 valid 9 uploads ok+received 18 / 18 cells with batterystats 9 power_check {'screen_off_timeout': '86400000', 'deviceidle': 'mLightEnabled=false  mDeepEnabled=false'}
+00:14 G3d pilot gate passed; starting final
+[autorun] g3cost-final (final) stages=1 deadline=4 h
+  - final: python3 followup/cost_suite.py --serial auto --host auto --port 8800 --certdir /Users/nguyennhatduy/.p04/g3dcert --apk fixture/build/g3-apk/rl-tls.apk --seed g3cost-20261122 --blocks 20 --repeats 10 --out results/round3/g3cost/final-v4  -> artifact/results/round3/g3cost/final-v4
+[autorun] DONE; guard=None
+01:10 G3d final autorun exit 0
+01:10 done

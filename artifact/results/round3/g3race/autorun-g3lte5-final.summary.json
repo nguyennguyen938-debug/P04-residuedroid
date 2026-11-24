@@ -1,0 +1,10 @@
+{
+  "id": "g3lte5-final",
+  "kind": "final",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-22T23:02:08.624864+07:00",
+  "stages": [
+    "artifact/results/round3/g3race/final-lte5"
+  ]
+}

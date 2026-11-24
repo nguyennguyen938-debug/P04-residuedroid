@@ -1,0 +1,10 @@
+{
+  "id": "g3cost-final",
+  "kind": "final",
+  "status": "ABORT(final exit -2)",
+  "guard": null,
+  "finished": "2026-11-23T15:50:12.481902+07:00",
+  "stages": [
+    "artifact/results/round3/g3cost/final-v3"
+  ]
+}

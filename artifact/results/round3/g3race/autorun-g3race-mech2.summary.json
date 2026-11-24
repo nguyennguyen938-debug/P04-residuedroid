@@ -1,0 +1,10 @@
+{
+  "id": "g3race-mech2",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-22T15:11:24.623636+07:00",
+  "stages": [
+    "artifact/results/round3/g3race/pilot-mech2"
+  ]
+}

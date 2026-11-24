@@ -1,0 +1,10 @@
+{
+  "id": "g3p4-final",
+  "kind": "final",
+  "status": "ABORT(final exit -2)",
+  "guard": 0,
+  "finished": "2026-11-23T05:06:03.463155+07:00",
+  "stages": [
+    "artifact/results/round3/g3race/final-p4"
+  ]
+}

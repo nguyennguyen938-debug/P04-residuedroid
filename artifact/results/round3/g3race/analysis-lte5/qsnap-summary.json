@@ -1,0 +1,87 @@
+{
+ "dirs": [
+  "artifact/results/round3/g3race/final-lte5"
+ ],
+ "cells": {
+  "lte/close/sndbuf=16384": {
+   "trials": 30,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   },
+   "tx_queue_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   }
+  },
+  "lte/close2/sndbuf=16384": {
+   "trials": 30,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   },
+   "tx_queue_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   }
+  },
+  "lte/early/sndbuf=16384": {
+   "trials": 30,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 9084,
+    "max": 9084
+   },
+   "tx_queue_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 15581,
+    "max": 17016
+   }
+  },
+  "lte/fence-abort/sndbuf=16384": {
+   "trials": 30,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   },
+   "tx_queue_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   }
+  },
+  "lte/fence/sndbuf=16384": {
+   "trials": 30,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   },
+   "tx_queue_bytes": {
+    "n": 30,
+    "median": 0.0,
+    "p95": 0,
+    "max": 0
+   }
+  }
+ }
+}

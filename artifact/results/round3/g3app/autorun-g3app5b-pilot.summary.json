@@ -1,0 +1,10 @@
+{
+  "id": "g3app5b-pilot",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": 0,
+  "finished": "2026-11-23T21:47:44.203634+07:00",
+  "stages": [
+    "artifact/results/round3/g3app/pilot-v5b-calib"
+  ]
+}

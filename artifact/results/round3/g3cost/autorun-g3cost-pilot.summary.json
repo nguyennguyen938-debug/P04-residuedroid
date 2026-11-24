@@ -1,0 +1,10 @@
+{
+  "id": "g3cost-pilot",
+  "kind": "pilot",
+  "status": "DONE",
+  "guard": null,
+  "finished": "2026-11-24T00:14:40.135205+07:00",
+  "stages": [
+    "artifact/results/round3/g3cost/pilot-6"
+  ]
+}

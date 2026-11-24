@@ -1,0 +1,860 @@
+{
+ "dirs": [
+  "artifact/results/round3/g3race/final-p4"
+ ],
+ "logged": 195,
+ "invalid": [],
+ "cells": {
+  "edge/fence/sndbuf=0": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "1048576": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 36318.255,
+    "p95": 835023.318,
+    "max": 835023.318
+   },
+   "by_phase": {
+    "after handoff": {
+     "trials": 12,
+     "matched": 12,
+     "new_bytes_sum": 10447722,
+     "new_bytes": {
+      "n": 12,
+      "median": 768322.0,
+      "p95": 1598331,
+      "max": 1598331
+     },
+     "app_trials": 12,
+     "trials_app_after_marker": 12,
+     "app_bytes_sum": 10447722,
+     "app_bytes": {
+      "n": 12,
+      "median": 768322.0,
+      "p95": 1598331,
+      "max": 1598331
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 4,
+     "matched": 4,
+     "new_bytes_sum": 5902585,
+     "new_bytes": {
+      "n": 4,
+      "median": 1590715.5,
+      "p95": 1619750,
+      "max": 1619750
+     },
+     "app_trials": 4,
+     "trials_app_after_marker": 4,
+     "app_bytes_sum": 5898489,
+     "app_bytes": {
+      "n": 4,
+      "median": 1588667.5,
+      "p95": 1619750,
+      "max": 1619750
+     },
+     "rst_after_marker": 4
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 18168,
+     "max": 18168
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 1249129.0,
+     "p95": 2101213,
+     "max": 2101213
+    }
+   }
+  },
+  "edge/fence/sndbuf=16384": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "16384": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 14337.92,
+    "p95": 20250.107,
+    "max": 20250.107
+   },
+   "by_phase": {
+    "during writes": {
+     "trials": 16,
+     "matched": 16,
+     "new_bytes_sum": 363540,
+     "new_bytes": {
+      "n": 16,
+      "median": 21900.0,
+      "p95": 24820,
+      "max": 24820
+     },
+     "app_trials": 16,
+     "trials_app_after_marker": 16,
+     "app_bytes_sum": 327960,
+     "app_bytes": {
+      "n": 16,
+      "median": 20350.0,
+      "p95": 24445,
+      "max": 24445
+     },
+     "rst_after_marker": 16
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 27252,
+     "max": 27252
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 22772.5,
+     "p95": 1550794,
+     "max": 1550794
+    }
+   }
+  },
+  "edge/fence/sndbuf=65536": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "65536": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 15122.066,
+    "p95": 76259.354,
+    "max": 76259.354
+   },
+   "by_phase": {
+    "after end": {
+     "trials": 1,
+     "matched": 1,
+     "new_bytes_sum": 0,
+     "new_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "app_trials": 1,
+     "trials_app_after_marker": 0,
+     "app_bytes_sum": 0,
+     "app_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "rst_after_marker": 0
+    },
+    "after handoff": {
+     "trials": 1,
+     "matched": 1,
+     "new_bytes_sum": 14231,
+     "new_bytes": {
+      "n": 1,
+      "median": 14231,
+      "p95": 14231,
+      "max": 14231
+     },
+     "app_trials": 1,
+     "trials_app_after_marker": 1,
+     "app_bytes_sum": 14231,
+     "app_bytes": {
+      "n": 1,
+      "median": 14231,
+      "p95": 14231,
+      "max": 14231
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 14,
+     "matched": 14,
+     "new_bytes_sum": 1380851,
+     "new_bytes": {
+      "n": 14,
+      "median": 98550.0,
+      "p95": 100740,
+      "max": 100740
+     },
+     "app_trials": 14,
+     "trials_app_after_marker": 14,
+     "app_bytes_sum": 1348645,
+     "app_bytes": {
+      "n": 14,
+      "median": 96750.0,
+      "p95": 99405,
+      "max": 99405
+     },
+     "rst_after_marker": 14
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 18168,
+     "max": 18168
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 97821.0,
+     "p95": 1448752,
+     "max": 1448752
+    }
+   }
+  },
+  "edge/fence-abort/sndbuf=0": {
+   "trials": 17,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "1048576": 17
+   },
+   "throughput_before_w_Bps": {
+    "n": 17,
+    "median": 33829.464,
+    "p95": 823130.526,
+    "max": 823130.526
+   },
+   "by_phase": {
+    "after end": {
+     "trials": 1,
+     "matched": 1,
+     "new_bytes_sum": 0,
+     "new_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "app_trials": 1,
+     "trials_app_after_marker": 0,
+     "app_bytes_sum": 0,
+     "app_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "rst_after_marker": 0
+    },
+    "after handoff": {
+     "trials": 12,
+     "matched": 12,
+     "new_bytes_sum": 10206968,
+     "new_bytes": {
+      "n": 12,
+      "median": 744974.0,
+      "p95": 1512203,
+      "max": 1512203
+     },
+     "app_trials": 12,
+     "trials_app_after_marker": 12,
+     "app_bytes_sum": 10206968,
+     "app_bytes": {
+      "n": 12,
+      "median": 744974.0,
+      "p95": 1512203,
+      "max": 1512203
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 4,
+     "matched": 4,
+     "new_bytes_sum": 2920,
+     "new_bytes": {
+      "n": 4,
+      "median": 730.0,
+      "p95": 1460,
+      "max": 1460
+     },
+     "app_trials": 4,
+     "trials_app_after_marker": 2,
+     "app_bytes_sum": 2495,
+     "app_bytes": {
+      "n": 4,
+      "median": 565.0,
+      "p95": 1365,
+      "max": 1365
+     },
+     "rst_after_marker": 4
+    }
+   },
+   "qsnap": {
+    "n": 17,
+    "netem_backlog_bytes": {
+     "n": 17,
+     "median": 9084,
+     "p95": 18222,
+     "max": 18222
+    },
+    "tx_queue_bytes": {
+     "n": 17,
+     "median": 707743,
+     "p95": 1529051,
+     "max": 1529051
+    }
+   }
+  },
+  "edge/fence-abort/sndbuf=16384": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "16384": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 14265.591,
+    "p95": 20448.679,
+    "max": 20448.679
+   },
+   "by_phase": {
+    "after end": {
+     "trials": 1,
+     "matched": 1,
+     "new_bytes_sum": 0,
+     "new_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "app_trials": 1,
+     "trials_app_after_marker": 0,
+     "app_bytes_sum": 0,
+     "app_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 15,
+     "matched": 15,
+     "new_bytes_sum": 20156,
+     "new_bytes": {
+      "n": 15,
+      "median": 1460,
+      "p95": 1460,
+      "max": 1460
+     },
+     "app_trials": 15,
+     "trials_app_after_marker": 4,
+     "app_bytes_sum": 2120,
+     "app_bytes": {
+      "n": 15,
+      "median": 0,
+      "p95": 865,
+      "max": 865
+     },
+     "rst_after_marker": 15
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9138.0,
+     "p95": 10706,
+     "max": 10706
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 0.0,
+     "p95": 93416,
+     "max": 93416
+    }
+   }
+  },
+  "edge/fence-abort/sndbuf=65536": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "65536": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 14844.006,
+    "p95": 79284.939,
+    "max": 79284.939
+   },
+   "by_phase": {
+    "after end": {
+     "trials": 1,
+     "matched": 1,
+     "new_bytes_sum": 0,
+     "new_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "app_trials": 1,
+     "trials_app_after_marker": 0,
+     "app_bytes_sum": 0,
+     "app_bytes": {
+      "n": 1,
+      "median": 0,
+      "p95": 0,
+      "max": 0
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 15,
+     "matched": 15,
+     "new_bytes_sum": 20156,
+     "new_bytes": {
+      "n": 15,
+      "median": 1460,
+      "p95": 2920,
+      "max": 2920
+     },
+     "app_trials": 15,
+     "trials_app_after_marker": 2,
+     "app_bytes_sum": 1525,
+     "app_bytes": {
+      "n": 15,
+      "median": 0,
+      "p95": 1330,
+      "max": 1330
+     },
+     "rst_after_marker": 15
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9138.0,
+     "p95": 27380,
+     "max": 27380
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 0.0,
+     "p95": 1326112,
+     "max": 1326112
+    }
+   }
+  },
+  "umts/fence/sndbuf=0": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "1048576": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 31161.082,
+    "p95": 83385.996,
+    "max": 83385.996
+   },
+   "by_phase": {
+    "after handoff": {
+     "trials": 13,
+     "matched": 13,
+     "new_bytes_sum": 12447553,
+     "new_bytes": {
+      "n": 13,
+      "median": 1068353,
+      "p95": 1516573,
+      "max": 1516573
+     },
+     "app_trials": 13,
+     "trials_app_after_marker": 13,
+     "app_bytes_sum": 12447553,
+     "app_bytes": {
+      "n": 13,
+      "median": 1068353,
+      "p95": 1516573,
+      "max": 1516573
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 3,
+     "matched": 3,
+     "new_bytes_sum": 4859445,
+     "new_bytes": {
+      "n": 3,
+      "median": 1619705,
+      "p95": 1620600,
+      "max": 1620600
+     },
+     "app_trials": 3,
+     "trials_app_after_marker": 3,
+     "app_bytes_sum": 4857585,
+     "app_bytes": {
+      "n": 3,
+      "median": 1619035,
+      "p95": 1619705,
+      "max": 1619705
+     },
+     "rst_after_marker": 3
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 27252,
+     "max": 27252
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 1193911.0,
+     "p95": 2730632,
+     "max": 2730632
+    }
+   }
+  },
+  "umts/fence/sndbuf=16384": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "16384": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 15543.274,
+    "p95": 15738.903,
+    "max": 15738.903
+   },
+   "by_phase": {
+    "during writes": {
+     "trials": 16,
+     "matched": 16,
+     "new_bytes_sum": 359750,
+     "new_bytes": {
+      "n": 16,
+      "median": 21900.0,
+      "p95": 24820,
+      "max": 24820
+     },
+     "app_trials": 16,
+     "trials_app_after_marker": 16,
+     "app_bytes_sum": 323120,
+     "app_bytes": {
+      "n": 16,
+      "median": 20332.5,
+      "p95": 23300,
+      "max": 23300
+     },
+     "rst_after_marker": 16
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 27252,
+     "max": 27252
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 21901.0,
+     "p95": 2483893,
+     "max": 2483893
+    }
+   }
+  },
+  "umts/fence/sndbuf=65536": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "65536": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 16306.097,
+    "p95": 19272.784,
+    "max": 19272.784
+   },
+   "by_phase": {
+    "during writes": {
+     "trials": 16,
+     "matched": 16,
+     "new_bytes_sum": 1588285,
+     "new_bytes": {
+      "n": 16,
+      "median": 99280.0,
+      "p95": 100740,
+      "max": 100740
+     },
+     "app_trials": 16,
+     "trials_app_after_marker": 16,
+     "app_bytes_sum": 1554670,
+     "app_bytes": {
+      "n": 16,
+      "median": 97065.0,
+      "p95": 100545,
+      "max": 100545
+     },
+     "rst_after_marker": 16
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 27252,
+     "max": 27252
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 99183.5,
+     "p95": 1898568,
+     "max": 1898568
+    }
+   }
+  },
+  "umts/fence-abort/sndbuf=0": {
+   "trials": 16,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "1048576": 16
+   },
+   "throughput_before_w_Bps": {
+    "n": 16,
+    "median": 31158.243,
+    "p95": 84340.707,
+    "max": 84340.707
+   },
+   "by_phase": {
+    "after handoff": {
+     "trials": 14,
+     "matched": 14,
+     "new_bytes_sum": 12904332,
+     "new_bytes": {
+      "n": 14,
+      "median": 1039894.0,
+      "p95": 1426065,
+      "max": 1426065
+     },
+     "app_trials": 14,
+     "trials_app_after_marker": 14,
+     "app_bytes_sum": 12904332,
+     "app_bytes": {
+      "n": 14,
+      "median": 1039894.0,
+      "p95": 1426065,
+      "max": 1426065
+     },
+     "rst_after_marker": 0
+    },
+    "during writes": {
+     "trials": 2,
+     "matched": 2,
+     "new_bytes_sum": 2920,
+     "new_bytes": {
+      "n": 2,
+      "median": 1460.0,
+      "p95": 1460,
+      "max": 1460
+     },
+     "app_trials": 2,
+     "trials_app_after_marker": 0,
+     "app_bytes_sum": 0,
+     "app_bytes": {
+      "n": 2,
+      "median": 0.0,
+      "p95": 0,
+      "max": 0
+     },
+     "rst_after_marker": 2
+    }
+   },
+   "qsnap": {
+    "n": 16,
+    "netem_backlog_bytes": {
+     "n": 16,
+     "median": 9084.0,
+     "p95": 9709,
+     "max": 9709
+    },
+    "tx_queue_bytes": {
+     "n": 16,
+     "median": 893163.0,
+     "p95": 1426065,
+     "max": 1426065
+    }
+   }
+  },
+  "umts/fence-abort/sndbuf=16384": {
+   "trials": 17,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "16384": 17
+   },
+   "throughput_before_w_Bps": {
+    "n": 17,
+    "median": 15373.219,
+    "p95": 16097.181,
+    "max": 16097.181
+   },
+   "by_phase": {
+    "during writes": {
+     "trials": 17,
+     "matched": 17,
+     "new_bytes_sum": 27740,
+     "new_bytes": {
+      "n": 17,
+      "median": 1460,
+      "p95": 2920,
+      "max": 2920
+     },
+     "app_trials": 17,
+     "trials_app_after_marker": 6,
+     "app_bytes_sum": 5715,
+     "app_bytes": {
+      "n": 17,
+      "median": 0,
+      "p95": 2025,
+      "max": 2025
+     },
+     "rst_after_marker": 17
+    }
+   },
+   "qsnap": {
+    "n": 17,
+    "netem_backlog_bytes": {
+     "n": 17,
+     "median": 9138,
+     "p95": 27306,
+     "max": 27306
+    },
+    "tx_queue_bytes": {
+     "n": 17,
+     "median": 0,
+     "p95": 2210872,
+     "max": 2210872
+    }
+   }
+  },
+  "umts/fence-abort/sndbuf=65536": {
+   "trials": 17,
+   "unused": 0,
+   "after_w": 0,
+   "actual_sndbuf": {
+    "65536": 17
+   },
+   "throughput_before_w_Bps": {
+    "n": 17,
+    "median": 16328.528,
+    "p95": 19256.241,
+    "max": 19256.241
+   },
+   "by_phase": {
+    "during writes": {
+     "trials": 17,
+     "matched": 17,
+     "new_bytes_sum": 36500,
+     "new_bytes": {
+      "n": 17,
+      "median": 1460,
+      "p95": 2920,
+      "max": 2920
+     },
+     "app_trials": 17,
+     "trials_app_after_marker": 7,
+     "app_bytes_sum": 8805,
+     "app_bytes": {
+      "n": 17,
+      "median": 0,
+      "p95": 2305,
+      "max": 2305
+     },
+     "rst_after_marker": 17
+    }
+   },
+   "qsnap": {
+    "n": 17,
+    "netem_backlog_bytes": {
+     "n": 17,
+     "median": 9138,
+     "p95": 18222,
+     "max": 18222
+    },
+    "tx_queue_bytes": {
+     "n": 17,
+     "median": 0,
+     "p95": 748131,
+     "max": 748131
+    }
+   }
+  }
+ },
+ "paired_during_writes_app_bytes": {
+  "edge/sndbuf=0": {
+   "pairs": 3,
+   "abort_less": 3,
+   "equal": 0,
+   "abort_more": 0
+  },
+  "edge/sndbuf=16384": {
+   "pairs": 15,
+   "abort_less": 15,
+   "equal": 0,
+   "abort_more": 0
+  },
+  "edge/sndbuf=65536": {
+   "pairs": 14,
+   "abort_less": 14,
+   "equal": 0,
+   "abort_more": 0
+  },
+  "umts/sndbuf=0": {
+   "pairs": 2,
+   "abort_less": 2,
+   "equal": 0,
+   "abort_more": 0
+  },
+  "umts/sndbuf=16384": {
+   "pairs": 16,
+   "abort_less": 16,
+   "equal": 0,
+   "abort_more": 0
+  },
+  "umts/sndbuf=65536": {
+   "pairs": 16,
+   "abort_less": 16,
+   "equal": 0,
+   "abort_more": 0
+  }
+ }
+}

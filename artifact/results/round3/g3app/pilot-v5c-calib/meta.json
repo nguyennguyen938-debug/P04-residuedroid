@@ -1,0 +1,48 @@
+{
+ "serial": "emulator-5666",
+ "avd": "P04AvdA",
+ "variants": [
+  "stockcancel16",
+  "stockcancel",
+  "fenced"
+ ],
+ "ports": {
+  "stockcancel16": 8794,
+  "stockcancel": 8793,
+  "fenced": 8797
+ },
+ "profile": "umts",
+ "nbeacons": 2233,
+ "calibrate": 3,
+ "trials": 0,
+ "start": 0,
+ "seed": "g3app5c-20261123",
+ "durations": {},
+ "marker": 8799,
+ "capture": false,
+ "sockdiag": true,
+ "warmup": {
+  "stockcancel16": {
+   "s": 0.4,
+   "ok": true
+  },
+  "stockcancel": {
+   "s": 0.3,
+   "ok": true
+  },
+  "fenced": {
+   "s": 0.5,
+   "ok": true
+  }
+ },
+ "radio": {
+  "routes": "10.0.0.0/8 dev eth0 proto kernel scope link src 10.0.2.15"
+ },
+ "fingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+ "apks": {
+  "stockcancel16": "266d26b4dfa00c7e4825346a2a3d98a41858480c81fcbc512d4e9f9114a3f311",
+  "stockcancel": "5061f227fb03d7ac68e4f8d4ae590fc9e71bba9ea47277ee86804044e81c6dbc",
+  "fenced": "bcd96ab40b3545eb4098e962e1a31da6e87c227c71458a0f845f8f40576e72be"
+ },
+ "started": 1795445699.80538
+}
