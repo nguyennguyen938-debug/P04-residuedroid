@@ -1,0 +1,70 @@
+[2026-11-24 16:57:16.227305] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-24 16:57:16.227358]  
+[2026-11-24 16:57:16.236792]  
+[2026-11-24 16:57:16.236814] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-24 16:57:16.236836]  
+[2026-11-24 16:57:16.236848] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-24 16:57:16.363914] [DeviceFarm] python3 --version
+[2026-11-24 16:57:16.364688] Python 3.12.12
+[2026-11-24 16:57:16.364886] [DeviceFarm] adb version
+[2026-11-24 16:57:16.388675] Android Debug Bridge version 1.0.39
+[2026-11-24 16:57:16.388705] Version 0.0.1-4500957
+[2026-11-24 16:57:16.388721] Installed as /tmp/devicefarm-workspace/execution-pmsco7ly/shared-ssipgbmf/android-home-t5_o6g1l/platform-tools/adb_binary
+[2026-11-24 16:57:16.390293]  
+[2026-11-24 16:57:16.390315] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-24 16:57:16.390331]  
+[2026-11-24 16:57:16.390341] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-24 16:57:16.548382] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-24 16:57:16.551148] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04fenced; echo "UNINSTALL_EXIT=$?"
+[2026-11-24 16:57:17.003933] Success
+[2026-11-24 16:57:17.013185] UNINSTALL_EXIT=0
+[2026-11-24 16:57:17.013220]  
+[2026-11-24 16:57:17.013237] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-24 16:57:17.013252]  
+[2026-11-24 16:57:17.013265] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-24 16:57:17.013294] [DeviceFarm] ADB=adb python3 artifact/followup/campaign_airguard.py --serial $DEVICEFARM_DEVICE_UDID --apkdir artifact/realapp/airguard/build/phone --phone --variants stock,fenced,layered --schedules pending,kill,netloss --start 10 --trials 10 --seed airguard-df-20261125 --out $DEVICEFARM_LOG_DIR/airguard; echo "AIRGUARD_EXIT=$?"
+[2026-11-24 16:57:49.636528] 16:57:49 pen010 ok
+[2026-11-24 16:58:17.382194] 16:58:17 kil010 ok
+[2026-11-24 17:00:17.048826] 17:00:17 net010 ok
+[2026-11-24 17:00:41.200868] 17:00:41 pen011 ok
+[2026-11-24 17:01:09.157872] 17:01:09 kil011 ok
+[2026-11-24 17:03:09.904794] 17:03:09 net011 ok
+[2026-11-24 17:03:34.140607] 17:03:34 pen012 ok
+[2026-11-24 17:04:02.222156] 17:04:02 kil012 ok
+[2026-11-24 17:06:01.746212] 17:06:01 net012 ok
+[2026-11-24 17:06:25.600660] 17:06:25 pen013 ok
+[2026-11-24 17:06:53.525587] 17:06:53 kil013 ok
+[2026-11-24 17:08:54.145101] 17:08:54 net013 ok
+[2026-11-24 17:09:18.439806] 17:09:18 pen014 ok
+[2026-11-24 17:09:46.026678] 17:09:46 kil014 ok
+[2026-11-24 17:11:45.977898] 17:11:45 net014 ok
+[2026-11-24 17:12:10.312679] 17:12:10 pen015 ok
+[2026-11-24 17:12:37.837484] 17:12:37 kil015 ok
+[2026-11-24 17:14:38.061097] 17:14:38 net015 ok
+[2026-11-24 17:15:02.113521] 17:15:02 pen016 ok
+[2026-11-24 17:15:30.367661] 17:15:30 kil016 ok
+[2026-11-24 17:17:30.211944] 17:17:30 net016 ok
+[2026-11-24 17:17:54.500504] 17:17:54 pen017 ok
+[2026-11-24 17:18:22.563981] 17:18:22 kil017 ok
+[2026-11-24 17:20:22.873541] 17:20:22 net017 ok
+[2026-11-24 17:20:46.948314] 17:20:46 pen018 ok
+[2026-11-24 17:21:14.751717] 17:21:14 kil018 ok
+[2026-11-24 17:23:14.805301] 17:23:14 net018 ok
+[2026-11-24 17:23:38.904109] 17:23:38 pen019 ok
+[2026-11-24 17:24:06.716226] 17:24:06 kil019 ok
+[2026-11-24 17:26:07.163716] 17:26:07 net019 ok
+[2026-11-24 17:26:07.169999] AIRGUARD_EXIT=0
+[2026-11-24 17:26:07.170038]  
+[2026-11-24 17:26:07.170055] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-24 17:26:07.170065]  
+[2026-11-24 17:26:07.170075] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all || true
+[2026-11-24 17:26:07.272591] [DeviceFarm] for v in stock fenced layered; do adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04$v || true; done
+[2026-11-24 17:26:07.687112] Success
+[2026-11-24 17:26:08.064065] Success
+[2026-11-24 17:26:08.274623] Success
+[2026-11-24 17:26:08.320218]  
+[2026-11-24 17:26:08.320252] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-24 17:26:08.320267]  
+[2026-11-24 17:26:08.323507] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-24 17:26:08.323529]  
+[2026-11-24 17:26:08.324794]  

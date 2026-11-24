@@ -1,0 +1,72 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-pmsco7ly/shared-ssipgbmf/android-home-t5_o6g1l/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04fenced; echo "UNINSTALL_EXIT=$?"
+Success
+UNINSTALL_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] ADB=adb python3 artifact/followup/campaign_airguard.py --serial $DEVICEFARM_DEVICE_UDID --apkdir artifact/realapp/airguard/build/phone --phone --variants stock,fenced,layered --schedules pending,kill,netloss --start 10 --trials 10 --seed airguard-df-20261125 --out $DEVICEFARM_LOG_DIR/airguard; echo "AIRGUARD_EXIT=$?"
+16:57:49 pen010 ok
+16:58:17 kil010 ok
+17:00:17 net010 ok
+17:00:41 pen011 ok
+17:01:09 kil011 ok
+17:03:09 net011 ok
+17:03:34 pen012 ok
+17:04:02 kil012 ok
+17:06:01 net012 ok
+17:06:25 pen013 ok
+17:06:53 kil013 ok
+17:08:54 net013 ok
+17:09:18 pen014 ok
+17:09:46 kil014 ok
+17:11:45 net014 ok
+17:12:10 pen015 ok
+17:12:37 kil015 ok
+17:14:38 net015 ok
+17:15:02 pen016 ok
+17:15:30 kil016 ok
+17:17:30 net016 ok
+17:17:54 pen017 ok
+17:18:22 kil017 ok
+17:20:22 net017 ok
+17:20:46 pen018 ok
+17:21:14 kil018 ok
+17:23:14 net018 ok
+17:23:38 pen019 ok
+17:24:06 kil019 ok
+17:26:07 net019 ok
+AIRGUARD_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all || true
+[DeviceFarm] for v in stock fenced layered; do adb -s $DEVICEFARM_DEVICE_UDID uninstall de.seemoo.at_tracking_detection.p04$v || true; done
+Success
+Success
+Success
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.

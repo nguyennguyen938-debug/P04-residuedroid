@@ -697,3 +697,14 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-24 22:55 r4df airguard/pilot-p1: COMPLETED PASSED (3.2 trial min; 851.08 left); gates.py + gate_b PASS; kill_verified (pids existed and gone), cut verified (up before, down after), hooks ok, warm-up ok; netloss quiescence wait 90.8 s as on the emulator (B2/G2b netloss 20/20 at about 92 s). Frozen: frozen-airguard-df (HEAD 57e726c; package sha256 a6d75ac4, built at adfe463, same harness). Starting finals f1 (START=0 N=10) then f2 (START=10 N=10), timeout 70 min each.
 - 2026-11-24 22:56 r4df airguard/f1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f1.yml, timeout 70 min)
 - 2026-11-24 23:21 r4df airguard/f1: the S3 PUT of the AirGuard package (curl in upload_df.sh, no timeout) stalled from 22:56 to 23:20; B stopped the f1/f2 chain before any run was scheduled (no Device Farm run, no minutes used, no results dir). Fix in plans/r4df/job.sh: upload watchdog (20 min per attempt, 3 attempts). f1 and f2 restart with the same names (nothing was recorded under them).
+- 2026-11-24 23:21 r4df airguard/f1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f1.yml, timeout 70 min)
+- 2026-11-24 23:22 r4df airguard/f1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 23:55 r4df airguard/f1: run_df exit 0; trial minutes after: 821.8 (used 29.3); run COMPLETED PASSED
+- 2026-11-24 23:55 r4df airguard/f1: done
+- 2026-11-24 23:55 r4df airguard/f2: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f2.yml, timeout 70 min)
+- 2026-11-24 23:56 r4df airguard/f2: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 23:57 r4df g3a: user go-ahead (24/11) for the EC2 receiver and opening 8800 during G3a; creating the instance now (8800 limited to this Mac until the pilot). Old ~/.p04/ec2 key/token moved to ~/.p04/ec2/old-20261124.
+- 2026-11-24 23:58 r4df g3a: EC2 instance i-012615ad768c3476f (t3.micro, us-west-2) at 54.186.50.117 created; delete with teardown.sh after G3a.
+- 2026-11-25 00:29 r4df airguard/f2: run_df exit 0; trial minutes after: 792.82 (used 29.0); run COMPLETED PASSED
+- 2026-11-25 00:29 r4df airguard/f2: done
+- 2026-11-25 00:30 r4df airguard finals: f1 (k 0-9) COMPLETED PASSED 29.3 min, f2 (k 10-19) COMPLETED PASSED 29.0 min (792.82 trial min left). Pre-registered analysis analyze_airguard.py f1 f2 -> airguard/analysis: 180 rows, 0 invalid, 20 trials per schedule and build, 0 unused.
