@@ -25,7 +25,7 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7).
 - Unit: trial; oracle of B2 (`analyze_airguard.py`, host order).
 - N: 20 trials per schedule (as B2 / G2b). Jobs: `SCHED=pending,kill,netloss` as `START=0 N=10` and `START=10 N=10`
   (timeout 70 min each); reboot (only if its pilot passes) `START=0 N=10` and `START=10 N=10` (timeout 80 min each).
-- Seed: `airguard-phone-20261125`; nbeacons 4, wait 90 s (B2 defaults).
+- Seed: `airguard-df-20261125` (as in `specs/airguard.yml.in`); nbeacons 4, wait 90 s (B2 defaults).
 - Freeze: `results/round3/phone-r4/aws/airguard/frozen-airguard-df` (incl. the three APK hashes) before the final jobs.
 
 ## 3. Validity, exclusion, stopping, replacement

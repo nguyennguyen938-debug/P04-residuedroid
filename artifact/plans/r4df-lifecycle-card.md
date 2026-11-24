@@ -24,7 +24,7 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7). No jo
 - Unit: paired trial; affected tenants T1, T2, T4, T5, T8 as Test 6.
 - N: 20 paired trials per schedule (as Test 6). Jobs: netloss `START=0 N=20` (timeout 80 min); reboot `START=0 N=10` and
   `START=10 N=10` (timeout 100 min each).
-- Seed: `lifecycle-phone-20261125` (campaign seed-schedule-k derivation).
+- Seed: `lifecycle-df-20261125` (as in the testspec template `specs/life.yml.in`; campaign seed-schedule-k derivation).
 - Window: `--timeout 90` as Test 6.
 - Build: `fixture/build/revision-apk/rl-{menqueue,mstart,mlayer,mfence,mboth}.apk`, rebuilt 24/11 from `main` (9c483a9 +
   the patches below). They are **not** the Test 6 binaries (Test 6 APK hashes are in its results); source changes since

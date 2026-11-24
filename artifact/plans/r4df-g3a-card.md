@@ -22,7 +22,7 @@ for the run.
 - Unit: trial. Block = 5 arms × 3 profiles × 3 sizes = 45 trials, order shuffled per block.
 - N: from the calibration pilot, `min(10, floor(300 min / upper bound of one block))`; fewer than 5 blocks → no final.
   Final jobs of 3 blocks each (`--start 0/3/6 --trials 3`, then `--start 9 --trials 1` for N = 10), timeout 100 min each.
-- Seed: `g3a-phone-20261125`.
+- Seed: `g3a-df-20261125` (as in `specs/g3a.yml.in`).
 - Build: `fixture/build/g3-apk/rl-tls.apk` (the G3a binary, frozen in `frozen-g3-v8c`).
 - Freeze: `results/round3/phone-r4/aws/g3a/frozen-g3a-df` before the final jobs.
 - Package secrets: the G3a package holds the EC2 CA (no key) and the control token; packages and `uploads-*.env` stay
