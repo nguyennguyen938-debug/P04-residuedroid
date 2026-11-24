@@ -677,3 +677,9 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-24 22:03 r4df life/pilot-preb: done
 - 2026-11-24 22:06 r4df life/pilot-preb: Device Farm job COMPLETED PASSED (1.8 trial min; 883.32 left); gates.py + gate_b PASS, but diagnosis shows no reboot happened (boot_s 0.55 s; monotonic clock continuous in all 5 apps; plans/r4df/reboot_evidence.py -> reboot-evidence.json): Device Farm ignores adb reboot. Per the card, the reboot schedule is dropped on Device Farm (lifecycle and AirGuard; no AirGuard reboot pilot). Harness v1.1 before any further job: reboot records /proc/uptime before/after, reboot_verified, analysis rule 'reboot not verified' (test_phone_reboot.py, test_airguard_phone.py); emulator path unchanged (guard OK). Next: lifecycle netloss pilot.
 - 2026-11-24 22:08 r4df harness v1.1 (before the netloss pilot): positive control for the network cut in phone mode (probe up before the cut; net_verified_down = up before and down after), campaign.py --phone-faults and campaign_airguard.py --phone; emulator path unchanged (guard OK).
+- 2026-11-24 22:08 r4df life/pilot-pnet: upload (app rl-mfence.apk, package sha256 30ca8e056e3c, spec life-pnet.yml, timeout 20 min)
+- 2026-11-24 22:09 r4df life/pilot-pnet: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:14 r4df life/pilot-pnet: run_df exit 0; trial minutes after: 881.75 (used 1.6); run COMPLETED PASSED
+- 2026-11-24 22:14 r4df life/pilot-pnet: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-24 22:14 r4df life/pilot-pnet: done
+- 2026-11-24 22:15 r4df life/pilot-pnet: COMPLETED PASSED (1.6 trial min; 881.75 left); gates.py + gate_b PASS; cut confirmed in every app (probe up before, down after; net_verified_down true); NET_FAIL events in all five app logs (mechanism check). Protocol frozen: frozen-life-df (plans/r4df/freeze_r4df.py; HEAD 1bf77cd, package sha256 abba818f). Starting the netloss final (START=0 N=20, timeout 80 min).

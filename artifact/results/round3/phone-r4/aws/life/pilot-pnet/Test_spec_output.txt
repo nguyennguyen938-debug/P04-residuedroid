@@ -1,0 +1,48 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-5r2s3ffh/shared-u48pic60/android-home-e6rd5w6l/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell 'command -v nc || toybox nc --help >/dev/null 2>&1 && echo NC_OK || echo NC_MISSING'
+/system/bin/nc
+NC_OK
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.mfence; echo "UNINSTALL_EXIT=$?"
+Success
+UNINSTALL_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --phone-faults --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules netloss --start 0 --trials 1 --seed lifecycle-df-20261125 --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+15:11:06 44151JEKB02756 net000 82s
+LIFE_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all || true
+[DeviceFarm] for p in menqueue mstart mlayer mfence mboth; do adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.$p || true; done
+Success
+Success
+Success
+Success
+Success
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.
