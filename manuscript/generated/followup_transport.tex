@@ -1,25 +1,3 @@
 \paragraph{HTTPS buffering and labels.} A separate Android~15 emulator runs TLS~1.2 over \texttt{SSLEngine} and \texttt{SocketChannel}. Each of eleven conditions has 20 trials. With withdrawal after the first encryption step but before its first socket write, the early-check arm completes 20/20 requests; the fenced arm blocks 20/20 and accepts zero application ciphertext after acknowledgement. The barrier isolates a possible interleaving; it is not a natural-schedule frequency estimate. With a syntactically valid label that deliberately omits the withdrawn source of a derived value, 20/20 requests pass; complete labels block 20/20. Malformed labels also block 20/20. Thus fail-closed validation cannot discover omitted provenance. A mixed-source request is blocked as a whole in 20/20 trials, suppressing its allowed contribution along with the forbidden one.
 
-\begin{table}[t]\centering\mtab
-
-\caption{Instrumented 1\,MiB uploads: median elapsed ms/MiB and process CPU ms/MiB on one Android~15 emulator. Twenty trials per cell; concurrent rows have two processes per trial. Handshake, logging and response are included; payload allocation is excluded.}\label{tab:transport-cost}
-
-\begin{tabular}{@{}lrr@{}}\toprule\mhead Transport / policy & Elapsed & CPU\\\midrule
-
-HTTP / early & 503.4 & 212.5 \\
-
-HTTP / fence & 464.7 & 219.5 \\
-
-HTTP / two fences & 265.7 & 224.5 \\
-
-TLS / early & 626.9 & 168.5 \\
-
-TLS / fence & 642.8 & 214.0 \\
-
-TLS / two fences & 321.8 & 265.5 \\
-
-\bottomrule\end{tabular}\end{table}
-
-\paragraph{Cost and residue.} Table~\ref{tab:transport-cost} measures the implemented chunk path, with a matched early-check transport. Cells run in fixed block order on a shared host, so lower measured latency is not evidence that fencing accelerates uploads. Two-process cells include contention for the same policy lock. These CPU observations are not physical energy measurements.
-
 With a stalled receiver, how much ciphertext the socket accepted before acknowledgement depends on the send buffer; neither buffer setting accepted application bytes after acknowledgement (Appendix~\ref{app:socket}).

@@ -19,12 +19,31 @@ Matomo & Matomo~4.4 AAR, pre-send barrier & Matomo dispatcher over HTTP & invali
 \midrule
 Natural race, emulator & early vs.\ fence; \texttt{netem}-shaped uplink & HTTP over \texttt{SocketChannel} & opt-out covering pending data & none & accepted bytes & pilots failing the shaping gate excluded\\
 Natural race, cancellation & early, early with socket close, fence in the same blocks; emulator & same as above & same & none & accepted bytes; receiver completeness & cancellation crosses processes; one design; aborted delivered requests are exploratory\\
+Commit-point race & early, cross- and same-process cancellation, fence, abortive fence; emulator; LTE rerun with balanced timing & TLS~1.2 over \texttt{SocketChannel}, 16\,KiB send buffer & same & none & writes accepted after the commit; host capture after an ack marker & interrupted blocks rerun under the same seed; same-process arm also withdraws in the sending process\\
+Send-buffer sweep & fence and abortive fence; three \texttt{SO\_SNDBUF} levels; emulator & same & same & none & TLS application data in the host capture & capture is behind the emulator's rate limiter; one AVD\\
+AirGuard, in-upload & stock, OkHttp cancellation, layered, fenced; equal-buffer rerun & app's worker (OkHttp) or fenced transport & sharing switch & app does not retry & host capture; receiver completeness & synthetic beacons; one link profile\\
+Phone cost & fence, early and platform client; \racePhoneModel{}, Wi-Fi & TLS fixture; platform HTTPS client & none & none & process CPU and upload time & Doze off, screen on; no energy reading\\
 Natural race, phone &\racePhoneModel{}, Android~\racePhoneAndroid{}; sender in foreground & same, receiver on a shaped cloud host & same & none & accepted bytes & one device on one network\\
 AirGuard & stock vs.\ fenced build; emulator & app's worker; fenced build via the HTTP transport & sharing switch, covers queued data & app does not retry & request receipt with guest order & synthetic beacons; test sink; donation path audited, other network sites not mediated\\
 AirGuard, layered & stock, fenced and layered early builds in every trial; emulator & as above; layered: one check under the lock, no per-chunk check & same & same & same & second run; schedules never withdraw during an upload\\
 Split policy & TLS fixture with split & TLS~1.2 over \texttt{SocketChannel} & opt-out covering pending data & one split per attempt & accepted bytes & none\\
 Label mutants & fixture with \texttt{regrant\_agg}; base and 3 mutants & HTTP over \texttt{SocketChannel} & fixture tenants & retries keep epochs & labels vs.\ traced content & earlier run without \texttt{regrant\_agg} kept in the artifact\\
-Lifecycle, Android~14/15 & 3 variants; two AVDs & HTTP over \texttt{SocketChannel} & fixture tenants & as matched campaign & accepted bytes & replaced trials by the card's rule\\
+Lifecycle, Android~14/15 & 3 variants; two AVDs & HTTP over \texttt{SocketChannel} & fixture tenants & as matched campaign & accepted bytes & replacement trials under the protocol's rule\\
 Rented phones & \devModel{}; Android~\devAndroid{} & TLS and HTTP over \texttt{SocketChannel} & fixture tenants & as matched campaign & accepted bytes & one device per model; TLS rerun after a deadline artifact, first run kept in the artifact\\
 Cost sweep & chunk size and sender count grid & HTTP over \texttt{SocketChannel} & none & none & probe acknowledgement, process CPU & invalid trials replaced by whole blocks\\
 \bottomrule\end{tabular}\end{table*}
+
+\paragraph{Which builds meet A1 to A3.} Theorem~\ref{thm:sound} covers a build only where A1 to A3 hold.
+\emph{Channel fixture} (matched campaign, socket matrix, TLS, race and label runs): A3 holds, since each check and write
+share the coordinator lock, the withdrawal commits under it and every check reads policy afresh. A1 holds for the mediated
+tenants and, by design, not for the raw-socket tenant T9. A2 holds except for one gap: collection reads the grant just
+before its insert transaction (Appendix~\ref{app:fixture}), so a collection that raced a withdrawal could keep the old
+epoch. No schedule exercises it: records are inserted at setup, at least 3\,s before any withdrawal, and T5's new records
+follow its re-grant. \emph{Stream-wrapper fixture}: neither A2 (unknown labels pass) nor A3 at the handoff (one check
+before a whole-request write), so its results certify authorization order only. \emph{Early, layered and cancellation
+arms} break A3 by design; they are comparators. \emph{AirGuard, fenced}: A3 and A1 hold for the donation path only, since
+the app's other network call sites are not mediated (\S\ref{sec:discussion}); A2 holds in a weaker form, an item's label
+being the consent interval that contains its collection time, kept in a separate durable log written under the lock
+rather than in the item's row. \emph{ACRA and Matomo, explicit contracts}: reports carry a source epoch and go through the
+shared adapter, but one flagged site per build remains unexplained (Appendix~\ref{app:uncovered}), so A1 rests on
+configuration, not proof.

@@ -1,0 +1,58 @@
+{
+ "runs": {
+  "b10/final4": {
+   "fence": {
+    "trials": 90,
+    "after_commit": 0,
+    "after_commit_bytes": 0
+   },
+   "early": {
+    "trials": 90,
+    "after_commit": 51,
+    "after_commit_bytes": 29865917
+   }
+  },
+  "test1-phone/final": {
+   "fence": {
+    "trials": 90,
+    "after_commit": 0,
+    "after_commit_bytes": 0
+   },
+   "early": {
+    "trials": 90,
+    "after_commit": 54,
+    "after_commit_bytes": 31147296
+   }
+  },
+  "g2close/final": {
+   "close": {
+    "trials": 90,
+    "after_commit": 10,
+    "after_commit_bytes": 99633
+   },
+   "fence": {
+    "trials": 90,
+    "after_commit": 0,
+    "after_commit_bytes": 0
+   },
+   "early": {
+    "trials": 90,
+    "after_commit": 50,
+    "after_commit_bytes": 28999613
+   }
+  }
+ },
+ "keys": {
+  "raceCommitFence": 0,
+  "raceCommitEarly": 51,
+  "raceCommitN": 90,
+  "racePhoneCommitFence": 0,
+  "racePhoneCommitEarly": 54,
+  "racePhoneCommitN": 90,
+  "gcloseCommitClose": 10,
+  "gcloseCommitFence": 0,
+  "gcloseCommitEarly": 50,
+  "gcloseCommitN": 90,
+  "gcloseCommitCloseKib": 97.3
+ }
+}

@@ -31,17 +31,20 @@ Second, bytes that the socket has already accepted cannot be recalled. A device-
 transaction. \emph{Persistent job lineage} stores a label of source scopes and epochs in the same row, or the same
 persisted job input, as every copy of the data, including derived data. A \emph{late egress fence} evaluates the app's stated
 contract before each bounded nonblocking socket write, inside a critical section shared with withdrawal. Under complete
-mediation, durable labels and this serialization, no newly accepted supported prefix carries a source that the current policy invalidates (Theorem~\ref{thm:sound}). An earlier check without effective later cancellation admits a violating interleaving when withdrawal invalidates the source; its
-probability follows from the job's commit timing (Theorem~\ref{thm:race}).
+mediation, durable labels and this serialization, no newly accepted supported prefix carries a source that the current policy invalidates (Theorem~\ref{thm:sound}). An earlier check without effective later cancellation admits a violating interleaving when withdrawal invalidates the source; the
+window it leaves orders check points (Theorem~\ref{thm:race}). Cancellation meets the same boundary only if it is
+serialized with the writer and reaches every in-flight request.
 
 \input{sections/01b-evidence}
 
 \paragraph{Contributions.}
 Labels, versioned grants and lock-based serialization are not new by themselves (\S\ref{sec:related}); our contribution is
-their combination for durable deferred work, with a precise handoff boundary.
-(1) A contract-separated formulation of deferred egress after withdrawal, with an oracle that judges each submission
-against the stated contract at a stated boundary: authorization, handoff or receipt. (2) Persistent job lineage, which keeps
-source labels and epochs with every persisted copy and job input, and a late fence serialized with withdrawal at handoff, with a
-soundness theorem for supported paths, a race theorem for earlier check points, and the information each check needs. (3) A static measurement of an F-Droid corpus and of the promises its consent apps state, a real-app integration, and a
-controlled evaluation on emulators and phones with permitted-flow controls, matched transports, natural races and
-explicit uncovered paths, with all raw logs and generators.
+their combination for durable deferred work, with a precise handoff boundary and a measurement of what each placement
+leaves. (1) A contract-separated formulation of deferred egress after withdrawal, with an oracle that judges each
+submission against the stated contract at a stated boundary: authorization, handoff or receipt. (2) Persistent job
+lineage, which keeps source labels and epochs with every persisted copy and job input, the information any check needs,
+and which decides the lifecycle schedules whatever the placement. (3) The handoff boundary: a soundness theorem for a
+check serialized with each bounded write, a race theorem for earlier checks, and measurements of where earlier checks and
+cancellation miss it and of what leaves the device after acceptance. (4) A static measurement of an F-Droid corpus and of
+the promises its consent apps state, a real-app integration, and a controlled evaluation on emulators and phones with
+permitted-flow controls and explicit uncovered paths, with all raw logs and generators.

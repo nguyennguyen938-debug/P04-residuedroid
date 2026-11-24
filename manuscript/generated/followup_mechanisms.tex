@@ -1,7 +1,7 @@
 \begin{table}[t]\centering\mtab
-\caption{Conventional-check failures by mechanism: violating tenant-trials/total, stream-wrapper authorization estimand. The selected fixture mix determines these rates.}\label{tab:mechanisms}
-\begin{tabular}{@{}llr@{}}\toprule\mhead Mechanism & Tenant / schedules & Trials\\\midrule
-Lineage & T1, all & 252/350 \\
-Epoch after re-grant & T5, all & 51/350 \\
-Retry check & T8, netloss & 50/50 \\
+\caption{Conventional-check failures by mechanism (AVD~A): violating tenant-trials/total, stream-wrapper authorization estimand. The epoch row uses \vname{jobstart} outside \textsf{net}, because \vname{conv} purges the outbox of T5 on withdrawal and its T5 failures in \textsf{net} are retries. The selected fixture mix determines these rates.}\label{tab:mechanisms}
+\begin{tabular}{@{}llr@{}}\toprule\mhead Mechanism & Variant, tenant, schedules & Trials\\\midrule
+Lineage & \vname{conv}, T1, all & 252/350 \\
+Epoch after re-grant & \vname{jobstart}, T5, all but net & 267/300 \\
+Retry check & \vname{conv}, T8, net & 50/50 \\
 \bottomrule\end{tabular}\end{table}

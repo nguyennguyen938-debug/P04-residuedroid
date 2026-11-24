@@ -55,7 +55,15 @@ where $R_s$ is the set of purposes the contract revokes and $\pi_s$ says whether
 (Table~\ref{tab:contracts}). An item is forbidden if any element of its label is forbidden. For an OS-permission tenant
 $R_s=\emptyset$, so prior data is never blocked. For a processing restriction, $R_s=\{\textit{personalisation}\}$, so backup
 continues. For a ``stop collecting'' opt-out, $\pi_s$ is false, so queued data may still flush. Items labelled $\bot$
-were collected without consent and are never sent for a revoked purpose, even after a re-grant.
+were collected without consent and are never sent for a revoked purpose, even after a re-grant. The last disjunct guards
+against a writer that labels with the current epoch while $a(s)$ is false; only $\bot$ keeps such data blocked after a re-grant.
+
+For example, take a record labelled $(\textit{analytics},0)$ when a withdrawal sets $\epsilon=1$ and clears $a$. An opt-out
+covering pending data forbids it ($0<1$), also after a re-grant; a stop-collecting opt-out lets it flush. Data collected
+during the opt-out is labelled $\bot$ and stays blocked; data collected after a re-grant is labelled
+$(\textit{analytics},1)$ and passes. A summary mixing the record with a \textit{diagnostics} record carries both labels and
+is blocked if either is. A restriction that revokes only personalisation still lets backup send it; after a deletion
+request, a copy left in a job input keeps its label and is blocked.
 
 \begin{algorithm}[t]
 \caption{Audited HTTP fence, with source labels on every retry}
@@ -75,7 +83,8 @@ were collected without consent and are never sent for a revoked purpose, even af
 \end{algorithm}
 
 \paragraph{Why this placement.} An early check can leave a window when an applicable withdrawal precedes an unprotected send.
-Cancellation can miss re-enqueued or running work if it does not reach the transport. A check at enqueue misses a job queued before the withdrawal. A check at
+Cancellation can miss re-enqueued or running work if it does not reach the transport, and lags the commit if it is not
+serialized with the writer. A check at enqueue misses a job queued before the withdrawal. A check at
 job start misses everything the job prepared before the withdrawal and submits after it, including retries. Our declared-scope egress baseline misses a derived source when that source is invalidated
 but the declared scope still passes. A boolean
 consent flag without epochs lets old data through after a re-grant. \S\ref{sec:theory} turns each gap into a statement, and

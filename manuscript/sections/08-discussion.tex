@@ -2,40 +2,37 @@
 \label{sec:discussion}
 \label{sec:threats}
 
-\paragraph{What is and is not covered.} \sys's guarantee holds for supported paths only. It does not cover native
-sockets (\pctNativeAll{}\% of the corpus ships native libraries), embedded HTTP stacks or raw sockets that bypass the
-wrapper (tenant T9 leaked under \sys and every variant without an early check), WebViews, Custom Tabs, IPC to processes
-that do not link the library, SyncAdapters and push-triggered work whose I/O goes through system services, or any other
-flow the developer did not route through the wrapper.
+\paragraph{What is and is not covered.} \sys's guarantee holds for supported paths only (\S\ref{sec:design}); a raw
+socket that bypasses the wrapper (tenant T9) leaked under \sys and every variant without an early check, most apps in
+both corpus strata ship native libraries (Table~\ref{tab:corpus}), and Custom Tabs, SyncAdapters and push-triggered work
+whose I/O goes through system services are uncovered too.
 Lineage is tracked at the granularity of rows and job inputs, not of program variables. Data copied into an unlabelled
-cache and later re-read loses its label, and the wrapper then sees an unlabelled item. The stream-wrapper prototype let unknown labels through; its zero observed unknowns do not
-justify assuming complete labels in deployments. The channel wrapper fails closed on missing, malformed,
+cache and later re-read loses its label, and the wrapper then sees an unlabelled item. The channel wrapper fails closed on missing, malformed,
 future-epoch or unknown-scope labels and unavailable policy. Only trusted collection-time metadata
 can support migration; re-grant never relabels old data. This can lose permitted flows, which the
-conformance tests report. A direct-call mediation checker flags five potential bypass sites in the ACRA APK and four in Matomo, including bundled library code (Appendix~\ref{app:uncovered}); it does not prove complete mediation or handle native code, reflection and IPC. Encrypted payloads are unattributable at the network layer, which is why network-side detectors
+conformance tests report. A direct-call mediation checker flags potential bypass sites in the ACRA and Matomo builds, including bundled library code, and does not prove complete mediation (Appendix~\ref{app:uncovered}). Encrypted payloads are unattributable at the network layer, which is why network-side detectors
 such as ReCon~\cite{ren2016recon} complement but cannot replace a device-side fence. Our sink counts them as
 \emph{unknown}, never as clean.
 
 \paragraph{Contracts are inputs.} The oracle and the fence both need the app's stated contract: which purposes a withdrawal
-revokes and whether it covers pending data. We encode it per tenant. For a real app, it must come from the app's settings
+revokes and whether it covers pending data. For a real app, it must come from the app's settings
 text or privacy policy~\cite{andow2019policylint,zimmeck2019maps}. Getting it wrong changes what counts as a violation: the
 \vname{taint} ablation shows the cost of an over-broad contract.
 We make no legal determination (cf.~GDPR Art.~7(3) and Art.~17~\cite{gdpr2016}).
 
-\paragraph{Cost and transport limits.} The audited adapters use HTTP and TLS~1.2 with nonblocking chunks. Buffering in other clients, TLS early data, redirects and unwrapped senders are outside this transport guarantee. The app-wide lock can delay unrelated scopes. Deadlines are best effort,
-and neither storage latency nor Android scheduling has a hard real-time bound. A timeout cannot
-be converted into a successful withdrawal acknowledgement.
+\paragraph{Cost and transport limits.} The audited adapters use HTTP and TLS~1.2 with nonblocking chunks; TLS~1.3 is untested. Buffering in other clients, TLS early data, redirects and unwrapped senders are outside this transport guarantee. Most apps send through OkHttp or Cronet; Appendix~\ref{app:uncovered} sketches a port we have not built. On a phone the fence used \gdCpuLo{} to \gdCpuHi{} times the early check's process CPU per MiB (emulator costs in Table~\ref{tab:transport-cost}); each write opens the lock file, takes the OS lock and reads the policy database, which we did not optimize. The app-wide lock can delay unrelated scopes. Below the socket, about one send buffer of accepted bytes leaves after the acknowledgement for any design; an abortive close or a smaller buffer narrows it, at a throughput cost we did not measure. Deadlines are best effort, and a timeout never becomes a successful
+acknowledgement.
 
 \paragraph{Threats to validity.}
-\emph{Internal.} The fixture's enforcement variants encode common patterns, not any specific app's code. Their behavior
-after a lifecycle event is measured on the platform, but which patterns apps actually combine is a modelling choice. The exclusion rules of \S\ref{sec:setup}
-removed \nInvalid{} of \nTrialsTotal{} stream-wrapper trials; shared exclusions preserve pairing but can select easier
-schedules.
-\emph{Construct.} Stream-wrapper ordering uses a pre-write log and can undercount baseline handoffs. The channel tests separate authorization, attempts, acceptance and receipt; missing return evidence is unknown. The tags are synthetic tracers, so we test data provenance, not semantic
-sensitivity.
+\emph{Internal.} The fixture's variants encode common patterns, not any app's code; which patterns apps combine is a
+modelling choice. The exclusion rules of \S\ref{sec:setup} removed \nInvalid{} of \nTrialsTotal{} stream-wrapper trials;
+shared exclusions preserve pairing but can select easier schedules. The harness forces the \texttt{active} standby bucket
+and, in two schedules, force-runs jobs, so Doze and stricter buckets are untested.
+\emph{Construct.} Ordering evidence comes from device logs (\S\ref{sec:impl}); missing return evidence is unknown. The
+tags are synthetic tracers, so we test data provenance, not semantic sensitivity.
 \emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one
 device, the personal phone ran on one network, and Android~15 froze a background sender, so the phone race kept the
 sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
 (three variants, four schedules). One real app (AirGuard) is integrated; a direct-call audit finds its donation path mediated in the fenced build but
 not its other network call sites, and we did not establish whether any of them can carry the donated data. The receivers are test
-servers, not production services. Process CPU is not energy, and we make no energy claim.
+servers, not production services.

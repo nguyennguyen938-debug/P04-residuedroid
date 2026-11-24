@@ -89,6 +89,54 @@ SCHEMA = {
     # G2b: AirGuard stock, fenced and layered early in every trial; pending + kill + reboot pooled, oracle v2.
     "glayN": "trials per build", "glayStockViol": "stock violating trials", "glayFenceViol": "fenced violating trials",
     "glayLayerViol": "layered violating trials", "glayUnknown": "unknown trials, all builds",
+    # Round-4 review (C, scripts/post_commit_race.py, exploratory): trials whose socket accepted bytes from a write attempted
+    # after the withdrawal commit W (WITHDRAW_DURABLE), per arm; N per arm.
+    "raceCommitEarly": "emulator early", "raceCommitFence": "emulator fence", "raceCommitN": "emulator trials per arm",
+    "racePhoneCommitEarly": "phone early", "racePhoneCommitFence": "phone fence", "racePhoneCommitN": "phone trials per arm",
+    "gcloseCommitEarly": "G2a early", "gcloseCommitClose": "G2a close", "gcloseCommitFence": "G2a fence",
+    "gcloseCommitN": "G2a trials per arm", "gcloseCommitCloseKib": "G2a close: KiB accepted from post-commit writes",
+    # Wilson 95% for the pooled race cells (percent): early arm per platform, and the upper bound of 0 of N.
+    "raceObsLo": "emulator early lower", "raceObsHi": "emulator early upper", "racePhoneObsLo": "phone early lower",
+    "racePhoneObsHi": "phone early upper", "raceZeroHi": "upper bound for 0 of N (N per arm, both platforms)",
+    # Group 3 (issue #7, PR #8; make_summary.group3). G3a: five race arms in the same blocks, EDGE/3G/LTE pooled; W = the
+    # withdrawal's commit (WITHDRAW_DURABLE). close = cancellation from the withdrawing process (another process); close2 =
+    # withdrawal and cancellation in the sending process, requests not yet handed off; abort = fence with SO_LINGER 0.
+    "gtrN": "G3a trials per arm", "gtrEarlyW": "early trials accepting a write attempted after W",
+    "gtrCloseW": "close trials after W", "gtrCloseTwoW": "close2 trials after W", "gtrFenceW": "fence trials after W",
+    "gtrAbortW": "fence-abort trials after W", "gtrCloseLte": "close trials after W on LTE",
+    "gtrEarlyAck": "early trials with bytes accepted after the ack", "gtrCancelAck": "close + close2 trials after the ack",
+    "gtrCapLo": "G3b: fewest trials per arm with request payload after the ack marker", "gtrCapHi": "most such trials",
+    # P3: LTE, exposure balanced across arms (g3lte-card.md v5).
+    "gpN": "P3 trials per arm", "gpEarlyW": "early after W", "gpCloseW": "close after W",
+    "gpCloseExposed": "close trials with W during the writes", "gpEarlyExposed": "early trials with W during the writes", "gpCloseTwoW": "close2 after W", "gpFenceW": "fence after W",
+    "gpAbortW": "fence-abort after W", "gpFenceAckP": "fence p95 ack ms", "gpAbortAckP": "fence-abort p95 ack ms",
+    "gpCloseTwoAckP": "close2 p95 ack ms",
+    # P4: send-buffer level x fence / fence-abort, EDGE and 3G; TLS application data after the ack marker, W during writes.
+    "gsN": "P4 trials per cell", "gsAfterW": "P4 trials after W, all cells",
+    "gsFenceSmallLo": "fence median KB after the marker at 16 KiB, lower profile", "gsFenceSmallHi": "same, higher profile",
+    "gsFenceMidLo": "fence median KB at 64 KiB, lower", "gsFenceMidHi": "same, higher",
+    "gsFenceDefLo": "fence median MB at the default buffer, lower", "gsFenceDefHi": "same, higher",
+    "gsAbortMax": "fence-abort maximum bytes after the marker, any cell",
+    "gsAbortMed": "largest per-cell median of fence-abort bytes after the marker", "gsPairs": "paired trials with W during writes",
+    "gsAbortLess": "pairs where fence-abort sent fewer bytes than fence", "gsDefaultKib": "default SO_SNDBUF reported, KiB",
+    # G3c v4 (AirGuard, in-upload withdrawal; receiver window corrected in analysis-v4-r2).
+    "gaN": "G3c v4 trials per build", "gaSentMin": "fewest trials with payload after the ack marker, any build",
+    "gaSentMax": "most such trials, any build", "gaStockRx": "stock: receiver logged the donation complete after the ack",
+    "gaCancelRx": "stockcancel: same", "gaLayerRx": "layered: same", "gaFenceRx": "fenced: same",
+    "gaFenceRxFirst": "fenced: same, first analysis before the receiver-window correction",
+    # G3c v5c: equal send buffer. Sixteen = stockcancel with SO_SNDBUF 16 KiB; Cancel = stockcancel, default buffer.
+    "gbSixteenN": "stockcancel16 trials", "gbSixteenRx": "stockcancel16 receiver-complete after the ack",
+    "gbSixteenLo": "Wilson lower", "gbSixteenHi": "Wilson upper", "gbCancelN": "stockcancel trials",
+    "gbCancelRx": "stockcancel receiver-complete", "gbCancelLo": "Wilson lower", "gbCancelHi": "Wilson upper",
+    "gbFenceN": "fenced trials", "gbFenceRx": "fenced receiver-complete", "gbFenceLo": "Wilson lower", "gbFenceHi": "Wilson upper",
+    "gbPairSixteenOnly": "pairs: stockcancel16 only", "gbPairFenceOnly": "pairs: fenced only", "gbPairBoth": "pairs: both",
+    "gbPairNone": "pairs: neither", "gbKernSmallKib": "kernel send buffer of stockcancel16 and fenced, KiB",
+    "gbKernDefKib": "kernel send buffer of stockcancel, KiB",
+    "gbNoCallRx": "exploratory: stockcancel16, withdrawal during the donation, cancel found no call, body complete",
+    # G3d v4: Galaxy A06, Wi-Fi, foreground; fence/early ratios of medians over 4 KiB, 256 KiB and 2 MiB.
+    "gdCells": "valid cells", "gdUploads": "successful uploads", "gdUploadFail": "failed uploads",
+    "gdCpuLo": "fence/early CPU per MiB, smallest ratio", "gdCpuHi": "largest", "gdTimeLo": "fence/early time, smallest",
+    "gdTimeHi": "largest", "gdEnergyNonzero": "cells with a nonzero batterystats UID estimate", "gdEnergyCells": "cells read",
 }
 
 

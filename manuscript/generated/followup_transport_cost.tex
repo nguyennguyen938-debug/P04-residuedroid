@@ -1,0 +1,21 @@
+\begin{table}[t]\centering\mtab
+
+\caption{Instrumented 1\,MiB uploads: median elapsed ms/MiB and process CPU ms/MiB on one Android~15 emulator. Twenty trials per cell; concurrent rows have two processes per trial. Handshake, logging and response are included; payload allocation is excluded.}\label{tab:transport-cost}
+
+\begin{tabular}{@{}lrr@{}}\toprule\mhead Transport / policy & Elapsed & CPU\\\midrule
+
+HTTP / early & 503.4 & 212.5 \\
+
+HTTP / fence & 464.7 & 219.5 \\
+
+HTTP / two fences & 265.7 & 224.5 \\
+
+TLS / early & 626.9 & 168.5 \\
+
+TLS / fence & 642.8 & 214.0 \\
+
+TLS / two fences & 321.8 & 265.5 \\
+
+\bottomrule\end{tabular}\end{table}
+
+\paragraph{Transport cost on an emulator.} Table~\ref{tab:transport-cost} measures the implemented chunk path, with a matched early-check transport. Cells run in fixed block order on a shared host, so lower measured latency is not evidence that fencing accelerates uploads. Two-process cells include contention for the same policy lock. These CPU observations are not physical energy measurements.

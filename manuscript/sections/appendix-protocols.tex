@@ -5,8 +5,9 @@ afterwards. Protocol files, exclusions and run logs are in the artifact (\texttt
 \texttt{EXCLUSIONS.md}, \texttt{RUNLOG.md}).
 
 \begin{table}[h]\centering
-\caption{Status of each analysis. Pre-registered: protocol, validity rules and sample size committed before the final
-run. Exploratory: defined after the data existed; reported as explanation, not as a primary result.}
+\caption{Status of each analysis. Pre-registered: protocol, validity rules and sample size committed to the project
+repository before the final run (not filed with an external registry). Exploratory: defined after the data existed;
+reported as explanation, not as a primary result.}
 \label{tab:protocols}\mtab
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.50\columnwidth}>{\raggedright\arraybackslash}p{0.24\columnwidth}l@{}}\toprule
 \mhead Analysis & Status & Where\\\midrule
@@ -17,6 +18,13 @@ Natural race, phone & pre-registered & \S\ref{sec:eval-natural}\\
 Receiver-side completeness of cut trials; Eq.~\ref{eq:race} decomposition & exploratory & \S\ref{sec:eval-natural}\\
 Early check with cancellation, early and fence in the same blocks (second run) & pre-registered & \S\ref{sec:eval-natural}\\
 Delivered requests aborted by cancellation & exploratory & \S\ref{sec:eval-natural}\\
+Race outcomes counted from the withdrawal commit: recount of Table~\ref{tab:race} and of the first cancellation run & exploratory & \S\ref{sec:eval-natural}, App.~\ref{app:cancel}\\
+AirGuard in-upload: receiver window corrected after the data (both counts reported) & correction & App.~\ref{app:airrace}\\
+Commit-point race with same-process cancellation and abortive fence; LTE rerun with balanced timing & pre-registered & \S\ref{sec:eval-natural}\\
+Host capture after the acknowledgement marker; send-buffer sweep & pre-registered & \S\ref{sec:eval-natural}\\
+AirGuard with a withdrawal during a donation; equal-buffer rerun & pre-registered & \S\ref{sec:eval-realapp}\\
+AirGuard: cancellation that found no registered call; why complete donations arrived & exploratory & \S\ref{sec:eval-realapp}, App.~\ref{app:airrace}\\
+Phone cost (fourth protocol, after the phone dozed) & pre-registered & \S\ref{sec:eval-generality}\\
 AirGuard with a layered early build (second run, three builds per trial) & pre-registered & \S\ref{sec:eval-realapp}\\
 AirGuard, request ordering by host-clock bracket & pre-registered & \S\ref{sec:eval-realapp}\\
 AirGuard, request ordering on the guest clock & exploratory & \S\ref{sec:eval-realapp}\\
@@ -29,3 +37,17 @@ Cost sweep (third protocol, raised receiver timeout) & pre-registered & \S\ref{s
 Stated promises & model first pass, author review & \S\ref{sec:measure}\\
 Stream-wrapper campaign & original protocol & App.~\ref{app:stream}\\
 \bottomrule\end{tabular}\end{table}
+
+\paragraph{Earlier protocol versions.} Where a protocol was revised, the earlier runs are kept and their outcomes were as
+follows. Natural race, emulator: the first two protocols failed their link-shaping gate in pilots, so no final trial ran.
+Rented phones: the first TLS run matched the rerun in every case except one Galaxy case whose shorter deadline ended
+requests early; in both runs no fenced case accepted bytes after the acknowledgement. Cost sweep: the first protocol's
+probes mostly missed the send window, and the second lost trials to the test receiver's timeout; their medians are in the
+artifact. Label mutants: in the first protocol the fixture never re-aggregated after the re-grant, so M1 could not
+trigger; M2 leaked and M3 failed closed as in the second. Commit-point race: in the pooled run the withdrawal's timing
+within LTE uploads differed across arms, so an LTE rerun started the withdrawal process before every trial; the pooled
+LTE cells are kept and reported. AirGuard during a donation: the first protocol failed its calibration gate; in the
+second, a later analysis fix ended each trial's receiver window at the next trial of the same build, which lowered the
+fenced count from \gaFenceRxFirst{} to \gaFenceRx{} (both versions in the artifact); the equal-buffer run failed two mechanism gates on
+reading the send buffer before its final run. Phone cost: in the third protocol the phone dozed during the run, so the
+fourth kept the screen on and Doze off.

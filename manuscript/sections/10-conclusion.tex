@@ -1,2 +1,2 @@
 \section{Conclusion}
-Persisted jobs and copied data can outlive withdrawal. Durable lineage and epochs keep the decision correct across derivation and re-grant; a bounded-write fence closes the upload race that earlier checks leave unless they cancel every in-flight request. Mediation and labels remain assumptions, and accepted bytes cannot be recalled.\label{body-end}
+Durable lineage and epochs make a withdrawal check correct across derivation, re-grant and lifecycle events; placement matters only during an upload, where every write after the withdrawal's commit must be rechecked under its lock. Mediation and labels are assumed; accepted bytes cannot be recalled.\label{body-end}

@@ -1,5 +1,12 @@
 \section{SDK Embeddings}
 \label{app:sdk}
+The ACRA embedding keeps its epochs in transactional SQLite state; malformed state fails closed. Initialization is
+explicit and an interrupted initialization cannot silently recreate an allowed policy. The ACRA embedding comprises six
+Java files (202 nonblank lines), touching initialization/collectors, report labels, sender/factory registration and
+settings acknowledgement. Matomo uses two embedding files (56 lines), touching tracker setup, packet labels and the
+dispatcher connection callback. The shared coordinator and HTTP/TLS transports comprise three files (196 lines). These
+are maintained embedding-source sizes, not SDK diff sizes or estimates of production integration effort.
+
 The preference-only ACRA~5.14.2 embedding queued a crash report offline, disabled reporting,
 and restored connectivity. Stock ACRA sent in \acraStockLeak{} trials; the preference-aware
 sender sent in \acraFenceLeak{}. Controls delivered under both variants. Reboot discarded
@@ -18,4 +25,8 @@ policy transaction and preference update complete. Re-grant permits new-epoch re
 without reviving old ones. The artifact maps the UI, collector, persisted report, service
 registration, sender, retry, and retirement paths. Missing-label reports are retired rather
 than relabelled; this deliberately sacrifices otherwise permitted legacy reports.
+The adapter changes application initialization, crash-time custom-data labels, \texttt{ReportSender}, and the settings
+callback. A normal blocked sender return retires the report; network errors retain it for ACRA retry. Persisted report
+labels survive both paths. The artifact inventories changed call sites, schema, service-loader registration, and
+bypasses. This is an SDK test embedding, not a deployed production app.
 \input{generated/revision_acra.tex}

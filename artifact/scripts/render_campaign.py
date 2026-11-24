@@ -38,7 +38,7 @@ if mat and summ and outc:
             body.append("\\midrule")
     ns = [int(byv["rd"][s + "_n"]) // 5 for s in SCHEDS]
     write("tab_matrix.tex", "\\begin{table}[t]\n\\centering\n\\caption{Stream-wrapper authorization-order violations (\\%), "
-          "tenants T1, T8, T2, T5 and T4 (personalisation). Trials per schedule (AVD~A): "
+          "tenants T1, T8, T2, T5 and T4 (personalisation). Trials per schedule and AVD: "
           + ", ".join(f"{SLAB[s]} {n}" for s, n in zip(SCHEDS, ns)) + ".}\n\\label{tab:matrix}\n\\mtab\n"
           "\\begin{tabular}{@{}lrrrrrrr@{}}\n\\toprule\n"
           "\\mhead Variant & " + " & ".join(f"\\textsf{{{SLAB[s]}}}" for s in SCHEDS) + " \\\\\n\\midrule\n" + "\n".join(body)
@@ -142,7 +142,7 @@ if mat and summ and outc:
     M["rdFpBlocks"] = _fpb
     write("tab_fp.tex", "\\begin{table}[t]\n\\centering\n\\caption{Permitted items \\emph{not} delivered per tenant-trial "
           "(FP controls; T7 in \\textsf{rev} only). Last column: share of all permitted items. \\vname{none} enforces nothing, so its "
-          "deficit is availability loss common to every variant.}\n\\label{tab:fp}\n\\mtab\\setlength{\\tabcolsep}{3pt}\n"
+          "deficit is the availability loss that enforcement does not cause.}\n\\label{tab:fp}\n\\mtab\\setlength{\\tabcolsep}{3pt}\n"
           "\\begin{tabular}{@{}lrrrrr@{}}\n\\toprule\n\\mhead Variant & T3 flush & T4 backup & T6 none & T7 OS & \\% total \\\\\n\\midrule\n"
           + "\n".join(fp_rows) + "\n\\bottomrule\n\\end{tabular}\n\\end{table}\n")
     # ---- bar figure: mean prohibited items per core tenant-trial, lifecycle vs race

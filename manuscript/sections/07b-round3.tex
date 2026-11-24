@@ -1,14 +1,16 @@
 \subsection{Natural races}
 \label{sec:eval-natural}
-Lifecycle schedules never withdraw while a request is written, so they cannot separate a check before the request from
-the fence. We uploaded 32\,KiB, 256\,KiB and 2\,MiB payloads over links shaped to EDGE, 3G and LTE rates and withdrew at
+Only the in-flight lifecycle schedule withdraws while a request may be written, and it did not separate a check before
+the request from the fence (Table~\ref{tab:matched}). We uploaded 32\,KiB, 256\,KiB and 2\,MiB payloads over links shaped to EDGE, 3G and LTE rates and withdrew at
 a seeded uniform time during the upload, with no barrier, on the emulator and on a \racePhoneModel{} phone
 (Android~\racePhoneAndroid{}) whose receiver ran on a shaped cloud host. The early variant checks once before writing,
 the last point a layered early check covers (Table~\ref{tab:race}).
 
 \begin{table}[t]\centering
 \caption{Natural races: trials in which the socket accepted request bytes after the withdrawal acknowledgement, per
-link profile. Emulator: \raceTrials{} trials per cell; phone: \racePhoneTrials{}.}
+link profile. Emulator: \raceTrials{} trials per cell; phone: \racePhoneTrials{}; both arms in the same shuffled blocks,
+paired by withdrawal offset. Pooled early, Wilson 95\%: [\raceObsLo{}\%, \raceObsHi{}\%] (emulator),
+[\racePhoneObsLo{}\%, \racePhoneObsHi{}\%] (phone); 0 of \raceCommitN{} bounds the fence at \raceZeroHi{}\%.}
 \label{tab:race}\mtab
 \begin{tabular}{@{}lrrrr@{}}\toprule
 \mhead & \multicolumn{2}{c}{Emulator} & \multicolumn{2}{c}{Phone}\\
@@ -18,24 +20,51 @@ EDGE & \raceEdgeLayer & \mgood{\raceEdgeFence} & \racePhoneEdgeLayer & \mgood{\r
 LTE & \raceLteLayer & \mgood{\raceLteFence} & \racePhoneLteLayer & \mgood{\racePhoneLteFence}\\
 \bottomrule\end{tabular}\end{table}
 
-The early check let bytes follow the acknowledgement in every cell; the fence never did. The difference reaches the
-server: of the early trials whose withdrawal was acknowledged before the request was fully handed off, the receiver
+The early check let bytes follow the acknowledgement in every cell; the fence never did. In an exploratory
+receiver-side count, the difference reaches the server: of the early trials whose withdrawal was acknowledged before the request was fully handed off, the receiver
 still logged the complete request in \raceCutEarlyComplete{} of \raceCutEarly{} (emulator) and
 \racePhoneCutEarlyComplete{} of \racePhoneCutEarly{} (phone); of the fenced trials cut that way, in
-\raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{}. A fenced upload cut
-by a withdrawal ends with a send error and loses its permitted part unless it is split (\S\ref{sec:eval-realapp}).
+\raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{}.
+Equation~\ref{eq:race} orders these check points but does not estimate their rates (Appendix~\ref{app:eqrace}).
 
-\paragraph{Early check with cancellation.} A second pre-registered run added an arm whose withdrawal, after it commits
-and before it is acknowledged, closes every in-flight socket. Bytes followed the acknowledgement in \gcloseEarlyViol{} of
-\gcloseN{} early trials, \gcloseCloseViol{} with cancellation and \gcloseFenceViol{} fenced: an effective cancellation
-closes the window (Theorem~\ref{thm:race}), with no confirmed difference from the fence. It needs a path to every
-in-flight request, slows the acknowledgement and, in an exploratory count, aborted \gcloseAbortDelivered{} requests the
-receiver had already logged complete (Appendix~\ref{app:cancel}).
+\paragraph{Cancellation and the commit point.} Two later pre-registered runs, separate from Table~\ref{tab:race}, shared
+blocks among five arms: early check, fence, abortive fence, and closing in-flight sockets after the withdrawal commits,
+from its own process (\emph{cross-process}) or in the sending process for requests not yet handed off
+(\emph{same-process}; Appendix~\ref{app:cancel}). Cancelling arms accepted bytes after the acknowledgement in
+\gtrCancelAck{} trials, early in \gtrEarlyAck{} of \gtrN{}; at the commit $W$, Theorem~\ref{thm:sound}'s boundary, the
+arms separate (Table~\ref{tab:commit}; an exploratory recount of Table~\ref{tab:race} from $W$ changes no cell).
 
-Equation~\ref{eq:race}, applied to the measured check and acceptance times, predicts \racePredPct{}\% (emulator) and
-\racePhonePredPct{}\% (phone) of early trials to violate, against \raceObsPct{}\% and \racePhoneObsPct{}\% observed. The
-model lets a withdrawal act when issued, not when committed (an exploratory delay decomposition is in the artifact), so
-we use it to order check points, not to estimate rates.
+\begin{table}[t]\centering
+\caption{Trials whose socket accepted a write attempted after the withdrawal commit $W$ (pre-registered primary).
+Pooled: EDGE, 3G, LTE, \gtrN{} per arm. LTE: separate run, timing balanced across arms, \gpN{} per arm.}
+\label{tab:commit}\mtab
+\begin{tabular}{@{}lrr@{}}\toprule
+\mhead Arm & Pooled & LTE\\\midrule
+Early check & \gtrEarlyW & \gpEarlyW\\
+Cancellation, cross-process & \gtrCloseW & \gpCloseW\\
+Cancellation, same-process & \mgood{\gtrCloseTwoW} & \mgood{\gpCloseTwoW}\\
+Fence & \mgood{\gtrFenceW} & \mgood{\gpFenceW}\\
+Fence, abortive close & \mgood{\gtrAbortW} & \mgood{\gpAbortW}\\
+\bottomrule\end{tabular}\end{table}
+
+Cross-process cancellation reaches the writer only after a message crosses processes, and writes started in that delay
+were accepted: its \gtrCloseW{} pooled cases all came from LTE cells, where uploads are shortest, and in the separate LTE
+run every trial whose withdrawal fell during the writes accepted one, \gpCloseExposed{} with cross-process cancellation
+as \gpEarlyExposed{} with the early check. Same-process cancellation shortens the delay to a method call, but nothing
+serializes it with the writer, so its zero bounds a rate rather than closing the window, and it needs a registry of
+every in-flight request (\S\ref{sec:eval-realapp} shows one missed). What the commit requires is serialization with
+each write, which the fence has by construction. On LTE the fence's p95 acknowledgement was
+\gpFenceAckP{}\,ms (\gpAbortAckP{}\,ms abortive) against \gpCloseTwoAckP{}\,ms for same-process cancellation
+(Appendix~\ref{app:cancel} has the cross-process kind).
+
+\paragraph{After acceptance.} Accepted bytes still leave the device. A host capture behind the emulator's rate limiter,
+with a marker connection after each acknowledgement, found request payload after the marker in \gtrCapLo{} to
+\gtrCapHi{} of \gtrN{} trials per arm, fence included. Varying the send buffer (\gsN{} trials per cell), fenced trials cut during the writes sent a median of \gsFenceSmallLo{} to \gsFenceSmallHi{}\,KB of
+TLS application data after the marker at a requested 16\,KiB, \gsFenceMidLo{} to \gsFenceMidHi{}\,KB at 64\,KiB and
+\gsFenceDefHi{}\,MB at the platform default (reported as \gsDefaultKib{}\,KiB): each between the buffer size and twice
+it, which Linux allocates. The abortive close left a median
+of \gsAbortMed{} in every cell and at most \gsAbortMax{} bytes, less than the normal close in \gsAbortLess{} of \gsPairs{} pairs
+(Appendix~\ref{app:capture}).
 
 \subsection{A real app and mixed requests}
 \label{sec:eval-realapp}
@@ -47,44 +76,44 @@ preference path, the stock build donated opt-out beacons after re-consent in \ai
 kill and reboot pooled) and the fenced build in \airFenceViol{} confirmed. The pre-registered oracle leaves
 \airFenceUnknownV{} fenced trials unknown; ordering on the guest clock alone, an exploratory step, leaves
 \airFenceUnknownVThree{}. Stock and fenced builds differ in both labels and placement, so this comparison does not
-isolate placement. A second run added a layered build with the same labels and one check before sending: stock
+isolate placement. A separate run added a layered build with the same labels and one check before sending: stock
 violated in \glayStockViol{} of \glayN{} trials, fenced in \glayFenceViol{}, layered in \glayLayerViol{}, \glayUnknown{} unknown; these schedules
-withdraw before the next donation. After a network cut no build delivers permitted post-withdrawal beacons, because the app does not retry a failed run.
+withdraw before the next donation.
 
-\paragraph{Mixed requests.} With the split policy of \S\ref{sec:theory}, the transport recovered the permitted part of a
-mixed request in \splitPreRecovered{} of \splitTrials{} trials when the fence blocked before any chunk was accepted, and
-in \splitPostRecovered{} of \splitTrials{} once a chunk had been accepted, which the policy does not split.
-\splitAfterAck{} trials accepted bytes after the acknowledgement.
+\paragraph{Withdrawal during a donation.} Two pre-registered runs withdrew while a 256\,KiB donation was uploading on a
+3G-shaped link, adding a build that calls OkHttp's \texttt{Call.cancel()} on every in-flight call. Payload left after the
+acknowledgement marker in \gaSentMin{} of \gaN{} trials of every build, and the receiver logged the donation complete
+afterwards in \gaFenceRx{} fenced trials against \gaCancelRx{} cancelling, but OkHttp's kernel send buffer was
+\gbKernDefKib{}\,KiB against \gbKernSmallKib{}\,KiB for the fence (Appendix~\ref{app:airrace}). With equal buffers, in
+the same trials, the donation arrived complete (that run's primary) in \gbSixteenRx{} of \gbSixteenN{} cancelling trials (Wilson
+[\gbSixteenLo{}\%, \gbSixteenHi{}\%]) and \gbFenceRx{} of \gbFenceN{} fenced ([\gbFenceLo{}\%, \gbFenceHi{}\%]): no clear
+difference at the receiver. In \gbNoCallRx{} of them (exploratory), the withdrawal preceded OkHttp's registration of the
+call and the whole body arrived; the fence has no such window.
 
-\paragraph{SDK embeddings.}\label{sec:eval-acra} Stock ACRA~5.14.2 sent a queued crash report after reporting was
-disabled in \acraStockLeak{} trials, under a setting that promises nothing about queued reports; ACRA and Matomo~4.4
-embeddings with explicit contracts are in Appendix~\ref{app:sdk}.
+\paragraph{Mixed requests and SDKs.}\label{sec:eval-acra} The split policy (\S\ref{sec:theory}) recovered the permitted
+part of a mixed request in \splitPreRecovered{} of \splitTrials{} trials blocked before any chunk was accepted and in
+\splitPostRecovered{} once one was; \splitAfterAck{} accepted bytes after the acknowledgement. Appendix~\ref{app:sdk}
+covers ACRA~5.14.2 and Matomo~4.4.
 
 \subsection{Label errors, newer Android, phones and cost}
 \label{sec:eval-generality}
-\paragraph{Label errors.} Each mutant corrupts one label propagation point (artifact \texttt{mutation/}). Labelling raw
-records with the current epoch leaked in \mutTwoLeak{} of \mutTwoTrials{} trials; keeping only a summary's newest source
-label leaked in \mutOneLeak{} of \mutOneTrials{} (in the rest, the summary never reached the receiver); the base and
-M2 builds each lost a reboot trial to a harness or device failure. A test-time checker that compares each label with
-the sources traced in its content, which requires content that carries source tracers as the fixture's does, flagged \mutTwoFlagged{} of \mutTwoWrong{} and
-\mutOneFlagged{} of \mutOneWrong{} mislabelled items. Dropping the label from the job input failed closed
-(\mutThreeLeak{} leaking trials; \mutThreeDeficit{} permitted items undelivered against \mutBaseDeficit{} for the
-unmodified build, which leaked in \mutBaseLeak{} of \mutBaseTrials{}). Runtime enforcement cannot see a valid but
-incomplete label; the test-time check can.
+\paragraph{Label errors.} Each mutant corrupts one label propagation point. Labelling raw records with the current epoch
+leaked in \mutTwoLeak{} of \mutTwoTrials{} trials, and keeping only a summary's newest source label in \mutOneLeak{} of
+\mutOneTrials{}; dropping the label from the job input failed closed. A test-time checker that compares each label with
+the sources traced in its content flagged \mutTwoFlagged{} of \mutTwoWrong{} and \mutOneFlagged{} of \mutOneWrong{}
+mislabelled items. Runtime enforcement cannot see a valid but incomplete label; the test-time check can, given content
+that carries source tracers as the fixture's does (Appendix~\ref{app:generality}).
 
-\paragraph{Newer Android.} On Android~14 and 15 emulators (\lifeFourteenTrials{} and \lifeFifteenTrials{} paired trials
-over pending, kill, reboot and network loss), the enqueue-time baseline violated in \lifeFourteenEnq{} and
-\lifeFifteenEnq{} trials, layered early checks in \lifeFourteenLayer{} and \lifeFifteenLayer{}, and the fence in
-\lifeFourteenFence{} and \lifeFifteenFence{}: zero against zero for the last two, as on Android~13.
+\paragraph{Newer Android and rented phones.} On Android~14 and 15 emulators (\lifeFourteenTrials{} and
+\lifeFifteenTrials{} paired trials), the enqueue-time baseline violated in \lifeFourteenEnq{} and \lifeFifteenEnq{}
+trials, layered early checks in \lifeFourteenLayer{} and \lifeFifteenLayer{}, and the fence in \lifeFourteenFence{} and
+\lifeFifteenFence{}. On two rented phones (\devModel{}; Android~\devAndroid{}), the fence accepted application ciphertext
+after acknowledgement in \devFenceAfterAck{} TLS barrier trials and violated in \devLifeFenceViol{} of \devLifeFenceN{} lifecycle trials against
+\devLifeEnqViol{} of \devLifeEnqN{} for the enqueue baseline (Appendix~\ref{app:generality}).
 
-\paragraph{Rented phones.} On two rented phones (\devModel{}; Android~\devAndroid{}; one device per model, from two
-device clouds), the TLS barrier of \S\ref{sec:revision} repeated over \devTrials{} trials split evenly between the arms:
-the early check completed all \devEarlyComplete{} requests, and the fence accepted application ciphertext after
-acknowledgement in \devFenceAfterAck{} trials. In pending, kill and revoke schedules, the enqueue baseline violated in
-\devLifeEnqViol{} of \devLifeEnqN{} trials and the fence in \devLifeFenceViol{} of \devLifeFenceN{}.
-
-\paragraph{Cost under load.} With probe withdrawals during uploads, the median acknowledgement was \sweepAckSmallMs{}\,ms
-(1\,KiB chunks, one sender) and \sweepAckLargeMs{}\,ms (64\,KiB, 16 senders), and process CPU per MiB fell from
-\sweepCpuSmall{} to \sweepCpuLarge{}\,ms as chunks grew (a separate harness, not comparable with
-Table~\ref{tab:transport-cost}). In \sweepLockStalls{} of \sweepLogged{} trials a sender waited its full deadline for the app-wide
-lock, a fairness limit of that lock.
+\paragraph{Cost.} A sweep of chunk size and sender count in a separate harness (Appendix~\ref{app:sweep}) put
+the median acknowledgement between \sweepAckLargeMs{} and \sweepAckSmallMs{}\,ms, and some senders stalled on the app-wide lock. On the \racePhoneModel{} over Wi-Fi, in the
+foreground (\gdUploads{} uploads of 4\,KiB to 2\,MiB, none failed), the TLS fence used \gdCpuLo{} to \gdCpuHi{} times the
+early check's process CPU per MiB and \gdTimeLo{} to \gdTimeHi{} times its median upload time; the two differ only in
+the check and lock around each write. The platform's power model gave the app a nonzero estimate in \gdEnergyNonzero{} of
+\gdEnergyCells{} cells, so we have no energy reading.
