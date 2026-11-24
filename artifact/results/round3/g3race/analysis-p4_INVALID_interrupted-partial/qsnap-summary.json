@@ -1,0 +1,199 @@
+{
+ "dirs": [
+  "artifact/results/round3/g3race/final-p4"
+ ],
+ "cells": {
+  "edge/fence-abort/sndbuf=0": {
+   "trials": 17,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 17,
+    "median": 9084,
+    "p95": 18222,
+    "max": 18222
+   },
+   "tx_queue_bytes": {
+    "n": 17,
+    "median": 707743,
+    "p95": 1529051,
+    "max": 1529051
+   }
+  },
+  "edge/fence-abort/sndbuf=16384": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9138.0,
+    "p95": 10706,
+    "max": 10706
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 0.0,
+    "p95": 93416,
+    "max": 93416
+   }
+  },
+  "edge/fence-abort/sndbuf=65536": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9138.0,
+    "p95": 27380,
+    "max": 27380
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 0.0,
+    "p95": 1326112,
+    "max": 1326112
+   }
+  },
+  "edge/fence/sndbuf=0": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 18168,
+    "max": 18168
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 1249129.0,
+    "p95": 2101213,
+    "max": 2101213
+   }
+  },
+  "edge/fence/sndbuf=16384": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 27252,
+    "max": 27252
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 22772.5,
+    "p95": 1550794,
+    "max": 1550794
+   }
+  },
+  "edge/fence/sndbuf=65536": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 18168,
+    "max": 18168
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 97821.0,
+    "p95": 1448752,
+    "max": 1448752
+   }
+  },
+  "umts/fence-abort/sndbuf=0": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 9709,
+    "max": 9709
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 893163.0,
+    "p95": 1426065,
+    "max": 1426065
+   }
+  },
+  "umts/fence-abort/sndbuf=16384": {
+   "trials": 17,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 17,
+    "median": 9138,
+    "p95": 27306,
+    "max": 27306
+   },
+   "tx_queue_bytes": {
+    "n": 17,
+    "median": 0,
+    "p95": 2210872,
+    "max": 2210872
+   }
+  },
+  "umts/fence-abort/sndbuf=65536": {
+   "trials": 17,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 17,
+    "median": 9138,
+    "p95": 18222,
+    "max": 18222
+   },
+   "tx_queue_bytes": {
+    "n": 17,
+    "median": 0,
+    "p95": 748131,
+    "max": 748131
+   }
+  },
+  "umts/fence/sndbuf=0": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 27252,
+    "max": 27252
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 1193911.0,
+    "p95": 2730632,
+    "max": 2730632
+   }
+  },
+  "umts/fence/sndbuf=16384": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 27252,
+    "max": 27252
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 21901.0,
+    "p95": 2483893,
+    "max": 2483893
+   }
+  },
+  "umts/fence/sndbuf=65536": {
+   "trials": 16,
+   "missing": 0,
+   "netem_backlog_bytes": {
+    "n": 16,
+    "median": 9084.0,
+    "p95": 27252,
+    "max": 27252
+   },
+   "tx_queue_bytes": {
+    "n": 16,
+    "median": 99183.5,
+    "p95": 1898568,
+    "max": 1898568
+   }
+  }
+ }
+}

@@ -1,0 +1,28 @@
+21:37 start v4 (G3c protocol v4, then P3 lte balanced)
+[autorun] g3app4-pilot (pilot) stages=1 deadline=2 h
+  - pilot: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --profile umts --seed g3app-20261122 --marker 8799 --nbeacons 1500 --calibrate 3 --out results/round3/g3app/pilot-v4-calib  -> artifact/results/round3/g3app/pilot-v4-calib
+[autorun] DONE; guard=0
+calibrations per build {'stock': 3, 'stockcancel': 3, 'fenced': 3, 'layered': 3} D {'stock': 14.381186458, 'stockcancel': 12.516845084, 'fenced': 12.37561975, 'layered': 12.27890475} median body bytes 176131.0 nbeacons 1500
+21:43 G3c v4 calibration gate: body size below 200 KiB only; one recalibration (card §3)
+[autorun] g3app4-pilot2 (pilot) stages=1 deadline=2 h
+  - pilot2: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --profile umts --seed g3app-20261122 --marker 8799 --nbeacons-auto results/round3/g3app/pilot-v4-calib/calibration.json --calibrate 3 --out results/round3/g3app/pilot-v4-calib2  -> artifact/results/round3/g3app/pilot-v4-calib2
+[autorun] DONE; guard=0
+calibrations per build {'stock': 3, 'stockcancel': 3, 'fenced': 3, 'layered': 3} D {'stock': 18.337460334, 'stockcancel': 18.27450225, 'fenced': 18.10248175, 'layered': 18.10215975} median body bytes 262625.0 nbeacons 2233
+21:51 G3c v4 calibration gate passed (artifact/results/round3/g3app/pilot-v4-calib2/calibration.json); mechanism pilot next
+[autorun] g3app4-mech (pilot) stages=1 deadline=2 h
+  - mech: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --profile umts --seed g3app-20261122 --marker 8799 --capture --trials 2 --durations results/round3/g3app/calibration-used-v4.json --out results/round3/g3app/pilot-v4-mech  -> artifact/results/round3/g3app/pilot-v4-mech
+[autorun] DONE; guard=0
+rows 8 invalid [] marker_sent bad [] start marker bad [] missing in marker log [] missing in capture []
+21:55 G3c v4 mechanism gate passed; starting G3c final-v4
+[autorun] g3app4-final (final) stages=1 deadline=6 h
+  - final: python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3 --profile umts --seed g3app-20261122 --marker 8799 --capture --trials 30 --durations results/round3/g3app/calibration-used-v4.json --out results/round3/g3app/final-v4  -> artifact/results/round3/g3app/final-v4
+[autorun] DONE; guard=0
+22:46 G3c final-v4 autorun exit 0
+22:46 G3c v4 part ended (exit 0)
+[autorun] g3lte-pilot (pilot) stages=1 deadline=2 h
+  - pilot: python3 followup/race_suite.py --radio --shaper tc --g3 --marker 8799 --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g3-apk/rl-tls.apk --profiles lte --sizes 32768,262144,2097152 --seed race-20261119 --modes early,close2,fence,fence-abort,close --capture --trials 1 --durations results/round3/g3race/pilot-calib/calibration.json --warm-revision --qsnap --out results/round3/g3race/pilot-lte4  -> artifact/results/round3/g3race/pilot-lte4
+[autorun] DONE; guard=0
+trials 15 invalid [] close bad [] close2 bad [] marker_sent bad [] marker log bad [] capture marker missing [] request SYN missing [] warm bad [] qsnap bad [] WITHDRAW_REQUEST - SOCKET_CONFIG per size and arm (s) {32768: {'close2': 0.0206, 'fence-abort': 0.0209, 'close': 0.0241, 'fence': 0.354, 'early': 0.0168}, 262144: {'early': 0.0795, 'fence': 0.102, 'close2': 0.0786, 'close': 0.0596, 'fence-abort': 0.0746}, 2097152: {'close2': 0.1701, 'fence-abort': 0.1876, 'early': 0.1879, 'fence': 0.1884, 'close': 0.1888}} spread per size {32768: 0.3372, 262144: 0.0424, 2097152: 0.0187}
+22:47 P3 MECHANISM/BALANCE GATE FAIL; no P3 final (g3lte-card §3)
+22:47 P3 part ended (exit 5)
+22:47 done

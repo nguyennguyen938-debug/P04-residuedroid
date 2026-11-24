@@ -42,7 +42,7 @@ public class Revision extends BroadcastReceiver {
                 try {if(scope==null)d.execSQL("UPDATE grants SET epoch=epoch+1,allowed=0 WHERE tenant=?",new Object[]{tenant});
                     else d.execSQL("UPDATE grants SET epoch=epoch+1,allowed=0 WHERE tenant=? AND scope=?",new Object[]{tenant,scope});d.setTransactionSuccessful();}
                 finally {d.endTransaction();}event(c,id,"WITHDRAW_DURABLE","tenant="+tenant);return null;});
-                if(i.getBooleanExtra("cancel",false))event(c,id,"CANCEL_DONE","reply="+CancelPath.request(c,id,5000));event(c,id,"WITHDRAW_ACK","tenant="+tenant);
+                if(i.getBooleanExtra("cancel",false))event(c,id,"CANCEL_DONE","reply="+CancelPath.request(c,id,5000));if(i.getBooleanExtra("cancel2",false))event(c,id,"CANCEL_DONE","inproc;"+CancelPath.cancelUnhanded());event(c,id,"WITHDRAW_ACK","tenant="+tenant);G3.marker(c,id,i);
             }catch(Exception e){event(c,id,"WITHDRAW_TIMEOUT",e.toString());}return;
         }
         if("labelsetup".equals(op)) {
@@ -56,7 +56,7 @@ public class Revision extends BroadcastReceiver {
         if("send".equals(op)) {
             final int size=i.getIntExtra("size",16384),port=i.getIntExtra("port",8794);
             final String mode=i.getStringExtra("mode"),fault=i.getStringExtra("fault");
-            final boolean fenced=!"early".equals(mode)&&!"close".equals(mode);final CancelPath.Token tok="close".equals(mode)?CancelPath.register():null;final int epoch=i.getIntExtra("epoch",0);
+            final boolean fenced=!"early".equals(mode)&&!"close".equals(mode)&&!"close2".equals(mode)&&!"platform".equals(mode);final CancelPath.Token tok="close".equals(mode)||"close2".equals(mode)?CancelPath.register():i.getBooleanExtra("g3",false)?new CancelPath.Token():null;final int epoch=i.getIntExtra("epoch",0);
             final String label=i.getStringExtra("items")!=null?i.getStringExtra("items"):i.hasExtra("label")?i.getStringExtra("label"):"analytics:"+epoch;
             String diagnostic=i.getBooleanExtra("labeltest",false)?",\"actual_sources\":[\"analytics:0\",\"diagnostics:0\"],\"derived\":\""+("analytic-value"+"|"+"diagnostic-value")+"\"":"";
             final String items=i.getStringExtra("items");   // B3: "analytics:0,diagnostics:0" -> one item per label
@@ -72,7 +72,7 @@ public class Revision extends BroadcastReceiver {
             final java.util.concurrent.atomic.AtomicLong accepted=new java.util.concurrent.atomic.AtomicLong();
             try {
                 HttpTransport.Events trace=(kind,detail)->{
-                        event(c,id,kind,detail);
+                        event(c,id,kind,detail);G3.hook(c,id,mode,tok,kind);
                         if(("afterlog".equals(fault)&&kind.equals("AUTHORIZATION_LOGGED"))||
                            ("unlogged".equals(fault)&&kind.equals("WRITE_RETURN_BOUNDARY"))||
                            ("partial".equals(fault)&&kind.equals("BYTES_ACCEPTED")&&!detail.endsWith("n=0"))||
@@ -89,7 +89,7 @@ public class Revision extends BroadcastReceiver {
                     try(InputStream cert=new FileInputStream(new File(c.getFilesDir(),"test-ca.pem"))){ks.setCertificateEntry("test",java.security.cert.CertificateFactory.getInstance("X.509").generateCertificate(cert));}
                     javax.net.ssl.TrustManagerFactory tm=javax.net.ssl.TrustManagerFactory.getInstance(javax.net.ssl.TrustManagerFactory.getDefaultAlgorithm());tm.init(ks);
                     javax.net.ssl.SSLContext ctx=javax.net.ssl.SSLContext.getInstance("TLS");ctx.init(null,tm.getTrustManagers(),null);
-                    TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),i.getIntExtra("deadline_ms",10000),tok);
+                    if("platform".equals(mode))G3.platform(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,body,trace,id,i.getIntExtra("deadline_ms",10000));else TlsTransport.post(ctx,i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,trace,id,i.getIntExtra("sndbuf",16384),i.getIntExtra("deadline_ms",10000),tok);
                 } else HttpTransport.postMode(i.hasExtra("host")?i.getStringExtra("host"):"10.0.2.2",port,"/ingest/analytics",body,ChunkFence.lock(c),policy,fenced,"whole".equals(mode),trace,id,i.getIntExtra("attempt",1),i.getIntExtra("chunk",HttpTransport.CHUNK),i.getIntExtra("deadline_ms",5000));
                 event(c,id,"SEND_OK","elapsed_ns="+(android.os.SystemClock.elapsedRealtimeNanos()-started)+";process_cpu_ms="+(android.os.Process.getElapsedCpuTime()-cpu)+";payload_bytes="+body.length);
             }catch(HttpTransport.Denied e){

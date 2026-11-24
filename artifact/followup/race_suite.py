@@ -13,6 +13,14 @@ Network: emulator console `network speed <p>` / `network delay <p>` set before e
          the midpoint of its delay range (edge 118.4 kbit/s 240 ms, umts 128 kbit/s 118 ms, lte 58 Mbit/s 0 ms).
 Group 2 (g2close-card.md): mode 'close' = layered early check + cancellation path; its withdrawal broadcast carries
          cancel=true (the app closes in-flight sockets before the ack). --apk selects the build (default: the B10 build).
+Group 3 (g3race-card.md): --g3 adds modes close2 (withdrawal in the sending process, in-process cancellation of requests not
+         yet handed off; its withdrawal goes to Revision, not RevisionRemote, with cancel2=true) and fence-abort (fence, SO_LINGER 0
+         at the fence's block); every send carries g3=true (socket local port logged) and every withdrawal marker=<port> (after
+         WITHDRAW_ACK the app connects to the host marker listener). --capture: emulator console `network capture start` for the
+         whole trial phase (pcap on the host, guest frames). v2 (22/11, after
+         pilot-mech): `-tcpdump <run>/capture.pcap` at emulator launch instead; the console command accepts bare file names only. With --marker the guest shaper is a prio root whose default band
+         carries the profile's netem and whose first band (u32 dport = marker) is unshaped, so the marker SYN does not queue
+         behind request data.
 Phones: --receiver http://IP:8800 --host IP --no-root --certdir DIR (CA of the receiver cert) [--serial <adb serial>]
 Usage: race_suite.py --serial emulator-5650 [--avd P04Avd14] --out DIR (--calibrate 3 | --trials 10 --durations F)
        [--profiles edge,umts,lte] [--sizes 32768,262144,2097152] [--seed race-20261119]
@@ -35,6 +43,13 @@ p.add_argument('--host', help='phones: sink address passed to the app with each 
 p.add_argument('--no-root', action='store_true', help='phones: no adb root (debuggable app, run-as only)')
 p.add_argument('--shaper', default='emu', choices=['emu', 'tc'], help='v3 tc: guest netem egress shaping (see Network)')
 p.add_argument('--apk', type=Path, default=A / 'fixture/build/tls-apk/rl-tls.apk', help='TLS fixture build (default: the B10 build)')
+p.add_argument('--g3', action='store_true', help='group 3: g3=true on sends, marker on withdrawals, close2/fence-abort modes')
+p.add_argument('--marker', type=int, default=0, help='group 3: host marker listener port (unshaped band in the guest)')
+p.add_argument('--capture', action='store_true', help='group 3: emulator packet capture of the trial phase -> capture.pcap')
+p.add_argument('--warm-revision', action='store_true', help='group 3 P3: before each send, a no-op broadcast pre-starts the :revision process (all arms)')
+p.add_argument('--sndbuf', type=int, default=16384, help='requested SO_SNDBUF of the TLS socket (default 16384 as B10/G2a/G3a); group 3 P4 varies it')
+p.add_argument('--sndbufs', help='group 3 P4: comma list of SO_SNDBUF levels crossed with the modes in every block (0 = kernel default, no setSendBufferSize; needs the P4 build)')
+p.add_argument('--qsnap', action='store_true', help='group 3 P2: right after the withdraw broadcast returns, snapshot tc -s qdisc and the guest TCP send queue to :8798')
 p.add_argument('--radio', action='store_true', help='v2: Wi-Fi off, data over the emulated cellular radio (where netspeed applies)')   # test-ca.pem + test-key.pem (key never committed)
 a = p.parse_args()
 assert bool(a.calibrate) != bool(a.trials), 'give exactly one of --calibrate / --trials'
@@ -61,7 +76,8 @@ def boot():
     if alive() or not a.avd: return
     port = a.serial.split('-')[1]
     subprocess.Popen([f'{SDK}/emulator/emulator', '-avd', a.avd, '-port', port, '-read-only', '-no-window', '-no-audio',
-                      '-no-boot-anim', '-gpu', 'host', '-no-snapshot'], stdout=open(a.out / f'emu{port}.log', 'a'),
+                      '-no-boot-anim', '-gpu', 'host', '-no-snapshot'] + (['-tcpdump', str((a.out / 'capture.pcap').resolve())] if a.capture else []),
+                     stdout=open(a.out / f'emu{port}.log', 'a'),
                      stderr=subprocess.STDOUT, start_new_session=True)
     t0 = time.time()
     while time.time() - t0 < 300 and not alive(): time.sleep(3)
@@ -100,7 +116,13 @@ def net(profile):
         adb('emu', 'network', 'speed', 'full'); adb('emu', 'network', 'delay', 'none')
         for dev in ('eth0', 'wlan0'):                 # a profile without a TC entry ('full', end of run) = shaping removed
             add = f'; tc qdisc replace dev {dev} root netem delay {TC[profile][1]} rate {TC[profile][0]} limit 10000' if profile in TC else ''
+            if a.marker and profile in TC:            # group 3: same netem in the default band; marker port unshaped (band 1:1)
+                add = (f'; tc qdisc add dev {dev} root handle 1: prio bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
+                       f'; tc qdisc add dev {dev} parent 1:1 handle 10: pfifo limit 1000'
+                       f'; tc qdisc add dev {dev} parent 1:2 handle 20: netem delay {TC[profile][1]} rate {TC[profile][0]} limit 10000'
+                       f'; tc filter add dev {dev} parent 1: protocol ip prio 1 u32 match ip dport {a.marker} 0xffff flowid 1:1')
             adb('shell', f'tc qdisc del dev {dev} root 2>/dev/null{add}; true')
+        if a.marker: return adb('shell', 'tc -s qdisc show dev eth0; tc filter show dev eth0; true').replace('\r', '').replace('\n', ' | ').strip()[:4000]
         return adb('shell', 'tc qdisc show dev eth0; tc qdisc show dev wlan0; true').replace('\r', '').replace('\n', ' | ').strip()[:300]
     o1 = adb('emu', 'network', 'speed', profile); o2 = adb('emu', 'network', 'delay', DELAY.get(profile, 'none'))
     return (o1 + o2).replace('\r', '').replace('\n', ' ').strip()
@@ -133,6 +155,19 @@ class Handler(socketserver.BaseRequestHandler):
                 self.server.log({'request': id, 'event': 'body', 'received': total, 'expected': expected, 'complete': total == expected})
                 if total == expected: s.sendall(b'HTTP/1.1 200 OK\r\nContent-Length: 0\r\nConnection: close\r\n\r\n')
         except Exception as e: self.server.log({'request': id, 'event': 'error', 'error': repr(e), 'received': total, 'expected': expected})
+if a.marker:                                      # group 3: marker listener; logs host arrival and the trial id the app writes
+    class Marker(socketserver.BaseRequestHandler):
+        def handle(self):
+            t = time.monotonic_ns(); self.request.settimeout(10); d = b''
+            with contextlib.suppress(Exception):
+                while not d.endswith(b'\n') and len(d) < 200:
+                    b = self.request.recv(200)
+                    if not b: break
+                    d += b
+            with sink_guard, (a.out / 'marker.jsonl').open('a') as f:
+                f.write(json.dumps({'host_ns': t, 'peer_port': self.client_address[1], 'id': d.decode(errors='replace').strip()}) + '\n')
+    sink_guard = threading.Lock(); msrv = Server(('127.0.0.1', a.marker), Marker); msrv.guard = sink_guard
+    threading.Thread(target=msrv.serve_forever, daemon=True).start()
 sink = None
 if not a.receiver:                                # phones: the receiver runs remotely (receiver_b.py)
     sink = Server(('127.0.0.1', 8798), Handler); sink.guard = threading.Lock(); threading.Thread(target=sink.serve_forever, daemon=True).start()
@@ -158,33 +193,43 @@ PHONE = {} if a.serial.startswith('emulator-') else {   # physical phone: no har
     'transport': adb('shell', 'id=$(dumpsys connectivity 2>/dev/null | grep -m1 "Active default network" | grep -oE "[0-9]+"); dumpsys connectivity 2>/dev/null | grep -m1 "network{$id}" | grep -oE "ni\\{[A-Z_]+(\\[[A-Za-z0-9 ]*\\])?"; true').strip()[:40]}
 meta = {'serial': a.serial if a.serial.startswith('emulator-') else 'physical (not recorded)', 'phone': PHONE, 'avd': a.avd, 'fingerprint': adb('shell', 'getprop', 'ro.build.fingerprint').strip(), 'seed': a.seed,
         'profiles': PROFILES, 'sizes': SIZES, 'modes': MODES, 'calibrate': a.calibrate, 'trials': a.trials, 'start': a.start,
-        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'started': time.time()}
+        'durations': durations, 'radio': RADIO, 'shaper': a.shaper, 'receiver': a.receiver, 'host': a.host, 'apk_sha256': hashlib.sha256(apk.read_bytes()).hexdigest(), 'setup_init_s': SETUP_S, 'g3': a.g3, 'marker': a.marker, 'capture': a.capture, 'warm_revision': a.warm_revision, 'sndbuf': a.sndbuf, 'sndbufs': a.sndbufs, 'qsnap': a.qsnap, 'started': time.time()}
 (a.out / 'meta.json').write_text(json.dumps(meta, indent=1) + '\n')
 
 
-def trial(block, profile, size, mode, u):
+def trial(block, profile, size, mode, u, sb=None):
+    sndbuf = a.sndbuf if sb is None else sb
     id = f'race-{profile}-{size}-{mode}-{block}-{uuid.uuid4().hex[:6]}'
     D = durations.get(f'{profile}:{size}', 0.0)
     deadline = 600000 if a.calibrate else int(max(10000, (4 * D + 20) * 1000))   # calibration: no deadline pressure
     r = {'trial': id, 'block': block, 'profile': profile, 'size': size, 'mode': mode, 'u': u, 'D_s': D, 'deadline_ms': deadline,
-         'host_load': os.getloadavg(), 'start': time.time()}
+         'host_load': os.getloadavg(), 'start': time.time(), 'sndbuf': sndbuf}
     try:
         r['net'] = net(profile)
         adb('shell', f'am force-stop {PKG}'); adb('shell', f'run-as {PKG} rm -f files/revision.jsonl files/release'); bc('init', id)
         if a.no_root:   # phones (Android 14+): a cached broadcast process is frozen ~5 s in and its sockets are cut (pilot-calib-2); keep it foreground
             adb('shell', f'am start -W -n {PKG}/org.residuelab.Main >/dev/null; true')
+        if a.warm_revision: r['warm'] = bc('noop', id, remote=True)   # P3: same pre-start for every arm (close2 included)
         t_send = time.monotonic()
-        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=16384,
-                          label='analytics:0', deadline_ms=deadline)
+        r['command'] = bc('send', id, tls=True, mode=mode, fault='none', size=size, port=8798, sndbuf=sndbuf,
+                          label='analytics:0', deadline_ms=deadline, **({'g3': True} if a.g3 else {}))
         if u is not None:                       # no barrier: withdraw at W = u * D after the send was issued
             time.sleep(max(0.0, t_send + u * D - time.monotonic()))
             r['withdraw_host_offset_s'] = time.monotonic() - t_send
-            r['withdraw'] = bc('withdraw', id, remote=True, **({'cancel': True} if mode == 'close' else {}))
+            extra = {'cancel': True} if mode == 'close' else {'cancel2': True} if mode == 'close2' else {}
+            if a.marker: extra['marker'] = a.marker
+            r['withdraw'] = bc('withdraw', id, remote=mode != 'close2', **extra)
+            if a.qsnap:   # P2: host-timed snapshot after the ack (the broadcast returns after WITHDRAW_ACK and the marker), not at the ack
+                t_q = time.monotonic()
+                r['qsnap'] = adb('shell', 'tc -s qdisc show dev eth0; grep -i ":225E " /proc/net/tcp /proc/net/tcp6; true').replace('\r', '').strip()[:4000]
+                r['qsnap_host_offset_s'] = (t_q - t_send, time.monotonic() - t_send)
         end = time.monotonic() + deadline / 1000 + 20
         while time.monotonic() < end:
             ev = events()
-            if any(e['trial'] == id and e['kind'] in ('SEND_OK', 'SEND_ERROR', 'EARLY_BLOCK') for e in ev): break
+            if any(e['trial'] == id and e['kind'] in ('SEND_OK', 'SEND_ERROR', 'EARLY_BLOCK') for e in ev) and (
+                    not a.marker or u is None or any(e['trial'] == id and e['kind'] == 'MARKER_SENT' for e in ev)): break
             time.sleep(0.5)
+        if a.marker and profile in TC: r['tc_stats_end'] = adb('shell', 'tc -s qdisc show dev eth0; true').replace('\r', '').replace('\n', ' | ').strip()[:4000]
         r['events'] = ev
     except Exception as e: r['harness_error'] = repr(e)
     r['finished'] = time.time()
@@ -204,12 +249,22 @@ if a.calibrate:
                 if ok: res.setdefault(f'{profile}:{size}', []).append(int(dict(x.split('=', 1) for x in ok[0]['detail'].split(';') if '=' in x)['elapsed_ns']) / 1e9)
     (a.out / 'calibration.json').write_text(json.dumps({'samples_s': res, 'median_s': {k: statistics.median(v) for k, v in res.items()}}, indent=1) + '\n')
 else:
+    if a.capture:                                 # v2: -tcpdump at emulator launch (the console command takes bare names only)
+        (a.out / 'capture.json').write_text(json.dumps({'mode': 'emulator -tcpdump at launch', 'trials_start': time.time()}) + '\n')
     for block in range(a.start, a.start + a.trials):
+        if a.sndbufs:   # P4: (profile, mode, size, sndbuf) cells, shuffled per block; the same u per (block, profile, size)
+            cells4 = [(p_, m, s, int(b)) for p_ in PROFILES for m in MODES for s in SIZES for b in a.sndbufs.split(',')]
+            random.Random(f'{a.seed}-{block}-p4').shuffle(cells4)
+            for p_, m, s, b in cells4: trial(block, p_, s, m, random.Random(f'{a.seed}-{block}-{p_}-{s}').random(), sb=b)
+            continue
         cells = [(p_, m, s) for p_ in PROFILES for m in MODES for s in SIZES]
         brng = random.Random(f'{a.seed}-{block}'); brng.shuffle(cells)
         for p_, m, s in cells:
             u = random.Random(f'{a.seed}-{block}-{p_}-{s}').random()   # same u for early and fence: paired cells
             trial(block, p_, s, m, u)
+if a.capture and not a.calibrate:
+    c0 = json.loads((a.out / 'capture.json').read_text()); c0.update(trials_end=time.time())
+    (a.out / 'capture.json').write_text(json.dumps(c0) + '\n')
 net('full')
 if a.radio: adb('shell', 'svc wifi enable')
 if a.receiver: (a.out / 'receiver.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in json.loads(ctl('GET', '/log?from=0'))['lines']))

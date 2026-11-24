@@ -1,0 +1,234 @@
+{
+ "exploratory": true,
+ "dirs": [
+  "artifact/results/round3/g3race/final-lte5"
+ ],
+ "trials": 150,
+ "cells_with_differing_u_across_arms": 0,
+ "paired_cells": 30,
+ "write_attempt_ties_with_W": 0,
+ "withdrawal_process": {
+  "close2: same process": 30,
+  "close: other process": 30,
+  "early: other process": 30,
+  "fence-abort: other process": 30,
+  "fence: other process": 30
+ },
+ "small_bytes_threshold": 200,
+ "cells": {
+  "lte/close": {
+   "trials": 30,
+   "phase": {
+    "during writes": 18,
+    "after end": 12
+   },
+   "exposed": 18,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 9
+   },
+   "after_w_exposed": 18,
+   "after_w_not_exposed": 0,
+   "median_request_minus_socket_s": 0.029,
+   "median_durable_minus_request_s": 0.0012,
+   "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 12,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "during writes": {
+     "trials": 18,
+     "trials_new_bytes_after_marker": 4,
+     "after_marker_new_bytes": 16897,
+     "after_marker_app_bytes": 5159
+    }
+   },
+   "capture_trials_after_marker": 4,
+   "capture_trials_after_marker_small_only": 0,
+   "capture_trials_after_marker_ge_small": 4
+  },
+  "lte/close2": {
+   "trials": 30,
+   "phase": {
+    "during writes": 17,
+    "after end": 12,
+    "after handoff": 1
+   },
+   "exposed": 17,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "after_w_exposed": 0,
+   "after_w_not_exposed": 0,
+   "median_request_minus_socket_s": 0.0309,
+   "median_durable_minus_request_s": 0.0009,
+   "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 12,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "after handoff": {
+     "trials": 1,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "during writes": {
+     "trials": 17,
+     "trials_new_bytes_after_marker": 10,
+     "after_marker_new_bytes": 86421,
+     "after_marker_app_bytes": 61845
+    }
+   },
+   "capture_trials_after_marker": 10,
+   "capture_trials_after_marker_small_only": 0,
+   "capture_trials_after_marker_ge_small": 10
+  },
+  "lte/early": {
+   "trials": 30,
+   "phase": {
+    "after end": 14,
+    "during writes": 16
+   },
+   "exposed": 16,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 8
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 8
+   },
+   "after_w_exposed": 16,
+   "after_w_not_exposed": 0,
+   "median_request_minus_socket_s": 0.0292,
+   "median_durable_minus_request_s": 0.0011,
+   "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 14,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "during writes": {
+     "trials": 16,
+     "trials_new_bytes_after_marker": 16,
+     "after_marker_new_bytes": 10079465,
+     "after_marker_app_bytes": 10079465
+    }
+   },
+   "capture_trials_after_marker": 16,
+   "capture_trials_after_marker_small_only": 0,
+   "capture_trials_after_marker_ge_small": 16
+  },
+  "lte/fence": {
+   "trials": 30,
+   "phase": {
+    "during writes": 18,
+    "after end": 11,
+    "before writes": 1
+   },
+   "exposed": 18,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "after_w_exposed": 0,
+   "after_w_not_exposed": 0,
+   "median_request_minus_socket_s": 0.0267,
+   "median_durable_minus_request_s": 0.0019,
+   "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 11,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "before writes": {
+     "trials": 1,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "during writes": {
+     "trials": 18,
+     "trials_new_bytes_after_marker": 3,
+     "after_marker_new_bytes": 13623,
+     "after_marker_app_bytes": 4765
+    }
+   },
+   "capture_trials_after_marker": 3,
+   "capture_trials_after_marker_small_only": 0,
+   "capture_trials_after_marker_ge_small": 3
+  },
+  "lte/fence-abort": {
+   "trials": 30,
+   "phase": {
+    "during writes": 18,
+    "after end": 12
+   },
+   "exposed": 18,
+   "exposed_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 9
+   },
+   "after_w_exposed_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "after_w_exposed": 0,
+   "after_w_not_exposed": 0,
+   "median_request_minus_socket_s": 0.0267,
+   "median_durable_minus_request_s": 0.0014,
+   "median_uD_s": 0.03,
+   "capture_by_phase": {
+    "after end": {
+     "trials": 12,
+     "trials_new_bytes_after_marker": 0,
+     "after_marker_new_bytes": 0,
+     "after_marker_app_bytes": 0
+    },
+    "during writes": {
+     "trials": 18,
+     "trials_new_bytes_after_marker": 3,
+     "after_marker_new_bytes": 19897,
+     "after_marker_app_bytes": 11705
+    }
+   },
+   "capture_trials_after_marker": 3,
+   "capture_trials_after_marker_small_only": 0,
+   "capture_trials_after_marker_ge_small": 3
+  }
+ }
+}

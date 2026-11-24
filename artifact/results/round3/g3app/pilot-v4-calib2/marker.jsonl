@@ -1,0 +1,12 @@
+{"host_ns": 234995019566833, "peer_port": 64910, "id": "g3app-000-stock-start"}
+{"host_ns": 235027472688083, "peer_port": 65034, "id": "g3app-000-stockcancel-start"}
+{"host_ns": 235056658353500, "peer_port": 65145, "id": "g3app-000-fenced-start"}
+{"host_ns": 235089359986458, "peer_port": 65259, "id": "g3app-000-layered-start"}
+{"host_ns": 235119597619375, "peer_port": 65417, "id": "g3app-001-stock-start"}
+{"host_ns": 235148742741208, "peer_port": 65519, "id": "g3app-001-stockcancel-start"}
+{"host_ns": 235177978470125, "peer_port": 49240, "id": "g3app-001-fenced-start"}
+{"host_ns": 235207363994041, "peer_port": 49341, "id": "g3app-001-layered-start"}
+{"host_ns": 235236483692041, "peer_port": 49442, "id": "g3app-002-stock-start"}
+{"host_ns": 235265634952833, "peer_port": 49544, "id": "g3app-002-stockcancel-start"}
+{"host_ns": 235294669640125, "peer_port": 49645, "id": "g3app-002-fenced-start"}
+{"host_ns": 235323771826625, "peer_port": 49749, "id": "g3app-002-layered-start"}

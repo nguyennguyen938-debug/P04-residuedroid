@@ -1,0 +1,122 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 117 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5666 8793 8794 8797 8799 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/race_airguard.py --serial emulator-5666 --avd P04AvdA --apkdir realapp/airguard/build/g3v5b --variants stockcancel16,stockcancel,fenced --profile umts --seed g3app5c-20261123 --marker 8799 --capture --trials 30 --durations results/round3/g3app/calibration-used-v5c.json --sockdiag --out results/round3/g3app/final-v5c
+22:05:02 g3app-000-fenced ['DONATION_BLOCKED']
+22:05:19 g3app-000-stockcancel ['DONATION_ERROR']
+22:05:36 g3app-000-stockcancel16 ['DONATION_ERROR']
+22:06:03 g3app-001-fenced ['DONATION_BLOCKED']
+22:06:31 g3app-001-stockcancel16 ['DONATION_ERROR']
+22:06:57 g3app-001-stockcancel ['DONATION_ERROR']
+22:07:30 g3app-002-fenced ['DONATION_BLOCKED']
+22:07:58 g3app-002-stockcancel16 ['DONATION_ERROR']
+22:08:25 g3app-002-stockcancel ['DONATION_ERROR']
+22:08:50 g3app-003-fenced ['DONATION_BLOCKED']
+22:09:15 g3app-003-stockcancel16 ['DONATION_ERROR']
+22:09:40 g3app-003-stockcancel ['DONATION_ERROR']
+22:10:05 g3app-004-stockcancel ['DONATION_ERROR']
+22:10:30 g3app-004-fenced ['DONATION_BLOCKED']
+22:10:56 g3app-004-stockcancel16 ['DONATION_ERROR']
+22:11:23 g3app-005-stockcancel16 ['DONATION_ERROR']
+22:11:49 g3app-005-stockcancel ['DONATION_ERROR']
+22:12:15 g3app-005-fenced ['DONATION_BLOCKED']
+22:12:31 g3app-006-stockcancel ['DONATION_ERROR']
+22:12:48 g3app-006-stockcancel16 ['DONATION_ERROR']
+22:13:04 g3app-006-fenced ['DONATION_BLOCKED']
+22:13:19 g3app-007-stockcancel16 ['DONATION_ERROR']
+22:13:34 g3app-007-fenced ['DONATION_BLOCKED']
+22:13:48 g3app-007-stockcancel ['DONATION_ERROR']
+22:14:04 g3app-008-stockcancel16 ['DONATION_ERROR']
+22:14:19 g3app-008-fenced ['DONATION_BLOCKED']
+22:14:33 g3app-008-stockcancel ['DONATION_ERROR']
+22:15:00 g3app-009-stockcancel ['DONATION_ERROR']
+22:15:26 g3app-009-stockcancel16 ['DONATION_ERROR']
+22:15:51 g3app-009-fenced ['DONATION_BLOCKED']
+22:17:42 g3app-010-stockcancel []
+22:19:37 g3app-010-stockcancel16 []
+22:19:48 g3app-010-fenced ['DONATION_BLOCKED']
+22:20:07 g3app-011-stockcancel16 ['DONATION_ERROR']
+22:20:25 g3app-011-fenced ['DONATION_BLOCKED']
+22:20:43 g3app-011-stockcancel ['DONATION_ERROR']
+22:20:56 g3app-012-fenced ['DONATION_BLOCKED']
+22:21:24 g3app-012-stockcancel16 ['DONATION_OK']
+22:21:52 g3app-012-stockcancel ['DONATION_OK']
+22:22:22 g3app-013-fenced ['DONATION_OK']
+22:22:50 g3app-013-stockcancel ['DONATION_ERROR']
+22:23:19 g3app-013-stockcancel16 ['DONATION_OK']
+22:23:37 g3app-014-fenced ['DONATION_BLOCKED']
+22:23:56 g3app-014-stockcancel ['DONATION_ERROR']
+22:24:17 g3app-014-stockcancel16 ['DONATION_ERROR']
+22:24:39 g3app-015-stockcancel ['DONATION_ERROR']
+22:25:04 g3app-015-stockcancel16 ['DONATION_ERROR']
+22:25:26 g3app-015-fenced ['DONATION_BLOCKED']
+22:25:50 g3app-016-fenced ['DONATION_BLOCKED']
+22:26:15 g3app-016-stockcancel ['DONATION_ERROR']
+22:26:40 g3app-016-stockcancel16 ['DONATION_ERROR']
+22:26:52 g3app-017-stockcancel16 ['DONATION_ERROR']
+22:27:04 g3app-017-fenced ['DONATION_BLOCKED']
+22:27:16 g3app-017-stockcancel ['DONATION_ERROR']
+22:27:35 g3app-018-fenced ['DONATION_BLOCKED']
+22:27:52 g3app-018-stockcancel16 ['DONATION_ERROR']
+22:28:10 g3app-018-stockcancel ['DONATION_ERROR']
+22:28:27 g3app-019-fenced ['DONATION_BLOCKED']
+22:28:42 g3app-019-stockcancel ['DONATION_ERROR']
+22:29:00 g3app-019-stockcancel16 ['DONATION_ERROR']
+22:29:28 g3app-020-stockcancel16 ['DONATION_OK']
+22:29:56 g3app-020-stockcancel ['DONATION_ERROR']
+22:30:25 g3app-020-fenced ['DONATION_OK']
+22:30:41 g3app-021-stockcancel16 ['DONATION_ERROR']
+22:30:57 g3app-021-stockcancel ['DONATION_ERROR']
+22:31:16 g3app-021-fenced ['DONATION_BLOCKED']
+22:31:34 g3app-022-fenced ['DONATION_BLOCKED']
+22:31:52 g3app-022-stockcancel ['DONATION_ERROR']
+22:32:11 g3app-022-stockcancel16 ['DONATION_ERROR']
+22:32:31 g3app-023-stockcancel ['DONATION_ERROR']
+22:32:53 g3app-023-fenced ['DONATION_BLOCKED']
+22:33:13 g3app-023-stockcancel16 ['DONATION_ERROR']
+22:33:37 g3app-024-stockcancel16 ['DONATION_ERROR']
+22:34:00 g3app-024-fenced ['DONATION_BLOCKED']
+22:34:24 g3app-024-stockcancel ['DONATION_ERROR']
+22:34:37 g3app-025-fenced ['DONATION_BLOCKED']
+22:34:49 g3app-025-stockcancel ['DONATION_ERROR']
+22:35:03 g3app-025-stockcancel16 ['DONATION_ERROR']
+22:35:24 g3app-026-stockcancel16 ['DONATION_ERROR']
+22:35:45 g3app-026-stockcancel ['DONATION_ERROR']
+22:36:07 g3app-026-fenced ['DONATION_BLOCKED']
+22:36:30 g3app-027-stockcancel ['DONATION_ERROR']
+22:36:54 g3app-027-stockcancel16 ['DONATION_ERROR']
+22:37:17 g3app-027-fenced ['DONATION_BLOCKED']
+22:37:42 g3app-028-fenced ['DONATION_BLOCKED']
+22:38:06 g3app-028-stockcancel16 ['DONATION_ERROR']
+22:38:30 g3app-028-stockcancel ['DONATION_ERROR']
+22:38:41 g3app-029-stockcancel16 ['DONATION_ERROR']
+22:38:52 g3app-029-stockcancel ['DONATION_ERROR']
+22:39:07 g3app-029-fenced ['DONATION_BLOCKED']
+$ python3 artifact/followup/analyze_g3app5.py artifact/results/round3/g3app/final-v5c --out artifact/results/round3/g3app/analysis-v5c
+logged 90, invalid 2, capture True, builds [('stockcancel16', 29, 0), ('stockcancel', 29, 0), ('fenced', 30, 0)]
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5666 emu kill
+OK: killing emulator, bye bye
+OK

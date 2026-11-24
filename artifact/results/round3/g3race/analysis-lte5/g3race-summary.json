@@ -1,0 +1,310 @@
+{
+ "dirs": [
+  "artifact/results/round3/g3race/final-lte5"
+ ],
+ "logged": 150,
+ "interrupted_excluded": [],
+ "invalid": [],
+ "capture_file": {
+  "artifact/results/round3/g3race/final-lte5": true
+ },
+ "cells": {
+  "lte/close": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 18,
+   "after_w_wilson95": [
+    0.42320052498273836,
+    0.7540960567391659
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 9,
+    "2097152": 9
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 18,
+    "SEND_OK": 12
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 3.63,
+    "p95": 6.358,
+    "max": 6.789
+   },
+   "uncut_receiver_complete_send_error": 1,
+   "uncut_receiver_complete": 13,
+   "cut": 17,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "reply=ok": 30
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 4,
+    "after_marker_bytes": 16897,
+    "after_marker_new_bytes": 16897,
+    "trials_new_bytes_after_marker": 4,
+    "rst_after_marker": 7,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 26,
+     "capture=1/app=0": 4
+    },
+    "tls_trials": 30,
+    "trials_app_after_marker": 3,
+    "after_marker_app_bytes": 5159,
+    "after_marker_unknown_bytes": 11738
+   }
+  },
+  "lte/close2": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 17,
+    "SEND_OK": 13
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.104,
+    "p95": 2.985,
+    "max": 3.144
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 13,
+   "cut": 17,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "cancel_done": {
+    "inproc": 30
+   },
+   "cancel_found": {
+    "inproc;live=1;closed=1;nosocket=0;handed=0": 17,
+    "inproc;live=0;closed=0;nosocket=0;handed=0": 12,
+    "inproc;live=1;closed=0;nosocket=0;handed=1": 1
+   },
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 10,
+    "after_marker_bytes": 86421,
+    "after_marker_new_bytes": 86421,
+    "trials_new_bytes_after_marker": 10,
+    "rst_after_marker": 14,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 20,
+     "capture=1/app=0": 10
+    },
+    "tls_trials": 30,
+    "trials_app_after_marker": 10,
+    "after_marker_app_bytes": 61845,
+    "after_marker_unknown_bytes": 24576
+   }
+  },
+  "lte/early": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 16,
+   "after_w_wilson95": [
+    0.3614201328152505,
+    0.6976787277587178
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 8,
+    "2097152": 8
+   },
+   "violations_after_ack": 16,
+   "violations_wilson95": [
+    0.3614201328152505,
+    0.6976787277587178
+   ],
+   "after_ack_bytes": 10007288,
+   "ends": {
+    "SEND_OK": 30
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.235,
+    "p95": 5.495,
+    "max": 7.035
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 14,
+   "cut": 16,
+   "cut_receiver_complete": 16,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 16,
+    "after_marker_bytes": 10079465,
+    "after_marker_new_bytes": 10079465,
+    "trials_new_bytes_after_marker": 16,
+    "rst_after_marker": 0,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 14,
+     "capture=1/app=1": 16
+    },
+    "tls_trials": 30,
+    "trials_app_after_marker": 16,
+    "after_marker_app_bytes": 10079465,
+    "after_marker_unknown_bytes": 0
+   }
+  },
+  "lte/fence": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 19,
+    "SEND_OK": 11
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 2.103,
+    "p95": 10.366,
+    "max": 10.524
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 11,
+   "cut": 19,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 3,
+    "after_marker_bytes": 13623,
+    "after_marker_new_bytes": 13623,
+    "trials_new_bytes_after_marker": 3,
+    "rst_after_marker": 19,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 27,
+     "capture=1/app=0": 3
+    },
+    "tls_trials": 30,
+    "trials_app_after_marker": 2,
+    "after_marker_app_bytes": 4765,
+    "after_marker_unknown_bytes": 8858
+   }
+  },
+  "lte/fence-abort": {
+   "trials": 30,
+   "unused": 0,
+   "after_w": 0,
+   "after_w_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_w_no_durable": 0,
+   "after_w_by_size": {
+    "32768": 0,
+    "262144": 0,
+    "2097152": 0
+   },
+   "violations_after_ack": 0,
+   "violations_wilson95": [
+    0.0,
+    0.113517091390478
+   ],
+   "after_ack_bytes": 0,
+   "ends": {
+    "SEND_ERROR": 18,
+    "SEND_OK": 12
+   },
+   "withdraw_latency_ms": {
+    "n": 30,
+    "median": 1.546,
+    "p95": 12.356,
+    "max": 17.344
+   },
+   "uncut_receiver_complete_send_error": 0,
+   "uncut_receiver_complete": 12,
+   "cut": 18,
+   "cut_receiver_complete": 0,
+   "marker_sent": 30,
+   "abort_armed": 18,
+   "capture": {
+    "status": {
+     "matched": 30
+    },
+    "trials_after_marker": 3,
+    "after_marker_bytes": 19897,
+    "after_marker_new_bytes": 19897,
+    "trials_new_bytes_after_marker": 3,
+    "rst_after_marker": 17,
+    "concordance_vs_app_after_ack": {
+     "capture=0/app=0": 27,
+     "capture=1/app=0": 3
+    },
+    "tls_trials": 30,
+    "trials_app_after_marker": 3,
+    "after_marker_app_bytes": 11705,
+    "after_marker_unknown_bytes": 8192
+   }
+  }
+ },
+ "paired": {
+  "close2_vs_fence_after_w": {
+   "close2=0/fence=0": 30
+  },
+  "close2_vs_early_after_w": {
+   "close2=0/early=0": 14,
+   "close2=0/early=1": 16
+  },
+  "fence-abort_vs_fence_after_w": {
+   "fence-abort=0/fence=0": 30
+  },
+  "close2_vs_close_after_w": {
+   "close2=0/close=0": 12,
+   "close2=0/close=1": 18
+  }
+ }
+}

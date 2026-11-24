@@ -27,3 +27,15 @@ Theo `PLAN-ROUND3.md` (vai B) và `HUONG-DAN-B.md`. Sắp theo hạn.
 **Group 2 (21/11 evening):** the leader accepted PR #4's group-2 runs. B7 is reopened for G2a and G2b only; every
 earlier dataset stays frozen and untouched. G2 outputs go to `results/round3/g2close/` and `results/round3/g2layer/`. B7 was
 re-declared on 22/11 after both finished.
+
+**Group 3 (issue #7, 22/11):** four new runs requested by the leader; B7 reopened for G3a–G3d only (earlier data untouched).
+User decision 22/11: two-day speedrun, device-free work first, runs from 22/11 23:59 (emulator chain + phone in parallel).
+| Task | Card | Status |
+|---|---|---|
+| G3a + G3b (close2, fence-abort, capture + marker; 5 arms × 90) | `plans/g3race-card.md` | DONE 22/11 (final 0–1 + final-r2 2–9; 450 analysed; outcome in card §6; audit exploratory) |
+| G3c (AirGuard, withdrawal mid-upload; 4 builds × 30) | `plans/g3app-card.md` | GATE FAIL 22/11 (calibration, v3; harness fault; v4 needs a new pilot) |
+| G3c v4 (startup-worker fix; new pilots) | `plans/g3app-card.md` (Pilot log, v4) | DONE 22/11 (final-v4, 120/120 valid; sent after ack 29/30 in every build, fenced receiver-complete 5/30 vs 30/30, corrected 23/11 to 1/30 in analysis-v4-r2; card §6) |
+| G3c v5 (leader: stockcancel16 vs stockcancel vs fenced) | `plans/g3app5-card.md` | v5 and v5b: MECHANISM GATE FAIL (send-buffer read); v5c DONE 23/11 (final-v5c, 88/90 valid; kernel sndbuf stockcancel16 = fenced = 32768; sink complete after ack 4/29 vs 28/29 vs 2/30; card §6) |
+| P3 G3a-lte balanced (warm :revision; leader-approved 22/11) | `plans/g3lte-card.md` | v4 GATE FAIL 22/11 (balance gate design); v5 DONE 22/11 (150/150 valid; after W early 16, close 18, close2/fence/fence-abort 0 of 30; card §6) |
+| P4 SO_SNDBUF × fence/fence-abort (leader-approved 22/11) | `plans/g3p4-card.md` | DONE 23/11 (final-p4 + final-p4b + final-p4c, two user pauses; 360 analysed, 8 interrupted excluded, 0 invalid; card §6) |
+| G3d (phone cost; 3 arms × 3 sizes × 20 cells) | `plans/g3cost-card.md` | **DONE 24/11 01:10 (protocol v4):** pilot-6 gate passed, final-v4 180/180 cells valid, 1800/1800 uploads ok and received; card §6. CPU/MiB fence/early 1.29–1.41×, elapsed 1.05–1.15× (medians); batterystats estimate 0 mAh in every cell (no energy claim). Earlier: pilots 1–3 harness faults, v2 final environment failure, v3 final dozed (harness fault); v2/v3 data not committed (serial) |

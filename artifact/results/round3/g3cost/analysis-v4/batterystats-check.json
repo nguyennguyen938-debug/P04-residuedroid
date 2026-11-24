@@ -1,0 +1,47 @@
+{
+ "pilot-4": {
+  "cells": 9,
+  "uid_mah_nonzero": 0,
+  "uid_mah_missing": 0,
+  "uid_mah_max": 0.0,
+  "global_cpu_nonzero": 0,
+  "global_cpu_missing": 0,
+  "computed_drain_nonzero": 0
+ },
+ "pilot-5": {
+  "cells": 9,
+  "uid_mah_nonzero": 0,
+  "uid_mah_missing": 0,
+  "uid_mah_max": 0.0,
+  "global_cpu_nonzero": 0,
+  "global_cpu_missing": 0,
+  "computed_drain_nonzero": 0
+ },
+ "final-v3": {
+  "cells": 64,
+  "uid_mah_nonzero": 0,
+  "uid_mah_missing": 0,
+  "uid_mah_max": 0.0,
+  "global_cpu_nonzero": 0,
+  "global_cpu_missing": 0,
+  "computed_drain_nonzero": 0
+ },
+ "pilot-6": {
+  "cells": 9,
+  "uid_mah_nonzero": 0,
+  "uid_mah_missing": 0,
+  "uid_mah_max": 0.0,
+  "global_cpu_nonzero": 0,
+  "global_cpu_missing": 0,
+  "computed_drain_nonzero": 0
+ },
+ "final-v4": {
+  "cells": 180,
+  "uid_mah_nonzero": 0,
+  "uid_mah_missing": 0,
+  "uid_mah_max": 0.0,
+  "global_cpu_nonzero": 0,
+  "global_cpu_missing": 0,
+  "computed_drain_nonzero": 0
+ }
+}

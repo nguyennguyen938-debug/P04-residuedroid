@@ -1,0 +1,10 @@
+{
+  "id": "g3cost-final",
+  "kind": "final",
+  "status": "DONE",
+  "guard": null,
+  "finished": "2026-11-24T01:10:03.952898+07:00",
+  "stages": [
+    "artifact/results/round3/g3cost/final-v4"
+  ]
+}

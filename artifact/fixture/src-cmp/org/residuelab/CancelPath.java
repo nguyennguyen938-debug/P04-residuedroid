@@ -17,9 +17,19 @@ import java.util.concurrent.*;
  */
 public final class CancelPath {
     public static final class Token implements java.util.function.Consumer<SocketChannel> {
-        private boolean cancelled; private SocketChannel ch;
+        private boolean cancelled, handed; private SocketChannel ch;
         @Override public synchronized void accept(SocketChannel c) { ch = c; if (cancelled) close(); }   // TlsTransport: right after open
         synchronized boolean cancel() { cancelled = true; return close(); }
+        /** Group 3 (g3race-card.md): REQUEST_HANDED_OFF seen; close2 leaves such a request alone. */
+        synchronized void handed() { handed = true; }
+        /** close2: cancel only a request not yet handed off. -1 = handed off (left alone), 1 = socket closed, 0 = no socket yet. */
+        synchronized int cancelUnhanded() { if (handed) return -1; cancelled = true; return close() ? 1 : 0; }
+        /** fence-abort: make the coming close abortive (SO_LINGER 0: RST, unsent send-buffer data discarded). */
+        synchronized boolean linger0() {
+            if (ch == null) return false;
+            try { ch.socket().setSoLinger(true, 0); return true; } catch (Exception e) { return false; }
+        }
+        synchronized int localPort() { return ch == null ? -1 : ch.socket().getLocalPort(); }
         private boolean close() {
             if (ch == null) return false;
             try { ch.close(); } catch (Exception ignored) { }
@@ -38,6 +48,13 @@ public final class CancelPath {
         int live = 0, closed = 0;
         for (Token t : LIVE) { live++; if (t.cancel()) closed++; }
         return "live=" + live + ";closed=" + closed;
+    }
+
+    /** Group 3 close2: called in the sending process itself, right after the withdrawal is durable and before its ack. */
+    static String cancelUnhanded() {
+        int live = 0, closed = 0, nosocket = 0, handed = 0;
+        for (Token t : LIVE) { live++; int r = t.cancelUnhanded(); if (r > 0) closed++; else if (r == 0) nosocket++; else handed++; }
+        return "live=" + live + ";closed=" + closed + ";nosocket=" + nosocket + ";handed=" + handed;
     }
 
     /** Withdrawing process, after the withdrawal is durable and before its ack. Returns the reply, or "timeout". */

@@ -1,0 +1,39 @@
+{
+ "phone": {
+  "release": "15",
+  "sdk": "35",
+  "model": "SM-A066B",
+  "wifi": "Wi-Fi is enabled"
+ },
+ "serial": "physical (not recorded)",
+ "uid": 10405,
+ "host": "192.168.1.20",
+ "host_source": "auto (ipconfig getifaddr)",
+ "installed_apk_sha256": "8f723ead0a9ac8d0eb1c7ea15c7a52e6da83363c912a7ef00a4eba15a028e1ad",
+ "arms": [
+  "fence",
+  "early",
+  "platform"
+ ],
+ "sizes": [
+  4096,
+  262144,
+  2097152
+ ],
+ "repeats": 10,
+ "blocks": 20,
+ "start": 0,
+ "seed": "g3cost-20261122",
+ "apk_sha256": "8f723ead0a9ac8d0eb1c7ea15c7a52e6da83363c912a7ef00a4eba15a028e1ad",
+ "ca_sha256": "c1ae2bad6a80c6edfe09a47caf7b959634d24669deaf1cea1525f3db3e74e3aa",
+ "setup_init_s": 0.1,
+ "foreground": true,
+ "battery_unplug_override": true,
+ "screen_off_timeout_override_ms": 86400000,
+ "deviceidle_disabled": true,
+ "power_check": {
+  "screen_off_timeout": "86400000",
+  "deviceidle": "mLightEnabled=false  mDeepEnabled=false"
+ },
+ "started": 1795454085.023061
+}

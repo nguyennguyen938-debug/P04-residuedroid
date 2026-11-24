@@ -1,0 +1,145 @@
+$ bash .claude/skills/p04-experiment/scripts/preflight.sh
+== toolchain
+  [ OK ] JDK 17 at /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+  [ OK ] python3 Python 3.15.2
+  [ OK ] pdflatex
+== Android SDK
+  [ OK ] ANDROID_HOME=/Users/nguyennhatduy/Library/Android/sdk
+  [ OK ] adb 1.0.41
+  [ OK ] emulator 37.2.13.0 (build_id 16740729) (CL:N/A)
+  [ OK ] platforms;android-33
+  [ OK ] build-tools;34.0.0
+  [ OK ] ANDROID_AVD_HOME=/Users/nguyennhatduy/.android/avd
+  [ OK ] system image android-33 google_apis arm64-v8a rev 17
+  [ OK ] system image android-33 arm64 rev 17
+== AVDs
+  [ OK ] AVD P04AvdA
+== host
+  [WARN] only ~3 GB available; close apps before 2 emulators
+  [ OK ] 134 GB disk free
+  [ OK ] on AC power
+  [ OK ] ports 5660 8798 8799 free (unless listed)
+== repo
+  [ OK ] oracle unit tests
+summary: 16 ok, 0 failed
+$ caffeinate -s -i python3 followup/race_suite.py --radio --shaper tc --g3 --marker 8799 --serial emulator-5660 --avd P04AvdA --certdir /Users/nguyennhatduy/.p04/racecert --apk fixture/build/g3p4-apk/rl-tls.apk --profiles edge,umts --sizes 2097152 --seed race-20261119 --modes fence,fence-abort --capture --start 16 --trials 14 --durations results/round3/g3race/pilot-calib/calibration.json --sndbufs 0,16384,65536 --qsnap --out results/round3/g3race/final-p4b
+13:15:46 race-umts-2097152-fence-abort-16-3985fb ['SEND_ERROR']
+13:16:16 race-umts-2097152-fence-abort-16-4089dc ['SEND_ERROR']
+13:19:11 race-edge-2097152-fence-abort-16-b33759 ['SEND_OK']
+13:21:11 race-edge-2097152-fence-16-86fda8 ['SEND_ERROR']
+13:21:40 race-umts-2097152-fence-16-6f1f67 ['SEND_ERROR']
+13:22:09 race-umts-2097152-fence-abort-16-58d7aa ['SEND_ERROR']
+13:24:09 race-edge-2097152-fence-abort-16-8a3af6 ['SEND_ERROR']
+13:24:38 race-umts-2097152-fence-16-170846 ['SEND_ERROR']
+13:27:09 race-edge-2097152-fence-16-b3c3b9 ['SEND_OK']
+13:29:09 race-edge-2097152-fence-16-5dd578 ['SEND_ERROR']
+13:29:38 race-umts-2097152-fence-16-9ec616 ['SEND_ERROR']
+13:31:37 race-edge-2097152-fence-abort-16-45c3fc ['SEND_ERROR']
+13:33:04 race-umts-2097152-fence-abort-17-f38b73 ['SEND_ERROR']
+13:33:56 race-edge-2097152-fence-abort-17-b7dfaa ['SEND_ERROR']
+13:34:48 race-edge-2097152-fence-17-e3f126 ['SEND_ERROR']
+13:36:15 race-umts-2097152-fence-abort-17-bd7f47 ['SEND_ERROR']
+13:37:41 race-umts-2097152-fence-17-8256b3 ['SEND_ERROR']
+13:40:13 race-edge-2097152-fence-17-5bb6af ['SEND_OK']
+13:41:06 race-edge-2097152-fence-17-4072df ['SEND_ERROR']
+13:43:42 race-edge-2097152-fence-abort-17-a35e28 ['SEND_OK']
+13:46:01 race-umts-2097152-fence-17-0dad49 ['SEND_OK']
+13:46:53 race-edge-2097152-fence-abort-17-ee381b ['SEND_ERROR']
+13:48:20 race-umts-2097152-fence-17-18b961 ['SEND_ERROR']
+13:50:44 race-umts-2097152-fence-abort-17-9da66a ['SEND_OK']
+13:52:23 race-edge-2097152-fence-18-1b02db ['SEND_ERROR']
+13:54:03 race-edge-2097152-fence-abort-18-e91e47 ['SEND_ERROR']
+13:55:50 race-umts-2097152-fence-abort-18-748edf ['SEND_ERROR']
+13:57:29 race-edge-2097152-fence-18-9f1e44 ['SEND_ERROR']
+14:00:06 race-edge-2097152-fence-abort-18-7ef0c0 ['SEND_OK']
+14:02:24 race-umts-2097152-fence-18-394677 ['SEND_OK']
+14:04:42 race-umts-2097152-fence-abort-18-2e0f37 ['SEND_OK']
+14:06:29 race-umts-2097152-fence-abort-18-e18f5b ['SEND_ERROR']
+14:08:16 race-umts-2097152-fence-18-29630e ['SEND_ERROR']
+14:09:55 race-edge-2097152-fence-abort-18-21a6e8 ['SEND_ERROR']
+14:12:25 race-edge-2097152-fence-18-c6add9 ['SEND_OK']
+14:14:12 race-umts-2097152-fence-18-6dd91a ['SEND_ERROR']
+14:15:03 race-umts-2097152-fence-abort-19-649cfa ['SEND_ERROR']
+14:15:54 race-umts-2097152-fence-19-cd46dc ['SEND_ERROR']
+14:16:44 race-umts-2097152-fence-19-d9a0d8 ['SEND_ERROR']
+14:19:17 race-edge-2097152-fence-19-2edd53 ['SEND_OK']
+14:21:42 race-edge-2097152-fence-19-d09b83 ['SEND_ERROR']
+14:24:01 race-umts-2097152-fence-abort-19-07c572 ['SEND_OK']
+14:26:19 race-umts-2097152-fence-19-60ff83 ['SEND_OK']
+14:28:49 race-edge-2097152-fence-abort-19-380689 ['SEND_OK']
+14:31:19 race-edge-2097152-fence-abort-19-de3a42 ['SEND_OK']
+14:33:50 race-edge-2097152-fence-19-b130da ['SEND_OK']
+14:34:40 race-umts-2097152-fence-abort-19-e98368 ['SEND_ERROR']
+14:37:05 race-edge-2097152-fence-abort-19-17751f ['SEND_ERROR']
+14:37:18 race-edge-2097152-fence-20-8154bb ['SEND_ERROR']
+14:39:42 race-umts-2097152-fence-abort-20-47f48c ['SEND_OK']
+14:42:00 race-umts-2097152-fence-20-707ad6 ['SEND_OK']
+14:42:48 race-umts-2097152-fence-20-f9583f ['SEND_ERROR']
+14:43:01 race-edge-2097152-fence-20-0f9738 ['SEND_ERROR']
+14:43:14 race-edge-2097152-fence-20-13ff28 ['SEND_ERROR']
+14:44:02 race-umts-2097152-fence-abort-20-da14a9 ['SEND_ERROR']
+14:44:14 race-edge-2097152-fence-abort-20-bb0218 ['SEND_ERROR']
+14:44:27 race-edge-2097152-fence-abort-20-6920e4 ['SEND_ERROR']
+14:44:40 race-edge-2097152-fence-abort-20-3ec5ef ['SEND_ERROR']
+14:45:28 race-umts-2097152-fence-20-cfbbb0 ['SEND_ERROR']
+14:46:16 race-umts-2097152-fence-abort-20-7e778c ['SEND_ERROR']
+14:46:21 race-umts-2097152-fence-abort-21-5d69f0 ['SEND_ERROR']
+14:47:57 race-edge-2097152-fence-abort-21-1ee4f5 ['SEND_ERROR']
+14:48:02 race-umts-2097152-fence-21-2c7a61 ['SEND_ERROR']
+14:48:07 race-umts-2097152-fence-abort-21-8effdb ['SEND_ERROR']
+14:48:12 race-umts-2097152-fence-abort-21-b4367b ['SEND_ERROR']
+14:49:49 race-edge-2097152-fence-21-dd6ce6 ['SEND_ERROR']
+14:51:26 race-edge-2097152-fence-abort-21-7610a3 ['SEND_ERROR']
+14:53:02 race-edge-2097152-fence-21-f8e933 ['SEND_ERROR']
+14:55:33 race-edge-2097152-fence-abort-21-cc528a ['SEND_OK']
+14:58:03 race-edge-2097152-fence-21-2a3a60 ['SEND_OK']
+14:58:08 race-umts-2097152-fence-21-d8c765 ['SEND_ERROR']
+14:58:13 race-umts-2097152-fence-21-7110bd ['SEND_ERROR']
+15:02:01 race-umts-2097152-fence-abort-22-51668d ['SEND_OK']
+15:03:37 race-umts-2097152-fence-22-8d15bb ['SEND_ERROR']
+15:04:54 race-edge-2097152-fence-22-af0c21 ['SEND_ERROR']
+15:06:10 race-edge-2097152-fence-abort-22-4f82d7 ['SEND_ERROR']
+15:07:46 race-umts-2097152-fence-abort-22-f22f48 ['SEND_ERROR']
+15:10:04 race-umts-2097152-fence-22-a178df ['SEND_OK']
+15:11:40 race-umts-2097152-fence-abort-22-397e19 ['SEND_ERROR']
+15:14:10 race-edge-2097152-fence-abort-22-dd37b0 ['SEND_OK']
+15:15:26 race-edge-2097152-fence-22-3d7d11 ['SEND_ERROR']
+15:17:02 race-umts-2097152-fence-22-eaebb5 ['SEND_ERROR']
+15:18:18 race-edge-2097152-fence-abort-22-10abd6 ['SEND_ERROR']
+15:20:48 race-edge-2097152-fence-22-4dbc01 ['SEND_OK']
+15:22:06 race-edge-2097152-fence-23-f9353f ['SEND_ERROR']
+15:24:38 race-edge-2097152-fence-23-1b6880 ['SEND_OK']
+15:25:56 race-edge-2097152-fence-23-ba1d89 ['SEND_ERROR']
+15:27:34 race-umts-2097152-fence-abort-23-04c18f ['SEND_ERROR']
+15:29:12 race-umts-2097152-fence-23-099ea6 ['SEND_ERROR']
+15:31:31 race-umts-2097152-fence-abort-23-b7ec06 ['SEND_OK']
+15:34:01 race-edge-2097152-fence-abort-23-82233a ['SEND_OK']
+15:35:19 race-edge-2097152-fence-abort-23-1a7ce2 ['SEND_ERROR']
+15:36:57 race-umts-2097152-fence-23-cd4e49 ['SEND_ERROR']
+15:38:35 race-umts-2097152-fence-abort-23-16782d ['SEND_ERROR']
+15:39:53 race-edge-2097152-fence-abort-23-85482c ['SEND_ERROR']
+15:42:11 race-umts-2097152-fence-23-e5d2c9 ['SEND_OK']
+15:43:31 race-edge-2097152-fence-24-41f7b5 ['SEND_ERROR']
+15:46:02 race-edge-2097152-fence-abort-24-6e3656 ['SEND_OK']
+15:46:23 race-umts-2097152-fence-24-bd0d89 ['SEND_ERROR']
+15:48:54 race-edge-2097152-fence-24-7767d8 ['SEND_OK']
+15:49:15 race-umts-2097152-fence-abort-24-3f653c ['SEND_ERROR']
+15:49:36 race-umts-2097152-fence-24-e60583 ['SEND_ERROR']
+15:49:56 race-umts-2097152-fence-abort-24-23c104 ['SEND_ERROR']
+15:51:17 race-edge-2097152-fence-24-c78c59 ['SEND_ERROR']
+15:51:38 race-umts-2097152-fence-abort-24-abfa2a ['SEND_ERROR']
+15:51:58 race-umts-2097152-fence-24-5ec6a9 ['SEND_ERROR']
+15:53:19 race-edge-2097152-fence-abort-24-7b85d2 ['SEND_ERROR']
+15:54:39 race-edge-2097152-fence-abort-24-e0e4bf ['SEND_ERROR']
+15:57:09 race-edge-2097152-fence-abort-25-48a086 ['SEND_OK']
+15:57:30 race-umts-2097152-fence-25-ce6559 ['SEND_ERROR']
+15:57:52 race-umts-2097152-fence-abort-25-1efcf8 ['SEND_ERROR']
+16:09:19 race-edge-2097152-fence-25-d1623a ['SEND_ERROR']
+16:24:15 race-edge-2097152-fence-abort-25-ed2d1d ['SEND_ERROR']
+$ python3 artifact/followup/tls_records.py artifact/results/round3/g3race/final-p4b/capture.pcap
+artifact/results/round3/g3race/final-p4b/capture-tls.jsonl 98111 frames {'app': 142555660, 'other': 26334, 'unknown': 166881}
+$ bash .claude/skills/p04-experiment/scripts/guard.sh
+GUARD OK
+$ /Users/nguyennhatduy/Library/Android/sdk/platform-tools/adb -s emulator-5660 emu kill
+OK: killing emulator, bye bye
+OK
