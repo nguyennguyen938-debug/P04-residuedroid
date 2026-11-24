@@ -9,7 +9,8 @@ empirical tables, plots and evaluation macros. \texttt{make all} regenerates the
 \texttt{make campaign}, \texttt{make micro} and \texttt{make acra} re-run the emulator experiments. Pinned dependencies and corpus inputs carry SHA-256 manifests. The archive excludes the corpus APK
 cache, SDK and AVDs; scan outputs support numeric regeneration, while new scans require APK retrieval.
 Experiment protocols, source freezes and exclusions are in \texttt{revision/}. The local package
-is not a claim of public hosting or third-party reproduction.
+is not a claim of public hosting or third-party reproduction. Lifecycle and SDK runs used the android-33 google\_apis
+arm64-v8a rev.~17 image (build TE1A.240213.009) under emulator 37.2.13.
 
 \input{sections/appendix-matrix}
 
@@ -69,8 +70,12 @@ collection epoch, not with the scope declared by the job that consumes it;
 relabelling with the current epoch;
 \item \emph{a transport or SDK sender} routes every write through the fenced transport with one writer per socket, and
 registers no stock sender beside it;
-\item \emph{a store migration} retires or blocks unlabelled rows rather than labelling them with the current epoch.
+\item \emph{a store migration} retires or blocks unlabelled rows rather than labelling them with the current epoch;
+\item \emph{a submission} declares the purpose of its actual use. Purposes, like scopes, are declared by the app, and
+neither the fence nor the label checker can tell a wrong purpose from a right one.
 \end{itemize}
+These obligations are the trusted part of the threat model (\S\ref{sec:scope}): \sys checks policy against labels and
+purposes, but it trusts that labels are complete, that purposes are honest and that every write is routed through it.
 The artifact's label checker (\texttt{mutation/label\_check.py}) compares, in test builds, each submitted label with the
 sources that tracers find in the content; it is the check that catches an incomplete label. The confirmation shown on
 withdrawal should not overpromise, for example: ``Sharing is off. Data not yet handed to the network will not be sent. Data handed over before
@@ -99,8 +104,41 @@ configuration arguments for two test apps, not a proof of complete mediation.
 output stream takes the lock and checks before each bounded write, provided the request's label can be bound to the pooled
 connection for the duration of that request; with TLS the factory would wrap the underlying socket, so the checked bytes
 are ciphertext as in A1. HTTP/2 interleaves frames of differently labelled requests on one connection through an
-asynchronous writer, which conflicts with one writer per socket and would need per-frame labels. Cronet and QUIC send
-below the Java socket layer. We have built none of these ports.
+asynchronous writer, which conflicts with one writer per socket and would need per-frame labels. Two designs keep the
+argument: give each labelled request its own connection, or let the connection's single writer take the lock and check
+the stream's label before each DATA frame it writes. TLS~1.3 records are checked the same way as TLS~1.2 records, but
+early (0-RTT) data leaves before the handshake completes and would have to be disabled or checked before the first
+flight. Cronet and QUIC send below the Java socket layer; a check in Cronet's upload data provider certifies the handoff
+to Cronet's buffer, not socket acceptance, which moves the boundary up as the stream wrapper does
+(Appendix~\ref{app:stream}). We have built none of these ports.
+
+\paragraph{Composition with system-level egress control.} A kernel filter or an on-device VPN proxy can hold or block
+connections from paths the app does not mediate, including native code and system services, but it sees neither
+labels nor epochs. The two compose: \sys decides for mediated submissions, and the system layer, fed the app's set of
+withdrawn destinations, blocks unmediated ones. We have not built this.
+
+\section{Design Variants We Did Not Evaluate}
+\label{app:variants}
+\paragraph{Per-scope locks.} The evaluated coordinator uses one app-wide lock, which delays unrelated scopes. Theorem~\ref{thm:sound}
+only needs each check and write to exclude withdrawals of the scopes in the request's label. With one lock per scope, a
+writer would take the locks of every scope in its label, in a fixed global order to avoid deadlock, and a withdrawal or
+re-grant would take its own scope's lock; requests that share a scope still serialize, others do not. The label is fixed
+before the first write, so the set of locks does not change during a request.
+
+\paragraph{Serialized cancellation.} A withdrawal that, under the writer's lock and before it commits, marks every
+registered in-flight request of its scope as cancelled, with each writer checking that mark under the same lock before
+each write, meets the commit boundary. It is the fence's check stored per request, and it still needs every request
+registered before its first write (\S\ref{sec:eval-realapp} shows one that was not).
+
+\paragraph{Bounding what leaves after acceptance.} An app that wants a device-side bound below the socket can close
+abortively when the fence blocks (\texttt{SO\_LINGER} 0), which left at most \gsAbortMax{} bytes after the acknowledgement in our runs
+(\S\ref{sec:eval-natural}), and set a small send buffer. We did not measure the throughput cost of either.
+
+\paragraph{Durable acknowledgement.} Our store is SQLite in WAL mode with the platform's default synchronous setting
+(\S\ref{sec:theory}). In WAL mode with \texttt{synchronous=NORMAL}, SQLite may roll back a committed transaction after
+power loss or an operating-system crash, so an app that acknowledges a withdrawal should commit it with \texttt{synchronous=FULL} first. A store that
+cannot be opened or read makes every check fail closed (\S\ref{sec:discussion}). We did not test power loss or storage
+corruption.
 
 \section{Static Scanner}
 \label{app:scanner}
@@ -121,11 +159,19 @@ Soot/Dexpler~\cite{bartel2012dexpler} so that it runs with the Python standard l
 defaults used in the main evaluation are unchanged. A split policy handles requests that mix permitted and forbidden
 items: when the check denies a request before any of its chunks was accepted, the sender retires the forbidden items and
 resubmits the permitted ones once, as a new request with its own checks. Once a chunk of the request was accepted, the
-request is not split, so its permitted items are lost with it.
+request is not split, so its permitted items are lost with it. For example, a request carries three usage events of
+scope $s_1$ and a summary derived from $s_1$ and $s_2$. If $s_2$ is withdrawn under a contract that covers pending data
+and the check denies the request before its first chunk, the sender retires the summary and resubmits the three events
+as a new request; had a chunk already been accepted, the request would end with a send error and the events would be lost
+with it.
 
 \paragraph{Real-app embedding.} AirGuard's data-donation worker (WorkManager, Retrofit) uploads tracker sightings to a
 study server. The embedding leaves the app's database schema unchanged: a separate durable consent log records grant and
 withdrawal intervals under the coordinator lock, and an item's label is the interval that contains its collection time.
+The switch's wording does not say whether beacons collected while it was off may be donated once it is on again. We read
+it as forbidding them, as the $\bot$ label does; under a reading in which the switch governs only when data is sent, the
+stock build's donations after re-consent are not violations, and the AirGuard lifecycle counts measure behaviour, not
+breaches.
 The fenced build serialises the worker's own request body with the app's converter and sends it through the HTTP
 transport; the stock build keeps Retrofit. Both test builds share identical test hooks (synthetic beacons, consent
 toggles through the app's own preference path, worker runs) and point to a host sink; the patch is applied to a clone at
@@ -192,7 +238,8 @@ was in the kernel buffer when the call was cancelled (exploratory diagnosis).
 each lost a reboot trial to a harness or device failure. Dropping the label from the job input (M3) leaked in
 \mutThreeLeak{} trials and left \mutThreeDeficit{} permitted items undelivered against \mutBaseDeficit{} for the unmodified
 build, which leaked in \mutBaseLeak{} of \mutBaseTrials{}. The Android~14 and 15 runs cover pending, kill, reboot and
-network-loss schedules. The rented phones are one device per model from two device clouds; the TLS barrier of
+network-loss schedules. The rented phones (Android~\devAndroid{}) are one device per model from two device clouds; the
+fence accepted application ciphertext after acknowledgement in \devFenceAfterAck{} TLS barrier trials. The TLS barrier of
 \S\ref{sec:revision} ran over \devTrials{} trials split evenly between the arms, the early check completing all
 \devEarlyComplete{} of its requests, and the lifecycle runs used pending,
 kill and revoke schedules.
@@ -214,7 +261,8 @@ a sender waited its full deadline for the app-wide lock, a fairness limit of tha
 
 \paragraph{Cost on a phone.} The phone run uses the TLS fixture with three arms (fence, early, and the platform's
 \texttt{HttpsURLConnection}), 4\,KiB, 256\,KiB and 2\,MiB uploads, ten uploads per cell and cells shuffled per block, in
-\gdCells{} valid cells. The fence and early arms share the transport and its per-record event logging; the platform arm
+\gdCells{} valid cells. The fence and early arms share the transport and its per-record event logging and differ only in
+the check and lock around each write; the platform arm
 logs four events per upload, so its much lower process CPU reflects both the user-space TLS path and that logging, and we
 do not report fence/platform ratios. Doze was disabled and the screen kept on during the run.
 

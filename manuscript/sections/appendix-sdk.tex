@@ -16,7 +16,8 @@ of the configured SDK test app, not findings about every app bundling ACRA.
 ACRA supplies library preference keys, not one universal stock toggle wording. The preference-only fixture displayed
 only ``AcraLab''; its harness changed \texttt{acra.enable}. We classify its \acraStockLeak{} receipt result under a
 collection-only opt-out with no queued-deletion promise (Table~\ref{tab:contracts}). It is not evidence of violating the
-stronger contract below.
+stronger contract below. Under that contract the queued report may be sent, so the preference-aware sender's withholding
+is stricter than the stated contract: a permitted flow lost, not a violation avoided.
 
 The explicit-contract embedding provides a visible setting that promises to invalidate queued reports,
 a transactional policy store, a source epoch in each report's custom data, and the shared
