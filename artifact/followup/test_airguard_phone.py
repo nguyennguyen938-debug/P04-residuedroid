@@ -29,7 +29,9 @@ class Phone(unittest.TestCase):
 
     def test_reboot(self):
         self.assertEqual(g.validity(plan('reboot'), DEV), 'reboot not completed')
-        self.assertIsNone(g.validity(plan('reboot', acts=[{'a': 'boot_completed', 's': 30}]), DEV))
+        self.assertEqual(g.validity(plan('reboot', acts=[{'a': 'boot_completed', 's': 30}]), DEV), 'reboot not verified')
+        self.assertEqual(g.validity(plan('reboot', acts=[{'a': 'boot_completed', 's': 0}], reboot_verified=False), DEV), 'reboot not verified')
+        self.assertIsNone(g.validity(plan('reboot', acts=[{'a': 'boot_completed', 's': 30}], reboot_verified=True), DEV))
         self.assertIsNone(g.validity(plan('reboot', phone=False), DEV))
 
     def test_pending(self):

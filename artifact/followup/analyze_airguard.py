@@ -39,6 +39,7 @@ def validity(plan, dev, variants=('stock', 'fenced')):
         if plan['schedule'] == 'netloss' and plan.get('net_verified_down') is not True: return 'net cut not verified'
         if plan['schedule'] == 'kill' and plan.get('kill_verified') is not True: return 'kill not verified'
         if plan['schedule'] == 'reboot' and not any(x['a'] == 'boot_completed' for x in acts): return 'reboot not completed'
+        if plan['schedule'] == 'reboot' and plan.get('reboot_verified') is not True: return 'reboot not verified'
     return None
 
 

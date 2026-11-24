@@ -67,6 +67,7 @@ WHY = {   # directory -> (what happened, protocol change it caused); sources: ta
     'round3/g3cost/pilot-3': ('G3d pilot-3: PILOT GATE FAIL (8/9 cells valid; one transient adb error with empty stderr; Android 15 batterystats estimate only on the checkin line; chain gate line bug)', 'G3d protocol v2: one logged adb retry, Android 15 parser, gate line fixed'),
     'round3/g3cost/pilot-5': ('G3d v3 pilot (23/11 15:30): gate passed (1 block); the v3 final then dozed at the 10 min screen timeout under battery unplug (harness design fault)', 'G3d protocol v4: screen timeout 24 h + Doze off during the run, checked in meta and the pilot gate'),
     'round3/g3cost/pilot-4': ('G3d v2 pilot: gate passed (9/9 valid, 18/18 uploads ok and received)', 'none (the v2 final then failed on the environment: phone dozed, device lost; protocol v3)'),
+    'round3/phone-r4/aws/life/pilot-preb': ('Round 4 Device Farm lifecycle reboot pilot (24/11): both gates passed, but the phone never rebooted (adb reboot ignored; boot_s 0.55 s, monotonic clock continuous in all five apps, reboot-evidence.json)', 'reboot schedule dropped on Device Farm; harness v1.1 records uptime and requires reboot_verified'),
     'round3/g3cost/pilot-6': ('G3d v4 pilot (24/11 00:14): gate passed (9/9 valid, 18/18 uploads ok and received, batterystats in 9 cells, screen timeout 86400000 and Doze off)', 'none'),
     'round3/g2layer/pilot': ('G2b pilot (1 trial per schedule, three builds): 4/4 valid, warm-up ok, donate requests at all three ports; gate passed', 'none'),
 }

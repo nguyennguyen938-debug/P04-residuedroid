@@ -129,10 +129,15 @@ def trial(sched, k):
                 act('kill', variant=v, pid_after=after, **({'pid_before': before} if a.phone else {})); kv.append(bool(before) and after != before)
             if a.phone: log['kill_verified'] = all(kv)   # B 24/11: the pid must have existed and changed or gone
         elif sched == 'reboot':
+            up0 = sh('cat /proc/uptime').split()[:1]
             act('reboot'); adb('reboot'); time.sleep(5); adb('wait-for-device', timeout=300)
             t0 = time.time()
             while not alive() and time.time() - t0 < 300: time.sleep(2)
-            root(); act('boot_completed', s=round(time.time() - t0))
+            root(); up1 = sh('cat /proc/uptime').split()[:1]
+            act('boot_completed', s=round(time.time() - t0), **({'uptime_before': up0, 'uptime_after': up1} if a.phone else {}))
+            if a.phone:                           # B 24/11: a reboot counts only if the uptime restarted (Device Farm ignored adb reboot)
+                try: log['reboot_verified'] = float(up1[0]) < float(up0[0])
+                except Exception: log['reboot_verified'] = False
         for v in order: ok, out = hook(v, 'grant'); act('regrant', variant=v, ok=ok, out=out)
         time.sleep(1.5)
         for v in order: ok, out = hook(v, 'insert', addr=f'AA:00:00:00:02:{k % 100:02d}', n=a.nbeacons, age_s=0); act('insert_post', variant=v, ok=ok)

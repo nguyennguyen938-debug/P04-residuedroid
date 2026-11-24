@@ -1,0 +1,1 @@
+sink on :8787 -> /tmp/devicefarm-workspace/execution-tigdjbtt/logs-3tcrilt_/life/sink delay=300ms

@@ -106,6 +106,8 @@ def phone_validity(plan):
         return "net cut not verified"
     if plan.get("schedule") == "reboot" and not any(a.get("a") == "boot_completed" for a in plan.get("actions", [])):
         return "reboot not completed"
+    if plan.get("schedule") == "reboot" and "reboot_verified" in plan and plan["reboot_verified"] is not True:
+        return "reboot not verified"
     q = [a for a in plan.get("actions", []) if a.get("a") == "quiesced"]
     if q and q[-1].get("seen_max", 1) <= 0:
         return "jobs not observable"

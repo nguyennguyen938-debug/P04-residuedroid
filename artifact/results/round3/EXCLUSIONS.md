@@ -85,6 +85,7 @@ rules, replacement rules and protocol versions: the task cards in `artifact/plan
 | `round3/g3race/pilot-mech` | G3a/G3b mechanism pilot (45 trials): MECHANISM GATE FAIL on the capture only (console `network capture start` takes bare filenames; no pcap) | protocol v2: emulator -tcpdump at launch |
 | `round3/g3race/pilot-mech2` | G3a/G3b mechanism pilot v2 (45 trials): every gate field held | none |
 | `round3/g3race/pilot-p4` | P4 pilot (1 block, 12 trials): mechanism gate passed (sndbuf levels requested/actual 0/1048576, 16384/16384, 65536/65536) | none |
+| `round3/phone-r4/aws/life/pilot-preb` | Round 4 Device Farm lifecycle reboot pilot (24/11): both gates passed, but the phone never rebooted (adb reboot ignored; boot_s 0.55 s, monotonic clock continuous in all five apps, reboot-evidence.json) | reboot schedule dropped on Device Farm; harness v1.1 records uptime and requires reboot_verified |
 | `round3/test1-phone/pilot-calib-1` | phone pilot stopped after 3 sends: SocketException (connect abort) — the never-launched app had no network from a broadcast | race_suite wakes the app on phones (standby bucket active + launch once), as campaign.py |
 | `round3/test1-phone/pilot-calib-2` | phone pilot, throttle gate failed: every 256 KiB/2 MiB send cut ~4.4–4.9 s in (connection abort; app process frozen in the background on Android 15) | race_suite keeps the app in the foreground on phones (launch Main before each send) |
 | `round3/test1-phone/pilot-calib-3` | phone pilot, 27/27 sends ok, throttle gate passed; durations used by the final | none |

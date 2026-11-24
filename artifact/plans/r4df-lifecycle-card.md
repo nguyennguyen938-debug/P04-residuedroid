@@ -54,4 +54,16 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7). No jo
 - External: one rented phone model, Android 17.
 - Conclusion: N = 20 per schedule; 0/N is not a guarantee.
 
+## Pilot log
+- **pilot-preb (24/11 21:57, reboot, N = 1): Device Farm does not reboot the phone.** The job passed both gates
+  (`gates.py`, `gate_b.py`), but the logged `boot_s` was 0.55 s and the device's monotonic clock in all five apps' event logs
+  ran on across the `adb reboot` (about 5,420 s before and 5,470–5,493 s after; `plans/r4df/reboot_evidence.py` →
+  `pilot-preb/reboot-evidence.json`). The command was ignored; `sys.boot_completed` stayed 1, so the old check could not
+  tell. Following §3, **the reboot schedule is dropped on Device Farm** for this task and for AirGuard (no AirGuard reboot
+  pilot is run). Harness fix (protocol v1.1, before any further job): with `--phone-faults` / `--phone`, the reboot action
+  records `/proc/uptime` before and after, `reboot_verified` = uptime restarted, and the analysis marks a plan with
+  `reboot_verified` false as "reboot not verified" (`followup/test_phone_reboot.py`, `test_airguard_phone.py`). This keeps
+  the check for a later own-phone run, where `adb reboot` works.
+- Remaining lifecycle work on Device Farm: netloss pilot, then the netloss final (`START=0 N=20`).
+
 ## 6. Outcome (after the run)

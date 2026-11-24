@@ -349,9 +349,17 @@ def run_trial(sched, k):
         elif sched == "revoke":
             sh("; ".join(f"pm revoke {p} android.permission.ACCESS_FINE_LOCATION" for p in PKGS)); act("pm_revoke")
         elif sched == "reboot":
+            up0 = sh("cat /proc/uptime").split()[:1] if args.phone_faults else None
             act("reboot"); adb("reboot")
             time.sleep(5)
-            bt = wait_boot(); act("boot_completed", boot_s=bt)
+            bt = wait_boot()
+            if not args.phone_faults:
+                act("boot_completed", boot_s=bt)
+            else:
+                up1 = sh("cat /proc/uptime").split()[:1]
+                act("boot_completed", boot_s=bt, uptime_before=up0, uptime_after=up1)   # B 24/11: Device Farm ignored adb reboot (pilot-preb); a reboot counts only if uptime restarted
+                try: log["reboot_verified"] = float(up1[0]) < float(up0[0])
+                except Exception: log["reboot_verified"] = False
     else:
         time.sleep(3)
         runs = "; ".join(f"cmd jobscheduler run -f {p} {j} >/dev/null" for p in PKGS for j in JOBS if j % 10 != 2)

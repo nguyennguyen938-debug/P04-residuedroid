@@ -47,4 +47,9 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7).
 - External: one rented phone model; the reading of the switch (Appendix round3impl).
 - Conclusion: N = 20 per schedule; 0/N is not a guarantee.
 
+## Pilot log
+- 24/11: the lifecycle reboot pilot showed that Device Farm ignores `adb reboot` (`plans/r4df-lifecycle-card.md`, Pilot
+  log). **The reboot schedule is dropped on Device Farm**; AirGuard runs `pending, kill, netloss` only (pilot N = 1, then
+  `START=0 N=10` and `START=10 N=10`). The uptime check (`reboot_verified`) is in the harness for a later own-phone run.
+
 ## 6. Outcome (after the run)
