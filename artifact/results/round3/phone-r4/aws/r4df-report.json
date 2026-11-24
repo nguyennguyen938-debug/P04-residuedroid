@@ -1,0 +1,346 @@
+{
+ "lifecycle_netloss": {
+  "mboth": {
+   "violating_tenant_trials": {
+    "k": 0,
+    "n": 100,
+    "wilson95": [
+     0.0,
+     0.037
+    ]
+   },
+   "paired_trials": 20,
+   "unknown_requests": 0,
+   "legit_missing": 0,
+   "bootstrap_p95": [
+    0.0,
+    0.0
+   ]
+  },
+  "menqueue": {
+   "violating_tenant_trials": {
+    "k": 80,
+    "n": 100,
+    "wilson95": [
+     0.7112,
+     0.8666
+    ]
+   },
+   "paired_trials": 20,
+   "unknown_requests": 0,
+   "legit_missing": 80,
+   "bootstrap_p95": [
+    0.8,
+    0.8
+   ]
+  },
+  "mfence": {
+   "violating_tenant_trials": {
+    "k": 0,
+    "n": 100,
+    "wilson95": [
+     0.0,
+     0.037
+    ]
+   },
+   "paired_trials": 20,
+   "unknown_requests": 0,
+   "legit_missing": 44,
+   "bootstrap_p95": [
+    0.0,
+    0.0
+   ]
+  },
+  "mlayer": {
+   "violating_tenant_trials": {
+    "k": 0,
+    "n": 100,
+    "wilson95": [
+     0.0,
+     0.037
+    ]
+   },
+   "paired_trials": 20,
+   "unknown_requests": 0,
+   "legit_missing": 0,
+   "bootstrap_p95": [
+    0.0,
+    0.0
+   ]
+  },
+  "mstart": {
+   "violating_tenant_trials": {
+    "k": 80,
+    "n": 100,
+    "wilson95": [
+     0.7112,
+     0.8666
+    ]
+   },
+   "paired_trials": 20,
+   "unknown_requests": 0,
+   "legit_missing": 80,
+   "bootstrap_p95": [
+    0.8,
+    0.8
+   ]
+  }
+ },
+ "lifecycle_reboot": "dropped on Device Farm: adb reboot ignored (life/pilot-preb/reboot-evidence.json)",
+ "airguard": {
+  "kill/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "kill/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "kill/stock": {
+   "violating_trials": {
+    "k": 20,
+    "n": 20,
+    "wilson95": [
+     0.8389,
+     1.0
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/stock": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "pending/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "pending/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "pending/stock": {
+   "violating_trials": {
+    "k": 20,
+    "n": 20,
+    "wilson95": [
+     0.8389,
+     1.0
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  }
+ },
+ "airguard_emulator_g2b": {
+  "kill/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "kill/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "kill/stock": {
+   "violating_trials": {
+    "k": 20,
+    "n": 20,
+    "wilson95": [
+     0.8389,
+     1.0
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "netloss/stock": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 20,
+   "deficit_beacons": 80,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  },
+  "pending/fenced": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "pending/layered": {
+   "violating_trials": {
+    "k": 0,
+    "n": 20,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 20,
+   "unknown_trials": 0
+  },
+  "pending/stock": {
+   "violating_trials": {
+    "k": 20,
+    "n": 20,
+    "wilson95": [
+     0.8389,
+     1.0
+    ]
+   },
+   "deficit_trials": 0,
+   "deficit_beacons": 0,
+   "blocked_trials": 0,
+   "unknown_trials": 0
+  }
+ }
+}

@@ -70,3 +70,26 @@ Owner (experimenter): B (Duy). Approved by: **pending leader** (issue #7). No jo
 - Remaining lifecycle work on Device Farm: netloss pilot, then the netloss final (`START=0 N=20`).
 
 ## 6. Outcome (after the run)
+Source: `results/round3/phone-r4/aws/life/analysis/` (pre-registered `analyze_test6.py`, manifest `plans/r4df/manifest-life-df.json`)
+and `results/round3/phone-r4/aws/r4df-report.json` (`plans/r4df/report_r4df.py`, Wilson intervals).
+
+- **Run:** netloss final `life/net`, 24/11 22:16–22:45, Pixel 8a, Android 17; 27.5 trial minutes. Reboot: dropped (Pilot log).
+- **Validity:** 20 paired trials logged, 0 invalid (oracle rules 0, phone rules 0), 0 unused, 20 analysed. The cut was
+  confirmed in every trial (up before, down after).
+- **Affected-tenant trials with a confirmed violation** (5 affected tenants × 20 paired trials = 100 per variant; unknown 0):
+
+  | variant | violating | Wilson 95 % (tenant-trials as independent) | cluster bootstrap p95 (analysis) | permitted deficit |
+  |---|---|---|---|---|
+  | menqueue | 80/100 | 71.1–86.7 % | 0.8–0.8 | 80 |
+  | mstart | 80/100 | 71.1–86.7 % | 0.8–0.8 | 80 |
+  | mlayer | 0/100 | 0–3.7 % | 0–0 | 0 |
+  | mfence | 0/100 | 0–3.7 % | 0–0 | 44 |
+  | mboth | 0/100 | 0–3.7 % | 0–0 | 0 |
+
+  The bootstrap interval has no width because every paired trial gave the same count; Wilson treats the 100 tenant-trials
+  as independent, which they are not (5 per paired trial).
+- **Reading (descriptive, one rented phone, netloss through the adb reverse port):** layered early, the fence and both show
+  no confirmed violation in 20 paired trials (not a guarantee); enqueue-time and job-start checks violate in 80/100. mfence
+  withholds 44 permitted items, mlayer and mboth none. Compared with the emulator and Test 6 by C; never substituted.
+- **Threats (in addition to §5):** the network cut removes the adb reverse port (connection refused), not a radio outage;
+  rebuilt APKs (not the Test 6 binaries); one device model.
