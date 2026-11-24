@@ -12,6 +12,10 @@ Real phone without root (--no-root, e.g. AWS Device Farm): no `adb root`; each a
 copied with `run-as` (debuggable APKs) and queried on the host, printed exactly as the sqlite3 CLI would print them;
 kill -9 is sent as the app's own uid via `run-as`; reboot and netloss need root and are refused. --sink-host tells the
 apps where the sink is (default stays 10.0.2.2, the emulator host alias); with `adb reverse tcp:P tcp:P` use 127.0.0.1.
+Own phone on USB (--phone-faults, needs --no-root --sink-host 127.0.0.1): the harness owns `adb reverse tcp:P tcp:P`.
+reboot = `adb reboot` (no root), then the reverse port is re-added as soon as adbd is back; the phone must have no screen
+lock, or its credential-encrypted storage stays locked after boot. netloss = remove the reverse port for the outage, so
+new connections to 127.0.0.1:P are refused, as the emulator's REJECT rule refuses 10.0.2.2; radios and firewall untouched.
 """
 import argparse, hashlib, json, os, random, re, sqlite3, subprocess, sys, tempfile, time
 
@@ -45,9 +49,13 @@ ap.add_argument("--abort-after", type=int, default=5)   # watchdog: abort after 
 ap.add_argument("--no-root", action="store_true")       # real phone: run-as instead of root (see module docstring)
 ap.add_argument("--sink-host", default="")              # empty = app default 10.0.2.2 (emulator)
 ap.add_argument("--regrant-agg", action="store_true")   # B12 v2: app re-aggregates after the T5 re-grant (fixture extra regrant_agg)
+ap.add_argument("--phone-faults", action="store_true")  # own phone: reboot via adb reboot, netloss via adb reverse (docstring)
 args = ap.parse_args()
-if args.no_root and {"reboot", "netloss"} & set(args.schedules.split(",")):
+if args.phone_faults and not (args.no_root and args.sink_host == "127.0.0.1"):
+    sys.exit("--phone-faults needs --no-root and --sink-host 127.0.0.1 (the sink is reached through adb reverse)")
+if args.no_root and not args.phone_faults and {"reboot", "netloss"} & set(args.schedules.split(",")):
     sys.exit("--no-root: reboot and netloss need root (iptables, adb root after boot); run them on the emulator")
+SINK_HOST = args.sink_host or "10.0.2.2"
 VARS = args.variants.split(",")
 PKGS = [f"org.residuelab.{v}" for v in VARS]
 os.makedirs(args.out, exist_ok=True)
@@ -70,9 +78,19 @@ def bc(pkg, action, extras=""):
     return sh(f"am broadcast -n {pkg}/org.residuelab.Cmd -a {action} -f 0x20 {extras}")
 
 
+def reverse(on):
+    """--phone-faults: the sink port through `adb reverse`; removed during a netloss outage, re-added after it and after boot."""
+    if on:
+        adb("reverse", f"tcp:{args.port}", f"tcp:{args.port}")
+    else:
+        adb("reverse", "--remove", f"tcp:{args.port}")
+
+
 def wait_boot(limit=240):
     t0 = time.time()
     subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=limit)
+    if args.phone_faults:       # restored jobs may run soon after boot; the sink must be reachable before they do
+        reverse(True)
     while time.time() - t0 < limit:
         if sh("getprop sys.boot_completed").strip() == "1":
             break
@@ -81,7 +99,11 @@ def wait_boot(limit=240):
         adb("root"); time.sleep(2)
     subprocess.run([ADB, "-s", args.serial, "wait-for-device"], timeout=60)
     while sh("getprop sys.boot_completed").strip() != "1":
+        if args.phone_faults and time.time() - t0 > limit + 120:   # B 24/11: a phone that never boots ends the trial (error), not the job
+            raise RuntimeError("phone did not finish boot")
         time.sleep(1)
+    if args.phone_faults:
+        reverse(True)
     return time.time() - t0
 
 
@@ -187,7 +209,9 @@ def our_work():
 def net(on):
     """Network loss toward the server, applied to every UID: a guest firewall REJECT rule for 10.0.2.2.
     (svc wifi/data disable did not cut app traffic reliably: per-UID routing kept apps connected.)"""
-    if args.no_root:            # netloss is refused under --no-root; never touch a phone's radios or firewall
+    if args.no_root:            # never touch a phone's radios or firewall; --phone-faults cuts the adb reverse port instead
+        if args.phone_faults:
+            reverse(on)
         return
     if on:
         sh("svc wifi enable; svc data enable; while iptables -D OUTPUT -d 10.0.2.2 -j REJECT 2>/dev/null; do :; done")
@@ -341,7 +365,7 @@ def run_trial(sched, k):
                 net(False); act("net_off", pkg=p)
                 t_cut = time.time(); st = "up"
                 while time.time() - t_cut < 15:
-                    st = sh(f"echo x | nc -w 1 10.0.2.2 {args.port} >/dev/null 2>&1 && echo up || echo down").strip()
+                    st = sh(f"echo x | nc -w 1 {SINK_HOST} {args.port} >/dev/null 2>&1 && echo up || echo down").strip()
                     if st.endswith("down"):
                         break
                     time.sleep(0.3)
@@ -351,7 +375,8 @@ def run_trial(sched, k):
                 time.sleep(6.0)
                 net(True); act("net_on", pkg=p)
                 time.sleep(4.0)
-            log["net_verified_down"] = ok_all; log["net_mode"] = "per-app-iptables"
+            log["net_verified_down"] = ok_all
+            log["net_mode"] = "adb-reverse-removed" if args.phone_faults else "per-app-iptables"
             sh(runs); act("force_run_rest")
     # wait until none of our jobs is registered (or timeout)
     t0 = time.time()
@@ -397,6 +422,8 @@ def main():
         ensure_device()
         if not args.no_root:
             adb("root"); time.sleep(2)
+        if args.phone_faults:
+            reverse(True)
         if not args.no_install:
             for v in VARS:
                 adb("install", "-r", "-g", f"{ART}/{args.apkdir}/rl-{v}.apk", timeout=120)
@@ -407,6 +434,9 @@ def main():
             meta.update(root=not args.no_root, sink_host=args.sink_host or "10.0.2.2",
                         db_read="run-as copy + host sqlite3" if args.no_root else "sqlite3 as root",
                         model=sh("getprop ro.product.model").strip(), android=sh("getprop ro.build.version.release").strip())
+        if args.phone_faults:
+            meta.update(phone_faults={"reboot": "adb reboot, reverse port re-added after boot",
+                                      "netloss": "adb reverse port removed (connection refused)"})
         if args.regrant_agg: meta["regrant_agg"] = True   # B12 v2 only; other runs' meta.json unchanged
         mp = os.path.join(args.out, "meta.json")
         if os.path.exists(mp):      # keep the first launch's meta; later (resume) launches get their own file

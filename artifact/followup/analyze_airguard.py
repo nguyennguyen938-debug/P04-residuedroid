@@ -35,6 +35,10 @@ def validity(plan, dev, variants=('stock', 'fenced')):
     if plan.get('device_alive_end') is not True: return 'device not alive'
     if any(not dev.get((plan['trial'], v)) for v in variants): return 'missing event log'
     if any(not any(x['a'] == 'withdraw' and x.get('variant') == v for x in acts) for v in variants): return 'no withdraw action'
+    if plan.get('phone'):                   # own phone / Device Farm (campaign_airguard.py --phone, 24/11): faults must be confirmed (R2.4)
+        if plan['schedule'] == 'netloss' and plan.get('net_verified_down') is not True: return 'net cut not verified'
+        if plan['schedule'] == 'kill' and plan.get('kill_verified') is not True: return 'kill not verified'
+        if plan['schedule'] == 'reboot' and not any(x['a'] == 'boot_completed' for x in acts): return 'reboot not completed'
     return None
 
 
