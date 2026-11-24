@@ -1,0 +1,1 @@
+artifact/results/round3/phone-r4/aws/g3a/pilot-calib/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/g3a

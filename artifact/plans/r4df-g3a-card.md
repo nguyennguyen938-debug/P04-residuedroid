@@ -46,4 +46,12 @@ for the run.
 - External: one rented phone model, one network.
 - Conclusion: N may be below G3a's; 0/N is not a guarantee.
 
+## Pilot log and N (written 25/11 00:52, after the calibration pilot, before any final job)
+- `pilot-calib` (24/11 00:30–00:50, `--calibrate 3`): gates.py PASS. 2 MiB medians edge 150.6 s, umts 138.8 s,
+  lte 1.56 s (shaping separates the profiles); block upper bound 29.7 min → **N = 10 blocks** (450 trials, 90 per arm).
+  Calibration used by the finals: `results/round3/phone-r4/aws/g3a/calibration-used.json`.
+- Job timeout **130 min** (account maximum 150) instead of 100: three blocks may take up to about 89 min plus setup,
+  and a timeout would cut the last block. Operational only, fixed before any final. Jobs: `f1 --start 0 --trials 3`,
+  `f2 --start 3 --trials 3`, `f3 --start 6 --trials 3`, `f4 --start 9 --trials 1`.
+
 ## 6. Outcome (after the run)

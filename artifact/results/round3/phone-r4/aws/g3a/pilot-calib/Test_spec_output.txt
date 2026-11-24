@@ -1,0 +1,68 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-qty3xqhr/shared-uyytch8f/android-home-slw0f2ia/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+Success
+UNINSTALL_TLS_EXIT=0
+[DeviceFarm] curl -s -m 5 -o /dev/null -w "EC2_CONTROL_HTTP=%{http_code}\n" http://54.186.50.117:8800/ || echo "EC2_CONTROL_UNREACHABLE"
+EC2_CONTROL_HTTP=403
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] P04_TOKEN=$(cat secrets/p04_token) ADB=adb python3 artifact/followup/race_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --receiver http://54.186.50.117:8800 --host 54.186.50.117 --certdir cert --apk artifact/fixture/build/g3-apk/rl-tls.apk --g3 --warm-revision --sndbuf 16384 --seed g3a-df-20261125 --calibrate 3 --out $DEVICEFARM_LOG_DIR/g3a; echo "G3A_EXIT=$?"
+17:31:29 race-edge-32768-fence-0-cf76f6 ['SEND_OK']
+17:31:35 race-edge-32768-fence-1-89fa02 ['SEND_OK']
+17:31:42 race-edge-32768-fence-2-dba54c ['SEND_OK']
+17:32:04 race-edge-262144-fence-0-31b711 ['SEND_OK']
+17:32:26 race-edge-262144-fence-1-566059 ['SEND_OK']
+17:32:49 race-edge-262144-fence-2-cf0482 ['SEND_OK']
+17:35:22 race-edge-2097152-fence-0-f1ac3d ['SEND_OK']
+17:37:55 race-edge-2097152-fence-1-46768f ['SEND_OK']
+17:40:29 race-edge-2097152-fence-2-eef25e ['SEND_OK']
+17:40:34 race-umts-32768-fence-0-8613a2 ['SEND_OK']
+17:40:39 race-umts-32768-fence-1-f99f9c ['SEND_OK']
+17:40:43 race-umts-32768-fence-2-8cba42 ['SEND_OK']
+17:41:03 race-umts-262144-fence-0-362047 ['SEND_OK']
+17:41:24 race-umts-262144-fence-1-59787b ['SEND_OK']
+17:41:44 race-umts-262144-fence-2-0c8f1e ['SEND_OK']
+17:44:06 race-umts-2097152-fence-0-43e9da ['SEND_OK']
+17:46:27 race-umts-2097152-fence-1-46ffdd ['SEND_OK']
+17:48:48 race-umts-2097152-fence-2-0ad1f2 ['SEND_OK']
+17:48:51 race-lte-32768-fence-0-cf5f32 ['SEND_OK']
+17:48:52 race-lte-32768-fence-1-c26145 ['SEND_OK']
+17:48:54 race-lte-32768-fence-2-5d8c68 ['SEND_OK']
+17:48:56 race-lte-262144-fence-0-911ba1 ['SEND_OK']
+17:48:59 race-lte-262144-fence-1-fda4de ['SEND_OK']
+17:49:01 race-lte-262144-fence-2-c52bb7 ['SEND_OK']
+17:49:05 race-lte-2097152-fence-0-f2d946 ['SEND_OK']
+17:49:09 race-lte-2097152-fence-1-fcf671 ['SEND_OK']
+17:49:13 race-lte-2097152-fence-2-12dfc5 ['SEND_OK']
+G3A_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls || true
+Success
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.

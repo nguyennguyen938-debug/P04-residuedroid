@@ -708,3 +708,10 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-25 00:29 r4df airguard/f2: run_df exit 0; trial minutes after: 792.82 (used 29.0); run COMPLETED PASSED
 - 2026-11-25 00:29 r4df airguard/f2: done
 - 2026-11-25 00:30 r4df airguard finals: f1 (k 0-9) COMPLETED PASSED 29.3 min, f2 (k 10-19) COMPLETED PASSED 29.0 min (792.82 trial min left). Pre-registered analysis analyze_airguard.py f1 f2 -> airguard/analysis: 180 rows, 0 invalid, 20 trials per schedule and build, 0 unused.
+- 2026-11-25 00:30 r4df g3a: EC2 security group p04-receiver: tcp 8800 opened to 0.0.0.0/0 for the G3a run (user go-ahead); closed by revoke/teardown after the run. Starting G3a calibration pilot (--calibrate 3, timeout 40 min).
+- 2026-11-25 00:30 r4df g3a/pilot-calib: upload (app rl-tls.apk, package sha256 77231da7b602, spec g3a-pilot.yml, timeout 40 min)
+- 2026-11-25 00:30 r4df g3a/pilot-calib: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 00:51 r4df g3a/pilot-calib: run_df exit 0; trial minutes after: 774.85 (used 18.0); run COMPLETED PASSED
+- 2026-11-25 00:51 r4df g3a/pilot-calib: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-25 00:51 r4df g3a/pilot-calib: done
+- 2026-11-25 00:53 r4df g3a/pilot-calib: COMPLETED PASSED (18.0 trial min; 774.85 left); gates.py PASS (2 MiB medians edge 150.6 s, umts 138.8 s, lte 1.56 s; block upper bound 29.7 min -> N = 10 blocks). N and job timeout 130 min (account max 150; 3 blocks up to about 89 min + setup) written in plans/r4df-g3a-card.md before any final. frozen-g3a-df (HEAD dd823b2, final package sha256 2d83b299). job.sh: results check accepts trials.jsonl (G3a finals). Starting finals f1 (blocks 0-2), f2 (3-5), f3 (6-8), f4 (9).
