@@ -81,6 +81,7 @@ def root():
 
 def hook(var, op, **kw):
     cmd = f'am broadcast -n {PKGS[var]}/{HOOK} --es op {op}'
+    if a.phone: cmd += ' -f 0x20'             # B 24/11: include stopped packages (after pm clear), as campaign.py does
     for k, v in kw.items(): cmd += f" --{'ei' if isinstance(v, int) else 'es'} {k} {v}"
     out = sh(cmd); return 'data="ok"' in out, out.strip()[-160:]
 
@@ -125,7 +126,7 @@ def trial(sched, k):
                 before = sh(f'pidof {PKGS[v]}').strip()
                 sh(f"{'run-as ' + PKGS[v] + ' ' if a.phone else ''}kill -9 $(pidof {PKGS[v]})")
                 after = sh(f'pidof {PKGS[v]}').strip()
-                act('kill', variant=v, pid_after=after); kv.append(bool(before) and after != before)
+                act('kill', variant=v, pid_after=after, **({'pid_before': before} if a.phone else {})); kv.append(bool(before) and after != before)
             if a.phone: log['kill_verified'] = all(kv)   # B 24/11: the pid must have existed and changed or gone
         elif sched == 'reboot':
             act('reboot'); adb('reboot'); time.sleep(5); adb('wait-for-device', timeout=300)
@@ -166,7 +167,7 @@ try:
     if a.phone: reverse(True)
     warm = {}                                 # pilot-1: the first hook after install timed out (cold start + dexopt); one no-op
     for v in PKGS:                            # broadcast per app, generous timeout, recorded in meta.json
-        t0 = time.time(); out = sh(f'am broadcast -n {PKGS[v]}/{HOOK} --es op noop', timeout=300); warm[v] = {'s': round(time.time() - t0, 1), 'ok': 'data="ok"' in out}
+        t0 = time.time(); out = sh(f"am broadcast -n {PKGS[v]}/{HOOK} --es op noop{' -f 0x20' if a.phone else ''}", timeout=300); warm[v] = {'s': round(time.time() - t0, 1), 'ok': 'data="ok"' in out}
     (a.out / 'meta.json').write_text(json.dumps({'serial': a.serial, 'avd': a.avd, 'schedules': a.schedules, 'trials': a.trials, 'start': a.start,
         'seed': a.seed, 'variants': list(PKGS), 'nbeacons': a.nbeacons, 'warmup': warm, 'fingerprint': sh('getprop ro.build.fingerprint').strip(),
         **({'phone': True, 'model': sh('getprop ro.product.model').strip(), 'android': sh('getprop ro.build.version.release').strip(),
