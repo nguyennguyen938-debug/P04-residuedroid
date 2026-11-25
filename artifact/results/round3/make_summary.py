@@ -118,6 +118,7 @@ def derived():
     assert len(ns) == 1
     k['raceZeroHi'] = round(100 * wilson(0, ns.pop())[2], 1)
     k.update(group3(wilson))
+    k.update(round4_df())
     # Commit-relative race outcomes (C, scripts/post_commit_race.py, exploratory).
     pc = R / 'round3/c-analysis/post-commit.json'
     if pc.exists():
@@ -212,6 +213,59 @@ def group3(wilson):
              gdCpuLo=f"{min(x['cpu_ms_per_mib'] for x in r):.2f}", gdCpuHi=f"{max(x['cpu_ms_per_mib'] for x in r):.2f}",
              gdTimeLo=f"{min(x['elapsed_ms'] for x in r):.2f}", gdTimeHi=f"{max(x['elapsed_ms'] for x in r):.2f}",
              gdEnergyNonzero=bs['uid_mah_nonzero'], gdEnergyCells=bs['cells'])
+    return k
+
+
+def round4_df():
+    """Round 4 on AWS Device Farm, Pixel 8a (PR #13; cards plans/r4df-*-card.md), read from B's frozen analysis outputs.
+    C 25/11. Reboot was dropped (Device Farm ignored adb reboot), so there are no reboot keys."""
+    k = {}
+    D = 'round3/phone-r4/aws'
+    c = load(f'{D}/g3a/analysis/g3race-summary.json')['cells']
+    n = {x['trials'] for x in c.values()}
+    assert len(n) == 1
+    k['dfN'] = n.pop(); k['dfArmN'] = 3 * k['dfN']
+    arms = {'Early': 'early', 'Close': 'close', 'CloseTwo': 'close2', 'Fence': 'fence', 'Abort': 'fence-abort'}
+    profs = {'Edge': 'edge', 'Umts': 'umts', 'Lte': 'lte'}
+    for ak, a in arms.items():
+        for pk, p in profs.items():
+            k[f'df{ak}{pk}'] = c[f'{p}/{a}']['after_w']
+        k[f'df{ak}All'] = sum(k[f'df{ak}{pk}'] for pk in profs)
+    k['dfEarlyAck'] = sum(c[f'{p}/early']['violations_after_ack'] for p in profs.values())
+    k['dfCancelAck'] = sum(c[f'{p}/{a}']['violations_after_ack'] for p in profs.values() for a in ('close', 'close2'))
+    lat = lambda a: c[f'lte/{a}']['withdraw_latency_ms']
+    k.update(dfCloseLteAckMed=lat('close')['median'], dfFenceAckP=lat('fence')['p95'], dfAbortAckP=lat('fence-abort')['p95'],
+             dfCloseTwoAckP=lat('close2')['p95'])
+    # Lifecycle under network loss: a paired trial violates if any affected tenant does (as devLife*).
+    rows = load(f'{D}/life/analysis/matched-outcomes.json')['rows']
+    trial = collections.defaultdict(bool)
+    for r in rows:
+        if r['tenant'] in (1, 2, 4, 5, 8):
+            trial[r['schedule'], r['instance'], r['trial'], r['variant']] |= r['violation'] > 0
+    assert {t[0] for t in trial} == {'netloss'}
+    nn = collections.Counter(t[3] for t in trial)
+    assert len(set(nn.values())) == 1
+    k['dfNetN'] = next(iter(nn.values()))
+    for key, v in (('Enq', 'menqueue'), ('Start', 'mstart'), ('Layer', 'mlayer'), ('Fence', 'mfence'), ('Both', 'mboth')):
+        k[f'dfNet{key}'] = sum(x for t, x in trial.items() if t[3] == v)
+    # AirGuard: stock/fenced/layered in every trial; pending, kill, netloss.
+    ag = load(f'{D}/airguard/analysis/airguard-summary.json')['cells']
+    n = {x['trials'] for x in ag.values()}
+    assert len(n) == 1
+    k['dfAirN'] = n.pop()
+    k['dfAirStockPK'] = ag['pending/stock']['violating_trials'] + ag['kill/stock']['violating_trials']
+    k['dfAirPKN'] = 2 * k['dfAirN']
+    k['dfAirFence'] = sum(ag[f'{s}/fenced']['violating_trials'] for s in ('pending', 'kill', 'netloss'))
+    k['dfAirLayer'] = sum(ag[f'{s}/layered']['violating_trials'] for s in ('pending', 'kill', 'netloss'))
+    k['dfAirNetStock'] = ag['netloss/stock']['violating_trials']
+    k['dfAirUnknown'] = sum(x['unknown_trials'] for x in ag.values())
+    k['dfAirNetDeficitMin'] = min(ag[f'netloss/{b}']['deficit_trials'] for b in ('stock', 'fenced', 'layered'))
+    # Exploratory timing of the same-process cancellation cases (C, scripts/r4df_close2_timing.py).
+    tp = R / 'round3/c-analysis/r4df-close2-timing.json'
+    if tp.exists():
+        t = json.loads(tp.read_text(encoding='utf-8'))['keys']
+        assert t['dfCloseTwoTimed'] == k['dfCloseTwoAll']
+        k.update(t)
     return k
 
 

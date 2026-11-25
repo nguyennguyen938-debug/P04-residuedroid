@@ -30,9 +30,9 @@ shared exclusions preserve pairing but can select easier schedules. The harness 
 and, in two schedules, force-runs jobs, so Doze and stricter buckets are untested.
 \emph{Construct.} Ordering evidence comes from device logs (\S\ref{sec:impl}); missing return evidence is unknown. The
 tags are synthetic tracers, so we test data provenance, not semantic sensitivity.
-\emph{External.} Most runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is one
-device, the personal phone ran on one network, and Android~15 froze a background sender, so the phone race kept the
-sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
+\emph{External.} Many runs use emulators (Android~13, 14 and 15). Three phones add physical evidence, but each model is
+one device, the personal phone ran on one network, reboots ran only on emulators (Device Farm ignored them), and
+Android~15 froze a background sender, so the phone race kept the sending app in the foreground. The main campaign uses JobScheduler; the WorkManager and AlarmManager runs are smaller
 (three variants, four schedules). One real app (AirGuard) is integrated; a direct-call audit finds its donation path mediated in the fenced build but
 not its other network call sites, and we did not establish whether any of them can carry the donated data. The receivers are test
 servers, not production services.

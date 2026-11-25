@@ -37,4 +37,4 @@ check and each bounded write are serialized against withdrawals, in the spirit o
 not close the race on one device. Wake-lock studies~\cite{liu2016wakelock} examine background-work misuse for energy; we
 study it for privacy contracts.
 
-\paragraph{System and downstream policy.} The SDK Runtime~\cite{android_sdkruntime} isolates SDKs but supplies no source epochs; Riverbed~\cite{wang2019riverbed} enforces data policies in attested server runtimes, beyond the device. Egress controls in the kernel or an on-device proxy can block paths the app does not mediate, but see no epochs, purposes or derived data, so they could back up \sys rather than replace it.
+\paragraph{System and downstream policy.} The SDK Runtime~\cite{android_sdkruntime} isolates SDKs but supplies no source epochs; Riverbed~\cite{wang2019riverbed} enforces data policies in attested server runtimes, beyond the device. Kernel or on-device proxy egress controls can block unmediated paths but see no epochs, purposes or derived data; they could back up \sys, not replace it.

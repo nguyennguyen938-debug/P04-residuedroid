@@ -194,10 +194,30 @@ cancellation aborted \gcloseAbortDelivered{} requests that had been fully handed
 complete, so the app saw a failure for delivered data; the fence did so in \gcloseFenceAbortDelivered{} of
 \gcloseFenceDelivered{} such trials. Counted from $W$ in that run (also exploratory), cross-process cancellation accepted
 post-commit writes in \gcloseCommitClose{} of \gcloseN{} trials (\gcloseCommitCloseKib{}\,KiB), the fence in
-\gcloseCommitFence{}. The second run added the same-process and abortive arms and made the commit count its primary
-(Table~\ref{tab:commit}); a third, on LTE only, started the withdrawal process before every trial so that the
-withdrawal's timing within the upload was balanced across arms, which an earlier LTE run had not achieved. We did not
-test an asynchronous cancel that does not hold the acknowledgement.
+\gcloseCommitFence{}. The second run, on the emulator, added the same-process and abortive arms and made the commit count
+its primary; a third, on LTE only, started the withdrawal process before every trial so that the withdrawal's timing
+within the upload was balanced across arms, which an earlier LTE run had not achieved (Table~\ref{tab:commit-emu}). The
+Pixel~8a run of Table~\ref{tab:commit} repeats this design with the withdrawal process started before every trial on all
+three profiles, the receiver on a cloud host that shapes the upload, and no packet capture. On the emulator, same-process
+cancellation had no post-commit case in \gtrN{} pooled and \gpN{} LTE trials; on the phone, where it took longer to take
+effect, it had \dfCloseTwoAll{}. The fence and the abortive fence had none on either. In the balanced LTE emulator run,
+every trial whose withdrawal fell during the writes accepted a post-commit write, \gpCloseExposed{} with cross-process
+cancellation as \gpEarlyExposed{} with the early check, and the p95 acknowledgement was \gpFenceAckP{}\,ms for the fence,
+\gpAbortAckP{}\,ms abortive and \gpCloseTwoAckP{}\,ms for same-process cancellation. We did not test an asynchronous
+cancel that does not hold the acknowledgement.
+
+\begin{table}[h]\centering
+\caption{Emulator: trials whose socket accepted a write attempted after $W$ (pre-registered primary). Pooled: EDGE, 3G,
+LTE, \gtrN{} per arm. LTE: separate run, timing balanced across arms, \gpN{} per arm.}
+\label{tab:commit-emu}\mtab
+\begin{tabular}{@{}lrr@{}}\toprule
+\mhead Arm & Pooled & LTE\\\midrule
+Early check & \gtrEarlyW & \gpEarlyW\\
+Cancellation, cross-process & \gtrCloseW & \gpCloseW\\
+Cancellation, same-process & \gtrCloseTwoW & \gpCloseTwoW\\
+Fence & \gtrFenceW & \gpFenceW\\
+Fence, abortive close & \gtrAbortW & \gpAbortW\\
+\bottomrule\end{tabular}\end{table}
 
 \paragraph{Equation~\ref{eq:race} on the natural races.}\label{app:eqrace} From the measured check and acceptance times,
 Equation~\ref{eq:race} predicts \racePredPct{}\% (emulator) and \racePhonePredPct{}\% (phone) of early trials to
@@ -213,9 +233,11 @@ the first write and the handoff. It set \texttt{SO\_SNDBUF} to 16\,KiB, 64\,KiB,
 reported the platform default as \gsDefaultKib{}\,KiB, and Linux allocates twice the reported size in the kernel, which
 is the figure the AirGuard runs read with \texttt{ss}. All other fixture runs set 16\,KiB.
 
-\paragraph{AirGuard during a donation.}\label{app:airrace} In the lifecycle runs of \S\ref{sec:eval-realapp}, no build
+\paragraph{AirGuard during a donation.}\label{app:airrace} On the emulator, a lifecycle run with the same three builds as
+the Pixel~8a run (pending, kill and reboot pooled) gave stock \glayStockViol{} of \glayN{} violating trials, fenced
+\glayFenceViol{}, layered \glayLayerViol{} and \glayUnknown{} unknown. In the emulator lifecycle runs too, no build
 delivered permitted post-withdrawal beacons after a network cut, because the app does not retry a failed run; the second
-lifecycle run left no trial unknown, and we did not analyse why the first run's unknowns did not recur. In the
+run left no trial unknown, and we did not analyse why the first run's unknowns did not recur. In the
 first in-upload run, the analysis first counted \gaFenceRxFirst{} fenced trials complete at the receiver: its window of
 600\,s after the marker let a later trial of the same build, which shares the sink port, count for an earlier one. A unit
 test written for the second run found this after the data were seen; the corrected window ends at the next trial of the
@@ -242,7 +264,11 @@ network-loss schedules. The rented phones (Android~\devAndroid{}) are one device
 fence accepted application ciphertext after acknowledgement in \devFenceAfterAck{} TLS barrier trials. The TLS barrier of
 \S\ref{sec:revision} ran over \devTrials{} trials split evenly between the arms, the early check completing all
 \devEarlyComplete{} of its requests, and the lifecycle runs used pending,
-kill and revoke schedules.
+kill and revoke schedules. A later Device Farm run on the Pixel~8a added the commit-point race, network loss and
+AirGuard. There, \texttt{adb reboot} returned without restarting the phone (its uptime and the apps' clocks ran on), so
+the reboot schedules were dropped; network loss removed the sink's \texttt{adb reverse} port for each app's outage, and
+the harness confirmed the port reachable before and refused after each cut. The lifecycle builds of that run were
+rebuilt from the same sources, not the earlier binaries.
 
 \paragraph{Phone and throttled-link harnesses.} Phone runs set the sink address explicitly instead of the emulator host
 alias and record the receiver path (USB port reverse on the cloud device service, a relay on the remote test lab).
