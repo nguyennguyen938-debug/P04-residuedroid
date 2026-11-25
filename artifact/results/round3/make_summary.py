@@ -233,6 +233,7 @@ def round4_df():
         k[f'df{ak}All'] = sum(k[f'df{ak}{pk}'] for pk in profs)
     k['dfEarlyAck'] = sum(c[f'{p}/early']['violations_after_ack'] for p in profs.values())
     k['dfCancelAck'] = sum(c[f'{p}/{a}']['violations_after_ack'] for p in profs.values() for a in ('close', 'close2'))
+    k['dfFenceAck'] = sum(c[f'{p}/{a}']['violations_after_ack'] for p in profs.values() for a in ('fence', 'fence-abort'))
     lat = lambda a: c[f'lte/{a}']['withdraw_latency_ms']
     k.update(dfCloseLteAckMed=lat('close')['median'], dfFenceAckP=lat('fence')['p95'], dfAbortAckP=lat('fence-abort')['p95'],
              dfCloseTwoAckP=lat('close2')['p95'])

@@ -52,6 +52,7 @@
  "dfEarlyEdge": 22,
  "dfEarlyLte": 22,
  "dfEarlyUmts": 18,
+ "dfFenceAck": 0,
  "dfFenceAckP": 17.748,
  "dfFenceAll": 0,
  "dfFenceEdge": 0,

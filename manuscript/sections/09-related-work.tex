@@ -2,28 +2,26 @@
 \label{sec:related}
 
 \paragraph{Withdrawal and consent on mobile.} MowChecker~\cite{du2024mowchecker} is the closest work. It statically
-checks whether a withdrawal choice control- or data-flow-dominates third-party collection, that is, whether the toggle
-is wired to the collection at all. Ours starts where a correct wiring
+checks whether a withdrawal toggle is wired to third-party collection (control- or data-flow dominance). Ours starts where a correct wiring
 ends: data collected and queued \emph{before} the toggle, carried by persisted work across lifecycle events, and the
 enforcement point that still sees it. The two are complementary. Studies of consent notices and explicit-consent
 violations~\cite{nguyen2021sharefirst,nguyen2022freely,kollnig2021faitaccompli,matte2020cookie} and of tracking
 ecosystems~\cite{razaghpanah2018trackers,kollnig2022goodbye} measure whether apps ask and whether they send before asking.
-Policy-code consistency work~\cite{slavin2016policy,andow2019policylint,andow2020policheck,zimmeck2019maps} compares stated
+Policy-code consistency work~\cite{slavin2016policy,andow2019policylint,andow2020policheck,zimmeck2019maps} compares
 policies with data flows; our oracle judges submissions against a stated contract in time.
 
-\paragraph{Permissions and asynchronous use.} Android's permission model and its pitfalls are well
+\paragraph{Permissions and asynchronous use.} Android permissions and their pitfalls are well
 studied~\cite{felt2011demystified,felt2012attention,au2012pscout}. Aper~\cite{wang2022aper} finds dangerous APIs used
-asynchronously after permission checks, a crash- and misuse-oriented cousin of our check-to-commit race.
+asynchronously after permission checks, a crash-oriented cousin of our check-to-commit race.
 
 \paragraph{Data management and information flow.} TaintDroid~\cite{enck2010taintdroid} tracks data to the network at
 runtime. AppFence~\cite{hornyack2011appfence} blocks or shadows sensitive flows. Static analyzers such as
 FlowDroid~\cite{arzt2014flowdroid}, IccTA~\cite{li2015iccta}, Amandroid~\cite{wei2014amandroid} and
 DroidSafe~\cite{gordon2015droidsafe} find source-to-sink paths (see~\cite{li2017staticsurvey}). CleanOS~\cite{tang2012cleanos}
 evicts idle sensitive data and Pebbles~\cite{spahn2014pebbles} recovers logical data objects. Weir~\cite{nadkarni2016weir} brings decentralized information-flow control~\cite{myers1997difc,efstathopoulos2005asbestos,zeldovich2006histar,krohn2007flume}
-to Android, and FlowFence~\cite{fernandes2016flowfence} confines sensitive computation in IoT frameworks. Aurasium and
-Boxify~\cite{xu2012aurasium,backes2015boxify} interpose on app behavior without platform changes, and
-DroidForce~\cite{rasthofer2014droidforce} and AppGuard~\cite{backes2013appguard} enforce data-centric policies on Android
-apps through inline reference monitors. Usage control~\cite{park2004ucon} re-evaluates a decision while use continues;
+to Android, and FlowFence~\cite{fernandes2016flowfence} confines sensitive computation in IoT frameworks. Aurasium, Boxify, DroidForce and
+AppGuard~\cite{xu2012aurasium,backes2015boxify,rasthofer2014droidforce,backes2013appguard} interpose on apps without
+platform changes or enforce data-centric policies through inline reference monitors. Usage control~\cite{park2004ucon} re-evaluates a decision while use continues;
 \sys's late check is such an ongoing decision, taken at every bounded write. Purpose-based access
 control~\cite{byun2008purpose} ties access to the purpose of use, and Thoth~\cite{elnikety2016thoth} attaches policies to
 data in server-side retrieval systems. \sys borrows the label idea, but its labels carry an \emph{epoch} that a withdrawal

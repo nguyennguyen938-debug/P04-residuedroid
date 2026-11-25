@@ -17,7 +17,7 @@ scheduled, as analytics SDKs commonly do. One package is installed per enforceme
 \begin{itemize}[leftmargin=*,nosep]
 \item \vname{none}: stops collection only.
 \item \vname{cancel}: additionally cancels the withdrawn scope's jobs and purges its unsent outbox.
-\item \vname{enqueue}: checks consent at every enqueue, including the startup path.
+\item \vname{enqueue}: checks consent at every enqueue, even at startup.
 \item \vname{jobstart}: checks consent at job start.
 \item \vname{conv}: cancel + enqueue + job-start checks, the strongest conventional combination.
 \item \vname{egress}: a serialized egress check on the job's declared scope, without lineage or epochs.
@@ -33,8 +33,8 @@ Five matched variants share durable lineage, epochs, and the same chunk transpor
 \vname{mfence}, and \vname{mboth} (layered checks plus final fencing). All retain source labels
 in copied job inputs. Their comparisons isolate final placement more closely than the boolean-only baselines.
 
-\paragraph{Harness and oracle.} A host sink, reached via \texttt{10.0.2.2}, logs every request and waits 300\,ms before
-responding, emulating a wide-area server. The oracle (\S\ref{sec:setup}) is a separate Python reimplementation of the
+\paragraph{Harness and oracle.} In the lifecycle campaigns a host sink, reached via \texttt{10.0.2.2}, logs every request and waits 300\,ms before
+responding, emulating a wide-area server; micro-benchmarks use a zero-delay local sink. The oracle (\S\ref{sec:setup}) is a separate Python reimplementation of the
 contract table. It never reads the app's labels or decisions, but takes order from device-logged events; the receiver is
 the only outside observer. The split policy for mixed requests, the real-app embedding,
 and the phone and throttled-link harnesses are described in Appendix~\ref{app:round3impl}.
