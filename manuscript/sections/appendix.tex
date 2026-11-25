@@ -210,7 +210,7 @@ Table~\ref{tab:race} (an exploratory recount from $W$ that changes no cell of th
 cancellation in \gcloseCommitClose{} and \gtrCloseW{}. We did not test an asynchronous cancel that does not hold the
 acknowledgement.
 
-\begin{table}[h]\centering
+\begin{table}[tbp]\centering
 \caption{Emulator: trials whose socket accepted a write attempted after $W$ (pre-registered primary). Pooled: EDGE, 3G,
 LTE, \gtrN{} per arm. LTE: separate run, timing balanced across arms, \gpN{} per arm.}
 \label{tab:commit-emu}\mtab
@@ -298,5 +298,4 @@ the check and lock around each write; the platform arm
 logs four events per upload, so its much lower process CPU reflects both the user-space TLS path and that logging, and we
 do not report fence/platform ratios. Doze was disabled and the screen kept on during the run.
 
-\clearpage
 \input{sections/historical-evaluation}

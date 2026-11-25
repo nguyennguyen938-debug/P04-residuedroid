@@ -1,6 +1,6 @@
 \section{Deployment Matrix}
 \label{app:matrix}
-Table~\ref{tab:deploy} lists, for each experiment, what was built, which transport and contract it exercises, which retry
+Tables~\ref{tab:deploy} and~\ref{tab:deploy-r3} list, for each experiment, what was built, which transport and contract it exercises, which retry
 path it covers, and which evidence boundary its numbers rest on. Only the channel rows support claims about socket acceptance.
 
 \begin{table*}[t]\centering
@@ -16,7 +16,13 @@ TLS suite & 11 conditions $\times$ 20 trials; Android~15 & TLS~1.2, \texttt{SSLE
 ACRA-P & ACRA~5.14.2 with explicit setting; Android~13 & ACRA sender process, shared HTTP adapter & opt-out invalidating queued reports & reboot recovery & request receipt & ACRA-R is a separate cohort\\
 ACRA preference-only & stock vs.\ preference-aware sender & ACRA sender & collection-only opt-out & reboot discards job & request receipt & no queued-deletion promise\\
 Matomo & Matomo~4.4 AAR, pre-send barrier & Matomo dispatcher over HTTP & invalidate queued events & none & request receipt & disk cache, HTTPS, production app untested\\
-\midrule
+\bottomrule\end{tabular}\end{table*}
+
+\begin{table*}[p]\centering
+\caption{Deployment matrix, continued: the experiments of \S\ref{sec:eval-natural} to \S\ref{sec:eval-generality}.}
+\label{tab:deploy-r3}\mtab\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.10\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}@{}}\toprule
+\mhead Experiment & Build, platform & Transport & Contract & Retry path & Evidence & Exclusions, limits\\\midrule
 Natural race, emulator & early vs.\ fence; \texttt{netem}-shaped uplink & HTTP over \texttt{SocketChannel} & opt-out covering pending data & none & accepted bytes & pilots failing the shaping gate excluded\\
 Natural race, cancellation & early, early with socket close, fence in the same blocks; emulator & same as above & same & none & accepted bytes; receiver completeness & cancellation crosses processes; one design; aborted delivered requests are exploratory\\
 Commit-point race & early, cross- and same-process cancellation, fence, abortive fence; emulator; LTE rerun with balanced timing & TLS~1.2 over \texttt{SocketChannel}, 16\,KiB send buffer & same & none & writes accepted after the commit; host capture after an ack marker & interrupted blocks rerun under the same seed; same-process arm also withdraws in the sending process\\

@@ -81,6 +81,7 @@ and Xuan-Bach~Le\au{0009-0003-6848-5403}}}
 \keywords{Android, consent withdrawal, deferred work, JobScheduler, data lineage, egress control}
 
 \maketitle
+\renewcommand{\shortauthors}{Nguyen et al.} % six names overflow the even-page running head
 
 \input{sections/01-introduction}
 \input{sections/02-background}
@@ -101,6 +102,9 @@ An LLM assisted with manuscript drafting and editing. The authors are responsibl
 \bibliography{references}
 
 \appendix
+% Appendix only (the body has ended): let tall tables share text pages and fill float pages.
+\renewcommand{\topfraction}{0.9}\renewcommand{\dbltopfraction}{0.9}\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}\renewcommand{\dblfloatpagefraction}{0.75}
 \input{sections/appendix}
 
 \end{document}

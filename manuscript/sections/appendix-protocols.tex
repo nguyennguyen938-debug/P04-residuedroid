@@ -4,12 +4,12 @@ Table~\ref{tab:protocols} marks which results come from a protocol fixed before 
 afterwards. Protocol files, exclusions and run logs are in the artifact (\texttt{results/round3/PROTOCOL.md},
 \texttt{EXCLUSIONS.md}, \texttt{RUNLOG.md}).
 
-\begin{table}[h]\centering
+\begin{table*}[t]\centering
 \caption{Status of each analysis. Pre-registered: protocol, validity rules and sample size committed to the project
 repository before the final run (not filed with an external registry). Exploratory: defined after the data existed;
 reported as explanation, not as a primary result.}
 \label{tab:protocols}\mtab
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.50\columnwidth}>{\raggedright\arraybackslash}p{0.24\columnwidth}l@{}}\toprule
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.62\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}l@{}}\toprule
 \mhead Analysis & Status & Where\\\midrule
 Matched campaign, socket matrix, TLS suite & pre-registered & \S\ref{sec:revision}\\
 Permitted-deficit causes, trial-level bounds & exploratory & \S\ref{sec:revision}, App.~\ref{app:matched-trials}\\
@@ -38,7 +38,7 @@ Rented phones (TLS rerun with a raised deadline; first run kept) & pre-registere
 Cost sweep (third protocol, raised receiver timeout) & pre-registered & \S\ref{sec:eval-generality}\\
 Stated promises & model first pass, author review & \S\ref{sec:measure}\\
 Stream-wrapper campaign & original protocol & App.~\ref{app:stream}\\
-\bottomrule\end{tabular}\end{table}
+\bottomrule\end{tabular}\end{table*}
 
 \paragraph{Earlier protocol versions.} Where a protocol was revised, the earlier runs are kept and their outcomes were as
 follows. Natural race, emulator: the first two protocols failed their link-shaping gate in pilots, so no final trial ran.
