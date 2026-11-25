@@ -667,3 +667,70 @@ P04 instances only: P04AvdA on console 5600 (gRPC 8600), P04AvdB on 5602 (gRPC 8
 - 2026-11-24 01:10 g3d-chain: done
 - 2026-11-24 01:14 g3d: final-v4 DONE (chain exit 0, 01:10). Harness-only check: 180/180 cells valid, 1800/1800 uploads SEND_OK and received, batterystats record in 180/180; phone restored (screen_off_timeout 600000, Doze enabled, battery reset); no serial in pilot-6, final-v4, analysis-v4 or the new logs. Pre-registered analysis-v4 written by the manifest. Found after the run: the batterystats estimate is 0 mAh in every cell of every G3d run (also global CPU and computed drain 0; exploratory `followup/bs_check_g3cost.py` -> analysis-v4/batterystats-check.json); a property of the proxy, not a harness fault; no rerun. Packaging: final-v4/cells.jsonl (359 MB, mostly event logs) git-ignored, committed as cells.jsonl.gz + sha256 (same convention as trials.jsonl.gz); analyze_g3cost.py / bs_check read the .gz when the raw file is absent; analysis on the .gz alone and on the raw file both byte-identical to analysis-v4. autorun-g3cost-final-v4.{log,jsonl}: the v4 part of the shared autorun log (the shared file also holds v2 lines with the serial and stays uncommitted). Card §6, tracker, EXCLUSIONS (pilot-6 row, G3d task row).
 - 2026-11-24 05:01 g3d: G3d v4 outcome posted to issue #7 (comment 7115229087, user go-ahead), with the note to C on the G3c body sizes.
+- 2026-11-24 21:39 r4df prep (no device, no AWS change): b-exp fast-forwarded to main 9c483a9; applied C's phone-faults.patch and airguard-phone.patch (tests pass); B added phone fault checks to campaign_airguard.py --phone (net probe, kill_verified, bounded boot) and the matching phone-only validity rules in analyze_airguard.py (test_airguard_phone.py; guard byte-identical), and a bounded post-reboot boot wait in campaign.py --phone-faults. Rebuilt fixture/build/revision-apk (5 APKs from main; the 3 earlier APKs kept in build/revision-apk-20261119). Cards plans/r4df-{lifecycle,g3a,airguard}-card.md (approval pending leader). G3d card §6 threats (leader 23/11, C 24/11). Device Farm account check: 885.13/1000 trial minutes left; pool pilot-pixel8a = Pixel 8a Android 17, HIGHLY_AVAILABLE.
+- 2026-11-24 21:50 r4df prep: logic review before any job. campaign_airguard.py --phone: hooks add -f 0x20 (include stopped packages after pm clear, as campaign.py), kill records pid_before. C's gates.py does not read the new AirGuard fault fields, so B adds plans/r4df/gate_b.py (analysis validity on pilot plans, harness fields only) and plans/r4df/job.sh (upload -> run_df.sh with the trial-minute guard -> gates.py + gate_b.py; ARNs in ~/.p04/r4df). User decision 24/11: use the existing account (profile p04).
+- 2026-11-24 21:57 r4df: user reports the leader's go-ahead (outside GitHub) for round 4 on Device Farm; plan posted to issue #7 (comment 7135206854). Starting the lifecycle reboot pilot.
+- 2026-11-24 21:57 r4df life/pilot-preb: upload (app rl-mfence.apk, package sha256 4d11627bd452, spec life-preb.yml, timeout 20 min)
+- 2026-11-24 21:57 r4df life/pilot-preb: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:03 r4df life/pilot-preb: run_df exit 0; trial minutes after: 883.32 (used 1.8); run COMPLETED PASSED
+- 2026-11-24 22:03 r4df life/pilot-preb: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-24 22:03 r4df life/pilot-preb: done
+- 2026-11-24 22:06 r4df life/pilot-preb: Device Farm job COMPLETED PASSED (1.8 trial min; 883.32 left); gates.py + gate_b PASS, but diagnosis shows no reboot happened (boot_s 0.55 s; monotonic clock continuous in all 5 apps; plans/r4df/reboot_evidence.py -> reboot-evidence.json): Device Farm ignores adb reboot. Per the card, the reboot schedule is dropped on Device Farm (lifecycle and AirGuard; no AirGuard reboot pilot). Harness v1.1 before any further job: reboot records /proc/uptime before/after, reboot_verified, analysis rule 'reboot not verified' (test_phone_reboot.py, test_airguard_phone.py); emulator path unchanged (guard OK). Next: lifecycle netloss pilot.
+- 2026-11-24 22:08 r4df harness v1.1 (before the netloss pilot): positive control for the network cut in phone mode (probe up before the cut; net_verified_down = up before and down after), campaign.py --phone-faults and campaign_airguard.py --phone; emulator path unchanged (guard OK).
+- 2026-11-24 22:08 r4df life/pilot-pnet: upload (app rl-mfence.apk, package sha256 30ca8e056e3c, spec life-pnet.yml, timeout 20 min)
+- 2026-11-24 22:09 r4df life/pilot-pnet: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:14 r4df life/pilot-pnet: run_df exit 0; trial minutes after: 881.75 (used 1.6); run COMPLETED PASSED
+- 2026-11-24 22:14 r4df life/pilot-pnet: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-24 22:14 r4df life/pilot-pnet: done
+- 2026-11-24 22:15 r4df life/pilot-pnet: COMPLETED PASSED (1.6 trial min; 881.75 left); gates.py + gate_b PASS; cut confirmed in every app (probe up before, down after; net_verified_down true); NET_FAIL events in all five app logs (mechanism check). Protocol frozen: frozen-life-df (plans/r4df/freeze_r4df.py; HEAD 1bf77cd, package sha256 abba818f). Starting the netloss final (START=0 N=20, timeout 80 min).
+- 2026-11-24 22:15 r4df life/net: upload (app rl-mfence.apk, package sha256 abba818f270b, spec life-net.yml, timeout 80 min)
+- 2026-11-24 22:16 r4df life/net: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:47 r4df life/net: run_df exit 0; trial minutes after: 854.25 (used 27.5); run COMPLETED PASSED
+- 2026-11-24 22:47 r4df life/net: done
+- 2026-11-24 22:48 r4df life/net (final, netloss START=0 N=20): COMPLETED PASSED (27.5 trial min; 854.25 left). Harness check: 20 plans, 0 phone-invalid, 0 trial/setup errors, net_verified_down in all, max action gap 9.6 s. Pre-registered analysis: analyze_test6.py --manifest plans/r4df/manifest-life-df.json (B copy of C's manifest, reboot dropped) -> life/analysis: 20 analysed, 0 invalid, 0 unused.
+- 2026-11-24 22:48 r4df airguard: starting pilot-p1 (pending,kill,netloss N=1; no reboot pilot, reboot dropped on Device Farm).
+- 2026-11-24 22:48 r4df airguard/pilot-p1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-p1.yml, timeout 20 min)
+- 2026-11-24 22:49 r4df airguard/pilot-p1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 22:54 r4df airguard/pilot-p1: run_df exit 0; trial minutes after: 851.08 (used 3.2); run COMPLETED PASSED
+- 2026-11-24 22:55 r4df airguard/pilot-p1: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-24 22:55 r4df airguard/pilot-p1: done
+- 2026-11-24 22:55 r4df airguard/pilot-p1: COMPLETED PASSED (3.2 trial min; 851.08 left); gates.py + gate_b PASS; kill_verified (pids existed and gone), cut verified (up before, down after), hooks ok, warm-up ok; netloss quiescence wait 90.8 s as on the emulator (B2/G2b netloss 20/20 at about 92 s). Frozen: frozen-airguard-df (HEAD 57e726c; package sha256 a6d75ac4, built at adfe463, same harness). Starting finals f1 (START=0 N=10) then f2 (START=10 N=10), timeout 70 min each.
+- 2026-11-24 22:56 r4df airguard/f1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f1.yml, timeout 70 min)
+- 2026-11-24 23:21 r4df airguard/f1: the S3 PUT of the AirGuard package (curl in upload_df.sh, no timeout) stalled from 22:56 to 23:20; B stopped the f1/f2 chain before any run was scheduled (no Device Farm run, no minutes used, no results dir). Fix in plans/r4df/job.sh: upload watchdog (20 min per attempt, 3 attempts). f1 and f2 restart with the same names (nothing was recorded under them).
+- 2026-11-24 23:21 r4df airguard/f1: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f1.yml, timeout 70 min)
+- 2026-11-24 23:22 r4df airguard/f1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 23:55 r4df airguard/f1: run_df exit 0; trial minutes after: 821.8 (used 29.3); run COMPLETED PASSED
+- 2026-11-24 23:55 r4df airguard/f1: done
+- 2026-11-24 23:55 r4df airguard/f2: upload (app airguard-fenced.apk, package sha256 a6d75ac453f6, spec ag-f2.yml, timeout 70 min)
+- 2026-11-24 23:56 r4df airguard/f2: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-24 23:57 r4df g3a: user go-ahead (24/11) for the EC2 receiver and opening 8800 during G3a; creating the instance now (8800 limited to this Mac until the pilot). Old ~/.p04/ec2 key/token moved to ~/.p04/ec2/old-20261124.
+- 2026-11-24 23:58 r4df g3a: EC2 instance i-012615ad768c3476f (t3.micro, us-west-2) at 54.186.50.117 created; delete with teardown.sh after G3a.
+- 2026-11-25 00:29 r4df airguard/f2: run_df exit 0; trial minutes after: 792.82 (used 29.0); run COMPLETED PASSED
+- 2026-11-25 00:29 r4df airguard/f2: done
+- 2026-11-25 00:30 r4df airguard finals: f1 (k 0-9) COMPLETED PASSED 29.3 min, f2 (k 10-19) COMPLETED PASSED 29.0 min (792.82 trial min left). Pre-registered analysis analyze_airguard.py f1 f2 -> airguard/analysis: 180 rows, 0 invalid, 20 trials per schedule and build, 0 unused.
+- 2026-11-25 00:30 r4df g3a: EC2 security group p04-receiver: tcp 8800 opened to 0.0.0.0/0 for the G3a run (user go-ahead); closed by revoke/teardown after the run. Starting G3a calibration pilot (--calibrate 3, timeout 40 min).
+- 2026-11-25 00:30 r4df g3a/pilot-calib: upload (app rl-tls.apk, package sha256 77231da7b602, spec g3a-pilot.yml, timeout 40 min)
+- 2026-11-25 00:30 r4df g3a/pilot-calib: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 00:51 r4df g3a/pilot-calib: run_df exit 0; trial minutes after: 774.85 (used 18.0); run COMPLETED PASSED
+- 2026-11-25 00:51 r4df g3a/pilot-calib: pilot gate: gates.py PASS, gate_b PASS
+- 2026-11-25 00:51 r4df g3a/pilot-calib: done
+- 2026-11-25 00:53 r4df g3a/pilot-calib: COMPLETED PASSED (18.0 trial min; 774.85 left); gates.py PASS (2 MiB medians edge 150.6 s, umts 138.8 s, lte 1.56 s; block upper bound 29.7 min -> N = 10 blocks). N and job timeout 130 min (account max 150; 3 blocks up to about 89 min + setup) written in plans/r4df-g3a-card.md before any final. frozen-g3a-df (HEAD dd823b2, final package sha256 2d83b299). job.sh: results check accepts trials.jsonl (G3a finals). Starting finals f1 (blocks 0-2), f2 (3-5), f3 (6-8), f4 (9).
+- 2026-11-25 00:53 r4df g3a/f1: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f1.yml, timeout 130 min)
+- 2026-11-25 00:53 r4df g3a/f1: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 02:17 r4df g3a/f1: run_df exit 0; trial minutes after: 697.17 (used 77.7); run COMPLETED PASSED
+- 2026-11-25 02:17 r4df g3a/f1: done
+- 2026-11-25 02:17 r4df g3a/f2: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f2.yml, timeout 130 min)
+- 2026-11-25 02:17 r4df g3a/f2: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 02:18 r4df g3a/f1 (blocks 0-2): COMPLETED PASSED (77.7 trial min; 697.17 left). job.sh bug found: an inline comment in the results-dir check (edit of 00:52) swallowed the '|| { note; exit 5; }' branch, so results_dir.txt was not written and a missing results dir would not stop the job; data unaffected. results_dir.txt written by hand for f1 (pointer file only); job.sh fixed after the chain ends (not edited while a job.sh is running).
+- 2026-11-25 03:29 r4df g3a/f2: run_df exit 0; trial minutes after: 635.07 (used 62.1); run COMPLETED PASSED
+- 2026-11-25 03:29 r4df g3a/f2: done
+- 2026-11-25 03:29 r4df g3a/f3: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f3.yml, timeout 130 min)
+- 2026-11-25 03:29 r4df g3a/f3: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 04:42 r4df g3a/f3: run_df exit 0; trial minutes after: 570.85 (used 64.2); run COMPLETED PASSED
+- 2026-11-25 04:42 r4df g3a/f3: done
+- 2026-11-25 04:42 r4df g3a/f4: upload (app rl-tls.apk, package sha256 2d83b299a1cd, spec g3a-f4.yml, timeout 130 min)
+- 2026-11-25 04:42 r4df g3a/f4: scheduled on Device Farm (Pixel 8a pool)
+- 2026-11-25 04:59 r4df g3a/f4: run_df exit 0; trial minutes after: 557.92 (used 12.9); run COMPLETED PASSED
+- 2026-11-25 04:59 r4df g3a/f4: done
+- 2026-11-25 05:00 r4df g3a: finals f1-f4 COMPLETED PASSED (f1 77.7, f2 62.1, f3 64.2 trial min; f4 see minutes.txt). EC2 receiver logs fetched to g3a/receiver-ec2 (no token inside). Port 8800 revoked; instance i-012615ad768c3476f terminated, security group and key pair deleted (no EC2 left). G3a packages holding the token deleted.
+- 2026-11-25 05:03 r4df g3a: f4 COMPLETED PASSED (12.9 trial min; 557.92 left). 450/450 valid. Pre-registered analysis analyze_g3race.py f1-f4 --n 30 -> g3a/analysis (rerun from the repo root for repo-relative paths; numbers identical to the first run). Packaging: g3a trials.jsonl and ListArtifactType.log.json git-ignored, committed as .gz + sha256 (convention of g3race); analysis on the .gz alone gives the same numbers. job.sh results-dir check fixed (chain ended). Card §6 for G3a, tracker, EXCLUSIONS (32 task rows, 0 dirs without reason), r4df-report.json.

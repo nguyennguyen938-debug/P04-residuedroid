@@ -1,0 +1,1 @@
+sink on :8787 -> /tmp/devicefarm-workspace/execution-5r2s3ffh/logs-utt64osx/life/sink delay=300ms

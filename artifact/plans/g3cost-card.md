@@ -207,5 +207,10 @@ Source: `results/round3/g3cost/analysis-v4/g3cost-summary.json` (pre-registered 
     gap is shared by `early` (early/platform CPU at 2 MiB = 555.2/31.0), so it comes from the user-space TLS transport
     of the fixture, not from the fence check;
   - elapsed tails are wide (p95 up to ~20 s at 2 MiB in every arm); Wi-Fi rate varies (§5).
-- **Threats (in addition to §5):** process CPU includes the whole app; the shuffled order is per block; the energy
-  proxy is uninformative here (above); one phone and one network.
+- **Threats (in addition to §5; leader 23/11 and C 24/11, issue #7):**
+  - the phone ran with Doze off and the screen timeout at 24 h, unlike its default state;
+  - energy would be the batterystats power-model estimate, not an instrument reading (and it read 0 here, above);
+  - fence/platform is not a transport-only ratio: the platform arm logs 4 events per upload, while the fixture's
+    TlsTransport logs `TLS_BUFFERED`, `WRITE_ATTEMPT`, `WRITE_RETURN_BOUNDARY` and `BYTES_ACCEPTED` per record (about
+    3,600 events for a 2 MiB upload), so that gap includes user-space TLS and event logging. The paper uses fence/early only;
+  - process CPU includes the whole app; the shuffled order is per block; one phone and one network.

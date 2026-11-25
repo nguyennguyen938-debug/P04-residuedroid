@@ -1,0 +1,9 @@
+{
+ "gate": true,
+ "per_schedule": {
+  "reboot": {
+   "ok": true,
+   "max_action_gap_s": 67.6
+  }
+ }
+}

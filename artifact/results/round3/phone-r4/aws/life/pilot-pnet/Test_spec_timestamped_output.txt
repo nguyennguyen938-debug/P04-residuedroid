@@ -1,0 +1,46 @@
+[2026-11-24 15:09:39.751167] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-24 15:09:39.751223]  
+[2026-11-24 15:09:39.761329]  
+[2026-11-24 15:09:39.761369] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-24 15:09:39.761390]  
+[2026-11-24 15:09:39.761407] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-24 15:09:39.882295] [DeviceFarm] python3 --version
+[2026-11-24 15:09:39.883095] Python 3.12.12
+[2026-11-24 15:09:39.883303] [DeviceFarm] adb version
+[2026-11-24 15:09:39.905260] Android Debug Bridge version 1.0.39
+[2026-11-24 15:09:39.905308] Version 0.0.1-4500957
+[2026-11-24 15:09:39.905327] Installed as /tmp/devicefarm-workspace/execution-5r2s3ffh/shared-u48pic60/android-home-e6rd5w6l/platform-tools/adb_binary
+[2026-11-24 15:09:39.906993]  
+[2026-11-24 15:09:39.907020] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-24 15:09:39.907042]  
+[2026-11-24 15:09:39.907058] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-24 15:09:40.026489] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-24 15:09:40.030168] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell 'command -v nc || toybox nc --help >/dev/null 2>&1 && echo NC_OK || echo NC_MISSING'
+[2026-11-24 15:09:40.173012] /system/bin/nc
+[2026-11-24 15:09:40.173057] NC_OK
+[2026-11-24 15:09:40.175637] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.mfence; echo "UNINSTALL_EXIT=$?"
+[2026-11-24 15:09:40.679073] Success
+[2026-11-24 15:09:40.695979] UNINSTALL_EXIT=0
+[2026-11-24 15:09:40.696022]  
+[2026-11-24 15:09:40.696039] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-24 15:09:40.696054]  
+[2026-11-24 15:09:40.696068] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-24 15:09:40.696087] [DeviceFarm] ADB=adb python3 artifact/followup/campaign.py --serial $DEVICEFARM_DEVICE_UDID --no-root --sink-host 127.0.0.1 --phone-faults --port 8787 --variants menqueue,mstart,mlayer,mfence,mboth --apkdir fixture/build/revision-apk --timeout 90 --schedules netloss --start 0 --trials 1 --seed lifecycle-df-20261125 --out $DEVICEFARM_LOG_DIR/life; echo "LIFE_EXIT=$?"
+[2026-11-24 15:11:06.932735] 15:11:06 44151JEKB02756 net000 82s
+[2026-11-24 15:11:07.000624] LIFE_EXIT=0
+[2026-11-24 15:11:07.000673]  
+[2026-11-24 15:11:07.000687] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-24 15:11:07.000696]  
+[2026-11-24 15:11:07.000707] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID reverse --remove-all || true
+[2026-11-24 15:11:07.095861] [DeviceFarm] for p in menqueue mstart mlayer mfence mboth; do adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.$p || true; done
+[2026-11-24 15:11:07.471960] Success
+[2026-11-24 15:11:07.695866] Success
+[2026-11-24 15:11:07.884364] Success
+[2026-11-24 15:11:08.105822] Success
+[2026-11-24 15:11:08.342882] Success
+[2026-11-24 15:11:08.390957]  
+[2026-11-24 15:11:08.390982] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-24 15:11:08.390996]  
+[2026-11-24 15:11:08.394652] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-24 15:11:08.394688]  
+[2026-11-24 15:11:08.396273]  

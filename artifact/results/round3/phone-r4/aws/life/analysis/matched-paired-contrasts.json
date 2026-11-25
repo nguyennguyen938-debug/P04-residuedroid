@@ -1,0 +1,92 @@
+[
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "menqueue",
+    "fenced": "mfence",
+    "paired_trials": 20,
+    "difference": 0.8,
+    "percentile95": [
+      0.8,
+      0.8
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "menqueue",
+    "fenced": "mboth",
+    "paired_trials": 20,
+    "difference": 0.8,
+    "percentile95": [
+      0.8,
+      0.8
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mstart",
+    "fenced": "mfence",
+    "paired_trials": 20,
+    "difference": 0.8,
+    "percentile95": [
+      0.8,
+      0.8
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mstart",
+    "fenced": "mboth",
+    "paired_trials": 20,
+    "difference": 0.8,
+    "percentile95": [
+      0.8,
+      0.8
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mlayer",
+    "fenced": "mfence",
+    "paired_trials": 20,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  },
+  {
+    "estimand": "paired difference in confirmed violating affected-tenant fractions",
+    "run": "P",
+    "early": "mlayer",
+    "fenced": "mboth",
+    "paired_trials": 20,
+    "difference": 0.0,
+    "percentile95": [
+      0.0,
+      0.0
+    ],
+    "strata": {
+      "('netloss', 'P-net')": 20
+    }
+  }
+]

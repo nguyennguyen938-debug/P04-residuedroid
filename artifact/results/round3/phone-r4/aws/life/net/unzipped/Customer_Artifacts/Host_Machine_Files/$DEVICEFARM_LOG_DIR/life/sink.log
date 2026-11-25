@@ -1,0 +1,1 @@
+sink on :8787 -> /tmp/devicefarm-workspace/execution-6zhopw2j/logs-qf918bmx/life/sink delay=300ms

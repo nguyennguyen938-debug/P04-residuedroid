@@ -1,0 +1,17 @@
+{
+ "gate": true,
+ "per_schedule": {
+  "pending": {
+   "ok": true,
+   "quiesced_s": 5.5
+  },
+  "kill": {
+   "ok": true,
+   "quiesced_s": 5.5
+  },
+  "netloss": {
+   "ok": true,
+   "quiesced_s": 90.8
+  }
+ }
+}

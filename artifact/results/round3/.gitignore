@@ -15,3 +15,5 @@ g3race/*/capture.pcap
 g3app/*/capture.pcap
 g3race/*/trials.jsonl
 g3cost/final-v4/cells.jsonl
+phone-r4/aws/g3a/**/trials.jsonl
+phone-r4/aws/g3a/**/ListArtifactType.log.json

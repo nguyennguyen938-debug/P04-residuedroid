@@ -1,0 +1,42 @@
+{
+ "serial": "44151JEKB02756",
+ "avd": "",
+ "schedules": "pending,kill,netloss",
+ "trials": 1,
+ "start": 0,
+ "seed": "airguard-df-20261125",
+ "variants": [
+  "stock",
+  "fenced",
+  "layered"
+ ],
+ "nbeacons": 4,
+ "warmup": {
+  "stock": {
+   "s": 0.7,
+   "ok": true
+  },
+  "fenced": {
+   "s": 0.8,
+   "ok": true
+  },
+  "layered": {
+   "s": 0.7,
+   "ok": true
+  }
+ },
+ "fingerprint": "google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys",
+ "phone": true,
+ "model": "Pixel 8a",
+ "android": "17",
+ "faults": {
+  "netloss": "adb reverse ports removed",
+  "reboot": "adb reboot, reverse re-added"
+ },
+ "apks": {
+  "stock": "d5b799b561f24f6a7f5f5082a47c072f41fc5997dcdcbada43ba7d001d1298e3",
+  "fenced": "dbeaaaccfa6426f76f996c1d67fcd35efa0ad6785f594986be190577471c7aca",
+  "layered": "0436e43609491bbeb24f0f0811488d6b6f17e98fe9f2c16570eae60bc4296433"
+ },
+ "started": 1795535404.4397633
+}

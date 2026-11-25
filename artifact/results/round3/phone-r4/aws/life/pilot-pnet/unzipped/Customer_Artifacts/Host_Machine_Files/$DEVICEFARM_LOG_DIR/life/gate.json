@@ -1,0 +1,9 @@
+{
+ "gate": true,
+ "per_schedule": {
+  "netloss": {
+   "ok": true,
+   "max_action_gap_s": 9.6
+  }
+ }
+}

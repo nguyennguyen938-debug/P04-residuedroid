@@ -9,6 +9,7 @@ the paired bootstrap and the contrasts are computed by the same code as the publ
 own validity rules (trial_error/setup_fail/emulator_restarted, action gap > 200 s, device not alive at the end, missing
 paired log) phone runs add, before the oracle sees a trial:
   - kill schedule without kill_verified == true (fault not confirmed, R2.4)        -> 'kill not verified'
+  - netloss without net_verified_down == true; reboot without boot_completed (own phone, --phone-faults)
   - no job of ours ever parsed while waiting (seen_max <= 0)                        -> 'jobs not observable'
 Then the first N valid paired trials per (device, schedule) in k order are analysed; later valid ones are 'unused'.
 
@@ -100,6 +101,13 @@ def phone_validity(plan):
     """Extra phone rules; reason string or None. Reads only harness/fault fields."""
     if plan.get("schedule") == "kill" and plan.get("kill_verified") is not True:
         return "kill not verified"
+    # own phone with campaign.py --phone-faults (devicefarm/phone-r4): the injected fault must be confirmed (R2.4)
+    if plan.get("schedule") == "netloss" and plan.get("net_verified_down") is not True:
+        return "net cut not verified"
+    if plan.get("schedule") == "reboot" and not any(a.get("a") == "boot_completed" for a in plan.get("actions", [])):
+        return "reboot not completed"
+    if plan.get("schedule") == "reboot" and "reboot_verified" in plan and plan["reboot_verified"] is not True:
+        return "reboot not verified"
     q = [a for a in plan.get("actions", []) if a.get("a") == "quiesced"]
     if q and q[-1].get("seen_max", 1) <= 0:
         return "jobs not observable"

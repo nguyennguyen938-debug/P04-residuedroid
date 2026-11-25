@@ -1,0 +1,34 @@
+{
+ "reb000": {
+  "org.residuelab.menqueue": {
+   "mono_ms_last_before": 5419498,
+   "mono_ms_first_after": 5470759,
+   "restarted": false,
+   "boot_s_logged": 0.548241376876831
+  },
+  "org.residuelab.mstart": {
+   "mono_ms_last_before": 5419749,
+   "mono_ms_first_after": 5490734,
+   "restarted": false,
+   "boot_s_logged": 0.548241376876831
+  },
+  "org.residuelab.mlayer": {
+   "mono_ms_last_before": 5420106,
+   "mono_ms_first_after": 5491309,
+   "restarted": false,
+   "boot_s_logged": 0.548241376876831
+  },
+  "org.residuelab.mfence": {
+   "mono_ms_last_before": 5420354,
+   "mono_ms_first_after": 5491994,
+   "restarted": false,
+   "boot_s_logged": 0.548241376876831
+  },
+  "org.residuelab.mboth": {
+   "mono_ms_last_before": 5420593,
+   "mono_ms_first_after": 5493276,
+   "restarted": false,
+   "boot_s_logged": 0.548241376876831
+  }
+ }
+}

@@ -1,0 +1,176 @@
+[DEVICEFARM] Setting up your device. This usually takes 2-3 minutes.
+[DEVICEFARM] ########### Start executing testspec ###########
+ 
+ 
+[DEVICEFARM] ########### Entering phase install ###########
+ 
+[DeviceFarm] devicefarm-cli use python 3.12
+[DeviceFarm] python3 --version
+Python 3.12.12
+[DeviceFarm] adb version
+Android Debug Bridge version 1.0.39
+Version 0.0.1-4500957
+Installed as /tmp/devicefarm-workspace/execution-b18k1c45/shared-opnhv3k8/android-home-p3nd8kyb/platform-tools/adb_binary
+ 
+[DEVICEFARM] ########### Entering phase pre_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+Success
+UNINSTALL_TLS_EXIT=0
+[DeviceFarm] curl -s -m 5 -o /dev/null -w "EC2_CONTROL_HTTP=%{http_code}\n" http://54.186.50.117:8800/ || echo "EC2_CONTROL_UNREACHABLE"
+EC2_CONTROL_HTTP=403
+ 
+[DEVICEFARM] ########### Entering phase test ###########
+ 
+[DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[DeviceFarm] P04_TOKEN=$(cat secrets/p04_token) ADB=adb python3 artifact/followup/race_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --receiver http://54.186.50.117:8800 --host 54.186.50.117 --certdir cert --apk artifact/fixture/build/g3-apk/rl-tls.apk --g3 --warm-revision --sndbuf 16384 --seed g3a-df-20261125 --modes early,close,close2,fence,fence-abort --start 0 --trials 3 --durations calib/calibration.json --out $DEVICEFARM_LOG_DIR/g3a; echo "G3A_EXIT=$?"
+17:54:06 race-umts-32768-fence-abort-0-526a76 ['SEND_OK']
+17:54:09 race-edge-32768-close2-0-ae6340 ['SEND_ERROR']
+17:54:16 race-edge-32768-early-0-0e6e56 ['SEND_OK']
+17:54:20 race-edge-32768-fence-abort-0-60f3c1 ['SEND_ERROR']
+17:55:47 race-edge-2097152-close-0-c2842c ['SEND_ERROR']
+17:56:35 race-lte-262144-fence-abort-0-07879a ['SEND_ERROR']
+17:56:40 race-umts-32768-fence-0-fa2aab ['SEND_OK']
+17:58:08 race-umts-2097152-close2-0-eecc7c ['SEND_ERROR']
+17:58:58 race-lte-2097152-fence-abort-0-46f6f2 ['SEND_ERROR']
+17:58:59 race-lte-32768-close2-0-1d0e77 ['SEND_ERROR']
+17:59:21 race-edge-262144-early-0-811277 ['SEND_OK']
+17:59:25 race-edge-32768-fence-0-5f5a18 ['SEND_ERROR']
+17:59:31 race-lte-2097152-early-0-64ff09 ['SEND_OK']
+17:59:34 race-lte-2097152-close2-0-b8d251 ['SEND_ERROR']
+17:59:55 race-umts-262144-fence-0-b8adaa ['SEND_OK']
+17:59:58 race-edge-32768-close-0-2b3407 ['SEND_ERROR']
+18:00:01 race-lte-262144-close2-0-c030bf ['SEND_ERROR']
+18:00:04 race-lte-2097152-fence-0-071f66 ['SEND_ERROR']
+18:00:07 race-edge-262144-fence-abort-0-71341e ['SEND_ERROR']
+18:00:11 race-edge-262144-fence-0-67eb40 ['SEND_ERROR']
+18:00:31 race-umts-262144-early-0-272103 ['SEND_OK']
+18:00:35 race-lte-2097152-close-0-19b024 ['SEND_ERROR']
+18:00:39 race-umts-32768-early-0-455bd5 ['SEND_OK']
+18:00:42 race-lte-32768-close-0-034bbe ['SEND_ERROR']
+18:00:43 race-lte-32768-fence-abort-0-269fae ['SEND_ERROR']
+18:02:12 race-umts-2097152-close-0-aa68be ['SEND_ERROR']
+18:05:20 race-umts-2097152-early-0-f6e950 ['SEND_OK']
+18:05:22 race-lte-262144-fence-0-b76ff2 ['SEND_ERROR']
+18:06:51 race-umts-2097152-fence-abort-0-8591bf ['SEND_ERROR']
+18:08:59 race-edge-2097152-fence-0-ed45e4 ['SEND_ERROR']
+18:09:39 race-lte-262144-early-0-e9e5a2 ['SEND_OK']
+18:11:05 race-edge-2097152-fence-abort-0-95e9cd ['SEND_ERROR']
+18:11:51 race-umts-32768-close2-0-b24856 ['SEND_OK']
+18:11:54 race-umts-32768-close-0-48a242 ['SEND_ERROR']
+18:11:58 race-edge-262144-close-0-073fa0 ['SEND_ERROR']
+18:12:00 race-lte-32768-early-0-224263 ['SEND_OK']
+18:13:29 race-umts-2097152-fence-0-056389 ['SEND_ERROR']
+18:15:43 race-edge-2097152-close2-0-64daa1 ['SEND_ERROR']
+18:16:44 race-umts-262144-close-0-37f02c ['SEND_ERROR']
+18:16:52 race-lte-262144-close-0-2cf864 ['SEND_ERROR']
+18:19:24 race-edge-2097152-early-0-efd163 ['SEND_OK']
+18:19:27 race-edge-262144-close2-0-e897b2 ['SEND_ERROR']
+18:19:29 race-lte-32768-fence-0-198381 ['SEND_ERROR']
+18:19:49 race-umts-262144-fence-abort-0-440a29 ['SEND_OK']
+18:20:08 race-umts-262144-close2-0-a9c85b ['SEND_OK']
+18:22:30 race-umts-2097152-close2-1-49b0ed ['SEND_OK']
+18:22:50 race-umts-262144-early-1-3ffebd ['SEND_OK']
+18:23:03 race-edge-262144-fence-abort-1-06369a ['SEND_ERROR']
+18:24:15 race-edge-2097152-close2-1-0326d4 ['SEND_ERROR']
+18:24:58 race-umts-262144-close2-1-c2b52e ['SEND_ERROR']
+18:25:25 race-edge-262144-early-1-96fb7b ['SEND_OK']
+18:25:27 race-lte-32768-fence-abort-1-a85d55 ['SEND_OK']
+18:25:39 race-edge-262144-close-1-37e3ed ['SEND_ERROR']
+18:25:53 race-umts-262144-fence-1-39e296 ['SEND_ERROR']
+18:26:00 race-lte-2097152-fence-1-bb50a2 ['SEND_ERROR']
+18:26:05 race-umts-32768-early-1-4c486b ['SEND_OK']
+18:26:10 race-umts-32768-fence-1-b5d7d8 ['SEND_OK']
+18:28:32 race-umts-2097152-fence-1-fcf124 ['SEND_OK']
+18:28:34 race-lte-32768-close2-1-69d059 ['SEND_OK']
+18:28:39 race-umts-262144-fence-abort-1-9e8d33 ['SEND_ERROR']
+18:28:46 race-lte-2097152-early-1-6c4da5 ['SEND_OK']
+18:28:50 race-edge-32768-close-1-ec45c6 ['SEND_ERROR']
+18:28:57 race-edge-32768-close2-1-f9a3d1 ['SEND_OK']
+18:29:00 race-lte-262144-close-1-cf0312 ['SEND_ERROR']
+18:29:02 race-lte-32768-close-1-d392aa ['SEND_OK']
+18:29:04 race-lte-2097152-fence-abort-1-057ed1 ['SEND_ERROR']
+18:31:25 race-umts-2097152-early-1-f7ca58 ['SEND_OK']
+18:31:38 race-edge-262144-fence-1-5f30ae ['SEND_ERROR']
+18:31:58 race-edge-262144-close2-1-29e986 ['SEND_ERROR']
+18:32:11 race-edge-32768-fence-1-73b029 ['SEND_OK']
+18:32:15 race-umts-32768-close-1-0c5955 ['SEND_ERROR']
+18:32:19 race-lte-2097152-close-1-b36f23 ['SEND_ERROR']
+18:32:21 race-lte-262144-close2-1-3aca7c ['SEND_ERROR']
+18:32:25 race-umts-32768-fence-abort-1-da7d32 ['SEND_OK']
+18:34:46 race-umts-2097152-fence-abort-1-35aa90 ['SEND_OK']
+18:34:51 race-edge-32768-fence-abort-1-b95381 ['SEND_OK']
+18:34:56 race-umts-32768-close2-1-5e0b53 ['SEND_OK']
+18:35:02 race-umts-262144-close-1-f22c01 ['SEND_ERROR']
+18:35:12 race-edge-32768-early-1-85eb34 ['SEND_OK']
+18:36:20 race-edge-2097152-close-1-568594 ['SEND_ERROR']
+18:39:00 race-umts-2097152-close-1-a17bc2 ['SEND_ERROR']
+18:41:51 race-edge-2097152-early-1-0792d4 ['SEND_OK']
+18:41:53 race-lte-262144-fence-abort-1-03ac66 ['SEND_ERROR']
+18:41:55 race-lte-262144-early-1-788bf2 ['SEND_OK']
+18:43:02 race-edge-2097152-fence-1-a36739 ['SEND_ERROR']
+18:43:09 race-lte-262144-fence-1-82f601 ['SEND_ERROR']
+18:43:11 race-lte-32768-fence-1-03a4f4 ['SEND_ERROR']
+18:43:13 race-lte-32768-early-1-cb5beb ['SEND_OK']
+18:43:15 race-lte-2097152-close2-1-3e774b ['SEND_ERROR']
+18:44:22 race-edge-2097152-fence-abort-1-d5217a ['SEND_ERROR']
+18:45:02 race-lte-2097152-early-2-691219 ['SEND_OK']
+18:45:07 race-umts-32768-fence-abort-2-934b32 ['SEND_OK']
+18:45:17 race-umts-262144-close2-2-9fa3f9 ['SEND_ERROR']
+18:46:33 race-umts-2097152-close2-2-49de3d ['SEND_ERROR']
+18:49:15 race-edge-2097152-close-2-74f919 ['SEND_ERROR']
+18:52:15 race-edge-2097152-fence-2-562860 ['SEND_OK']
+18:52:25 race-umts-262144-fence-2-d8d9d5 ['SEND_ERROR']
+18:52:46 race-edge-262144-close2-2-249abd ['SEND_ERROR']
+18:52:59 race-edge-32768-early-2-5248be ['SEND_OK']
+18:53:22 race-edge-262144-early-2-b750b8 ['SEND_OK']
+18:53:24 race-lte-2097152-fence-abort-2-d334aa ['SEND_ERROR']
+18:53:27 race-lte-2097152-fence-2-8ce584 ['SEND_ERROR']
+18:53:31 race-umts-32768-close-2-cbfccf ['SEND_ERROR']
+18:53:34 race-edge-32768-close-2-479175 ['SEND_ERROR']
+18:53:36 race-lte-262144-close-2-323079 ['SEND_ERROR']
+18:54:44 race-umts-2097152-close-2-3150ce ['SEND_ERROR']
+18:55:24 race-edge-32768-fence-2-1f3aff ['SEND_ERROR']
+18:55:45 race-umts-262144-early-2-ece004 ['SEND_OK']
+18:56:53 race-umts-2097152-fence-2-709e16 ['SEND_ERROR']
+18:57:33 race-edge-32768-close2-2-da2fad ['SEND_ERROR']
+18:57:39 race-umts-32768-early-2-24aa3d ['SEND_OK']
+18:57:41 race-lte-262144-fence-abort-2-e7cde3 ['SEND_ERROR']
+18:57:43 race-lte-2097152-close2-2-37b7ac ['SEND_ERROR']
+18:57:45 race-lte-32768-close-2-b116c2 ['SEND_ERROR']
+19:00:17 race-edge-2097152-close2-2-072625 ['SEND_OK']
+19:00:32 race-edge-262144-close-2-33b0d3 ['SEND_ERROR']
+19:00:42 race-lte-2097152-close-2-c1f108 ['SEND_ERROR']
+19:03:15 race-edge-2097152-fence-abort-2-dc082e ['SEND_OK']
+19:03:18 race-edge-32768-fence-abort-2-804dcb ['SEND_ERROR']
+19:03:29 race-umts-262144-close-2-f76fc2 ['SEND_ERROR']
+19:03:38 race-lte-262144-close2-2-0eb62e ['SEND_ERROR']
+19:05:58 race-umts-2097152-early-2-8ff33c ['SEND_OK']
+19:06:01 race-lte-32768-close2-2-00024a ['SEND_ERROR']
+19:06:02 race-lte-32768-fence-abort-2-1dde5b ['SEND_ERROR']
+19:06:25 race-edge-262144-fence-abort-2-9aab46 ['SEND_OK']
+19:06:30 race-umts-32768-fence-2-239cc0 ['SEND_OK']
+19:06:33 race-lte-262144-early-2-3225a2 ['SEND_OK']
+19:06:35 race-lte-262144-fence-2-177c0e ['SEND_ERROR']
+19:06:45 race-umts-262144-fence-abort-2-c7af23 ['SEND_ERROR']
+19:06:51 race-lte-32768-fence-2-31e851 ['SEND_OK']
+19:07:05 race-edge-262144-fence-2-ea32d0 ['SEND_ERROR']
+19:07:15 race-lte-32768-early-2-1b4057 ['SEND_OK']
+19:08:23 race-umts-2097152-fence-abort-2-51cfb7 ['SEND_ERROR']
+19:11:27 race-edge-2097152-early-2-2f846c ['SEND_OK']
+19:11:33 race-umts-32768-close2-2-a56c70 ['SEND_OK']
+G3A_EXIT=0
+ 
+[DEVICEFARM] ########### Entering phase post_test ###########
+ 
+[DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls || true
+Success
+ 
+[DEVICEFARM] ########### Finish executing testspec ###########
+ 
+[DEVICEFARM] ########### Setting upload permissions ###########
+ 
+ 
+[DEVICEFARM] Tearing down your device. Your tests report will come shortly.

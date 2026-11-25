@@ -1,0 +1,66 @@
+[2026-11-24 17:31:20.680804] [DEVICEFARM] ########### Start executing testspec ###########
+[2026-11-24 17:31:20.680842]  
+[2026-11-24 17:31:20.689734]  
+[2026-11-24 17:31:20.689758] [DEVICEFARM] ########### Entering phase install ###########
+[2026-11-24 17:31:20.689771]  
+[2026-11-24 17:31:20.689782] [DeviceFarm] devicefarm-cli use python 3.12
+[2026-11-24 17:31:20.818882] [DeviceFarm] python3 --version
+[2026-11-24 17:31:20.819658] Python 3.12.12
+[2026-11-24 17:31:20.819847] [DeviceFarm] adb version
+[2026-11-24 17:31:20.845113] Android Debug Bridge version 1.0.39
+[2026-11-24 17:31:20.845142] Version 0.0.1-4500957
+[2026-11-24 17:31:20.845157] Installed as /tmp/devicefarm-workspace/execution-qty3xqhr/shared-uyytch8f/android-home-slw0f2ia/platform-tools/adb_binary
+[2026-11-24 17:31:20.846791]  
+[2026-11-24 17:31:20.846823] [DEVICEFARM] ########### Entering phase pre_test ###########
+[2026-11-24 17:31:20.846840]  
+[2026-11-24 17:31:20.846855] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID shell getprop ro.build.fingerprint
+[2026-11-24 17:31:20.998633] google/akita/akita:17/CP2A.260605.012/15430684:user/release-keys
+[2026-11-24 17:31:21.002809] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls; echo "UNINSTALL_TLS_EXIT=$?"
+[2026-11-24 17:31:21.498221] Success
+[2026-11-24 17:31:21.514058] UNINSTALL_TLS_EXIT=0
+[2026-11-24 17:31:21.514087] [DeviceFarm] curl -s -m 5 -o /dev/null -w "EC2_CONTROL_HTTP=%{http_code}\n" http://54.186.50.117:8800/ || echo "EC2_CONTROL_UNREACHABLE"
+[2026-11-24 17:31:21.606358] EC2_CONTROL_HTTP=403
+[2026-11-24 17:31:21.606999]  
+[2026-11-24 17:31:21.607046] [DEVICEFARM] ########### Entering phase test ###########
+[2026-11-24 17:31:21.607074]  
+[2026-11-24 17:31:21.607095] [DeviceFarm] cd $DEVICEFARM_TEST_PACKAGE_PATH
+[2026-11-24 17:31:21.607117] [DeviceFarm] P04_TOKEN=$(cat secrets/p04_token) ADB=adb python3 artifact/followup/race_suite.py --serial $DEVICEFARM_DEVICE_UDID --no-root --receiver http://54.186.50.117:8800 --host 54.186.50.117 --certdir cert --apk artifact/fixture/build/g3-apk/rl-tls.apk --g3 --warm-revision --sndbuf 16384 --seed g3a-df-20261125 --calibrate 3 --out $DEVICEFARM_LOG_DIR/g3a; echo "G3A_EXIT=$?"
+[2026-11-24 17:31:29.805421] 17:31:29 race-edge-32768-fence-0-cf76f6 ['SEND_OK']
+[2026-11-24 17:31:35.857590] 17:31:35 race-edge-32768-fence-1-89fa02 ['SEND_OK']
+[2026-11-24 17:31:42.011771] 17:31:42 race-edge-32768-fence-2-dba54c ['SEND_OK']
+[2026-11-24 17:32:04.194631] 17:32:04 race-edge-262144-fence-0-31b711 ['SEND_OK']
+[2026-11-24 17:32:26.961421] 17:32:26 race-edge-262144-fence-1-566059 ['SEND_OK']
+[2026-11-24 17:32:49.530015] 17:32:49 race-edge-262144-fence-2-cf0482 ['SEND_OK']
+[2026-11-24 17:35:22.801795] 17:35:22 race-edge-2097152-fence-0-f1ac3d ['SEND_OK']
+[2026-11-24 17:37:55.750810] 17:37:55 race-edge-2097152-fence-1-46768f ['SEND_OK']
+[2026-11-24 17:40:29.287945] 17:40:29 race-edge-2097152-fence-2-eef25e ['SEND_OK']
+[2026-11-24 17:40:34.255782] 17:40:34 race-umts-32768-fence-0-8613a2 ['SEND_OK']
+[2026-11-24 17:40:39.029257] 17:40:39 race-umts-32768-fence-1-f99f9c ['SEND_OK']
+[2026-11-24 17:40:43.787154] 17:40:43 race-umts-32768-fence-2-8cba42 ['SEND_OK']
+[2026-11-24 17:41:03.822018] 17:41:03 race-umts-262144-fence-0-362047 ['SEND_OK']
+[2026-11-24 17:41:24.542555] 17:41:24 race-umts-262144-fence-1-59787b ['SEND_OK']
+[2026-11-24 17:41:44.668810] 17:41:44 race-umts-262144-fence-2-0c8f1e ['SEND_OK']
+[2026-11-24 17:44:06.271462] 17:44:06 race-umts-2097152-fence-0-43e9da ['SEND_OK']
+[2026-11-24 17:46:27.497366] 17:46:27 race-umts-2097152-fence-1-46ffdd ['SEND_OK']
+[2026-11-24 17:48:48.777960] 17:48:48 race-umts-2097152-fence-2-0ad1f2 ['SEND_OK']
+[2026-11-24 17:48:51.259196] 17:48:51 race-lte-32768-fence-0-cf5f32 ['SEND_OK']
+[2026-11-24 17:48:52.990772] 17:48:52 race-lte-32768-fence-1-c26145 ['SEND_OK']
+[2026-11-24 17:48:54.607068] 17:48:54 race-lte-32768-fence-2-5d8c68 ['SEND_OK']
+[2026-11-24 17:48:56.990912] 17:48:56 race-lte-262144-fence-0-911ba1 ['SEND_OK']
+[2026-11-24 17:48:59.325966] 17:48:59 race-lte-262144-fence-1-fda4de ['SEND_OK']
+[2026-11-24 17:49:01.685486] 17:49:01 race-lte-262144-fence-2-c52bb7 ['SEND_OK']
+[2026-11-24 17:49:05.379509] 17:49:05 race-lte-2097152-fence-0-f2d946 ['SEND_OK']
+[2026-11-24 17:49:09.395808] 17:49:09 race-lte-2097152-fence-1-fcf671 ['SEND_OK']
+[2026-11-24 17:49:13.168657] 17:49:13 race-lte-2097152-fence-2-12dfc5 ['SEND_OK']
+[2026-11-24 17:49:13.206143] G3A_EXIT=0
+[2026-11-24 17:49:13.206183]  
+[2026-11-24 17:49:13.206196] [DEVICEFARM] ########### Entering phase post_test ###########
+[2026-11-24 17:49:13.206205]  
+[2026-11-24 17:49:13.206214] [DeviceFarm] adb -s $DEVICEFARM_DEVICE_UDID uninstall org.residuelab.tls || true
+[2026-11-24 17:49:13.527927] Success
+[2026-11-24 17:49:13.570460]  
+[2026-11-24 17:49:13.570493] [DEVICEFARM] ########### Finish executing testspec ###########
+[2026-11-24 17:49:13.570505]  
+[2026-11-24 17:49:13.574186] [DEVICEFARM] ########### Setting upload permissions ###########
+[2026-11-24 17:49:13.574233]  
+[2026-11-24 17:49:13.575685]  

@@ -10,16 +10,20 @@ set -euo pipefail
 # The app's network_security_config denies cleartext for every host, which overrides usesCleartextTraffic: the test sink
 # (plain HTTP on the host, 10.0.2.2) would be unreachable for Retrofit (B2 pilot-1: no request reached the sink). Permit
 # cleartext for 10.0.2.2 only, identically in both test builds.
+# Own-phone builds (artifact/devicefarm/phone-r4): CLEARTEXT_HOSTS="10.0.2.2 127.0.0.1" also permits the adb reverse
+# address; the default (10.0.2.2 only) writes exactly what earlier builds got.
 nsc() {
-  local f=$APP/res/xml/network_security_config.xml
-  grep -q "10.0.2.2" "$f" && return 0
-  python3 - "$f" <<'PY'
+  local f=$APP/res/xml/network_security_config.xml h
+  for h in ${CLEARTEXT_HOSTS:-10.0.2.2}; do
+    grep -q ">$h<" "$f" && continue
+    python3 - "$f" "$h" <<'PY'
 import sys
-f = sys.argv[1]; s = open(f).read(); old = '</network-security-config>'
+f, h = sys.argv[1], sys.argv[2]; s = open(f).read(); old = '</network-security-config>'
 assert s.count(old) == 1, f
-open(f, 'w').write(s.replace(old, '    <domain-config cleartextTrafficPermitted="true">\n        <domain includeSubdomains="false">10.0.2.2</domain>\n    </domain-config>\n' + old))
+open(f, 'w').write(s.replace(old, '    <domain-config cleartextTrafficPermitted="true">\n        <domain includeSubdomains="false">' + h + '</domain>\n    </domain-config>\n' + old))
 PY
-  echo "network_security_config: cleartext permitted for 10.0.2.2"
+    echo "network_security_config: cleartext permitted for $h"
+  done
 }
 main() {
 SRC=$1; HERE=$(cd "$(dirname "$0")" && pwd); ART=$(cd "$HERE/../.." && pwd)

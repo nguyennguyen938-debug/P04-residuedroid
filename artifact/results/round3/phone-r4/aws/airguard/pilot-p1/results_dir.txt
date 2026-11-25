@@ -1,0 +1,1 @@
+artifact/results/round3/phone-r4/aws/airguard/pilot-p1/unzipped/Customer_Artifacts/Host_Machine_Files/$DEVICEFARM_LOG_DIR/airguard
