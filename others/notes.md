@@ -50,6 +50,7 @@ This ledger maps each claim to its source. "VERIFY-FINAL" = re-check wording aga
 | AirGuard on the Pixel 8a: stock violates pending+kill, fenced and layered none (abstract, §1, §7.4) | dfAirN, dfAirStockPK, dfAirPKN, dfAirFence, dfAirLayer, dfAirNetStock, dfAirUnknown, dfAirNetDeficitMin | phone-r4/aws/airguard/analysis/airguard-summary.json (plans/r4df-airguard-card.md) via round4_df(). Emulator B2/G2b numbers kept in §7.4 (reboot) and App. airrace |
 | Cancellation found no registered call in one AirGuard trial (§7.4; exploratory) | gbNoCallRx | analysis-v5c/diag-v5c.json (followup/diag_g3app5.py, post hoc) |
 | Phone cost: fence/early CPU per MiB and time; no energy reading (abstract, §7.5, §8) | gdCells, gdUploads, gdUploadFail, gdCpuLo/Hi, gdTimeLo/Hi, gdEnergyNonzero, gdEnergyCells; phone label racePhoneModel (same Galaxy A06) | results/round3/g3cost/analysis-v4/{g3cost-summary,batterystats-check}.json (g3cost-card.md protocol v4) via make_summary.group3(). C reran analyze_g3cost.py (24/11, identical) |
+| SDK embedding and shared transport sizes (App. sdk) | sdkAcraLoc, sdkMatomoLoc, sdkTransportLoc | nonblank lines of artifact/{acra,matomo,transport}/src/**/*.java via scripts/render.py (replaces hand-typed 202/56/196, 25/11; transport now includes the comparator's socket hook) |
 
 ## Claims deliberately NOT made (novelty audit §5)
 - No "first withdrawal measurement" (MowChecker is prior art); contribution = persistent job lineage + serialized late fence.

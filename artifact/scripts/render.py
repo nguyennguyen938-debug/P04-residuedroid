@@ -99,6 +99,10 @@ loc = 0
 for f in glob.glob(os.path.join(ART, "fixture", "src", "**", "*.java"), recursive=True):
     loc += sum(1 for l in open(f) if l.strip() and not l.strip().startswith(("//", "*", "/*")))
 M["impLoc"] = f"{loc:,}".replace(",", "{,}")
+# SDK embeddings and shared transports (App. sdk): nonblank lines, comments included, as the appendix states.
+for key, sub in (("sdkAcraLoc", "acra"), ("sdkMatomoLoc", "matomo"), ("sdkTransportLoc", "transport")):
+    M[key] = sum(1 for f in glob.glob(os.path.join(ART, sub, "src", "**", "*.java"), recursive=True)
+                 for l in open(f, encoding="utf-8") if l.strip())
 
 # ------------------------------------------------------------------ campaign (filled by later sections of this script)
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "render_campaign.py")).read()) \
@@ -111,7 +115,7 @@ if os.path.exists(_rm):
 # ------------------------------------------------------------------ macros
 NEEDED = ["corpusN", "eligibleN", "trackN", "randN", "pctPersistAll", "pctAlarmAll", "pctCandLo", "pctCandHi",
           "pctCandConsentLo", "pctCandConsentHi", "candConsentLoN", "candConsentHiN", "pctConsentTrack", "pctConsentRand",
-          "pctSdkTrack", "pctSdkRand", "pctPollStop", "pctNativeAll", "acraApps", "impLoc", "valN", "valYes", "valUnclear",
+          "pctSdkTrack", "pctSdkRand", "pctPollStop", "pctNativeAll", "acraApps", "impLoc", "sdkAcraLoc", "sdkMatomoLoc", "sdkTransportLoc", "valN", "valYes", "valUnclear",
           "valYesLo", "valYesHi", "valShallowN", "valShallowYes", "valShallowUnclear", "valDeepN", "valDeepYes",
           "valDeepUnclear", "valDeepNo",
           "nTrialsValid", "convViolPct", "acraStockLeak", "acraFenceLeak", "acraStockCtl", "acraFenceCtl",
