@@ -2,9 +2,10 @@
 \label{app:sdk}
 The ACRA embedding keeps its epochs in transactional SQLite state; malformed state fails closed. Initialization is
 explicit and an interrupted initialization cannot silently recreate an allowed policy. The ACRA embedding comprises six
-Java files (202 nonblank lines), touching initialization/collectors, report labels, sender/factory registration and
-settings acknowledgement. Matomo uses two embedding files (56 lines), touching tracker setup, packet labels and the
-dispatcher connection callback. The shared coordinator and HTTP/TLS transports comprise three files (196 lines). These
+Java files (\sdkAcraLoc{} nonblank lines), touching initialization/collectors, report labels, sender/factory registration and
+settings acknowledgement. Matomo uses two embedding files (\sdkMatomoLoc{} lines), touching tracker setup, packet labels and the
+dispatcher connection callback. The shared coordinator and HTTP/TLS transports comprise three files (\sdkTransportLoc{}
+lines, including a socket hook that only the cancellation comparator uses). These
 are maintained embedding-source sizes, not SDK diff sizes or estimates of production integration effort.
 
 The preference-only ACRA~5.14.2 embedding queued a crash report offline, disabled reporting,
