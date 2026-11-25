@@ -148,6 +148,7 @@ SCHEMA = {
     "dfFenceEdge": "fence, EDGE", "dfFenceUmts": "fence, 3G", "dfFenceLte": "fence, LTE", "dfFenceAll": "fence, all profiles",
     "dfAbortEdge": "abortive fence, EDGE", "dfAbortUmts": "abortive fence, 3G", "dfAbortLte": "abortive fence, LTE", "dfAbortAll": "abortive fence, all profiles",
     "dfEarlyAck": "early trials with bytes accepted after the ack", "dfCancelAck": "cancelling trials after the ack",
+    "dfFenceAck": "fenced trials (normal and abortive) after the ack",
     "dfCloseLteAckMed": "cross-process cancellation median ack ms, LTE", "dfFenceAckP": "fence p95 ack ms, LTE",
     "dfAbortAckP": "abortive fence p95 ack ms, LTE", "dfCloseTwoAckP": "same-process cancellation p95 ack ms, LTE",
     "dfCloseTwoTimed": "exploratory: same-process cases timed", "dfCloseTwoPostWLo": "first post-W write, ms after W, min",

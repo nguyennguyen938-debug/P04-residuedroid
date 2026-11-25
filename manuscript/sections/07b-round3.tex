@@ -29,13 +29,14 @@ still logged the complete request in \raceCutEarlyComplete{} of \raceCutEarly{} 
 \paragraph{Cancellation and the commit point.} A later pre-registered run on a rented Pixel~8a (AWS Device Farm),
 with the receiver on a cloud host that shaped the upload, shared blocks among five arms: early check, fence, abortive
 fence, and closing in-flight sockets after the withdrawal commits, from its own process (\emph{cross-process}) or in the
-sending process for requests not yet handed off (\emph{same-process}; Appendix~\ref{app:cancel}). Cancelling arms
-accepted bytes after the acknowledgement in \dfCancelAck{} trials, early in \dfEarlyAck{} of \dfArmN{}; at the commit
-$W$, Theorem~\ref{thm:sound}'s boundary, the arms separate (Table~\ref{tab:commit}; an exploratory recount of
-Table~\ref{tab:race} from $W$ changes no cell).
+sending process for requests not yet handed off (\emph{same-process}; Appendix~\ref{app:cancel}). At the
+acknowledgement, which is what the user sees, synchronous cancellation was as safe as the fence: bytes followed it in
+\dfCancelAck{} cancelling and \dfFenceAck{} fenced trials (\dfArmN{} per arm), against \dfEarlyAck{} early. The arms separate
+at the commit $W$, Theorem~\ref{thm:sound}'s boundary (Table~\ref{tab:commit}). $W$ is our choice of boundary; it matters because a write accepted after
+it carries data that the app's committed policy state already forbade when the write started.
 
 \begin{table}[t]\centering
-\caption{Rented Pixel~8a: trials whose socket accepted a write attempted after the withdrawal commit $W$
+\caption{Rented Pixel~8a: trials whose socket accepted a write attempted after the commit $W$
 (pre-registered primary), \dfN{} per cell. Emulator runs: Appendix~\ref{app:cancel}.}
 \label{tab:commit}\mtab
 \begin{tabular}{@{}lrrrr@{}}\toprule
@@ -75,15 +76,15 @@ which its wording does not settle (Appendix~\ref{app:round3impl}). On a rented P
 through the app's own preference path (stock; fenced; and layered, with the same labels and one check before sending),
 the stock build donated opt-out beacons after re-consent in \dfAirStockPK{} of \dfAirPKN{} pending and kill trials, the
 fenced and layered builds in none over all schedules, with \dfAirUnknown{} unknown; after a network
-cut no build delivered permitted post-withdrawal beacons (these schedules withdraw before the next donation). On the emulator, with reboots, stock violated in \airStockViol{} of \airN{} trials and the
-fenced build in \airFenceViol{} confirmed, \airFenceUnknownV{} unknown (Appendix~\ref{app:airrace}).
+cut no build delivered permitted post-withdrawal beacons (these schedules withdraw before the next donation). In the first emulator run (stock and fenced; pending, kill and reboot), stock violated in
+\airStockViol{} of \airN{} trials and fenced in \airFenceViol{} confirmed, \airFenceUnknownV{} unknown (Appendix~\ref{app:airrace}).
 
 \paragraph{Withdrawal during a donation.} Two pre-registered runs withdrew while a 256\,KiB donation was uploading on a
 3G-shaped link, adding a build that calls OkHttp's \texttt{Call.cancel()} on every in-flight call. In the first, whose
 capture primary did not separate the builds, the donation arrived complete after the acknowledgement in \gaFenceRx{}
 fenced trials against \gaCancelRx{} cancelling, but with kernel send buffers of \gbKernSmallKib{} and
-\gbKernDefKib{}\,KiB (Appendix~\ref{app:airrace}). With equal buffers, in
-the same trials, the donation arrived complete (that run's primary) in \gbSixteenRx{} of \gbSixteenN{} cancelling trials (Wilson
+\gbKernDefKib{}\,KiB (Appendix~\ref{app:airrace}). In the second run, with equal buffers and the builds paired within
+each trial, the donation arrived complete (that run's primary) in \gbSixteenRx{} of \gbSixteenN{} cancelling trials (Wilson
 [\gbSixteenLo{}\%, \gbSixteenHi{}\%]) and \gbFenceRx{} of \gbFenceN{} fenced ([\gbFenceLo{}\%, \gbFenceHi{}\%]): no clear
 difference at the receiver. In \gbNoCallRx{} of them (exploratory), the withdrawal preceded OkHttp's registration of the
 call and the whole body arrived; the fence has no such window.
@@ -93,7 +94,7 @@ part of a mixed request in \splitPreRecovered{} of \splitTrials{} trials blocked
 \splitPostRecovered{} once one was; \splitAfterAck{} accepted bytes after the acknowledgement. Appendix~\ref{app:sdk}
 covers ACRA~5.14.2 and Matomo~4.4.
 
-\subsection{Label errors, newer Android, phones and cost}
+\subsection{Label errors, generality and cost}
 \label{sec:eval-generality}
 \paragraph{Label errors.} Each mutant corrupts one label propagation point. Labelling raw records with the current epoch
 leaked in \mutTwoLeak{} of \mutTwoTrials{} trials, and keeping only a summary's newest source label in \mutOneLeak{} of

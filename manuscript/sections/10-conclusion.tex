@@ -1,2 +1,2 @@
 \section{Conclusion}
-Durable lineage and epochs make a withdrawal check correct across derivation, re-grant and lifecycle events; placement matters only during an upload, where every write after the withdrawal's commit must be rechecked under its lock. Mediation and labels are assumed; accepted bytes cannot be recalled.\label{body-end}
+Durable lineage and epochs make a withdrawal check correct across derivation, re-grant and lifecycle events; placement matters only during an upload, where only a recheck of each write under the withdrawal's lock covers every write after its commit. Mediation and labels are assumed; accepted bytes cannot be recalled.\label{body-end}

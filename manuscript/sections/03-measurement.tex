@@ -28,8 +28,8 @@ judgments do not validate runtime paths or estimate false negatives. We report t
 \paragraph{Findings.} Table~\ref{tab:corpus} reports each sampling stratum separately: the tracking stratum is a census
 within the eligible index, random-stratum intervals are conditional on classification, and we do not pool the
 oversampled strata. With only \valN{} validation judgments, the plausible fraction is \valYes{}/\valN{} (Wilson 95\%
-interval from \valYesLo{}\% to \valYesHi{}\%), and \valUnclear{} remain unclear. Between \candConsentLoN{} (three-hop
-screen) and \candConsentHiN{} (any depth) screened apps persist deferred work, reach the network from a deferred-job entry
+interval from \valYesLo{}\% to \valYesHi{}\%), and \valUnclear{} remain unclear. Summed over both strata (a count of
+apps, not a pooled rate), between \candConsentLoN{} (three-hop screen) and \candConsentHiN{} (any depth) screened apps persist deferred work, reach the network from a deferred-job entry
 point and carry a consent or telemetry signal; neither count estimates a contract-violation prevalence. Only
 \pctPollStop{}\% of app-code workers poll \texttt{isStopped()}, which does not show whether cancellation interrupts
 uploads; between-batch stopping is a fixture assumption, not a corpus finding. Native code, which most screened apps in

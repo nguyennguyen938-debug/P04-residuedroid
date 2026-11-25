@@ -24,16 +24,15 @@ network afterwards through persisted work, across process death, reboot and conn
 cooperative app must enforce its own contract so that no lifecycle interleaving defeats it. We also refuse two simplifications.
 First, a stored residue is not a violation. An OS permission revocation, an in-app opt-out, a processing restriction and a
 deletion request are different contracts (\S\ref{sec:contracts}), and we judge each workload against the one it states.
-Second, bytes that the socket has already accepted cannot be recalled. A device-side mechanism can only control what it
-\emph{newly} commits.
+Second, bytes that the socket has already accepted cannot be recalled. A device can only control what it \emph{newly} commits.
 
 \paragraph{Approach.} \sys combines three small mechanisms. Durable per-scope \emph{epochs} turn a withdrawal into a
 transaction. \emph{Persistent job lineage} stores a label of source scopes and epochs in the same row, or the same
 persisted job input, as every copy of the data, including derived data. A \emph{late egress fence} evaluates the app's stated
 contract before each bounded nonblocking socket write, inside a critical section shared with withdrawal. Under complete
 mediation, durable labels and this serialization, no newly accepted supported prefix carries a source that the current policy invalidates (Theorem~\ref{thm:sound}). An earlier check without effective later cancellation admits a violating interleaving when withdrawal invalidates the source; the
-window it leaves orders check points (Theorem~\ref{thm:race}). Cancellation meets the same boundary only if it is
-serialized with the writer and reaches every in-flight request.
+window it leaves orders check points (Theorem~\ref{thm:race}). Cancellation meets it only when serialized with the
+writer and covering every in-flight request.
 
 \input{sections/01b-evidence}
 

@@ -203,8 +203,12 @@ cancellation had no post-commit case in \gtrN{} pooled and \gpN{} LTE trials; on
 effect, it had \dfCloseTwoAll{}. The fence and the abortive fence had none on either. In the balanced LTE emulator run,
 every trial whose withdrawal fell during the writes accepted a post-commit write, \gpCloseExposed{} with cross-process
 cancellation as \gpEarlyExposed{} with the early check, and the p95 acknowledgement was \gpFenceAckP{}\,ms for the fence,
-\gpAbortAckP{}\,ms abortive and \gpCloseTwoAckP{}\,ms for same-process cancellation. We did not test an asynchronous
-cancel that does not hold the acknowledgement.
+\gpAbortAckP{}\,ms abortive and \gpCloseTwoAckP{}\,ms for same-process cancellation. These emulator runs are separate
+from each other and from that of Table~\ref{tab:race}, so counts for the same arm differ between them: counted from $W$,
+the early check accepted a post-commit write in \raceCommitEarly{} of \raceCommitN{} trials in the run of
+Table~\ref{tab:race} (an exploratory recount from $W$ that changes no cell of that table), \gcloseCommitEarly{} in the first cancellation run and \gtrEarlyW{} in the second, and cross-process
+cancellation in \gcloseCommitClose{} and \gtrCloseW{}. We did not test an asynchronous cancel that does not hold the
+acknowledgement.
 
 \begin{table}[h]\centering
 \caption{Emulator: trials whose socket accepted a write attempted after $W$ (pre-registered primary). Pooled: EDGE, 3G,
@@ -233,9 +237,10 @@ the first write and the handoff. It set \texttt{SO\_SNDBUF} to 16\,KiB, 64\,KiB,
 reported the platform default as \gsDefaultKib{}\,KiB, and Linux allocates twice the reported size in the kernel, which
 is the figure the AirGuard runs read with \texttt{ss}. All other fixture runs set 16\,KiB.
 
-\paragraph{AirGuard during a donation.}\label{app:airrace} On the emulator, a lifecycle run with the same three builds as
-the Pixel~8a run (pending, kill and reboot pooled) gave stock \glayStockViol{} of \glayN{} violating trials, fenced
-\glayFenceViol{}, layered \glayLayerViol{} and \glayUnknown{} unknown. In the emulator lifecycle runs too, no build
+\paragraph{AirGuard during a donation.}\label{app:airrace} On the emulator, a second lifecycle run, separate from the
+first (stock and fenced) run of \S\ref{sec:eval-realapp}, used the same three builds as the Pixel~8a run (pending, kill
+and reboot pooled) and gave stock \glayStockViol{} of \glayN{} violating trials, fenced \glayFenceViol{}, layered
+\glayLayerViol{} and \glayUnknown{} unknown. In the emulator lifecycle runs too, no build
 delivered permitted post-withdrawal beacons after a network cut, because the app does not retry a failed run; the second
 run left no trial unknown, and we did not analyse why the first run's unknowns did not recur. In the
 first in-upload run, the analysis first counted \gaFenceRxFirst{} fenced trials complete at the receiver: its window of
@@ -261,8 +266,9 @@ each lost a reboot trial to a harness or device failure. Dropping the label from
 \mutThreeLeak{} trials and left \mutThreeDeficit{} permitted items undelivered against \mutBaseDeficit{} for the unmodified
 build, which leaked in \mutBaseLeak{} of \mutBaseTrials{}. The Android~14 and 15 runs cover pending, kill, reboot and
 network-loss schedules. The rented phones (Android~\devAndroid{}) are one device per model from two device clouds; the
-fence accepted application ciphertext after acknowledgement in \devFenceAfterAck{} TLS barrier trials. The TLS barrier of
-\S\ref{sec:revision} ran over \devTrials{} trials split evenly between the arms, the early check completing all
+fence accepted application ciphertext after acknowledgement in \devFenceAfterAck{} TLS barrier trials. On the phones only
+the barrier cases of the emulator TLS suite (\S\ref{sec:revision}) were repeated, over
+\devTrials{} trials across both phones split evenly between the early and fenced arms, the early check completing all
 \devEarlyComplete{} of its requests, and the lifecycle runs used pending,
 kill and revoke schedules. A later Device Farm run on the Pixel~8a added the commit-point race, network loss and
 AirGuard. There, \texttt{adb reboot} returned without restarting the phone (its uptime and the apps' clocks ran on), so
