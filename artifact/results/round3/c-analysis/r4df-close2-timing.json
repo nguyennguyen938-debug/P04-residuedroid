@@ -1,0 +1,66 @@
+{
+ "note": "exploratory, defined after the data",
+ "rows": [
+  {
+   "trial": "race-lte-2097152-close2-3-63b2fd",
+   "profile": "lte",
+   "size": 2097152,
+   "post_w_write_ms": 1.577881,
+   "cancel_after_w_ms": 2.983846,
+   "late_bytes": 4096,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  },
+  {
+   "trial": "race-lte-2097152-close2-4-da64fc",
+   "profile": "lte",
+   "size": 2097152,
+   "post_w_write_ms": 0.294067,
+   "cancel_after_w_ms": 1.42159,
+   "late_bytes": 29,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  },
+  {
+   "trial": "race-lte-262144-close2-5-6b8a46",
+   "profile": "lte",
+   "size": 262144,
+   "post_w_write_ms": 0.673462,
+   "cancel_after_w_ms": 1.828003,
+   "late_bytes": 29,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  },
+  {
+   "trial": "race-lte-262144-close2-7-29fccf",
+   "profile": "lte",
+   "size": 262144,
+   "post_w_write_ms": 0.732137,
+   "cancel_after_w_ms": 2.612304,
+   "late_bytes": 29,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  },
+  {
+   "trial": "race-lte-2097152-close2-7-3cfb69",
+   "profile": "lte",
+   "size": 2097152,
+   "post_w_write_ms": 0.613444,
+   "cancel_after_w_ms": 1.273803,
+   "late_bytes": 29,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  },
+  {
+   "trial": "race-lte-2097152-close2-9-fdca40",
+   "profile": "lte",
+   "size": 2097152,
+   "post_w_write_ms": 1.331136,
+   "cancel_after_w_ms": 5.010254,
+   "late_bytes": 29,
+   "cancel_detail": "inproc;live=1;closed=1;nosocket=0;handed=0"
+  }
+ ],
+ "keys": {
+  "dfCloseTwoTimed": 6,
+  "dfCloseTwoPostWLo": 0.3,
+  "dfCloseTwoPostWHi": 1.6,
+  "dfCloseTwoCancelLo": 1.3,
+  "dfCloseTwoCancelHi": 5.0
+ }
+}

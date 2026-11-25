@@ -24,45 +24,44 @@ The early check let bytes follow the acknowledgement in every cell; the fence ne
 receiver-side count, the difference reaches the server: of the early trials whose withdrawal was acknowledged before the request was fully handed off, the receiver
 still logged the complete request in \raceCutEarlyComplete{} of \raceCutEarly{} (emulator) and
 \racePhoneCutEarlyComplete{} of \racePhoneCutEarly{} (phone); of the fenced trials cut that way, in
-\raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{}.
-Eq.~\ref{eq:race}'s predictions are in Appendix~\ref{app:eqrace}.
+\raceCutFenceComplete{} of \raceCutFence{} and \racePhoneCutFenceComplete{} of \racePhoneCutFence{} (Eq.~\ref{eq:race}: Appendix~\ref{app:eqrace}).
 
-\paragraph{Cancellation and the commit point.} Two later pre-registered runs, separate from Table~\ref{tab:race}, shared
-blocks among five arms: early check, fence, abortive fence, and closing in-flight sockets after the withdrawal commits,
-from its own process (\emph{cross-process}) or in the sending process for requests not yet handed off
-(\emph{same-process}; Appendix~\ref{app:cancel}). Cancelling arms accepted bytes after the acknowledgement in
-\gtrCancelAck{} trials, early in \gtrEarlyAck{} of \gtrN{}; at the commit $W$, Theorem~\ref{thm:sound}'s boundary, the
-arms separate (Table~\ref{tab:commit}; an exploratory recount of Table~\ref{tab:race} from $W$ changes no cell).
+\paragraph{Cancellation and the commit point.} A later pre-registered run on a rented Pixel~8a (AWS Device Farm),
+with the receiver on a cloud host that shaped the upload, shared blocks among five arms: early check, fence, abortive
+fence, and closing in-flight sockets after the withdrawal commits, from its own process (\emph{cross-process}) or in the
+sending process for requests not yet handed off (\emph{same-process}; Appendix~\ref{app:cancel}). Cancelling arms
+accepted bytes after the acknowledgement in \dfCancelAck{} trials, early in \dfEarlyAck{} of \dfArmN{}; at the commit
+$W$, Theorem~\ref{thm:sound}'s boundary, the arms separate (Table~\ref{tab:commit}; an exploratory recount of
+Table~\ref{tab:race} from $W$ changes no cell).
 
 \begin{table}[t]\centering
-\caption{Trials whose socket accepted a write attempted after the withdrawal commit $W$ (pre-registered primary).
-Pooled: EDGE, 3G, LTE, \gtrN{} per arm. LTE: separate run, timing balanced across arms, \gpN{} per arm.}
+\caption{Rented Pixel~8a: trials whose socket accepted a write attempted after the withdrawal commit $W$
+(pre-registered primary), \dfN{} per cell. Emulator runs: Appendix~\ref{app:cancel}.}
 \label{tab:commit}\mtab
-\begin{tabular}{@{}lrr@{}}\toprule
-\mhead Arm & Pooled & LTE\\\midrule
-Early check & \gtrEarlyW & \gpEarlyW\\
-Cancellation, cross-process & \gtrCloseW & \gpCloseW\\
-Cancellation, same-process & \mgood{\gtrCloseTwoW} & \mgood{\gpCloseTwoW}\\
-Fence & \mgood{\gtrFenceW} & \mgood{\gpFenceW}\\
-Fence, abortive close & \mgood{\gtrAbortW} & \mgood{\gpAbortW}\\
+\begin{tabular}{@{}lrrrr@{}}\toprule
+\mhead Arm & EDGE & 3G & LTE & All\\\midrule
+Early check & \dfEarlyEdge & \dfEarlyUmts & \dfEarlyLte & \dfEarlyAll\\
+Cancellation, cross-process & \dfCloseEdge & \dfCloseUmts & \dfCloseLte & \dfCloseAll\\
+Cancellation, same-process & \dfCloseTwoEdge & \dfCloseTwoUmts & \dfCloseTwoLte & \dfCloseTwoAll\\
+Fence & \mgood{\dfFenceEdge} & \mgood{\dfFenceUmts} & \mgood{\dfFenceLte} & \mgood{\dfFenceAll}\\
+Fence, abortive close & \mgood{\dfAbortEdge} & \mgood{\dfAbortUmts} & \mgood{\dfAbortLte} & \mgood{\dfAbortAll}\\
 \bottomrule\end{tabular}\end{table}
 
-Cross-process cancellation reaches the writer only after a message crosses processes, and writes started in that delay
-were accepted: its \gtrCloseW{} pooled cases all came from LTE cells, where uploads are shortest, and in the separate LTE
-run every trial whose withdrawal fell during the writes accepted one, \gpCloseExposed{} with cross-process cancellation
-as \gpEarlyExposed{} with the early check. Same-process cancellation shortens the delay to a method call, but nothing
-serializes it with the writer, so its zero bounds a rate rather than closing the window, and it needs a registry of
-every in-flight request (\S\ref{sec:eval-realapp} shows one missed). What the commit requires is serialization with
-each write, which the fence has by construction. On LTE the fence's p95 acknowledgement was
-\gpFenceAckP{}\,ms (\gpAbortAckP{}\,ms abortive) against \gpCloseTwoAckP{}\,ms for same-process cancellation
-(Appendix~\ref{app:cancel} has the cross-process kind).
+Cross-process cancellation reaches the writer only after a message crosses processes (median acknowledgement
+\dfCloseLteAckMed{}\,ms on LTE), and writes started in that delay were accepted. Same-process cancellation shortens the
+delay to a method call and needs a registry of every in-flight request (\S\ref{sec:eval-realapp} shows one missed), but
+nothing serializes it with the writer: in each of its \dfCloseTwoTimed{} cases (exploratory), a write started
+\dfCloseTwoPostWLo{} to \dfCloseTwoPostWHi{}\,ms after $W$ and was accepted before the cancellation took effect,
+\dfCloseTwoCancelLo{} to \dfCloseTwoCancelHi{}\,ms after $W$. What the commit requires
+is serialization with each write, which the fence has by construction; its p95 acknowledgement on LTE was
+\dfFenceAckP{}\,ms (\dfAbortAckP{}\,ms abortive) against \dfCloseTwoAckP{}\,ms for same-process cancellation. On the
+emulator the order was the same, but same-process cancellation had no case (Appendix~\ref{app:cancel}).
 
 \paragraph{After acceptance.} Accepted bytes still leave the device. A host capture behind the emulator's rate limiter,
 with a marker connection after each acknowledgement, found request payload after the marker in \gtrCapLo{} to
 \gtrCapHi{} of \gtrN{} trials per arm, fence included. Varying the send buffer (\gsN{} trials per cell), fenced trials cut during the writes sent a median of \gsFenceSmallLo{} to \gsFenceSmallHi{}\,KB of
 TLS application data after the marker at a requested 16\,KiB, \gsFenceMidLo{} to \gsFenceMidHi{}\,KB at 64\,KiB and
-\gsFenceDefHi{}\,MB at the platform default (reported as \gsDefaultKib{}\,KiB): each between the buffer size and twice
-it, which Linux allocates. The abortive close left a median
+\gsFenceDefHi{}\,MB at the platform default (\gsDefaultKib{}\,KiB reported): each between the buffer size and twice it. The abortive close left a median
 of \gsAbortMed{} in every cell and at most \gsAbortMax{} bytes, less than the normal close in \gsAbortLess{} of \gsPairs{} pairs
 (Appendix~\ref{app:capture}).
 
@@ -72,14 +71,12 @@ AirGuard, an open-source tracker detector, donates sightings through a WorkManag
 the project by sharing some anonymous data'' is enabled, a switch worded as sharing (\S\ref{sec:measure}). Our embedding
 labels each item with the consent interval in which it was collected, kept in a durable log; an item collected during an
 opt-out is labelled $\bot$, so Eq.~\ref{eq:rule} forbids it even after re-consent; this is our reading of the switch,
-which its wording does not settle (Appendix~\ref{app:round3impl}). Running both builds in lockstep through the app's own
-preference path, the stock build donated opt-out beacons after re-consent in \airStockViol{} of \airN{} trials (pending,
-kill and reboot pooled) and the fenced build in \airFenceViol{} confirmed. The pre-registered oracle leaves
-\airFenceUnknownV{} fenced trials unknown; ordering on the guest clock alone, an exploratory step, leaves
-\airFenceUnknownVThree{}. Stock and fenced builds differ in both labels and placement, so this comparison does not
-isolate placement. A separate run added a layered build with the same labels and one check before sending: stock
-violated in \glayStockViol{} of \glayN{} trials, fenced in \glayFenceViol{}, layered in \glayLayerViol{}, \glayUnknown{} unknown; these schedules
-withdraw before the next donation.
+which its wording does not settle (Appendix~\ref{app:round3impl}). On a rented Pixel~8a, driving three builds in lockstep
+through the app's own preference path (stock; fenced; and layered, with the same labels and one check before sending),
+the stock build donated opt-out beacons after re-consent in \dfAirStockPK{} of \dfAirPKN{} pending and kill trials, the
+fenced and layered builds in none over all schedules, with \dfAirUnknown{} unknown; after a network
+cut no build delivered permitted post-withdrawal beacons (these schedules withdraw before the next donation). On the emulator, with reboots, stock violated in \airStockViol{} of \airN{} trials and the
+fenced build in \airFenceViol{} confirmed, \airFenceUnknownV{} unknown (Appendix~\ref{app:airrace}).
 
 \paragraph{Withdrawal during a donation.} Two pre-registered runs withdrew while a 256\,KiB donation was uploading on a
 3G-shaped link, adding a build that calls OkHttp's \texttt{Call.cancel()} on every in-flight call. In the first, whose
@@ -105,12 +102,13 @@ the sources traced in its content flagged \mutTwoFlagged{} of \mutTwoWrong{} and
 mislabelled items. Runtime enforcement cannot see a valid but incomplete label; the test-time check can, given content
 that carries source tracers as the fixture's does (Appendix~\ref{app:generality}).
 
-\paragraph{Newer Android and rented phones.} On Android~14 and 15 emulators (\lifeFourteenTrials{} and
-\lifeFifteenTrials{} paired trials), the enqueue-time baseline violated in \lifeFourteenEnq{} and \lifeFifteenEnq{}
-trials, layered early checks in \lifeFourteenLayer{} and \lifeFifteenLayer{}, and the fence in \lifeFourteenFence{} and
-\lifeFifteenFence{}. On two rented phones (\devModel{}; pending, kill and revoke), the enqueue baseline violated in
-\devLifeEnqViol{} of \devLifeEnqN{} paired trials, and the job-start check, layered early checks and the fence in
-\devLifeStartViol{}, \devLifeLayerViol{} and \devLifeFenceViol{} (Appendix~\ref{app:generality}).
+\paragraph{Rented phones and newer Android.} On two rented phones (\devModel{}; pending, kill and revoke), the enqueue
+baseline violated in \devLifeEnqViol{} of \devLifeEnqN{} paired trials, and the job-start check, layered early checks and
+the fence in \devLifeStartViol{}, \devLifeLayerViol{} and \devLifeFenceViol{}. Under a network cut on the Pixel~8a,
+enqueue and job-start checks violated in \dfNetEnq{} and \dfNetStart{} of \dfNetN{} paired trials, layered early checks
+and the fence in \dfNetLayer{} and \dfNetFence{}. Reboots ran only on emulators; on Android~14 and 15
+(\lifeFourteenTrials{} and \lifeFifteenTrials{} paired trials) the enqueue baseline violated in \lifeFourteenEnq{} and
+\lifeFifteenEnq{}, layered checks and the fence in none (Appendix~\ref{app:generality}).
 
 \paragraph{Cost.} A sweep of chunk size and sender count in a separate harness (Appendix~\ref{app:sweep}) put
 the median acknowledgement between \sweepAckLargeMs{} and \sweepAckSmallMs{}\,ms, and some senders stalled on the app-wide lock. On the \racePhoneModel{} over Wi-Fi, in the

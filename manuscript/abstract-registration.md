@@ -6,14 +6,14 @@ Hạn đăng ký: thứ Sáu 27/11 (AoE). Tác giả tự đăng ký, sớm hơn
 
 1. **Lineage và epoch quyết định các lịch vòng đời.**
    - Trong fixture 10 tenant, các check thông thường để lọt dữ liệu theo ba cơ chế: bản tóm tắt nộp dưới scope khác (T1), dữ liệu cũ sau khi cấp lại đồng ý (T5), và đường retry sau khi job đã bắt đầu (T8).
-   - Khi các check sớm nhận cùng metadata, layered early và fence đều có 0 vi phạm xác nhận, trên Android 13, 14 và 15.
+   - Khi các check sớm nhận cùng metadata, layered early và fence đều có 0 vi phạm xác nhận, trên hai máy thuê và trên emulator Android 13, 14, 15.
 2. **Chỗ đặt check chỉ quan trọng khi người dùng rút giữa lúc upload, và ranh giới là điểm commit W của lệnh rút.**
    - Mọi lệnh ghi sau W phải được kiểm lại dưới cùng khóa với lệnh rút.
    - Kết quả đo:
-     - check đặt trước request để socket nhận byte sau ack ở 56,7% trial emulator và 60,0% trên điện thoại;
-     - cancel từ process khác vẫn nhận lệnh ghi bắt đầu sau W ở 8/90 trial;
+     - check đặt trước request để socket nhận byte sau ack ở 60,0% trial trên điện thoại (56,7% trên emulator);
+     - trên Pixel 8a thuê (AWS), cancel từ process khác nhận lệnh ghi bắt đầu sau W ở 27/90 trial, cancel trong cùng process ở 6/90;
      - fence nhận 0.
-   - Cancel trong cùng process cũng 0, nhưng nó không serialize với writer, nên số 0 này không phải bảo đảm.
+   - Cancel trong cùng process là 0 trên emulator nhưng 6/90 trên máy thật, vì nó không serialize với writer.
    - Điểm hơn của fence là không cần registry các request đang bay.
 3. **Bảo đảm có điều kiện, và bài nói rõ điều kiện.**
    - Cần mediation đầy đủ và nhãn đầy đủ: một nhãn hợp lệ nhưng thiếu nguồn vẫn lọt.
@@ -24,7 +24,7 @@ Không đưa vào claim: "fence giữ được nhiều thư hợp lệ hơn". Ph
 
 ## Abstract đăng ký (văn bản thuần, cập nhật 24/11: nhóm 3 và claim viết lại)
 
-Android apps persist outboxes and jobs that can outlive a user's withdrawal of consent. Enforcing the withdrawal is not only a matter of when to check a toggle: derived data must keep its source policy, and old data must stay distinguishable after consent is granted again. ResidueDroid keeps durable source epochs and labels with every persisted copy and job input, and checks the app's stated contract before each bounded socket write, serialized with withdrawal. We judge each workload against the contract it states. Lineage and epochs decide the lifecycle schedules: conventional checks fail through lost lineage, stale epochs and unchecked retries, while earlier checks that receive the same metadata show no confirmed violations, like the fence. Placement matters only when a withdrawal lands during an upload, where every write after the withdrawal commits must be rechecked under its lock: a check before the request let the socket accept bytes afterwards in 56.7% of emulator trials and 60.0% on a phone, and cancellation from another process still accepted writes started after the commit in 8 of 90 trials; the fence accepted none. Below the socket the designs converge: about one send buffer of accepted bytes still leaves the device. In a real app, the stock build shares opt-out data after re-consent in 60 of 60 trials; the fenced build has no confirmed violation, with 26 trials unknown under the pre-registered oracle. The guarantee requires complete mediation and complete labels.
+Android apps persist outboxes and jobs that can outlive a user's withdrawal of consent. Enforcing the withdrawal is not only a matter of when to check a toggle: derived data must keep its source policy, and old data must stay distinguishable after consent is granted again. ResidueDroid keeps durable source epochs and labels with every persisted copy and job input, and checks the app's stated contract before each bounded socket write, serialized with withdrawal. We judge each workload against the contract it states. Lineage and epochs decide the lifecycle schedules: conventional checks fail through lost lineage, stale epochs and unchecked retries, while earlier checks that receive the same metadata show no confirmed violations, like the fence. Placement matters only when a withdrawal lands during an upload, where every write after the withdrawal commits must be rechecked under its lock: a check before the request let the socket accept bytes afterwards in 60.0% of trials on a phone (56.7% on an emulator), and on a rented phone, cancelling in-flight requests accepted writes started after the commit in 27 of 90 trials from another process and 6 of 90 from inside the sending process; the fence accepted none. Below the socket the designs converge: about one send buffer of accepted bytes still leaves the device. In a real app on a rented phone, the stock build shared opt-out data after re-consent in 40 of 40 trials, the fenced and layered builds in none. The guarantee requires complete mediation and complete labels.
 
 ## Tác giả (thứ tự người dùng chốt ngày 24/11, giống `main.tex`)
 
@@ -42,5 +42,5 @@ Android apps persist outboxes and jobs that can outlive a user's withdrawal of c
 ## Cần kiểm trước khi bấm đăng ký
 
 - Tên bài, danh sách tác giả, topic trên HotCRP.
-- Các số 56.7, 60.0, 8/90, 60/60, 26 còn khớp với `generated/` không (macro: raceObsPct, racePhoneObsPct, gtrCloseW/gtrN, airStockViol/airN, airFenceUnknownV).
+- Các số 60.0, 56.7, 27/90, 6/90, 40/40 còn khớp với `generated/` không (macro: racePhoneObsPct, raceObsPct, dfCloseAll/dfArmN, dfCloseTwoAll, dfAirStockPK/dfAirPKN, dfAirFence, dfAirLayer).
 - Không có dấu gạch ngang dài trong văn bản.

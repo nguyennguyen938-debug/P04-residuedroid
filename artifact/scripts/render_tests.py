@@ -139,6 +139,25 @@ SCHEMA = {
     "gdCells": "valid cells", "gdUploads": "successful uploads", "gdUploadFail": "failed uploads",
     "gdCpuLo": "fence/early CPU per MiB, smallest ratio", "gdCpuHi": "largest", "gdTimeLo": "fence/early time, smallest",
     "gdTimeHi": "largest", "gdEnergyNonzero": "cells with a nonzero batterystats UID estimate", "gdEnergyCells": "cells read",
+    # Round 4 on AWS Device Farm, Pixel 8a (PR #13; make_summary.round4_df). G3a design: trials accepting a write
+    # attempted after W, per arm and profile (30 per cell); lifecycle under network loss; AirGuard pending/kill/netloss.
+    "dfN": "trials per (arm, profile)", "dfArmN": "trials per arm",
+    "dfEarlyEdge": "early, EDGE", "dfEarlyUmts": "early, 3G", "dfEarlyLte": "early, LTE", "dfEarlyAll": "early, all profiles",
+    "dfCloseEdge": "cross-process cancellation, EDGE", "dfCloseUmts": "cross-process cancellation, 3G", "dfCloseLte": "cross-process cancellation, LTE", "dfCloseAll": "cross-process cancellation, all profiles",
+    "dfCloseTwoEdge": "same-process cancellation, EDGE", "dfCloseTwoUmts": "same-process cancellation, 3G", "dfCloseTwoLte": "same-process cancellation, LTE", "dfCloseTwoAll": "same-process cancellation, all profiles",
+    "dfFenceEdge": "fence, EDGE", "dfFenceUmts": "fence, 3G", "dfFenceLte": "fence, LTE", "dfFenceAll": "fence, all profiles",
+    "dfAbortEdge": "abortive fence, EDGE", "dfAbortUmts": "abortive fence, 3G", "dfAbortLte": "abortive fence, LTE", "dfAbortAll": "abortive fence, all profiles",
+    "dfEarlyAck": "early trials with bytes accepted after the ack", "dfCancelAck": "cancelling trials after the ack",
+    "dfCloseLteAckMed": "cross-process cancellation median ack ms, LTE", "dfFenceAckP": "fence p95 ack ms, LTE",
+    "dfAbortAckP": "abortive fence p95 ack ms, LTE", "dfCloseTwoAckP": "same-process cancellation p95 ack ms, LTE",
+    "dfCloseTwoTimed": "exploratory: same-process cases timed", "dfCloseTwoPostWLo": "first post-W write, ms after W, min",
+    "dfCloseTwoPostWHi": "max", "dfCloseTwoCancelLo": "cancellation effect, ms after W, min", "dfCloseTwoCancelHi": "max",
+    "dfNetN": "network-loss paired trials", "dfNetEnq": "menqueue violating paired trials", "dfNetStart": "mstart",
+    "dfNetLayer": "mlayer", "dfNetFence": "mfence", "dfNetBoth": "mboth",
+    "dfAirN": "AirGuard trials per (schedule, build)", "dfAirStockPK": "stock violating trials, pending + kill",
+    "dfAirPKN": "pending + kill trials per build", "dfAirFence": "fenced violating trials, all schedules",
+    "dfAirLayer": "layered violating trials, all schedules", "dfAirNetStock": "stock violating trials under network loss",
+    "dfAirUnknown": "unknown trials, all cells", "dfAirNetDeficitMin": "fewest network-loss trials with a permitted deficit, any build",
 }
 
 
