@@ -36,7 +36,7 @@ Ngày 27/11: bỏ Khang; thêm Phat T. Tran-Truong và Xuan Son Ha trước th�
 |---|---|---|---|---|
 | 1 | Nhat Duy Nguyen | 1 | duy.nguyencse@hcmut.edu.vn | 0009-0003-5543-8181 |
 | 2 | Phung Trung Nguyen Nguyen | 1 | nguyen.nguyen938@hcmut.edu.vn | 0009-0004-8643-4172 |
-| 3 | Nguyen Dang Nghia | 1 | nghia.nguyen3112007@hcmut.edu.vn (lấy từ git commit, cần Nghĩa xác nhận) | chưa có |
+| 3 | Dang Nghia Nguyen (đổi thứ tự tên 28/11, khớp HotCRP) | 1 | nghia.nguyen3112007@hcmut.edu.vn (lấy từ git commit, cần Nghĩa xác nhận) | chưa có |
 | 4 | Hieu Le Minh | 1 | hieu.lehieulhks@hcmut.edu.vn | 0009-0003-9199-7677 |
 | 5 | Phat T. Tran-Truong | 1 | phatttt@hcmut.edu.vn | 0000-0003-3199-6333 |
 | 6 | Xuan Son Ha | 2 | ha.son@rmit.edu.vn | 0000-0002-5336-0566 |
