@@ -26,18 +26,21 @@ Không đưa vào claim: "fence giữ được nhiều thư hợp lệ hơn". Ph
 
 Android apps persist outboxes and jobs that can outlive a user's withdrawal of consent. Enforcing the withdrawal is not only a matter of when to check a toggle: derived data must keep its source policy, and old data must stay distinguishable after consent is granted again. ResidueDroid keeps durable source epochs and labels with every persisted copy and job input, and checks the app's stated contract before each bounded socket write, serialized with withdrawal. We judge each workload against the contract it states. Lineage and epochs decide the lifecycle schedules: conventional checks fail through lost lineage, stale epochs and unchecked retries, while earlier checks that receive the same metadata show no confirmed violations, like the fence. Placement matters only when a withdrawal lands during an upload. A check before the request let the socket accept bytes after the acknowledgement in 60.0% of trials on a phone (56.7% on an emulator); on a rented phone, synchronously cancelling in-flight requests let none follow it, like the fence. They differ at the withdrawal's commit, after which the app's own policy state forbids the data: cancellation accepted newly started writes in 27 of 90 trials from another process and 6 of 90 from inside the sending process; the fence, which rechecks each write under the withdrawal's lock and needs no registry of in-flight requests, accepted none. Below the socket the designs converge: about one send buffer of accepted bytes still leaves the device. In a real app on a rented phone, the stock build shared opt-out data after re-consent in 40 of 40 trials, the fenced and layered builds in none. The guarantee requires complete mediation and complete labels.
 
-## Tác giả (thứ tự người dùng chốt ngày 24/11, giống `main.tex`)
+## Tác giả (thứ tự người dùng chốt ngày 27/11, giống `main.tex`)
 
-Đơn vị chung: Ho Chi Minh City University of Technology (HCMUT), VNU-HCM, Vietnam.
+Ngày 27/11: bỏ Khang; thêm Phat T. Tran-Truong và Xuan Son Ha trước thầy Bách. Email, đơn vị và ORCID của hai người mới lấy từ bài ICSOC 2026 (QuantumTrustKG) mà người dùng gửi.
 
-| # | Tên in | Email | ORCID |
-|---|---|---|---|
-| 1 | Nhat Duy Nguyen | duy.nguyencse@hcmut.edu.vn | 0009-0003-5543-8181 |
-| 2 | Phung Trung Nguyen Nguyen | nguyen.nguyen938@hcmut.edu.vn | 0009-0004-8643-4172 |
-| 3 | Nguyen Dang Nghia | nghia.nguyen3112007@hcmut.edu.vn (lấy từ git commit, cần Nghĩa xác nhận) | chưa có |
-| 4 | Hieu Le Minh | hieu.lehieulhks@hcmut.edu.vn | 0009-0003-9199-7677 |
-| 5 | Nguyen Hoang Nhat Khang | khang.nguyen2111@hcmut.edu.vn | 0009-0008-2781-7228 |
-| 6 | Xuan-Bach Le (corresponding) | lexuanbach@hcmut.edu.vn | 0009-0003-6848-5403 |
+Đơn vị: (1) Ho Chi Minh City University of Technology (HCMUT), VNU-HCM, Vietnam; (2) RMIT University, Vietnam.
+
+| # | Tên in | Đơn vị | Email | ORCID |
+|---|---|---|---|---|
+| 1 | Nhat Duy Nguyen | 1 | duy.nguyencse@hcmut.edu.vn | 0009-0003-5543-8181 |
+| 2 | Phung Trung Nguyen Nguyen | 1 | nguyen.nguyen938@hcmut.edu.vn | 0009-0004-8643-4172 |
+| 3 | Nguyen Dang Nghia | 1 | nghia.nguyen3112007@hcmut.edu.vn (lấy từ git commit, cần Nghĩa xác nhận) | chưa có |
+| 4 | Hieu Le Minh | 1 | hieu.lehieulhks@hcmut.edu.vn | 0009-0003-9199-7677 |
+| 5 | Phat T. Tran-Truong | 1 | phatttt@hcmut.edu.vn | 0000-0003-3199-6333 |
+| 6 | Xuan Son Ha | 2 | ha.son@rmit.edu.vn | 0000-0002-5336-0566 |
+| 7 | Xuan-Bach Le (corresponding) | 1 | lexuanbach@hcmut.edu.vn | 0009-0003-6848-5403 |
 
 ## Cần kiểm trước khi bấm đăng ký
 
